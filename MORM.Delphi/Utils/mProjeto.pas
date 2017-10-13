@@ -25,7 +25,7 @@ type
 implementation
 
 uses
-  mVersaoArquivo;
+  mVersao;
 
 var
   _instance : TmProjeto;
@@ -47,8 +47,8 @@ constructor TmProjeto.Create(AOwner : TComponent);
 begin
   inherited;
 
-  fCodigo := TmVersaoArquivo.Codigo(Application.ExeName);
-  fVersao := TmVersaoArquivo.Versao(Application.ExeName).Str;
+  fCodigo := TmVersao.Codigo(Application.ExeName);
+  fVersao := TmVersao.Versao(Application.ExeName).Str;
 end;
 
 destructor TmProjeto.Destroy;
