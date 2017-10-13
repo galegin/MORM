@@ -10,6 +10,17 @@ type
   [Tabela('TRANSACAO')]
   TTransacao = class(TmCollectionItem)
   private
+    fId_Transacao: String;
+    fU_Version: String;
+    fCd_Operador: Integer;
+    fDt_Cadastro: TDateTime;
+    fId_Empresa: Integer;
+    fId_Pessoa: String;
+    fId_Operacao: String;
+    fDt_Transacao: TDateTime;
+    fNr_Transacao: Integer;
+    fTp_Situacao: Integer;
+    fDt_Cancelamento: TDateTime;
   public
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
@@ -21,7 +32,7 @@ type
     [Campo('CD_OPERADOR', tfReq)]
     property Cd_Operador : Integer read fCd_Operador write fCd_Operador;
     [Campo('DT_CADASTRO', tfReq)]
-    property Dt_Cadastro : String read fDt_Cadastro write fDt_Cadastro;
+    property Dt_Cadastro : TDateTime read fDt_Cadastro write fDt_Cadastro;
     [Campo('ID_EMPRESA', tfReq)]
     property Id_Empresa : Integer read fId_Empresa write fId_Empresa;
     [Campo('ID_PESSOA', tfReq)]
@@ -29,16 +40,16 @@ type
     [Campo('ID_OPERACAO', tfReq)]
     property Id_Operacao : String read fId_Operacao write fId_Operacao;
     [Campo('DT_TRANSACAO', tfReq)]
-    property Dt_Transacao : String read fDt_Transacao write fDt_Transacao;
+    property Dt_Transacao : TDateTime read fDt_Transacao write fDt_Transacao;
     [Campo('NR_TRANSACAO', tfReq)]
     property Nr_Transacao : Integer read fNr_Transacao write fNr_Transacao;
     [Campo('TP_SITUACAO', tfReq)]
     property Tp_Situacao : Integer read fTp_Situacao write fTp_Situacao;
     [Campo('DT_CANCELAMENTO', tfNul)]
-    property Dt_Cancelamento : String read fDt_Cancelamento write fDt_Cancelamento;
+    property Dt_Cancelamento : TDateTime read fDt_Cancelamento write fDt_Cancelamento;
   end;
 
-  TTransacaoList = class(TmCollection)
+  TTransacaos = class(TmCollection)
   private
     function GetItem(Index: Integer): TTransacao;
     procedure SetItem(Index: Integer; Value: TTransacao);
@@ -52,7 +63,7 @@ implementation
 
 { TTransacao }
 
-constructor TTransacao.Create(AOwner: TCollection);
+constructor TTransacao.Create(ACollection: TCollection);
 begin
   inherited;
 
@@ -64,24 +75,24 @@ begin
   inherited;
 end;
 
-{ TTransacaoList }
+{ TTransacaos }
 
-constructor TTransacaoList.Create(AItemClass: TCollectionItemClass);
+constructor TTransacaos.Create(AItemClass: TCollectionItemClass);
 begin
   inherited Create(TTransacao);
 end;
 
-function TTransacaoList.Add: TTransacao;
+function TTransacaos.Add: TTransacao;
 begin
   Result := TTransacao(inherited Add);
 end;
 
-function TTransacaoList.GetItem(Index: Integer): TTransacao;
+function TTransacaos.GetItem(Index: Integer): TTransacao;
 begin
   Result := TTransacao(inherited GetItem(Index));
 end;
 
-procedure TTransacaoList.SetItem(Index: Integer; Value: TTransacao);
+procedure TTransacaos.SetItem(Index: Integer; Value: TTransacao);
 begin
   inherited SetItem(Index, Value);
 end;

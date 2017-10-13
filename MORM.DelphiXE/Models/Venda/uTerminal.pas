@@ -10,6 +10,12 @@ type
   [Tabela('TERMINAL')]
   TTerminal = class(TmCollectionItem)
   private
+    fId_Terminal: Integer;
+    fU_Version: String;
+    fCd_Operador: Integer;
+    fDt_Cadastro: TDateTime;
+    fCd_Terminal: Integer;
+    fDs_Terminal: String;
   public
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
@@ -21,14 +27,14 @@ type
     [Campo('CD_OPERADOR', tfReq)]
     property Cd_Operador : Integer read fCd_Operador write fCd_Operador;
     [Campo('DT_CADASTRO', tfReq)]
-    property Dt_Cadastro : String read fDt_Cadastro write fDt_Cadastro;
+    property Dt_Cadastro : TDateTime read fDt_Cadastro write fDt_Cadastro;
     [Campo('CD_TERMINAL', tfReq)]
     property Cd_Terminal : Integer read fCd_Terminal write fCd_Terminal;
     [Campo('DS_TERMINAL', tfReq)]
     property Ds_Terminal : String read fDs_Terminal write fDs_Terminal;
   end;
 
-  TTerminalList = class(TmCollection)
+  TTerminals = class(TmCollection)
   private
     function GetItem(Index: Integer): TTerminal;
     procedure SetItem(Index: Integer; Value: TTerminal);
@@ -42,7 +48,7 @@ implementation
 
 { TTerminal }
 
-constructor TTerminal.Create(AOwner: TCollection);
+constructor TTerminal.Create(ACollection: TCollection);
 begin
   inherited;
 
@@ -54,24 +60,24 @@ begin
   inherited;
 end;
 
-{ TTerminalList }
+{ TTerminals }
 
-constructor TTerminalList.Create(AItemClass: TCollectionItemClass);
+constructor TTerminals.Create(AItemClass: TCollectionItemClass);
 begin
   inherited Create(TTerminal);
 end;
 
-function TTerminalList.Add: TTerminal;
+function TTerminals.Add: TTerminal;
 begin
   Result := TTerminal(inherited Add);
 end;
 
-function TTerminalList.GetItem(Index: Integer): TTerminal;
+function TTerminals.GetItem(Index: Integer): TTerminal;
 begin
   Result := TTerminal(inherited GetItem(Index));
 end;
 
-procedure TTerminalList.SetItem(Index: Integer; Value: TTerminal);
+procedure TTerminals.SetItem(Index: Integer; Value: TTerminal);
 begin
   inherited SetItem(Index, Value);
 end;

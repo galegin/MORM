@@ -10,6 +10,12 @@ type
   [Tabela('REGRAFISCAL')]
   TRegrafiscal = class(TmCollectionItem)
   private
+    fId_Regrafiscal: Integer;
+    fU_Version: String;
+    fCd_Operador: Integer;
+    fDt_Cadastro: TDateTime;
+    fDs_Regrafiscal: String;
+    fIn_Calcimposto: String;
   public
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
@@ -21,14 +27,14 @@ type
     [Campo('CD_OPERADOR', tfReq)]
     property Cd_Operador : Integer read fCd_Operador write fCd_Operador;
     [Campo('DT_CADASTRO', tfReq)]
-    property Dt_Cadastro : String read fDt_Cadastro write fDt_Cadastro;
+    property Dt_Cadastro : TDateTime read fDt_Cadastro write fDt_Cadastro;
     [Campo('DS_REGRAFISCAL', tfReq)]
     property Ds_Regrafiscal : String read fDs_Regrafiscal write fDs_Regrafiscal;
     [Campo('IN_CALCIMPOSTO', tfReq)]
     property In_Calcimposto : String read fIn_Calcimposto write fIn_Calcimposto;
   end;
 
-  TRegrafiscalList = class(TmCollection)
+  TRegrafiscals = class(TmCollection)
   private
     function GetItem(Index: Integer): TRegrafiscal;
     procedure SetItem(Index: Integer; Value: TRegrafiscal);
@@ -42,7 +48,7 @@ implementation
 
 { TRegrafiscal }
 
-constructor TRegrafiscal.Create(AOwner: TCollection);
+constructor TRegrafiscal.Create(ACollection: TCollection);
 begin
   inherited;
 
@@ -54,24 +60,24 @@ begin
   inherited;
 end;
 
-{ TRegrafiscalList }
+{ TRegrafiscals }
 
-constructor TRegrafiscalList.Create(AItemClass: TCollectionItemClass);
+constructor TRegrafiscals.Create(AItemClass: TCollectionItemClass);
 begin
   inherited Create(TRegrafiscal);
 end;
 
-function TRegrafiscalList.Add: TRegrafiscal;
+function TRegrafiscals.Add: TRegrafiscal;
 begin
   Result := TRegrafiscal(inherited Add);
 end;
 
-function TRegrafiscalList.GetItem(Index: Integer): TRegrafiscal;
+function TRegrafiscals.GetItem(Index: Integer): TRegrafiscal;
 begin
   Result := TRegrafiscal(inherited GetItem(Index));
 end;
 
-procedure TRegrafiscalList.SetItem(Index: Integer; Value: TRegrafiscal);
+procedure TRegrafiscals.SetItem(Index: Integer; Value: TRegrafiscal);
 begin
   inherited SetItem(Index, Value);
 end;

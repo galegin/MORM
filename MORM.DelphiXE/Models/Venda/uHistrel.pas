@@ -10,6 +10,14 @@ type
   [Tabela('HISTREL')]
   THistrel = class(TmCollectionItem)
   private
+    fId_Histrel: Integer;
+    fU_Version: String;
+    fCd_Operador: Integer;
+    fDt_Cadastro: TDateTime;
+    fTp_Documento: Integer;
+    fCd_Histrel: Integer;
+    fDs_Histrel: String;
+    fNr_Parcelas: Integer;
   public
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
@@ -21,7 +29,7 @@ type
     [Campo('CD_OPERADOR', tfReq)]
     property Cd_Operador : Integer read fCd_Operador write fCd_Operador;
     [Campo('DT_CADASTRO', tfReq)]
-    property Dt_Cadastro : String read fDt_Cadastro write fDt_Cadastro;
+    property Dt_Cadastro : TDateTime read fDt_Cadastro write fDt_Cadastro;
     [Campo('TP_DOCUMENTO', tfReq)]
     property Tp_Documento : Integer read fTp_Documento write fTp_Documento;
     [Campo('CD_HISTREL', tfReq)]
@@ -32,7 +40,7 @@ type
     property Nr_Parcelas : Integer read fNr_Parcelas write fNr_Parcelas;
   end;
 
-  THistrelList = class(TmCollection)
+  THistrels = class(TmCollection)
   private
     function GetItem(Index: Integer): THistrel;
     procedure SetItem(Index: Integer; Value: THistrel);
@@ -46,7 +54,7 @@ implementation
 
 { THistrel }
 
-constructor THistrel.Create(AOwner: TCollection);
+constructor THistrel.Create(ACollection: TCollection);
 begin
   inherited;
 
@@ -58,24 +66,24 @@ begin
   inherited;
 end;
 
-{ THistrelList }
+{ THistrels }
 
-constructor THistrelList.Create(AItemClass: TCollectionItemClass);
+constructor THistrels.Create(AItemClass: TCollectionItemClass);
 begin
   inherited Create(THistrel);
 end;
 
-function THistrelList.Add: THistrel;
+function THistrels.Add: THistrel;
 begin
   Result := THistrel(inherited Add);
 end;
 
-function THistrelList.GetItem(Index: Integer): THistrel;
+function THistrels.GetItem(Index: Integer): THistrel;
 begin
   Result := THistrel(inherited GetItem(Index));
 end;
 
-procedure THistrelList.SetItem(Index: Integer; Value: THistrel);
+procedure THistrels.SetItem(Index: Integer; Value: THistrel);
 begin
   inherited SetItem(Index, Value);
 end;

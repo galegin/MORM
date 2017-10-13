@@ -10,6 +10,16 @@ type
   [Tabela('USUARIO')]
   TUsuario = class(TmCollectionItem)
   private
+    fId_Usuario: Integer;
+    fU_Version: String;
+    fCd_Operador: Integer;
+    fDt_Cadastro: TDateTime;
+    fNm_Usuario: String;
+    fNm_Login: String;
+    fCd_Senha: String;
+    fCd_Papel: String;
+    fTp_Bloqueio: Integer;
+    fDt_Bloqueio: TDateTime;
   public
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
@@ -21,7 +31,7 @@ type
     [Campo('CD_OPERADOR', tfReq)]
     property Cd_Operador : Integer read fCd_Operador write fCd_Operador;
     [Campo('DT_CADASTRO', tfReq)]
-    property Dt_Cadastro : String read fDt_Cadastro write fDt_Cadastro;
+    property Dt_Cadastro : TDateTime read fDt_Cadastro write fDt_Cadastro;
     [Campo('NM_USUARIO', tfReq)]
     property Nm_Usuario : String read fNm_Usuario write fNm_Usuario;
     [Campo('NM_LOGIN', tfReq)]
@@ -33,10 +43,10 @@ type
     [Campo('TP_BLOQUEIO', tfReq)]
     property Tp_Bloqueio : Integer read fTp_Bloqueio write fTp_Bloqueio;
     [Campo('DT_BLOQUEIO', tfNul)]
-    property Dt_Bloqueio : String read fDt_Bloqueio write fDt_Bloqueio;
+    property Dt_Bloqueio : TDateTime read fDt_Bloqueio write fDt_Bloqueio;
   end;
 
-  TUsuarioList = class(TmCollection)
+  TUsuarios = class(TmCollection)
   private
     function GetItem(Index: Integer): TUsuario;
     procedure SetItem(Index: Integer; Value: TUsuario);
@@ -50,7 +60,7 @@ implementation
 
 { TUsuario }
 
-constructor TUsuario.Create(AOwner: TCollection);
+constructor TUsuario.Create(ACollection: TCollection);
 begin
   inherited;
 
@@ -62,24 +72,24 @@ begin
   inherited;
 end;
 
-{ TUsuarioList }
+{ TUsuarios }
 
-constructor TUsuarioList.Create(AItemClass: TCollectionItemClass);
+constructor TUsuarios.Create(AItemClass: TCollectionItemClass);
 begin
   inherited Create(TUsuario);
 end;
 
-function TUsuarioList.Add: TUsuario;
+function TUsuarios.Add: TUsuario;
 begin
   Result := TUsuario(inherited Add);
 end;
 
-function TUsuarioList.GetItem(Index: Integer): TUsuario;
+function TUsuarios.GetItem(Index: Integer): TUsuario;
 begin
   Result := TUsuario(inherited GetItem(Index));
 end;
 
-procedure TUsuarioList.SetItem(Index: Integer; Value: TUsuario);
+procedure TUsuarios.SetItem(Index: Integer; Value: TUsuario);
 begin
   inherited SetItem(Index, Value);
 end;

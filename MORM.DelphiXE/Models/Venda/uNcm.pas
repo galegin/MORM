@@ -10,6 +10,11 @@ type
   [Tabela('NCM')]
   TNcm = class(TmCollectionItem)
   private
+    fCd_Ncm: String;
+    fU_Version: String;
+    fCd_Operador: Integer;
+    fDt_Cadastro: TDateTime;
+    fDs_Ncm: String;
   public
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
@@ -21,12 +26,12 @@ type
     [Campo('CD_OPERADOR', tfReq)]
     property Cd_Operador : Integer read fCd_Operador write fCd_Operador;
     [Campo('DT_CADASTRO', tfReq)]
-    property Dt_Cadastro : String read fDt_Cadastro write fDt_Cadastro;
+    property Dt_Cadastro : TDateTime read fDt_Cadastro write fDt_Cadastro;
     [Campo('DS_NCM', tfReq)]
     property Ds_Ncm : String read fDs_Ncm write fDs_Ncm;
   end;
 
-  TNcmList = class(TmCollection)
+  TNcms = class(TmCollection)
   private
     function GetItem(Index: Integer): TNcm;
     procedure SetItem(Index: Integer; Value: TNcm);
@@ -40,7 +45,7 @@ implementation
 
 { TNcm }
 
-constructor TNcm.Create(AOwner: TCollection);
+constructor TNcm.Create(ACollection: TCollection);
 begin
   inherited;
 
@@ -52,24 +57,24 @@ begin
   inherited;
 end;
 
-{ TNcmList }
+{ TNcms }
 
-constructor TNcmList.Create(AItemClass: TCollectionItemClass);
+constructor TNcms.Create(AItemClass: TCollectionItemClass);
 begin
   inherited Create(TNcm);
 end;
 
-function TNcmList.Add: TNcm;
+function TNcms.Add: TNcm;
 begin
   Result := TNcm(inherited Add);
 end;
 
-function TNcmList.GetItem(Index: Integer): TNcm;
+function TNcms.GetItem(Index: Integer): TNcm;
 begin
   Result := TNcm(inherited GetItem(Index));
 end;
 
-procedure TNcmList.SetItem(Index: Integer; Value: TNcm);
+procedure TNcms.SetItem(Index: Integer; Value: TNcm);
 begin
   inherited SetItem(Index, Value);
 end;

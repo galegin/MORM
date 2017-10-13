@@ -10,6 +10,17 @@ type
   [Tabela('REGRAIMPOSTO')]
   TRegraimposto = class(TmCollectionItem)
   private
+    fId_Regrafiscal: Integer;
+    fCd_Imposto: Integer;
+    fU_Version: String;
+    fCd_Operador: Integer;
+    fDt_Cadastro: TDateTime;
+    fPr_Aliquota: Real;
+    fPr_Basecalculo: Real;
+    fCd_Cst: String;
+    fCd_Csosn: String;
+    fIn_Isento: String;
+    fIn_Outro: String;
   public
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
@@ -23,11 +34,11 @@ type
     [Campo('CD_OPERADOR', tfReq)]
     property Cd_Operador : Integer read fCd_Operador write fCd_Operador;
     [Campo('DT_CADASTRO', tfReq)]
-    property Dt_Cadastro : String read fDt_Cadastro write fDt_Cadastro;
+    property Dt_Cadastro : TDateTime read fDt_Cadastro write fDt_Cadastro;
     [Campo('PR_ALIQUOTA', tfReq)]
-    property Pr_Aliquota : String read fPr_Aliquota write fPr_Aliquota;
+    property Pr_Aliquota : Real read fPr_Aliquota write fPr_Aliquota;
     [Campo('PR_BASECALCULO', tfReq)]
-    property Pr_Basecalculo : String read fPr_Basecalculo write fPr_Basecalculo;
+    property Pr_Basecalculo : Real read fPr_Basecalculo write fPr_Basecalculo;
     [Campo('CD_CST', tfReq)]
     property Cd_Cst : String read fCd_Cst write fCd_Cst;
     [Campo('CD_CSOSN', tfNul)]
@@ -38,7 +49,7 @@ type
     property In_Outro : String read fIn_Outro write fIn_Outro;
   end;
 
-  TRegraimpostoList = class(TmCollection)
+  TRegraimpostos = class(TmCollection)
   private
     function GetItem(Index: Integer): TRegraimposto;
     procedure SetItem(Index: Integer; Value: TRegraimposto);
@@ -52,7 +63,7 @@ implementation
 
 { TRegraimposto }
 
-constructor TRegraimposto.Create(AOwner: TCollection);
+constructor TRegraimposto.Create(ACollection: TCollection);
 begin
   inherited;
 
@@ -64,24 +75,24 @@ begin
   inherited;
 end;
 
-{ TRegraimpostoList }
+{ TRegraimpostos }
 
-constructor TRegraimpostoList.Create(AItemClass: TCollectionItemClass);
+constructor TRegraimpostos.Create(AItemClass: TCollectionItemClass);
 begin
   inherited Create(TRegraimposto);
 end;
 
-function TRegraimpostoList.Add: TRegraimposto;
+function TRegraimpostos.Add: TRegraimposto;
 begin
   Result := TRegraimposto(inherited Add);
 end;
 
-function TRegraimpostoList.GetItem(Index: Integer): TRegraimposto;
+function TRegraimpostos.GetItem(Index: Integer): TRegraimposto;
 begin
   Result := TRegraimposto(inherited GetItem(Index));
 end;
 
-procedure TRegraimpostoList.SetItem(Index: Integer; Value: TRegraimposto);
+procedure TRegraimpostos.SetItem(Index: Integer; Value: TRegraimposto);
 begin
   inherited SetItem(Index, Value);
 end;

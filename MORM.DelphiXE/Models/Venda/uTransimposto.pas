@@ -10,6 +10,21 @@ type
   [Tabela('TRANSIMPOSTO')]
   TTransimposto = class(TmCollectionItem)
   private
+    fId_Transacao: String;
+    fNr_Item: Integer;
+    fCd_Imposto: Integer;
+    fU_Version: String;
+    fCd_Operador: Integer;
+    fDt_Cadastro: TDateTime;
+    fPr_Aliquota: Real;
+    fVl_Basecalculo: Real;
+    fPr_Basecalculo: Real;
+    fPr_Redbasecalculo: Real;
+    fVl_Imposto: Real;
+    fVl_Outro: Real;
+    fVl_Isento: Real;
+    fCd_Cst: String;
+    fCd_Csosn: String;
   public
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
@@ -25,28 +40,28 @@ type
     [Campo('CD_OPERADOR', tfReq)]
     property Cd_Operador : Integer read fCd_Operador write fCd_Operador;
     [Campo('DT_CADASTRO', tfReq)]
-    property Dt_Cadastro : String read fDt_Cadastro write fDt_Cadastro;
+    property Dt_Cadastro : TDateTime read fDt_Cadastro write fDt_Cadastro;
     [Campo('PR_ALIQUOTA', tfReq)]
-    property Pr_Aliquota : String read fPr_Aliquota write fPr_Aliquota;
+    property Pr_Aliquota : Real read fPr_Aliquota write fPr_Aliquota;
     [Campo('VL_BASECALCULO', tfReq)]
-    property Vl_Basecalculo : String read fVl_Basecalculo write fVl_Basecalculo;
+    property Vl_Basecalculo : Real read fVl_Basecalculo write fVl_Basecalculo;
     [Campo('PR_BASECALCULO', tfReq)]
-    property Pr_Basecalculo : String read fPr_Basecalculo write fPr_Basecalculo;
+    property Pr_Basecalculo : Real read fPr_Basecalculo write fPr_Basecalculo;
     [Campo('PR_REDBASECALCULO', tfReq)]
-    property Pr_Redbasecalculo : String read fPr_Redbasecalculo write fPr_Redbasecalculo;
+    property Pr_Redbasecalculo : Real read fPr_Redbasecalculo write fPr_Redbasecalculo;
     [Campo('VL_IMPOSTO', tfReq)]
-    property Vl_Imposto : String read fVl_Imposto write fVl_Imposto;
+    property Vl_Imposto : Real read fVl_Imposto write fVl_Imposto;
     [Campo('VL_OUTRO', tfReq)]
-    property Vl_Outro : String read fVl_Outro write fVl_Outro;
+    property Vl_Outro : Real read fVl_Outro write fVl_Outro;
     [Campo('VL_ISENTO', tfReq)]
-    property Vl_Isento : String read fVl_Isento write fVl_Isento;
+    property Vl_Isento : Real read fVl_Isento write fVl_Isento;
     [Campo('CD_CST', tfReq)]
     property Cd_Cst : String read fCd_Cst write fCd_Cst;
     [Campo('CD_CSOSN', tfNul)]
     property Cd_Csosn : String read fCd_Csosn write fCd_Csosn;
   end;
 
-  TTransimpostoList = class(TmCollection)
+  TTransimpostos = class(TmCollection)
   private
     function GetItem(Index: Integer): TTransimposto;
     procedure SetItem(Index: Integer; Value: TTransimposto);
@@ -60,7 +75,7 @@ implementation
 
 { TTransimposto }
 
-constructor TTransimposto.Create(AOwner: TCollection);
+constructor TTransimposto.Create(ACollection: TCollection);
 begin
   inherited;
 
@@ -72,24 +87,24 @@ begin
   inherited;
 end;
 
-{ TTransimpostoList }
+{ TTransimpostos }
 
-constructor TTransimpostoList.Create(AItemClass: TCollectionItemClass);
+constructor TTransimpostos.Create(AItemClass: TCollectionItemClass);
 begin
   inherited Create(TTransimposto);
 end;
 
-function TTransimpostoList.Add: TTransimposto;
+function TTransimpostos.Add: TTransimposto;
 begin
   Result := TTransimposto(inherited Add);
 end;
 
-function TTransimpostoList.GetItem(Index: Integer): TTransimposto;
+function TTransimpostos.GetItem(Index: Integer): TTransimposto;
 begin
   Result := TTransimposto(inherited GetItem(Index));
 end;
 
-procedure TTransimpostoList.SetItem(Index: Integer; Value: TTransimposto);
+procedure TTransimpostos.SetItem(Index: Integer; Value: TTransimposto);
 begin
   inherited SetItem(Index, Value);
 end;

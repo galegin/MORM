@@ -10,6 +10,12 @@ type
   [Tabela('ALIQICMS')]
   TAliqicms = class(TmCollectionItem)
   private
+    fUf_Origem: String;
+    fUf_Destino: String;
+    fU_Version: String;
+    fCd_Operador: Integer;
+    fDt_Cadastro: TDateTime;
+    fPr_Aliquota: Real;
   public
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
@@ -23,12 +29,12 @@ type
     [Campo('CD_OPERADOR', tfReq)]
     property Cd_Operador : Integer read fCd_Operador write fCd_Operador;
     [Campo('DT_CADASTRO', tfReq)]
-    property Dt_Cadastro : String read fDt_Cadastro write fDt_Cadastro;
+    property Dt_Cadastro : TDateTime read fDt_Cadastro write fDt_Cadastro;
     [Campo('PR_ALIQUOTA', tfReq)]
-    property Pr_Aliquota : String read fPr_Aliquota write fPr_Aliquota;
+    property Pr_Aliquota : Real read fPr_Aliquota write fPr_Aliquota;
   end;
 
-  TAliqicmsList = class(TmCollection)
+  TAliqicmss = class(TmCollection)
   private
     function GetItem(Index: Integer): TAliqicms;
     procedure SetItem(Index: Integer; Value: TAliqicms);
@@ -42,7 +48,7 @@ implementation
 
 { TAliqicms }
 
-constructor TAliqicms.Create(AOwner: TCollection);
+constructor TAliqicms.Create(ACollection: TCollection);
 begin
   inherited;
 
@@ -54,24 +60,24 @@ begin
   inherited;
 end;
 
-{ TAliqicmsList }
+{ TAliqicmss }
 
-constructor TAliqicmsList.Create(AItemClass: TCollectionItemClass);
+constructor TAliqicmss.Create(AItemClass: TCollectionItemClass);
 begin
   inherited Create(TAliqicms);
 end;
 
-function TAliqicmsList.Add: TAliqicms;
+function TAliqicmss.Add: TAliqicms;
 begin
   Result := TAliqicms(inherited Add);
 end;
 
-function TAliqicmsList.GetItem(Index: Integer): TAliqicms;
+function TAliqicmss.GetItem(Index: Integer): TAliqicms;
 begin
   Result := TAliqicms(inherited GetItem(Index));
 end;
 
-procedure TAliqicmsList.SetItem(Index: Integer; Value: TAliqicms);
+procedure TAliqicmss.SetItem(Index: Integer; Value: TAliqicms);
 begin
   inherited SetItem(Index, Value);
 end;

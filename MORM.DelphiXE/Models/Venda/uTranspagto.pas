@@ -10,6 +10,31 @@ type
   [Tabela('TRANSPAGTO')]
   TTranspagto = class(TmCollectionItem)
   private
+    fId_Transacao: String;
+    fNr_Seq: Integer;
+    fU_Version: String;
+    fCd_Operador: Integer;
+    fDt_Cadastro: TDateTime;
+    fId_Caixa: Integer;
+    fTp_Documento: Integer;
+    fId_Histrel: Integer;
+    fNr_Parcela: Integer;
+    fNr_Parcelas: Integer;
+    fNr_Documento: Integer;
+    fVl_Documento: Real;
+    fDt_Vencimento: TDateTime;
+    fCd_Autorizacao: String;
+    fNr_Nsu: Integer;
+    fDs_Redetef: String;
+    fNm_Operadora: String;
+    fNr_Banco: Integer;
+    fNr_Agencia: Integer;
+    fDs_Conta: String;
+    fNr_Cheque: Integer;
+    fDs_Cmc7: String;
+    fTp_Baixa: Integer;
+    fCd_Operbaixa: Integer;
+    fDt_Baixa: TDateTime;
   public
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
@@ -23,7 +48,7 @@ type
     [Campo('CD_OPERADOR', tfReq)]
     property Cd_Operador : Integer read fCd_Operador write fCd_Operador;
     [Campo('DT_CADASTRO', tfReq)]
-    property Dt_Cadastro : String read fDt_Cadastro write fDt_Cadastro;
+    property Dt_Cadastro : TDateTime read fDt_Cadastro write fDt_Cadastro;
     [Campo('ID_CAIXA', tfReq)]
     property Id_Caixa : Integer read fId_Caixa write fId_Caixa;
     [Campo('TP_DOCUMENTO', tfReq)]
@@ -37,9 +62,9 @@ type
     [Campo('NR_DOCUMENTO', tfNul)]
     property Nr_Documento : Integer read fNr_Documento write fNr_Documento;
     [Campo('VL_DOCUMENTO', tfReq)]
-    property Vl_Documento : String read fVl_Documento write fVl_Documento;
+    property Vl_Documento : Real read fVl_Documento write fVl_Documento;
     [Campo('DT_VENCIMENTO', tfReq)]
-    property Dt_Vencimento : String read fDt_Vencimento write fDt_Vencimento;
+    property Dt_Vencimento : TDateTime read fDt_Vencimento write fDt_Vencimento;
     [Campo('CD_AUTORIZACAO', tfNul)]
     property Cd_Autorizacao : String read fCd_Autorizacao write fCd_Autorizacao;
     [Campo('NR_NSU', tfNul)]
@@ -63,10 +88,10 @@ type
     [Campo('CD_OPERBAIXA', tfNul)]
     property Cd_Operbaixa : Integer read fCd_Operbaixa write fCd_Operbaixa;
     [Campo('DT_BAIXA', tfNul)]
-    property Dt_Baixa : String read fDt_Baixa write fDt_Baixa;
+    property Dt_Baixa : TDateTime read fDt_Baixa write fDt_Baixa;
   end;
 
-  TTranspagtoList = class(TmCollection)
+  TTranspagtos = class(TmCollection)
   private
     function GetItem(Index: Integer): TTranspagto;
     procedure SetItem(Index: Integer; Value: TTranspagto);
@@ -80,7 +105,7 @@ implementation
 
 { TTranspagto }
 
-constructor TTranspagto.Create(AOwner: TCollection);
+constructor TTranspagto.Create(ACollection: TCollection);
 begin
   inherited;
 
@@ -92,24 +117,24 @@ begin
   inherited;
 end;
 
-{ TTranspagtoList }
+{ TTranspagtos }
 
-constructor TTranspagtoList.Create(AItemClass: TCollectionItemClass);
+constructor TTranspagtos.Create(AItemClass: TCollectionItemClass);
 begin
   inherited Create(TTranspagto);
 end;
 
-function TTranspagtoList.Add: TTranspagto;
+function TTranspagtos.Add: TTranspagto;
 begin
   Result := TTranspagto(inherited Add);
 end;
 
-function TTranspagtoList.GetItem(Index: Integer): TTranspagto;
+function TTranspagtos.GetItem(Index: Integer): TTranspagto;
 begin
   Result := TTranspagto(inherited GetItem(Index));
 end;
 
-procedure TTranspagtoList.SetItem(Index: Integer; Value: TTranspagto);
+procedure TTranspagtos.SetItem(Index: Integer; Value: TTranspagto);
 begin
   inherited SetItem(Index, Value);
 end;

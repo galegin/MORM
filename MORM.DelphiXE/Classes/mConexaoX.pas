@@ -11,6 +11,8 @@ interface
 uses
   Classes, SysUtils, StrUtils, DB,
   mConexao, mString, mTipoDatabase,
+  Data.DBXCommon,
+  Data.DBXDb2, Data.DBXFirebird, Data.DBXOracle, Data.DBXMySql,
   SqlExpr, DBXpress;
 
 type
@@ -26,7 +28,7 @@ type
 
   TmConexaoX = class(TmConexao)
   private
-    FTransDesc : TTransactionDesc;
+    FTransaction : TDBXTransaction;
   protected
     procedure _BeforeConnect(Sender: TObject);
     procedure _AfterConnect(Sender: TObject);
@@ -210,20 +212,17 @@ end;
 
 procedure TmConexaoX.Transaction;
 begin
-  Randomize;
-  FTransDesc.TransactionID := 1;
-  FTransDesc.IsolationLevel := xilREADCOMMITTED;
-  TSQLConnection(fConnection).StartTransaction(FTransDesc);
+  FTransaction := TSQLConnection(fConnection).BeginTransaction();
 end;
 
 procedure TmConexaoX.Commit;
 begin
-  TSQLConnection(fConnection).Commit(FTransDesc);
+  TSQLConnection(fConnection).CommitFreeAndNil(FTransaction);
 end;
 
 procedure TmConexaoX.Rollback;
 begin
-  TSQLConnection(fConnection).Rollback(FTransDesc);
+  TSQLConnection(fConnection).RollbackFreeAndNil(FTransaction);
 end;
 
 end.

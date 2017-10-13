@@ -10,6 +10,11 @@ type
   [Tabela('CFOP')]
   TCfop = class(TmCollectionItem)
   private
+    fCd_Cfop: Integer;
+    fU_Version: String;
+    fCd_Operador: Integer;
+    fDt_Cadastro: TDateTime;
+    fDs_Cfop: String;
   public
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
@@ -21,12 +26,12 @@ type
     [Campo('CD_OPERADOR', tfReq)]
     property Cd_Operador : Integer read fCd_Operador write fCd_Operador;
     [Campo('DT_CADASTRO', tfReq)]
-    property Dt_Cadastro : String read fDt_Cadastro write fDt_Cadastro;
+    property Dt_Cadastro : TDateTime read fDt_Cadastro write fDt_Cadastro;
     [Campo('DS_CFOP', tfReq)]
     property Ds_Cfop : String read fDs_Cfop write fDs_Cfop;
   end;
 
-  TCfopList = class(TmCollection)
+  TCfops = class(TmCollection)
   private
     function GetItem(Index: Integer): TCfop;
     procedure SetItem(Index: Integer; Value: TCfop);
@@ -40,7 +45,7 @@ implementation
 
 { TCfop }
 
-constructor TCfop.Create(AOwner: TCollection);
+constructor TCfop.Create(ACollection: TCollection);
 begin
   inherited;
 
@@ -52,24 +57,24 @@ begin
   inherited;
 end;
 
-{ TCfopList }
+{ TCfops }
 
-constructor TCfopList.Create(AItemClass: TCollectionItemClass);
+constructor TCfops.Create(AItemClass: TCollectionItemClass);
 begin
   inherited Create(TCfop);
 end;
 
-function TCfopList.Add: TCfop;
+function TCfops.Add: TCfop;
 begin
   Result := TCfop(inherited Add);
 end;
 
-function TCfopList.GetItem(Index: Integer): TCfop;
+function TCfops.GetItem(Index: Integer): TCfop;
 begin
   Result := TCfop(inherited GetItem(Index));
 end;
 
-procedure TCfopList.SetItem(Index: Integer; Value: TCfop);
+procedure TCfops.SetItem(Index: Integer; Value: TCfop);
 begin
   inherited SetItem(Index, Value);
 end;

@@ -10,6 +10,21 @@ type
   [Tabela('PRODUTO')]
   TProduto = class(TmCollectionItem)
   private
+    fId_Produto: String;
+    fU_Version: String;
+    fCd_Operador: Integer;
+    fDt_Cadastro: TDateTime;
+    fCd_Produto: Integer;
+    fDs_Produto: String;
+    fCd_Especie: String;
+    fCd_Ncm: String;
+    fCd_Cst: String;
+    fCd_Csosn: String;
+    fPr_Aliquota: Real;
+    fTp_Producao: Integer;
+    fVl_Custo: Real;
+    fVl_Venda: Real;
+    fVl_Promocao: Real;
   public
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
@@ -21,7 +36,7 @@ type
     [Campo('CD_OPERADOR', tfReq)]
     property Cd_Operador : Integer read fCd_Operador write fCd_Operador;
     [Campo('DT_CADASTRO', tfReq)]
-    property Dt_Cadastro : String read fDt_Cadastro write fDt_Cadastro;
+    property Dt_Cadastro : TDateTime read fDt_Cadastro write fDt_Cadastro;
     [Campo('CD_PRODUTO', tfReq)]
     property Cd_Produto : Integer read fCd_Produto write fCd_Produto;
     [Campo('DS_PRODUTO', tfReq)]
@@ -35,18 +50,18 @@ type
     [Campo('CD_CSOSN', tfReq)]
     property Cd_Csosn : String read fCd_Csosn write fCd_Csosn;
     [Campo('PR_ALIQUOTA', tfReq)]
-    property Pr_Aliquota : String read fPr_Aliquota write fPr_Aliquota;
+    property Pr_Aliquota : Real read fPr_Aliquota write fPr_Aliquota;
     [Campo('TP_PRODUCAO', tfReq)]
     property Tp_Producao : Integer read fTp_Producao write fTp_Producao;
     [Campo('VL_CUSTO', tfReq)]
-    property Vl_Custo : String read fVl_Custo write fVl_Custo;
+    property Vl_Custo : Real read fVl_Custo write fVl_Custo;
     [Campo('VL_VENDA', tfReq)]
-    property Vl_Venda : String read fVl_Venda write fVl_Venda;
+    property Vl_Venda : Real read fVl_Venda write fVl_Venda;
     [Campo('VL_PROMOCAO', tfReq)]
-    property Vl_Promocao : String read fVl_Promocao write fVl_Promocao;
+    property Vl_Promocao : Real read fVl_Promocao write fVl_Promocao;
   end;
 
-  TProdutoList = class(TmCollection)
+  TProdutos = class(TmCollection)
   private
     function GetItem(Index: Integer): TProduto;
     procedure SetItem(Index: Integer; Value: TProduto);
@@ -60,7 +75,7 @@ implementation
 
 { TProduto }
 
-constructor TProduto.Create(AOwner: TCollection);
+constructor TProduto.Create(ACollection: TCollection);
 begin
   inherited;
 
@@ -72,24 +87,24 @@ begin
   inherited;
 end;
 
-{ TProdutoList }
+{ TProdutos }
 
-constructor TProdutoList.Create(AItemClass: TCollectionItemClass);
+constructor TProdutos.Create(AItemClass: TCollectionItemClass);
 begin
   inherited Create(TProduto);
 end;
 
-function TProdutoList.Add: TProduto;
+function TProdutos.Add: TProduto;
 begin
   Result := TProduto(inherited Add);
 end;
 
-function TProdutoList.GetItem(Index: Integer): TProduto;
+function TProdutos.GetItem(Index: Integer): TProduto;
 begin
   Result := TProduto(inherited GetItem(Index));
 end;
 
-procedure TProdutoList.SetItem(Index: Integer; Value: TProduto);
+procedure TProdutos.SetItem(Index: Integer; Value: TProduto);
 begin
   inherited SetItem(Index, Value);
 end;
