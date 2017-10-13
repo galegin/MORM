@@ -7,7 +7,7 @@ uses
   mCollection, mCollectionItem, mMapping;
 
 type
-  [Tabela('CAIXA')]
+  [TTabela('CAIXA')]
   TCaixa = class(TmCollectionItem)
   private
     fId_Caixa: Integer;
@@ -24,25 +24,25 @@ type
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
   published
-    [Campo('ID_CAIXA', tfKey)]
+    [TCampo('ID_CAIXA', tfKey)]
     property Id_Caixa : Integer read fId_Caixa write fId_Caixa;
-    [Campo('U_VERSION', tfNul)]
+    [TCampo('U_VERSION', tfNul)]
     property U_Version : String read fU_Version write fU_Version;
-    [Campo('CD_OPERADOR', tfReq)]
+    [TCampo('CD_OPERADOR', tfReq)]
     property Cd_Operador : Integer read fCd_Operador write fCd_Operador;
-    [Campo('DT_CADASTRO', tfReq)]
+    [TCampo('DT_CADASTRO', tfReq)]
     property Dt_Cadastro : TDateTime read fDt_Cadastro write fDt_Cadastro;
-    [Campo('ID_EMPRESA', tfReq)]
+    [TCampo('ID_EMPRESA', tfReq)]
     property Id_Empresa : Integer read fId_Empresa write fId_Empresa;
-    [Campo('ID_TERMINAL', tfReq)]
+    [TCampo('ID_TERMINAL', tfReq)]
     property Id_Terminal : Integer read fId_Terminal write fId_Terminal;
-    [Campo('DT_ABERTURA', tfReq)]
+    [TCampo('DT_ABERTURA', tfReq)]
     property Dt_Abertura : TDateTime read fDt_Abertura write fDt_Abertura;
-    [Campo('VL_ABERTURA', tfReq)]
+    [TCampo('VL_ABERTURA', tfReq)]
     property Vl_Abertura : Real read fVl_Abertura write fVl_Abertura;
-    [Campo('IN_FECHADO', tfReq)]
+    [TCampo('IN_FECHADO', tfReq)]
     property In_Fechado : String read fIn_Fechado write fIn_Fechado;
-    [Campo('DT_FECHADO', tfNul)]
+    [TCampo('DT_FECHADO', tfNul)]
     property Dt_Fechado : TDateTime read fDt_Fechado write fDt_Fechado;
   end;
 

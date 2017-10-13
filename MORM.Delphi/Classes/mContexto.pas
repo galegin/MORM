@@ -183,8 +183,8 @@ end;
 
 procedure TmContexto.GetRelacao(AObjeto : TObject);
 var
-  vRelacao : PmRelacao;
-  vCampos : TmRelacaoCampos;
+  vRelacao : TRelacao;
+  vCampos : TRelacaoCampos;
   vWhere : String;
   I : Integer;
 begin
@@ -199,7 +199,7 @@ begin
 
   vWhere := '';
   for I := 0 to vCampos.Count - 1 do
-    with PmRelacaoCampo(vCampos.Items[I])^ do
+    with TRelacaoCampo(vCampos.Items[I]) do
       AddString(vWhere, Atributo + ' = ' + GetValueStr(vRelacao.Owner, AtributoRel), ' and ', '');
 
   if AObjeto.InheritsFrom(TmCollection) then

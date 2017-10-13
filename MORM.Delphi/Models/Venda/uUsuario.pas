@@ -4,7 +4,7 @@ interface
 
 uses
   Classes, SysUtils,
-  mMapping, mCollection, mCollectionItem;
+  mCollection, mCollectionItem;
 
 type
   TUsuario = class(TmCollectionItem)
@@ -22,7 +22,6 @@ type
   public
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
-    function GetMapping() : PmMapping; override;
   published
     property Id_Usuario : Integer read fId_Usuario write fId_Usuario;
     property U_Version : String read fU_Version write fU_Version;
@@ -41,7 +40,7 @@ type
     function GetItem(Index: Integer): TUsuario;
     procedure SetItem(Index: Integer; Value: TUsuario);
   public
-    constructor Create(AOwner: TCollection);
+    constructor Create(AItemClass: TCollectionItemClass); override;
     function Add: TUsuario;
     property Items[Index: Integer]: TUsuario read GetItem write SetItem; default;
   end;
@@ -62,33 +61,9 @@ begin
   inherited;
 end;
 
-function TUsuario.GetMapping: PmMapping;
-begin
-  Result := New(PmMapping);
-
-  Result.Tabela := New(PmTabela);
-  with Result.Tabela^ do begin
-    Nome := 'USUARIO';
-  end;
-
-  Result.Campos := TmCampos.Create;
-  with Result.Campos do begin
-    Add('Id_Usuario', 'ID_USUARIO', tfKey);
-    Add('U_Version', 'U_VERSION', tfNul);
-    Add('Cd_Operador', 'CD_OPERADOR', tfReq);
-    Add('Dt_Cadastro', 'DT_CADASTRO', tfReq);
-    Add('Nm_Usuario', 'NM_USUARIO', tfReq);
-    Add('Nm_Login', 'NM_LOGIN', tfReq);
-    Add('Cd_Senha', 'CD_SENHA', tfReq);
-    Add('Cd_Papel', 'CD_PAPEL', tfNul);
-    Add('Tp_Bloqueio', 'TP_BLOQUEIO', tfReq);
-    Add('Dt_Bloqueio', 'DT_BLOQUEIO', tfNul);
-  end;
-end;
-
 { TUsuarios }
 
-constructor TUsuarios.Create(AOwner: TCollection);
+constructor TUsuarios.Create(AItemClass: TCollectionItemClass);
 begin
   inherited Create(TUsuario);
 end;

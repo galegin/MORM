@@ -37,7 +37,6 @@ type
   public
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
-    function GetMapping() : PmMapping; override;
   published
     property Id_Transacao : String read fId_Transacao write fId_Transacao;
     property Nr_Item : Integer read fNr_Item write fNr_Item;
@@ -70,7 +69,7 @@ type
     function GetItem(Index: Integer): TTransimposto;
     procedure SetItem(Index: Integer; Value: TTransimposto);
   public
-    constructor Create(AOwner: TCollection);
+    constructor Create(AItemClass: TCollectionItemClass); override;
     function Add: TTransimposto;
     property Items[Index: Integer]: TTransimposto read GetItem write SetItem; default;
   end;
@@ -90,37 +89,6 @@ begin
 
   inherited;
 end;
-
-function TTransimposto.GetMapping: PmMapping;
-begin
-  Result := New(PmMapping);
-
-  Result.Tabela := New(PmTabela);
-  with Result.Tabela^ do begin
-    Nome := 'TRANSIMPOSTO';
-  end;
-
-  Result.Campos := TmCampos.Create;
-  with Result.Campos do begin
-    Add('Id_Transacao', 'ID_TRANSACAO', tfKey);
-    Add('Nr_Item', 'NR_ITEM', tfKey);
-    Add('Cd_Imposto', 'CD_IMPOSTO', tfKey);
-    Add('U_Version', 'U_VERSION', tfNul);
-    Add('Cd_Operador', 'CD_OPERADOR', tfReq);
-    Add('Dt_Cadastro', 'DT_CADASTRO', tfReq);
-    Add('Pr_Aliquota', 'PR_ALIQUOTA', tfReq);
-    Add('Vl_Basecalculo', 'VL_BASECALCULO', tfReq);
-    Add('Pr_Basecalculo', 'PR_BASECALCULO', tfReq);
-    Add('Pr_Redbasecalculo', 'PR_REDBASECALCULO', tfReq);
-    Add('Vl_Imposto', 'VL_IMPOSTO', tfReq);
-    Add('Vl_Outro', 'VL_OUTRO', tfReq);
-    Add('Vl_Isento', 'VL_ISENTO', tfReq);
-    Add('Cd_Cst', 'CD_CST', tfReq);
-    Add('Cd_Csosn', 'CD_CSOSN', tfNul);
-  end;
-end;
-
-//--
 
 function TTransimposto.GetTp_Imposto: TTipoImposto;
 begin
@@ -169,7 +137,7 @@ end;
 
 { TTransimpostos }
 
-constructor TTransimpostos.Create(AOwner: TCollection);
+constructor TTransimpostos.Create(AItemClass: TCollectionItemClass);
 begin
   inherited Create(TTransimposto);
 end;

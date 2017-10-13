@@ -7,7 +7,7 @@ uses
   mCollection, mCollectionItem, mMapping;
 
 type
-  [Tabela('PAIS')]
+  [TTabela('PAIS')]
   TPais = class(TmCollectionItem)
   private
     fId_Pais: Integer;
@@ -21,19 +21,19 @@ type
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
   published
-    [Campo('ID_PAIS', tfKey)]
+    [TCampo('ID_PAIS', tfKey)]
     property Id_Pais : Integer read fId_Pais write fId_Pais;
-    [Campo('U_VERSION', tfNul)]
+    [TCampo('U_VERSION', tfNul)]
     property U_Version : String read fU_Version write fU_Version;
-    [Campo('CD_OPERADOR', tfReq)]
+    [TCampo('CD_OPERADOR', tfReq)]
     property Cd_Operador : Integer read fCd_Operador write fCd_Operador;
-    [Campo('DT_CADASTRO', tfReq)]
+    [TCampo('DT_CADASTRO', tfReq)]
     property Dt_Cadastro : TDateTime read fDt_Cadastro write fDt_Cadastro;
-    [Campo('CD_PAIS', tfReq)]
+    [TCampo('CD_PAIS', tfReq)]
     property Cd_Pais : Integer read fCd_Pais write fCd_Pais;
-    [Campo('DS_PAIS', tfReq)]
+    [TCampo('DS_PAIS', tfReq)]
     property Ds_Pais : String read fDs_Pais write fDs_Pais;
-    [Campo('DS_SIGLA', tfReq)]
+    [TCampo('DS_SIGLA', tfReq)]
     property Ds_Sigla : String read fDs_Sigla write fDs_Sigla;
   end;
 

@@ -3,189 +3,114 @@ unit mMapping;
 interface
 
 uses
-  Classes, SysUtils, StrUtils;
+  Classes, SysUtils, StrUtils,
+  System.Generics.Collections;
 
 type
 
   //-- tabela
 
-  PmTabela = ^TmTabela;
-  TmTabela = record
-    Nome : String;
+  TTabela = class(TCustomAttribute)
+  private
+    fNome : String;
+  public
+    constructor Create(ANome : String);
+    property Nome : String read fNome;
   end;
 
   //-- campo
 
   TTipoCampo = (tfKey, tfReq, tfNul);
 
-  PmCampo = ^TmCampo;
-  TmCampo = record
-    Atributo : String;
-    Campo : String;
-    Tipo : TTipoCampo;
-  end;
-
-  TmCampos = class(TList)
+  TCampo = class(TCustomAttribute)
+  private
+    fCampo : String;
+    fTipo : TTipoCampo;
   public
-    function Add() : PmCampo; overload;
-    procedure Add(AAtributo, ACampo : String; ATipo : TTipoCampo = tfNul); overload;
-    function Buscar(AAtributo: String) : PmCampo;
+    constructor Create(ACampo : String; ATipo : TTipoCampo = tfNul);
+    property Campo : String read fCampo;
+    property Tipo : TTipoCampo read fTipo;
   end;
 
   //-- relacao
 
-  PmRelacao = ^TmRelacao;
-  TmRelacao = record
-    Owner : TObject;
-    Campos : String;
-  end;
-
-  PmRelacaoCampo = ^TmRelacaoCampo;
-  TmRelacaoCampo = record
-    Atributo : String;
-    AtributoRel : String;
-  end;
-
-  TmRelacaoCampos = class(TList)
+  TRelacao = class(TCustomAttribute)
+  private
+    fOwner : TObject;
+    fCampos : String;
   public
-    function Add() : PmRelacaoCampo; overload;
-    procedure Add(AAtributo : String; AAtributoRel : String = ''); overload;
-    function Buscar(AAtributo : String) : PmRelacaoCampo;
+    constructor Create(AOwner : TObject; ACampos : String);
+    property Owner : TObject read fOwner;
+    property Campos : String read fCampos;
   end;
 
-  //-- mapping
-
-  PmMapping = ^RMapping;
-  RMapping = record
-    Tabela : PmTabela;
-    Campos : TmCampos;
+  TRelacaoCampo = class(TCustomAttribute)
+  private
+    fAtributo : String;
+    fAtributoRel : String;
+  public
+    constructor Create(AAtributo : String; AAtributoRel : String = '');
+    property Atributo : String read fAtributo;
+    property AtributoRel : String read fAtributoRel;
   end;
 
-  procedure FreeMapping(var AMapping : PmMapping);
-
-  function GetRelacaoCampos(ACampos : String) : TmRelacaoCampos;
+  function GetRelacaoCampos(ACampos : String) : TList<TRelacaoCampo>;
 
 implementation
 
 uses
   mString;
 
-  //-- campo
+  //--
 
-  procedure FreeCampos(var ACampos : TmCampos);
+  function GetRelacaoCampos(ACampos : String) : TList<TRelacaoCampo>;
   var
-    I: Integer;
+    vStringArray : TmStringArray;
+    vCampo : TRelacaoCampo;
+    I : Integer;
   begin
-    for I := ACampos.Count - 1 downto 0 do begin
-      Dispose(PmCampo(ACampos.Items[I]));
-      ACampos.Delete(I);
+    Result := TList<TRelacaoCampo>.Create;
+
+    vStringArray := TmString.Split(ACampos, ';');
+    for I := 0 to High(vStringArray) do begin
+      if Pos('=', vStringArray[I]) > 0 then
+        vCampo := TRelacaoCampo.Create(TmString.LeftStr(vStringArray[I], '='),
+          TmString.RightStr(vStringArray[I], '='))
+      else
+        vCampo := TRelacaoCampo.Create(vStringArray[I]);
+      Result.Add(vCampo);
     end;
   end;
 
-  //-- relacao
+{ TTabela }
 
-  procedure FreeRelacaoCampo(var ACampos : TmRelacaoCampos);
-  var
-    I: Integer;
-  begin
-    for I := ACampos.Count - 1 downto 0 do begin
-      Dispose(PmRelacaoCampo(ACampos.Items[I]));
-      ACampos.Delete(I);
-    end;
-  end;
-
-  //-- mapping
-
-  procedure FreeMapping(var AMapping : PmMapping);
-  begin
-    if AMapping.Tabela <> nil then
-      Dispose(PmTabela(AMapping.Tabela));
-    if AMapping.Campos <> nil then
-      FreeCampos(AMapping.Campos);
-    if AMapping <> nil then
-      Dispose(PmMapping(AMapping));
-  end;
-
-{ TmCampos }
-
-function TmCampos.Add: PmCampo;
+constructor TTabela.Create(ANome: String);
 begin
-  Result := New(PmCampo);
-  Self.Add(Result);
+  fNome := ANome;
 end;
 
-procedure TmCampos.Add(AAtributo, ACampo: String; ATipo: TTipoCampo);
+{ TCampo }
+
+constructor TCampo.Create(ACampo: String; ATipo: TTipoCampo);
 begin
-  with Self.Add^ do begin
-    Atributo := AAtributo;
-    Campo := IfThen(ACampo <> '', ACampo, AAtributo);
-    Tipo := ATipo;
-  end;
+  fCampo := ACampo;
+  fTipo := ATipo;
 end;
 
-function TmCampos.Buscar(AAtributo: String): PmCampo;
-var
-  I: Integer;
+{ TRelacao }
+
+constructor TRelacao.Create(AOwner : TObject; ACampos: String);
 begin
-  Result := nil;
-  for I := 0 to Count - 1 do
-    with PmCampo(Items[I])^ do
-      if Atributo = AAtributo then begin
-        Result := PmCampo(Items[I]);
-        Exit;
-      end;
+  fOwner := AOwner;
+  fCampos := ACampos;
 end;
 
-{ TmRelacaoCampos }
+{ TRelacaoCampo }
 
-function TmRelacaoCampos.Add: PmRelacaoCampo;
+constructor TRelacaoCampo.Create(AAtributo, AAtributoRel: String);
 begin
-  Result := New(PmRelacaoCampo);
-  Self.Add(Result);
-end;
-
-procedure TmRelacaoCampos.Add(AAtributo, AAtributoRel: String);
-begin
-  with Self.Add^ do begin
-    Atributo := AAtributo;
-    AtributoRel := IfThen(AAtributoRel <> '', AAtributoRel, AAtributo);
-  end;
-end;
-
-function TmRelacaoCampos.Buscar(AAtributo: String): PmRelacaoCampo;
-var
-  I: Integer;
-begin
-  Result := nil;
-  for I := 0 to Count - 1 do
-    with PmRelacaoCampo(Items[I])^ do
-      if Atributo = AAtributo then begin
-        Result := PmRelacaoCampo(Items[I]);
-        Exit;
-      end;
-end;
-
-//--
-
-function GetRelacaoCampos(ACampos : String) : TmRelacaoCampos;
-var
-  vStringArray : TmStringArray;
-  vCampo : PmRelacaoCampo;
-  I : Integer;
-begin
-  Result := TmRelacaoCampos.Create;
-
-  vStringArray := TmString.Split(ACampos, ';');
-  for I := 0 to High(vStringArray) do begin
-    vCampo := Result.Add;
-    if Pos('=', vStringArray[I]) > 0 then begin
-      vCampo.Atributo := TmString.LeftStr(vStringArray[I], '=');
-      vCampo.AtributoRel := TmString.RightStr(vStringArray[I], '=');
-    end else begin
-      vCampo.Atributo := vStringArray[I];
-      vCampo.AtributoRel := vStringArray[I];
-    end;
-  end;
+  fAtributo := AAtributo;
+  fAtributoRel := IfThen(AAtributoRel <> '', AAtributoRel, AAtributo);
 end;
 
 end.

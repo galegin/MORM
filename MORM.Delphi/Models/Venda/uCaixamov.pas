@@ -4,7 +4,7 @@ interface
 
 uses
   Classes, SysUtils,
-  mMapping, mCollection, mCollectionItem;
+  mCollection, mCollectionItem;
 
 type
   TCaixamov = class(TmCollectionItem)
@@ -21,7 +21,6 @@ type
   public
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
-    function GetMapping() : PmMapping; override;
   published
     property Id_Caixa : Integer read fId_Caixa write fId_Caixa;
     property Nr_Seq : Integer read fNr_Seq write fNr_Seq;
@@ -39,7 +38,7 @@ type
     function GetItem(Index: Integer): TCaixamov;
     procedure SetItem(Index: Integer; Value: TCaixamov);
   public
-    constructor Create(AOwner: TCollection);
+    constructor Create(AItemClass: TCollectionItemClass); override;
     function Add: TCaixamov;
     property Items[Index: Integer]: TCaixamov read GetItem write SetItem; default;
   end;
@@ -60,32 +59,9 @@ begin
   inherited;
 end;
 
-function TCaixamov.GetMapping: PmMapping;
-begin
-  Result := New(PmMapping);
-
-  Result.Tabela := New(PmTabela);
-  with Result.Tabela^ do begin
-    Nome := 'CAIXAMOV';
-  end;
-
-  Result.Campos := TmCampos.Create;
-  with Result.Campos do begin
-    Add('Id_Caixa', 'ID_CAIXA', tfKey);
-    Add('Nr_Seq', 'NR_SEQ', tfKey);
-    Add('U_Version', 'U_VERSION', tfNul);
-    Add('Cd_Operador', 'CD_OPERADOR', tfReq);
-    Add('Dt_Cadastro', 'DT_CADASTRO', tfReq);
-    Add('Tp_Lancto', 'TP_LANCTO', tfReq);
-    Add('Vl_Lancto', 'VL_LANCTO', tfReq);
-    Add('Nr_Doc', 'NR_DOC', tfReq);
-    Add('Ds_Aux', 'DS_AUX', tfReq);
-  end;
-end;
-
 { TCaixamovs }
 
-constructor TCaixamovs.Create(AOwner: TCollection);
+constructor TCaixamovs.Create(AItemClass: TCollectionItemClass);
 begin
   inherited Create(TCaixamov);
 end;

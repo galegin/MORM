@@ -29,7 +29,6 @@ type
   public
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
-    function GetMapping() : PmMapping; override;
   published
     property Id_Transacao : String read fId_Transacao write fId_Transacao;
     property U_Version : String read fU_Version write fU_Version;
@@ -54,7 +53,7 @@ type
     function GetItem(Index: Integer): TTransfiscal;
     procedure SetItem(Index: Integer; Value: TTransfiscal);
   public
-    constructor Create(AOwner: TCollection);
+    constructor Create(AItemClass: TCollectionItemClass); override;
     function Add: TTransfiscal;
     property Items[Index: Integer]: TTransfiscal read GetItem write SetItem; default;
   end;
@@ -84,38 +83,9 @@ begin
   inherited;
 end;
 
-//--
-
-function TTransfiscal.GetMapping: PmMapping;
-begin
-  Result := New(PmMapping);
-
-  Result.Tabela := New(PmTabela);
-  with Result.Tabela^ do begin
-    Nome := 'TRANSFISCAL';
-  end;
-
-  Result.Campos := TmCampos.Create;
-  with Result.Campos do begin
-    Add('Id_Transacao', 'ID_TRANSACAO', tfKey);
-    Add('U_Version', 'U_VERSION', tfNul);
-    Add('Cd_Operador', 'CD_OPERADOR', tfReq);
-    Add('Dt_Cadastro', 'DT_CADASTRO', tfReq);
-    Add('Tp_Operacao', 'TP_OPERACAO', tfReq);
-    Add('Tp_Modalidade', 'TP_MODALIDADE', tfReq);
-    Add('Tp_Modelonf', 'TP_MODELONF', tfReq);
-    Add('Cd_Serie', 'CD_SERIE', tfReq);
-    Add('Nr_Nf', 'NR_NF', tfReq);
-    Add('Tp_Processamento', 'TP_PROCESSAMENTO', tfReq);
-    Add('Ds_Chaveacesso', 'DS_CHAVEACESSO', tfNul);
-    Add('Dt_Recebimento', 'DT_RECEBIMENTO', tfNul);
-    Add('Nr_Recibo', 'NR_RECIBO', tfNul);
-  end;
-end;
-
 { TTransfiscals }
 
-constructor TTransfiscals.Create(AOwner: TCollection);
+constructor TTransfiscals.Create(AItemClass: TCollectionItemClass);
 begin
   inherited Create(TTransfiscal);
 end;

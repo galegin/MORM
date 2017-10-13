@@ -20,7 +20,6 @@ type
   public
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
-    function GetMapping() : PmMapping; override;
   published
     property Id_Regrafiscal : Integer read fId_Regrafiscal write fId_Regrafiscal;
     property U_Version : String read fU_Version write fU_Version;
@@ -36,7 +35,7 @@ type
     function GetItem(Index: Integer): TRegrafiscal;
     procedure SetItem(Index: Integer; Value: TRegrafiscal);
   public
-    constructor Create(AOwner: TCollection);
+    constructor Create(AItemClass: TCollectionItemClass); override;
     function Add: TRegrafiscal;
     property Items[Index: Integer]: TRegrafiscal read GetItem write SetItem; default;
   end;
@@ -60,33 +59,9 @@ begin
   inherited;
 end;
 
-//--
-
-function TRegrafiscal.GetMapping: PmMapping;
-begin
-  Result := New(PmMapping);
-
-  Result.Tabela := New(PmTabela);
-  with Result.Tabela^ do begin
-    Nome := 'REGRAFISCAL';
-  end;
-
-  Result.Campos := TmCampos.Create;
-  with Result.Campos do begin
-    Add('Id_Regrafiscal', 'ID_REGRAFISCAL', tfKey);
-    Add('U_Version', 'U_VERSION', tfNul);
-    Add('Cd_Operador', 'CD_OPERADOR', tfReq);
-    Add('Dt_Cadastro', 'DT_CADASTRO', tfReq);
-    Add('Ds_Regrafiscal', 'DS_REGRAFISCAL', tfReq);
-    Add('In_Calcimposto', 'IN_CALCIMPOSTO', tfReq);
-  end;
-end;
-
-//--
-
 { TRegrafiscals }
 
-constructor TRegrafiscals.Create(AOwner: TCollection);
+constructor TRegrafiscals.Create(AItemClass: TCollectionItemClass);
 begin
   inherited Create(TRegrafiscal);
 end;

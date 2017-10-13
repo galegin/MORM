@@ -4,7 +4,7 @@ interface
 
 uses
   Classes, SysUtils,
-  mMapping, mCollection, mCollectionItem;
+  mCollection, mCollectionItem;
 
 type
   TTranscont = class(TmCollectionItem)
@@ -18,7 +18,6 @@ type
   public
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
-    function GetMapping() : PmMapping; override;
   published
     property Id_Transacao : String read fId_Transacao write fId_Transacao;
     property U_Version : String read fU_Version write fU_Version;
@@ -33,7 +32,7 @@ type
     function GetItem(Index: Integer): TTranscont;
     procedure SetItem(Index: Integer; Value: TTranscont);
   public
-    constructor Create(AOwner: TCollection);
+    constructor Create(AItemClass: TCollectionItemClass); override;
     function Add: TTranscont;
     property Items[Index: Integer]: TTranscont read GetItem write SetItem; default;
   end;
@@ -54,29 +53,9 @@ begin
   inherited;
 end;
 
-function TTranscont.GetMapping: PmMapping;
-begin
-  Result := New(PmMapping);
-
-  Result.Tabela := New(PmTabela);
-  with Result.Tabela^ do begin
-    Nome := 'TRANSCONT';
-  end;
-
-  Result.Campos := TmCampos.Create;
-  with Result.Campos do begin
-    Add('Id_Transacao', 'ID_TRANSACAO', tfKey);
-    Add('U_Version', 'U_VERSION', tfNul);
-    Add('Cd_Operador', 'CD_OPERADOR', tfReq);
-    Add('Dt_Cadastro', 'DT_CADASTRO', tfReq);
-    Add('Tp_Situacao', 'TP_SITUACAO', tfReq);
-    Add('Cd_Terminal', 'CD_TERMINAL', tfReq);
-  end;
-end;
-
 { TTransconts }
 
-constructor TTransconts.Create(AOwner: TCollection);
+constructor TTransconts.Create(AItemClass: TCollectionItemClass);
 begin
   inherited Create(TTranscont);
 end;

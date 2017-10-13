@@ -14,7 +14,7 @@ type
 
   TmCollection = class(TCollection)
   private
-    fRelacao : PmRelacao;
+    fRelacao : TRelacao;
   protected
     function QueryInterface(const IID: TGUID; out Obj): HResult; stdcall;
     function _AddRef: Integer; stdcall;
@@ -26,7 +26,7 @@ type
     destructor Destroy; override;
 
     procedure SetRelacao(AOwner : TObject; ACampos : String);
-    function GetRelacao() : PmRelacao;
+    function GetRelacao() : TRelacao;
 
     function Avg(ACampo : String) : Real;
     function Max(ACampo : String) : Real;
@@ -75,12 +75,10 @@ end;
 
 procedure TmCollection.SetRelacao(AOwner : TObject; ACampos : String);
 begin
-  fRelacao := New(PmRelacao);
-  fRelacao.Owner := AOwner;
-  fRelacao.Campos := ACampos;
+  fRelacao := TRelacao.Create(AOwner, ACampos);
 end;
 
-function TmCollection.GetRelacao: PmRelacao;
+function TmCollection.GetRelacao: TRelacao;
 begin
   Result := fRelacao;
 end;

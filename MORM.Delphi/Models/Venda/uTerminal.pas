@@ -4,7 +4,7 @@ interface
 
 uses
   Classes, SysUtils,
-  mMapping, mCollection, mCollectionItem;
+  mCollection, mCollectionItem;
 
 type
   TTerminal = class(TmCollectionItem)
@@ -18,7 +18,6 @@ type
   public
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
-    function GetMapping() : PmMapping; override;
   published
     property Id_Terminal : Integer read fId_Terminal write fId_Terminal;
     property U_Version : String read fU_Version write fU_Version;
@@ -33,7 +32,7 @@ type
     function GetItem(Index: Integer): TTerminal;
     procedure SetItem(Index: Integer; Value: TTerminal);
   public
-    constructor Create(AOwner: TCollection);
+    constructor Create(AItemClass: TCollectionItemClass); override;
     function Add: TTerminal;
     property Items[Index: Integer]: TTerminal read GetItem write SetItem; default;
   end;
@@ -54,29 +53,9 @@ begin
   inherited;
 end;
 
-function TTerminal.GetMapping: PmMapping;
-begin
-  Result := New(PmMapping);
-
-  Result.Tabela := New(PmTabela);
-  with Result.Tabela^ do begin
-    Nome := 'TERMINAL';
-  end;
-
-  Result.Campos := TmCampos.Create;
-  with Result.Campos do begin
-    Add('Id_Terminal', 'ID_TERMINAL', tfKey);
-    Add('U_Version', 'U_VERSION', tfNul);
-    Add('Cd_Operador', 'CD_OPERADOR', tfReq);
-    Add('Dt_Cadastro', 'DT_CADASTRO', tfReq);
-    Add('Cd_Terminal', 'CD_TERMINAL', tfReq);
-    Add('Ds_Terminal', 'DS_TERMINAL', tfReq);
-  end;
-end;
-
 { TTerminals }
 
-constructor TTerminals.Create(AOwner: TCollection);
+constructor TTerminals.Create(AItemClass: TCollectionItemClass);
 begin
   inherited Create(TTerminal);
 end;

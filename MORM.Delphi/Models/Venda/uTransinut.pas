@@ -4,7 +4,7 @@ interface
 
 uses
   Classes, SysUtils,
-  mMapping, mCollection, mCollectionItem;
+  mCollection, mCollectionItem;
 
 type
   TTransinut = class(TmCollectionItem)
@@ -22,7 +22,6 @@ type
   public
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
-    function GetMapping() : PmMapping; override;
   published
     property Id_Transacao : String read fId_Transacao write fId_Transacao;
     property U_Version : String read fU_Version write fU_Version;
@@ -41,7 +40,7 @@ type
     function GetItem(Index: Integer): TTransinut;
     procedure SetItem(Index: Integer; Value: TTransinut);
   public
-    constructor Create(AOwner: TCollection);
+    constructor Create(AItemClass: TCollectionItemClass); override;
     function Add: TTransinut;
     property Items[Index: Integer]: TTransinut read GetItem write SetItem; default;
   end;
@@ -62,33 +61,9 @@ begin
   inherited;
 end;
 
-function TTransinut.GetMapping: PmMapping;
-begin
-  Result := New(PmMapping);
-
-  Result.Tabela := New(PmTabela);
-  with Result.Tabela^ do begin
-    Nome := 'TRANSINUT';
-  end;
-
-  Result.Campos := TmCampos.Create;
-  with Result.Campos do begin
-    Add('Id_Transacao', 'ID_TRANSACAO', tfKey);
-    Add('U_Version', 'U_VERSION', tfNul);
-    Add('Cd_Operador', 'CD_OPERADOR', tfReq);
-    Add('Dt_Cadastro', 'DT_CADASTRO', tfReq);
-    Add('Dt_Emissao', 'DT_EMISSAO', tfReq);
-    Add('Tp_Modelonf', 'TP_MODELONF', tfReq);
-    Add('Cd_Serie', 'CD_SERIE', tfReq);
-    Add('Nr_Nf', 'NR_NF', tfReq);
-    Add('Dt_Recebimento', 'DT_RECEBIMENTO', tfNul);
-    Add('Nr_Recibo', 'NR_RECIBO', tfNul);
-  end;
-end;
-
 { TTransinuts }
 
-constructor TTransinuts.Create(AOwner: TCollection);
+constructor TTransinuts.Create(AItemClass: TCollectionItemClass);
 begin
   inherited Create(TTransinut);
 end;

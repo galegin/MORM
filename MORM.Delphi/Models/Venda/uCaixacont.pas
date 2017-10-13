@@ -4,7 +4,7 @@ interface
 
 uses
   Classes, SysUtils,
-  mMapping, mCollection, mCollectionItem;
+  mCollection, mCollectionItem;
 
 type
   TCaixacont = class(TmCollectionItem)
@@ -22,7 +22,6 @@ type
   public
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
-    function GetMapping() : PmMapping; override;
   published
     property Id_Caixa : Integer read fId_Caixa write fId_Caixa;
     property Id_Histrel : Integer read fId_Histrel write fId_Histrel;
@@ -41,7 +40,7 @@ type
     function GetItem(Index: Integer): TCaixacont;
     procedure SetItem(Index: Integer; Value: TCaixacont);
   public
-    constructor Create(AOwner: TCollection);
+    constructor Create(AItemClass: TCollectionItemClass); override;
     function Add: TCaixacont;
     property Items[Index: Integer]: TCaixacont read GetItem write SetItem; default;
   end;
@@ -62,33 +61,9 @@ begin
   inherited;
 end;
 
-function TCaixacont.GetMapping: PmMapping;
-begin
-  Result := New(PmMapping);
-
-  Result.Tabela := New(PmTabela);
-  with Result.Tabela^ do begin
-    Nome := 'CAIXACONT';
-  end;
-
-  Result.Campos := TmCampos.Create;
-  with Result.Campos do begin
-    Add('Id_Caixa', 'ID_CAIXA', tfKey);
-    Add('Id_Histrel', 'ID_HISTREL', tfKey);
-    Add('U_Version', 'U_VERSION', tfNul);
-    Add('Cd_Operador', 'CD_OPERADOR', tfReq);
-    Add('Dt_Cadastro', 'DT_CADASTRO', tfReq);
-    Add('Vl_Contado', 'VL_CONTADO', tfReq);
-    Add('Vl_Sistema', 'VL_SISTEMA', tfReq);
-    Add('Vl_Retirada', 'VL_RETIRADA', tfReq);
-    Add('Vl_Suprimento', 'VL_SUPRIMENTO', tfReq);
-    Add('Vl_Diferenca', 'VL_DIFERENCA', tfReq);
-  end;
-end;
-
 { TCaixaconts }
 
-constructor TCaixaconts.Create(AOwner: TCollection);
+constructor TCaixaconts.Create(AItemClass: TCollectionItemClass);
 begin
   inherited Create(TCaixacont);
 end;

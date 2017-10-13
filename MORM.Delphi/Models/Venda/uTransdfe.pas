@@ -4,7 +4,7 @@ interface
 
 uses
   Classes, SysUtils,
-  mMapping, mCollection, mCollectionItem;
+  mCollection, mCollectionItem;
 
 type
   TTransdfe = class(TmCollectionItem)
@@ -22,7 +22,6 @@ type
   public
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
-    function GetMapping() : PmMapping; override;
   published
     property Id_Transacao : String read fId_Transacao write fId_Transacao;
     property Nr_Sequencia : Integer read fNr_Sequencia write fNr_Sequencia;
@@ -41,7 +40,7 @@ type
     function GetItem(Index: Integer): TTransdfe;
     procedure SetItem(Index: Integer; Value: TTransdfe);
   public
-    constructor Create(AOwner: TCollection);
+    constructor Create(AItemClass: TCollectionItemClass); override;
     function Add: TTransdfe;
     property Items[Index: Integer]: TTransdfe read GetItem write SetItem; default;
   end;
@@ -62,33 +61,9 @@ begin
   inherited;
 end;
 
-function TTransdfe.GetMapping: PmMapping;
-begin
-  Result := New(PmMapping);
-
-  Result.Tabela := New(PmTabela);
-  with Result.Tabela^ do begin
-    Nome := 'TRANSDFE';
-  end;
-
-  Result.Campos := TmCampos.Create;
-  with Result.Campos do begin
-    Add('Id_Transacao', 'ID_TRANSACAO', tfKey);
-    Add('Nr_Sequencia', 'NR_SEQUENCIA', tfKey);
-    Add('U_Version', 'U_VERSION', tfNul);
-    Add('Cd_Operador', 'CD_OPERADOR', tfReq);
-    Add('Dt_Cadastro', 'DT_CADASTRO', tfReq);
-    Add('Tp_Evento', 'TP_EVENTO', tfReq);
-    Add('Tp_Ambiente', 'TP_AMBIENTE', tfReq);
-    Add('Tp_Emissao', 'TP_EMISSAO', tfReq);
-    Add('Ds_Envioxml', 'DS_ENVIOXML', tfReq);
-    Add('Ds_Retornoxml', 'DS_RETORNOXML', tfNul);
-  end;
-end;
-
 { TTransdfes }
 
-constructor TTransdfes.Create(AOwner: TCollection);
+constructor TTransdfes.Create(AItemClass: TCollectionItemClass);
 begin
   inherited Create(TTransdfe);
 end;

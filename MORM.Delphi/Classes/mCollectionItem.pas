@@ -3,7 +3,7 @@ unit mCollectionItem;
 interface
 
 uses
-  Classes, SysUtils, StrUtils, DB,
+  Classes, SysUtils, StrUtils, DB, TypInfo,
   mMapping;
 
 type
@@ -12,7 +12,7 @@ type
 
   TmCollectionItem = class(TCollectionItem)
   private
-    fRelacao : PmRelacao;
+    fRelacao : TRelacao;
   protected
     function QueryInterface(const IID: TGUID; out Obj): HResult; stdcall;
     function _AddRef: Integer; stdcall;
@@ -21,14 +21,17 @@ type
     constructor Create(Collection: TCollection); override;
     destructor Destroy; override;
 
-    function GetMapping() : PmMapping; virtual;
-
+    function GetTabela() : TTabela; virtual;
+    function GetCampos() : TCampos; virtual;
     procedure SetRelacao(AOwner : TObject; ACampos : String);
-    function GetRelacao() : PmRelacao;
+    function GetRelacao() : TRelacao;
   published
   end;
 
 implementation
+
+uses
+  mValue;
 
 { TmCollection }
 
@@ -63,30 +66,55 @@ end;
 
 //--
 
-function TmCollectionItem.GetMapping: PmMapping;
+function TmCollectionItem.GetTabela() : TTabela;
 begin
-  Result := New(PmMapping);
-
-  Result.Tabela := New(PmTabela);
-  with Result.Tabela^ do begin
-    Nome := UpperCase(Copy(ClassName, 2, Length(ClassName)));
-  end;
-
-  Result.Campos := TmCampos.Create; // mObjeto
-  with Result.Campos do begin
-  end;
+  Result := TTabela.Create(UpperCase(Copy(ClassName, 2, Length(ClassName))));
 end;
 
-//--
+function TmCollectionItem.GetCampos() : TCampos;
+var
+  vPropInfo : PPropInfo;
+  vPropList : PPropList;
+  vNome, vTipoBase : String;
+  vTipoCampo : TTipoCampo;
+  Count, I : Integer;
+begin
+  Result := TCampos.Create;
+
+  Count := GetPropList(Self.ClassInfo, tkProperties, nil, False);
+  GetMem(vPropList, Count * SizeOf(Pointer));
+
+  try
+    GetPropList(Self.ClassInfo, tkProperties, vPropList, False);
+
+    vTipoCampo := mMapping.tfKey;
+
+    for I := 0 to Count - 1 do begin
+      vPropInfo := vPropList^[I];
+      vNome := vPropInfo^.Name;
+
+      //-- read-only
+      if vPropInfo^.SetProc = nil then
+        Continue;
+
+      if LowerCase(vNome) = 'u_version' then
+        vTipoCampo := mMapping.tfNul;
+
+      vTipoBase := LowerCase(vPropInfo^.PropType^.Name);
+      if StrToTipoValue(vTipoBase) <> TTipoValue(Ord(-1)) then
+        Result.Add(vNome, UpperCase(vNome), vTipoCampo);
+    end;
+  finally
+    FreeMem(vPropList);
+  end;
+end;
 
 procedure TmCollectionItem.SetRelacao(AOwner : TObject; ACampos : String);
 begin
-  fRelacao := New(PmRelacao);
-  fRelacao.Owner := AOwner;
-  fRelacao.Campos := ACampos;
+  fRelacao := TRelacao.Create(AOwner, ACampos);
 end;
 
-function TmCollectionItem.GetRelacao: PmRelacao;
+function TmCollectionItem.GetRelacao: TRelacao;
 begin
   Result := fRelacao;
 end;

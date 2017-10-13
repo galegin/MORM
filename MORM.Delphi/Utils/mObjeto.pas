@@ -84,11 +84,11 @@ end;
 
 function TmObjeto.GetValues;
 var
-  Count, I : Integer;
   vPropInfo : PPropInfo;
   vPropList : PPropList;
   vNome, vTipoBase : String;
   vTipoField : TTipoField;
+  Count, I : Integer;
 begin
   Result := TmValueList.Create;
 
@@ -99,7 +99,7 @@ begin
     GetPropList(Self.ClassInfo, tkProperties, vPropList, False);
 
     vTipoField := tfKey;
-    
+
     for I := 0 to Count - 1 do begin
       vPropInfo := vPropList^[I];
       vNome := vPropInfo^.Name;

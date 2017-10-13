@@ -7,7 +7,7 @@ uses
   mCollection, mCollectionItem, mMapping;
 
 type
-  [Tabela('NCM')]
+  [TTabela('NCM')]
   TNcm = class(TmCollectionItem)
   private
     fCd_Ncm: String;
@@ -19,15 +19,15 @@ type
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
   published
-    [Campo('CD_NCM', tfKey)]
+    [TCampo('CD_NCM', tfKey)]
     property Cd_Ncm : String read fCd_Ncm write fCd_Ncm;
-    [Campo('U_VERSION', tfNul)]
+    [TCampo('U_VERSION', tfNul)]
     property U_Version : String read fU_Version write fU_Version;
-    [Campo('CD_OPERADOR', tfReq)]
+    [TCampo('CD_OPERADOR', tfReq)]
     property Cd_Operador : Integer read fCd_Operador write fCd_Operador;
-    [Campo('DT_CADASTRO', tfReq)]
+    [TCampo('DT_CADASTRO', tfReq)]
     property Dt_Cadastro : TDateTime read fDt_Cadastro write fDt_Cadastro;
-    [Campo('DS_NCM', tfReq)]
+    [TCampo('DS_NCM', tfReq)]
     property Ds_Ncm : String read fDs_Ncm write fDs_Ncm;
   end;
 

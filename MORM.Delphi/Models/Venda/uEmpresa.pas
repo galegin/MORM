@@ -19,7 +19,6 @@ type
   public
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
-    function GetMapping() : PmMapping; override;
   published
     property Id_Empresa : Integer read fId_Empresa write fId_Empresa;
     property U_Version : String read fU_Version write fU_Version;
@@ -34,7 +33,7 @@ type
     function GetItem(Index: Integer): TEmpresa;
     procedure SetItem(Index: Integer; Value: TEmpresa);
   public
-    constructor Create(AOwner: TCollection);
+    constructor Create(AItemClass: TCollectionItemClass); override;
     function Add: TEmpresa;
     property Items[Index: Integer]: TEmpresa read GetItem write SetItem; default;
   end;
@@ -58,28 +57,9 @@ begin
   inherited;
 end;
 
-function TEmpresa.GetMapping: PmMapping;
-begin
-  Result := New(PmMapping);
-
-  Result.Tabela := New(PmTabela);
-  with Result.Tabela^ do begin
-    Nome := 'EMPRESA';
-  end;
-
-  Result.Campos := TmCampos.Create;
-  with Result.Campos do begin
-    Add('Id_Empresa', 'ID_EMPRESA', tfKey);
-    Add('U_Version', 'U_VERSION', tfNul);
-    Add('Cd_Operador', 'CD_OPERADOR', tfReq);
-    Add('Dt_Cadastro', 'DT_CADASTRO', tfReq);
-    Add('Id_Pessoa', 'ID_PESSOA', tfReq);
-  end;
-end;
-
 { TEmpresas }
 
-constructor TEmpresas.Create(AOwner: TCollection);
+constructor TEmpresas.Create(AItemClass: TCollectionItemClass);
 begin
   inherited Create(TEmpresa);
 end;

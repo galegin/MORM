@@ -31,18 +31,28 @@ implementation
     AString := AString + IfThen(AString <> '', ASep, AIni) + AStr;
   end;
 
-  function GetMappingObj(AObject: TObject) : PmMapping;
+  function GetTabela(AClass: TClass) : TTabela;
+  var
+    vCollectionItem : TmCollectionItem;
   begin
-    Result := TmCollectionItem(AObject).GetMapping();
+    if AClass.InheritsFrom(TmCollectionItem) then begin
+      vCollectionItem := TmCollectionItemClass(AClass).Create(nil);
+      Result := vCollectionItem.GetTabela();
+      vCollectionItem.Free;
+    end else
+      Result := nil;
   end;
 
-  function GetMappingClass(AClass: TClass) : PmMapping;
+  function GetCampos(AClass: TClass) : TCampos;
   var
-    vMapping : TObject;
+    vCollectionItem : TmCollectionItem;
   begin
-    vMapping := TmCollectionItemClass(AClass).Create(nil);
-    Result := GetMappingObj(vMapping);
-    FreeAndNil(vMapping);
+    if AClass.InheritsFrom(TmCollectionItem) then begin
+      vCollectionItem := TmCollectionItemClass(AClass).Create(nil);
+      Result := vCollectionItem.GetCampos();
+      vCollectionItem.Free;
+    end else
+      Result := nil;
   end;
 
   function IsValueNull(AObject: TObject; ANome : String) : Boolean;
@@ -100,122 +110,137 @@ implementation
 
 class function TmComando.GetSelect(AClass: TClass; AWhere: String): String;
 var
-  vMapping : PmMapping;
+  vTabela : TTabela;
+  vCampos : TCampos;
   vFieldsAtr, vFields : String;
   I : Integer;
 begin
-  vMapping := GetMappingClass(AClass);
+  vTabela := GetTabela(AClass);
+  vCampos := GetCampos(AClass);
 
   vFieldsAtr := '';
   vFields := '';
 
-  with vMapping.Campos do
+  with vCampos do
     for I := 0 to Count - 1 do
-      with PmCampo(Items[I])^ do begin
+      with TCampo(Items[I]) do begin
         AddString(vFieldsAtr, Atributo + ' as "' + Atributo + '"', ', ');
         AddString(vFields, Campo + ' as ' + Atributo, ', ');
       end;
 
   Result :=
     'select ' + vFieldsAtr + ' from (' +
-      'select ' + vFields + ' from '+ vMapping.Tabela.Nome +
+      'select ' + vFields + ' from '+ vTabela.Nome +
     ')' + IfThen(AWhere <> '', ' where ' + AWhere);
 
-  FreeMapping(vMapping);
+  FreeAndNil(vTabela);
+  FreeAndNil(vCampos);
 end;
 
 function TmComando.GetSelect(): String;
 var
-  vMapping : PmMapping;
+  vTabela : TTabela;
+  vCampos : TCampos;
   vWhere : String;
   I : Integer;
 begin
-  vMapping := GetMappingObj(Self);
+  vTabela := GetTabela(Self.ClassType);
+  vCampos := GetCampos(Self.ClassType);
 
   vWhere := '';
-  with vMapping.Campos do
+  with vCampos do
     for I := 0 to Count - 1 do
-      with PmCampo(Items[I])^ do
+      with TCampo(Items[I]) do
         if Tipo in [mMapping.tfKey] then
           AddString(vWhere, Atributo + ' = ' + GetValueStr(Self, Atributo), ' and ');
 
   Result := GetSelect(Self.ClassType, vWhere);
 
-  FreeMapping(vMapping);
+  FreeAndNil(vTabela);
+  FreeAndNil(vCampos);
 end;
 
 function TmComando.GetInsert(): String;
 var
-  vMapping : PmMapping;
+  vTabela : TTabela;
+  vCampos : TCampos;
   vFields, vValues : String;
   I : Integer;
 begin
-  vMapping := GetMappingObj(Self);
+  vTabela := GetTabela(Self.ClassType);
+  vCampos := GetCampos(Self.ClassType);
 
   vFields := '';
   vValues := '';
-  with vMapping.Campos do
+  with vCampos do
     for I := 0 to Count - 1 do
-      with PmCampo(Items[I])^ do begin
+      with TCampo(Items[I]) do begin
         AddString(vFields, Campo, ', ');
         AddString(vValues, GetValueStr(Self, Atributo), ', ');
       end;
 
   Result :=
-    'insert into ' + vMapping.Tabela.Nome +
+    'insert into ' + vTabela.Nome +
     ' (' + vFields +
     ') values (' + vValues +
     ')';
 
-  FreeMapping(vMapping);
+  FreeAndNil(vTabela);
+  FreeAndNil(vCampos);
 end;
 
 function TmComando.GetUpdate(): String;
 var
-  vMapping : PmMapping;
+  vTabela : TTabela;
+  vCampos : TCampos;
   vSets, vWhere : String;
   I : Integer;
 begin
-  vMapping := GetMappingObj(Self);
+  vTabela := GetTabela(Self.ClassType);
+  vCampos := GetCampos(Self.ClassType);
 
   vWhere := '';
   vSets := '';
-  with vMapping.Campos do
+  with vCampos do
     for I := 0 to Count - 1 do
-      with PmCampo(Items[I])^ do
+      with TCampo(Items[I]) do
         if Tipo in [mMapping.tfKey] then
           AddString(vWhere, Campo + ' = ' + GetValueStr(Self, Atributo), ' and ')
         else
           AddString(vSets, Campo + ' = ' + GetValueStr(Self, Atributo), ', ');
 
   Result :=
-    'update ' + vMapping.Tabela.Nome +
+    'update ' + vTabela.Nome +
     ' set ' + vSets +
     ' where ' + vWhere;
 
-  FreeMapping(vMapping);
+  FreeAndNil(vTabela);
+  FreeAndNil(vCampos);
 end;
 
 function TmComando.GetDelete(): String;
 var
-  vMapping : PmMapping;
+  vTabela : TTabela;
+  vCampos : TCampos;
   vWhere : String;
   I : Integer;
 begin
-  vMapping := GetMappingObj(Self);
+  vTabela := GetTabela(Self.ClassType);
+  vCampos := GetCampos(Self.ClassType);
 
   vWhere := '';
-  with vMapping.Campos do
+  with vCampos do
     for I := 0 to Count - 1 do
-      with PmCampo(Items[I])^ do
+      with TCampo(Items[I]) do
         if Tipo in [mMapping.tfKey] then
           AddString(vWhere, Campo + ' = ' + GetValueStr(Self, Atributo), ' and ');
 
   Result :=
-    'delete from ' + vMapping.Tabela.Nome +
+    'delete from ' + vTabela.Nome +
     ' where ' + vWhere;
 
-  FreeMapping(vMapping);
+  FreeAndNil(vTabela);
+  FreeAndNil(vCampos);
 end;
 
 end.

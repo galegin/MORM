@@ -4,7 +4,7 @@ interface
 
 uses
   Classes, SysUtils,
-  mMapping, mCollection, mCollectionItem;
+  mCollection, mCollectionItem;
 
 type
   TProduto = class(TmCollectionItem)
@@ -27,7 +27,6 @@ type
   public
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
-    function GetMapping() : PmMapping; override;
   published
     property Id_Produto : String read fId_Produto write fId_Produto;
     property U_Version : String read fU_Version write fU_Version;
@@ -51,7 +50,7 @@ type
     function GetItem(Index: Integer): TProduto;
     procedure SetItem(Index: Integer; Value: TProduto);
   public
-    constructor Create(AOwner: TCollection);
+    constructor Create(AItemClass: TCollectionItemClass); override;
     function Add: TProduto;
     property Items[Index: Integer]: TProduto read GetItem write SetItem; default;
   end;
@@ -72,38 +71,9 @@ begin
   inherited;
 end;
 
-function TProduto.GetMapping: PmMapping;
-begin
-  Result := New(PmMapping);
-
-  Result.Tabela := New(PmTabela);
-  with Result.Tabela^ do begin
-    Nome := 'PRODUTO';
-  end;
-
-  Result.Campos := TmCampos.Create;
-  with Result.Campos do begin
-    Add('Id_Produto', 'ID_PRODUTO', tfKey);
-    Add('U_Version', 'U_VERSION', tfNul);
-    Add('Cd_Operador', 'CD_OPERADOR', tfReq);
-    Add('Dt_Cadastro', 'DT_CADASTRO', tfReq);
-    Add('Cd_Produto', 'CD_PRODUTO', tfReq);
-    Add('Ds_Produto', 'DS_PRODUTO', tfReq);
-    Add('Cd_Especie', 'CD_ESPECIE', tfReq);
-    Add('Cd_Ncm', 'CD_NCM', tfReq);
-    Add('Cd_Cst', 'CD_CST', tfReq);
-    Add('Cd_Csosn', 'CD_CSOSN', tfReq);
-    Add('Pr_Aliquota', 'PR_ALIQUOTA', tfReq);
-    Add('Tp_Producao', 'TP_PRODUCAO', tfReq);
-    Add('Vl_Custo', 'VL_CUSTO', tfReq);
-    Add('Vl_Venda', 'VL_VENDA', tfReq);
-    Add('Vl_Promocao', 'VL_PROMOCAO', tfReq);
-  end;
-end;
-
 { TProdutos }
 
-constructor TProdutos.Create(AOwner: TCollection);
+constructor TProdutos.Create(AItemClass: TCollectionItemClass);
 begin
   inherited Create(TProduto);
 end;

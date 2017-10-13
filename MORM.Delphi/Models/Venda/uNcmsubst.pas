@@ -4,7 +4,7 @@ interface
 
 uses
   Classes, SysUtils,
-  mMapping, mCollection, mCollectionItem;
+  mCollection, mCollectionItem;
 
 type
   TNcmsubst = class(TmCollectionItem)
@@ -19,7 +19,6 @@ type
   public
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
-    function GetMapping() : PmMapping; override;
   published
     property Uf_Origem : String read fUf_Origem write fUf_Origem;
     property Uf_Destino : String read fUf_Destino write fUf_Destino;
@@ -35,7 +34,7 @@ type
     function GetItem(Index: Integer): TNcmsubst;
     procedure SetItem(Index: Integer; Value: TNcmsubst);
   public
-    constructor Create(AOwner: TCollection);
+    constructor Create(AItemClass: TCollectionItemClass); override;
     function Add: TNcmsubst;
     property Items[Index: Integer]: TNcmsubst read GetItem write SetItem; default;
   end;
@@ -56,30 +55,9 @@ begin
   inherited;
 end;
 
-function TNcmsubst.GetMapping: PmMapping;
-begin
-  Result := New(PmMapping);
-
-  Result.Tabela := New(PmTabela);
-  with Result.Tabela^ do begin
-    Nome := 'NCMSUBST';
-  end;
-
-  Result.Campos := TmCampos.Create;
-  with Result.Campos do begin
-    Add('Uf_Origem', 'UF_ORIGEM', tfKey);
-    Add('Uf_Destino', 'UF_DESTINO', tfKey);
-    Add('Cd_Ncm', 'CD_NCM', tfKey);
-    Add('U_Version', 'U_VERSION', tfNul);
-    Add('Cd_Operador', 'CD_OPERADOR', tfNul);
-    Add('Dt_Cadastro', 'DT_CADASTRO', tfNul);
-    Add('Cd_Cest', 'CD_CEST', tfNul);
-  end;
-end;
-
 { TNcmsubsts }
 
-constructor TNcmsubsts.Create(AOwner: TCollection);
+constructor TNcmsubsts.Create(AItemClass: TCollectionItemClass);
 begin
   inherited Create(TNcmsubst);
 end;

@@ -22,7 +22,6 @@ type
   public
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
-    function GetMapping() : PmMapping; override;
   published
     property Id_Estado : Integer read fId_Estado write fId_Estado;
     property U_Version : String read fU_Version write fU_Version;
@@ -40,7 +39,7 @@ type
     function GetItem(Index: Integer): TEstado;
     procedure SetItem(Index: Integer; Value: TEstado);
   public
-    constructor Create(AOwner: TCollection);
+    constructor Create(AItemClass: TCollectionItemClass); override;
     function Add: TEstado;
     property Items[Index: Integer]: TEstado read GetItem write SetItem; default;
   end;
@@ -64,31 +63,9 @@ begin
   inherited;
 end;
 
-function TEstado.GetMapping: PmMapping;
-begin
-  Result := New(PmMapping);
-
-  Result.Tabela := New(PmTabela);
-  with Result.Tabela^ do begin
-    Nome := 'ESTADO';
-  end;
-
-  Result.Campos := TmCampos.Create;
-  with Result.Campos do begin
-    Add('Id_Estado', 'ID_ESTADO', tfKey);
-    Add('U_Version', 'U_VERSION', tfNul);
-    Add('Cd_Operador', 'CD_OPERADOR', tfReq);
-    Add('Dt_Cadastro', 'DT_CADASTRO', tfReq);
-    Add('Cd_Estado', 'CD_ESTADO', tfReq);
-    Add('Ds_Estado', 'DS_ESTADO', tfReq);
-    Add('Ds_Sigla', 'DS_SIGLA', tfReq);
-    Add('Id_Pais', 'ID_PAIS', tfReq);
-  end;
-end;
-
 { TEstados }
 
-constructor TEstados.Create(AOwner: TCollection);
+constructor TEstados.Create(AItemClass: TCollectionItemClass);
 begin
   inherited Create(TEstado);
 end;

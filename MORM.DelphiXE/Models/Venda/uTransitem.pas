@@ -7,7 +7,7 @@ uses
   mCollection, mCollectionItem, mMapping;
 
 type
-  [Tabela('TRANSITEM')]
+  [TTabela('TRANSITEM')]
   TTransitem = class(TmCollectionItem)
   private
     fId_Transacao: String;
@@ -35,47 +35,47 @@ type
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
   published
-    [Campo('ID_TRANSACAO', tfKey)]
+    [TCampo('ID_TRANSACAO', tfKey)]
     property Id_Transacao : String read fId_Transacao write fId_Transacao;
-    [Campo('NR_ITEM', tfKey)]
+    [TCampo('NR_ITEM', tfKey)]
     property Nr_Item : Integer read fNr_Item write fNr_Item;
-    [Campo('U_VERSION', tfNul)]
+    [TCampo('U_VERSION', tfNul)]
     property U_Version : String read fU_Version write fU_Version;
-    [Campo('CD_OPERADOR', tfReq)]
+    [TCampo('CD_OPERADOR', tfReq)]
     property Cd_Operador : Integer read fCd_Operador write fCd_Operador;
-    [Campo('DT_CADASTRO', tfReq)]
+    [TCampo('DT_CADASTRO', tfReq)]
     property Dt_Cadastro : TDateTime read fDt_Cadastro write fDt_Cadastro;
-    [Campo('ID_PRODUTO', tfReq)]
+    [TCampo('ID_PRODUTO', tfReq)]
     property Id_Produto : String read fId_Produto write fId_Produto;
-    [Campo('CD_PRODUTO', tfReq)]
+    [TCampo('CD_PRODUTO', tfReq)]
     property Cd_Produto : Integer read fCd_Produto write fCd_Produto;
-    [Campo('DS_PRODUTO', tfReq)]
+    [TCampo('DS_PRODUTO', tfReq)]
     property Ds_Produto : String read fDs_Produto write fDs_Produto;
-    [Campo('CD_CFOP', tfReq)]
+    [TCampo('CD_CFOP', tfReq)]
     property Cd_Cfop : Integer read fCd_Cfop write fCd_Cfop;
-    [Campo('CD_ESPECIE', tfReq)]
+    [TCampo('CD_ESPECIE', tfReq)]
     property Cd_Especie : String read fCd_Especie write fCd_Especie;
-    [Campo('CD_NCM', tfReq)]
+    [TCampo('CD_NCM', tfReq)]
     property Cd_Ncm : String read fCd_Ncm write fCd_Ncm;
-    [Campo('QT_ITEM', tfReq)]
+    [TCampo('QT_ITEM', tfReq)]
     property Qt_Item : Real read fQt_Item write fQt_Item;
-    [Campo('VL_CUSTO', tfReq)]
+    [TCampo('VL_CUSTO', tfReq)]
     property Vl_Custo : Real read fVl_Custo write fVl_Custo;
-    [Campo('VL_UNITARIO', tfReq)]
+    [TCampo('VL_UNITARIO', tfReq)]
     property Vl_Unitario : Real read fVl_Unitario write fVl_Unitario;
-    [Campo('VL_ITEM', tfReq)]
+    [TCampo('VL_ITEM', tfReq)]
     property Vl_Item : Real read fVl_Item write fVl_Item;
-    [Campo('VL_VARIACAO', tfReq)]
+    [TCampo('VL_VARIACAO', tfReq)]
     property Vl_Variacao : Real read fVl_Variacao write fVl_Variacao;
-    [Campo('VL_VARIACAOCAPA', tfReq)]
+    [TCampo('VL_VARIACAOCAPA', tfReq)]
     property Vl_Variacaocapa : Real read fVl_Variacaocapa write fVl_Variacaocapa;
-    [Campo('VL_FRETE', tfReq)]
+    [TCampo('VL_FRETE', tfReq)]
     property Vl_Frete : Real read fVl_Frete write fVl_Frete;
-    [Campo('VL_SEGURO', tfReq)]
+    [TCampo('VL_SEGURO', tfReq)]
     property Vl_Seguro : Real read fVl_Seguro write fVl_Seguro;
-    [Campo('VL_OUTRO', tfReq)]
+    [TCampo('VL_OUTRO', tfReq)]
     property Vl_Outro : Real read fVl_Outro write fVl_Outro;
-    [Campo('VL_DESPESA', tfReq)]
+    [TCampo('VL_DESPESA', tfReq)]
     property Vl_Despesa : Real read fVl_Despesa write fVl_Despesa;
   end;
 

@@ -4,7 +4,7 @@ interface
 
 uses
   Classes, SysUtils,
-  mMapping, mCollection, mCollectionItem;
+  mCollection, mCollectionItem;
 
 type
   TCfop = class(TmCollectionItem)
@@ -17,7 +17,6 @@ type
   public
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
-    function GetMapping() : PmMapping; override;
   published
     property Cd_Cfop : Integer read fCd_Cfop write fCd_Cfop;
     property U_Version : String read fU_Version write fU_Version;
@@ -31,7 +30,7 @@ type
     function GetItem(Index: Integer): TCfop;
     procedure SetItem(Index: Integer; Value: TCfop);
   public
-    constructor Create(AOwner: TCollection);
+    constructor Create(AItemClass: TCollectionItemClass); override;
     function Add: TCfop;
     property Items[Index: Integer]: TCfop read GetItem write SetItem; default;
   end;
@@ -52,32 +51,9 @@ begin
   inherited;
 end;
 
-function TCfop.GetMapping: PmMapping;
-begin
-  Result := New(PmMapping);
-
-  Result.Tabela := New(PmTabela);
-  with Result.Tabela^ do begin
-    Nome := 'CFOP';
-  end;
-
-  Result.Campos := TmCampos.Create;
-  with Result.Campos do begin
-    Add('Cd_Cfop', 'CD_CFOP', tfKey);
-    Add('U_Version', 'U_VERSION', tfNul);
-    Add('Cd_Operador', 'CD_OPERADOR', tfReq);
-    Add('Dt_Cadastro', 'DT_CADASTRO', tfReq);
-    Add('Ds_Cfop', 'DS_CFOP', tfReq);
-  end;
-
-  Result.Relacoes := TmRelacoes.Create;
-  with Result.Relacoes do begin
-  end;
-end;
-
 { TCfops }
 
-constructor TCfops.Create(AOwner: TCollection);
+constructor TCfops.Create(AItemClass: TCollectionItemClass);
 begin
   inherited Create(TCfop);
 end;

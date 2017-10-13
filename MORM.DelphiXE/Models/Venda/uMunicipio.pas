@@ -7,7 +7,7 @@ uses
   mCollection, mCollectionItem, mMapping;
 
 type
-  [Tabela('MUNICIPIO')]
+  [TTabela('MUNICIPIO')]
   TMunicipio = class(TmCollectionItem)
   private
     fId_Municipio: Integer;
@@ -22,21 +22,21 @@ type
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
   published
-    [Campo('ID_MUNICIPIO', tfKey)]
+    [TCampo('ID_MUNICIPIO', tfKey)]
     property Id_Municipio : Integer read fId_Municipio write fId_Municipio;
-    [Campo('U_VERSION', tfNul)]
+    [TCampo('U_VERSION', tfNul)]
     property U_Version : String read fU_Version write fU_Version;
-    [Campo('CD_OPERADOR', tfReq)]
+    [TCampo('CD_OPERADOR', tfReq)]
     property Cd_Operador : Integer read fCd_Operador write fCd_Operador;
-    [Campo('DT_CADASTRO', tfReq)]
+    [TCampo('DT_CADASTRO', tfReq)]
     property Dt_Cadastro : TDateTime read fDt_Cadastro write fDt_Cadastro;
-    [Campo('CD_MUNICIPIO', tfReq)]
+    [TCampo('CD_MUNICIPIO', tfReq)]
     property Cd_Municipio : Integer read fCd_Municipio write fCd_Municipio;
-    [Campo('DS_MUNICIPIO', tfReq)]
+    [TCampo('DS_MUNICIPIO', tfReq)]
     property Ds_Municipio : String read fDs_Municipio write fDs_Municipio;
-    [Campo('DS_SIGLA', tfReq)]
+    [TCampo('DS_SIGLA', tfReq)]
     property Ds_Sigla : String read fDs_Sigla write fDs_Sigla;
-    [Campo('ID_ESTADO', tfReq)]
+    [TCampo('ID_ESTADO', tfReq)]
     property Id_Estado : Integer read fId_Estado write fId_Estado;
   end;
 

@@ -4,7 +4,7 @@ interface
 
 uses
   Classes, SysUtils,
-  mMapping, mCollection, mCollectionItem;
+  mCollection, mCollectionItem;
 
 type
   TTranspagto = class(TmCollectionItem)
@@ -37,7 +37,6 @@ type
   public
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
-    function GetMapping() : PmMapping; override;
   published
     property Id_Transacao : String read fId_Transacao write fId_Transacao;
     property Nr_Seq : Integer read fNr_Seq write fNr_Seq;
@@ -71,7 +70,7 @@ type
     function GetItem(Index: Integer): TTranspagto;
     procedure SetItem(Index: Integer; Value: TTranspagto);
   public
-    constructor Create(AOwner: TCollection);
+    constructor Create(AItemClass: TCollectionItemClass); override;
     function Add: TTranspagto;
     property Items[Index: Integer]: TTranspagto read GetItem write SetItem; default;
   end;
@@ -92,48 +91,9 @@ begin
   inherited;
 end;
 
-function TTranspagto.GetMapping: PmMapping;
-begin
-  Result := New(PmMapping);
-
-  Result.Tabela := New(PmTabela);
-  with Result.Tabela^ do begin
-    Nome := 'TRANSPAGTO';
-  end;
-
-  Result.Campos := TmCampos.Create;
-  with Result.Campos do begin
-    Add('Id_Transacao', 'ID_TRANSACAO', tfKey);
-    Add('Nr_Seq', 'NR_SEQ', tfKey);
-    Add('U_Version', 'U_VERSION', tfNul);
-    Add('Cd_Operador', 'CD_OPERADOR', tfReq);
-    Add('Dt_Cadastro', 'DT_CADASTRO', tfReq);
-    Add('Id_Caixa', 'ID_CAIXA', tfReq);
-    Add('Tp_Documento', 'TP_DOCUMENTO', tfReq);
-    Add('Id_Histrel', 'ID_HISTREL', tfReq);
-    Add('Nr_Parcela', 'NR_PARCELA', tfReq);
-    Add('Nr_Parcelas', 'NR_PARCELAS', tfReq);
-    Add('Nr_Documento', 'NR_DOCUMENTO', tfNul);
-    Add('Vl_Documento', 'VL_DOCUMENTO', tfReq);
-    Add('Dt_Vencimento', 'DT_VENCIMENTO', tfReq);
-    Add('Cd_Autorizacao', 'CD_AUTORIZACAO', tfNul);
-    Add('Nr_Nsu', 'NR_NSU', tfNul);
-    Add('Ds_Redetef', 'DS_REDETEF', tfNul);
-    Add('Nm_Operadora', 'NM_OPERADORA', tfNul);
-    Add('Nr_Banco', 'NR_BANCO', tfNul);
-    Add('Nr_Agencia', 'NR_AGENCIA', tfNul);
-    Add('Ds_Conta', 'DS_CONTA', tfNul);
-    Add('Nr_Cheque', 'NR_CHEQUE', tfNul);
-    Add('Ds_Cmc7', 'DS_CMC7', tfNul);
-    Add('Tp_Baixa', 'TP_BAIXA', tfNul);
-    Add('Cd_Operbaixa', 'CD_OPERBAIXA', tfNul);
-    Add('Dt_Baixa', 'DT_BAIXA', tfNul);
-  end;
-end;
-
 { TTranspagtos }
 
-constructor TTranspagtos.Create(AOwner: TCollection);
+constructor TTranspagtos.Create(AItemClass: TCollectionItemClass);
 begin
   inherited Create(TTranspagto);
 end;

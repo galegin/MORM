@@ -7,7 +7,7 @@ uses
   mCollection, mCollectionItem, mMapping;
 
 type
-  [Tabela('TRANSDFE')]
+  [TTabela('TRANSDFE')]
   TTransdfe = class(TmCollectionItem)
   private
     fId_Transacao: String;
@@ -24,25 +24,25 @@ type
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
   published
-    [Campo('ID_TRANSACAO', tfKey)]
+    [TCampo('ID_TRANSACAO', tfKey)]
     property Id_Transacao : String read fId_Transacao write fId_Transacao;
-    [Campo('NR_SEQUENCIA', tfKey)]
+    [TCampo('NR_SEQUENCIA', tfKey)]
     property Nr_Sequencia : Integer read fNr_Sequencia write fNr_Sequencia;
-    [Campo('U_VERSION', tfNul)]
+    [TCampo('U_VERSION', tfNul)]
     property U_Version : String read fU_Version write fU_Version;
-    [Campo('CD_OPERADOR', tfReq)]
+    [TCampo('CD_OPERADOR', tfReq)]
     property Cd_Operador : Integer read fCd_Operador write fCd_Operador;
-    [Campo('DT_CADASTRO', tfReq)]
+    [TCampo('DT_CADASTRO', tfReq)]
     property Dt_Cadastro : TDateTime read fDt_Cadastro write fDt_Cadastro;
-    [Campo('TP_EVENTO', tfReq)]
+    [TCampo('TP_EVENTO', tfReq)]
     property Tp_Evento : Integer read fTp_Evento write fTp_Evento;
-    [Campo('TP_AMBIENTE', tfReq)]
+    [TCampo('TP_AMBIENTE', tfReq)]
     property Tp_Ambiente : Integer read fTp_Ambiente write fTp_Ambiente;
-    [Campo('TP_EMISSAO', tfReq)]
+    [TCampo('TP_EMISSAO', tfReq)]
     property Tp_Emissao : Integer read fTp_Emissao write fTp_Emissao;
-    [Campo('DS_ENVIOXML', tfReq)]
+    [TCampo('DS_ENVIOXML', tfReq)]
     property Ds_Envioxml : String read fDs_Envioxml write fDs_Envioxml;
-    [Campo('DS_RETORNOXML', tfNul)]
+    [TCampo('DS_RETORNOXML', tfNul)]
     property Ds_Retornoxml : String read fDs_Retornoxml write fDs_Retornoxml;
   end;
 

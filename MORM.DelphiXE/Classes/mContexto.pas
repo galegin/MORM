@@ -7,7 +7,8 @@ interface
 uses
   Classes, SysUtils, StrUtils, DB, TypInfo, Math,
   mDatabase, mMapping, mParametro,
-  mCollection, mCollectionItem;
+  mCollection, mCollectionItem,
+  System.Generics.Collections;
 
 type
   TmContexto = class(TComponent)
@@ -183,10 +184,10 @@ end;
 
 procedure TmContexto.GetRelacao(AObjeto : TObject);
 var
-  vRelacao : PmRelacao;
-  vCampos : TmRelacaoCampos;
+  vRelacao : TRelacao;
+  vCampos : TList<TRelacaoCampo>;
+  vCampo : TRelacaoCampo;
   vWhere : String;
-  I : Integer;
 begin
   if AObjeto.InheritsFrom(TmCollection) then
     vRelacao := (AObjeto as TmCollection).GetRelacao()
@@ -198,8 +199,8 @@ begin
   vCampos := mMapping.GetRelacaoCampos(vRelacao.Campos);
 
   vWhere := '';
-  for I := 0 to vCampos.Count - 1 do
-    with PmRelacaoCampo(vCampos.Items[I])^ do
+  for vCampo in vCampos do
+    with vCampo do
       AddString(vWhere, Atributo + ' = ' + GetValueStr(vRelacao.Owner, AtributoRel), ' and ', '');
 
   if AObjeto.InheritsFrom(TmCollection) then

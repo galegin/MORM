@@ -4,7 +4,7 @@ interface
 
 uses
   Classes, SysUtils,
-  mMapping, mCollection, mCollectionItem;
+  mCollection, mCollectionItem;
 
 type
   TPessoa = class(TmCollectionItem)
@@ -37,7 +37,6 @@ type
   public
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
-    function GetMapping() : PmMapping; override;
   published
     property Id_Pessoa : String read fId_Pessoa write fId_Pessoa;
     property U_Version : String read fU_Version write fU_Version;
@@ -90,45 +89,6 @@ destructor TPessoa.Destroy;
 begin
 
   inherited;
-end;
-
-function TPessoa.GetMapping: PmMapping;
-begin
-  Result := New(PmMapping);
-
-  Result.Tabela := New(PmTabela);
-  with Result.Tabela^ do begin
-    Nome := 'PESSOA';
-  end;
-
-  Result.Campos := TmCampos.Create;
-  with Result.Campos do begin
-    Add('Id_Pessoa', 'ID_PESSOA', tfKey);
-    Add('U_Version', 'U_VERSION', tfNul);
-    Add('Cd_Operador', 'CD_OPERADOR', tfReq);
-    Add('Dt_Cadastro', 'DT_CADASTRO', tfReq);
-    Add('Cd_Pessoa', 'CD_PESSOA', tfReq);
-    Add('Nm_Pessoa', 'NM_PESSOA', tfReq);
-    Add('Nr_Cpfcnpj', 'NR_CPFCNPJ', tfReq);
-    Add('Nr_Rgie', 'NR_RGIE', tfReq);
-    Add('Nm_Fantasia', 'NM_FANTASIA', tfNul);
-    Add('Cd_Cep', 'CD_CEP', tfReq);
-    Add('Nm_Logradouro', 'NM_LOGRADOURO', tfReq);
-    Add('Nr_Logradouro', 'NR_LOGRADOURO', tfReq);
-    Add('Ds_Bairro', 'DS_BAIRRO', tfReq);
-    Add('Ds_Complemento', 'DS_COMPLEMENTO', tfNul);
-    Add('Cd_Municipio', 'CD_MUNICIPIO', tfReq);
-    Add('Ds_Municipio', 'DS_MUNICIPIO', tfReq);
-    Add('Cd_Estado', 'CD_ESTADO', tfReq);
-    Add('Ds_Estado', 'DS_ESTADO', tfReq);
-    Add('Ds_Siglaestado', 'DS_SIGLAESTADO', tfReq);
-    Add('Cd_Pais', 'CD_PAIS', tfReq);
-    Add('Ds_Pais', 'DS_PAIS', tfReq);
-    Add('Ds_Fone', 'DS_FONE', tfNul);
-    Add('Ds_Celular', 'DS_CELULAR', tfNul);
-    Add('Ds_Email', 'DS_EMAIL', tfNul);
-    Add('In_Consumidorfinal', 'IN_CONSUMIDORFINAL', tfNul);
-  end;
 end;
 
 { TPessoas }

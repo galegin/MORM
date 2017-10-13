@@ -7,7 +7,7 @@ uses
   mCollection, mCollectionItem, mMapping;
 
 type
-  [Tabela('EMPRESA')]
+  [TTabela('EMPRESA')]
   TEmpresa = class(TmCollectionItem)
   private
     fId_Empresa: Integer;
@@ -19,15 +19,15 @@ type
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
   published
-    [Campo('ID_EMPRESA', tfKey)]
+    [TCampo('ID_EMPRESA', tfKey)]
     property Id_Empresa : Integer read fId_Empresa write fId_Empresa;
-    [Campo('U_VERSION', tfNul)]
+    [TCampo('U_VERSION', tfNul)]
     property U_Version : String read fU_Version write fU_Version;
-    [Campo('CD_OPERADOR', tfReq)]
+    [TCampo('CD_OPERADOR', tfReq)]
     property Cd_Operador : Integer read fCd_Operador write fCd_Operador;
-    [Campo('DT_CADASTRO', tfReq)]
+    [TCampo('DT_CADASTRO', tfReq)]
     property Dt_Cadastro : TDateTime read fDt_Cadastro write fDt_Cadastro;
-    [Campo('ID_PESSOA', tfReq)]
+    [TCampo('ID_PESSOA', tfReq)]
     property Id_Pessoa : String read fId_Pessoa write fId_Pessoa;
   end;
 

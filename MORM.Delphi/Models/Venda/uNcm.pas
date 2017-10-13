@@ -4,7 +4,7 @@ interface
 
 uses
   Classes, SysUtils,
-  mMapping, mCollection, mCollectionItem;
+  mCollection, mCollectionItem;
 
 type
   TNcm = class(TmCollectionItem)
@@ -17,7 +17,6 @@ type
   public
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
-    function GetMapping() : PmMapping; override;
   published
     property Cd_Ncm : String read fCd_Ncm write fCd_Ncm;
     property U_Version : String read fU_Version write fU_Version;
@@ -31,7 +30,7 @@ type
     function GetItem(Index: Integer): TNcm;
     procedure SetItem(Index: Integer; Value: TNcm);
   public
-    constructor Create(AOwner: TCollection);
+    constructor Create(AItemClass: TCollectionItemClass); override;
     function Add: TNcm;
     property Items[Index: Integer]: TNcm read GetItem write SetItem; default;
   end;
@@ -52,28 +51,9 @@ begin
   inherited;
 end;
 
-function TNcm.GetMapping: PmMapping;
-begin
-  Result := New(PmMapping);
-
-  Result.Tabela := New(PmTabela);
-  with Result.Tabela^ do begin
-    Nome := 'NCM';
-  end;
-
-  Result.Campos := TmCampos.Create;
-  with Result.Campos do begin
-    Add('Cd_Ncm', 'CD_NCM', tfKey);
-    Add('U_Version', 'U_VERSION', tfNul);
-    Add('Cd_Operador', 'CD_OPERADOR', tfReq);
-    Add('Dt_Cadastro', 'DT_CADASTRO', tfReq);
-    Add('Ds_Ncm', 'DS_NCM', tfReq);
-  end;
-end;
-
 { TNcms }
 
-constructor TNcms.Create(AOwner: TCollection);
+constructor TNcms.Create(AItemClass: TCollectionItemClass);
 begin
   inherited Create(TNcm);
 end;

@@ -7,7 +7,7 @@ uses
   mCollection, mCollectionItem, mMapping;
 
 type
-  [Tabela('TRANSIMPOSTO')]
+  [TTabela('TRANSIMPOSTO')]
   TTransimposto = class(TmCollectionItem)
   private
     fId_Transacao: String;
@@ -29,35 +29,35 @@ type
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
   published
-    [Campo('ID_TRANSACAO', tfKey)]
+    [TCampo('ID_TRANSACAO', tfKey)]
     property Id_Transacao : String read fId_Transacao write fId_Transacao;
-    [Campo('NR_ITEM', tfKey)]
+    [TCampo('NR_ITEM', tfKey)]
     property Nr_Item : Integer read fNr_Item write fNr_Item;
-    [Campo('CD_IMPOSTO', tfKey)]
+    [TCampo('CD_IMPOSTO', tfKey)]
     property Cd_Imposto : Integer read fCd_Imposto write fCd_Imposto;
-    [Campo('U_VERSION', tfNul)]
+    [TCampo('U_VERSION', tfNul)]
     property U_Version : String read fU_Version write fU_Version;
-    [Campo('CD_OPERADOR', tfReq)]
+    [TCampo('CD_OPERADOR', tfReq)]
     property Cd_Operador : Integer read fCd_Operador write fCd_Operador;
-    [Campo('DT_CADASTRO', tfReq)]
+    [TCampo('DT_CADASTRO', tfReq)]
     property Dt_Cadastro : TDateTime read fDt_Cadastro write fDt_Cadastro;
-    [Campo('PR_ALIQUOTA', tfReq)]
+    [TCampo('PR_ALIQUOTA', tfReq)]
     property Pr_Aliquota : Real read fPr_Aliquota write fPr_Aliquota;
-    [Campo('VL_BASECALCULO', tfReq)]
+    [TCampo('VL_BASECALCULO', tfReq)]
     property Vl_Basecalculo : Real read fVl_Basecalculo write fVl_Basecalculo;
-    [Campo('PR_BASECALCULO', tfReq)]
+    [TCampo('PR_BASECALCULO', tfReq)]
     property Pr_Basecalculo : Real read fPr_Basecalculo write fPr_Basecalculo;
-    [Campo('PR_REDBASECALCULO', tfReq)]
+    [TCampo('PR_REDBASECALCULO', tfReq)]
     property Pr_Redbasecalculo : Real read fPr_Redbasecalculo write fPr_Redbasecalculo;
-    [Campo('VL_IMPOSTO', tfReq)]
+    [TCampo('VL_IMPOSTO', tfReq)]
     property Vl_Imposto : Real read fVl_Imposto write fVl_Imposto;
-    [Campo('VL_OUTRO', tfReq)]
+    [TCampo('VL_OUTRO', tfReq)]
     property Vl_Outro : Real read fVl_Outro write fVl_Outro;
-    [Campo('VL_ISENTO', tfReq)]
+    [TCampo('VL_ISENTO', tfReq)]
     property Vl_Isento : Real read fVl_Isento write fVl_Isento;
-    [Campo('CD_CST', tfReq)]
+    [TCampo('CD_CST', tfReq)]
     property Cd_Cst : String read fCd_Cst write fCd_Cst;
-    [Campo('CD_CSOSN', tfNul)]
+    [TCampo('CD_CSOSN', tfNul)]
     property Cd_Csosn : String read fCd_Csosn write fCd_Csosn;
   end;
 

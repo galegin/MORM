@@ -30,7 +30,6 @@ type
   public
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
-    function GetMapping() : PmMapping; override;
   published
     property Id_Caixa : Integer read fId_Caixa write fId_Caixa;
     property U_Version : String read fU_Version write fU_Version;
@@ -54,7 +53,7 @@ type
     function GetItem(Index: Integer): TCaixa;
     procedure SetItem(Index: Integer; Value: TCaixa);
   public
-    constructor Create(AOwner: TCollection);
+    constructor Create(AItemClass: TCollectionItemClass); override;
     function Add: TCaixa;
     property Items[Index: Integer]: TCaixa read GetItem write SetItem; default;
   end;
@@ -90,33 +89,9 @@ begin
   inherited;
 end;
 
-function TCaixa.GetMapping: PmMapping;
-begin
-  Result := New(PmMapping);
-
-  Result.Tabela := New(PmTabela);
-  with Result.Tabela^ do begin
-    Nome := 'CAIXA';
-  end;
-
-  Result.Campos := TmCampos.Create;
-  with Result.Campos do begin
-    Add('Id_Caixa', 'ID_CAIXA', tfKey);
-    Add('U_Version', 'U_VERSION', tfNul);
-    Add('Cd_Operador', 'CD_OPERADOR', tfReq);
-    Add('Dt_Cadastro', 'DT_CADASTRO', tfReq);
-    Add('Id_Empresa', 'CD_EMPRESA', tfReq);
-    Add('Id_Terminal', 'CD_TERMINAL', tfReq);
-    Add('Dt_Abertura', 'DT_ABERTURA', tfReq);
-    Add('Vl_Abertura', 'VL_ABERTURA', tfReq);
-    Add('In_Fechado', 'IN_FECHADO', tfReq);
-    Add('Dt_Fechado', 'DT_FECHADO', tfNul);
-  end;
-end;
-
 { TCaixas }
 
-constructor TCaixas.Create(AOwner: TCollection);
+constructor TCaixas.Create(AItemClass: TCollectionItemClass);
 begin
   inherited Create(TCaixa);
 end;

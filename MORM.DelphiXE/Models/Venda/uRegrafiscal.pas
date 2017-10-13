@@ -7,7 +7,7 @@ uses
   mCollection, mCollectionItem, mMapping;
 
 type
-  [Tabela('REGRAFISCAL')]
+  [TTabela('REGRAFISCAL')]
   TRegrafiscal = class(TmCollectionItem)
   private
     fId_Regrafiscal: Integer;
@@ -20,17 +20,17 @@ type
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
   published
-    [Campo('ID_REGRAFISCAL', tfKey)]
+    [TCampo('ID_REGRAFISCAL', tfKey)]
     property Id_Regrafiscal : Integer read fId_Regrafiscal write fId_Regrafiscal;
-    [Campo('U_VERSION', tfNul)]
+    [TCampo('U_VERSION', tfNul)]
     property U_Version : String read fU_Version write fU_Version;
-    [Campo('CD_OPERADOR', tfReq)]
+    [TCampo('CD_OPERADOR', tfReq)]
     property Cd_Operador : Integer read fCd_Operador write fCd_Operador;
-    [Campo('DT_CADASTRO', tfReq)]
+    [TCampo('DT_CADASTRO', tfReq)]
     property Dt_Cadastro : TDateTime read fDt_Cadastro write fDt_Cadastro;
-    [Campo('DS_REGRAFISCAL', tfReq)]
+    [TCampo('DS_REGRAFISCAL', tfReq)]
     property Ds_Regrafiscal : String read fDs_Regrafiscal write fDs_Regrafiscal;
-    [Campo('IN_CALCIMPOSTO', tfReq)]
+    [TCampo('IN_CALCIMPOSTO', tfReq)]
     property In_Calcimposto : String read fIn_Calcimposto write fIn_Calcimposto;
   end;
 

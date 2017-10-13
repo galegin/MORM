@@ -22,7 +22,6 @@ type
   public
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
-    function GetMapping() : PmMapping; override;
   published
     property Id_Municipio : Integer read fId_Municipio write fId_Municipio;
     property U_Version : String read fU_Version write fU_Version;
@@ -40,7 +39,7 @@ type
     function GetItem(Index: Integer): TMunicipio;
     procedure SetItem(Index: Integer; Value: TMunicipio);
   public
-    constructor Create(AOwner: TCollection);
+    constructor Create(AItemClass: TCollectionItemClass); override;
     function Add: TMunicipio;
     property Items[Index: Integer]: TMunicipio read GetItem write SetItem; default;
   end;
@@ -64,31 +63,9 @@ begin
   inherited;
 end;
 
-function TMunicipio.GetMapping: PmMapping;
-begin
-  Result := New(PmMapping);
-
-  Result.Tabela := New(PmTabela);
-  with Result.Tabela^ do begin
-    Nome := 'MUNICIPIO';
-  end;
-
-  Result.Campos := TmCampos.Create;
-  with Result.Campos do begin
-    Add('Id_Municipio', 'ID_MUNICIPIO', tfKey);
-    Add('U_Version', 'U_VERSION', tfNul);
-    Add('Cd_Operador', 'CD_OPERADOR', tfReq);
-    Add('Dt_Cadastro', 'DT_CADASTRO', tfReq);
-    Add('Cd_Municipio', 'CD_MUNICIPIO', tfReq);
-    Add('Ds_Municipio', 'DS_MUNICIPIO', tfReq);
-    Add('Ds_Sigla', 'DS_SIGLA', tfReq);
-    Add('Id_Estado', 'ID_ESTADO', tfReq);
-  end;
-end;
-
 { TMunicipios }
 
-constructor TMunicipios.Create(AOwner: TCollection);
+constructor TMunicipios.Create(AItemClass: TCollectionItemClass);
 begin
   inherited Create(TMunicipio);
 end;

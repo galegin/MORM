@@ -4,7 +4,7 @@ interface
 
 uses
   Classes, SysUtils,
-  mMapping, mCollection, mCollectionItem;
+  mCollection, mCollectionItem;
 
 type
   TAliqicms = class(TmCollectionItem)
@@ -18,7 +18,6 @@ type
   public
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
-    function GetMapping() : PmMapping; override;
   published
     property Uf_Origem : String read fUf_Origem write fUf_Origem;
     property Uf_Destino : String read fUf_Destino write fUf_Destino;
@@ -33,7 +32,7 @@ type
     function GetItem(Index: Integer): TAliqicms;
     procedure SetItem(Index: Integer; Value: TAliqicms);
   public
-    constructor Create(AOwner: TCollection);
+    constructor Create(AItemClass: TCollectionItemClass); override;
     function Add: TAliqicms;
     property Items[Index: Integer]: TAliqicms read GetItem write SetItem; default;
   end;
@@ -54,29 +53,9 @@ begin
   inherited;
 end;
 
-function TAliqicms.GetMapping: PmMapping;
-begin
-  Result := New(PmMapping);
-
-  Result.Tabela := New(PmTabela);
-  with Result.Tabela^ do begin
-    Nome := 'ALIQICMS';
-  end;
-
-  Result.Campos := TmCampos.Create;
-  with Result.Campos do begin
-    Add('Uf_Origem', 'UF_ORIGEM', tfKey);
-    Add('Uf_Destino', 'UF_DESTINO', tfKey);
-    Add('U_Version', 'U_VERSION', tfNul);
-    Add('Cd_Operador', 'CD_OPERADOR', tfReq);
-    Add('Dt_Cadastro', 'DT_CADASTRO', tfReq);
-    Add('Pr_Aliquota', 'PR_ALIQUOTA', tfReq);
-  end;
-end;
-
 { TAliqicmss }
 
-constructor TAliqicmss.Create(AOwner: TCollection);
+constructor TAliqicmss.Create(AItemClass: TCollectionItemClass);
 begin
   inherited Create(TAliqicms);
 end;

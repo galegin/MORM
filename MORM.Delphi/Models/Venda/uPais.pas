@@ -4,7 +4,7 @@ interface
 
 uses
   Classes, SysUtils,
-  mMapping, mCollection, mCollectionItem;
+  mCollection, mCollectionItem;
 
 type
   TPais = class(TmCollectionItem)
@@ -19,7 +19,6 @@ type
   public
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
-    function GetMapping() : PmMapping; override;
   published
     property Id_Pais : Integer read fId_Pais write fId_Pais;
     property U_Version : String read fU_Version write fU_Version;
@@ -35,7 +34,7 @@ type
     function GetItem(Index: Integer): TPais;
     procedure SetItem(Index: Integer; Value: TPais);
   public
-    constructor Create(AOwner: TCollection);
+    constructor Create(AItemClass: TCollectionItemClass); override;
     function Add: TPais;
     property Items[Index: Integer]: TPais read GetItem write SetItem; default;
   end;
@@ -56,30 +55,9 @@ begin
   inherited;
 end;
 
-function TPais.GetMapping: PmMapping;
-begin
-  Result := New(PmMapping);
-
-  Result.Tabela := New(PmTabela);
-  with Result.Tabela^ do begin
-    Nome := 'PAIS';
-  end;
-
-  Result.Campos := TmCampos.Create;
-  with Result.Campos do begin
-    Add('Id_Pais', 'ID_PAIS', tfKey);
-    Add('U_Version', 'U_VERSION', tfNul);
-    Add('Cd_Operador', 'CD_OPERADOR', tfReq);
-    Add('Dt_Cadastro', 'DT_CADASTRO', tfReq);
-    Add('Cd_Pais', 'CD_PAIS', tfReq);
-    Add('Ds_Pais', 'DS_PAIS', tfReq);
-    Add('Ds_Sigla', 'DS_SIGLA', tfReq);
-  end;
-end;
-
 { TPaiss }
 
-constructor TPaiss.Create(AOwner: TCollection);
+constructor TPaiss.Create(AItemClass: TCollectionItemClass);
 begin
   inherited Create(TPais);
 end;

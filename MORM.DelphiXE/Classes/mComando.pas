@@ -5,7 +5,7 @@ unit mComando;
 interface
 
 uses
-  Classes, SysUtils, StrUtils, TypInfo,
+  Classes, SysUtils, StrUtils, TypInfo, Rtti,
   mCollection, mCollectionItem, mMapping, mValue;
 
 type
@@ -31,18 +31,27 @@ implementation
     AString := AString + IfThen(AString <> '', ASep, AIni) + AStr;
   end;
 
-  function GetMappingObj(AObject: TObject) : PmMapping;
+  function GetTabela(AType: TRttiType) : TTabela;
+  var
+    atrbRtti : TCustomAttribute;
   begin
-    Result := TmCollectionItem(AObject).GetMapping();
+    Result := nil;
+    for atrbRtti in AType.GetAttributes do
+      if atrbRtti is TTabela then
+        Exit(atrbRtti as TTabela);
   end;
 
-  function GetMappingClass(AClass: TClass) : PmMapping;
+  function GetCampo(AType: TRttiType; ACampo: String) : TCampo;
   var
-    vMapping : TObject;
+    propRtti : TRttiProperty;
+    atrbRtti : TCustomAttribute;
   begin
-    vMapping := TmCollectionItemClass(AClass).Create(nil);
-    Result := GetMappingObj(vMapping);
-    FreeAndNil(vMapping);
+    Result := nil;
+    for propRtti in AType.GetProperties() do
+      if propRtti.Name = ACampo then
+        for atrbRtti in propRtti.GetAttributes do
+          if atrbRtti is TCampo then
+            Exit(atrbRtti as TCampo);
   end;
 
   function IsValueNull(AObject: TObject; ANome : String) : Boolean;
@@ -100,122 +109,160 @@ implementation
 
 class function TmComando.GetSelect(AClass: TClass; AWhere: String): String;
 var
-  vMapping : PmMapping;
+  ctxRtti : TRttiContext;
+  typeRtti : TRttiType;
+  propRtti : TRttiProperty;
+  vTabela : TTabela;
+  vCampo : TCampo;
   vFieldsAtr, vFields : String;
-  I : Integer;
 begin
-  vMapping := GetMappingClass(AClass);
-
+  ctxRtti := TRttiContext.Create;
+  typeRtti := ctxRtti.GetType(AClass);
+  vTabela := GetTabela(typeRtti);
   vFieldsAtr := '';
   vFields := '';
 
-  with vMapping.Campos do
-    for I := 0 to Count - 1 do
-      with PmCampo(Items[I])^ do begin
-        AddString(vFieldsAtr, Atributo + ' as "' + Atributo + '"', ', ');
-        AddString(vFields, Campo + ' as ' + Atributo, ', ');
+  for propRtti in typeRtti.GetProperties() do begin
+    vCampo := GetCampo(typeRtti, propRtti.Name);
+    if Assigned(vCampo) then
+      with vCampo do begin
+        AddString(vFieldsAtr, propRtti.Name + ' as "' + propRtti.Name + '"', ', ');
+        AddString(vFields, Campo + ' as ' + propRtti.Name, ', ');
       end;
+  end;
 
   Result :=
     'select ' + vFieldsAtr + ' from (' +
-      'select ' + vFields + ' from '+ vMapping.Tabela.Nome +
+      'select ' + vFields + ' from '+ vTabela.Nome +
     ')' + IfThen(AWhere <> '', ' where ' + AWhere);
 
-  FreeMapping(vMapping);
+  ctxRtti.Free;
 end;
 
 function TmComando.GetSelect(): String;
 var
-  vMapping : PmMapping;
+  ctxRtti : TRttiContext;
+  typeRtti : TRttiType;
+  propRtti : TRttiProperty;
+  vTabela : TTabela;
+  vCampo : TCampo;
   vWhere : String;
   I : Integer;
 begin
-  vMapping := GetMappingObj(Self);
+  ctxRtti := TRttiContext.Create;
+  typeRtti := ctxRtti.GetType(Self.ClassType);
+  vTabela := GetTabela(typeRtti);
 
   vWhere := '';
-  with vMapping.Campos do
-    for I := 0 to Count - 1 do
-      with PmCampo(Items[I])^ do
+  for propRtti in typeRtti.GetProperties() do begin
+    vCampo := GetCampo(typeRtti, propRtti.Name);
+    if Assigned(vCampo) then
+      with vCampo do
         if Tipo in [mMapping.tfKey] then
-          AddString(vWhere, Atributo + ' = ' + GetValueStr(Self, Atributo), ' and ');
+          AddString(vWhere, propRtti.Name + ' = ' + GetValueStr(Self, propRtti.Name), ' and ');
+  end;
 
   Result := GetSelect(Self.ClassType, vWhere);
 
-  FreeMapping(vMapping);
+  ctxRtti.Free;
 end;
 
 function TmComando.GetInsert(): String;
 var
-  vMapping : PmMapping;
+  ctxRtti : TRttiContext;
+  typeRtti : TRttiType;
+  propRtti : TRttiProperty;
+  vTabela : TTabela;
+  vCampo : TCampo;
   vFields, vValues : String;
   I : Integer;
 begin
-  vMapping := GetMappingObj(Self);
+  ctxRtti := TRttiContext.Create;
+  typeRtti := ctxRtti.GetType(Self.ClassType);
+  vTabela := GetTabela(typeRtti);
 
   vFields := '';
   vValues := '';
-  with vMapping.Campos do
-    for I := 0 to Count - 1 do
-      with PmCampo(Items[I])^ do begin
+  for propRtti in typeRtti.GetProperties() do begin
+    vCampo := GetCampo(typeRtti, propRtti.Name);
+    if Assigned(vCampo) then
+      with vCampo do begin
         AddString(vFields, Campo, ', ');
-        AddString(vValues, GetValueStr(Self, Atributo), ', ');
+        AddString(vValues, GetValueStr(Self, propRtti.Name), ', ');
       end;
+  end;
 
   Result :=
-    'insert into ' + vMapping.Tabela.Nome +
+    'insert into ' + vTabela.Nome +
     ' (' + vFields +
     ') values (' + vValues +
     ')';
 
-  FreeMapping(vMapping);
+  ctxRtti.Free;
 end;
 
 function TmComando.GetUpdate(): String;
 var
-  vMapping : PmMapping;
+  ctxRtti : TRttiContext;
+  typeRtti : TRttiType;
+  propRtti : TRttiProperty;
+  vTabela : TTabela;
+  vCampo : TCampo;
   vSets, vWhere : String;
   I : Integer;
 begin
-  vMapping := GetMappingObj(Self);
+  ctxRtti := TRttiContext.Create;
+  typeRtti := ctxRtti.GetType(Self.ClassType);
+  vTabela := GetTabela(typeRtti);
 
   vWhere := '';
   vSets := '';
-  with vMapping.Campos do
-    for I := 0 to Count - 1 do
-      with PmCampo(Items[I])^ do
+  for propRtti in typeRtti.GetProperties() do begin
+    vCampo := GetCampo(typeRtti, propRtti.Name);
+    if Assigned(vCampo) then
+      with vCampo do
         if Tipo in [mMapping.tfKey] then
-          AddString(vWhere, Campo + ' = ' + GetValueStr(Self, Atributo), ' and ')
+          AddString(vWhere, Campo + ' = ' + GetValueStr(Self, propRtti.Name), ' and ')
         else
-          AddString(vSets, Campo + ' = ' + GetValueStr(Self, Atributo), ', ');
+          AddString(vSets, Campo + ' = ' + GetValueStr(Self, propRtti.Name), ', ');
+  end;
 
   Result :=
-    'update ' + vMapping.Tabela.Nome +
+    'update ' + vTabela.Nome +
     ' set ' + vSets +
     ' where ' + vWhere;
 
-  FreeMapping(vMapping);
+  ctxRtti.Free;
 end;
 
 function TmComando.GetDelete(): String;
 var
-  vMapping : PmMapping;
+  ctxRtti : TRttiContext;
+  typeRtti : TRttiType;
+  propRtti : TRttiProperty;
+  vTabela : TTabela;
+  vCampo : TCampo;
   vWhere : String;
   I : Integer;
 begin
-  vMapping := GetMappingObj(Self);
+  ctxRtti := TRttiContext.Create;
+  typeRtti := ctxRtti.GetType(Self.ClassType);
+  vTabela := GetTabela(typeRtti);
 
   vWhere := '';
-  with vMapping.Campos do
-    for I := 0 to Count - 1 do
-      with PmCampo(Items[I])^ do
+  for propRtti in typeRtti.GetProperties() do begin
+    vCampo := GetCampo(typeRtti, propRtti.Name);
+    if Assigned(vCampo) then
+      with vCampo do
         if Tipo in [mMapping.tfKey] then
-          AddString(vWhere, Campo + ' = ' + GetValueStr(Self, Atributo), ' and ');
+          AddString(vWhere, Campo + ' = ' + GetValueStr(Self, propRtti.Name), ' and ');
+  end;
 
   Result :=
-    'delete from ' + vMapping.Tabela.Nome +
+    'delete from ' + vTabela.Nome +
     ' where ' + vWhere;
 
-  FreeMapping(vMapping);
+  ctxRtti.Free;
 end;
 
 end.

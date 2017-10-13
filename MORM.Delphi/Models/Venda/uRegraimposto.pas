@@ -4,7 +4,7 @@ interface
 
 uses
   Classes, SysUtils,
-  mMapping, mCollection, mCollectionItem;
+  mCollection, mCollectionItem;
 
 type
   TRegraimposto = class(TmCollectionItem)
@@ -23,7 +23,6 @@ type
   public
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
-    function GetMapping() : PmMapping; override;
   published
     property Id_Regrafiscal : Integer read fId_Regrafiscal write fId_Regrafiscal;
     property Cd_Imposto : Integer read fCd_Imposto write fCd_Imposto;
@@ -43,7 +42,7 @@ type
     function GetItem(Index: Integer): TRegraimposto;
     procedure SetItem(Index: Integer; Value: TRegraimposto);
   public
-    constructor Create(AOwner: TCollection);
+    constructor Create(AItemClass: TCollectionItemClass); override;
     function Add: TRegraimposto;
     property Items[Index: Integer]: TRegraimposto read GetItem write SetItem; default;
   end;
@@ -64,34 +63,9 @@ begin
   inherited;
 end;
 
-function TRegraimposto.GetMapping: PmMapping;
-begin
-  Result := New(PmMapping);
-
-  Result.Tabela := New(PmTabela);
-  with Result.Tabela^ do begin
-    Nome := 'REGRAIMPOSTO';
-  end;
-
-  Result.Campos := TmCampos.Create;
-  with Result.Campos do begin
-    Add('Id_Regrafiscal', 'ID_REGRAFISCAL', tfKey);
-    Add('Cd_Imposto', 'CD_IMPOSTO', tfKey);
-    Add('U_Version', 'U_VERSION', tfNul);
-    Add('Cd_Operador', 'CD_OPERADOR', tfReq);
-    Add('Dt_Cadastro', 'DT_CADASTRO', tfReq);
-    Add('Pr_Aliquota', 'PR_ALIQUOTA', tfReq);
-    Add('Pr_Basecalculo', 'PR_BASECALCULO', tfReq);
-    Add('Cd_Cst', 'CD_CST', tfReq);
-    Add('Cd_Csosn', 'CD_CSOSN', tfNul);
-    Add('In_Isento', 'IN_ISENTO', tfReq);
-    Add('In_Outro', 'IN_OUTRO', tfReq);
-  end;
-end;
-
 { TRegraimpostos }
 
-constructor TRegraimpostos.Create(AOwner: TCollection);
+constructor TRegraimpostos.Create(AItemClass: TCollectionItemClass);
 begin
   inherited Create(TRegraimposto);
 end;

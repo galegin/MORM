@@ -7,7 +7,7 @@ uses
   mCollection, mCollectionItem, mMapping;
 
 type
-  [Tabela('OPERACAO')]
+  [TTabela('OPERACAO')]
   TOperacao = class(TmCollectionItem)
   private
     fId_Operacao: String;
@@ -25,27 +25,27 @@ type
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
   published
-    [Campo('ID_OPERACAO', tfKey)]
+    [TCampo('ID_OPERACAO', tfKey)]
     property Id_Operacao : String read fId_Operacao write fId_Operacao;
-    [Campo('U_VERSION', tfNul)]
+    [TCampo('U_VERSION', tfNul)]
     property U_Version : String read fU_Version write fU_Version;
-    [Campo('CD_OPERADOR', tfReq)]
+    [TCampo('CD_OPERADOR', tfReq)]
     property Cd_Operador : Integer read fCd_Operador write fCd_Operador;
-    [Campo('DT_CADASTRO', tfReq)]
+    [TCampo('DT_CADASTRO', tfReq)]
     property Dt_Cadastro : TDateTime read fDt_Cadastro write fDt_Cadastro;
-    [Campo('DS_OPERACAO', tfReq)]
+    [TCampo('DS_OPERACAO', tfReq)]
     property Ds_Operacao : String read fDs_Operacao write fDs_Operacao;
-    [Campo('TP_MODELONF', tfReq)]
+    [TCampo('TP_MODELONF', tfReq)]
     property Tp_Modelonf : Integer read fTp_Modelonf write fTp_Modelonf;
-    [Campo('TP_MODALIDADE', tfReq)]
+    [TCampo('TP_MODALIDADE', tfReq)]
     property Tp_Modalidade : Integer read fTp_Modalidade write fTp_Modalidade;
-    [Campo('TP_OPERACAO', tfReq)]
+    [TCampo('TP_OPERACAO', tfReq)]
     property Tp_Operacao : Integer read fTp_Operacao write fTp_Operacao;
-    [Campo('CD_SERIE', tfReq)]
+    [TCampo('CD_SERIE', tfReq)]
     property Cd_Serie : String read fCd_Serie write fCd_Serie;
-    [Campo('CD_CFOP', tfReq)]
+    [TCampo('CD_CFOP', tfReq)]
     property Cd_Cfop : Integer read fCd_Cfop write fCd_Cfop;
-    [Campo('ID_REGRAFISCAL', tfReq)]
+    [TCampo('ID_REGRAFISCAL', tfReq)]
     property Id_Regrafiscal : Integer read fId_Regrafiscal write fId_Regrafiscal;
   end;
 

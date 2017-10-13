@@ -12,7 +12,7 @@ type
 
   TmCollectionItem = class(TCollectionItem)
   private
-    fRelacao : PmRelacao;
+    fRelacao : TRelacao;
   protected
     function QueryInterface(const IID: TGUID; out Obj): HResult; stdcall;
     function _AddRef: Integer; stdcall;
@@ -21,10 +21,8 @@ type
     constructor Create(Collection: TCollection); override;
     destructor Destroy; override;
 
-    function GetMapping() : PmMapping; virtual;
-
     procedure SetRelacao(AOwner : TObject; ACampos : String);
-    function GetRelacao() : PmRelacao;
+    function GetRelacao() : TRelacao;
   published
   end;
 
@@ -63,30 +61,12 @@ end;
 
 //--
 
-function TmCollectionItem.GetMapping: PmMapping;
-begin
-  Result := New(PmMapping);
-
-  Result.Tabela := New(PmTabela);
-  with Result.Tabela^ do begin
-    Nome := UpperCase(Copy(ClassName, 2, Length(ClassName)));
-  end;
-
-  Result.Campos := TmCampos.Create; // mObjeto
-  with Result.Campos do begin
-  end;
-end;
-
-//--
-
 procedure TmCollectionItem.SetRelacao(AOwner : TObject; ACampos : String);
 begin
-  fRelacao := New(PmRelacao);
-  fRelacao.Owner := AOwner;
-  fRelacao.Campos := ACampos;
+  fRelacao := TRelacao.Create(AOwner, ACampos);
 end;
 
-function TmCollectionItem.GetRelacao: PmRelacao;
+function TmCollectionItem.GetRelacao: TRelacao;
 begin
   Result := fRelacao;
 end;

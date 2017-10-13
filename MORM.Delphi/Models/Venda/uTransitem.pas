@@ -47,7 +47,6 @@ type
   public
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
-    function GetMapping() : PmMapping; override;
   published
     property Id_Transacao : String read fId_Transacao write fId_Transacao;
     property Nr_Item : Integer read fNr_Item write fNr_Item;
@@ -90,7 +89,7 @@ type
     function GetItem(Index: Integer): TTransitem;
     procedure SetItem(Index: Integer; Value: TTransitem);
   public
-    constructor Create(AOwner: TCollection);
+    constructor Create(AItemClass: TCollectionItemClass); override;
     function Add: TTransitem;
     property Items[Index: Integer]: TTransitem read GetItem write SetItem; default;
   end;
@@ -116,43 +115,6 @@ begin
 
   inherited;
 end;
-
-function TTransitem.GetMapping: PmMapping;
-begin
-  Result := New(PmMapping);
-
-  Result.Tabela := New(PmTabela);
-  with Result.Tabela^ do begin
-    Nome := 'TRANSITEM';
-  end;
-
-  Result.Campos := TmCampos.Create;
-  with Result.Campos do begin
-    Add('Id_Transacao', 'ID_TRANSACAO', tfKey);
-    Add('Nr_Item', 'NR_ITEM', tfKey);
-    Add('U_Version', 'U_VERSION', tfNul);
-    Add('Cd_Operador', 'CD_OPERADOR', tfReq);
-    Add('Dt_Cadastro', 'DT_CADASTRO', tfReq);
-    Add('Id_Produto', 'ID_PRODUTO', tfReq);
-    Add('Cd_Produto', 'CD_PRODUTO', tfReq);
-    Add('Ds_Produto', 'DS_PRODUTO', tfReq);
-    Add('Cd_Cfop', 'CD_CFOP', tfReq);
-    Add('Cd_Especie', 'CD_ESPECIE', tfReq);
-    Add('Cd_Ncm', 'CD_NCM', tfReq);
-    Add('Qt_Item', 'QT_ITEM', tfReq);
-    Add('Vl_Custo', 'VL_CUSTO', tfReq);
-    Add('Vl_Unitario', 'VL_UNITARIO', tfReq);
-    Add('Vl_Item', 'VL_ITEM', tfReq);
-    Add('Vl_Variacao', 'VL_VARIACAO', tfReq);
-    Add('Vl_Variacaocapa', 'VL_VARIACAOCAPA', tfReq);
-    Add('Vl_Frete', 'VL_FRETE', tfReq);
-    Add('Vl_Seguro', 'VL_SEGURO', tfReq);
-    Add('Vl_Outro', 'VL_OUTRO', tfReq);
-    Add('Vl_Despesa', 'VL_DESPESA', tfReq);
-  end;
-end;
-
-//--
 
 function TTransitem.GetVl_Desconto: Real;
 begin
@@ -215,7 +177,7 @@ end;
 
 { TTransitems }
 
-constructor TTransitems.Create(AOwner: TCollection);
+constructor TTransitems.Create(AItemClass: TCollectionItemClass);
 begin
   inherited Create(TTransitem);
 end;

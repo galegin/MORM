@@ -7,7 +7,7 @@ uses
   mCollection, mCollectionItem, mMapping;
 
 type
-  [Tabela('CAIXACONT')]
+  [TTabela('CAIXACONT')]
   TCaixacont = class(TmCollectionItem)
   private
     fId_Caixa: Integer;
@@ -24,25 +24,25 @@ type
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
   published
-    [Campo('ID_CAIXA', tfKey)]
+    [TCampo('ID_CAIXA', tfKey)]
     property Id_Caixa : Integer read fId_Caixa write fId_Caixa;
-    [Campo('ID_HISTREL', tfKey)]
+    [TCampo('ID_HISTREL', tfKey)]
     property Id_Histrel : Integer read fId_Histrel write fId_Histrel;
-    [Campo('U_VERSION', tfNul)]
+    [TCampo('U_VERSION', tfNul)]
     property U_Version : String read fU_Version write fU_Version;
-    [Campo('CD_OPERADOR', tfReq)]
+    [TCampo('CD_OPERADOR', tfReq)]
     property Cd_Operador : Integer read fCd_Operador write fCd_Operador;
-    [Campo('DT_CADASTRO', tfReq)]
+    [TCampo('DT_CADASTRO', tfReq)]
     property Dt_Cadastro : TDateTime read fDt_Cadastro write fDt_Cadastro;
-    [Campo('VL_CONTADO', tfReq)]
+    [TCampo('VL_CONTADO', tfReq)]
     property Vl_Contado : Real read fVl_Contado write fVl_Contado;
-    [Campo('VL_SISTEMA', tfReq)]
+    [TCampo('VL_SISTEMA', tfReq)]
     property Vl_Sistema : Real read fVl_Sistema write fVl_Sistema;
-    [Campo('VL_RETIRADA', tfReq)]
+    [TCampo('VL_RETIRADA', tfReq)]
     property Vl_Retirada : Real read fVl_Retirada write fVl_Retirada;
-    [Campo('VL_SUPRIMENTO', tfReq)]
+    [TCampo('VL_SUPRIMENTO', tfReq)]
     property Vl_Suprimento : Real read fVl_Suprimento write fVl_Suprimento;
-    [Campo('VL_DIFERENCA', tfReq)]
+    [TCampo('VL_DIFERENCA', tfReq)]
     property Vl_Diferenca : Real read fVl_Diferenca write fVl_Diferenca;
   end;
 

@@ -7,7 +7,7 @@ uses
   mCollection, mCollectionItem, mMapping;
 
 type
-  [Tabela('CFOP')]
+  [TTabela('CFOP')]
   TCfop = class(TmCollectionItem)
   private
     fCd_Cfop: Integer;
@@ -19,15 +19,15 @@ type
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
   published
-    [Campo('CD_CFOP', tfKey)]
+    [TCampo('CD_CFOP', tfKey)]
     property Cd_Cfop : Integer read fCd_Cfop write fCd_Cfop;
-    [Campo('U_VERSION', tfNul)]
+    [TCampo('U_VERSION', tfNul)]
     property U_Version : String read fU_Version write fU_Version;
-    [Campo('CD_OPERADOR', tfReq)]
+    [TCampo('CD_OPERADOR', tfReq)]
     property Cd_Operador : Integer read fCd_Operador write fCd_Operador;
-    [Campo('DT_CADASTRO', tfReq)]
+    [TCampo('DT_CADASTRO', tfReq)]
     property Dt_Cadastro : TDateTime read fDt_Cadastro write fDt_Cadastro;
-    [Campo('DS_CFOP', tfReq)]
+    [TCampo('DS_CFOP', tfReq)]
     property Ds_Cfop : String read fDs_Cfop write fDs_Cfop;
   end;
 

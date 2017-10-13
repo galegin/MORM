@@ -25,7 +25,6 @@ type
   public
     constructor Create(ACollection: TCollection); override;
     destructor Destroy; override;
-    function GetMapping() : PmMapping; override;
   published
     property Id_Operacao : String read fId_Operacao write fId_Operacao;
     property U_Version : String read fU_Version write fU_Version;
@@ -46,7 +45,7 @@ type
     function GetItem(Index: Integer): TOperacao;
     procedure SetItem(Index: Integer; Value: TOperacao);
   public
-    constructor Create(AOwner: TCollection);
+    constructor Create(AItemClass: TCollectionItemClass); override;
     function Add: TOperacao;
     property Items[Index: Integer]: TOperacao read GetItem write SetItem; default;
   end;
@@ -70,34 +69,9 @@ begin
   inherited;
 end;
 
-function TOperacao.GetMapping: PmMapping;
-begin
-  Result := New(PmMapping);
-
-  Result.Tabela := New(PmTabela);
-  with Result.Tabela^ do begin
-    Nome := 'OPERACAO';
-  end;
-
-  Result.Campos := TmCampos.Create;
-  with Result.Campos do begin
-    Add('Id_Operacao', 'ID_OPERACAO', tfKey);
-    Add('U_Version', 'U_VERSION', tfNul);
-    Add('Cd_Operador', 'CD_OPERADOR', tfReq);
-    Add('Dt_Cadastro', 'DT_CADASTRO', tfReq);
-    Add('Ds_Operacao', 'DS_OPERACAO', tfReq);
-    Add('Tp_Modelonf', 'TP_MODELONF', tfReq);
-    Add('Tp_Modalidade', 'TP_MODALIDADE', tfReq);
-    Add('Tp_Operacao', 'TP_OPERACAO', tfReq);
-    Add('Cd_Serie', 'CD_SERIE', tfReq);
-    Add('Cd_Cfop', 'CD_CFOP', tfReq);
-    Add('Id_Regrafiscal', 'ID_REGRAFISCAL', tfReq);
-  end;
-end;
-
 { TOperacaos }
 
-constructor TOperacaos.Create(AOwner: TCollection);
+constructor TOperacaos.Create(AItemClass: TCollectionItemClass);
 begin
   inherited Create(TOperacao);
 end;
