@@ -71,7 +71,7 @@ type
     function GetItem(Index: Integer): TPessoa;
     procedure SetItem(Index: Integer; Value: TPessoa);
   public
-    constructor Create(AOwner: TCollection);
+    constructor Create(ItemClass: TCollectionItemClass); override;
     function Add: TPessoa;
     property Items[Index: Integer]: TPessoa read GetItem write SetItem; default;
   end;
@@ -133,7 +133,7 @@ end;
 
 { TPessoas }
 
-constructor TPessoas.Create(AOwner: TCollection);
+constructor TPessoas.Create(ItemClass: TCollectionItemClass);
 begin
   inherited Create(TPessoa);
 end;
