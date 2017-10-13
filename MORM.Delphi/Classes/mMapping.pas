@@ -77,7 +77,6 @@ uses
   function GetRelacaoCampos(ACampos : String) : TRelacaoCampos;
   var
     vStringArray : TmStringArray;
-    vCampo : TRelacaoCampo;
     I : Integer;
   begin
     Result := TRelacaoCampos.Create;
