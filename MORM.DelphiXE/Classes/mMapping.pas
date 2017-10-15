@@ -26,11 +26,15 @@ type
   private
     fCampo : String;
     fTipo : TTipoCampo;
+    fAtributo : String;
   public
-    constructor Create(ACampo : String; ATipo : TTipoCampo = tfNul);
+    constructor Create(ACampo : String; ATipo : TTipoCampo = tfNul; AAtributo : String = '');
     property Campo : String read fCampo;
     property Tipo : TTipoCampo read fTipo;
+    property Atributo : String read fAtributo;
   end;
+
+  TCampos = class(TList<TCampo>);
 
   //-- relacao
 
@@ -91,10 +95,11 @@ end;
 
 { TCampo }
 
-constructor TCampo.Create(ACampo: String; ATipo: TTipoCampo);
+constructor TCampo.Create(ACampo: String; ATipo: TTipoCampo; AAtributo: String);
 begin
   fCampo := ACampo;
   fTipo := ATipo;
+  fAtributo := AAtributo;
 end;
 
 { TRelacao }

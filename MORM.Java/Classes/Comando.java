@@ -30,7 +30,7 @@ public class Comando
         StringBuilder where = new StringBuilder();
 
         for (Campo campo : campos)
-            if (campo.Tipo == CampoTipo.tfKey)
+            if (campo.Tipo == CampoTipo.Key)
                 AddString(where, campo.Atributo + " = " + GetValueStr(collectionItem, campo.Atributo), " and ", "");
 
         return GetSelect(collectionItem.Class, where);
@@ -63,7 +63,7 @@ public class Comando
         StringBuilder where = new StringBuilder();
 
         for (Campo campo : campos)
-            if (campo.Tipo == CampoTipo.tfKey)
+            if (campo.Tipo == CampoTipo.Key)
                 AddString(sets, campo.Atributo + " = " + GetValueStr(collectionItem, campo.Atributo), " and ", "");
             else
                 AddString(sets, campo.Atributo + " = " + GetValueStr(collectionItem, campo.Atributo), ", ", "");
@@ -81,7 +81,7 @@ public class Comando
         StringBuilder where = new StringBuilder();
         
         for (Campo campo : campos)
-            if (campo.Tipo == CampoTipo.tfKey)
+            if (campo.Tipo == CampoTipo.Key)
                 AddString(where, campo.Atributo + " = " + GetValueStr(collectionItem, campo.Atributo), " and ", "");
         
         return

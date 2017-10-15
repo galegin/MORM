@@ -139,7 +139,6 @@ end;
 
 function TmComando.GetSelect(): String;
 var
-  vTabela : TTabela;
   vCampos : TCampos;
   vWhere : String;
   I : Integer;
@@ -156,7 +155,6 @@ begin
 
   Result := GetSelect(Self.ClassType, vWhere);
 
-  FreeAndNil(vTabela);
   FreeAndNil(vCampos);
 end;
 
