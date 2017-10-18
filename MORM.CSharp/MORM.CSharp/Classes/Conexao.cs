@@ -1,4 +1,6 @@
-namespace MORM.Reppositorio.Classes
+using System.Data.Common;
+
+namespace MORM.CSharp.Classes
 {
     public class Conexao
     {
@@ -8,6 +10,7 @@ namespace MORM.Reppositorio.Classes
         }
         
         public Parametro Parametro { get; private set; }
+        public DbConnection Connection { get; private set; }
         
         public void ExecComando(string cmd)
         {
@@ -16,7 +19,7 @@ namespace MORM.Reppositorio.Classes
             command.ExecuteNonQuery();
         }
 
-        public DataReader GetConsulta(string sql)
+        public DbDataReader GetConsulta(string sql)
         {
             var command = Connection.CreateCommand();
             command.CommandText = sql;
