@@ -16,15 +16,15 @@ public class CollectionItem
     	return null;
     }
     
-    protected Relacao relacao;
+    private Relacao relacao;
     
     public void SetRelacao(Object owner, String campos)
     {
-        //relacao = new Relacao(owner, campos);
+    	this.relacao = new Mapping().new Relacao(owner, campos);
     }
 
     public Relacao GetRelacao()
     {
-        return relacao;
+        return this.relacao;
     }
 }

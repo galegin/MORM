@@ -13,8 +13,12 @@ type
   private
   protected
   public
+    function GetWhereKey() : String;
+    function GetWhereAll() : String;
+
     class function GetSelect(AClass : TClass; AWhere : String = '') : String; overload;
     function GetSelect() : String; overload;
+
     function GetInsert() : String;
     function GetUpdate() : String;
     function GetDelete() : String;
@@ -108,6 +112,48 @@ implementation
 
 { TmComando }
 
+function TmComando.GetWhereKey() : String;
+var
+  vCampos : TCampos;
+  vWhere : String;
+  I : Integer;
+begin
+  vCampos := GetCampos(Self.ClassType);
+
+  vWhere := '';
+  with vCampos do
+    for I := 0 to Count - 1 do
+      with TCampo(Items[I]) do
+        if Tipo in [mMapping.tfKey] then
+          AddString(vWhere, Atributo + ' = ' + GetValueStr(Self, Atributo), ' and ');
+
+  Result := vWhere;
+
+  FreeAndNil(vCampos);
+end;
+
+function TmComando.GetWhereAll() : String;
+var
+  vCampos : TCampos;
+  vWhere : String;
+  I : Integer;
+begin
+  vCampos := GetCampos(Self.ClassType);
+
+  vWhere := '';
+  with vCampos do
+    for I := 0 to Count - 1 do
+      with TCampo(Items[I]) do
+        if not IsValueNull(Self, Atributo) then
+          AddString(vWhere, Atributo + ' = ' + GetValueStr(Self, Atributo), ' and ');
+
+  Result := vWhere;
+
+  FreeAndNil(vCampos);
+end;
+
+//--
+
 class function TmComando.GetSelect(AClass: TClass; AWhere: String): String;
 var
   vTabela : TTabela;
@@ -139,24 +185,13 @@ end;
 
 function TmComando.GetSelect(): String;
 var
-  vCampos : TCampos;
   vWhere : String;
-  I : Integer;
 begin
-  vTabela := GetTabela(Self.ClassType);
-  vCampos := GetCampos(Self.ClassType);
-
-  vWhere := '';
-  with vCampos do
-    for I := 0 to Count - 1 do
-      with TCampo(Items[I]) do
-        if Tipo in [mMapping.tfKey] then
-          AddString(vWhere, Atributo + ' = ' + GetValueStr(Self, Atributo), ' and ');
-
+  vWhere := GetWhereKey();
   Result := GetSelect(Self.ClassType, vWhere);
-
-  FreeAndNil(vCampos);
 end;
+
+//--
 
 function TmComando.GetInsert(): String;
 var
@@ -230,7 +265,7 @@ begin
   with vCampos do
     for I := 0 to Count - 1 do
       with TCampo(Items[I]) do
-        if Tipo in [mMapping.tfKey] then
+        if not IsValueNull(Self, Atributo) then
           AddString(vWhere, Campo + ' = ' + GetValueStr(Self, Atributo), ' and ');
 
   Result :=
