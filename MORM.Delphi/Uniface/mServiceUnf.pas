@@ -10,7 +10,6 @@ type
   TmServiceUnf = class(TComponent)
   private
     FContexto : TmContexto;
-    FInDropMemory : Boolean;
   protected
     function criarEntidade(pParams : String = '') : String; virtual;
     function setEntidade(pParams : String = '') : String; virtual;
@@ -19,7 +18,6 @@ type
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
   published
-    property _InDropMemory : Boolean read FInDropMemory write FInDropMemory;
   end;
 
 procedure Register;

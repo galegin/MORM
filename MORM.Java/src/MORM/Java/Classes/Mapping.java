@@ -73,8 +73,8 @@ public class Mapping
             Owner = owner;
             Campos = campos;
         }
-        
-        public Object Owner;
+
+		public Object Owner;
         public String Campos;
     }
     
