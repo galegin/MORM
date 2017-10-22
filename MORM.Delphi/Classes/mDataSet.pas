@@ -14,7 +14,7 @@ type
 
   TTipoRetorno = (tprAvg, tprMax, tprMin, tprSum);
 
-  TmDataSet = class(TDataSet)
+  TmDataSet = class(TClientDataSet)
   private
     fEdit : Boolean;
     function SetEdit(ACampo : String) : Boolean;

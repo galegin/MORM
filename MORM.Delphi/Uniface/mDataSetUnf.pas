@@ -52,10 +52,12 @@ type
     procedure SetPreExcluir(const Value: TDataSetNotifyEvent);
     procedure SetPreSalvar(const Value: TDataSetNotifyEvent);
   protected
+    procedure CreateFieldsTemp();
   public
+    constructor Create(AOwner: TComponent); overload; override;
     constructor Create(AOwner: TComponent;
       pCollectionItemClass : TmCollectionItemClass;
-      pContexto : TmContexto); reintroduce;
+      pContexto : TmContexto); overload;
 
     procedure Limpar();
     procedure Listar();
@@ -92,6 +94,9 @@ procedure Register;
 
 implementation
 
+uses
+  mObjeto, mValue;
+
 {- Register -------------------------------------------------------------------}
 procedure Register;
 begin
@@ -99,8 +104,12 @@ begin
 end;
 
 {- Contructor -----------------------------------------------------------------}
-constructor TmDataSetUnf.Create(
-  AOwner: TComponent;
+constructor TmDataSetUnf.Create(AOwner: TComponent);
+begin
+  inherited;
+end;
+
+constructor TmDataSetUnf.Create(AOwner: TComponent;
   pCollectionItemClass : TmCollectionItemClass;
   pContexto : TmContexto);
 begin
@@ -114,6 +123,55 @@ begin
     FContexto := pContexto
   else
     FContexto := mContexto.Instance;
+
+  CreateFieldsTemp();
+end;
+
+{- Fields ---------------------------------------------------------------------}
+
+procedure TmDataSetUnf.CreateFieldsTemp(); // mDataSet
+var
+  vValues : TmValueList;
+  vDataType : TFieldType;
+  vSize : Integer;
+//  vRequired : Boolean;
+  I : Integer;
+begin
+  if (Active) then
+    Active := False;
+
+  FieldDefs.Clear();
+
+  vValues := TmObjeto(FCollectionItem).GetValues();
+  for I := 0 to vValues.Count - 1 do begin
+    with vValues.Items[I] do begin
+
+      case Tipo of
+        tvBoolean : vDataType := ftBoolean;
+        tvDateTime : vDataType := ftDateTime;
+        tvFloat : vDataType := ftFloat;
+        tvInteger : vDataType := ftInteger;
+        tvString : vDataType := ftString;
+      else
+        vDataType := TFieldType(Ord(-1));
+      end;
+
+      if vDataType = TFieldType(Ord(-1)) then
+        Continue;
+
+      if vDataType in [ftString] then
+        vSize := 1000
+      else
+        vSize := 0;
+
+//      vRequired := (TipoField in [tfKey, tfReq]);
+
+      FieldDefs.Add(Nome, vDataType, vSize, {vRequired} False);
+    end;
+  end;
+
+  if FieldDefs.Count > 0 then
+    CreateDataSet;
 end;
 
 {- Functions ------------------------------------------------------------------}
@@ -197,9 +255,8 @@ begin
   if Assigned(FPreLimpar) then
     FPreLimpar(Self);
 
-  Last;
-  while not BOF do
-    Delete;
+  if (Active) then
+    EmptyDataSet;
 
   if Assigned(FPosLimpar) then
     FPosLimpar(Self);
