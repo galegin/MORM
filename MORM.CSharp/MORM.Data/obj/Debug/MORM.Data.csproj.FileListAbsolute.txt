@@ -1,0 +1,7 @@
+C:\Projetos\MORM\MORM.CSharp\MORM.Data\obj\Debug\MORM.Data.csprojResolveAssemblyReference.cache
+C:\Projetos\MORM\MORM.CSharp\MORM.Data\bin\Debug\MORM.Data.dll
+C:\Projetos\MORM\MORM.CSharp\MORM.Data\bin\Debug\MORM.Data.pdb
+C:\Projetos\MORM\MORM.CSharp\MORM.Data\bin\Debug\MORM.Util.dll
+C:\Projetos\MORM\MORM.CSharp\MORM.Data\bin\Debug\MORM.Util.pdb
+C:\Projetos\MORM\MORM.CSharp\MORM.Data\obj\Debug\MORM.Data.dll
+C:\Projetos\MORM\MORM.CSharp\MORM.Data\obj\Debug\MORM.Data.pdb
