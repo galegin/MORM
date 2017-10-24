@@ -15,7 +15,7 @@ namespace MORM.Data.Classes
         
         public static Tabela GetTabela(this Type type)        
         {
-        	if (type == typeof(CollectionItem))
+        	if (type.GetType().IsInstanceOfType(CollectionItem))
             {
                 var collection = Activator.CreateInstance(type) as CollectionItem;
                 return collection.GetTabela();
@@ -28,7 +28,7 @@ namespace MORM.Data.Classes
 
         public static Campos GetCampos(this Type type)
         {
-        	if (type == typeof(CollectionItem))
+        	if (type.GetType().IsInstanceOfType(CollectionItem))
             {
                 var collection = Activator.CreateInstance(type) as CollectionItem;
                 return collection.GetCampos();

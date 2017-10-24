@@ -46,7 +46,7 @@ namespace MORM.Data.Classes
                         prop.PropertyType == typeof(double) ? Convert.ToDouble(dataReader.GetValue(i)) :
                         prop.PropertyType == typeof(int) ? Convert.ToInt32(dataReader.GetValue(i)) :
                         prop.PropertyType == typeof(string) ? Convert.ToString(dataReader.GetValue(i)) : dataReader.GetValue(i));
-                    prop.SetValue(dataReader, value, null);
+                    prop.SetValue(collectionItem, value, null);
                 }
             }            
         }
@@ -57,8 +57,18 @@ namespace MORM.Data.Classes
         }        	
         
         //-- relacao
-
+        
         private void SetRelacaoLista(object obj)
+        {
+            foreach (var prop in obj.GetType().GetProperties())
+            {
+                var val = prop.GetValue(obj, new object[] {});
+                if (val.GetType() == typeof(Collection) || val.GetType() == typeof(CollectionItem))
+                    SetRelacao(val);
+            }
+        }
+
+        private void SetRelacao(object obj)
         {
             Relacao relacao = null;
             if (obj.GetType() == typeof(Collection))
@@ -84,7 +94,7 @@ namespace MORM.Data.Classes
 
         public Collection GetLista(Type collectionClass, string where)
         {
-            var collection = Activator.CreateInstance(collectionClass) as Collection;
+            var collection = new Collection(collectionClass);
             GetLista(collection, where);
             return collection;
         }
@@ -93,7 +103,7 @@ namespace MORM.Data.Classes
         {
             var sql = collection.CollectionItemClass.GetSelect(where);
             var dataReader = Conexao.GetConsulta(sql);
-            while (dataReader.NextResult())
+            while (dataReader.Read())
             {
                 var collectionItem = collection.AddItem();
                 SetValue(dataReader, collectionItem);
@@ -127,7 +137,7 @@ namespace MORM.Data.Classes
         {
         	var sql = collectionItem.GetType().GetSelect(where);
             var dataReader = Conexao.GetConsulta(sql);
-            if (dataReader.NextResult())
+            if (dataReader.Read())
             {
                 SetValue(dataReader, collectionItem);
                 SetRelacaoLista(collectionItem);
@@ -140,7 +150,7 @@ namespace MORM.Data.Classes
             var sql = collectionItem.GetSelect();
             var dataReader = Conexao.GetConsulta(sql);
             var cmd = string.Empty;
-            if (dataReader.NextResult())
+            if (dataReader.Read())
                 cmd = collectionItem.GetUpdate();
             else
                 cmd = collectionItem.GetInsert();
