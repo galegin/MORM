@@ -10,10 +10,22 @@ public class Conexao
     public Conexao(Parametro parametro)
     {
         Parametro = parametro;
+        
+        ConnectionString = 
+        	ProviderFactory.GetConnectionStringByProvider(parametro.ProviderName)
+        	.replace("@database", parametro.Database)
+        	.replace("@username", parametro.Username)
+        	.replace("@password", parametro.Password)
+        	.replace("@hostname", parametro.Hostname);
+        
+        Connection = 
+        	ProviderFactory.CreateConnection(parametro.ProviderName, ConnectionString);
+        //Connection.open();
     }
     
     public Parametro Parametro;
-    private Connection Connection;
+    public String ConnectionString; 
+    public Connection Connection;
     
     public ResultSet GetConsulta(String sql)
     {

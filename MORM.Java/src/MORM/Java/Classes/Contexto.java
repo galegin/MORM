@@ -11,10 +11,12 @@ public class Contexto
     {
         Parametro = parametro;
         Conexao = new Conexao(parametro);
+        Comando = new Comando(parametro.TipoDatabase);
     }
     
     public Parametro Parametro;
     public Conexao Conexao;
+    public Comando Comando;
     
     //-- value
     

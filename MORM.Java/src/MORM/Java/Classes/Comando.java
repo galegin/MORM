@@ -7,7 +7,14 @@ import MORM.Java.Classes.Mapping.Tabela;
 
 public class Comando
 {
-    protected static Tabela GetTabela(Class<? extends CollectionItem> collectionItemClass)
+	public Comando(TipoDatabase tipoDatabase)
+	{
+		TipoDatabase = tipoDatabase;
+	}
+	
+	public TipoDatabase TipoDatabase;
+	
+    protected Tabela GetTabela(Class<? extends CollectionItem> collectionItemClass)
     {
     	Tabela tabela = null;
 		try {
@@ -21,7 +28,7 @@ public class Comando
   		return tabela;
     }
     
-    protected static Campos GetCampos(Class<? extends CollectionItem> collectionItemClass)
+    protected Campos GetCampos(Class<? extends CollectionItem> collectionItemClass)
     {
     	Campos campos = null;
 		try {
@@ -35,17 +42,17 @@ public class Comando
   		return campos;
     }
     
-    protected static void AddString(StringBuilder str, String sub, String sep, String ini)
+    protected void AddString(StringBuilder str, String sub, String sep, String ini)
     {
     	str.append((str.length() > -1 ? sep : ini) + sub);
     }
     
-    private static String GetValueStr(CollectionItem collectionItem, String atributo) 
+    private String GetValueStr(CollectionItem collectionItem, String atributo) 
     {
 		return null;
 	}
 	
-	public static String GetSelect(Class<? extends CollectionItem> collectionItemClass, String where)
+	public String GetSelect(Class<? extends CollectionItem> collectionItemClass, String where)
     {
         Tabela tabela = GetTabela(collectionItemClass);
         Campos campos = GetCampos(collectionItemClass);
@@ -66,7 +73,7 @@ public class Comando
             ")" + (where != "" ? " where " + where : "");
     }
     
-    public static String GetSelect(CollectionItem collectionItem)
+    public String GetSelect(CollectionItem collectionItem)
     {
         Campos campos = collectionItem.GetCampos();
         StringBuilder where = new StringBuilder();
@@ -78,7 +85,7 @@ public class Comando
         return GetSelect(collectionItem.getClass(), where.toString());
     }
 
-	public static String GetInsert(CollectionItem collectionItem)
+	public String GetInsert(CollectionItem collectionItem)
     {
         Tabela tabela = collectionItem.GetTabela();
         Campos campos = collectionItem.GetCampos();
@@ -97,7 +104,7 @@ public class Comando
             ") values (" + values + ")" ;
     }
     
-    public static String GetUpdate(CollectionItem collectionItem)
+    public String GetUpdate(CollectionItem collectionItem)
     {
         Tabela tabela = collectionItem.GetTabela();
         Campos campos = collectionItem.GetCampos();
@@ -116,7 +123,7 @@ public class Comando
             " where " + where.toString();
     }
     
-    public static String GetDelete(CollectionItem collectionItem)
+    public String GetDelete(CollectionItem collectionItem)
     {
         Tabela tabela = collectionItem.GetTabela();
         Campos campos = collectionItem.GetCampos();
