@@ -1,7 +1,6 @@
 using System;
 using System.Data.Common;
 using System.Linq;
-using MORM.Util.Atributos;
 using MORM.Util.Classes;
 
 namespace MORM.Data.Classes
@@ -12,6 +11,7 @@ namespace MORM.Data.Classes
         {
             Parametro = parametro;
             Conexao = new Conexao(parametro);
+            Comando = new Comando(parametro.TipoDatabase);
         }
         
         public Contexto() : this(new Parametro())
@@ -20,6 +20,7 @@ namespace MORM.Data.Classes
         
         public Parametro Parametro { get; private set; }
         public Conexao Conexao { get; private set; }
+        public Comando Comando { get; private set; }
         
         //-- string
         
@@ -51,11 +52,6 @@ namespace MORM.Data.Classes
             }            
         }
         
-        public string GetValueStr(object obj, string attr)
-        {
-        	return null;
-        }        	
-        
         //-- relacao
         
         private void SetRelacaoLista(object obj)
@@ -63,7 +59,7 @@ namespace MORM.Data.Classes
             foreach (var prop in obj.GetType().GetProperties())
             {
                 var val = prop.GetValue(obj, new object[] {});
-                if (val.GetType() == typeof(Collection) || val.GetType() == typeof(CollectionItem))
+                if (val is Collection || val is CollectionItem)
                     SetRelacao(val);
             }
         }
@@ -71,9 +67,9 @@ namespace MORM.Data.Classes
         private void SetRelacao(object obj)
         {
             Relacao relacao = null;
-            if (obj.GetType() == typeof(Collection))
+            if (obj is Collection)
                 relacao = (obj as Collection).GetRelacao();
-            else if (obj.GetType() == typeof(CollectionItem))
+            else if (obj is CollectionItem)
                 relacao = (obj as CollectionItem).GetRelacao();
             else 
                 return;
@@ -82,11 +78,11 @@ namespace MORM.Data.Classes
             
             var where = string.Empty;
             foreach (var campo in campos)
-                AddString(ref where, campo.Atributo + " = " + GetValueStr(relacao.Owner, campo.AtributoRel), " and ", "");
+                AddString(ref where, campo.Atributo + " = " + Comando.GetValueStr(relacao.Owner, campo.AtributoRel), " and ", "");
 
-            if (obj.GetType() == typeof(Collection))
+            if (obj is Collection)
                 GetLista(obj as Collection, where);
-            else if (obj.GetType() == typeof(CollectionItem))
+            else if (obj is CollectionItem)
                 GetObjeto(obj as CollectionItem, where);                
         }
 
@@ -101,7 +97,7 @@ namespace MORM.Data.Classes
         
         public void GetLista(Collection collection, string where)
         {
-            var sql = collection.CollectionItemClass.GetSelect(where);
+            var sql = Comando.GetSelect(collection.CollectionItemClass, where);
             var dataReader = Conexao.GetConsulta(sql);
             while (dataReader.Read())
             {
@@ -126,16 +122,16 @@ namespace MORM.Data.Classes
         
         //-- objeto
 
-        public CollectionItem GetObjeto(Type collectionItemClass, string where)
+        public CollectionItem GetObjeto(Type collectionItemClass, string where = null)
         {
             var collectionItem = Activator.CreateInstance(collectionItemClass) as CollectionItem;
-            GetObjeto(collectionItem, where);
+            GetObjeto(collectionItem, where ?? Comando.GetWhereKey(collectionItem));
             return collectionItem;
         }
         
-        public void GetObjeto(CollectionItem collectionItem, string where)
+        public void GetObjeto(CollectionItem collectionItem, string where = null)
         {
-        	var sql = collectionItem.GetType().GetSelect(where);
+        	var sql = Comando.GetSelect(collectionItem.GetType(), where ?? Comando.GetWhereKey(collectionItem));
             var dataReader = Conexao.GetConsulta(sql);
             if (dataReader.Read())
             {
@@ -147,20 +143,20 @@ namespace MORM.Data.Classes
         
         public void SetObjeto(CollectionItem collectionItem)
         {
-            var sql = collectionItem.GetSelect();
+            var sql = Comando.GetSelect(collectionItem);
             var dataReader = Conexao.GetConsulta(sql);
             var cmd = string.Empty;
             if (dataReader.Read())
-                cmd = collectionItem.GetUpdate();
+                cmd = Comando.GetUpdate(collectionItem);
             else
-                cmd = collectionItem.GetInsert();
+                cmd = Comando.GetInsert(collectionItem);
             Conexao.ExecComando(cmd);
             dataReader.Close();
         }
         
         public void RemObjeto(CollectionItem collectionItem)
         {
-            var cmd = collectionItem.GetDelete();
+            var cmd = Comando.GetDelete(collectionItem);
             Conexao.ExecComando(cmd);
         }
     }

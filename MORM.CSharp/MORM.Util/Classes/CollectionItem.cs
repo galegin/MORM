@@ -1,5 +1,4 @@
 using System;
-using MORM.Util.Atributos;
 
 namespace MORM.Util.Classes
 {

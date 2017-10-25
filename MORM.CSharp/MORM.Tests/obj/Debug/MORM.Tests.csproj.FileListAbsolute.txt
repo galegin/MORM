@@ -1,5 +1,0 @@
-C:\Projetos\MORM\MORM.CSharp\MORM.Tests\bin\Debug\MORM.Tests.exe.config
-C:\Projetos\MORM\MORM.CSharp\MORM.Tests\bin\Debug\MORM.Tests.exe
-C:\Projetos\MORM\MORM.CSharp\MORM.Tests\bin\Debug\MORM.Tests.pdb
-C:\Projetos\MORM\MORM.CSharp\MORM.Tests\obj\Debug\MORM.Tests.exe
-C:\Projetos\MORM\MORM.CSharp\MORM.Tests\obj\Debug\MORM.Tests.pdb

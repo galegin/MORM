@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using MORM.Util.Atributos;
 
 namespace MORM.Util.Classes
 {

@@ -17,6 +17,7 @@ namespace MORM.Data.Classes
             
             Connection = 
                 ProviderFactory.CreateDbConnection(parametro.ProviderName, ConnectionString);
+            Connection.Open();    
         }
         
         public Parametro Parametro { get; private set; }

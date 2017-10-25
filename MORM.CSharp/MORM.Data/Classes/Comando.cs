@@ -1,21 +1,25 @@
 using System;
 using System.Linq;
-using MORM.Util.Atributos;
 using MORM.Util.Classes;
 
 namespace MORM.Data.Classes
 {
-    public static class Comando
+    public class Comando
     {
+        public Comando(TipoDatabase tipoDatabase)
+        {
+            TipoDatabase = tipoDatabase;
+        }
+        
         //-- tipo database
 
-        public static TipoDatabase TipoDatabase { get; set; } //= TipoDatabase.Oracle;
+        public TipoDatabase TipoDatabase { get; private set; }
         
         //-- tabela
         
-        public static Tabela GetTabela(this Type type)        
+        public Tabela GetTabela(Type type)        
         {
-        	if (type.GetType().IsInstanceOfType(CollectionItem))
+        	if (type.GetType().IsInstanceOfType(typeof(CollectionItem)))
             {
                 var collection = Activator.CreateInstance(type) as CollectionItem;
                 return collection.GetTabela();
@@ -26,9 +30,9 @@ namespace MORM.Data.Classes
         
         //-- campos
 
-        public static Campos GetCampos(this Type type)
+        public Campos GetCampos(Type type)
         {
-        	if (type.GetType().IsInstanceOfType(CollectionItem))
+        	if (type.GetType().IsInstanceOfType(typeof(CollectionItem)))
             {
                 var collection = Activator.CreateInstance(type) as CollectionItem;
                 return collection.GetCampos();
@@ -39,7 +43,7 @@ namespace MORM.Data.Classes
 
         //-- value
 
-        private static string GetValueStr(this object obj, string atributo)
+        public string GetValueStr(object obj, string atributo)
         {
             var value = obj.GetType().GetProperties()
             	.FirstOrDefault(x => x.Name == atributo)
@@ -55,19 +59,61 @@ namespace MORM.Data.Classes
             	value is string ? "'" + value.ToString().Replace("'", "''") + "'" : value.ToString());
         }
 
+        private bool IsValueNull(object obj, string atributo)
+        {
+            var value = obj.GetType().GetProperties()
+            	.FirstOrDefault(x => x.Name == atributo)
+            	.GetValue(obj);
+            
+            return (
+                value == null ? true :
+            	value is bool ? (!((bool)value)) :
+            	value is DateTime ? (((DateTime)value) == DateTime.MinValue) :
+            	value is decimal ? (((decimal)value) == 0) :
+            	value is double ? (((double)value) == 0) :
+            	value is int ? (((int)value) == 0) :
+            	value is string ? (value.ToString() == "") : true);
+        }
+
         //-- string
 
-        public static void AddString(ref string str, string val, string sep, string ini = "")
+        public void AddString(ref string str, string val, string sep, string ini = "")
         {
             str += (!string.IsNullOrWhiteSpace(str) ? sep : ini) + val;
+        }
+        
+        //-- where
+
+        public string GetWhereKey(object obj)
+        {
+            var campos = GetCampos(obj.GetType());
+            var where = string.Empty;
+
+            foreach (var campo in campos)
+                if (campo.Tipo == CampoTipo.Key)
+                    AddString(ref where, campo.Atributo + " = " + GetValueStr(obj, campo.Atributo), " and ");
+
+            return where;
+        }
+
+        public string GetWhereAll(object obj)
+        {
+            var campos = GetCampos(obj.GetType());
+            var where = string.Empty;
+
+            foreach (var campo in campos)
+                if (!IsValueNull(obj, campo.Atributo))
+                    AddString(ref where, campo.Atributo + " = " + GetValueStr(obj, campo.Atributo), " and ");
+
+            return where;
         }
 
         //-- select
 
-        public static string GetSelect(this Type type, string where = "")
+        public string GetSelect(Type type, string where = "")
         {
-            var tabela = type.GetTabela();
-            var campos = type.GetCampos();
+            var tabela = GetTabela(type);
+            var campos = GetCampos(type);
             var fieldsAtr = string.Empty;
             var fields = string.Empty;
 
@@ -83,31 +129,24 @@ namespace MORM.Data.Classes
                 (!string.IsNullOrWhiteSpace(where) ? " where " + where : "") ;
         }
 
-        public static string GetSelect(this object obj)
+        public string GetSelect(object obj)
         {
-            var campos = obj.GetType().GetCampos();
-            var where = string.Empty;
-
-            foreach (var campo in campos)
-                if (campo.Tipo == CampoTipo.Key)
-                    AddString(ref where, campo.Atributo + " = " + obj.GetValueStr(campo.Atributo), " and ");
-
-            return GetSelect(obj.GetType(), where);
+            return GetSelect(obj.GetType(), GetWhereKey(obj));
         }
 
         //-- insert
 
-        public static string GetInsert(this object obj)
+        public string GetInsert(object obj)
         {
-            var tabela = obj.GetType().GetTabela();
-            var campos = obj.GetType().GetCampos();
+            var tabela = GetTabela(obj.GetType());
+            var campos = GetCampos(obj.GetType());
             var fields = string.Empty;
             var values = string.Empty;
 
             foreach (var campo in campos)
             {
                 AddString(ref fields, campo.Nome, ", ");
-                AddString(ref values, obj.GetValueStr(campo.Atributo), ", ");
+                AddString(ref values, GetValueStr(obj, campo.Atributo), ", ");
             }
 
             return 
@@ -118,18 +157,18 @@ namespace MORM.Data.Classes
 
         //-- update
 
-        public static string GetUpdate(this object obj)
+        public string GetUpdate(object obj)
         {
-            var tabela = obj.GetType().GetTabela();
-            var campos = obj.GetType().GetCampos();
+            var tabela = GetTabela(obj.GetType());
+            var campos = GetCampos(obj.GetType());
             var sets = string.Empty;
             var where = string.Empty;
 
             foreach (var campo in campos)
                 if (campo.Tipo == CampoTipo.Key)
-                    AddString(ref where, campo.Nome + " = " + obj.GetValueStr(campo.Atributo), " and ");
+                    AddString(ref where, campo.Nome + " = " + GetValueStr(obj, campo.Atributo), " and ");
                 else
-                    AddString(ref sets, campo.Nome + " = " + obj.GetValueStr(campo.Atributo), ", ");
+                    AddString(ref sets, campo.Nome + " = " + GetValueStr(obj, campo.Atributo), ", ");
 
             return
                 "update " + tabela.Nome + 
@@ -139,15 +178,15 @@ namespace MORM.Data.Classes
 
         //-- delete
 
-        public static string GetDelete(this object obj)
+        public string GetDelete(object obj)
         {
-            var tabela = obj.GetType().GetTabela();
-            var campos = obj.GetType().GetCampos();
+            var tabela = GetTabela(obj.GetType());
+            var campos = GetCampos(obj.GetType());
             var where = string.Empty;
 
             foreach (var campo in campos)
                 if (campo.Tipo == CampoTipo.Key)
-                    AddString(ref where, campo.Nome + " = " + obj.GetValueStr(campo.Atributo), " and ");
+                    AddString(ref where, campo.Nome + " = " + GetValueStr(obj, campo.Atributo), " and ");
 
             return
                 "delete from " + tabela.Nome + 

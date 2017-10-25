@@ -1,5 +1,0 @@
-C:\Projetos\MORM\MORM.CSharp\MORM.CSharp\obj\Debug\MORM.CSharp.csprojResolveAssemblyReference.cache
-C:\Projetos\MORM\MORM.CSharp\MORM.CSharp\bin\Debug\MORM.CSharp.dll
-C:\Projetos\MORM\MORM.CSharp\MORM.CSharp\bin\Debug\MORM.CSharp.pdb
-C:\Projetos\MORM\MORM.CSharp\MORM.CSharp\obj\Debug\MORM.CSharp.dll
-C:\Projetos\MORM\MORM.CSharp\MORM.CSharp\obj\Debug\MORM.CSharp.pdb

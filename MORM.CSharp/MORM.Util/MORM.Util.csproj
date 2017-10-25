@@ -44,13 +44,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Atributos\Mapping.cs" />
     <Compile Include="Classes\Collection.cs" />
     <Compile Include="Classes\CollectionItem.cs" />
+    <Compile Include="Classes\Mapping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Atributos" />
     <Folder Include="Classes" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
