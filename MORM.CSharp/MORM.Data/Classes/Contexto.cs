@@ -26,7 +26,7 @@ namespace MORM.Data.Classes
         
         private void AddString(ref string str, string sub, string sep, string ini = "")
         {
-        	str += (str != "" ? sep : ini) + sub;
+            str += (str != "" ? sep : ini) + sub;
         }
         
         //-- value
@@ -131,7 +131,7 @@ namespace MORM.Data.Classes
         
         public void GetObjeto(CollectionItem collectionItem, string where = null)
         {
-        	var sql = Comando.GetSelect(collectionItem.GetType(), where ?? Comando.GetWhereKey(collectionItem));
+            var sql = Comando.GetSelect(collectionItem.GetType(), where ?? Comando.GetWhereKey(collectionItem));
             var dataReader = Conexao.GetConsulta(sql);
             if (dataReader.Read())
             {

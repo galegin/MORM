@@ -23,12 +23,12 @@ namespace MORM.Util.Classes
         
         public void SetRelacao(object owner, string campos)
         {
-        	_relacao = new Relacao(owner, campos);
+            _relacao = new Relacao(owner, campos);
         }
         
         public Relacao GetRelacao()
         {
-        	return _relacao;
+            return _relacao;
         }
     }
 }

@@ -19,7 +19,7 @@ namespace MORM.Data.Classes
         
         public Tabela GetTabela(Type type)        
         {
-        	if (type.GetType().IsInstanceOfType(typeof(CollectionItem)))
+            if (type.GetType().IsInstanceOfType(typeof(CollectionItem)))
             {
                 var collection = Activator.CreateInstance(type) as CollectionItem;
                 return collection.GetTabela();
@@ -32,7 +32,7 @@ namespace MORM.Data.Classes
 
         public Campos GetCampos(Type type)
         {
-        	if (type.GetType().IsInstanceOfType(typeof(CollectionItem)))
+            if (type.GetType().IsInstanceOfType(typeof(CollectionItem)))
             {
                 var collection = Activator.CreateInstance(type) as CollectionItem;
                 return collection.GetCampos();
@@ -46,33 +46,33 @@ namespace MORM.Data.Classes
         public string GetValueStr(object obj, string atributo)
         {
             var value = obj.GetType().GetProperties()
-            	.FirstOrDefault(x => x.Name == atributo)
-            	.GetValue(obj);
+                .FirstOrDefault(x => x.Name == atributo)
+                .GetValue(obj);
             
             return (
                 value == null ? "null" :
-            	value is bool ? "'" + ((bool)value ? "T" : "F") + "'" :
-            	value is DateTime ? TipoDatabase.GetValueData((DateTime)value) :
-            	value is decimal ? value.ToString().Replace(",", ".") :
-            	value is double ? value.ToString().Replace(",", ".") :
-            	value is int ? value.ToString() :
-            	value is string ? "'" + value.ToString().Replace("'", "''") + "'" : value.ToString());
+                value is bool ? "'" + ((bool)value ? "T" : "F") + "'" :
+                value is DateTime ? TipoDatabase.GetValueData((DateTime)value) :
+                value is decimal ? value.ToString().Replace(",", ".") :
+                value is double ? value.ToString().Replace(",", ".") :
+                value is int ? value.ToString() :
+                value is string ? "'" + value.ToString().Replace("'", "''") + "'" : value.ToString());
         }
 
         private bool IsValueNull(object obj, string atributo)
         {
             var value = obj.GetType().GetProperties()
-            	.FirstOrDefault(x => x.Name == atributo)
-            	.GetValue(obj);
+                .FirstOrDefault(x => x.Name == atributo)
+                .GetValue(obj);
             
             return (
                 value == null ? true :
-            	value is bool ? (!((bool)value)) :
-            	value is DateTime ? (((DateTime)value) == DateTime.MinValue) :
-            	value is decimal ? (((decimal)value) == 0) :
-            	value is double ? (((double)value) == 0) :
-            	value is int ? (((int)value) == 0) :
-            	value is string ? (value.ToString() == "") : true);
+                value is bool ? (!((bool)value)) :
+                value is DateTime ? (((DateTime)value) == DateTime.MinValue) :
+                value is decimal ? (((decimal)value) == 0) :
+                value is double ? (((double)value) == 0) :
+                value is int ? (((int)value) == 0) :
+                value is string ? (value.ToString() == "") : true);
         }
 
         //-- string
@@ -125,7 +125,7 @@ namespace MORM.Data.Classes
 
             return 
                 "select " + fieldsAtr + 
-            	" from (select " + fields + " from " + tabela.Nome + ")" +
+                " from (select " + fields + " from " + tabela.Nome + ")" +
                 (!string.IsNullOrWhiteSpace(where) ? " where " + where : "") ;
         }
 
@@ -151,8 +151,8 @@ namespace MORM.Data.Classes
 
             return 
                 "insert into " + tabela.Nome + 
-            	" (" + fields + 
-            	") values (" + values + ")";
+                " (" + fields + 
+                ") values (" + values + ")";
         }
 
         //-- update
@@ -172,8 +172,8 @@ namespace MORM.Data.Classes
 
             return
                 "update " + tabela.Nome + 
-            	" set " + sets + 
-            	" where " + where;
+                " set " + sets + 
+                " where " + where;
         }
 
         //-- delete
@@ -190,7 +190,7 @@ namespace MORM.Data.Classes
 
             return
                 "delete from " + tabela.Nome + 
-            	" where " + where;
+                " where " + where;
         }
     }
 }
