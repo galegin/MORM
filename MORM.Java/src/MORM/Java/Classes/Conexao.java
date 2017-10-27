@@ -18,8 +18,7 @@ public class Conexao
         	.replace("@password", parametro.Password)
         	.replace("@hostname", parametro.Hostname);
         
-        Connection = 
-        	ProviderFactory.CreateConnection(parametro.ProviderName, ConnectionString);
+        Connection = ProviderFactory.CreateConnection(parametro.ProviderName, ConnectionString, parametro.Username, parametro.Password);
         //Connection.open();
     }
     

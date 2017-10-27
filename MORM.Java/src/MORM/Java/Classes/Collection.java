@@ -2,6 +2,8 @@ package MORM.Java.Classes;
 
 import java.util.ArrayList;
 
+import MORM.Java.Classes.Mapping.Relacao;
+
 @SuppressWarnings("serial")
 public class Collection extends ArrayList<CollectionItem>
 {
@@ -24,5 +26,17 @@ public class Collection extends ArrayList<CollectionItem>
 			e.printStackTrace();
 		}
         return collectionItem;
+    }
+    
+    private Relacao relacao;
+    
+    public void SetRelacao(Object owner, String campos)
+    {
+    	this.relacao = new Mapping().new Relacao(owner, campos);
+    }
+
+    public Relacao GetRelacao()
+    {
+        return this.relacao;
     }
 }

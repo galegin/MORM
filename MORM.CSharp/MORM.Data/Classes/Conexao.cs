@@ -15,8 +15,7 @@ namespace MORM.Data.Classes
                 .Replace("@password", parametro.Password)
                 .Replace("@hostname", parametro.Hostname);
             
-            Connection = 
-                ProviderFactory.CreateDbConnection(parametro.ProviderName, ConnectionString);
+            Connection = ProviderFactory.CreateDbConnection(parametro.ProviderName, ConnectionString);
             Connection.Open();    
         }
         

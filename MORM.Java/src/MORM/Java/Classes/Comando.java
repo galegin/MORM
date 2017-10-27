@@ -1,5 +1,8 @@
 package MORM.Java.Classes;
 
+import java.lang.reflect.Field;
+import java.sql.Date;
+
 import MORM.Java.Classes.Mapping.Campo;
 import MORM.Java.Classes.Mapping.CampoTipo;
 import MORM.Java.Classes.Mapping.Campos;
@@ -49,7 +52,30 @@ public class Comando
     
     private String GetValueStr(CollectionItem collectionItem, String atributo) 
     {
-		return null;
+    	String valueStr = null;
+		try {
+			Field field = collectionItem.getClass().getField(atributo);
+	    	field.setAccessible(true);
+	    	Class<?> type = field.getType();
+	    	Object value = field.get(collectionItem);
+	    	
+	    	valueStr =
+    			value == null ? "null" :
+    			type.isAssignableFrom(Boolean.class) ? "'" + ((Boolean)value ? "T" : "F") + "'" :
+    			type.isAssignableFrom(Date.class) ? TipoDatabase.GetValueData((Date)value) :
+    			type.isAssignableFrom(Float.class) ? value.toString().replace(",", ".") :
+    		    type.isAssignableFrom(Integer.class) ? value.toString().replace(",", ".") :
+    			type.isAssignableFrom(String.class) ? "'" + value.toString().replace("'", "''") + "'" : value.toString();
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (NoSuchFieldException e) {
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		}
+		return valueStr;
 	}
 	
 	public String GetSelect(Class<? extends CollectionItem> collectionItemClass, String where)
