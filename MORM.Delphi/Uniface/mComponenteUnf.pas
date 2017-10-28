@@ -30,13 +30,17 @@ type
   function StrToTipoComponente(pStr : String) : TTipoComponenteUnf;
   function TipoComponenteToStr(pTip : TTipoComponenteUnf) : String;
 
+  procedure NewInstanceCmp(pInstance, pCmp : String);
+  function GetInstanceCmp(pInstance : String) : String;
+  procedure DelelteInstanceCmp(pInstance : String);
+
   function Instance() : TmComponenteUnf;
   procedure Destroy();
 
 implementation
 
 uses
-  mExecuteUnf;
+  mExecuteUnf, mString, mXml;
 
 const
   RTipoComponenteUnfArray : Array [TTipoComponenteUnf] Of RTipoComponenteUnf = (
@@ -95,6 +99,26 @@ var
     Result := RTipoComponenteUnfArray[pTip].Codigo
   end;
 
+  //--
+
+var
+  _instanceList : String;
+
+  procedure NewInstanceCmp(pInstance, pCmp : String);
+  begin
+    TmXml.putitem(_instanceList, pInstance, pCmp);
+  end;
+
+  function GetInstanceCmp(pInstance : String) : String;
+  begin
+    Result := TmXml.itemS(pInstance, _instanceList);
+  end;
+
+  procedure DelelteInstanceCmp(pInstance : String);
+  begin
+    TmXml.delitem(pInstance, _instanceList);
+  end;
+
 { TmComponenteUnf }
 
 constructor TmComponenteUnf.create(AOwner: TComponent);
@@ -116,7 +140,7 @@ end;
 
 function TmComponenteUnf.GetComponenteUnf(pCmp : String) : TObject;
 var
-  vClassName : String;
+  vClassName, vCmpName : String;
   vIndex : Integer;
 begin
   Result := nil;
@@ -128,6 +152,8 @@ begin
       Exit;
     end;
   end;
+
+  vCmpName := TmString.IfNull(GetInstanceCmp(pCmp), pCmp);
 
   vClassName := GetClasseComponenteUnf(pCmp);
   if (vClassName = '') then

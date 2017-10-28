@@ -17,13 +17,17 @@ function activateCmp(pComponente, pMetodo, pParams : String) : String;
 const
   cDS_METHOD = 'TmActivateUnf.activateCmp()';
 var
-  vClassName : String;
+  vObject : TObject;
 begin
-  vClassName := TmComponenteUnf.GetClasseComponenteUnf(pComponente);
-  if vClassName <> '' then
-    Result := mExecuteUnf.execObjeto(vClassName, pMetodo, pParams)
-  else
-    Result := '';
+  try
+    vObject := mComponenteUnf.Instance.GetComponenteUnf(pComponente);
+    if Assigned(vObject) then
+      Result := mExecuteUnf.execObjeto(vObject, pMetodo, pParams)
+    else
+      Result := '';
+  finally
+    mComponenteUnf.Instance.RemComponenteUnf(pComponente);
+  end;
 end;
 
 function activateCmp(pComponente, pMetodo : String; pCdEmpresa : Real; pParams : String) : String;

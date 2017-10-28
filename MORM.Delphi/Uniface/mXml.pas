@@ -13,6 +13,8 @@ type
 
     class procedure putitem(var AXml : String; const ACod : String; AVal : Variant);
 
+    class procedure delitem(const ACod : String; var AXml : String);
+
     class function itemS(const ACod, AXml : String) : String;
 
     class function itemB(const ACod, AXml : String) : Boolean;
@@ -54,6 +56,18 @@ begin
   AXml := AXml +
     '<' + UpperCase(ACod) + '>' + VarToStr(AVal) +
     '</' + UpperCase(ACod) + '>';
+end;
+
+//--
+
+class procedure TmXml.delitem(const ACod : String; var AXml : String);
+var
+  vVal : String;
+begin
+  vVal :=
+    '<' + UpperCase(ACod) + '>' + itemS(ACod, AXml) +
+    '</' + UpperCase(ACod) + '>';
+  AXml := AnsiReplaceStr(AXml, vVal, '');
 end;
 
 //--

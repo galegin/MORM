@@ -9,6 +9,8 @@ uses
 type
   TmServiceUnf = class(TComponent)
   private
+    FNmComponente : String;
+    FInstance : Boolean;
     FContexto : TmContexto;
   protected
     function criarEntidade(pParams : String = '') : String; virtual;
@@ -25,7 +27,7 @@ procedure Register;
 implementation
 
 uses
-  mException, mLogger;
+  mException, mComponenteUnf, mString, mLogger;
 
 {- Register -------------------------------------------------------------------}
 procedure Register;
@@ -38,7 +40,13 @@ constructor TmServiceUnf.Create(AOwner: TComponent);
 begin
   inherited;
 
-  FContexto := mContexto.Instance;
+  FNmComponente := TmString.RightStr(ClassName, 'T_');
+  FInstance := (GetInstanceCmp(FNmComponente + 'X') <> '');
+
+  if FInstance then
+    FContexto := TmContexto.Create(nil)
+  else
+    FContexto := mContexto.Instance;
 
   criarEntidade();
   setEntidade();
@@ -48,6 +56,9 @@ end;
 {- Destructor -----------------------------------------------------------------}
 destructor TmServiceUnf.Destroy;
 begin
+  if FInstance then
+    FreeAndNil(FContexto);
+
   inherited;
 end;
 
