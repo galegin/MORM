@@ -57,7 +57,7 @@ type
     constructor Create(AOwner: TComponent); overload; override;
     constructor Create(AOwner: TComponent;
       pCollectionItemClass : TmCollectionItemClass;
-      pContexto : TmContexto); overload;
+      pContexto : TmContexto); reintroduce; overload; 
 
     procedure Limpar();
     procedure Listar();
@@ -273,7 +273,7 @@ begin
   Limpar();
 
   ToObject(FCollectionItem);
-  vWhere := TmComando(FCollectionItem).GetWhereAll();
+  vWhere := FContexto.Comando.GetWhereAll(FCollectionItem);
   FContexto.GetLista(FCollection, vWhere);
 
   for I := 0 to FCollection.Count - 1 do begin
@@ -296,7 +296,7 @@ begin
     FPreConsultar(Self);
 
   ToObject(FCollectionItem);
-  vWhere := TmComando(FCollectionItem).GetWhereKey();
+  vWhere := FContexto.Comando.GetWhereKey(FCollectionItem);
   FContexto.GetObjeto(FCollectionItem, vWhere);
   FromObject(FCollectionItem);
 

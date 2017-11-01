@@ -6,27 +6,32 @@ interface
 
 uses
   Classes, SysUtils, StrUtils, TypInfo,
-  mCollection, mCollectionItem, mMapping, mValue;
+  mTipoDatabase, mCollection, mCollectionItem, mMapping, mValue;
 
 type
   TmComando = class(TObject)
   private
+    fTipoDatabase : TTipoDatabase;
   protected
   public
-    function GetWhereKey() : String;
-    function GetWhereAll() : String;
+    constructor Create(ATipoDatabase : TTipoDatabase);
+
+    function GetValueStr(AObject: TObject; ANome : String) : String;
+
+    function GetWhereKey(AObject : TObject) : String;
+    function GetWhereAll(AObject : TObject) : String;
 
     class function GetSelect(AClass : TClass; AWhere : String = '') : String; overload;
-    function GetSelect() : String; overload;
+    function GetSelect(AObject : TObject) : String; overload;
 
-    function GetInsert() : String;
-    function GetUpdate() : String;
-    function GetDelete() : String;
+    function GetInsert(AObject : TObject) : String;
+    function GetUpdate(AObject : TObject) : String;
+    function GetDelete(AObject : TObject) : String;
   published
+    property TipoDatabase : TTipoDatabase read fTipoDatabase;
   end;
 
   procedure AddString(var AString : String; AStr : String; ASep : String; AIni : String = '');
-  function GetValueStr(AObject: TObject; ANome : String) : String;
 
 implementation
 
@@ -83,7 +88,7 @@ implementation
     end;
   end;
 
-  function GetValueStr(AObject: TObject; ANome : String) : String;
+  function TmComando.GetValueStr(AObject: TObject; ANome : String) : String;
   var
     vPropInfo : PPropInfo;
     vTipoBase : String;
@@ -100,7 +105,7 @@ implementation
       tvBoolean :
         Result := '''' + IfThen(GetOrdProp(AObject, ANome) = 1, 'T', 'F') + '''';
       tvDateTime :
-        Result := '''' + FormatDateTime('dd.mm.yyyy hh:nn:ss', GetFloatProp(AObject, ANome)) + '''';
+        Result := GetValueData(fTipoDatabase, GetFloatProp(AObject, ANome));
       tvFloat :
         Result := AnsiReplaceStr(FloatToStr(GetFloatProp(AObject, ANome)), ',', '.');
       tvInteger :
@@ -112,40 +117,45 @@ implementation
 
 { TmComando }
 
-function TmComando.GetWhereKey() : String;
+constructor TmComando.Create(ATipoDatabase : TTipoDatabase);
+begin
+  fTipoDatabase := ATipoDatabase;
+end;
+
+function TmComando.GetWhereKey(AObject : TObject) : String;
 var
   vCampos : TCampos;
   vWhere : String;
   I : Integer;
 begin
-  vCampos := GetCampos(Self.ClassType);
+  vCampos := GetCampos(AObject.ClassType);
 
   vWhere := '';
   with vCampos do
     for I := 0 to Count - 1 do
       with TCampo(Items[I]) do
         if Tipo in [mMapping.tfKey] then
-          AddString(vWhere, Atributo + ' = ' + GetValueStr(Self, Atributo), ' and ');
+          AddString(vWhere, Atributo + ' = ' + GetValueStr(AObject, Atributo), ' and ');
 
   Result := vWhere;
 
   FreeAndNil(vCampos);
 end;
 
-function TmComando.GetWhereAll() : String;
+function TmComando.GetWhereAll(AObject : TObject) : String;
 var
   vCampos : TCampos;
   vWhere : String;
   I : Integer;
 begin
-  vCampos := GetCampos(Self.ClassType);
+  vCampos := GetCampos(AObject.ClassType);
 
   vWhere := '';
   with vCampos do
     for I := 0 to Count - 1 do
       with TCampo(Items[I]) do
-        if not IsValueNull(Self, Atributo) then
-          AddString(vWhere, Atributo + ' = ' + GetValueStr(Self, Atributo), ' and ');
+        if not IsValueNull(AObject, Atributo) then
+          AddString(vWhere, Atributo + ' = ' + GetValueStr(AObject, Atributo), ' and ');
 
   Result := vWhere;
 
@@ -183,25 +193,25 @@ begin
   FreeAndNil(vCampos);
 end;
 
-function TmComando.GetSelect(): String;
+function TmComando.GetSelect(AObject : TObject): String;
 var
   vWhere : String;
 begin
-  vWhere := GetWhereKey();
-  Result := GetSelect(Self.ClassType, vWhere);
+  vWhere := GetWhereKey(AObject);
+  Result := GetSelect(AObject.ClassType, vWhere);
 end;
 
 //--
 
-function TmComando.GetInsert(): String;
+function TmComando.GetInsert(AObject : TObject): String;
 var
   vTabela : TTabela;
   vCampos : TCampos;
   vFields, vValues : String;
   I : Integer;
 begin
-  vTabela := GetTabela(Self.ClassType);
-  vCampos := GetCampos(Self.ClassType);
+  vTabela := GetTabela(AObject.ClassType);
+  vCampos := GetCampos(AObject.ClassType);
 
   vFields := '';
   vValues := '';
@@ -209,7 +219,7 @@ begin
     for I := 0 to Count - 1 do
       with TCampo(Items[I]) do begin
         AddString(vFields, Campo, ', ');
-        AddString(vValues, GetValueStr(Self, Atributo), ', ');
+        AddString(vValues, GetValueStr(AObject, Atributo), ', ');
       end;
 
   Result :=
@@ -222,15 +232,15 @@ begin
   FreeAndNil(vCampos);
 end;
 
-function TmComando.GetUpdate(): String;
+function TmComando.GetUpdate(AObject : TObject): String;
 var
   vTabela : TTabela;
   vCampos : TCampos;
   vSets, vWhere : String;
   I : Integer;
 begin
-  vTabela := GetTabela(Self.ClassType);
-  vCampos := GetCampos(Self.ClassType);
+  vTabela := GetTabela(AObject.ClassType);
+  vCampos := GetCampos(AObject.ClassType);
 
   vWhere := '';
   vSets := '';
@@ -238,9 +248,9 @@ begin
     for I := 0 to Count - 1 do
       with TCampo(Items[I]) do
         if Tipo in [mMapping.tfKey] then
-          AddString(vWhere, Campo + ' = ' + GetValueStr(Self, Atributo), ' and ')
+          AddString(vWhere, Campo + ' = ' + GetValueStr(AObject, Atributo), ' and ')
         else
-          AddString(vSets, Campo + ' = ' + GetValueStr(Self, Atributo), ', ');
+          AddString(vSets, Campo + ' = ' + GetValueStr(AObject, Atributo), ', ');
 
   Result :=
     'update ' + vTabela.Nome +
@@ -251,22 +261,22 @@ begin
   FreeAndNil(vCampos);
 end;
 
-function TmComando.GetDelete(): String;
+function TmComando.GetDelete(AObject : TObject): String;
 var
   vTabela : TTabela;
   vCampos : TCampos;
   vWhere : String;
   I : Integer;
 begin
-  vTabela := GetTabela(Self.ClassType);
-  vCampos := GetCampos(Self.ClassType);
+  vTabela := GetTabela(AObject.ClassType);
+  vCampos := GetCampos(AObject.ClassType);
 
   vWhere := '';
   with vCampos do
     for I := 0 to Count - 1 do
       with TCampo(Items[I]) do
-        if not IsValueNull(Self, Atributo) then
-          AddString(vWhere, Campo + ' = ' + GetValueStr(Self, Atributo), ' and ');
+        if not IsValueNull(AObject, Atributo) then
+          AddString(vWhere, Campo + ' = ' + GetValueStr(AObject, Atributo), ' and ');
 
   Result :=
     'delete from ' + vTabela.Nome +

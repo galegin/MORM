@@ -10,36 +10,38 @@ interface
 
 uses
   Classes, SysUtils, StrUtils, DB,
-  mConexao, mString, mTipoDatabase,
+  mConexaoIntf, mTipoDatabase, mParametro, mString,
   SqlExpr, DBXpress;
 
 type
-  TrDatabaseX = record
+  TrConexaoX = record
     ConnectionName : String;
     DriverName : String;
     GetDriverFunc : String;
     LibraryName : String;
     VendorLib : String;
     Parametro : String;
-    Sessao : String;
   end;
 
-  TmConexaoX = class(TmConexao)
+  TmConexaoX = class(TComponent, IConexao)
   private
-    FTransDesc : TTransactionDesc;
+    fParametro : TmParametro;
+    fConnection : TSQLConnection;
+    fTransDesc : TTransactionDesc;
+    procedure _BeforeConnect(Sender : TObject);
+    procedure _AfterConnect(Sender : TObject);
   protected
-    procedure _BeforeConnect(Sender: TObject);
-    procedure _AfterConnect(Sender: TObject);
   public
-    constructor create(Aowner : TComponent); override;
+    constructor Create(AParametro : TmParametro); reintroduce;
 
-    procedure ExecComando(ACmd : String); override;
-    function GetConsulta(ASql : String) : TDataSet; override;
+    procedure ExecComando(ACmd : String);
+    function GetConsulta(ASql : String) : TDataSet;
 
-    procedure Transaction(); override;
-    procedure Commit(); override;
-    procedure Rollback(); override;
+    procedure Transaction();
+    procedure Commit();
+    procedure Rollback();
   published
+    property Parametro : TmParametro read fParametro;
   end;
 
   procedure Register;
@@ -51,33 +53,23 @@ begin
   RegisterComponents('Comps MIGUEL', [TmConexaoX]);
 end;
 
-  function GetDatabaseX(ATipoDatabase : TTipoDatabase) : TrDatabaseX;
+  function GetConexaoX(ATipoDatabase : TTipoDatabase) : TrConexaoX;
   begin
     with Result do begin
       case ATipoDatabase of
-        tpdDB2 : begin
-          ConnectionName := '';
-          DriverName := 'DB2';
-          GetDriverFunc := 'getSQLDriverDB2';
-          LibraryName := 'dbexpdb2.dll';
-          VendorLib := 'dbexpdb2.dll';
-          Parametro :=
-            'BlobSize=-1;ErrorResourceFile=;LocaleCode=0000;' +
-            'DB2 TransIsolation=ReadCommited';
-        end;
-
-        tpdFirebird : begin
+        tdFirebird : begin
           ConnectionName := '';
           DriverName := 'Firebird';
           GetDriverFunc := 'getSQLDriverINTERBASE';
           LibraryName := 'dbexpint.dll';
           VendorLib := 'fbclient.dll';
           Parametro :=
+            'DataBase=@DataBase;User_Name=@User_Name;Password=@Password;' +
             'BlobSize=-1;CommitRetain=False;ServerCharSet=win1252;SQLDialect=3;' +
             'Interbase TransIsolation=ReadCommited;WaitOnLocks=True';
         end;
 
-        tpdMySql : begin
+        tdMySql : begin
           ConnectionName := '';
           DriverName := '';
           GetDriverFunc := 'getSQLDriverMYSQL';
@@ -86,95 +78,54 @@ end;
           Parametro := '';
         end;
 
-        tpdOracle : begin
+        tdOracle : begin
           ConnectionName := '';
           DriverName := 'Oracle';
           GetDriverFunc := 'getSQLDriverORACLE';
           LibraryName := 'dbexpora.dll';
           VendorLib := 'oci.dll';
           Parametro :=
+            'DataBase=@DataBase;User_Name=@User_Name;Password=@Password;' +
             'BlobSize=-1;ErrorResourceFile=;LocaleCode=0000;RowsetSize=20;' +
             'Oracle TransIsolation=ReadCommited;RowsetSize=2;0Trim Char=False;' +
             'OS Authentication=False;Multiple Transaction=False';
         end;
-
-        tpdPostgre : begin
-          ConnectionName := '';
-          DriverName := '';
-          GetDriverFunc := 'getSQLDriverPostgreSQL';
-          LibraryName := 'dbexpmysql.dll';
-          VendorLib := 'dbexppgsql.dll';
-          Parametro := '';
-        end;
-
-        tpdSqlServer : begin
-          ConnectionName := '';
-          DriverName := '';
-          GetDriverFunc := 'getSQLDriverSQLServer';
-          LibraryName := 'dbexpsda.dll';
-          VendorLib := 'sqloledb.dll';
-          Parametro := '';
-        end;
       end;
     end;
   end;
 
-  procedure TmConexaoX._BeforeConnect(Sender: TObject);
+  procedure TmConexaoX._BeforeConnect(Sender : TObject);
   var
-    vDatabaseX : TrDatabaseX;
-    vParams : TStringList;
-    vCod, vVal : String;
-    I : Integer;
+    vConexaoX : TrConexaoX;
   begin
-    vDatabaseX := GetDatabaseX(Parametro.Tp_Database);
+    vConexaoX := GetConexaoX(fParametro.TipoDatabase);
 
-    with TSQLConnection(fConnection) do begin
-      ConnectionName := vDatabaseX.ConnectionName;
-      DriverName := vDatabaseX.DriverName;
-      GetDriverFunc := vDatabaseX.GetDriverFunc;
-      LibraryName := vDatabaseX.LibraryName;
-      VendorLib := vDatabaseX.VendorLib;
+    with fConnection do begin
+      ConnectionName := vConexaoX.ConnectionName;
+      DriverName := vConexaoX.DriverName;
+      GetDriverFunc := vConexaoX.GetDriverFunc;
+      LibraryName := vConexaoX.LibraryName;
+      VendorLib := vConexaoX.VendorLib;
       TableScope := [tsTable, tsView];
-      LoginPrompt := False;
 
-      with Params do begin
-        Clear();
-        Params.Values['DataBase'] := Parametro.Cd_Database;
-        Params.Values['User_Name'] := Parametro.Cd_Username;
-        Params.Values['Password'] := Parametro.Cd_Password;
-      end;
-
-      vParams := TStringList.Create;
-      vParams.Text := AnsiReplaceStr(vDatabaseX.Parametro, ';', sLineBreak);
-      for I := 0 to vParams.Count - 1 do begin
-        vCod := TmString.LeftStr(vParams[I], '=');
-        vVal := TmString.RightStr(vParams[I], '=');
-        Params.Values[vCod] := vVal;
-      end;
+      Params.Text := AnsiReplaceStr(vConexaoX.Parametro, ';', sLineBreak);
+      Params.Values['DataBase'] := fParametro.Database;
+      Params.Values['User_Name'] := fParametro.Username;
+      Params.Values['Password'] := fParametro.Password;
     end;
   end;
 
-  procedure TmConexaoX._AfterConnect(Sender: TObject);
-  var
-    vDatabaseX : TrDatabaseX;
-    vSessao : TStringList;
-    I : Integer;
+  procedure TmConexaoX._AfterConnect(Sender : TObject);
   begin
-    vDatabaseX := GetDatabaseX(Parametro.Tp_Database);
-
-    vSessao := TStringList.Create;
-    vSessao.Text := AnsiReplaceStr(vDatabaseX.Sessao, ';', sLineBreak);
-    for I := 0 to vSessao.Count - 1 do
-      ExecComando(vSessao[I]);
   end;
 
 { TmConexaoX }
 
-constructor TmConexaoX.create(Aowner: TComponent);
+constructor TmConexaoX.Create(AParametro : TmParametro);
 begin
-  inherited;
+  fParametro := AParametro;
   fConnection := TSQLConnection.Create(Self);
-  with TSQLConnection(fConnection) do begin
+  with fConnection do begin
     LoginPrompt := False;
     AfterConnect := _AfterConnect;
     BeforeConnect := _BeforeConnect;
@@ -188,7 +139,7 @@ begin
   if ACmd = '' then
     raise Exception.Create('Comando deve ser informado! / ' + cMETHOD);
 
-  TSQLConnection(fConnection).ExecuteDirect(ACmd);
+  fConnection.ExecuteDirect(ACmd);
 end;
 
 function TmConexaoX.GetConsulta(ASql: String): TDataSet;
@@ -201,7 +152,7 @@ begin
     raise Exception.Create('SQL deve ser informado! / ' + cMETHOD);
 
   vQuery := TSQLQuery.create(Self);
-  vQuery.SQLConnection := TSQLConnection(fConnection);
+  vQuery.SQLConnection := fConnection;
   vQuery.SQL.Text := ASql;
   vQuery.Open;
 
@@ -213,17 +164,17 @@ begin
   Randomize;
   FTransDesc.TransactionID := 1;
   FTransDesc.IsolationLevel := xilREADCOMMITTED;
-  TSQLConnection(fConnection).StartTransaction(FTransDesc);
+  fConnection.StartTransaction(FTransDesc);
 end;
 
 procedure TmConexaoX.Commit;
 begin
-  TSQLConnection(fConnection).Commit(FTransDesc);
+  fConnection.Commit(FTransDesc);
 end;
 
 procedure TmConexaoX.Rollback;
 begin
-  TSQLConnection(fConnection).Rollback(FTransDesc);
+  fConnection.Rollback(FTransDesc);
 end;
 
 end.

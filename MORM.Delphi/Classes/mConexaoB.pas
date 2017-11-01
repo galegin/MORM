@@ -10,7 +10,7 @@ interface
 
 uses
   Classes, SysUtils, StrUtils, DB,
-  mConexao, mString, mTipoDatabase,
+  mConexaoIntf, mTipoDatabase, mParametro, mString,
   DBTables;
 
 type
@@ -21,28 +21,29 @@ type
     Password : String;
   end;
 
-  TmConexaoB = class(TmConexao)
+  TmConexaoB = class(TComponent, IConexao)
   private
+    fParametro : TmParametro;
+    fConnection : TDatabase;
     procedure _BeforeConnect(Sender: TObject);
     procedure _AfterConnect(Sender: TObject);
   protected
   public
-    constructor create(Aowner : TComponent); override;
+    constructor Create(AParametro : TmParametro); reintroduce;
 
-    procedure ExecComando(ACmd : String); override;
-    function GetConsulta(ASql : String) : TDataSet; override;
+    procedure ExecComando(ACmd : String);
+    function GetConsulta(ASql : String) : TDataSet;
 
-    procedure Transaction(); override;
-    procedure Commit(); override;
-    procedure Rollback(); override;
+    procedure Transaction();
+    procedure Commit();
+    procedure Rollback();
   published
+    property Parametro : TmParametro read fParametro;
   end;
 
   procedure Register;
 
 implementation
-
-uses mParametro;
 
 procedure Register;
 begin
@@ -53,11 +54,11 @@ end;
   begin
     with Result do begin
       case ATipoDatabase of
-        tpdDBase : begin
+        tdDBase : begin
           Driver := 'DBASE';
         end;
 
-        tpdParadox : begin
+        tdParadox : begin
           Driver := 'PARADOX';
         end;
       end;
@@ -90,19 +91,19 @@ end;
 
       vLstParam := TStringList.Create;
 
-      if Session.IsAlias(Parametro.Cd_Ambiente) then begin
-        Session.GetAliasParams(Parametro.Cd_Ambiente, vLstParam);
-        if vLstParam.Values[vConexaoB.Caminho] <> Parametro.Cd_Database then
-          Session.DeleteAlias(Parametro.Cd_Ambiente);
+      if Session.IsAlias(fParametro.Ambiente) then begin
+        Session.GetAliasParams(fParametro.Ambiente, vLstParam);
+        if vLstParam.Values[vConexaoB.Caminho] <> fParametro.Database then
+          Session.DeleteAlias(fParametro.Ambiente);
       end;
 
-      if Parametro.Tp_Database in [tpdDBase, tpdParadox] then begin
-        Session.AddStandardAlias(Parametro.Cd_Ambiente, Parametro.Cd_Database, vConexaoB.Driver);
+      if Parametro.TipoDatabase in [tdDBase, tdParadox] then begin
+        Session.AddStandardAlias(fParametro.Ambiente, fParametro.Database, vConexaoB.Driver);
       end else begin
         vLstParam.Clear();
-        vLstParam.Values[vConexaoB.Caminho] := Parametro.Cd_Database;
-        vLstParam.Values[vConexaoB.Username] := Parametro.Cd_Username;
-        Session.AddAlias(Parametro.Cd_Ambiente, vConexaoB.Driver, vLstParam);
+        vLstParam.Values[vConexaoB.Caminho] := fParametro.Database;
+        vLstParam.Values[vConexaoB.Username] := fParametro.Username;
+        Session.AddAlias(fParametro.Ambiente, vConexaoB.Driver, vLstParam);
       end;
 
       Session.SaveConfigFile;
@@ -111,14 +112,14 @@ end;
   begin
     inherited;
 
-    vConexaoB := GetConexaoB(Parametro.Tp_Database);
+    vConexaoB := GetConexaoB(fParametro.TipoDatabase);
 
     createAlias();
 
     with TDatabase(fConnection) do begin
       Connected := False;
-      AliasName := Parametro.Cd_Ambiente;
-      Params.Values[vConexaoB.Password] := Parametro.Cd_Password;
+      AliasName := fParametro.Ambiente;
+      Params.Values[vConexaoB.Password] := fParametro.Password;
       Connected := True;
     end;
   end;
@@ -129,11 +130,11 @@ end;
 
 { TmConexaoB }
 
-constructor TmConexaoB.create(Aowner: TComponent);
+constructor TmConexaoB.Create(AParametro : TmParametro);
 begin
-  inherited;
+  fParametro := AParametro;
   fConnection := TDatabase.Create(Self);
-  with TDatabase(fConnection) do begin
+  with fConnection do begin
     DatabaseName := 'TmConexaoBAliasName';
     LoginPrompt := False;
     AfterConnect := _AfterConnect;
@@ -148,7 +149,7 @@ begin
   if ACmd = '' then
     raise Exception.Create('Comando deve ser informado! / ' + cMETHOD);
 
-  TDatabase(fConnection).Execute(ACmd);
+  fConnection.Execute(ACmd);
 end;
 
 function TmConexaoB.GetConsulta(ASql: String): TDataSet;
@@ -161,7 +162,7 @@ begin
     raise Exception.Create('SQL deve ser informado! / ' + cMETHOD);
 
   vQuery := TQuery.create(Self);
-  vQuery.DatabaseName := TDatabase(fConnection).AliasName;
+  vQuery.DatabaseName := fConnection.AliasName;
   vQuery.SQL.Text := ASql;
   vQuery.Open;
 
@@ -170,17 +171,17 @@ end;
 
 procedure TmConexaoB.Transaction;
 begin
-  TDatabase(fConnection).StartTransaction();
+  fConnection.StartTransaction();
 end;
 
 procedure TmConexaoB.Commit;
 begin
-  TDatabase(fConnection).Commit();
+  fConnection.Commit();
 end;
 
 procedure TmConexaoB.Rollback;
 begin
-  TDatabase(fConnection).Rollback();
+  fConnection.Rollback();
 end;
 
 end.

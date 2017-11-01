@@ -6,50 +6,84 @@ uses
   Classes, SysUtils, TypInfo;
 
 type
-  TTipoDatabase = (tpdFirebird,
-                   tpdMySql,
-                   tpdOracle,
-                   tpdPostgre,
-                   tpdSqlServer,
-                   tpdDB2,
-                   tpdDBase,
-                   tpdParadox,
-                   tpdMsAccess);
+  TTipoDatabase = (
+    tdFirebird,
+    tdMySql,
+    tdOracle,
 
-const
-  TTipoDatabaseA = [tpdMsAccess, tpdSqlServer];
+    tdMsAccess,
+    tdSqlServer,
 
-  TTipoDatabaseB = [tpdDBase, tpdParadox];
+    tdDBase,
+    tdParadox
+  );
 
-  TTipoDatabaseX = [tpdFirebird, tpdOracle, tpdPostgre];
-
-  TTipoDatabaseZ = [tpdMySql, tpdPostgre];
+  RTipoDatabase = record
+    Tipo : TTipoDatabase;
+    Codigo : String;
+  end;
 
   function GetLstTipoDatabase() : TStringList;
-  function StrToTipoDatabase(AString : String) : TTipoDatabase;
+  function GetTipoDatabase(ATipo : TTipoDatabase) : RTipoDatabase;
+  function StrToTipoDatabase(ACodigo : String) : TTipoDatabase;
   function TipoDatabaseToStr(ATipo : TTipoDatabase) : String;
 
+  function GetValueData(ATipo : TTipoDatabase; ADateTime : TDateTime) : String;
+
 implementation
+
+const
+  RTipoDatabaseArray : Array [TTipoDatabase] of RTipoDatabase = (
+    (Tipo: tdFirebird; Codigo: 'Firebird'),
+    (Tipo: tdMySql; Codigo: 'MySql'),
+    (Tipo: tdOracle; Codigo: 'Oracle'),
+
+    (Tipo: tdMsAccess; Codigo: 'MsAccess'),
+    (Tipo: tdSqlServer; Codigo: 'SqlServer'),
+
+    (Tipo: tdDBase; Codigo: 'DBase'),
+    (Tipo: tdParadox; Codigo: 'Paradox')
+  );
 
 function GetLstTipoDatabase() : TStringList;
 var
   I : Integer;
 begin
   Result := TStringList.Create;
-  for I:=Ord(Low(TTipoDatabase)) to Ord(High(TTipoDatabase)) do
+  for I := Ord(Low(TTipoDatabase)) to Ord(High(TTipoDatabase)) do
     Result.Add(GetEnumName(TypeInfo(TTipoDatabase), I));
 end;
 
-function StrToTipoDatabase(AString : String) : TTipoDatabase;
+function GetTipoDatabase(ATipo : TTipoDatabase) : RTipoDatabase;
 begin
-  Result := TTipoDatabase(GetEnumValue(TypeInfo(TTipoDatabase), AString));
-  if ord(Result) = -1 then
-    Result := tpdFirebird;
+  Result := RTipoDatabaseArray[TTipoDatabase(ATipo)];
+end;
+
+function StrToTipoDatabase(ACodigo : String) : TTipoDatabase;
+var
+  I: Integer;
+begin
+  Result := tdFirebird;
+  for I := 0 to Ord(High(TTipoDatabase)) do
+    if RTipoDatabaseArray[TTipoDatabase(I)].Codigo = ACodigo then
+      Result := TTipoDatabase(I);
 end;
 
 function TipoDatabaseToStr(ATipo : TTipoDatabase) : String;
 begin
-  Result := GetEnumName(TypeInfo(TTipoDatabase), Integer(ATipo));
+  Result := RTipoDatabaseArray[TTipoDatabase(ATipo)].Codigo;
+end;
+
+function GetValueData(ATipo : TTipoDatabase; ADateTime : TDateTime) : String;
+begin
+  case ATipo of
+    tdFirebird :
+      Result := '''' + FormatDateTime('dd.mm.yyyy hh:nn:ss', ADateTime) + '''';
+    tdMySql :
+      Result := '''' + FormatDateTime('yyyy/mm/dd hh:nn:ss', ADateTime) + '''';
+    tdOracle :
+      Result := 'to_date(''' + FormatDateTime('dd/mm/yyyy hh:nn:ss', ADateTime) + ''',''DD/MM/YYYY HH24:MI:SS'')';
+  end;
 end;
 
 end.
