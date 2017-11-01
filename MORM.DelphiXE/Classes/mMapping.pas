@@ -58,7 +58,9 @@ type
     property AtributoRel : String read fAtributoRel;
   end;
 
-  function GetRelacaoCampos(ACampos : String) : TList<TRelacaoCampo>;
+  TRelacaoCampos = class(TList<TRelacaoCampo>);
+
+  function GetRelacaoCampos(ACampos : String) : TRelacaoCampos;
 
 implementation
 
@@ -67,13 +69,13 @@ uses
 
   //--
 
-  function GetRelacaoCampos(ACampos : String) : TList<TRelacaoCampo>;
+  function GetRelacaoCampos(ACampos : String) : TRelacaoCampos;
   var
     vStringArray : TmStringArray;
     vCampo : TRelacaoCampo;
     I : Integer;
   begin
-    Result := TList<TRelacaoCampo>.Create;
+    Result := TRelacaoCampos.Create;
 
     vStringArray := TmString.Split(ACampos, ';');
     for I := 0 to High(vStringArray) do begin

@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, StrUtils, DB, TypInfo, Math,
-  mProviderFactory, mConexao, mMapping, mParametro, mComando,
+  mConexao, mMapping, mParametro, mComando,
   mCollection, mCollectionItem;
 
 type

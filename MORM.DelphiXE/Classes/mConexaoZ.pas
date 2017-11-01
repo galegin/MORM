@@ -10,25 +10,28 @@ interface
 
 uses
   Classes, SysUtils, StrUtils, DB,
-  mConexao, mString, mTipoDatabase,
+  mConexaoIntf, mTipoDatabase, mParametro, mString,
   ZConnection, ZDataset;
 
 type
-  TmConexaoZ = class(TmConexao)
+  TmConexaoZ = class(TComponent, IConexao)
   private
+    fParametro : TmParametro;
+    fConnection : TZConnection;
     procedure _BeforeConnect(Sender: TObject);
     procedure _AfterConnect(Sender: TObject);
   protected
   public
-    constructor create(Aowner : TComponent); override;
+    constructor Create(AParametro : TmParametro); reintroduce;
 
-    procedure ExecComando(ACmd : String); override;
-    function GetConsulta(ASql : String) : TDataSet; override;
+    procedure ExecComando(ACmd : String);
+    function GetConsulta(ASql : String) : TDataSet;
 
-    procedure Transaction(); override;
-    procedure Commit(); override;
-    procedure Rollback(); override;
+    procedure Transaction();
+    procedure Commit();
+    procedure Rollback();
   published
+    property Parametro : TmParametro read fParametro;
   end;
 
   procedure Register;
@@ -42,14 +45,14 @@ end;
 
   procedure TmConexaoZ._BeforeConnect(Sender: TObject);
   begin
-    with TZConnection(fConnection) do begin
+    with fConnection do begin
       Connected := False;
-      Protocol := Parametro.Cd_Protocol;
-      HostName := Parametro.Cd_Hostname;
-      Database := Parametro.Cd_Database;
-      User := Parametro.Cd_Username;
-      Password := Parametro.Cd_Password;
-      Port := StrToIntDef(Parametro.Cd_Hostport, 0);
+      Protocol := fParametro.Protocol;
+      HostName := fParametro.Hostname;
+      Database := fParametro.Database;
+      User := fParametro.Username;
+      Password := fParametro.Password;
+      Port := StrToIntDef(fParametro.Hostport, 0);
       Connected := True;
     end;
   end;
@@ -60,11 +63,11 @@ end;
 
 { TmConexaoZ }
 
-constructor TmConexaoZ.create(Aowner: TComponent);
+constructor TmConexaoZ.Create(AParametro : TmParametro);
 begin
-  inherited;
+  fParametro := AParametro;
   fConnection := TZConnection.Create(Self);
-  with TZConnection(fConnection) do begin
+  with fConnection do begin
     LoginPrompt := False;
     AfterConnect := _AfterConnect;
     BeforeConnect := _BeforeConnect;
@@ -78,7 +81,7 @@ begin
   if ACmd = '' then
     raise Exception.Create('Comando deve ser informado! / ' + cMETHOD);
 
-  TZConnection(fConnection).ExecuteDirect(ACmd);
+  fConnection.ExecuteDirect(ACmd);
 end;
 
 function TmConexaoZ.GetConsulta(ASql: String): TDataSet;
@@ -91,7 +94,7 @@ begin
     raise Exception.Create('SQL deve ser informado! / ' + cMETHOD);
 
   vQuery := TZQuery.create(Self);
-  vQuery.Connection := TZConnection(fConnection);
+  vQuery.Connection := fConnection;
   vQuery.SQL.Text := ASql;
   vQuery.Open;
 
@@ -100,17 +103,17 @@ end;
 
 procedure TmConexaoZ.Transaction;
 begin
-  TZConnection(fConnection).StartTransaction();
+  fConnection.StartTransaction();
 end;
 
 procedure TmConexaoZ.Commit;
 begin
-  TZConnection(fConnection).Commit();
+  fConnection.Commit();
 end;
 
 procedure TmConexaoZ.Rollback;
 begin
-  TZConnection(fConnection).Rollback();
+  fConnection.Rollback();
 end;
 
 {

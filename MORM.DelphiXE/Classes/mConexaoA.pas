@@ -10,7 +10,7 @@ interface
 
 uses
   Classes, SysUtils, StrUtils, DB,
-  mConexao, mString, mTipoDatabase,
+  mConexaoIntf, mTipoDatabase, mParametro, mString,
   ADODB;
 
 type
@@ -18,21 +18,24 @@ type
     ConnectionString : String;
   end;
 
-  TmConexaoA = class(TmConexao)
+  TmConexaoA = class(TComponent, IConexao)
   private
+    fParametro : TmParametro;
+    fConnection : TADOConnection;
     procedure _BeforeConnect(Sender: TObject);
     procedure _AfterConnect(Sender: TObject);
   protected
   public
-    constructor create(Aowner : TComponent); override;
+    constructor Create(AParametro : TmParametro); reintroduce;
 
-    procedure ExecComando(ACmd : String); override;
-    function GetConsulta(ASql : String) : TDataSet; override;
+    procedure ExecComando(ACmd : String);
+    function GetConsulta(ASql : String) : TDataSet;
 
-    procedure Transaction(); override;
-    procedure Commit(); override;
-    procedure Rollback(); override;
+    procedure Transaction();
+    procedure Commit();
+    procedure Rollback();
   published
+    property Parametro : TmParametro read fParametro;
   end;
 
   procedure Register;
@@ -48,11 +51,11 @@ end;
   begin
     with Result do begin
       case ATipoDatabase of
-        tpdMsAccess :
-          ConnectionString := 'Provider=Microsoft.Jet.OLEDB.4.0;Data Source={Cd_Conexao};Jet OLEDB:Conexao Password={Cd_Password}';
+        tdMsAccess :
+          ConnectionString := 'Provider=Microsoft.Jet.OLEDB.4.0;Data Source=@Database;Jet OLEDB:Conexao Password=@Password';
 
-        tpdSqlServer :
-          ConnectionString := 'Driver=Firebird/InterBase(r) driver;Uid={Cd_Username};Pwd={Cd_Password};DBName={Cd_Hostname}:{Cd_Conexao}';
+        tdSqlServer :
+          ConnectionString := 'Driver=Firebird/InterBase(r) driver;Uid=@Username;Pwd=@Password;DBName=@Hostname:@Database';
       end;
     end;
   end;
@@ -64,14 +67,14 @@ end;
   begin
     inherited;
 
-    vConexaoA := GetConexaoA(Parametro.Tp_Database);
+    vConexaoA := GetConexaoA(fParametro.TipoDatabase);
 
     vConnectionString := vConexaoA.ConnectionString;
-    vConnectionString := AnsiReplaceStr(vConnectionString, '{Cd_Database}', Parametro.Cd_Database);
-    vConnectionString := AnsiReplaceStr(vConnectionString, '{Cd_Username}', Parametro.Cd_Username);
-    vConnectionString := AnsiReplaceStr(vConnectionString, '{Cd_Password}', Parametro.Cd_Password);
-    vConnectionString := AnsiReplaceStr(vConnectionString, '{Cd_Hostname}', Parametro.Cd_Hostname);
-    vConnectionString := AnsiReplaceStr(vConnectionString, '{Cd_Hostport}', Parametro.Cd_Hostport);
+    vConnectionString := AnsiReplaceStr(vConnectionString, '@Database', Parametro.Database);
+    vConnectionString := AnsiReplaceStr(vConnectionString, '@Username', Parametro.Username);
+    vConnectionString := AnsiReplaceStr(vConnectionString, '@Password', Parametro.Password);
+    vConnectionString := AnsiReplaceStr(vConnectionString, '@Hostname', Parametro.Hostname);
+    vConnectionString := AnsiReplaceStr(vConnectionString, '@Hostport', Parametro.Hostport);
 
     with TADOConnection(fConnection) do begin
       Connected := False;
@@ -86,11 +89,11 @@ end;
 
 { TmConexaoA }
 
-constructor TmConexaoA.create(Aowner: TComponent);
+constructor TmConexaoA.Create(AParametro : TmParametro);
 begin
-  inherited;
+  fParametro := AParametro;
   fConnection := TADOConnection.Create(Self);
-  with TADOConnection(fConnection) do begin
+  with fConnection do begin
     LoginPrompt := False;
     AfterConnect := _AfterConnect;
     BeforeConnect := _BeforeConnect;
@@ -104,7 +107,7 @@ begin
   if ACmd = '' then
     raise Exception.Create('Comando deve ser informado! / ' + cMETHOD);
 
-  TADOConnection(fConnection).Execute(ACmd);
+  fConnection.Execute(ACmd);
 end;
 
 function TmConexaoA.GetConsulta(ASql: String): TDataSet;
@@ -116,8 +119,8 @@ begin
   if ASql = '' then
     raise Exception.Create('SQL deve ser informado! / ' + cMETHOD);
 
-  vQuery := TADOQuery.create(Self);
-  vQuery.Connection := TADOConnection(fConnection);
+  vQuery := TADOQuery.Create(Self);
+  vQuery.Connection := fConnection;
   vQuery.SQL.Text := ASql;
   vQuery.Open;
 
@@ -126,17 +129,17 @@ end;
 
 procedure TmConexaoA.Transaction;
 begin
-  TADOConnection(fConnection).BeginTrans();
+  fConnection.BeginTrans();
 end;
 
 procedure TmConexaoA.Commit;
 begin
-  TADOConnection(fConnection).CommitTrans();
+  fConnection.CommitTrans();
 end;
 
 procedure TmConexaoA.Rollback;
 begin
-  TADOConnection(fConnection).RollbackTrans();
+  fConnection.RollbackTrans();
 end;
 
 (*

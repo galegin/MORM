@@ -1,6 +1,6 @@
-unit mProviderFactory;
+unit mConexaoFactory;
 
-(* mProviderFactory *)
+(* mConexaoFactory *)
 
 interface
 
@@ -9,7 +9,7 @@ uses
   mTipoDatabase, mConexaoIntf, mParametro;
 
 type
-  TmProviderFactory = class
+  TmConexaoFactory = class
   private
   protected
   public
@@ -24,9 +24,9 @@ uses
   mConexaoX,
   mConexaoZ;
 
-(* mProviderFactory *)
+(* mConexaoFactory *)
 
-class function TmProviderFactory.CreateDbConnection(pParametro: TmParametro): IConexao;
+class function TmConexaoFactory.CreateDbConnection(pParametro: TmParametro): IConexao;
 begin
   case pParametro.TipoDatabase of
     tdMsAccess, tdSqlServer:

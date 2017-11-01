@@ -33,7 +33,7 @@ type
     fConnection : IConexao;
     function GetListDicionario(ASql, AField, AWhere : String) : TStringList;
   public
-    constructor Create(AParametro : TmParametro);
+    constructor Create(AParametro : TmParametro); reintroduce;
 
     procedure ExecComando(ACmd : String); virtual;
     function GetConsulta(ASql : String) : TDataSet; virtual;
@@ -62,7 +62,7 @@ type
 implementation
 
 uses
-  mProviderFactory;
+  mConexaoFactory;
 
 { TmConexao }
 
@@ -138,7 +138,7 @@ begin
   inherited Create(nil);
 
   fParametro := AParametro;
-  fConnection := TmProviderFactory.CreateDbConnection(fParametro);
+  fConnection := TmConexaoFactory.CreateDbConnection(fParametro);
   fDicionario := GetDicionario(fParametro.TipoDatabase);
 end;
 

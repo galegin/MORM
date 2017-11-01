@@ -22,25 +22,25 @@ type
     Constraints : String;
   end;
 
-  TmConexao = class(TComponent, IConexao)
+  TmConexao = class;
+  TmConexaoClass = class of TmConexao;
+
+  TmConexao = class(TComponent)
   private
     fParametro : TmParametro;
     fDicionario : TrDicionario;
   protected
-    fConnection : TComponent;
+    fConnection : IConexao;
     function GetListDicionario(ASql, AField, AWhere : String) : TStringList;
   public
-    constructor create(Aowner : TComponent); override;
+    constructor Create(AParametro : TmParametro); reintroduce;
 
-    procedure ExecComando(ACmd : String); virtual; abstract;
-    function GetConsulta(ASql : String) : TDataSet; virtual; abstract;
+    procedure ExecComando(ACmd : String); virtual;
+    function GetConsulta(ASql : String) : TDataSet; virtual;
 
-    procedure Transaction(); virtual; abstract;
-    procedure Commit(); virtual; abstract;
-    procedure Rollback(); virtual; abstract;
-
-    function GetParametro() : TmParametro;
-    procedure SetParametro(const Value : TmParametro);
+    procedure Transaction(); virtual;
+    procedure Commit(); virtual;
+    procedure Rollback(); virtual;
 
     function GetLimits(ASql : String; AQtde : Integer) : String;
     function GetMetadata(AEntidade : String) : TDataSet;
@@ -54,11 +54,15 @@ type
     function TableExiste(ATable : String) : Boolean;
     function ViewExiste(AView : String) : Boolean;
   published
-    property Parametro : TmParametro read GetParametro write SetParametro;
+    property Parametro : TmParametro read fParametro;
+    property Connection : IConexao read fConnection write fConnection;
     property Dicionario : TrDicionario read fDicionario;
   end;
 
 implementation
+
+uses
+  mConexaoFactory;
 
 { TmConexao }
 
@@ -66,20 +70,7 @@ implementation
   begin
     with Result do begin
       case ATipoDatabase of
-        tpdDB2, tpdOracle : begin
-          Limits := 'select * from ({sql}) where ROWNUM <= {qtde}';
-          Metadata := 'select * from {entidade} where 1<>1';
-          Constraints := 'select CONSTRAINT_NAME from USER_CONSTRAINTS';
-          Tables := 'select TABLE_NAME from USER_TABLES';
-          Views := 'select VIEW_NAME from USER_VIEWS';
-          with Sequences do begin
-            Create := 'create sequence {sequence} start with 1 increment by 1 maxvalue 999999 cycle nocache';
-            Execute := 'select {sequence}.NEXTVAL as PROXIMO from DUAL';
-            Exists := 'select SEQUENCE_NAME from USER_SEQUENCES where SEQUENCE_NAME = ''{sequence}''';
-          end;
-        end;
-
-        tpdFirebird : begin
+        tdFirebird : begin
           Limits := 'select FIRST {qtde} * from ({sql})';
           Metadata := 'select * from {entidade} where 1<>1';
           Constraints := 'select RDB$CONSTRAINT_NAME as CONSTRAINT_NAME from RDB$RELATION_CONSTRAINTS';
@@ -92,7 +83,7 @@ implementation
           end;
         end;
 
-        tpdMySql, tpdPostgre : begin
+        tdMySql : begin
           Limits := 'select * from ({sql}) LIMIT {qtde}';
           Metadata := 'select * from {entidade} where 1<>1';
           Constraints := 'select CONSTRAINT_NAME from INFORMATION_SCHEMA.CONSTRAINTS where TABLE_SCHEMA = database()';
@@ -100,6 +91,18 @@ implementation
           Views := 'select VIEW_NAME from INFORMATION_SCHEMA.VIEWS where TABLE_SCHEMA = database()';
         end;
 
+        tdOracle : begin
+          Limits := 'select * from ({sql}) where ROWNUM <= {qtde}';
+          Metadata := 'select * from {entidade} where 1<>1';
+          Constraints := 'select CONSTRAINT_NAME from USER_CONSTRAINTS';
+          Tables := 'select TABLE_NAME from USER_TABLES';
+          Views := 'select VIEW_NAME from USER_VIEWS';
+          with Sequences do begin
+            Create := 'create sequence {sequence} start with 1 increment by 1 maxvalue 999999 cycle nocache';
+            Execute := 'select {sequence}.NEXTVAL as PROXIMO from DUAL';
+            Exists := 'select SEQUENCE_NAME from USER_SEQUENCES where SEQUENCE_NAME = ''{sequence}''';
+          end;
+        end;
       end;
     end;
   end;
@@ -130,22 +133,42 @@ implementation
     end;
   end;
 
-constructor TmConexao.create(Aowner: TComponent);
+constructor TmConexao.Create(AParametro : TmParametro);
 begin
-  inherited;
+  inherited Create(nil);
+
+  fParametro := AParametro;
+  fConnection := TmConexaoFactory.CreateDbConnection(fParametro);
+  fDicionario := GetDicionario(fParametro.TipoDatabase);
 end;
 
 //--
 
-function TmConexao.GetParametro: TmParametro;
+procedure TmConexao.ExecComando(ACmd : String);
 begin
-  Result := fParametro;
+  fConnection.ExecComando(ACmd);
 end;
 
-procedure TmConexao.SetParametro(const Value: TmParametro);
+function TmConexao.GetConsulta(ASql : String) : TDataSet;
 begin
-  fParametro := Value;
-  fDicionario := GetDicionario(fParametro.Tp_Database);
+  Result := fConnection.GetConsulta(ASql);
+end;
+
+//--
+
+procedure TmConexao.Transaction();
+begin
+  fConnection.Transaction();
+end;
+
+procedure TmConexao.Commit();
+begin
+  fConnection.Commit();
+end;
+
+procedure TmConexao.Rollback();
+begin
+  fConnection.Rollback();
 end;
 
 //--

@@ -6,18 +6,18 @@ interface
 
 uses
   Classes, SysUtils, StrUtils, DB, TypInfo, Math,
-  mDatabase, mMapping, mParametro,
-  mCollection, mCollectionItem,
-  System.Generics.Collections;
+  mConexao, mMapping, mParametro, mComando,
+  mCollection, mCollectionItem;
 
 type
   TmContexto = class(TComponent)
   private
     FParametro: TmParametro;
-    FDatabase: TmDatabase;
+    FConexao: TmConexao;
+    FComando: TmComando;
   protected
   public
-    constructor Create(AOwner : TComponent); override;
+    constructor Create(AParametro : TmParametro); reintroduce;
     destructor Destroy; override;
 
     function GetLista(ACollectionClass : TCollectionClass; AWhere : String = '') : TCollection; overload;
@@ -34,7 +34,8 @@ type
     procedure GetRelacao(AObjeto : TObject);
   published
     property Parametro : TmParametro read FParametro write FParametro;
-    property Database : TmDatabase read FDatabase write FDatabase;
+    property Conexao: TmConexao read FConexao write FConexao;
+    property Comando: TmComando read FComando write FComando;
   end;
 
   function Instance() : TmContexto;
@@ -43,7 +44,7 @@ type
 implementation
 
 uses
-  mComando, mObjeto, mDataSet, mValue;
+  mObjeto, mDataSet, mValue;
 
 var
   _instance : TmContexto;
@@ -63,14 +64,15 @@ var
 
 (* mContexto *)
 
-constructor TmContexto.Create(AOwner : TComponent);
+constructor TmContexto.Create(AParametro : TmParametro);
 begin
-  inherited;
-
-  FParametro := TmParametro.Create;
-
-  FDatabase := TmDatabase.Create(Self);
-  FDatabase.Conexao.Parametro := FParametro;
+  if Assigned(AParametro) then
+    FParametro := AParametro
+  else
+    FParametro := TmParametro.Create;
+    
+  FConexao := TmConexao.Create(FParametro);
+  FComando := TmComando.Create(FParametro.TipoDatabase);
 end;
 
 destructor TmContexto.Destroy;
@@ -87,8 +89,8 @@ var
   vObject : TObject;
   vSql : String;
 begin
-  vSql := TmComando.GetSelect(ACollection.ItemClass, AWhere);
-  vDataSet := FDatabase.Conexao.GetConsulta(vSql);
+  vSql := fComando.GetSelect(ACollection.ItemClass, AWhere);
+  vDataSet := FConexao.GetConsulta(vSql);
   with vDataSet do begin
     while not EOF do begin
       vObject := ACollection.Add;
@@ -102,7 +104,7 @@ end;
 function TmContexto.GetLista(ACollectionClass: TCollectionClass;
   AWhere: String): TCollection;
 begin
-  Result := TCollectionClass(ACollectionClass).Create(nil);
+  Result := TmCollectionClass(ACollectionClass).Create(nil);
   GetLista(Result, AWhere);
 end;
 
@@ -129,8 +131,8 @@ var
   vDataSet : TDataSet;
   vSql : String;
 begin
-  vSql := TmComando.GetSelect(ACollectionItem.ClassType, AWhere);
-  vDataSet := FDatabase.Conexao.GetConsulta(vSql);
+  vSql := fComando.GetSelect(ACollectionItem.ClassType, AWhere);
+  vDataSet := FConexao.GetConsulta(vSql);
   with vDataSet do
     if not IsEmpty then begin
       TmDataSet(vDataSet).ToObject(ACollectionItem);
@@ -150,21 +152,21 @@ var
   vDataSet : TDataSet;
   vCmd, vSql : String;
 begin
-  vSql := TmComando(AObjeto).GetSelect();
-  vDataSet := FDatabase.Conexao.GetConsulta(vSql);
+  vSql := fComando.GetSelect(AObjeto);
+  vDataSet := FConexao.GetConsulta(vSql);
   if not vDataSet.IsEmpty then
-    vCmd := TmComando(AObjeto).GetUpdate()
+    vCmd := fComando.GetUpdate(AObjeto)
   else
-    vCmd := TmComando(AObjeto).GetInsert();
-  FDatabase.Conexao.ExecComando(vCmd);
+    vCmd := fComando.GetInsert(AObjeto);
+  FConexao.ExecComando(vCmd);
 end;
 
 procedure TmContexto.RemObjeto(AObjeto : TObject);
 var
   vCmd : String;
 begin
-  vCmd := TmComando(AObjeto).GetDelete();
-  FDatabase.Conexao.ExecComando(vCmd);
+  vCmd := fComando.GetDelete(AObjeto);
+  FConexao.ExecComando(vCmd);
 end;
 
 //-- relacao
@@ -185,9 +187,9 @@ end;
 procedure TmContexto.GetRelacao(AObjeto : TObject);
 var
   vRelacao : TRelacao;
-  vCampos : TList<TRelacaoCampo>;
-  vCampo : TRelacaoCampo;
+  vCampos : TRelacaoCampos;
   vWhere : String;
+  I : Integer;
 begin
   if AObjeto.InheritsFrom(TmCollection) then
     vRelacao := (AObjeto as TmCollection).GetRelacao()
@@ -199,9 +201,9 @@ begin
   vCampos := mMapping.GetRelacaoCampos(vRelacao.Campos);
 
   vWhere := '';
-  for vCampo in vCampos do
-    with vCampo do
-      AddString(vWhere, Atributo + ' = ' + GetValueStr(vRelacao.Owner, AtributoRel), ' and ', '');
+  for I := 0 to vCampos.Count - 1 do
+    with TRelacaoCampo(vCampos.Items[I]) do
+      AddString(vWhere, Atributo + ' = ' + Comando.GetValueStr(vRelacao.Owner, AtributoRel), ' and ', '');
 
   if AObjeto.InheritsFrom(TmCollection) then
     GetLista(AObjeto as TmCollection, vWhere)

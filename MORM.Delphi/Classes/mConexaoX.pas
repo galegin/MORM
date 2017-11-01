@@ -27,7 +27,7 @@ type
   private
     fParametro : TmParametro;
     fConnection : TSQLConnection;
-    fTransDesc : TTransactionDesc;
+    fTransaction : TTransactionDesc;
     procedure _BeforeConnect(Sender : TObject);
     procedure _AfterConnect(Sender : TObject);
   protected
@@ -162,19 +162,19 @@ end;
 procedure TmConexaoX.Transaction;
 begin
   Randomize;
-  FTransDesc.TransactionID := 1;
-  FTransDesc.IsolationLevel := xilREADCOMMITTED;
-  fConnection.StartTransaction(FTransDesc);
+  fTransaction.TransactionID := 1;
+  fTransaction.IsolationLevel := xilREADCOMMITTED;
+  fConnection.StartTransaction(fTransaction);
 end;
 
 procedure TmConexaoX.Commit;
 begin
-  fConnection.Commit(FTransDesc);
+  fConnection.Commit(fTransaction);
 end;
 
 procedure TmConexaoX.Rollback;
 begin
-  fConnection.Rollback(FTransDesc);
+  fConnection.Rollback(fTransaction);
 end;
 
 end.
