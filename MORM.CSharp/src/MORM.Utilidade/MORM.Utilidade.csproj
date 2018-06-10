@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectGuid>{346BED24-2DD1-4E58-939A-D72311C257F9}</ProjectGuid>
+    <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Library</OutputType>
+    <RootNamespace>MORM.Utilidade</RootNamespace>
+    <AssemblyName>MORM.Utilidade</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <Optimize>True</Optimize>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <Prefer32Bit>false</Prefer32Bit>
+    <OutputPath>..\..\bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Atributos\Consumer.cs" />
+    <Compile Include="Atributos\Mapping.cs" />
+    <Compile Include="Atributos\Tipagem.cs" />
+    <Compile Include="Atributos\Validacao.cs" />
+    <Compile Include="Atributos\ValorPadrao.cs" />
+    <Compile Include="Dtos\DtoAbstractApi.cs" />
+    <Compile Include="Dtos\DtoAbstract.cs" />
+    <Compile Include="Entidades\Ambiente.cs" />
+    <Compile Include="Entidades\MigracaoVersao.cs" />
+    <Compile Include="Entidades\LogAcesso .cs" />
+    <Compile Include="Entidades\Permissao.cs" />
+    <Compile Include="Extensoes\DataTypeExtension.cs" />
+    <Compile Include="Extensoes\DdlExtensions.cs" />
+    <Compile Include="Extensoes\EnumExtensions.cs" />
+    <Compile Include="Extensoes\MappingExtension.cs" />
+    <Compile Include="Extensoes\StringExtensions.cs" />
+    <Compile Include="Extensoes\TipagemExtension.cs" />
+    <Compile Include="Extensoes\TypeExtension.cs" />
+    <Compile Include="Extensoes\ValidacaoExtension.cs" />
+    <Compile Include="Extensoes\ValorPadraoExension.cs" />
+    <Compile Include="Fatories\SingletonFactory.cs" />
+    <Compile Include="Interfaces\IAmbiente.cs" />
+    <Compile Include="Interfaces\IConnectionFactory.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tipagens\TipoPermissao.cs" />
+    <Compile Include="Tipagens\TipoDatabase.cs" />
+    <Compile Include="Tipagens\TipoValorPadrao.cs" />
+    <Compile Include="Utils\Logger.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

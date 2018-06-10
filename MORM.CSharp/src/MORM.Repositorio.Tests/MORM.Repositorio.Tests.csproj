@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\MSTest.TestAdapter.1.2.0\build\net45\MSTest.TestAdapter.props" Condition="Exists('..\packages\MSTest.TestAdapter.1.2.0\build\net45\MSTest.TestAdapter.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1D66CF44-F21A-4FAB-9AA7-BB8CE1AC884F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MORM.Repositorio.Tests</RootNamespace>
+    <AssemblyName>MORM.Repositorio.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">15.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MSTest.TestFramework.1.2.0\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MSTest.TestFramework.1.2.0\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataContextTest.cs" />
+    <Compile Include="Models\TesteTipoModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\TesteModel.cs" />
+    <Compile Include="Servicos\TesteService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MORM.Aplicacao\MORM.Aplicacao.csproj">
+      <Project>{46bfb76e-fd5d-4bec-b486-01c6190cc5a9}</Project>
+      <Name>MORM.Aplicacao</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MORM.Apresentacao\MORM.Apresentacao.csproj">
+      <Project>{98b01efa-f4b2-448e-8b6c-5b7349c12f2e}</Project>
+      <Name>MORM.Apresentacao</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MORM.Repositorio.Firebird\MORM.Repositorio.Firebird.csproj">
+      <Project>{bae2603c-79cb-4631-b069-0d3fe5e0bd16}</Project>
+      <Name>MORM.Repositorio.Firebird</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MORM.Repositorio.MySql\MORM.Repositorio.MySql.csproj">
+      <Project>{fbbdc5f2-8fe4-4ddd-bbe0-64c12cb0a3ee}</Project>
+      <Name>MORM.Repositorio.MySql</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MORM.Repositorio.Oracle\MORM.Repositorio.Oracle.csproj">
+      <Project>{10fe132f-bd5c-493e-8f47-5a1d27b2bde9}</Project>
+      <Name>MORM.Repositorio.Oracle</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MORM.Repositorio.SqLite\MORM.Repositorio.SqLite.csproj">
+      <Project>{0342CF32-A2FC-4E32-A198-1960CB4F50BF}</Project>
+      <Name>MORM.Repositorio.SqLite</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MORM.Repositorio.SqlServer\MORM.Repositorio.SqlServer.csproj">
+      <Project>{4d61f5a5-53dc-4053-b980-47cf765101dc}</Project>
+      <Name>MORM.Repositorio.SqlServer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MORM.Repositorio\MORM.Repositorio.csproj">
+      <Project>{065554C3-207F-47D8-97C1-1AC5202ECB22}</Project>
+      <Name>MORM.Repositorio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MORM.Utilidade\MORM.Utilidade.csproj">
+      <Project>{346bed24-2dd1-4e58-939a-d72311c257f9}</Project>
+      <Name>MORM.Utilidade</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este projeto faz referência a pacotes do NuGet que não estão presentes neste computador. Use a Restauração de Pacotes do NuGet para baixá-los.  Para obter mais informações, consulte http://go.microsoft.com/fwlink/?LinkID=322105. O arquivo ausente é {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\MSTest.TestAdapter.1.2.0\build\net45\MSTest.TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MSTest.TestAdapter.1.2.0\build\net45\MSTest.TestAdapter.props'))" />
+    <Error Condition="!Exists('..\packages\MSTest.TestAdapter.1.2.0\build\net45\MSTest.TestAdapter.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MSTest.TestAdapter.1.2.0\build\net45\MSTest.TestAdapter.targets'))" />
+  </Target>
+  <Import Project="..\packages\MSTest.TestAdapter.1.2.0\build\net45\MSTest.TestAdapter.targets" Condition="Exists('..\packages\MSTest.TestAdapter.1.2.0\build\net45\MSTest.TestAdapter.targets')" />
+</Project>

@@ -1,0 +1,1 @@
+create table MIGRACAO_VERSAO ( CD_ENTIDADE Text Primary Key Not Null , DS_VERSAO Text Not Null );

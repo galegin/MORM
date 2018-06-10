@@ -1,0 +1,2 @@
+del *.pdb /s
+pause
