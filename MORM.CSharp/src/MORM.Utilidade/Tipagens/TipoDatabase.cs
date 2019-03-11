@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MORM.Utilidade.Extensoes;
+using System;
+using System.Globalization;
 using System.Linq;
 
 namespace MORM.Utilidade.Tipagens
@@ -8,27 +10,47 @@ namespace MORM.Utilidade.Tipagens
         Firebird,
         Oracle,
         MySql,
+        PostgreSql,
         SqLite,
         SqlServer,
     }
 
     public static class TipoDatabaseExtension
     {
-        public static string GetValueData(this TipoDatabase tipoDatabase, DateTime dateTime)
+        public static string GetValueData(this TipoDatabase tipoDatabase, DateTime value)
         {
             switch (tipoDatabase)
             {
                 case TipoDatabase.Firebird:
-                    return "'" + dateTime.ToString("dd.MM.yyyy HH:mm:ss") + "'";
+                    return "'" + value.ToString("dd.MM.yyyy HH:mm:ss") + "'";
                 case TipoDatabase.Oracle:
-                    return "to_date('" + dateTime.ToString("dd/MM/yyyy HH:mm:ss") + "', 'DD/MM/YYYY HH24:MI:SS')";
+                    return "to_date('" + value.ToString("dd/MM/yyyy HH:mm:ss") + "', 'DD/MM/YYYY HH24:MI:SS')";
                 case TipoDatabase.MySql:
-                    return "'" + dateTime.ToString("yyyy/MM/dd HH:mm:ss") + "'";
+                case TipoDatabase.PostgreSql:
+                    return "'" + value.ToString("yyyy/MM/dd HH:mm:ss") + "'";
                 case TipoDatabase.SqLite:
-                    return "'" + dateTime.ToString("yyyy/MM/dd HH:mm:ss") + "'";
+                    return "'" + value.ToString("yyyy-MM-dd HH:mm:ss") + "'";
             }
 
             return null;
+        }
+
+        public static string GetValueStr(this TipoDatabase tipoDatabase, object value)
+        {
+            value = value.GetValueNullable();
+
+            return (
+                value == null ? "null" :
+                value is bool ? "'" + ((bool)value ? "T" : "F") + "'" :
+                value is DateTime ? tipoDatabase.GetValueData((DateTime)value) :
+                value is decimal ? ((decimal)value).ToString(CultureInfo.InvariantCulture) :
+                value is double ? ((double)value).ToString(CultureInfo.InvariantCulture) :
+                value is float ? ((float)value).ToString(CultureInfo.InvariantCulture) :
+                value is long ? ((long)value).ToString() :
+                value is int ? ((int)value).ToString() :
+                value is short ? ((short)value).ToString() :
+                value is string[] ? "'" + string.Join("|", value as string[]).Replace("'", "''") + "'" :
+                value is string ? "'" + value.ToString().Replace("'", "''") + "'" : value.ToString());
         }
 
         public static string GetSqlTableExiste(this TipoDatabase tipo, string tablename)
@@ -70,6 +92,7 @@ namespace MORM.Utilidade.Tipagens
                 case TipoDatabase.Firebird:
                     return $"select firts {qtde} skip {regini} * from ({sql})";
                 case TipoDatabase.MySql:
+                case TipoDatabase.PostgreSql:
                     return $"select * from ({sql}) limit {regini}, {qtde}";
                 default:
                 case TipoDatabase.Oracle:
@@ -108,7 +131,14 @@ namespace MORM.Utilidade.Tipagens
 
         public static string GetAlterTable(this TipoDatabase tipo, string table, string[] column)
         {
-            return $"alter table {table} add {string.Join(" ", column)}";
+            switch (tipo)
+            {
+                case TipoDatabase.SqLite:
+                    return $"alter table {table} add column {string.Join(" ", column)}";
+                default:
+                    return $"alter table {table} add {string.Join(" ", column)}";
+            }
+
         }
 
         //-- primary
@@ -179,6 +209,19 @@ namespace MORM.Utilidade.Tipagens
             }
 
             return null;
+        }
+
+        //-- parameter
+
+        public static string GetNameParameter(this TipoDatabase tipo, string atributo)
+        {
+            switch (tipo)
+            {
+                case TipoDatabase.Oracle:
+                    return $":{atributo}";
+                default:
+                    return $"@{atributo}";
+            }
         }
     }
 }

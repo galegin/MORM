@@ -1,0 +1,2205 @@
+<log>
+<data>13/10/2018 10:58:51</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 10:58:52</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where Cd_Teste = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 10:58:53</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 11:02:40</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 11:02:40</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where Cd_Teste = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 11:02:42</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 11:16:52</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 11:16:52</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where Cd_Teste = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 11:16:55</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 11:26:53</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 11:26:54</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where Cd_Teste = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 11:26:54</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 11:41:53</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 11:41:53</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where Cd_Teste = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 11:41:54</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 11:46:52</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 11:46:52</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where Cd_Teste = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 11:46:52</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 11:49:43</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 11:49:43</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where Cd_Teste = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 11:49:43</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 11:49:46</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 11:49:46</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 11:50:17</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 11:50:17</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 11:51:02</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1) and (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 11:51:02</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 11:51:32</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 11:51:32</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where Cd_Teste = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 11:51:41</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 11:51:48</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 11:51:48</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 12:36:25</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Codigo as "Codigo", Versao as "Versao" from (select CD_ENTIDADE as Codigo, DS_VERSAO as Versao from MIGRACAO_VERSAO) where Codigo = 'TIPO'</message>
+</log>
+
+<log>
+<data>13/10/2018 12:36:25</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Codigo as "Codigo", Versao as "Versao" from (select CD_ENTIDADE as Codigo, DS_VERSAO as Versao from MIGRACAO_VERSAO) where Codigo = 'TESTE'</message>
+</log>
+
+<log>
+<data>13/10/2018 12:36:25</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Codigo as "Codigo", Versao as "Versao" from (select CD_ENTIDADE as Codigo, DS_VERSAO as Versao from MIGRACAO_VERSAO) where Codigo = 'TESTE'</message>
+</log>
+
+<log>
+<data>13/10/2018 12:36:26</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 12:36:26</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where Cd_Teste = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 12:36:26</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Teste = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 12:36:26</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where Cd_Teste = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 12:36:26</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Teste = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 12:36:26</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 12:36:26</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where Cd_Teste = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 12:36:26</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 12:36:26</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 12:36:26</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 12:36:26</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 12:36:26</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 12:36:26</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 12:37:58</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Codigo as "Codigo", Versao as "Versao" from (select CD_ENTIDADE as Codigo, DS_VERSAO as Versao from MIGRACAO_VERSAO) where Codigo = 'TIPO'</message>
+</log>
+
+<log>
+<data>13/10/2018 12:37:58</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Codigo as "Codigo", Versao as "Versao" from (select CD_ENTIDADE as Codigo, DS_VERSAO as Versao from MIGRACAO_VERSAO) where Codigo = 'TESTE'</message>
+</log>
+
+<log>
+<data>13/10/2018 12:37:58</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 12:37:58</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where Cd_Teste = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 12:37:58</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Teste = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 12:37:58</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where Cd_Teste = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 12:37:58</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Teste = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 12:37:58</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 12:37:58</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where Cd_Teste = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 12:37:59</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 12:37:59</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 12:37:59</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 12:37:59</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 12:37:59</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 12:37:59</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 12:40:57</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 12:40:57</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 12:40:57</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where Cd_Teste = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 12:40:57</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where Cd_Teste = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 12:40:57</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where Cd_Teste = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 12:40:58</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Teste = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 12:40:58</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 12:40:58</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where Cd_Teste = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 12:40:58</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Teste = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 12:40:58</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 12:40:58</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 12:40:58</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 12:40:58</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 12:41:15</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 12:41:15</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 12:41:15</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where Cd_Teste = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 12:41:15</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where Cd_Teste = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 12:41:15</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where Cd_Teste = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 12:41:16</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Teste = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 12:41:16</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 12:41:16</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where Cd_Teste = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 12:41:16</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Teste = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 12:41:16</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 12:41:16</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Codigo as "Codigo", Versao as "Versao" from (select CD_ENTIDADE as Codigo, DS_VERSAO as Versao from MIGRACAO_VERSAO) where Codigo = 'TIPO'</message>
+</log>
+
+<log>
+<data>13/10/2018 12:41:16</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Codigo as "Codigo", Versao as "Versao" from (select CD_ENTIDADE as Codigo, DS_VERSAO as Versao from MIGRACAO_VERSAO) where Codigo = 'TESTE'</message>
+</log>
+
+<log>
+<data>13/10/2018 12:41:16</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 12:41:16</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 12:41:16</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 12:41:16</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 12:47:54</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 0)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:02:14</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:02:14</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:02:14</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = Normal)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:05:59</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:06:00</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:06:12</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = Normal)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:09:24</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:09:24</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:09:52</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:09:52</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:10:19</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:10:19</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:10:33</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:10:33</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:10:40</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = Normal)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:11:31</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:11:31</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:11:37</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:11:37</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:11:39</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:11:39</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:11:40</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:11:40</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:11:47</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:11:47</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:12:04</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:12:04</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:15:21</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:15:21</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:15:21</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where Cd_Teste = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:15:21</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where Cd_Teste = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:15:21</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where Cd_Teste = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:15:21</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Teste = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:15:21</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:15:21</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where Cd_Teste = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:15:22</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Teste = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:15:22</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:15:22</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Codigo as "Codigo", Versao as "Versao" from (select CD_ENTIDADE as Codigo, DS_VERSAO as Versao from MIGRACAO_VERSAO) where Codigo = 'TIPO'</message>
+</log>
+
+<log>
+<data>13/10/2018 13:15:22</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Codigo as "Codigo", Versao as "Versao" from (select CD_ENTIDADE as Codigo, DS_VERSAO as Versao from MIGRACAO_VERSAO) where Codigo = 'TESTE'</message>
+</log>
+
+<log>
+<data>13/10/2018 13:15:22</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:15:22</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:15:22</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = Normal)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:15:22</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:15:22</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:15:22</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:15:22</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:17:39</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = Normal)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:17:40</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = Normal)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:17:40</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:17:40</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:17:40</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:17:40</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:17:40</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:17:40</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:17:40</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:17:40</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:17:40</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:17:40</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:31:05</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:31:05</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:31:17</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = Normal)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:31:45</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = Normal)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:35:31</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:35:31</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:35:31</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:35:31</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:35:31</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:35:31</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:35:31</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:35:31</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:35:31</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:35:31</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:35:31</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:35:31</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:35:31</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:35:31</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:55:11</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = Int32 Cd_Tipo)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:57:23</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 0)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:58:16</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:58:16</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:58:16</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where Cd_Teste = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:58:16</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where Cd_Teste = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:58:16</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where Cd_Teste = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:58:16</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Teste = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:58:16</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:58:16</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where Cd_Teste = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:58:16</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Teste = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:58:17</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:58:17</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:58:17</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 0)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:58:17</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:58:17</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Codigo as "Codigo", Versao as "Versao" from (select CD_ENTIDADE as Codigo, DS_VERSAO as Versao from MIGRACAO_VERSAO) where Codigo = 'TIPO'</message>
+</log>
+
+<log>
+<data>13/10/2018 13:58:17</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Codigo as "Codigo", Versao as "Versao" from (select CD_ENTIDADE as Codigo, DS_VERSAO as Versao from MIGRACAO_VERSAO) where Codigo = 'TESTE'</message>
+</log>
+
+<log>
+<data>13/10/2018 13:58:17</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:58:17</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:58:17</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:58:17</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:58:17</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:58:17</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:58:17</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:58:17</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:58:17</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:58:17</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:58:17</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:58:17</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:58:17</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:58:17</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 13:58:17</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 13:58:17</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 14:04:57</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 14:04:57</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 14:04:57</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 14:04:57</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 14:04:57</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 14:04:57</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 14:04:57</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 14:04:57</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 14:04:57</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 0)</message>
+</log>
+
+<log>
+<data>13/10/2018 14:04:57</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 14:04:57</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 14:04:57</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 14:04:57</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 14:04:57</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 14:04:57</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 14:06:34</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 14:06:34</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 14:06:34</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 14:06:34</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 14:06:34</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 14:06:34</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 14:06:34</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 0)</message>
+</log>
+
+<log>
+<data>13/10/2018 14:06:34</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 14:06:34</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 14:06:34</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 14:06:34</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 14:06:34</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 14:06:34</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 14:06:34</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 14:06:34</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 14:07:41</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 14:07:41</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 14:07:41</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 14:07:41</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 14:07:41</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 0)</message>
+</log>
+
+<log>
+<data>13/10/2018 14:07:41</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 14:07:41</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 14:07:41</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 14:07:41</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 14:07:41</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 14:07:41</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 14:07:41</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 14:07:41</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 14:07:41</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 14:07:41</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 14:51:00</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 14:51:01</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 15:15:13</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Codigo as "Codigo", Versao as "Versao" from (select CD_ENTIDADE as Codigo, DS_VERSAO as Versao from MIGRACAO_VERSAO) where Codigo = 'TIPO'</message>
+</log>
+
+<log>
+<data>13/10/2018 15:15:14</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Codigo as "Codigo", Versao as "Versao" from (select CD_ENTIDADE as Codigo, DS_VERSAO as Versao from MIGRACAO_VERSAO) where Codigo = 'TESTE'</message>
+</log>
+
+<log>
+<data>13/10/2018 15:15:14</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 15:15:14</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 15:15:14</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 15:15:14</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 15:15:14</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 15:15:14</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 15:15:14</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 15:15:14</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 15:15:14</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 15:15:14</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 15:15:14</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 15:15:14</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 15:15:14</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 15:15:14</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 15:15:14</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 15:15:14</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where Cd_Teste = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 15:15:14</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Teste = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 15:15:14</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where Cd_Teste = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 15:15:14</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Teste = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 15:15:14</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 15:15:14</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where Cd_Teste = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 15:15:14</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where Cd_Teste = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 15:15:15</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 15:15:15</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 15:15:15</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 15:15:15</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 15:15:15</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 15:15:15</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 15:15:15</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 15:15:33</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Codigo as "Codigo", Versao as "Versao" from (select CD_ENTIDADE as Codigo, DS_VERSAO as Versao from MIGRACAO_VERSAO) where Codigo = 'TIPO'</message>
+</log>
+
+<log>
+<data>13/10/2018 15:15:33</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Codigo as "Codigo", Versao as "Versao" from (select CD_ENTIDADE as Codigo, DS_VERSAO as Versao from MIGRACAO_VERSAO) where Codigo = 'TESTE'</message>
+</log>
+
+<log>
+<data>13/10/2018 15:15:33</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 15:15:33</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 15:15:54</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 15:16:39</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 15:16:39</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 15:16:44</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 15:16:44</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 15:16:47</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 15:17:57</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Codigo as "Codigo", Versao as "Versao" from (select CD_ENTIDADE as Codigo, DS_VERSAO as Versao from MIGRACAO_VERSAO) where Codigo = 'TIPO'</message>
+</log>
+
+<log>
+<data>13/10/2018 15:17:57</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Codigo as "Codigo", Versao as "Versao" from (select CD_ENTIDADE as Codigo, DS_VERSAO as Versao from MIGRACAO_VERSAO) where Codigo = 'TESTE'</message>
+</log>
+
+<log>
+<data>13/10/2018 15:17:57</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 15:17:57</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 15:17:57</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 15:18:03</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 15:18:03</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 15:18:03</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 15:18:03</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 15:18:03</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 15:18:20</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 0)</message>
+</log>
+
+<log>
+<data>13/10/2018 15:18:20</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where Cd_Teste = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 15:18:20</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Teste = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 15:18:20</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where Cd_Teste = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 15:18:20</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Teste = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 15:18:20</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 15:18:20</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where Cd_Teste = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 15:18:20</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where Cd_Teste = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 15:18:21</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 15:18:21</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 15:18:21</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 15:18:21</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where (Cd_Tipo = 1)</message>
+</log>
+
+<log>
+<data>13/10/2018 15:18:21</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 15:18:21</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Tipo as "Cd_Tipo", Ds_Tipo as "Ds_Tipo" from (select CD_TIPO as Cd_Tipo, DS_TIPO as Ds_Tipo from TIPO) where Cd_Tipo = 1</message>
+</log>
+
+<log>
+<data>13/10/2018 15:18:21</data>
+<tipo>Info</tipo>
+<metodo>Conexao.GetConsulta()</metodo>
+<message>sql: select Cd_Teste as "Cd_Teste", Ds_Teste as "Ds_Teste", Dt_Teste as "Dt_Teste", In_Ativo as "In_Ativo", Nr_Teste as "Nr_Teste", Vl_Teste as "Vl_Teste", Cd_Tipo as "Cd_Tipo" from (select CD_TESTE as Cd_Teste, DS_TESTE as Ds_Teste, DT_TESTE as Dt_Teste, IN_TESTE as In_Ativo, NR_TESTE as Nr_Teste, VL_TESTE as Vl_Teste, CD_TIPO as Cd_Tipo from TESTE) where (Cd_Tipo = 1)</message>
+</log>
+

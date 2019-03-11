@@ -15,6 +15,12 @@ namespace MORM.Utilidade.Extensoes
         private static Type[] isInt = { typeof(long), typeof(long?), typeof(int), typeof(int?), typeof(short), typeof(short?) };
         private static Type[] isStr = { typeof(string), typeof(string[]) };
 
+        public static bool IsBool(this Type tipo) => isBool.Contains(tipo);
+        public static bool IsDate(this Type tipo) => isDate.Contains(tipo);
+        public static bool IsReal(this Type tipo) => isReal.Contains(tipo);
+        public static bool IsInt(this Type tipo) => isInt.Contains(tipo);
+        public static bool IsStr(this Type tipo) => isStr.Contains(tipo);
+
         private static Dictionary<Type[], string> GetTypes(this TipoDatabase tipo)
         {
             switch (tipo)
@@ -22,6 +28,7 @@ namespace MORM.Utilidade.Extensoes
                 default:
                 case TipoDatabase.Firebird:
                 case TipoDatabase.MySql:
+                case TipoDatabase.PostgreSql:
                     return new Dictionary<Type[], string>
                     {
                         { isBool, "char(1)" },
@@ -91,6 +98,33 @@ namespace MORM.Utilidade.Extensoes
             else if (value is int?) return (value as int?).Value;
             else if (value is short?) return (value as short?).Value;
             else return value;
+        }
+
+        public static Type GetTypeNullable(this Type type)
+        {
+            if (type == typeof(bool?)) return typeof(bool);
+            else if (type == typeof(DateTime?)) return typeof(DateTime);
+            else if (type == typeof(decimal?)) return typeof(decimal);
+            else if (type == typeof(double?)) return typeof(double);
+            else if (type == typeof(float?)) return typeof(float);
+            else if (type == typeof(long?)) return typeof(long);
+            else if (type == typeof(int?)) return typeof(int);
+            else if (type == typeof(short?)) return typeof(short);
+            else return type;
+        }
+
+        public static object GetValueNull(this Type value)
+        {
+            if (value == typeof(bool)) return false;
+            else if (value == typeof(DateTime)) return DateTime.MinValue;
+            else if (value == typeof(decimal)) return 0M;
+            else if (value == typeof(double)) return 0D;
+            else if (value == typeof(float)) return 0F;
+            else if (value == typeof(long)) return 0L;
+            else if (value == typeof(int)) return 0;
+            else if (value == typeof(short)) return (short)0;
+            else if (value == typeof(string)) return string.Empty;
+            else return null;
         }
 
         public static Type GetTypeNullable(this object value)

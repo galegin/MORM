@@ -1,0 +1,42 @@
+﻿<comps:AbstractUserControlNotify x:Class="MORM.Apresentacao.Menus.ucMenuOpcao"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:comps="clr-namespace:MORM.Apresentacao.Comps"
+             xmlns:materialDesing="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
+             mc:Ignorable="d" 
+             Height="{Binding AlturaMenuOpcao}" Width="210">
+
+    <comps:AbstractUserControlNotify.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </comps:AbstractUserControlNotify.Resources>
+    
+    <Grid>
+        <DockPanel>
+            <StackPanel DockPanel.Dock="Top">
+                <Button Height="40" Width="210" Margin="0"
+                        Style="{StaticResource InlineButton}"
+                        Command="{Binding ExibirSubMenu}" CommandParameter="{Binding}"
+                        HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                        >
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Height="40" Width="156" 
+                                   Text="{Binding MenuOpcao.Descricao}" 
+                                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                        <materialDesing:PackIcon Kind="{Binding PackIconKindMenu}"
+                                                 Height="35" Width="50" 
+                                                 VerticalAlignment="Center" HorizontalAlignment="Center" 
+                                                 Margin="6,0,6,0" Foreground="#FFFFFF"
+                                                 Visibility="{Binding IsContemSubMenu, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                    </StackPanel>
+                </Button>                
+            </StackPanel>
+
+            <StackPanel x:Name="stkSubMenuOpcao" 
+                        Visibility="{Binding IsExibirSubMenu, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
+        </DockPanel>
+    </Grid>
+</comps:AbstractUserControlNotify>

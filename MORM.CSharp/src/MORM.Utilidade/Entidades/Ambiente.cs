@@ -1,6 +1,7 @@
 using MORM.Utilidade.Atributos;
 using MORM.Utilidade.Interfaces;
 using MORM.Utilidade.Tipagens;
+using System;
 using System.Configuration;
 
 namespace MORM.Utilidade.Entidades
@@ -8,10 +9,13 @@ namespace MORM.Utilidade.Entidades
     [Tabela("WEB_AMBIENTE")]
     public class Ambiente : IAmbiente
     {
+        private static string _tipoDatabase = ConfigurationManager.AppSettings["tipoDatabase"] 
+            ?? nameof(TipoDatabase.SqLite);
+
         public Ambiente()
         {
             Codigo = ConfigurationManager.AppSettings["ambiente"];
-            TipoDatabase = (TipoDatabase)System.Enum.Parse(typeof(TipoDatabase), ConfigurationManager.AppSettings["tipoDatabase"], false);
+            TipoDatabase = (TipoDatabase)Enum.Parse(typeof(TipoDatabase), _tipoDatabase, false);
             ProviderName = ConfigurationManager.AppSettings["providerName"];
             Database = ConfigurationManager.AppSettings["database"];
             Username = ConfigurationManager.AppSettings["username"];
@@ -47,5 +51,6 @@ namespace MORM.Utilidade.Entidades
         public int CodigoEmpresa { get; set; }
         [Campo("CD_USUARIO", CampoTipo.Nul)]
         public int CodigoUsuario { get; set; }
+        public int CodigoTerminal { get; set; }
     }
 }

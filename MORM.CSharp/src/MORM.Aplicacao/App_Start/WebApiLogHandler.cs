@@ -35,11 +35,9 @@ namespace MORM.Aplicacao.App_Start
     {
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            const string METHOD = "WebApiLogHandler.SendAsync";
-
             var requestBody = await request.Content.ReadAsStringAsync();
 
-            Logger.Debug(METHOD, $"WebApi: {request.RequestUri}, Request: {requestBody}");
+            Logger.DebugMensagem($"WebApi: {request.RequestUri}, Request: {requestBody}");
 
             var result = await base.SendAsync(request, cancellationToken);
 
@@ -48,9 +46,9 @@ namespace MORM.Aplicacao.App_Start
                 var responseBody = await result.Content.ReadAsStringAsync();
 
                 if (result.StatusCode == HttpStatusCode.OK)
-                    Logger.Debug(METHOD, $"WebApi: {request.RequestUri}, Response: {responseBody}");
+                    Logger.DebugMensagem($"WebApi: {request.RequestUri}, Response: {responseBody}");
                 else
-                    Logger.Erro(METHOD, $"WebApi: {request.RequestUri}, Response: {responseBody}");
+                    Logger.ErroMensagem($"WebApi: {request.RequestUri}, Response: {responseBody}");
             }
 
             return result;

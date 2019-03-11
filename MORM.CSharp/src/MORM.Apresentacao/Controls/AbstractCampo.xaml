@@ -1,0 +1,40 @@
+﻿<comps:AbstractUserControlNotify x:Class="MORM.Apresentacao.Controls.AbstractCampo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MORM.Apresentacao.Controls"
+             xmlns:comps="clr-namespace:MORM.Apresentacao.Comps"
+             mc:Ignorable="d"
+             d:DesignHeight="40" d:DesignWidth="400">
+
+    <comps:AbstractUserControlNotify.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </comps:AbstractUserControlNotify.Resources>
+    
+    <Grid>
+        <StackPanel Orientation="Horizontal">
+            <local:AbstractButton x:Name="LabelBtn"
+                                  Width="100"
+                                  Style="{StaticResource DefaultButton}"
+                                  Content="{Binding Descricao}" 
+                                  Visibility="{Binding IsExibirBtn, Converter={StaticResource BooleanToVisibilityConverter}}" 
+                                  />
+            <local:AbstractEdit x:Name="EditIni"
+                                Width="100"
+                                Text="{Binding ValorIni}" 
+                                Visibility="{Binding IsExibirIni, Converter={StaticResource BooleanToVisibilityConverter}}" 
+                                />
+            <local:AbstractEdit x:Name="EditFin"
+                                Width="100"                                  
+                                Text="{Binding ValorFin}" 
+                                Visibility="{Binding IsExibirFin, Converter={StaticResource BooleanToVisibilityConverter}}" 
+                                />
+            <local:AbstractEdit x:Name="EditDes"
+                                Width="100"
+                                Text="{Binding ValorDes}" 
+                                Visibility="{Binding IsExibirDes, Converter={StaticResource BooleanToVisibilityConverter}}" 
+                                />
+        </StackPanel>
+    </Grid>
+</comps:AbstractUserControlNotify>

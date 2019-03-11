@@ -22,7 +22,8 @@ namespace MORM.Utilidade.Atributos
     {
         Key,
         Req,
-        Nul
+        Nul,
+        Pwd
     }
    
     public class CampoAttribute : Attribute
@@ -47,6 +48,10 @@ namespace MORM.Utilidade.Atributos
 
         public string Atributo => OwnerProp.Name ?? Nome;
         public Type DataType => OwnerProp.PropertyType;
+
+        public bool IsKey => (Tipo == CampoTipo.Key);
+        public bool IsReq => (Tipo == CampoTipo.Key || Tipo == CampoTipo.Req);
+        public bool IsPwd => (Tipo == CampoTipo.Pwd);
     }
     
     public class Campos : List<CampoAttribute> {}

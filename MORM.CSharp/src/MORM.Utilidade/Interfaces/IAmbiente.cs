@@ -14,5 +14,6 @@ namespace MORM.Utilidade.Interfaces
         string Hostname { get; set; }
         int CodigoEmpresa { get; set; }
         int CodigoUsuario { get; set; }
+        int CodigoTerminal { get; set; }
     }
 }

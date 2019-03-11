@@ -1,6 +1,7 @@
-﻿using MORM.Utilidade.Entidades;
+﻿using MORM.Repositorio.Extensions;
+using MORM.Repositorio.IoC;
+using MORM.Utilidade.Entidades;
 using MORM.Utilidade.Interfaces;
-using MORM.Utilidade.Tipagens;
 using System;
 
 namespace MORM.Repositorio.Services.nsAmbiente
@@ -8,21 +9,23 @@ namespace MORM.Repositorio.Services.nsAmbiente
     //-- galeg - 26/05/2018 17:38:22
     public class LogAcessoService : AbstractService<LogAcesso>, ILogAcessoService
     {
+        public LogAcessoService(IAbstractUnityOfWork unityOfWork) : base(unityOfWork)
+        {
+        }
+
         public LogAcessoService(IAmbiente ambiente) : base(ambiente)
         {
         }
 
         private LogAcesso GetLogAcesso(DateTime dataLog, int sequenciaLog, int codigoEmpresa, int codigoUsuario, string codigoServico, string codigoMetodo)
         {
-            var dataLogStr = Ambiente.TipoDatabase.GetValueData(dataLog);
-
-            return ConsultarF((f) =>
-                $"{nameof(f.DataLog)} = '{dataLogStr}' and " +
-                $"{nameof(f.SequenciaLog)} = {sequenciaLog} and " +
-                $"{nameof(f.CodigoEmpresa)} = {codigoEmpresa} and " +
-                $"{nameof(f.CodigoUsuario)} = {codigoUsuario} and " +
-                $"{nameof(f.CodigoServico)} = '{codigoServico}' and " +
-                $"{nameof(f.CodigoMetodo)} = '{codigoMetodo}'");
+            return AbstractRepository.FirstOrDefault(f =>
+                f.DataLog == dataLog &&
+                f.SequenciaLog == sequenciaLog &&
+                f.CodigoEmpresa == codigoEmpresa &&
+                f.CodigoUsuario == codigoUsuario &&
+                f.CodigoServico == codigoServico &&
+                f.CodigoMetodo == codigoMetodo);
         }
 
         public void GravarLog(int codigoEmpresa, int codigoUsuario, string codigoServico, string codigoMetodo)
@@ -45,7 +48,7 @@ namespace MORM.Repositorio.Services.nsAmbiente
 
             logAcesso.QtdeAcesso += 1;
 
-            Salvar(logAcesso);
+            AbstractRepository.Salvar(logAcesso);
         }
     }
 }

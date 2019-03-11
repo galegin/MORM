@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
+using System.Runtime.CompilerServices;
 
 namespace MORM.Utilidade.Utils
 {
@@ -30,6 +31,13 @@ namespace MORM.Utilidade.Utils
             return "c:\\";
         }
 
+        public static void CreateDirLog()
+        {
+            var dirLog = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Log");
+            if (!Directory.Exists(dirLog))
+                Directory.CreateDirectory(dirLog);
+        }
+
         private static string _arqLog;
         public static string ArqLog
         {
@@ -39,11 +47,7 @@ namespace MORM.Utilidade.Utils
                     _arqLog = Path.Combine(GetDirLog(), PrgLog + "." + DateTime.Today.ToString("yyyy.MM.dd") + ".xml");
                 return _arqLog;
             }
-
-            set
-            {
-                _arqLog = value;
-            }
+            set { _arqLog = value; }
         }
 
         protected enum TipoLog
@@ -52,6 +56,8 @@ namespace MORM.Utilidade.Utils
             Info,
             Erro
         }
+
+        // log
 
         protected static void Log(TipoLog tipo, string metodo, string message)
         {
@@ -74,7 +80,11 @@ namespace MORM.Utilidade.Utils
             vWriter.WriteLine(conteudo);
             vWriter.Flush();
             vWriter.Close();
+
+            LoggerMem.AddMensagem(conteudo);
         }
+
+        // debug
 
         public static void Debug(string metodo, string message)
         {
@@ -82,14 +92,75 @@ namespace MORM.Utilidade.Utils
                 Log(TipoLog.Debug, metodo, message);
         }
 
+        public static void DebugMensagem(string message,
+            [CallerMemberName] string metodo = "",
+            [CallerFilePath] string filePath = "",
+            [CallerLineNumber] int line = 0)
+        {
+            if (_inDebug)
+                Log(TipoLog.Debug, metodo, $"{message} / FilePath: {filePath} na linha {line}");
+        }
+
+        // erro
+
         public static void Erro(string metodo, string message)
         {
             Log(TipoLog.Erro, metodo, message);
         }
 
+        public static void ErroMensagem(string message,
+            [CallerMemberName] string metodo = "",
+            [CallerFilePath] string filePath = "",
+            [CallerLineNumber] int line = 0)
+        {
+            Log(TipoLog.Erro, metodo, $"{message} / FilePath: {filePath} na linha {line}");
+        }
+
+        // info
+
         public static void Info(string metodo, string message)
         {
             Log(TipoLog.Info, metodo, message);
+        }
+
+        public static void InfoMensagem(string message,
+            [CallerMemberName] string metodo = "",
+            [CallerFilePath] string filePath = "",
+            [CallerLineNumber] int line = 0)
+        {
+            Log(TipoLog.Info, metodo, $"{message} / FilePath: {filePath} na linha {line}");
+        }
+
+        // exception
+
+        public static void DebugException(Exception ex, string mensagem = null,
+            [CallerMemberName] string metodo = "",
+            [CallerFilePath] string filePath = "",
+            [CallerLineNumber] int line = 0)
+        {
+            Log(TipoLog.Debug, metodo, (!string.IsNullOrWhiteSpace(mensagem) ? $"{mensagem} / " : null) +
+                $"Message: {ex.Message} / StackTrace: {ex.StackTrace} / " +
+                $"FilePath: {filePath} na linha {line}");
+        }
+
+        public static void ErroException(Exception ex, string mensagem = null,
+            [CallerMemberName] string metodo = "", 
+            [CallerFilePath] string filePath = "", 
+            [CallerLineNumber] int line = 0)
+        {
+            Log(TipoLog.Erro, metodo, (!string.IsNullOrWhiteSpace(mensagem) ? $"{mensagem} / " : null) +
+                $"Message: {ex.Message} / StackTrace: {ex.StackTrace} / " +
+                $"FilePath: {filePath} na linha {line}");
+        }
+
+        public static void InfoException(Exception ex, string mensagem = null,
+            [CallerMemberName] string metodo = "",
+            [CallerFilePath] string filePath = "",
+            [CallerLineNumber] int line = 0)
+        {
+            Log(TipoLog.Info, metodo, (!string.IsNullOrWhiteSpace(mensagem) ? $"{mensagem} / " : null) +
+                $"Message: {ex.Message} / StackTrace: {ex.StackTrace} / " +
+                $"FilePath: {filePath} na linha {line}");
         }
     }
 }

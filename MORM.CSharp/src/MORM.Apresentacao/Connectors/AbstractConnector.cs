@@ -1,13 +1,22 @@
 using MORM.Apresentacao.Consumers;
 using MORM.Utilidade.Dtos;
-using MORM.Utilidade.Factories;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 
 namespace MORM.Apresentacao.Connectors
 {
-    public class AbstractConnector<TObject> where TObject: class
+    public class AbstractConnector<TObject> where TObject : class
     {
+        private static string _site = ConfigurationManager.AppSettings[nameof(_site)] ?? "http://localhost";
+        private static string _token = ConfigurationManager.AppSettings[nameof(_token)] ?? "123456";
+
+        static AbstractConnector()
+        {
+            AbstractConsumer<TObject>.Site = _site; // ?????
+            AbstractConsumer<TObject>.Token = _token; // ?????
+        }
+
         public AbstractConnector()
         {
             AbstractConsumer = new AbstractConsumer<TObject>();
@@ -15,39 +24,29 @@ namespace MORM.Apresentacao.Connectors
         
         public AbstractConsumer<TObject> AbstractConsumer { get; }
 
-        private AbstractConsumer<TObject>.Listar _listar 
-            => SingletonFactory.GetInstance<AbstractConsumer<TObject>.Listar>();
-        private AbstractConsumer<TObject>.Consultar _consultar
-            => SingletonFactory.GetInstance<AbstractConsumer<TObject>.Consultar>();
+        private AbstractConsumer<TObject>.Listar _listar = new AbstractConsumer<TObject>.Listar();
+        private AbstractConsumer<TObject>.Consultar _consultar = new AbstractConsumer<TObject>.Consultar();
 
-        private AbstractConsumer<TObject>.Incluir _incluir
-            => SingletonFactory.GetInstance<AbstractConsumer<TObject>.Incluir>();
-        private AbstractConsumer<TObject>.IncluirLista _incluirLista
-            => SingletonFactory.GetInstance<AbstractConsumer<TObject>.IncluirLista>();
+        private AbstractConsumer<TObject>.Incluir _incluir = new AbstractConsumer<TObject>.Incluir();
+        private AbstractConsumer<TObject>.IncluirLista _incluirLista = new AbstractConsumer<TObject>.IncluirLista();
 
-        private AbstractConsumer<TObject>.Alterar _alterar
-            => SingletonFactory.GetInstance<AbstractConsumer<TObject>.Alterar>();
-        private AbstractConsumer<TObject>.AlterarLista _alterarLista
-            => SingletonFactory.GetInstance<AbstractConsumer<TObject>.AlterarLista>();
+        private AbstractConsumer<TObject>.Alterar _alterar = new AbstractConsumer<TObject>.Alterar();
+        private AbstractConsumer<TObject>.AlterarLista _alterarLista = new AbstractConsumer<TObject>.AlterarLista();
 
-        private AbstractConsumer<TObject>.Salvar _salvar
-            => SingletonFactory.GetInstance<AbstractConsumer<TObject>.Salvar>();
-        private AbstractConsumer<TObject>.SalvarLista _salvarLista
-            => SingletonFactory.GetInstance<AbstractConsumer<TObject>.SalvarLista>();
+        private AbstractConsumer<TObject>.Salvar _salvar = new AbstractConsumer<TObject>.Salvar();
+        private AbstractConsumer<TObject>.SalvarLista _salvarLista = new AbstractConsumer<TObject>.SalvarLista();
 
-        private AbstractConsumer<TObject>.Excluir _excluir
-            => SingletonFactory.GetInstance<AbstractConsumer<TObject>.Excluir>();
-        private AbstractConsumer<TObject>.ExcluirLista _excluirLista
-            => SingletonFactory.GetInstance<AbstractConsumer<TObject>.ExcluirLista>();
+        private AbstractConsumer<TObject>.Excluir _excluir = new AbstractConsumer<TObject>.Excluir();
+        private AbstractConsumer<TObject>.ExcluirLista _excluirLista = new AbstractConsumer<TObject>.ExcluirLista();
 
         public IList<TObject> Listar(Func<TObject, string> filtro)
         {
-            return _listar.Post(new DtoAbstract<TObject>.Listar(filtro)).Lista;
+            return _listar.Post(new DtoAbstract<TObject>.Listar(filtro))?.Conteudo?.Lista;
         }
 
         public TObject Consultar(Func<TObject, string> filtro)
         {
-            return _consultar.Post(new DtoAbstract<TObject>.Consultar(filtro)).Objeto;
+            return _consultar.Post(new DtoAbstract<TObject>.Consultar(filtro))?.Conteudo?.Objeto;
         }
 
         // incluir

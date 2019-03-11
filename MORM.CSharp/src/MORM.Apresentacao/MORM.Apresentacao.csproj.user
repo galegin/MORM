@@ -3,4 +3,7 @@
   <PropertyGroup>
     <ProjectView>ProjectFiles</ProjectView>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <StartArguments>-ei "1" -ed "Empresa teste" -ui "1" -un "Usuario teste" -ti "1" -td "Terminal teste"</StartArguments>
+  </PropertyGroup>
 </Project>

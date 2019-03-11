@@ -1,4 +1,6 @@
-﻿using MORM.Utilidade.Entidades;
+﻿using MORM.Repositorio.Extensions;
+using MORM.Repositorio.IoC;
+using MORM.Utilidade.Entidades;
 using MORM.Utilidade.Interfaces;
 
 namespace MORM.Repositorio.Services.nsAmbiente
@@ -6,17 +8,21 @@ namespace MORM.Repositorio.Services.nsAmbiente
     //-- galeg - 26/05/2018 17:38:22
     public class PermissaoService : AbstractService<Permissao>, IPermissaoService
     {
+        public PermissaoService(IAbstractUnityOfWork unityOfWork) : base(unityOfWork)
+        {
+        }
+
         public PermissaoService(IAmbiente ambiente) : base(ambiente)
         {
         }
 
         private Permissao GetPermissao(int codigoEmpresa, int codigoUsuario, string codigoServico, string codigoMetodo)
         {
-            return ConsultarF((f) =>
-                $"{nameof(f.CodigoEmpresa)} = {codigoEmpresa} and " +
-                $"{nameof(f.CodigoUsuario)} = {codigoUsuario} and " +
-                $"{nameof(f.CodigoServico)} = '{codigoServico}' and " +
-                $"{nameof(f.CodigoMetodo)} = '{codigoMetodo}'");
+            return AbstractRepository.FirstOrDefault(f =>
+                f.CodigoEmpresa == codigoEmpresa &&
+                f.CodigoUsuario == codigoUsuario &&
+                f.CodigoServico == codigoServico &&
+                f.CodigoMetodo  == codigoMetodo);
         }
 
         public bool VerificarPermissao(int codigoEmpresa, int codigoUsuario, string codigoServico, string codigoMetodo)
@@ -25,9 +31,6 @@ namespace MORM.Repositorio.Services.nsAmbiente
 
             if (permissao.CodigoEmpresa <= 0)
                 permissao = GetPermissao(codigoEmpresa, codigoUsuario, codigoServico, "TODOS");
-
-            if (permissao.CodigoEmpresa <= 0)
-                permissao = GetPermissao(codigoEmpresa, codigoUsuario, "TODOS", "TODOS");
 
             if (permissao.CodigoEmpresa <= 0)
                 permissao = GetPermissao(codigoEmpresa, codigoUsuario, "TODOS", "TODOS");

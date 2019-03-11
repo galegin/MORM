@@ -5,6 +5,7 @@
     {
         EmpresaLogada,
         UsuarioLogado,
+        TerminalLogado,
         DataSistema,
         HoraSistema,
         ValorPadrao

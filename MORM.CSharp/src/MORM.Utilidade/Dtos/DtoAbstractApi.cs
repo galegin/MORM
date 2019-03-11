@@ -12,7 +12,8 @@ namespace MORM.Utilidade.Dtos
         }
     }
 
-    public class DtoAbstractApi<TObject> : DtoAbstractApi where TObject : class
+    public class DtoAbstractApi<TObject> : DtoAbstractApi 
+        where TObject : class
     {
         //-- filtro
 

@@ -1,3 +1,4 @@
+using MORM.Aplicacao.Extensions;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -17,7 +18,8 @@ namespace MORM.Aplicacao.App_Start
         {
             await Task.Run(() =>
             {
-                Token token = Token.Autenticar(context);
+                //Token token = Token.Autenticar(context);
+                Token token = context.GetToken();
                 if (token == null)
                 {
                     context.ErrorResult = new AuthenticationFailureResult("Falha de autenticação", context.Request);

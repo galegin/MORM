@@ -1,12 +1,10 @@
-using MORM.Aplicacao.App_Start;
+using MORM.Aplicacao.Extensions;
 using MORM.Repositorio.Services;
 using MORM.Repositorio.Services.nsAmbiente;
 using MORM.Utilidade.Dtos;
-using MORM.Utilidade.Factories;
 using MORM.Utilidade.Interfaces;
 using MORM.Utilidade.Tipagens;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Net;
@@ -18,39 +16,24 @@ namespace MORM.Aplicacao.Controllers
     //[RoutePrefix("api/AbstractController")]
     public class AbstractController<TObject> : ApiController, IAbstractController<TObject> where TObject : class
     {
-        public AbstractController()
-        {
-        }
-
         public AbstractController(IAbstractApiService<TObject> abstractApiService)
         {
             _abstractApiService = abstractApiService ?? throw new ArgumentNullException(nameof(abstractApiService));
+            _abstractApiService.SetAmbiente(Request.GetAmbiente());
+            SetarPermissaoApiService();
+        }
+
+        public AbstractController()
+        {
+            _abstractApiService = new AbstractApiService<TObject>(Request.GetAmbiente());
             SetarPermissaoApiService();
         }
 
         // service
 
-        protected IAmbiente Ambiente => _abstractApiService.Ambiente;
+        protected IAmbiente Ambiente => _abstractApiService.AbstractRepository.DataContext.Ambiente;
 
         protected IAbstractApiService<TObject> _abstractApiService;
-
-        protected void SetarService(IAmbiente ambiente)
-        {
-            _abstractApiService = SingletonFactory.GetInstance<AbstractApiService<TObject>>(ambiente);
-            SetarPermissaoApiService();
-        }
-
-        protected void SetarService(string token)
-        {
-            SetarService(Token.Autenticar(token).Ambiente);
-        }
-
-        protected void SetarService()
-        {
-            IEnumerable<string> headerValues;
-            if (Request.Headers.TryGetValues("Token", out headerValues))
-                SetarService(headerValues.FirstOrDefault());
-        }
 
         // servico
 
@@ -67,9 +50,9 @@ namespace MORM.Aplicacao.Controllers
         protected void SetarPermissaoApiService()
         {
             if (_inVerificarPermissao)
-                _permissaoService = new PermissaoService(Ambiente);
+                _permissaoService = new PermissaoService(_abstractApiService.AbstractUnityOfWork);
             if (_inGravarLogAcesso)
-                _logAcessoService = new LogAcessoService(Ambiente);
+                _logAcessoService = new LogAcessoService(_abstractApiService.AbstractUnityOfWork);
         }
 
         // log acesso
@@ -113,8 +96,6 @@ namespace MORM.Aplicacao.Controllers
         {
             try
             {
-                SetarService();
-
                 VerificarPermissao(TipoPermissao.Listar);
 
                 return Request.CreateResponse(HttpStatusCode.OK, 
@@ -122,7 +103,7 @@ namespace MORM.Aplicacao.Controllers
             }
             catch (Exception ex)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, MessageHandler.CreateMessage(ex.Message));
+                return Request.CreateResponse(HttpStatusCode.BadRequest, MessageHandler.CreateMessage(ex));
             }
         }
 
@@ -132,8 +113,6 @@ namespace MORM.Aplicacao.Controllers
         {
             try
             {
-                SetarService();
-
                 VerificarPermissao(TipoPermissao.Consultar);
 
                 return Request.CreateResponse(HttpStatusCode.OK, 
@@ -141,7 +120,7 @@ namespace MORM.Aplicacao.Controllers
             }
             catch (Exception ex)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, MessageHandler.CreateMessage(ex.Message));
+                return Request.CreateResponse(HttpStatusCode.BadRequest, MessageHandler.CreateMessage(ex));
             }
         }
 
@@ -151,8 +130,6 @@ namespace MORM.Aplicacao.Controllers
         {
             try
             {
-                SetarService();
-
                 VerificarPermissao(TipoPermissao.Incluir);
 
                 _abstractApiService.Incluir(dto);
@@ -160,7 +137,7 @@ namespace MORM.Aplicacao.Controllers
             }
             catch (Exception ex)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, MessageHandler.CreateMessage(ex.Message));
+                return Request.CreateResponse(HttpStatusCode.BadRequest, MessageHandler.CreateMessage(ex));
             }
         }
 
@@ -170,8 +147,6 @@ namespace MORM.Aplicacao.Controllers
         {
             try
             {
-                SetarService();
-
                 VerificarPermissao(TipoPermissao.IncluirLista);
 
                 _abstractApiService.IncluirLista(dto);
@@ -179,7 +154,7 @@ namespace MORM.Aplicacao.Controllers
             }
             catch (Exception ex)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, MessageHandler.CreateMessage(ex.Message));
+                return Request.CreateResponse(HttpStatusCode.BadRequest, MessageHandler.CreateMessage(ex));
             }
         }
 
@@ -189,8 +164,6 @@ namespace MORM.Aplicacao.Controllers
         {
             try
             {
-                SetarService();
-
                 VerificarPermissao(TipoPermissao.Alterar);
 
                 _abstractApiService.Alterar(dto);
@@ -198,7 +171,7 @@ namespace MORM.Aplicacao.Controllers
             }
             catch (Exception ex)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, MessageHandler.CreateMessage(ex.Message));
+                return Request.CreateResponse(HttpStatusCode.BadRequest, MessageHandler.CreateMessage(ex));
             }
         }
 
@@ -208,8 +181,6 @@ namespace MORM.Aplicacao.Controllers
         {
             try
             {
-                SetarService();
-
                 VerificarPermissao(TipoPermissao.AlterarLista);
 
                 _abstractApiService.AlterarLista(dto);
@@ -217,7 +188,7 @@ namespace MORM.Aplicacao.Controllers
             }
             catch (Exception ex)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, MessageHandler.CreateMessage(ex.Message));
+                return Request.CreateResponse(HttpStatusCode.BadRequest, MessageHandler.CreateMessage(ex));
             }
         }
 
@@ -227,8 +198,6 @@ namespace MORM.Aplicacao.Controllers
         {
             try
             {
-                SetarService();
-
                 VerificarPermissao(TipoPermissao.Salvar);
 
                 _abstractApiService.Salvar(dto);
@@ -236,7 +205,7 @@ namespace MORM.Aplicacao.Controllers
             }
             catch (Exception ex)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, MessageHandler.CreateMessage(ex.Message));
+                return Request.CreateResponse(HttpStatusCode.BadRequest, MessageHandler.CreateMessage(ex));
             }
         }
 
@@ -246,8 +215,6 @@ namespace MORM.Aplicacao.Controllers
         {
             try
             {
-                SetarService();
-
                 VerificarPermissao(TipoPermissao.SalvarLista);
 
                 _abstractApiService.SalvarLista(dto);
@@ -255,7 +222,7 @@ namespace MORM.Aplicacao.Controllers
             }
             catch (Exception ex)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, MessageHandler.CreateMessage(ex.Message));
+                return Request.CreateResponse(HttpStatusCode.BadRequest, MessageHandler.CreateMessage(ex));
             }
         }
 
@@ -265,8 +232,6 @@ namespace MORM.Aplicacao.Controllers
         {
             try
             {
-                SetarService();
-
                 VerificarPermissao(TipoPermissao.Excluir);
 
                 _abstractApiService.Excluir(dto);
@@ -274,7 +239,7 @@ namespace MORM.Aplicacao.Controllers
             }
             catch (Exception ex)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, MessageHandler.CreateMessage(ex.Message));
+                return Request.CreateResponse(HttpStatusCode.BadRequest, MessageHandler.CreateMessage(ex));
             }
         }
 
@@ -284,8 +249,6 @@ namespace MORM.Aplicacao.Controllers
         {
             try
             {
-                SetarService();
-
                 VerificarPermissao(TipoPermissao.ExcluirLista);
 
                 _abstractApiService.ExcluirLista(dto);
@@ -293,7 +256,7 @@ namespace MORM.Aplicacao.Controllers
             }
             catch (Exception ex)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, MessageHandler.CreateMessage(ex.Message));
+                return Request.CreateResponse(HttpStatusCode.BadRequest, MessageHandler.CreateMessage(ex));
             }
         }
     }

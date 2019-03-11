@@ -1,6 +1,8 @@
-﻿using MORM.Repositorio.Interfaces;
+﻿using MORM.Repositorio.Extensions;
+using MORM.Repositorio.Interfaces;
 using MORM.Utilidade.Entidades;
 using MORM.Utilidade.Extensoes;
+using MORM.Utilidade.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,12 +12,12 @@ namespace MORM.Repositorio.Migrations
     //-- galeg - 31/03/2018 11:49:20
     public class Migracao : IMigracao
     {
-        public Migracao(IDataContext context)
+        public Migracao(IAbstractDataContext context)
         {
             Context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
-        public IDataContext Context { get; }
+        public IAbstractDataContext Context { get; }
 
         public Func<Exception, Type, object> LogErro { get; set; }
 
@@ -94,8 +96,7 @@ namespace MORM.Repositorio.Migrations
             }
             catch (Exception ex)
             {
-                Console.WriteLine(nameof(Migracao) + ".Create() -> Message: " + 
-                    ex.Message + " / StackTrace: " + ex.StackTrace);
+                Logger.ErroException(ex);
                 throw;
             }
         }
@@ -112,8 +113,7 @@ namespace MORM.Repositorio.Migrations
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(nameof(Migracao) + ".Alter() -> Message: " + 
-                        ex.Message + " / StackTrace: " + ex.StackTrace);
+                    Logger.ErroException(ex);
                 }
             }
         }
@@ -145,8 +145,7 @@ namespace MORM.Repositorio.Migrations
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(nameof(Migracao) + ".DropForeigns() -> Message: " +
-                        ex.Message + " / StackTrace: " + ex.StackTrace);
+                    Logger.ErroException(ex);
                 }
             }
         }
@@ -161,8 +160,7 @@ namespace MORM.Repositorio.Migrations
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(nameof(Migracao) + ".CreateForeigns() -> Message: " +
-                        ex.Message + " / StackTrace: " + ex.StackTrace);
+                    Logger.ErroException(ex);
                 }
             }
         }

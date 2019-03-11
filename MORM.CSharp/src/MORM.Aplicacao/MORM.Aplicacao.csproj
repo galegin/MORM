@@ -39,6 +39,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Windsor, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc" />
     <Reference Include="JWT, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\JWT.2.4.2\lib\net35\JWT.dll</HintPath>
     </Reference>
@@ -55,15 +56,15 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.Net.Http.Formatting, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.6\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Http, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.6\lib\net45\System.Web.Http.dll</HintPath>
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Http.WebHost, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.6\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq">
@@ -75,12 +76,29 @@
     <Compile Include="App_Start\AuthenticationFailureResult.cs" />
     <Compile Include="App_Start\Token.cs" />
     <Compile Include="App_Start\WebApiLogHandler.cs" />
+    <Compile Include="Controllers\AbstractControllerFiltro.cs" />
     <Compile Include="Controllers\AbstractController.cs" />
-    <Compile Include="Controllers\IAbstractController.cs" />
+    <Compile Include="Controllers\Interfaces\IAbstractControllerFiltro.cs" />
+    <Compile Include="Controllers\Interfaces\IAbstractController.cs" />
     <Compile Include="Controllers\MessageHandler.cs" />
+    <Compile Include="Extensions\HttpAuthenticationContextExtensions.cs" />
+    <Compile Include="Extensions\HttpRequestMessageExtensions.cs" />
+    <Compile Include="IoC\Container\AbstractApiContainer.cs" />
+    <Compile Include="IoC\Container\AbstractApiDependencyResolver.cs" />
+    <Compile Include="IoC\Container\AbstractApiDependencyScope.cs" />
+    <Compile Include="IoC\Installer\AbstractApiAmbienteInstaller.cs" />
+    <Compile Include="IoC\Installer\AbstractApiConexaoInstaller.cs" />
+    <Compile Include="IoC\Installer\AbstractApiDataContextInstaller.cs" />
+    <Compile Include="IoC\Installer\AbstractApiRepositoryInstaller.cs" />
+    <Compile Include="IoC\Installer\AbstractApiServiceInstaller.cs" />
+    <Compile Include="IoC\Installer\AbstractApiUnityOfWorkInstaller.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MORM.IoC\MORM.IoC.csproj">
+      <Project>{83CC54B1-B32F-4B62-82C9-BA9C4C8CCBA2}</Project>
+      <Name>MORM.IoC</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MORM.Repositorio\MORM.Repositorio.csproj">
       <Project>{065554C3-207F-47D8-97C1-1AC5202ECB22}</Project>
       <Name>MORM.Repositorio</Name>
@@ -96,5 +114,6 @@
     </None>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

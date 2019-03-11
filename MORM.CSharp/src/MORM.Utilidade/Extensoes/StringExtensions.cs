@@ -1,5 +1,8 @@
-﻿using System.Security.Cryptography;
+﻿using System;
+using System.Globalization;
+using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace MORM.Utilidade.Extensoes
 {
@@ -21,6 +24,101 @@ namespace MORM.Utilidade.Extensoes
                 sBuilder.Append(data[i].ToString("x2"));
 
             return sBuilder.ToString();
+        }
+
+        //-- data / hora
+
+        public static DateTime? ObterData(this string str)
+        {
+            string[] formats = { "d", "dd", "ddMM", "ddMMyy", "ddMMyyyy", "dd/MM", "dd/MM/yy", "dd/MM/yyyy", "yyyyMMdd" };
+            DateTime temp;
+            if (!DateTime.TryParseExact(str, formats, CultureInfo.InvariantCulture, DateTimeStyles.None, out temp))
+                return null;
+            return temp;
+        }
+
+        public static DateTime? ObterDataHora(this string str)
+        {
+            string[] formats = { "ddMMyyHHmmss", "ddMMyyyyHHmmss", "dd/MM/yy HH:mm:ss", "dd/MM/yyyy HH:mm:ss", "dd/MM/yyyy HH:mm", "ddMMyy HHmmss" };
+            DateTime temp;
+            if (!DateTime.TryParseExact(str, formats, CultureInfo.InvariantCulture, DateTimeStyles.None, out temp))
+                return null;
+            return temp;
+        }
+
+        public static DateTime? ObterDataRef(this string str)
+        {
+            string[] formats = { "MM", "MMyy", "MMyyyy", "MM/yy", "MM/yyyy" };
+            DateTime temp;
+            if (!DateTime.TryParseExact(str, formats, CultureInfo.InvariantCulture, DateTimeStyles.None, out temp))
+                return null;
+            return temp;
+        }
+
+        public static DateTime? ObterDataAno(this string str)
+        {
+            string[] formats = { "yy", "yyyy" };
+            DateTime temp;
+            if (!DateTime.TryParseExact(str, formats, CultureInfo.InvariantCulture, DateTimeStyles.None, out temp))
+                return null;
+            return temp;
+        }
+
+        public static DateTime? ObterHora(this string str)
+        {
+            string[] formats = { "HHmm", "HHmmss", "HH:mm", "HH:mm:ss" };
+            DateTime temp;
+            if (!DateTime.TryParseExact(str, formats, CultureInfo.InvariantCulture, DateTimeStyles.None, out temp))
+                return null;
+            return temp;
+        }
+
+        //-- numero
+
+        public static long? ObterNumero(this string entrada)
+        {
+            long temp;
+            if (!long.TryParse(entrada, NumberStyles.Integer, CultureInfo.CurrentCulture, out temp))
+                return null;
+            return temp;
+        }
+
+        //-- valor
+
+        public static decimal? ObterValor(this string entrada)
+        {
+            decimal temp;
+            if (!decimal.TryParse(entrada, NumberStyles.Currency, CultureInfo.GetCultureInfo("pt-BR"), out temp))
+                return null;
+            return temp;
+        }
+
+        //-- coalesce
+
+        public static string Coalesce(this string str, params string[] pars)
+        {
+            foreach (var par in pars)
+                if (!string.IsNullOrWhiteSpace(par))
+                    return par;
+            return null;
+        }
+        
+        // var codigo = "1";
+        // var descricao = codigo.Decode("1", "EM ANDAMENTO", "NAO INFORMADO");
+        // var descricao = codigo.Decode("1", "EM ANDAMENTO", "2", "ATENDIDO", "3", "CANCELADO", "NAO INFORMADO");
+        public static string Decode(this string str, params string[] pars)
+        {
+            var parAnt = string.Empty;
+            if (pars.Length < 3 || (pars.Length % 2) == 0)
+                throw new Exception("Numero de parametro invalido");
+            foreach (var par in pars)
+            {
+                if (!string.IsNullOrWhiteSpace(parAnt))
+                    return par;
+                if (str.Equals(par))
+                    parAnt = par;
+            }
+            return pars.Length > 0 ? pars[pars.Length-1] : null;
         }
     }
 }

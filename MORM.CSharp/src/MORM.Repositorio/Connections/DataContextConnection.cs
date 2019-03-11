@@ -2,7 +2,6 @@
 using MORM.Utilidade.Tipagens;
 using System;
 using System.Collections.Generic;
-using System.Data;
 
 namespace MORM.Repositorio.Context
 {
@@ -17,11 +16,11 @@ namespace MORM.Repositorio.Context
             _listaDeConnectionFactory[tipoDatabase] = connectionFactory;
         }
 
-        public static IDbConnection GetConnection(IAmbiente ambiente)
+        public static IConnectionFactory GetConnection(IAmbiente ambiente)
         {
             var connectionFactory = _listaDeConnectionFactory.ContainsKey(ambiente.TipoDatabase) ?
                 _listaDeConnectionFactory[ambiente.TipoDatabase] : throw new Exception(nameof(ambiente));
-            return connectionFactory.GetConnection(ambiente);
+            return connectionFactory;
         }
     }
 }

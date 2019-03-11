@@ -22,7 +22,7 @@ namespace MORM.Aplicacao.Controllers
         {
             var message = $"Message: {ex.Message} / StackTrace: {ex.StackTrace}";
 
-            Logger.Erro($"{nameof(MessageHandler)}.CreateMessage()", message);
+            Logger.ErroMensagem(message);
 
             return CreateMessage(message);
         }

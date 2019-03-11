@@ -9,7 +9,7 @@ namespace MORM.Repositorio.Migrations
     //-- galeg - 03/04/2018 19:54:24
     public class MigracaoContexto
     {
-        public static void Gerar(IDataContext context, string package)
+        public static void Gerar(IAbstractDataContext context, string package)
         {
             if (context == null)
                 throw new ArgumentNullException(nameof(context));

@@ -52,37 +52,55 @@
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="TinyMapper, Version=2.0.0.40, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TinyMapper.2.0.8\lib\net45\TinyMapper.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Context\AbstractDataContext.cs" />
     <Compile Include="Context\Clausula.cs" />
     <Compile Include="Context\Comando.cs" />
     <Compile Include="Context\Conexao.cs" />
-    <Compile Include="Context\DataContext.cs" />
     <Compile Include="Connections\DataContextConnection.cs" />
-    <Compile Include="Extensions\DataContextExtension.cs" />
+    <Compile Include="Context\Parametro.cs" />
+    <Compile Include="Extensions\AbstractDataContextExtensions.cs" />
+    <Compile Include="Extensions\AbstractDataContextFiltroExtensions.cs" />
+    <Compile Include="Extensions\DataReaderExtensions.cs" />
     <Compile Include="Extensions\FiltroExtension.cs" />
+    <Compile Include="Extensions\ParametroExtensions.cs" />
+    <Compile Include="Extensions\AbstractRepositoryExtensions.cs" />
+    <Compile Include="Factories\ConexaoFactory.cs" />
     <Compile Include="Factories\ConnectionFactory.cs" />
     <Compile Include="Factories\ProviderFactory.cs" />
-    <Compile Include="Interfaces\IComando.cs" />
-    <Compile Include="Interfaces\IConexao.cs" />
-    <Compile Include="Interfaces\IDataContext.cs" />
-    <Compile Include="Interfaces\IMigracao.cs" />
-    <Compile Include="IoC\IUnityOfWork.cs" />
-    <Compile Include="IoC\UnityOfWork.cs" />
+    <Compile Include="Context\Interfaces\IAbstractDataContext.cs" />
+    <Compile Include="Context\Interfaces\IComando.cs" />
+    <Compile Include="Context\Interfaces\IConexao.cs" />
+    <Compile Include="Context\Interfaces\IMigracao.cs" />
+    <Compile Include="Context\Interfaces\IParametro.cs" />
+    <Compile Include="IoC\AbstractUnityOfWork.cs" />
+    <Compile Include="IoC\Interfaces\IAbstractUnityOfWork.cs" />
     <Compile Include="Migrations\Migracao.cs" />
     <Compile Include="Migrations\MigracaoContexto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queries\Interfaces\IQueryableObject.cs" />
+    <Compile Include="Queries\Interfaces\IQueryableTranslator.cs" />
+    <Compile Include="Queries\Interfaces\IQueryableValue.cs" />
+    <Compile Include="Queries\QueryableObject.cs" />
+    <Compile Include="Queries\QueryableTranslator.cs" />
+    <Compile Include="Queries\QueryableValue.cs" />
     <Compile Include="Repositories\AbstractRepository.cs" />
-    <Compile Include="Repositories\IAbstractRepository.cs" />
-    <Compile Include="Services\AbstractServiceApi.cs" />
+    <Compile Include="Repositories\Interfaces\IAbstractRepository.cs" />
+    <Compile Include="Services\AbstractApiFiltroService.cs" />
+    <Compile Include="Services\AbstractApiService.cs" />
     <Compile Include="Services\AbstractService.cs" />
-    <Compile Include="Services\IAbstractService.cs" />
-    <Compile Include="Services\IAbstractServiceApi.cs" />
+    <Compile Include="Services\Interfaces\IAbstractService.cs" />
+    <Compile Include="Services\Interfaces\IAbstractApiFiltroService.cs" />
+    <Compile Include="Services\Interfaces\IAbstractApiService.cs" />
     <Compile Include="Services\MigracaoVersaoServico.cs" />
     <Compile Include="Services\nsAmbiente\AmbienteService.cs" />
-    <Compile Include="Services\nsAmbiente\IAmbienteService.cs" />
-    <Compile Include="Services\nsAmbiente\ILogAcessoService.cs" />
-    <Compile Include="Services\nsAmbiente\IPermissaoService.cs" />
+    <Compile Include="Services\nsAmbiente\Interfaces\IAmbienteService.cs" />
+    <Compile Include="Services\nsAmbiente\Interfaces\ILogAcessoService.cs" />
+    <Compile Include="Services\nsAmbiente\Interfaces\IPermissaoService.cs" />
     <Compile Include="Services\nsAmbiente\LogAcessoService.cs" />
     <Compile Include="Services\nsAmbiente\PermissaoService.cs" />
   </ItemGroup>
@@ -94,6 +112,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

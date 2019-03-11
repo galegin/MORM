@@ -19,6 +19,11 @@ namespace MORM.Utilidade.Extensoes
             return tabela;
         }
 
+        public static TabelaAttribute GetTabela(this object obj)
+        {
+            return obj.GetType().GetTabela();
+        }
+
         //-- campos
 
         private static CampoAttribute GetClone(this CampoAttribute campo, Type type, PropertyInfo prop)
@@ -34,6 +39,11 @@ namespace MORM.Utilidade.Extensoes
                     if (attr.GetType() == typeof(CampoAttribute))
                         campos.Add((attr as CampoAttribute).GetClone(type, prop));
             return campos;
+        }
+
+        public static Campos GetCampos(this object obj)
+        {
+            return obj.GetType().GetCampos();
         }
 
         //-- relacao
@@ -80,6 +90,20 @@ namespace MORM.Utilidade.Extensoes
                 if (attr.GetType() == typeof(SelectMaxAttribute))
                     selectMax = (attr as SelectMaxAttribute);
             return selectMax;
+        }
+
+        public static PropertyInfo GetCampoSelectMax(this Type type)
+        {
+            foreach (var prop in type.GetProperties())
+            {
+                var selectMax = prop.GetSelectMax();
+                if (selectMax != null)
+                {
+                    return prop;
+                }
+            }
+
+            return null;
         }
     }
 }
