@@ -77,8 +77,8 @@
     <Compile Include="Context\Interfaces\IConexao.cs" />
     <Compile Include="Context\Interfaces\IMigracao.cs" />
     <Compile Include="Context\Interfaces\IParametro.cs" />
-    <Compile Include="IoC\AbstractUnityOfWork.cs" />
-    <Compile Include="IoC\Interfaces\IAbstractUnityOfWork.cs" />
+    <Compile Include="Uow\AbstractUnityOfWork.cs" />
+    <Compile Include="Uow\Interfaces\IAbstractUnityOfWork.cs" />
     <Compile Include="Migrations\Migracao.cs" />
     <Compile Include="Migrations\MigracaoContexto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

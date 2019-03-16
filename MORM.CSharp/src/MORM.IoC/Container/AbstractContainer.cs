@@ -1,13 +1,14 @@
 ﻿using Castle.Windsor;
 
-namespace MORM.IoC.Container
+namespace MORM.Ioc.Container
 {
-    public class AbstractContainer : WindsorContainer
+    public abstract class AbstractContainer : WindsorContainer, IAbstractContainer
     {
-        private static AbstractContainer _abstractInstance;
-        public static AbstractContainer AbstractInstance => _abstractInstance ?? (_abstractInstance = new AbstractContainer());
+        //private static IAbstractContainer _instance;
+        //public static IAbstractContainer Instance => 
+        //    _instance ?? (_instance =  new AbstractContainer());
 
-        public AbstractContainer()
+        protected AbstractContainer()
         {
             Setup();
         }

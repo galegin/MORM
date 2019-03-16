@@ -1,4 +1,4 @@
-﻿using MORM.Repositorio.IoC;
+﻿using MORM.Repositorio.Uow;
 using MORM.Repositorio.Repositories;
 using MORM.Utilidade.Dtos;
 using MORM.Utilidade.Interfaces;

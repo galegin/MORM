@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http.Dependencies;
 
-namespace MORM.IoC.Container
+namespace MORM.Ioc.Container
 {
     public class AbstractDependencyScope : IDependencyScope
     {

@@ -2,7 +2,7 @@
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 
-namespace MORM.IoC.Installer
+namespace MORM.Ioc.Installer
 {
     public enum AbstractInstallerTipo
     {

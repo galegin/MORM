@@ -1,8 +1,8 @@
-﻿using MORM.IoC.Installer;
+﻿using MORM.Ioc.Installer;
 using MORM.Repositorio.SqLite;
 using MORM.Utilidade.Interfaces;
 
-namespace MORM.Repositorio.Tests.IoC.Installer
+namespace MORM.Repositorio.Tests.Ioc.Installer
 {
     public class ConexaoInstaller : AbstractConexaoInstaller
     {

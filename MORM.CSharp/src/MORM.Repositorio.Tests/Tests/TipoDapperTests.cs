@@ -2,7 +2,7 @@
 using MORM.Repositorio.Dapper.Context;
 using MORM.Repositorio.Extensions;
 using MORM.Repositorio.Interfaces;
-using MORM.Repositorio.Tests.IoC.Container;
+using MORM.Repositorio.Tests.Ioc.Container;
 using System.Linq;
 
 namespace MORM.Repositorio.Tests
@@ -16,7 +16,7 @@ namespace MORM.Repositorio.Tests
 
         public TipoDapperTests()
         {
-            _dataContext = IocContainer.Instance.Resolve<IAbstractDataContextDapper>();
+            _dataContext = AbstractIocContainer.Instance.Resolve<IAbstractDataContextDapper>();
             _tipoRepository = new TipoRepository(_dataContext);
         }
 

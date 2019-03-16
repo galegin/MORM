@@ -1,11 +1,12 @@
-﻿using System.Windows.Controls;
+﻿using MORM.Ioc.Container;
 
 namespace MORM.Apresentacao
 {
     public interface IMainWindow
     {
         bool? ShowDialog();
-        void Navegar(UserControl userControl);
+        void Navegar(object sender);
         void SetarIsExibirMenuLateral(bool? flag = null);
+        void SetContainer(IAbstractContainer container);
     }
 }

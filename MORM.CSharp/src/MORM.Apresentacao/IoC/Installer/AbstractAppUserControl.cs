@@ -2,9 +2,9 @@
 using MORM.Apresentacao.Models.Manutencao;
 using MORM.Apresentacao.ViewModels.Manutencao;
 using MORM.Apresentacao.Views.Manutencao;
-using MORM.IoC.Installer;
+using MORM.Ioc.Installer;
 
-namespace MORM.Apresentacao.IoC.Installer
+namespace MORM.Apresentacao.Ioc.Installer
 {
     public class AbstractAppUserControl : AbstractInstaller
     {

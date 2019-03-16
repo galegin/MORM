@@ -83,21 +83,21 @@
     <Compile Include="Controllers\MessageHandler.cs" />
     <Compile Include="Extensions\HttpAuthenticationContextExtensions.cs" />
     <Compile Include="Extensions\HttpRequestMessageExtensions.cs" />
-    <Compile Include="IoC\Container\AbstractApiContainer.cs" />
-    <Compile Include="IoC\Container\AbstractApiDependencyResolver.cs" />
-    <Compile Include="IoC\Container\AbstractApiDependencyScope.cs" />
-    <Compile Include="IoC\Installer\AbstractApiAmbienteInstaller.cs" />
-    <Compile Include="IoC\Installer\AbstractApiConexaoInstaller.cs" />
-    <Compile Include="IoC\Installer\AbstractApiDataContextInstaller.cs" />
-    <Compile Include="IoC\Installer\AbstractApiRepositoryInstaller.cs" />
-    <Compile Include="IoC\Installer\AbstractApiServiceInstaller.cs" />
-    <Compile Include="IoC\Installer\AbstractApiUnityOfWorkInstaller.cs" />
+    <Compile Include="Ioc\Container\AbstractApiContainer.cs" />
+    <Compile Include="Ioc\Resolver\AbstractApiDependencyResolver.cs" />
+    <Compile Include="Ioc\Resolver\AbstractApiDependencyScope.cs" />
+    <Compile Include="Ioc\Installer\AbstractApiAmbienteInstaller.cs" />
+    <Compile Include="Ioc\Installer\AbstractApiConexaoInstaller.cs" />
+    <Compile Include="Ioc\Installer\AbstractApiDataContextInstaller.cs" />
+    <Compile Include="Ioc\Installer\AbstractApiRepositoryInstaller.cs" />
+    <Compile Include="Ioc\Installer\AbstractApiServiceInstaller.cs" />
+    <Compile Include="Ioc\Installer\AbstractApiUnityOfWorkInstaller.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MORM.IoC\MORM.IoC.csproj">
+    <ProjectReference Include="..\MORM.IoC\MORM.Ioc.csproj">
       <Project>{83CC54B1-B32F-4B62-82C9-BA9C4C8CCBA2}</Project>
-      <Name>MORM.IoC</Name>
+      <Name>MORM.Ioc</Name>
     </ProjectReference>
     <ProjectReference Include="..\MORM.Repositorio\MORM.Repositorio.csproj">
       <Project>{065554C3-207F-47D8-97C1-1AC5202ECB22}</Project>

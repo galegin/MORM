@@ -1,7 +1,7 @@
 ﻿using MORM.Repositorio.Context;
 using MORM.Repositorio.Interfaces;
 
-namespace MORM.IoC.Installer
+namespace MORM.Ioc.Installer
 {
     public class AbstractDataContextInstaller : AbstractInstaller
     {

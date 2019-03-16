@@ -1,6 +1,6 @@
 ﻿using MORM.Apresentacao.Classes;
 using MORM.Apresentacao.Comps;
-using MORM.Apresentacao.IoC.Container;
+using MORM.Apresentacao.Ioc.Container;
 using MORM.Utilidade.Utils;
 using System.Windows;
 
@@ -18,7 +18,8 @@ namespace MORM.Apresentacao
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            var mainWindow = AbstractAppContainer.AbstractAppInstance.Resolve<IMainWindow>();
+            var mainWindow = AbstractAppContainer.Instance.Resolve<IMainWindow>();
+            mainWindow.SetContainer(AbstractAppContainer.Instance);
             mainWindow.ShowDialog();
         }
     }

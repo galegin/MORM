@@ -1,6 +1,6 @@
-﻿using MORM.IoC.Installer;
+﻿using MORM.Ioc.Installer;
 
-namespace MORM.Repositorio.Tests.IoC.Installer
+namespace MORM.Repositorio.Tests.Ioc.Installer
 {
     public class RepositoryInstaller : AbstractRepositoryInstaller
     {

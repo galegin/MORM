@@ -1,9 +1,9 @@
 ﻿//using MORM.Repositorio.Interfaces;
 //using MORM.Utilidade.Interfaces;
 
-using MORM.IoC.Installer;
+using MORM.Ioc.Installer;
 
-namespace MORM.Aplicacao.IoC.Installer
+namespace MORM.Aplicacao.Ioc.Installer
 {
     public class AbstractApiConexaoInstaller : AbstractConexaoInstaller
     {

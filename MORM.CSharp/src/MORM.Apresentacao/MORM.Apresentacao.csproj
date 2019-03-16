@@ -117,7 +117,7 @@
     <Compile Include="Controls\AbstractTitulo.xaml.cs">
       <DependentUpon>AbstractTitulo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="IoC\Installer\AbstractAppAmbiente.cs" />
+    <Compile Include="Ioc\Installer\AbstractAppAmbiente.cs" />
     <Compile Include="Menus\Commands\ExecutarMenu.cs" />
     <Compile Include="Menus\Commands\ExecutarSubMenu.cs" />
     <Compile Include="Menus\Commands\ExibirMenuLateral.cs" />
@@ -132,9 +132,9 @@
     <Compile Include="Extensions\PropertyInfoExtensions.cs" />
     <Compile Include="Interfaces\IMainWindow.cs" />
     <Compile Include="Interfaces\IMainWindowExec.cs" />
-    <Compile Include="IoC\Container\AbstractAppContainer.cs" />
-    <Compile Include="IoC\Installer\AbstractAppUserControl.cs" />
-    <Compile Include="IoC\Installer\AbstractAppWindow.cs" />
+    <Compile Include="Ioc\Container\AbstractAppContainer.cs" />
+    <Compile Include="Ioc\Installer\AbstractAppUserControl.cs" />
+    <Compile Include="Ioc\Installer\AbstractAppWindow.cs" />
     <Compile Include="MainWindowExec.cs" />
     <Compile Include="Menus\Interfaces\IMenuLateral.cs" />
     <Compile Include="Menus\Interfaces\IMenuOpcao.cs" />
@@ -300,9 +300,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MORM.IoC\MORM.IoC.csproj">
+    <ProjectReference Include="..\MORM.IoC\MORM.Ioc.csproj">
       <Project>{83cc54b1-b32f-4b62-82c9-ba9c4c8ccba2}</Project>
-      <Name>MORM.IoC</Name>
+      <Name>MORM.Ioc</Name>
     </ProjectReference>
     <ProjectReference Include="..\MORM.Utilidade\MORM.Utilidade.csproj">
       <Project>{346bed24-2dd1-4e58-939a-d72311c257f9}</Project>

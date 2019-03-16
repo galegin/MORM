@@ -1,7 +1,7 @@
 ﻿using MORM.Apresentacao.Menus;
-using MORM.IoC.Installer;
+using MORM.Ioc.Installer;
 
-namespace MORM.Apresentacao.IoC.Installer
+namespace MORM.Apresentacao.Ioc.Installer
 {
     public class AbstractAppWindow : AbstractInstaller
     {

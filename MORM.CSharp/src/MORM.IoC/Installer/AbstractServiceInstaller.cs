@@ -1,4 +1,4 @@
-﻿namespace MORM.IoC.Installer
+﻿namespace MORM.Ioc.Installer
 {
     public class AbstractServiceInstaller : AbstractInstaller
     {

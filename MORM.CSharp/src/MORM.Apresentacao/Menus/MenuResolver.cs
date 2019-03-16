@@ -1,5 +1,4 @@
-﻿using MORM.Apresentacao.IoC.Container;
-using System;
+﻿using System;
 using System.Windows.Controls;
 
 namespace MORM.Apresentacao.Menus
@@ -16,9 +15,7 @@ namespace MORM.Apresentacao.Menus
 
     public class MenuResolverObjeto : MenuResolver, IMenuResolverObjeto
     {
-        public MenuResolverObjeto(IMainWindowExec mainWindowExec) : base(mainWindowExec)
-        {
-        }
+        public MenuResolverObjeto(IMainWindowExec mainWindowExec) : base(mainWindowExec) { }
 
         public void Executar(object objeto)
         {
@@ -28,25 +25,21 @@ namespace MORM.Apresentacao.Menus
 
     public class MenuResolverClasse : MenuResolver, IMenuResolverClasse
     {
-        public MenuResolverClasse(IMainWindowExec mainWindowExec) : base(mainWindowExec)
-        {
-        }
+        public MenuResolverClasse(IMainWindowExec mainWindowExec) : base(mainWindowExec) { }
 
         public void Executar(Type classe) 
         {
-            _mainWindowExec.Navegar(AbstractAppContainer.AbstractAppInstance.Resolve(classe) as UserControl);
+            _mainWindowExec.Navegar(_mainWindowExec.Container.Resolve(classe) as UserControl);
         }
     }
 
     public class MenuResolverTipo : MenuResolver, IMenuResolverTipo
     {
-        public MenuResolverTipo(IMainWindowExec mainWindowExec) : base(mainWindowExec)
-        {
-        }
+        public MenuResolverTipo(IMainWindowExec mainWindowExec) : base(mainWindowExec) { }
 
         public void Executar<TObject>() where TObject : class
         {
-            _mainWindowExec.Navegar(AbstractAppContainer.AbstractAppInstance.Resolve<TObject>() as UserControl);
+            _mainWindowExec.Navegar(_mainWindowExec.Container.Resolve<TObject>() as UserControl);
         }
     }
 }

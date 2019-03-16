@@ -61,7 +61,7 @@
     <Compile Include="IoC\Installer\AmbienteInstaller.cs" />
     <Compile Include="IoC\Installer\ConexaoInstaller.cs" />
     <Compile Include="IoC\Installer\DataContextInstaller.cs" />
-    <Compile Include="IoC\Container\IocContainer.cs" />
+    <Compile Include="IoC\Container\AbstractIocContainer.cs" />
     <Compile Include="IoC\Installer\RepositoryInstaller.cs" />
     <Compile Include="IoC\Installer\ServiceInstaller.cs" />
     <Compile Include="IoC\Installer\UnityOfWorkInstaller.cs" />
@@ -95,9 +95,9 @@
       <Project>{46bfb76e-fd5d-4bec-b486-01c6190cc5a9}</Project>
       <Name>MORM.Aplicacao</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MORM.IoC\MORM.IoC.csproj">
+    <ProjectReference Include="..\MORM.IoC\MORM.Ioc.csproj">
       <Project>{83CC54B1-B32F-4B62-82C9-BA9C4C8CCBA2}</Project>
-      <Name>MORM.IoC</Name>
+      <Name>MORM.Ioc</Name>
     </ProjectReference>
     <ProjectReference Include="..\MORM.Repositorio.Dapper\MORM.Repositorio.Dapper.csproj">
       <Project>{5E88B144-F434-4FD5-B57F-DAC8A19FAF59}</Project>

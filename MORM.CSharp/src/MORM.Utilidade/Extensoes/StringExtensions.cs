@@ -46,6 +46,15 @@ namespace MORM.Utilidade.Extensoes
             return temp;
         }
 
+        public static DateTime? ObterDataHoraInv(this string str)
+        {
+            string[] formats = { "yyMMddHHmmss", "yyyyMMddHHmmss", "yy/MM/dd HH:mm:ss", "yyyy/MM/dd HH:mm:ss", "yyyy/MM/dd HH:mm", "yyMMdd HHmmss" };
+            DateTime temp;
+            if (!DateTime.TryParseExact(str, formats, CultureInfo.InvariantCulture, DateTimeStyles.None, out temp))
+                return null;
+            return temp;
+        }
+
         public static DateTime? ObterDataRef(this string str)
         {
             string[] formats = { "MM", "MMyy", "MMyyyy", "MM/yy", "MM/yyyy" };

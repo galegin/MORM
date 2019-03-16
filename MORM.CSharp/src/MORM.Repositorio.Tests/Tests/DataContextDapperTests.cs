@@ -2,7 +2,7 @@
 using MORM.Repositorio.Dapper.Context;
 using MORM.Repositorio.Extensions;
 using MORM.Repositorio.Migrations;
-using MORM.Repositorio.Tests.IoC.Container;
+using MORM.Repositorio.Tests.Ioc.Container;
 using System.Linq;
 
 namespace MORM.Repositorio.Tests
@@ -16,8 +16,8 @@ namespace MORM.Repositorio.Tests
 
         public DataContextDapperTests()
         {
-            _dataContext = IocContainer.Instance.Resolve<IAbstractDataContextDapper>();
-            _tipoRepository = IocContainer.Instance.Resolve<ITipoRepository>();
+            _dataContext = AbstractIocContainer.Instance.Resolve<IAbstractDataContextDapper>();
+            _tipoRepository = AbstractIocContainer.Instance.Resolve<ITipoRepository>();
         }
 
         [TestMethod]

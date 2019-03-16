@@ -1,7 +1,7 @@
 ﻿using MORM.Utilidade.Entidades;
 using MORM.Utilidade.Interfaces;
 
-namespace MORM.IoC.Installer
+namespace MORM.Ioc.Installer
 {
     public class AbstractAmbienteInstaller : AbstractInstaller
     {

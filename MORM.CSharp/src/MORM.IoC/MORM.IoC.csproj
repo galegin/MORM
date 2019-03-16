@@ -7,8 +7,8 @@
     <ProjectGuid>{83CC54B1-B32F-4B62-82C9-BA9C4C8CCBA2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MORM.IoC</RootNamespace>
-    <AssemblyName>MORM.IoC</AssemblyName>
+    <RootNamespace>MORM.Ioc</RootNamespace>
+    <AssemblyName>MORM.Ioc</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Container\AbstractContainer.cs" />
+    <Compile Include="Container\Interfaces\IAbstractContainer.cs" />
     <Compile Include="Installer\AbstractAmbienteInstaller.cs" />
     <Compile Include="Installer\AbstractConexaoInstaller.cs" />
     <Compile Include="Installer\AbstractDataContextInstaller.cs" />

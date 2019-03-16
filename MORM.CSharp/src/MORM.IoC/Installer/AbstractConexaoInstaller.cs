@@ -1,7 +1,7 @@
 ﻿//using MORM.Repositorio.Interfaces;
 //using MORM.Utilidade.Interfaces;
 
-namespace MORM.IoC.Installer
+namespace MORM.Ioc.Installer
 {
     public class AbstractConexaoInstaller : AbstractInstaller
     {

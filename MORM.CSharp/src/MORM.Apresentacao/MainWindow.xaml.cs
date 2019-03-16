@@ -1,6 +1,7 @@
 ﻿using MORM.Apresentacao.Comps;
 using MORM.Apresentacao.Menus;
 using MORM.Apresentacao.ViewModels;
+using MORM.Ioc.Container;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -27,13 +28,17 @@ namespace MORM.Apresentacao
         {
             LoadingBoxExtensions.SplashingBox("Inicializando...");
         }
-        public void Navegar(UserControl userControl)
+        public void Navegar(object sender)
         {
-            (DataContext as MainWindowViewModel).Corpo = userControl;
+            (DataContext as MainWindowViewModel).Corpo = sender as UserControl;
         }
         public void SetarIsExibirMenuLateral(bool? flag = null)
         {
             (DataContext as MainWindowViewModel).MenuLateral.SetarIsExibirMenuLateral(flag);
+        }
+        public void SetContainer(IAbstractContainer container)
+        {
+            (DataContext as MainWindowViewModel).MainWindowExec.SetContainer(container);
         }
         #endregion
     }

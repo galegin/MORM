@@ -13,8 +13,10 @@ namespace MORM.Apresentacao.Menus
         private readonly IMenuResolverObjeto _resolverObjeto;
         private readonly IMenuResolverTipo _resolverTipo;
 
-        public MenuSistema(IMenuResolverClasse resolverClasse, 
-            IMenuResolverObjeto resolverObjeto, IMenuResolverTipo resolverTipo)
+        public MenuSistema(
+            IMenuResolverClasse resolverClasse, 
+            IMenuResolverObjeto resolverObjeto, 
+            IMenuResolverTipo resolverTipo)
         {
             _resolverClasse = resolverClasse ?? throw new ArgumentNullException(nameof(resolverClasse));
             _resolverObjeto = resolverObjeto ?? throw new ArgumentNullException(nameof(resolverObjeto));

@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MORM.Repositorio.Extensions;
-using MORM.Repositorio.Tests.IoC.Container;
+using MORM.Repositorio.Tests.Ioc.Container;
 using System;
 using System.Linq;
 
@@ -13,7 +13,7 @@ namespace MORM.Repositorio.Tests
 
         public TesteServiceTests()
         {
-            _testeService = IocContainer.Instance.Resolve<ITesteService>();
+            _testeService = AbstractIocContainer.Instance.Resolve<ITesteService>();
         }
 
         private const int _codigoTeste = 1;

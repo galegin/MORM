@@ -76,14 +76,14 @@
     <Compile Include="Excecoes\ExceptionDebug.cs" />
     <Compile Include="Extensoes\ConsumerExtensions.cs" />
     <Compile Include="Extensoes\DynamicExtensions.cs" />
-    <Compile Include="Extensoes\ObjetoExtensions.cs" />
+    <Compile Include="Extensoes\EntityExtensions.cs" />
     <Compile Include="Interfaces\Extensions\UsuarioExtensions.cs" />
     <Compile Include="Interfaces\Extensions\TerminalExtensions.cs" />
     <Compile Include="Interfaces\Extensions\GrupoEmpresaExtensions.cs" />
     <Compile Include="Interfaces\Extensions\EmpresaExtensions.cs" />
     <Compile Include="Interfaces\Extensions\AmbienteExtensions.cs" />
     <Compile Include="Extensoes\DataTypeExtension.cs" />
-    <Compile Include="Extensoes\DdlExtensions.cs" />
+    <Compile Include="Extensoes\CreateCmdExtensions.cs" />
     <Compile Include="Extensoes\EnumExtensions.cs" />
     <Compile Include="Extensoes\FieldExtensions.cs" />
     <Compile Include="Extensoes\FormExtensions.cs" />

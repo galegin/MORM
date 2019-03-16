@@ -1,7 +1,7 @@
-﻿using MORM.IoC.Installer;
+﻿using MORM.Ioc.Installer;
 using MORM.Repositorio.Dapper.Context;
 
-namespace MORM.Repositorio.Tests.IoC.Installer
+namespace MORM.Repositorio.Tests.Ioc.Installer
 {
     public class DataContextInstaller : AbstractDataContextInstaller
     {

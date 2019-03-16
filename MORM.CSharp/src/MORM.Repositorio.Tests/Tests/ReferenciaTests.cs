@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MORM.Repositorio.Extensions;
-using MORM.Repositorio.Tests.IoC.Container;
+using MORM.Repositorio.Tests.Ioc.Container;
 using System.Linq;
 
 namespace MORM.Repositorio.Tests
@@ -15,7 +15,7 @@ namespace MORM.Repositorio.Tests
 
         public ReferenciaTests()
         {
-            _testeService = IocContainer.Instance.Resolve<ITesteService>();
+            _testeService = AbstractIocContainer.Instance.Resolve<ITesteService>();
             _referenciaModel = new ReferenciaModel();
             _tipoEnum = TipoEnum.Normal;
         }

@@ -3,7 +3,7 @@ using MORM.Repositorio.Context;
 using MORM.Repositorio.Extensions;
 using MORM.Repositorio.Interfaces;
 using MORM.Repositorio.Migrations;
-using MORM.Repositorio.Tests.IoC.Container;
+using MORM.Repositorio.Tests.Ioc.Container;
 using MORM.Utilidade.Entidades;
 
 namespace MORM.Repositorio.Tests
@@ -17,8 +17,8 @@ namespace MORM.Repositorio.Tests
 
         public DataContextTests()
         {
-            _dataContext = IocContainer.Instance.Resolve<IAbstractDataContext>();
-            _tipoRepository = IocContainer.Instance.Resolve<ITipoRepository>();
+            _dataContext = AbstractIocContainer.Instance.Resolve<IAbstractDataContext>();
+            _tipoRepository = AbstractIocContainer.Instance.Resolve<ITipoRepository>();
         }
 
         [TestMethod]
@@ -38,7 +38,7 @@ namespace MORM.Repositorio.Tests
         [TestMethod]
         public void DbContextTests_Dispose()
         {
-            using (var context = IocContainer.Instance.Resolve<IAbstractDataContext>() as AbstractDataContext)
+            using (var context = AbstractIocContainer.Instance.Resolve<IAbstractDataContext>() as AbstractDataContext)
             {
                 var lista = context.GetListaW<TipoModel>(string.Empty);
             }

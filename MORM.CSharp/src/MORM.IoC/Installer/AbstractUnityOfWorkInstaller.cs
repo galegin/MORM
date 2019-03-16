@@ -1,6 +1,6 @@
-﻿using MORM.Repositorio.IoC;
+﻿using MORM.Repositorio.Uow;
 
-namespace MORM.IoC.Installer
+namespace MORM.Ioc.Installer
 {
     public class AbstractUnityOfWorkInstaller : AbstractInstaller
     {
@@ -20,7 +20,7 @@ using VirtualWebService.Repository;
 using VirtualWebService.RepositoryInterfaces;
 using VirtualWebService.Utils;
 
-namespace VirtualWebService.IoC.Installers
+namespace VirtualWebService.Ioc.Installers
 {
     public class UnitOfWorkInstaller : IWindsorInstaller
     {

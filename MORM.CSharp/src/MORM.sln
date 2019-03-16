@@ -37,7 +37,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MORM.Apresentacao", "MORM.A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MORM.Repositorio.Dapper", "MORM.Repositorio.Dapper\MORM.Repositorio.Dapper.csproj", "{5E88B144-F434-4FD5-B57F-DAC8A19FAF59}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MORM.IoC", "MORM.IoC\MORM.IoC.csproj", "{83CC54B1-B32F-4B62-82C9-BA9C4C8CCBA2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MORM.Ioc", "MORM.IoC\MORM.Ioc.csproj", "{83CC54B1-B32F-4B62-82C9-BA9C4C8CCBA2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

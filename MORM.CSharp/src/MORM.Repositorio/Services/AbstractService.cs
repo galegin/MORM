@@ -1,5 +1,5 @@
 ﻿using MORM.Repositorio.Context;
-using MORM.Repositorio.IoC;
+using MORM.Repositorio.Uow;
 using MORM.Repositorio.Repositories;
 using MORM.Utilidade.Interfaces;
 using System;
