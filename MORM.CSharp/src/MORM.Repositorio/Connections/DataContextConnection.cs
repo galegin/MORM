@@ -1,11 +1,10 @@
-﻿using MORM.Utilidade.Interfaces;
-using MORM.Utilidade.Tipagens;
+﻿using MORM.Dominio.Interfaces;
+using MORM.Dominio.Tipagens;
 using System;
 using System.Collections.Generic;
 
 namespace MORM.Repositorio.Context
 {
-    //-- galeg - 30/04/2018 20:07:26
     public class DataContextConnection
     {
         private static Dictionary<TipoDatabase, IConnectionFactory> _listaDeConnectionFactory =

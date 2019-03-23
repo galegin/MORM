@@ -1,10 +1,9 @@
-﻿using MORM.Utilidade.Tipagens;
+﻿using MORM.Dominio.Tipagens;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace MORM.Repositorio.Extensions
 {
-    //-- galeg - 09/06/2018 11:04:33
     public static class FiltroExtension
     {
         public static void AddFiltro<TObject>(this List<string> where, string name, TipoDatabase tipoDatabase, 

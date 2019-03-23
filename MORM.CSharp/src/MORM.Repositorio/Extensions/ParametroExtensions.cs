@@ -1,7 +1,7 @@
 ﻿using MORM.Repositorio.Context;
 using MORM.Repositorio.Interfaces;
-using MORM.Utilidade.Atributos;
-using MORM.Utilidade.Extensoes;
+using MORM.Dominio.Atributos;
+using MORM.Dominio.Extensoes;
 using System.Collections.Generic;
 using System.Linq;
 

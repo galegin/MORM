@@ -1,6 +1,6 @@
 ﻿using MORM.Apresentacao.Comps;
 using MORM.Apresentacao.Views.Manutencao;
-using MORM.Utilidade.Excecoes;
+using MORM.Utils.Excecoes;
 using System;
 using System.Collections.Generic;
 using System.Threading;

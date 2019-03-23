@@ -1,9 +1,8 @@
-﻿using MORM.Utilidade.Interfaces;
+﻿using MORM.Dominio.Interfaces;
 using System.Collections;
 
 namespace MORM.Repositorio.Interfaces
 {
-    //-- galeg - 28/04/2018 15:24:57
     public interface IAbstractDataContext
     {
         IAmbiente Ambiente { get; }

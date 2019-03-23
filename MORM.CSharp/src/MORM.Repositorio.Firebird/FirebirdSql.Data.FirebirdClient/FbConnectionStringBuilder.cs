@@ -1,6 +1,5 @@
 ﻿namespace MORM.Repositorio.Firebird.FirebirdSql.Data.FirebirdClient
 {
-    //-- galeg - 30/03/2018 17:12:03
     internal class FbConnectionStringBuilder
     {
         public string Database { get; internal set; }

@@ -1,10 +1,9 @@
 ﻿using MORM.Repositorio.Interfaces;
-using MORM.Utilidade.Interfaces;
+using MORM.Dominio.Interfaces;
 using System;
 
 namespace MORM.Repositorio.Uow
 {
-    //-- galeg - 28/04/2018 15:18:31
     public class AbstractUnityOfWork : IAbstractUnityOfWork
     {
         public AbstractUnityOfWork(IAbstractDataContext dataContext) : this(dataContext.Ambiente)

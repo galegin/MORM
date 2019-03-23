@@ -6,7 +6,6 @@ using System.Windows;
 
 namespace MORM.Apresentacao.Comps
 {
-    //-- galeg - 18/03/2018 12:56:57
     public class AbstractWindowNotify : Window, IAbstractWindowNotify
     {
         //-- DataContext

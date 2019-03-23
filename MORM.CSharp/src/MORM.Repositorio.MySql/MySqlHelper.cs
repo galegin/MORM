@@ -1,4 +1,4 @@
-﻿using MORM.Utilidade.Interfaces;
+﻿using MORM.Dominio.Interfaces;
 using MySql.Data.MySqlClient;
 using System.Data;
 

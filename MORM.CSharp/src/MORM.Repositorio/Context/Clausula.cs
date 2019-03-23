@@ -1,4 +1,4 @@
-﻿using MORM.Utilidade.Tipagens;
+﻿using MORM.Dominio.Tipagens;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -6,7 +6,6 @@ using System.Linq;
 
 namespace MORM.Repositorio.Context
 {
-    //-- galeg - 10/02/2018 14:42:37
     /// <summary>
     /// classe para geração de clausula para consulta
     /// 

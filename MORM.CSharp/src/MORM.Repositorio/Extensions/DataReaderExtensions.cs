@@ -1,4 +1,4 @@
-﻿using MORM.Utilidade.Extensoes;
+﻿using MORM.Dominio.Extensoes;
 using System;
 using System.Data.Common;
 

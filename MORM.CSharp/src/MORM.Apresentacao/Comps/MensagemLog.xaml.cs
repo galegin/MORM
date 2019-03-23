@@ -1,4 +1,4 @@
-﻿using MORM.Utilidade.Utils;
+﻿using MORM.Utils.Classes;
 
 namespace MORM.Apresentacao.Comps
 {

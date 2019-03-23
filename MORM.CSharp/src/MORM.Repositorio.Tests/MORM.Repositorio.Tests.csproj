@@ -51,6 +51,9 @@
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\MSTest.TestFramework.1.2.0\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -58,13 +61,8 @@
     <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IoC\Installer\AmbienteInstaller.cs" />
-    <Compile Include="IoC\Installer\ConexaoInstaller.cs" />
-    <Compile Include="IoC\Installer\DataContextInstaller.cs" />
-    <Compile Include="IoC\Container\AbstractIocContainer.cs" />
-    <Compile Include="IoC\Installer\RepositoryInstaller.cs" />
-    <Compile Include="IoC\Installer\ServiceInstaller.cs" />
-    <Compile Include="IoC\Installer\UnityOfWorkInstaller.cs" />
+    <Compile Include="Ioc\Installer\BaseInstaller.cs" />
+    <Compile Include="Ioc\Container\BaseContainer.cs" />
     <Compile Include="Tests\CamposTests.cs" />
     <Compile Include="Tests\TipoDapperTests.cs" />
     <Compile Include="Tests\DataContextDapperTests.cs" />
@@ -95,9 +93,9 @@
       <Project>{46bfb76e-fd5d-4bec-b486-01c6190cc5a9}</Project>
       <Name>MORM.Aplicacao</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MORM.IoC\MORM.Ioc.csproj">
-      <Project>{83CC54B1-B32F-4B62-82C9-BA9C4C8CCBA2}</Project>
-      <Name>MORM.Ioc</Name>
+    <ProjectReference Include="..\MORM.Dominio\MORM.Dominio.csproj">
+      <Project>{C22C745B-1538-405F-A9CE-29576C708B9E}</Project>
+      <Name>MORM.Dominio</Name>
     </ProjectReference>
     <ProjectReference Include="..\MORM.Repositorio.Dapper\MORM.Repositorio.Dapper.csproj">
       <Project>{5E88B144-F434-4FD5-B57F-DAC8A19FAF59}</Project>
@@ -127,9 +125,13 @@
       <Project>{065554C3-207F-47D8-97C1-1AC5202ECB22}</Project>
       <Name>MORM.Repositorio</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MORM.Utilidade\MORM.Utilidade.csproj">
+    <ProjectReference Include="..\MORM.Servico\MORM.Servico.csproj">
+      <Project>{BB6FE2A7-2F85-47EB-BEA8-AEBEEFD0D4BE}</Project>
+      <Name>MORM.Servico</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MORM.Utils\MORM.Utils.csproj">
       <Project>{346bed24-2dd1-4e58-939a-d72311c257f9}</Project>
-      <Name>MORM.Utilidade</Name>
+      <Name>MORM.Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

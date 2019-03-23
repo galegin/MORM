@@ -117,7 +117,7 @@
     <Compile Include="Controls\AbstractTitulo.xaml.cs">
       <DependentUpon>AbstractTitulo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Ioc\Installer\AbstractAppAmbiente.cs" />
+    <Compile Include="Ioc\Installer\BaseInstaller.cs" />
     <Compile Include="Menus\Commands\ExecutarMenu.cs" />
     <Compile Include="Menus\Commands\ExecutarSubMenu.cs" />
     <Compile Include="Menus\Commands\ExibirMenuLateral.cs" />
@@ -132,9 +132,7 @@
     <Compile Include="Extensions\PropertyInfoExtensions.cs" />
     <Compile Include="Interfaces\IMainWindow.cs" />
     <Compile Include="Interfaces\IMainWindowExec.cs" />
-    <Compile Include="Ioc\Container\AbstractAppContainer.cs" />
-    <Compile Include="Ioc\Installer\AbstractAppUserControl.cs" />
-    <Compile Include="Ioc\Installer\AbstractAppWindow.cs" />
+    <Compile Include="Ioc\Container\BaseContainer.cs" />
     <Compile Include="MainWindowExec.cs" />
     <Compile Include="Menus\Interfaces\IMenuLateral.cs" />
     <Compile Include="Menus\Interfaces\IMenuOpcao.cs" />
@@ -300,13 +298,21 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MORM.IoC\MORM.Ioc.csproj">
-      <Project>{83cc54b1-b32f-4b62-82c9-ba9c4c8ccba2}</Project>
-      <Name>MORM.Ioc</Name>
+    <ProjectReference Include="..\MORM.Aplicacao\MORM.Aplicacao.csproj">
+      <Project>{46bfb76e-fd5d-4bec-b486-01c6190cc5a9}</Project>
+      <Name>MORM.Aplicacao</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MORM.Utilidade\MORM.Utilidade.csproj">
+    <ProjectReference Include="..\MORM.Dominio\MORM.Dominio.csproj">
+      <Project>{C22C745B-1538-405F-A9CE-29576C708B9E}</Project>
+      <Name>MORM.Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MORM.Dtos\MORM.Dtos.csproj">
+      <Project>{C4E38812-95D9-4363-AAE8-D8505E9E141F}</Project>
+      <Name>MORM.Dtos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MORM.Utils\MORM.Utils.csproj">
       <Project>{346bed24-2dd1-4e58-939a-d72311c257f9}</Project>
-      <Name>MORM.Utilidade</Name>
+      <Name>MORM.Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

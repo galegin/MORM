@@ -7,7 +7,6 @@ using System.Linq;
 
 namespace MORM.Repositorio.Tests
 {
-    //-- galeg - 13/10/2018 12:16:29
     [TestClass]
     public class DataContextDapperTests
     {
@@ -16,8 +15,8 @@ namespace MORM.Repositorio.Tests
 
         public DataContextDapperTests()
         {
-            _dataContext = AbstractIocContainer.Instance.Resolve<IAbstractDataContextDapper>();
-            _tipoRepository = AbstractIocContainer.Instance.Resolve<ITipoRepository>();
+            _dataContext = BaseContainer.Instance.Resolve<IAbstractDataContextDapper>();
+            _tipoRepository = BaseContainer.Instance.Resolve<ITipoRepository>();
         }
 
         [TestMethod]

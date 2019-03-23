@@ -1,9 +1,8 @@
 using System.Configuration;
-using MORM.Utilidade.Utils;
+using MORM.Utils.Classes;
 
 namespace MORM.Repositorio.Oracle
 {
-    //-- galeg - 05/05/2018 21:09:58
     public class OracleHelperAmbiente
     {
         private static string ORACLE_HOME = ConfigurationManager.AppSettings[nameof(ORACLE_HOME)] ?? string.Empty;

@@ -1,7 +1,7 @@
 ﻿using MORM.Apresentacao.Comps;
 using MORM.Apresentacao.Menus;
 using MORM.Apresentacao.ViewModels;
-using MORM.Ioc.Container;
+using MORM.Aplicacao.Ioc.Container;
 using System.Windows;
 using System.Windows.Controls;
 

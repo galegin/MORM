@@ -1,10 +1,9 @@
-﻿using MORM.Repositorio.Uow;
-using MORM.Repositorio.Services;
-using MORM.Utilidade.Interfaces;
+﻿using MORM.Dominio.Interfaces;
+using MORM.Repositorio.Uow;
+using MORM.Servico.Services;
 
 namespace MORM.Repositorio.Tests
 {
-    //-- galeg - 31/03/2018 13:19:06
     public class TipoService : AbstractService<TipoModel>, ITipoService
     {
         public TipoService(IAbstractUnityOfWork unityOfWork) : base(unityOfWork)

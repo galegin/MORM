@@ -1,0 +1,13 @@
+D:\projeto\MORM\MORM.CSharp\src\MORM.Servico\bin\Debug\MORM.Servico.dll
+D:\projeto\MORM\MORM.CSharp\src\MORM.Servico\bin\Debug\MORM.Servico.pdb
+D:\projeto\MORM\MORM.CSharp\src\MORM.Servico\bin\Debug\MORM.Dtos.dll
+D:\projeto\MORM\MORM.CSharp\src\MORM.Servico\bin\Debug\MORM.Dominio.dll
+D:\projeto\MORM\MORM.CSharp\src\MORM.Servico\bin\Debug\MORM.Dtos.pdb
+D:\projeto\MORM\MORM.CSharp\src\MORM.Servico\bin\Debug\MORM.Dominio.pdb
+D:\projeto\MORM\MORM.CSharp\bin\Debug\MORM.Servico.dll
+D:\projeto\MORM\MORM.CSharp\bin\Debug\MORM.Servico.pdb
+D:\projeto\MORM\MORM.CSharp\src\MORM.Servico\obj\Debug\MORM.Servico.csprojAssemblyReference.cache
+D:\projeto\MORM\MORM.CSharp\src\MORM.Servico\obj\Debug\MORM.Servico.csproj.CoreCompileInputs.cache
+D:\projeto\MORM\MORM.CSharp\src\MORM.Servico\obj\Debug\MORM.Servico.csproj.CopyComplete
+D:\projeto\MORM\MORM.CSharp\src\MORM.Servico\obj\Debug\MORM.Servico.dll
+D:\projeto\MORM\MORM.CSharp\src\MORM.Servico\obj\Debug\MORM.Servico.pdb

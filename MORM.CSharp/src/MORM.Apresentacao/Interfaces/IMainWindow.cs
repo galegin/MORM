@@ -1,4 +1,4 @@
-﻿using MORM.Ioc.Container;
+﻿using MORM.Aplicacao.Ioc.Container;
 
 namespace MORM.Apresentacao
 {

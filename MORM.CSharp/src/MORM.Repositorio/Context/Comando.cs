@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using MORM.Utilidade.Tipagens;
-using MORM.Utilidade.Atributos;
-using MORM.Utilidade.Extensoes;
+using MORM.Dominio.Tipagens;
+using MORM.Dominio.Atributos;
+using MORM.Dominio.Extensoes;
 using MORM.Repositorio.Interfaces;
 
 namespace MORM.Repositorio.Context

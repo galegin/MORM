@@ -1,5 +1,5 @@
-﻿using MORM.Utilidade.Interfaces;
-using MORM.Utilidade.Utils;
+﻿using MORM.Dominio.Interfaces;
+using MORM.Utils.Classes;
 using System.Data;
 using System.Data.SQLite;
 using System.IO;

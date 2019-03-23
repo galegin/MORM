@@ -2,7 +2,6 @@
 
 namespace MORM.Repositorio.Interfaces
 {
-    //-- galeg - 28/04/2018 20:24:50
     public interface IMigracao
     {
         void Clear();

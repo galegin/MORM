@@ -1,15 +1,14 @@
 ﻿using MORM.Repositorio.Extensions;
 using MORM.Repositorio.Interfaces;
-using MORM.Utilidade.Entidades;
-using MORM.Utilidade.Extensoes;
-using MORM.Utilidade.Utils;
+using MORM.Dominio.Entidades;
+using MORM.Dominio.Extensoes;
+using MORM.Utils.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace MORM.Repositorio.Migrations
 {
-    //-- galeg - 31/03/2018 11:49:20
     public class Migracao : IMigracao
     {
         public Migracao(IAbstractDataContext context)
@@ -40,7 +39,7 @@ namespace MORM.Repositorio.Migrations
 
             //-- versao base
 
-            var versaoBase = Context.GetObjetoF<MigracaoVersao>((f) => $"{nameof(f.Codigo)} = '{tabela}'")?.Versao;
+            var versaoBase = Context.GetObjetoF((Dominio.Entidades.Migracao f) => $"{nameof(f.Codigo)} = '{tabela}'")?.Versao;
 
             //-- versao model
 
@@ -81,7 +80,7 @@ namespace MORM.Repositorio.Migrations
 
             //-- salvar versao base
 
-            Context.SetObjeto(new MigracaoVersao(tabela, versaoModel));
+            Context.SetObjeto(new Dominio.Entidades.Migracao(tabela, versaoModel));
         }
 
         public void CreateOrAlter<TObject>() => CreateOrAlter(typeof(TObject));

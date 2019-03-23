@@ -1,0 +1,8 @@
+D:\projeto\MORM\MORM.CSharp\bin\WebApi\ApplicationInsights.config
+D:\projeto\MORM\MORM.CSharp\bin\WebApi\MORM.WebApi.dll
+D:\projeto\MORM\MORM.CSharp\bin\WebApi\MORM.WebApi.pdb
+D:\projeto\MORM\MORM.CSharp\src\MORM.WebApi\obj\Debug\MORM.WebApi.csprojAssemblyReference.cache
+D:\projeto\MORM\MORM.CSharp\src\MORM.WebApi\obj\Debug\MORM.WebApi.csproj.CoreCompileInputs.cache
+D:\projeto\MORM\MORM.CSharp\src\MORM.WebApi\obj\Debug\MORM.WebApi.csproj.CopyComplete
+D:\projeto\MORM\MORM.CSharp\src\MORM.WebApi\obj\Debug\MORM.WebApi.dll
+D:\projeto\MORM\MORM.CSharp\src\MORM.WebApi\obj\Debug\MORM.WebApi.pdb

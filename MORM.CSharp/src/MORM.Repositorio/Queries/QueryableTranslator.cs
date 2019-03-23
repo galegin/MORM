@@ -1,4 +1,4 @@
-﻿using MORM.Utilidade.Extensoes;
+﻿using MORM.Dominio.Extensoes;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
@@ -7,7 +7,6 @@ using System.Text;
 
 namespace MORM.Repositorio.Queries
 {
-    //-- galeg - 16/09/2018 10:18:02
     public class QueryableTranslator : ExpressionVisitor, IQueryableTranslator
     {
         public QueryableTranslator()

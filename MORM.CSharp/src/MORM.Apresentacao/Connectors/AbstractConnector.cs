@@ -1,5 +1,5 @@
 using MORM.Apresentacao.Consumers;
-using MORM.Utilidade.Dtos;
+using MORM.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -41,60 +41,60 @@ namespace MORM.Apresentacao.Connectors
 
         public IList<TObject> Listar(Func<TObject, string> filtro)
         {
-            return _listar.Post(new DtoAbstract<TObject>.Listar(filtro))?.Conteudo?.Lista;
+            return _listar.Post(new AbstractDto<TObject>.Listar(filtro))?.Conteudo?.Lista;
         }
 
         public TObject Consultar(Func<TObject, string> filtro)
         {
-            return _consultar.Post(new DtoAbstract<TObject>.Consultar(filtro))?.Conteudo?.Objeto;
+            return _consultar.Post(new AbstractDto<TObject>.Consultar(filtro))?.Conteudo?.Objeto;
         }
 
         // incluir
 
         public void Incluir(IList<TObject> lista)
         {
-            _incluirLista.Post(new DtoAbstract<TObject>.IncluirLista(lista));
+            _incluirLista.Post(new AbstractDto<TObject>.IncluirLista(lista));
         }
 
         public void Incluir(TObject objeto)
         {
-            _incluir.Post(new DtoAbstract<TObject>.Incluir(objeto));
+            _incluir.Post(new AbstractDto<TObject>.Incluir(objeto));
         }
 
         // alterar
 
         public void Alterar(IList<TObject> lista)
         {
-            _alterarLista.Post(new DtoAbstract<TObject>.AlterarLista(lista));
+            _alterarLista.Post(new AbstractDto<TObject>.AlterarLista(lista));
         }
 
         public void Alterar(TObject objeto)
         {
-            _alterar.Post(new DtoAbstract<TObject>.Alterar(objeto));
+            _alterar.Post(new AbstractDto<TObject>.Alterar(objeto));
         }
 
         // salvar
 
         public void Salvar(IList<TObject> lista)
         {
-            _salvarLista.Post(new DtoAbstract<TObject>.SalvarLista(lista));
+            _salvarLista.Post(new AbstractDto<TObject>.SalvarLista(lista));
         }
 
         public void Salvar(TObject objeto)
         {
-            _salvar.Post(new DtoAbstract<TObject>.Salvar(objeto));
+            _salvar.Post(new AbstractDto<TObject>.Salvar(objeto));
         }
 
         // excluir
 
         public void Excluir(IList<TObject> lista)
         {
-            _excluirLista.Post(new DtoAbstract<TObject>.ExcluirLista(lista));
+            _excluirLista.Post(new AbstractDto<TObject>.ExcluirLista(lista));
         }
 
         public void Excluir(TObject objeto)
         {
-            _excluir.Post(new DtoAbstract<TObject>.Excluir(objeto));
+            _excluir.Post(new AbstractDto<TObject>.Excluir(objeto));
         }
     }
 }

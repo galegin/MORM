@@ -1,7 +1,7 @@
 ﻿using MORM.Repositorio.Interfaces;
-using MORM.Utilidade.Atributos;
-using MORM.Utilidade.Extensoes;
-using MORM.Utilidade.Tipagens;
+using MORM.Dominio.Atributos;
+using MORM.Dominio.Extensoes;
+using MORM.Dominio.Tipagens;
 using System;
 using System.Collections;
 using System.Collections.Generic;

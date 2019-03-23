@@ -2,7 +2,6 @@
 
 namespace MORM.Repositorio.Tests
 {
-    //-- galeg - 13/10/2018 12:07:20
     public interface ITesteRepository : IAbstractRepository<TesteModel>
     {
     }

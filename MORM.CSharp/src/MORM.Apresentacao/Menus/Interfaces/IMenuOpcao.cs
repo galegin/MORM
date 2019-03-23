@@ -1,4 +1,4 @@
-﻿using MORM.Utilidade.Interfaces;
+﻿using MORM.Dominio.Interfaces;
 using System.Collections.Generic;
 
 namespace MORM.Apresentacao.Menus

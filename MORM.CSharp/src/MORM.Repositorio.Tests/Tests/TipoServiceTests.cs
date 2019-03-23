@@ -1,15 +1,14 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
-using MORM.Repositorio.Extensions;
-using MORM.Repositorio.Tests.Ioc.Container;
-using MORM.Utilidade.Entidades;
+using MORM.Dominio.Entidades;
+using MORM.Dominio.Tipagens;
 using MORM.Repositorio.Context;
-using MORM.Utilidade.Tipagens;
+using MORM.Repositorio.Extensions;
 using MORM.Repositorio.SqLite;
+using MORM.Repositorio.Tests.Ioc.Container;
 
 namespace MORM.Repositorio.Tests
 {
-
     [TestClass]
     public class TipoServiceTests
     {
@@ -17,7 +16,7 @@ namespace MORM.Repositorio.Tests
 
         public TipoServiceTests()
         {
-            _tipoService = AbstractIocContainer.Instance.Resolve<ITipoService>();
+            _tipoService = BaseContainer.Instance.Resolve<ITipoService>();
         }        
 
         private const int _codigoTipo = 1;

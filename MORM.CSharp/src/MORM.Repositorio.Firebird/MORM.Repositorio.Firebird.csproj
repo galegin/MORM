@@ -50,9 +50,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MORM.Utilidade\MORM.Utilidade.csproj">
-      <Project>{346bed24-2dd1-4e58-939a-d72311c257f9}</Project>
-      <Name>MORM.Utilidade</Name>
+    <ProjectReference Include="..\MORM.Dominio\MORM.Dominio.csproj">
+      <Project>{C22C745B-1538-405F-A9CE-29576C708B9E}</Project>
+      <Name>MORM.Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MORM.Utils\MORM.Utils.csproj">
+      <Project>{346BED24-2DD1-4E58-939A-D72311C257F9}</Project>
+      <Name>MORM.Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

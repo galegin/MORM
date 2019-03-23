@@ -1,6 +1,6 @@
 ﻿using FirebirdSql.Data.FirebirdClient;
-using MORM.Utilidade.Interfaces;
-using MORM.Utilidade.Utils;
+using MORM.Dominio.Interfaces;
+using MORM.Utils.Classes;
 using System.Data;
 using System.IO;
 

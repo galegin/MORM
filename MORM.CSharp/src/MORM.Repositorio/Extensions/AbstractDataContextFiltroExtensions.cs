@@ -1,13 +1,12 @@
 ﻿using MORM.Repositorio.Interfaces;
-using MORM.Utilidade.Extensoes;
-using MORM.Utilidade.Tipagens;
+using MORM.Dominio.Extensoes;
+using MORM.Dominio.Tipagens;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 
 namespace MORM.Repositorio.Extensions
 {
-    //-- galeg - 27/05/2018 13:32:54
     public static class AbstractDataContextFiltroExtensions
     {
         private static bool _inFiltroPadrao =

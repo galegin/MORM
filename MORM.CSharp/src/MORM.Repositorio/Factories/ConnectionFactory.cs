@@ -1,9 +1,8 @@
-﻿using MORM.Utilidade.Interfaces;
+﻿using MORM.Dominio.Interfaces;
 using System.Data;
 
 namespace MORM.Repositorio.Factories
 {
-    //-- galeg - 30/03/2018 16:09:46
     public class ConnectionFactory : IConnectionFactory
     {
         private string GetConnectionString(IAmbiente ambiente)

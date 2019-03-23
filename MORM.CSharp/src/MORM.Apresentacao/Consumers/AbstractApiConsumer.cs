@@ -1,5 +1,5 @@
-﻿using MORM.Utilidade.Extensoes;
-using MORM.Utilidade.Utils;
+﻿using MORM.Dominio.Extensoes;
+using MORM.Utils.Classes;
 using Newtonsoft.Json;
 using System;
 using System.Net;
@@ -108,7 +108,6 @@ using System;
 
 namespace MORM.Apresentacao.Consumers
 {
-    //-- galeg - 01/05/2018 15:23:08
     public class ApiConsumer<TDto, TRet> where TDto : class where TRet : class
     {
         public TRet Post(TDto dto)

@@ -1,5 +1,5 @@
-﻿using MORM.Utilidade.Atributos;
-using MORM.Utilidade.Tipagens;
+﻿using MORM.Dominio.Atributos;
+using MORM.Dominio.Tipagens;
 using System;
 using System.Collections.Generic;
 

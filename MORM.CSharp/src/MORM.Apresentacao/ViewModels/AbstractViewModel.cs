@@ -2,7 +2,7 @@
 using MORM.Apresentacao.Commands;
 using MORM.Apresentacao.Commands.Tela;
 using MORM.Apresentacao.Models;
-using MORM.Utilidade.Extensoes;
+using MORM.Dominio.Extensoes;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

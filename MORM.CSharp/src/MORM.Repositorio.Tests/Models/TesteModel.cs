@@ -1,4 +1,4 @@
-﻿using MORM.Utilidade.Atributos;
+﻿using MORM.Dominio.Atributos;
 using System;
 
 namespace MORM.Repositorio.Tests

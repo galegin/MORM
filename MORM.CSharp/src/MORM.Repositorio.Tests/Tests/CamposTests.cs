@@ -1,9 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MORM.Utilidade.Extensoes;
+using MORM.Dominio.Extensoes;
 
 namespace MORM.Repositorio.Tests
 {
-    //-- galeg - 13/10/2018 12:23:46
     [TestClass]
     public class CamposTests
     {

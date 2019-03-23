@@ -4,7 +4,6 @@ using System.Windows.Input;
 
 namespace MORM.Apresentacao.Comps
 {
-    //-- galeg - 18/03/2018 12:56:35
     public class AbstractUserControl : AbstractUserControlNotify, IAbstractUserControl, IDisposable
     {
         public AbstractUserControl()

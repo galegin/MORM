@@ -1,5 +1,5 @@
-﻿using MORM.Utilidade.Excecoes;
-using MORM.Utilidade.Utils;
+﻿using MORM.Utils.Excecoes;
+using MORM.Utils.Classes;
 using System;
 using System.Globalization;
 using System.Threading;

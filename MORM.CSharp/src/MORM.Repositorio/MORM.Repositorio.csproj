@@ -62,6 +62,11 @@
     <Compile Include="Context\Comando.cs" />
     <Compile Include="Context\Conexao.cs" />
     <Compile Include="Connections\DataContextConnection.cs" />
+    <Compile Include="Context\Interfaces\IAbstractDataContext.cs" />
+    <Compile Include="Context\Interfaces\IComando.cs" />
+    <Compile Include="Context\Interfaces\IConexao.cs" />
+    <Compile Include="Context\Interfaces\IMigracao.cs" />
+    <Compile Include="Context\Interfaces\IParametro.cs" />
     <Compile Include="Context\Parametro.cs" />
     <Compile Include="Extensions\AbstractDataContextExtensions.cs" />
     <Compile Include="Extensions\AbstractDataContextFiltroExtensions.cs" />
@@ -72,13 +77,7 @@
     <Compile Include="Factories\ConexaoFactory.cs" />
     <Compile Include="Factories\ConnectionFactory.cs" />
     <Compile Include="Factories\ProviderFactory.cs" />
-    <Compile Include="Context\Interfaces\IAbstractDataContext.cs" />
-    <Compile Include="Context\Interfaces\IComando.cs" />
-    <Compile Include="Context\Interfaces\IConexao.cs" />
-    <Compile Include="Context\Interfaces\IMigracao.cs" />
-    <Compile Include="Context\Interfaces\IParametro.cs" />
     <Compile Include="Uow\AbstractUnityOfWork.cs" />
-    <Compile Include="Uow\Interfaces\IAbstractUnityOfWork.cs" />
     <Compile Include="Migrations\Migracao.cs" />
     <Compile Include="Migrations\MigracaoContexto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -90,29 +89,26 @@
     <Compile Include="Queries\QueryableValue.cs" />
     <Compile Include="Repositories\AbstractRepository.cs" />
     <Compile Include="Repositories\Interfaces\IAbstractRepository.cs" />
-    <Compile Include="Services\AbstractApiFiltroService.cs" />
-    <Compile Include="Services\AbstractApiService.cs" />
-    <Compile Include="Services\AbstractService.cs" />
-    <Compile Include="Services\Interfaces\IAbstractService.cs" />
-    <Compile Include="Services\Interfaces\IAbstractApiFiltroService.cs" />
-    <Compile Include="Services\Interfaces\IAbstractApiService.cs" />
-    <Compile Include="Services\MigracaoVersaoServico.cs" />
-    <Compile Include="Services\nsAmbiente\AmbienteService.cs" />
-    <Compile Include="Services\nsAmbiente\Interfaces\IAmbienteService.cs" />
-    <Compile Include="Services\nsAmbiente\Interfaces\ILogAcessoService.cs" />
-    <Compile Include="Services\nsAmbiente\Interfaces\IPermissaoService.cs" />
-    <Compile Include="Services\nsAmbiente\LogAcessoService.cs" />
-    <Compile Include="Services\nsAmbiente\PermissaoService.cs" />
+    <Compile Include="Uow\Interfaces\IAbstractUnityOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MORM.Utilidade\MORM.Utilidade.csproj">
+    <ProjectReference Include="..\MORM.Dominio\MORM.Dominio.csproj">
+      <Project>{C22C745B-1538-405F-A9CE-29576C708B9E}</Project>
+      <Name>MORM.Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MORM.Dtos\MORM.Dtos.csproj">
+      <Project>{C4E38812-95D9-4363-AAE8-D8505E9E141F}</Project>
+      <Name>MORM.Dtos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MORM.Utils\MORM.Utils.csproj">
       <Project>{346bed24-2dd1-4e58-939a-d72311c257f9}</Project>
-      <Name>MORM.Utilidade</Name>
+      <Name>MORM.Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

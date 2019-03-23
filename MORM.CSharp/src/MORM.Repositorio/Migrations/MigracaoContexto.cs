@@ -1,12 +1,11 @@
 ﻿using MORM.Repositorio.Interfaces;
-using MORM.Utilidade.Extensoes;
+using MORM.Dominio.Extensoes;
 using System;
 using System.IO;
 using System.Reflection;
 
 namespace MORM.Repositorio.Migrations
 {
-    //-- galeg - 03/04/2018 19:54:24
     public class MigracaoContexto
     {
         public static void Gerar(IAbstractDataContext context, string package)

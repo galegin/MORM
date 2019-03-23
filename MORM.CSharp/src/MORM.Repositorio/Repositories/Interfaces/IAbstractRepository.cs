@@ -5,7 +5,6 @@ using System.Collections.Generic;
 
 namespace MORM.Repositorio.Repositories
 {
-    //-- galeg - 01/05/2018 11:38:08
     public interface IAbstractRepository
     {
         IAbstractDataContext DataContext { get; }

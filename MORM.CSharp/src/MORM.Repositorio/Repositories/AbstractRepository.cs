@@ -7,7 +7,6 @@ using System.Collections.Generic;
 
 namespace MORM.Repositorio.Repositories
 {
-    //-- galeg - 01/05/2018 11:37:48
     public class AbstractRepository : IAbstractRepository
     {
         public AbstractRepository(IAbstractDataContext context)

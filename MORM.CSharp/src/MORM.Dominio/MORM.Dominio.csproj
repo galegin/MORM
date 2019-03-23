@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C22C745B-1538-405F-A9CE-29576C708B9E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MORM.Dominio</RootNamespace>
+    <AssemblyName>MORM.Dominio</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Atributos\Consumer.cs" />
+    <Compile Include="Atributos\Formato.cs" />
+    <Compile Include="Atributos\Mapping.cs" />
+    <Compile Include="Atributos\Pesquisa.cs" />
+    <Compile Include="Atributos\Tipagem.cs" />
+    <Compile Include="Atributos\Validacao.cs" />
+    <Compile Include="Atributos\ValorPadrao.cs" />
+    <Compile Include="Entidades\Ambiente.cs" />
+    <Compile Include="Entidades\Empresa.cs" />
+    <Compile Include="Entidades\LogAcesso .cs" />
+    <Compile Include="Entidades\Permissao.cs" />
+    <Compile Include="Entidades\Terminal.cs" />
+    <Compile Include="Entidades\Usuario.cs" />
+    <Compile Include="Entidades\_Migracao.cs" />
+    <Compile Include="Extensoes\ConsumerExtensions.cs" />
+    <Compile Include="Extensoes\CreateCmdExtensions.cs" />
+    <Compile Include="Extensoes\DataTypeExtension.cs" />
+    <Compile Include="Extensoes\DynamicExtensions.cs" />
+    <Compile Include="Extensoes\EntityExtensions.cs" />
+    <Compile Include="Extensoes\EnumExtensions.cs" />
+    <Compile Include="Extensoes\FieldExtensions.cs" />
+    <Compile Include="Extensoes\FormExtensions.cs" />
+    <Compile Include="Extensoes\MappingExtension.cs" />
+    <Compile Include="Extensoes\ObjectExtensions.cs" />
+    <Compile Include="Extensoes\PesquisaExtensions.cs" />
+    <Compile Include="Extensoes\PropertyExtensions.cs" />
+    <Compile Include="Extensoes\StringExtensions.cs" />
+    <Compile Include="Extensoes\TipagemExtension.cs" />
+    <Compile Include="Extensoes\TypeExtension.cs" />
+    <Compile Include="Extensoes\ValidacaoExtension.cs" />
+    <Compile Include="Extensoes\ValorPadraoExension.cs" />
+    <Compile Include="Interfaces\Extensions\AmbienteExtensions.cs" />
+    <Compile Include="Interfaces\Extensions\EmpresaExtensions.cs" />
+    <Compile Include="Interfaces\Extensions\GrupoEmpresaExtensions.cs" />
+    <Compile Include="Interfaces\Extensions\TerminalExtensions.cs" />
+    <Compile Include="Interfaces\Extensions\UsuarioExtensions.cs" />
+    <Compile Include="Interfaces\IAmbiente.cs" />
+    <Compile Include="Interfaces\IConnectionFactory.cs" />
+    <Compile Include="Interfaces\IEmpresa.cs" />
+    <Compile Include="Interfaces\IGrupoEmpresa.cs" />
+    <Compile Include="Interfaces\IInformacaoSistema.cs" />
+    <Compile Include="Interfaces\IOpcaoMenu.cs" />
+    <Compile Include="Interfaces\IParametroSistema.cs" />
+    <Compile Include="Interfaces\IPassword.cs" />
+    <Compile Include="Interfaces\ITerminal.cs" />
+    <Compile Include="Interfaces\IUsuario.cs" />
+    <Compile Include="Interfaces\Repositories\IRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IUnityOfWork.cs" />
+    <Compile Include="Interfaces\Services\IDomainService.cs" />
+    <Compile Include="Interfaces\Services\IService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tipagens\CampoPreFixo.cs" />
+    <Compile Include="Tipagens\TipoDatabase.cs" />
+    <Compile Include="Tipagens\TipoPermissao.cs" />
+    <Compile Include="Tipagens\TipoValorPadrao.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

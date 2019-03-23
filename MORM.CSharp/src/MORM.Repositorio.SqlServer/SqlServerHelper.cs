@@ -1,12 +1,11 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
 using System.IO;
-using MORM.Utilidade.Interfaces;
-using MORM.Utilidade.Utils;
+using MORM.Dominio.Interfaces;
+using MORM.Utils.Classes;
 
 namespace MORM.Repositorio.SqlServer
 {
-    //-- galeg - 28/04/2018 19:48:41
     public class SqlServerHelper : IConnectionFactory
     {
         public IDbConnection GetConnection(IAmbiente ambiente) => 

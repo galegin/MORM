@@ -1,10 +1,9 @@
 ﻿using Oracle.ManagedDataAccess.Client;
-using MORM.Utilidade.Interfaces;
+using MORM.Dominio.Interfaces;
 using System.Data;
 
 namespace MORM.Repositorio.Oracle
 {
-    //-- galeg - 26/03/2018 20:07:52
     public class OracleHelper : IConnectionFactory
     {
         public IDbConnection GetConnection(IAmbiente ambiente) => 

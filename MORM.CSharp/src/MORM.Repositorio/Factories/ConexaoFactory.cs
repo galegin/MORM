@@ -1,6 +1,6 @@
 ﻿using MORM.Repositorio.Context;
 using MORM.Repositorio.Interfaces;
-using MORM.Utilidade.Interfaces;
+using MORM.Dominio.Interfaces;
 using System.Collections.Generic;
 
 namespace MORM.Repositorio.Factories

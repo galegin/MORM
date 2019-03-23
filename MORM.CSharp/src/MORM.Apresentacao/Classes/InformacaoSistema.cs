@@ -1,5 +1,5 @@
-﻿using MORM.Utilidade.Extensions;
-using MORM.Utilidade.Interfaces;
+﻿using MORM.Dominio.Extensions;
+using MORM.Dominio.Interfaces;
 using System;
 
 namespace MORM.Apresentacao.Classes

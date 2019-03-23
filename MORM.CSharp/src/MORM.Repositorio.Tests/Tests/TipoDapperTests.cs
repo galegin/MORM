@@ -7,7 +7,6 @@ using System.Linq;
 
 namespace MORM.Repositorio.Tests
 {
-    //-- galeg - 13/10/2018 12:16:29
     [TestClass]
     public class TipoDapperTests
     {
@@ -16,7 +15,7 @@ namespace MORM.Repositorio.Tests
 
         public TipoDapperTests()
         {
-            _dataContext = AbstractIocContainer.Instance.Resolve<IAbstractDataContextDapper>();
+            _dataContext = BaseContainer.Instance.Resolve<IAbstractDataContextDapper>();
             _tipoRepository = new TipoRepository(_dataContext);
         }
 

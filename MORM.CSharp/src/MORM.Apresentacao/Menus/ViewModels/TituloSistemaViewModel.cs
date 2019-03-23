@@ -2,7 +2,7 @@
 using MORM.Apresentacao.Comps;
 using MORM.Apresentacao.Menus.Commands;
 using MORM.Apresentacao.ViewModels;
-using MORM.Utilidade.Interfaces;
+using MORM.Dominio.Interfaces;
 using System;
 using System.Windows.Controls;
 

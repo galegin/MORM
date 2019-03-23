@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Controls;
-using MORM.Ioc.Container;
+using MORM.Aplicacao.Ioc.Container;
 
 namespace MORM.Apresentacao
 {

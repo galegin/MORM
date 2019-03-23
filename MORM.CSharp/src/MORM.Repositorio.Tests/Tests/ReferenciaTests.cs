@@ -5,7 +5,6 @@ using System.Linq;
 
 namespace MORM.Repositorio.Tests
 {
-    //-- galeg - 13/10/2018 12:42:13
     [TestClass]
     public class ReferenciaTests
     {
@@ -15,7 +14,7 @@ namespace MORM.Repositorio.Tests
 
         public ReferenciaTests()
         {
-            _testeService = AbstractIocContainer.Instance.Resolve<ITesteService>();
+            _testeService = BaseContainer.Instance.Resolve<ITesteService>();
             _referenciaModel = new ReferenciaModel();
             _tipoEnum = TipoEnum.Normal;
         }

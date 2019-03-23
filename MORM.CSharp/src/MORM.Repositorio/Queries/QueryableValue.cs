@@ -1,10 +1,9 @@
-﻿using MORM.Utilidade.Tipagens;
+﻿using MORM.Dominio.Tipagens;
 using System;
 using System.Configuration;
 
 namespace MORM.Repositorio.Queries
 {
-    //-- galeg - 01/10/2018 18:50:05
     public class QueryableValue : IQueryableValue
     {
         public QueryableValue()

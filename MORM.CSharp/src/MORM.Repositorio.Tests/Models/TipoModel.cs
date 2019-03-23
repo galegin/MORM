@@ -1,9 +1,8 @@
 ﻿using System;
-using MORM.Utilidade.Atributos;
+using MORM.Dominio.Atributos;
 
 namespace MORM.Repositorio.Tests
 {
-    //-- galeg - 15/04/2018 11:21:37
     [Tabela("TIPO")]
     public class TipoModel
     {

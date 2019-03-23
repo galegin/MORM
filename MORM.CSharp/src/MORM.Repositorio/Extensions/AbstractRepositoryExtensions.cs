@@ -6,7 +6,6 @@ using System.Linq.Expressions;
 
 namespace MORM.Repositorio.Extensions
 {
-    //-- galeg - 07/10/2018 10:45:16
     public static class AbstractRepositoryExtensions
     {
         /*

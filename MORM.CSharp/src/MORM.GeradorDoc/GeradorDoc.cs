@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 namespace MORM.GeradorDoc
 {
-    //-- galeg - 01/10/2018 19:26:43
     public class GeradorDoc
     {
         private readonly GerarDoctoCs _gerarDoctoCs;
