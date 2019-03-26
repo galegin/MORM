@@ -4,7 +4,7 @@ using MORM.Servico.Services.nsAmbiente;
 
 namespace MORM.WebApi.Ioc
 {
-    public class ServiceInstaller : AbstractInstaller
+    public class BaseInstaller : AbstractInstaller
     {
         public override void InstallerAmbiente()
         {

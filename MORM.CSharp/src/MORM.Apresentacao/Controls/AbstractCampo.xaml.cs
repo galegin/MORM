@@ -1,9 +1,11 @@
 ﻿using MORM.Apresentacao.Comps;
+using MORM.Enums.Classes;
 using System.Windows.Controls;
 using System.Windows.Data;
 
 namespace MORM.Apresentacao.Controls
 {
+    #region enun
     public enum AbstractCampoTipo
     {
         Individual,
@@ -20,36 +22,41 @@ namespace MORM.Apresentacao.Controls
     {
         public static bool IsDescr(this AbstractCampoTipo tipo)
         {
-            return tipo == AbstractCampoTipo.IndividualComDescricao
-                || tipo == AbstractCampoTipo.IndividualComPesquisaEDescricao
-                || tipo == AbstractCampoTipo.IntervaloComDescricao
-                || tipo == AbstractCampoTipo.IntervaloComPesquisaEDescricao;
+            return tipo.In(
+                AbstractCampoTipo.IndividualComDescricao,
+                AbstractCampoTipo.IndividualComPesquisaEDescricao,
+                AbstractCampoTipo.IntervaloComDescricao,
+                AbstractCampoTipo.IntervaloComPesquisaEDescricao);
         }
 
         public static bool IsIndiv(this AbstractCampoTipo tipo)
         {
-            return tipo == AbstractCampoTipo.Individual
-                || tipo == AbstractCampoTipo.IndividualComDescricao
-                || tipo == AbstractCampoTipo.IndividualComPesquisa
-                || tipo == AbstractCampoTipo.IndividualComPesquisaEDescricao;
+            return tipo.In(
+                AbstractCampoTipo.Individual,
+                AbstractCampoTipo.IndividualComDescricao,
+                AbstractCampoTipo.IndividualComPesquisa,
+                AbstractCampoTipo.IndividualComPesquisaEDescricao);
         }
 
         public static bool IsInter(this AbstractCampoTipo tipo)
         {
-            return tipo == AbstractCampoTipo.Intervalo
-                || tipo == AbstractCampoTipo.IntervaloComDescricao
-                || tipo == AbstractCampoTipo.IntervaloComPesquisa
-                || tipo == AbstractCampoTipo.IntervaloComPesquisaEDescricao;
+            return tipo.In(
+                AbstractCampoTipo.Intervalo,
+                AbstractCampoTipo.IntervaloComDescricao,
+                AbstractCampoTipo.IntervaloComPesquisa,
+                AbstractCampoTipo.IntervaloComPesquisaEDescricao);
         }
 
         public static bool IsPesq(this AbstractCampoTipo tipo)
         {
-            return tipo == AbstractCampoTipo.IndividualComPesquisa
-                || tipo == AbstractCampoTipo.IndividualComPesquisaEDescricao
-                || tipo == AbstractCampoTipo.IntervaloComPesquisa
-                || tipo == AbstractCampoTipo.IntervaloComPesquisaEDescricao;
+            return tipo.In(
+                AbstractCampoTipo.IndividualComPesquisa,
+                AbstractCampoTipo.IndividualComPesquisaEDescricao,
+                AbstractCampoTipo.IntervaloComPesquisa,
+                AbstractCampoTipo.IntervaloComPesquisaEDescricao);
         }
     }
+#endregion
 
     public partial class AbstractCampo : AbstractUserControlNotify
     {

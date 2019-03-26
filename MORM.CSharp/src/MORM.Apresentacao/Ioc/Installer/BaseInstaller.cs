@@ -10,7 +10,7 @@ using MORM.Apresentacao.Menus;
 
 namespace MORM.Apresentacao.Ioc.Installer
 {
-    public class AbstractAppAmbienteInstaller : AbstractInstaller
+    public class BaseInstaller : AbstractInstaller
     {
         public override void InstallerAmbiente()
         {
