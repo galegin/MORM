@@ -1,9 +1,10 @@
 ﻿using MORM.Dominio.Atributos;
+using MORM.Dominio.Interfaces;
 
 namespace MORM.Dominio.Entidades
 {
     [Tabela("_MIGRACAO")]
-    public class Migracao
+    public class Migracao : IMigracao
     {
         public Migracao()
         {

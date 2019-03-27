@@ -83,6 +83,7 @@
     <Compile Include="Interfaces\IEmpresa.cs" />
     <Compile Include="Interfaces\IGrupoEmpresa.cs" />
     <Compile Include="Interfaces\IInformacaoSistema.cs" />
+    <Compile Include="Interfaces\IMigracao.cs" />
     <Compile Include="Interfaces\IOpcaoMenu.cs" />
     <Compile Include="Interfaces\IParametroSistema.cs" />
     <Compile Include="Interfaces\IPassword.cs" />

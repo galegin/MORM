@@ -1,7 +1,3 @@
-D:\projeto\MORM\MORM.CSharp\src\MORM.Dtos\bin\Debug\MORM.Dtos.dll
-D:\projeto\MORM\MORM.CSharp\src\MORM.Dtos\bin\Debug\MORM.Dtos.pdb
-D:\projeto\MORM\MORM.CSharp\src\MORM.Dtos\bin\Debug\MORM.Dominio.dll
-D:\projeto\MORM\MORM.CSharp\src\MORM.Dtos\bin\Debug\MORM.Dominio.pdb
 D:\projeto\MORM\MORM.CSharp\bin\Debug\MORM.Dtos.dll
 D:\projeto\MORM\MORM.CSharp\bin\Debug\MORM.Dtos.pdb
 D:\projeto\MORM\MORM.CSharp\src\MORM.Dtos\obj\Debug\MORM.Dtos.csprojAssemblyReference.cache

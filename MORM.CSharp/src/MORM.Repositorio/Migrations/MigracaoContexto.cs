@@ -22,6 +22,9 @@ namespace MORM.Repositorio.Migrations
 
             Type[] types = assembly.GetTypes();
 
+            if (!MigracaoDatabase.IsGerarVersao(context, types, out string versaoBase))
+                return;
+
             context.Migracao.Clear();
 
             foreach (var type in types)
@@ -30,6 +33,8 @@ namespace MORM.Repositorio.Migrations
 
             context.Migracao.DropForeigns();
             context.Migracao.CreateForeigns();
+
+            MigracaoDatabase.GravarVersao(context, versaoBase);
         }
     }
 }
