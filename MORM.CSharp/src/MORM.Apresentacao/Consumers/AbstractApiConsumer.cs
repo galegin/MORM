@@ -2,6 +2,7 @@
 using MORM.Utils.Classes;
 using Newtonsoft.Json;
 using System;
+using System.Configuration;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -9,21 +10,19 @@ using System.Text;
 
 namespace MORM.Apresentacao.Consumers
 {
-    public class AbstractApiConsumer
-    {
-    }
-
-    public class AbstractApiConsumer<TEntrada, TRetorno> : AbstractApiConsumer
+    public class AbstractApiConsumer<TEntrada, TRetorno>
         where TEntrada : class
         where TRetorno : class
     {
-        private readonly string _site;
-        private readonly string _token;
+        private readonly string _site = ConfigurationManager.AppSettings[nameof(_site)] ?? "http://localhost:55275";
+        private readonly string _token = ConfigurationManager.AppSettings[nameof(_token)];
 
-        public AbstractApiConsumer(string site, string token = null)
+        public AbstractApiConsumer(string site = null, string token = null)
         {
-            _site = site ?? throw new ArgumentNullException(nameof(site));
-            _token = token;
+            if (site != null)
+                _site = site;
+            if (token != null)
+                _token = token;
         }
 
         public class ApiRetorno

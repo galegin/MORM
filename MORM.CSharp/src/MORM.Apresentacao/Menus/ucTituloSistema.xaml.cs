@@ -8,11 +8,10 @@ namespace MORM.Apresentacao.Menus
     {
         #region construtores
         public ucTituloSistema(
-            IInformacaoSistema informacaoSistema,
-            IMainWindowExec mainWindowExec)
+            IInformacaoSistema informacaoSistema)
         {
             InitializeComponent();
-            DataContext = new TituloSistemaViewModel(informacaoSistema, mainWindowExec);
+            DataContext = new TituloSistemaViewModel(informacaoSistema);
         }
         #endregion
     }

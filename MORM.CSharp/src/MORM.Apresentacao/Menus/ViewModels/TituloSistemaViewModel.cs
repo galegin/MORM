@@ -1,7 +1,7 @@
 ﻿using MaterialDesignThemes.Wpf;
 using MORM.Apresentacao.Comps;
 using MORM.Apresentacao.Menus.Commands;
-using MORM.Apresentacao.ViewModels;
+using MORM.Apresentacao.ViewsModel;
 using MORM.Dominio.Interfaces;
 using System;
 using System.Windows.Controls;
@@ -10,22 +10,9 @@ namespace MORM.Apresentacao.Menus.ViewModels
 {
     public class TituloSistemaViewModel : AbstractViewModel
     {
-        #region construtores
-        public TituloSistemaViewModel(
-            IInformacaoSistema informacaoSistema,
-            IMainWindowExec mainWindowExec)
-        {
-            InformacaoSistema = informacaoSistema ?? throw new ArgumentNullException(nameof(informacaoSistema));
-            MainWindowExec = mainWindowExec ?? throw new ArgumentNullException(nameof(mainWindowExec));
-            NomeSistema = AppDomain.CurrentDomain.FriendlyName;
-            SetarTimer(SetarDataSistema);
-        }
-        #endregion
-
         #region variaveis
         private PackIconKind _packIconKindMenu = PackIconKind.HamburgerMenu;
         private IInformacaoSistema _informacaoSistema;
-        private IMainWindowExec _mainWindowExec;
         private string _nomeEmpresa;
         private string _nomeTerminal;
         private string _nomeUsuario;
@@ -51,11 +38,6 @@ namespace MORM.Apresentacao.Menus.ViewModels
                 NomeTerminal = $"{_informacaoSistema.Terminal.Id_Terminal} {_informacaoSistema.Terminal.Ds_Terminal}";
                 NomeUsuario = $"{_informacaoSistema.Usuario.Id_Usuario} {_informacaoSistema.Usuario.Nm_Usuario}";
             }
-        }
-        public IMainWindowExec MainWindowExec
-        {
-            get => _mainWindowExec;
-            set => SetField(ref _mainWindowExec, value);
         }
         public string NomeEmpresa
         {
@@ -93,21 +75,29 @@ namespace MORM.Apresentacao.Menus.ViewModels
         public ExibirMenuLateral ExibirMenuLateral { get; } = new ExibirMenuLateral();
         #endregion
 
-        #region metodos protegidos
+        #region construtores
+        public TituloSistemaViewModel(IInformacaoSistema informacaoSistema)
+        {
+            InformacaoSistema = informacaoSistema ?? throw new ArgumentNullException(nameof(informacaoSistema));
+            NomeSistema = AppDomain.CurrentDomain.FriendlyName;
+            SetarTimer(SetarDataSistema);
+        }
+        #endregion
+
+        #region metodos
         protected void SetarTimer(OnTimerExecute onTimerExecute)
         {
             if (_timer == null)
                 _timer = new AbstractTimer(onTimerExecute);
         }
+
         protected void IniciarTimer() => _timer?.Iniciar();
         protected void PararTimer() => _timer?.Parar();
         protected void SetarDataSistema(object sender) => DataSistema = DateTime.Now.ToString("dd/MM\nHH:mm");
-        #endregion
 
-        #region metodos publicos
         public void SetarIsExibirMenuLateral()
         {
-            MainWindowExec.SetarIsExibirMenuLateral();
+            TelaUtils.Instance.SetarIsExibirMenuLateral();
         }
         #endregion
     }

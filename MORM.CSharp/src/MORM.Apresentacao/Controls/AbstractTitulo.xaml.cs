@@ -1,29 +1,14 @@
 ﻿using MORM.Apresentacao.Comps;
-using System;
+using MORM.Apresentacao.Controls.ViewsModel;
 
 namespace MORM.Apresentacao.Controls
 {
     public partial class AbstractTitulo : AbstractUserControlNotify
     {
-        #region construtores
         public AbstractTitulo(string titulo)
         {
             InitializeComponent();
-            Titulo = titulo ?? throw new ArgumentNullException(nameof(titulo));
-            DataContext = this;
+            DataContext = new AbstractTituloViewModel(titulo);
         }
-        #endregion
-
-        #region variaveis
-        public string _titulo;
-        #endregion
-
-        #region propriedades
-        public string Titulo
-        {
-            get => _titulo;
-            set => SetField(ref _titulo, value);
-        }
-        #endregion
     }
 }

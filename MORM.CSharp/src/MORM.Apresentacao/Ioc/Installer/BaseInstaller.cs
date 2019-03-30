@@ -2,10 +2,6 @@
 using MORM.Dominio.Interfaces;
 using MORM.Aplicacao.Ioc.Installer;
 using MORM.Apresentacao.Classes;
-using MORM.Apresentacao.Commands.Manutencao;
-using MORM.Apresentacao.Models.Manutencao;
-using MORM.Apresentacao.ViewModels.Manutencao;
-using MORM.Apresentacao.Views.Manutencao;
 using MORM.Apresentacao.Menus;
 
 namespace MORM.Apresentacao.Ioc.Installer
@@ -23,8 +19,6 @@ namespace MORM.Apresentacao.Ioc.Installer
 
         public override void InstallerCommands()
         {
-            Register<IAbstractClienteManutCommand, AbstractClienteManutCommand>();
-            Register<IAbstractProdutoManutCommand, AbstractProdutoManutCommand>();
         }
 
         public override void InstallerConexao()
@@ -41,8 +35,6 @@ namespace MORM.Apresentacao.Ioc.Installer
 
         public override void InstallerModels()
         {
-            Register<IAbstractClienteModel, AbstractClienteModel>();
-            Register<IAbstractProdutoModel, AbstractProdutoModel>();
         }
 
         public override void InstallerRepositories()
@@ -64,20 +56,14 @@ namespace MORM.Apresentacao.Ioc.Installer
         public override void InstallerViews()
         {
             RegisterSingleton<IMainWindow, MainWindow>();
-            RegisterSingleton<IMainWindowExec, MainWindowExec>();
 
-            Register<IMenuSistema, MenuSistema>();
+            //Register<IMenuSistema, MenuSistema>();
             Register<IMenuLateral, ucMenuLateral>();
             Register<ITituloSistema, ucTituloSistema>();
 
             Register<IMenuResolverClasse, MenuResolverClasse>();
             Register<IMenuResolverObjeto, MenuResolverObjeto>();
             Register<IMenuResolverTipo, MenuResolverTipo>();
-
-            Register<IAbstractClienteViewModel, AbstractClienteViewModel>();
-            Register<IAbstractClienteViewManut, AbstractClienteViewManut>();
-            Register<IAbstractProdutoViewModel, AbstractProdutoViewModel>();
-            Register<IAbstractProdutoViewManut, AbstractProdutoViewManut>();
         }
     }
 }

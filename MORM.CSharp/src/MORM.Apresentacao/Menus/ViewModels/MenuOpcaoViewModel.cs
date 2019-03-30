@@ -1,6 +1,6 @@
 ﻿using MaterialDesignThemes.Wpf;
 using MORM.Apresentacao.Menus.Commands;
-using MORM.Apresentacao.ViewModels;
+using MORM.Apresentacao.ViewsModel;
 using System.Linq;
 
 namespace MORM.Apresentacao.Menus.ViewModels

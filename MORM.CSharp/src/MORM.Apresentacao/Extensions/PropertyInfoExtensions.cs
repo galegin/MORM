@@ -1,5 +1,4 @@
 ﻿using MORM.Apresentacao.Controls;
-using MORM.Apresentacao.Models;
 using MORM.Dominio.Extensoes;
 using System.Reflection;
 using System.Windows.Data;
@@ -27,10 +26,10 @@ namespace MORM.Apresentacao.Extensions
             return AbstractEditTipo.Texto;
         }
 
-        public static Binding GetDataBinding(this PropertyInfo prop, IAbstractModel abstractModel)
+        public static Binding GetDataBinding(this PropertyInfo prop, object source)
         {
             var binding = new Binding(prop.Name);
-            binding.Source = abstractModel;
+            binding.Source = source;
             binding.Mode = BindingMode.TwoWay;
             binding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
             return binding;

@@ -1,6 +1,6 @@
 ﻿namespace MORM.Apresentacao.Views
 {
-    public class AbstractViewLista : AbstractView, IAbstractViewLista
+    public class AbstractViewLista : AbstractView
     {
     }
 }

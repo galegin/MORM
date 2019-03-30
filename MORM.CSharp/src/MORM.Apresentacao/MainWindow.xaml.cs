@@ -1,7 +1,6 @@
 ﻿using MORM.Apresentacao.Comps;
 using MORM.Apresentacao.Menus;
-using MORM.Apresentacao.ViewModels;
-using MORM.Aplicacao.Ioc.Container;
+using MORM.Apresentacao.ViewsModel;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -12,14 +11,12 @@ namespace MORM.Apresentacao
         #region construtores
         public MainWindow(
             ITituloSistema tituloSistema, 
-            IMenuLateral menuLateral, 
-            IMainWindowExec mainWindowExec) : base()
+            IMenuLateral menuLateral) : base()
         {
             InitializeComponent();
             Loaded += MainWindow_Loaded;
             SetPositionInitial();
-            mainWindowExec.SetMainWindow(this);
-            DataContext = new MainWindowViewModel(tituloSistema, menuLateral, mainWindowExec);
+            DataContext = new MainWindowViewModel(tituloSistema, menuLateral);
         }
         #endregion
 
@@ -35,10 +32,6 @@ namespace MORM.Apresentacao
         public void SetarIsExibirMenuLateral(bool? flag = null)
         {
             (DataContext as MainWindowViewModel).MenuLateral.SetarIsExibirMenuLateral(flag);
-        }
-        public void SetContainer(IAbstractContainer container)
-        {
-            (DataContext as MainWindowViewModel).MainWindowExec.SetContainer(container);
         }
         #endregion
     }

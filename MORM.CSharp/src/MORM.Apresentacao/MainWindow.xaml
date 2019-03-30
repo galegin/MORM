@@ -15,10 +15,12 @@
         ShowInTaskbar="False"
         Height="300" Width="Auto">
     <Grid>
+        <!--#region Principal-->
         <DockPanel>
             <ContentControl Content="{Binding TituloSistema}" DockPanel.Dock="Top" Width="Auto"/>
             <ContentControl Content="{Binding MenuLateral}" DockPanel.Dock="Left" Width="Auto"/>
             <ContentControl Content="{Binding Corpo}" />
-        </DockPanel>        
+        </DockPanel>
+        <!--#endregion-->
     </Grid>
 </comps:AbstractWindow>

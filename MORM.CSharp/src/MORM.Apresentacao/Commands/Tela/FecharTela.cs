@@ -1,10 +1,12 @@
-﻿namespace MORM.Apresentacao.Commands.Tela
+﻿using MORM.Apresentacao.Comps;
+
+namespace MORM.Apresentacao.Commands.Tela
 {
-    public class FecharTela : AbstractTelaCommand, IAbstractFecharCommand
+    public class FecharTela : AbstractCommand
     {
         public override void Execute(object parameter)
         {
-            CloseWindow(parameter);
+            TelaUtils.Instance.MainWindow.Close();
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace MORM.Apresentacao.Views
 {
-    public class AbstractView : UserControl, IAbstractView
+    public class AbstractView : UserControl
     {
     }
 }

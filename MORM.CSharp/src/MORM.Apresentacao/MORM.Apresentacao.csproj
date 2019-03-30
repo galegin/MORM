@@ -73,21 +73,19 @@
     <Compile Include="Classes\InformacaoSistema.cs" />
     <Compile Include="Classes\NavegarComEnter.cs" />
     <Compile Include="Commands\AbstractCommand.cs" />
-    <Compile Include="Commands\AbstractFormCommand.cs" />
-    <Compile Include="Commands\AbstractListaCommand.cs" />
-    <Compile Include="Commands\AbstractManutCommand.cs" />
-    <Compile Include="Commands\AbstractTelaCommand.cs" />
+    <Compile Include="Commands\Tela\ListarTela.cs" />
+    <Compile Include="Commands\Tela\ConsultarTela.cs" />
+    <Compile Include="Commands\Tela\ExcluirTela.cs" />
+    <Compile Include="Commands\Tela\ExportarTela.cs" />
     <Compile Include="Commands\Tela\FecharTela.cs" />
-    <Compile Include="Commands\Interfaces\IAbstractCommand.cs" />
-    <Compile Include="Commands\Interfaces\IAbstractFormCommand.cs" />
-    <Compile Include="Commands\Interfaces\IAbstractListaCommand.cs" />
-    <Compile Include="Commands\Interfaces\IAbstractManutCommand.cs" />
-    <Compile Include="Commands\Manutencao\AbstractProdutoCommand.cs" />
-    <Compile Include="Commands\Manutencao\AbstractClienteCommand.cs" />
-    <Compile Include="Commands\Manutencao\Interfaces\IAbstractProdutoCommand.cs" />
-    <Compile Include="Commands\Manutencao\Interfaces\IAbstractClienteCommand.cs" />
-    <Compile Include="Commands\Tela\NavegarTela.cs" />
-    <Compile Include="Commands\Tela\VoltarTela.cs" />
+    <Compile Include="Commands\Tela\ImportarTela.cs" />
+    <Compile Include="Commands\Tela\ImprimirTela.cs" />
+    <Compile Include="Commands\Tela\LimparTela.cs" />
+    <Compile Include="Commands\Tela\SalvarTela.cs" />
+    <Compile Include="Comps\Interfaces\ITelaUtils.cs" />
+    <Compile Include="Comps\TelaUtils.cs" />
+    <Compile Include="Commands\Tela\VoltarTelaInicio.cs" />
+    <Compile Include="Commands\Tela\VoltarTelaAnterior.cs" />
     <Compile Include="Comps\AbstractNotifyPropertyChanged.cs" />
     <Compile Include="Comps\AbstractTimer.cs" />
     <Compile Include="Comps\AbstractUserControlNotify.cs" />
@@ -97,11 +95,18 @@
     <Compile Include="Comps\Interfaces\IAbstractUserControl.cs" />
     <Compile Include="Comps\Interfaces\IAbstractWindow.cs" />
     <Compile Include="Comps\Interfaces\IAbstractWindowNotify.cs" />
+    <Compile Include="Connectors\AbstractExcluirConnector.cs" />
+    <Compile Include="Connectors\AbstractExportarConnector.cs" />
+    <Compile Include="Connectors\AbstractImportarConnector.cs" />
+    <Compile Include="Connectors\AbstractImprimirConnector.cs" />
+    <Compile Include="Connectors\AbstractSalvarConnector.cs" />
+    <Compile Include="Connectors\AbstractConsultarConnector.cs" />
     <Compile Include="Consumers\AbstractApiConsumer.cs" />
     <Compile Include="Controls\AbstractButton.cs" />
     <Compile Include="Controls\AbstractCampo.xaml.cs">
       <DependentUpon>AbstractCampo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\AbstractCampoTipo.cs" />
     <Compile Include="Controls\AbstractCheck.cs" />
     <Compile Include="Controls\AbstractCombo.cs" />
     <Compile Include="Controls\AbstractEditTipo.cs" />
@@ -113,6 +118,9 @@
     <Compile Include="Controls\AbstractTitulo.xaml.cs">
       <DependentUpon>AbstractTitulo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ViewsModel\AbstractCampoViewModel.cs" />
+    <Compile Include="Controls\ViewsModel\AbstractOpcaoViewModel.cs" />
+    <Compile Include="Controls\ViewsModel\AbstractTituloViewModel.cs" />
     <Compile Include="Ioc\Installer\BaseInstaller.cs" />
     <Compile Include="Menus\Commands\ExecutarMenu.cs" />
     <Compile Include="Menus\Commands\ExecutarSubMenu.cs" />
@@ -127,9 +135,7 @@
     <Compile Include="Menus\Interfaces\ITituloSistema.cs" />
     <Compile Include="Extensions\PropertyInfoExtensions.cs" />
     <Compile Include="Interfaces\IMainWindow.cs" />
-    <Compile Include="Interfaces\IMainWindowExec.cs" />
     <Compile Include="Ioc\Container\BaseContainer.cs" />
-    <Compile Include="MainWindowExec.cs" />
     <Compile Include="Menus\Interfaces\IMenuLateral.cs" />
     <Compile Include="Menus\Interfaces\IMenuOpcao.cs" />
     <Compile Include="Menus\Interfaces\IMenuResolver.cs" />
@@ -147,32 +153,13 @@
     <Compile Include="Menus\ViewModels\MenuOpcaoViewModel.cs" />
     <Compile Include="Menus\ViewModels\TituloSistemaViewModel.cs" />
     <Compile Include="Menus\ViewModels\SubMenuOpcaoViewModel.cs" />
-    <Compile Include="Models\Interfaces\IAbstractModel.cs" />
-    <Compile Include="Models\Manutencao\AbstractClienteModel.cs" />
-    <Compile Include="Models\Manutencao\AbstractProdutoModel.cs" />
-    <Compile Include="Models\Manutencao\Interfaces\IAbstractClienteModel.cs" />
-    <Compile Include="Models\Manutencao\Interfaces\IAbstractProdutoModel.cs" />
-    <Compile Include="ViewModels\AbstractViewModel.cs" />
-    <Compile Include="ViewModels\Interfaces\IAbstractViewModel.cs" />
-    <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewsModel\AbstractViewModel.cs" />
+    <Compile Include="ViewsModel\MainWindowViewModel.cs" />
     <Compile Include="Views\AbstractViewLista.cs" />
     <Compile Include="Views\AbstractViewManut.cs" />
     <Compile Include="Views\AbstractViewRelat.cs" />
     <Compile Include="Views\AbstractViewProc.cs" />
     <Compile Include="Views\AbstractView.cs" />
-    <Compile Include="Views\Interfaces\IAbstractView.cs" />
-    <Compile Include="Views\Interfaces\IAbstractViewLista.cs" />
-    <Compile Include="Views\Interfaces\IAbstractViewManut.cs" />
-    <Compile Include="Views\Interfaces\IAbstractViewProc.cs" />
-    <Compile Include="Views\Interfaces\IAbstractViewRelat.cs" />
-    <Compile Include="ViewModels\Manutencao\AbstractProdutoViewModel.cs" />
-    <Compile Include="ViewModels\Manutencao\AbstractClienteViewModel.cs" />
-    <Compile Include="ViewModels\Manutencao\Interfaces\IAbstractProdutoViewModel.cs" />
-    <Compile Include="ViewModels\Manutencao\Interfaces\IAbstractClienteViewModel.cs" />
-    <Compile Include="Views\Manutencao\AbstractClienteViewManut.cs" />
-    <Compile Include="Views\Manutencao\AbstractProdutoViewManut.cs" />
-    <Compile Include="Views\Manutencao\Interfaces\IAbstractClienteViewManut.cs" />
-    <Compile Include="Views\Manutencao\Interfaces\IAbstractProdutoViewManut.cs" />
     <Page Include="Comps\LoadingBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -214,8 +201,7 @@
     <Compile Include="Comps\MensagemLog.xaml.cs">
       <DependentUpon>MensagemLog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Connectors\AbstractConnector.cs" />
-    <Compile Include="Consumers\AbstractConsumer.cs" />
+    <Compile Include="Connectors\AbstractListarConnector.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

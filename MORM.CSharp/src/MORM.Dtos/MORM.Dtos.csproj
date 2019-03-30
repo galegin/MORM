@@ -44,6 +44,10 @@
     <Compile Include="AbstractApiDto.cs" />
     <Compile Include="AbstractApiFiltroDto.cs" />
     <Compile Include="AbstractDto.cs" />
+    <Compile Include="AbstractConsultarDto.cs" />
+    <Compile Include="AbstractExcluirDto.cs" />
+    <Compile Include="AbstractSalvarDto.cs" />
+    <Compile Include="AbstractListarDto.cs" />
     <Compile Include="nsAmbiente\AmbienteDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

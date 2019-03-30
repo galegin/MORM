@@ -1,52 +1,41 @@
 ﻿using MORM.Apresentacao.Controls;
 using MORM.Apresentacao.Extensions;
-using MORM.Apresentacao.ViewModels;
-using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
 namespace MORM.Apresentacao.Views
 {
-    public class AbstractViewManut : AbstractView, IAbstractViewManut
+    public class AbstractViewManut : AbstractView
     {
-        private readonly IAbstractViewModel _viewModel;
-
-        public AbstractViewManut(IAbstractViewModel viewModel)
-        {
-            _viewModel = viewModel ?? throw new ArgumentNullException(nameof(viewModel));
-            DataContext = _viewModel;
-            CreateCampos();
-        }
-
-        private void CreateCampos()
+        #region metodos
+        protected void CreateCampos(object viewModel, object model)
         {
             var stackPanel = new StackPanel();
             stackPanel.Margin = new Thickness(10);
             AddChild(stackPanel);
 
-            var userControlTitulo = new AbstractTitulo("Manutenção de " + _viewModel.GetType().Name
+            var userControlTitulo = new AbstractTitulo("Manutenção de " + model.GetType().Name
                 .Replace("Abstract", "").Replace("ViewModel", ""));
             userControlTitulo.Margin = new Thickness(0, 0, 0, 10);
             stackPanel.Children.Add(userControlTitulo);
 
-            var userControlOpcao = new AbstractOpcao();
+            var userControlOpcao = new AbstractOpcao(model);
             userControlOpcao.Margin = new Thickness(0, 0, 0, 10);
-            userControlOpcao.DataContext = _viewModel;
             stackPanel.Children.Add(userControlOpcao);
 
-            _viewModel.Model.GetType().GetProperties().ToList().ForEach(prop =>
+            model.GetType().GetProperties().ToList().ForEach(prop =>
             {
                 var campoTipo = AbstractCampoTipo.Individual;
                 var descricao = prop.GetDescricao();
                 var editTipo = prop.GetEditTipo();
-                var bindind = prop.GetDataBinding(_viewModel.Model);
+                var bindind = prop.GetDataBinding(model);
                 var abstractCampo = new AbstractCampo(campoTipo, descricao, editTipo);
                 abstractCampo.Margin = new Thickness(0, 0, 0, 10);
                 abstractCampo.SetDataBinding(bindind);
-
                 stackPanel.Children.Add(abstractCampo);
             });
         }
+        #endregion
     }
 }

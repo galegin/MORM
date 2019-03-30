@@ -27,6 +27,8 @@
 /MORM.CSharp/src/MORM.Utils/obj
 /MORM.CSharp/src/MORM.WebApi/obj
 /MORM.CSharp/src/MORM.WebApi/bin
+/MORM.CSharp/src/MORM.WSist/obj
+/MORM.CSharp/src/MORM.WSist/bin
 /MORM.CSharp/src/TestResults
 *.lock
 *.log

@@ -15,29 +15,49 @@
     <Grid>
         <StackPanel Orientation="Horizontal">
             <local:AbstractButton Style="{StaticResource DefaultButton}" 
-                                  Content="Voltar"
+                                  Content="Fechar"
                                   Visibility="{Binding IsExibirFechar, Converter={StaticResource BooleanToVisibilityConverter}}"
-                                  Command="{Binding Command.Fechar}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                                  Command="{Binding Fechar}" CommandParameter="{Binding}"
+                                  />
+            <local:AbstractButton Style="{StaticResource DefaultButton}" 
+                                  Content="Voltar"
+                                  Visibility="{Binding IsExibirVoltar, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                  Command="{Binding Voltar}" CommandParameter="{Binding}"
                                   />
             <local:AbstractButton Style="{StaticResource DefaultButton}" 
                                   Content="Limpar"
                                   Visibility="{Binding IsExibirLimpar, Converter={StaticResource BooleanToVisibilityConverter}}"
-                                  Command="{Binding Command.Limpar}" CommandParameter="{Binding}"
+                                  Command="{Binding Limpar}" CommandParameter="{Binding}"
                                   />
             <local:AbstractButton Style="{StaticResource DefaultButton}" 
                                   Content="Consultar"
                                   Visibility="{Binding IsExibirConsultar, Converter={StaticResource BooleanToVisibilityConverter}}"
-                                  Command="{Binding Command.Consultar}" CommandParameter="{Binding}"
+                                  Command="{Binding Consultar}" CommandParameter="{Binding}"
                                   />
             <local:AbstractButton Style="{StaticResource DefaultButton}" 
                                   Content="Salvar"
                                   Visibility="{Binding IsExibirSalvar, Converter={StaticResource BooleanToVisibilityConverter}}"
-                                  Command="{Binding Command.Salvar}" CommandParameter="{Binding}"
+                                  Command="{Binding Salvar}" CommandParameter="{Binding}"
                                   />
             <local:AbstractButton Style="{StaticResource DefaultButton}" 
                                   Content="Excluir"
                                   Visibility="{Binding IsExibirExcluir, Converter={StaticResource BooleanToVisibilityConverter}}"
-                                  Command="{Binding Command.Excluir}" CommandParameter="{Binding}"
+                                  Command="{Binding Excluir}" CommandParameter="{Binding}"
+                                  />
+            <local:AbstractButton Style="{StaticResource DefaultButton}" 
+                                  Content="Exportar"
+                                  Visibility="{Binding IsExibirExportar, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                  Command="{Binding Exportar}" CommandParameter="{Binding}"
+                                  />
+            <local:AbstractButton Style="{StaticResource DefaultButton}" 
+                                  Content="Importar"
+                                  Visibility="{Binding IsExibirImportar, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                  Command="{Binding Importar}" CommandParameter="{Binding}"
+                                  />
+            <local:AbstractButton Style="{StaticResource DefaultButton}" 
+                                  Content="Imprimir"
+                                  Visibility="{Binding IsExibirImprimir, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                  Command="{Binding Imprimir}" CommandParameter="{Binding}"
                                   />
         </StackPanel>
     </Grid>

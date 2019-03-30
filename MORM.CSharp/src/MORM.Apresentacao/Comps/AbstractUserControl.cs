@@ -9,6 +9,7 @@ namespace MORM.Apresentacao.Comps
         public AbstractUserControl()
         {
             KeyDown += DefaultUserControl_KeyDown;
+            Loaded += (s, e) => MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
         }
 
         //-- key
