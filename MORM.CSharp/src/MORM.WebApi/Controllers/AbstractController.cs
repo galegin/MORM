@@ -141,23 +141,6 @@ namespace MORM.WebApi.Controllers
         }
 
         [HttpPost]
-        [Route("IncluirLista")]
-        public HttpResponseMessage IncluirLista(AbstractApiDto<TObject>.IncluirLista dto)
-        {
-            try
-            {
-                VerificarPermissao(TipoPermissao.IncluirLista);
-
-                _abstractApiService.IncluirLista(dto);
-                return Request.CreateResponse(HttpStatusCode.OK, MessageHandler.CreateMessage());
-            }
-            catch (Exception ex)
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, MessageHandler.CreateMessage(ex));
-            }
-        }
-
-        [HttpPost]
         [Route("Alterar")]
         public HttpResponseMessage Alterar(AbstractApiDto<TObject>.Alterar dto)
         {
@@ -166,23 +149,6 @@ namespace MORM.WebApi.Controllers
                 VerificarPermissao(TipoPermissao.Alterar);
 
                 _abstractApiService.Alterar(dto);
-                return Request.CreateResponse(HttpStatusCode.OK, MessageHandler.CreateMessage());
-            }
-            catch (Exception ex)
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, MessageHandler.CreateMessage(ex));
-            }
-        }
-
-        [HttpPost]
-        [Route("AlterarLista")]
-        public HttpResponseMessage AlterarLista(AbstractApiDto<TObject>.AlterarLista dto)
-        {
-            try
-            {
-                VerificarPermissao(TipoPermissao.AlterarLista);
-
-                _abstractApiService.AlterarLista(dto);
                 return Request.CreateResponse(HttpStatusCode.OK, MessageHandler.CreateMessage());
             }
             catch (Exception ex)
@@ -209,23 +175,6 @@ namespace MORM.WebApi.Controllers
         }
 
         [HttpPost]
-        [Route("SalvarLista")]
-        public HttpResponseMessage SalvarLista(AbstractApiDto<TObject>.SalvarLista dto)
-        {
-            try
-            {
-                VerificarPermissao(TipoPermissao.SalvarLista);
-
-                _abstractApiService.SalvarLista(dto);
-                return Request.CreateResponse(HttpStatusCode.OK, MessageHandler.CreateMessage());
-            }
-            catch (Exception ex)
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, MessageHandler.CreateMessage(ex));
-            }
-        }
-
-        [HttpPost]
         [Route("Excluir")]
         public HttpResponseMessage Excluir(AbstractApiDto<TObject>.Excluir dto)
         {
@@ -234,23 +183,6 @@ namespace MORM.WebApi.Controllers
                 VerificarPermissao(TipoPermissao.Excluir);
 
                 _abstractApiService.Excluir(dto);
-                return Request.CreateResponse(HttpStatusCode.OK, MessageHandler.CreateMessage());
-            }
-            catch (Exception ex)
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, MessageHandler.CreateMessage(ex));
-            }
-        }
-
-        [HttpPost]
-        [Route("ExcluirLista")]
-        public HttpResponseMessage ExcluirLista(AbstractApiDto<TObject>.ExcluirLista dto)
-        {
-            try
-            {
-                VerificarPermissao(TipoPermissao.ExcluirLista);
-
-                _abstractApiService.ExcluirLista(dto);
                 return Request.CreateResponse(HttpStatusCode.OK, MessageHandler.CreateMessage());
             }
             catch (Exception ex)

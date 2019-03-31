@@ -81,6 +81,8 @@
     <Compile Include="Commands\Tela\ImportarTela.cs" />
     <Compile Include="Commands\Tela\ImprimirTela.cs" />
     <Compile Include="Commands\Tela\LimparTela.cs" />
+    <Compile Include="Commands\Tela\IncluirTela.cs" />
+    <Compile Include="Commands\Tela\AlterarTela.cs" />
     <Compile Include="Commands\Tela\SalvarTela.cs" />
     <Compile Include="Comps\Interfaces\ITelaUtils.cs" />
     <Compile Include="Comps\TelaUtils.cs" />
@@ -95,10 +97,13 @@
     <Compile Include="Comps\Interfaces\IAbstractUserControl.cs" />
     <Compile Include="Comps\Interfaces\IAbstractWindow.cs" />
     <Compile Include="Comps\Interfaces\IAbstractWindowNotify.cs" />
+    <Compile Include="Connectors\AbstractConnector.cs" />
     <Compile Include="Connectors\AbstractExcluirConnector.cs" />
     <Compile Include="Connectors\AbstractExportarConnector.cs" />
     <Compile Include="Connectors\AbstractImportarConnector.cs" />
     <Compile Include="Connectors\AbstractImprimirConnector.cs" />
+    <Compile Include="Connectors\AbstractIncluirConnector.cs" />
+    <Compile Include="Connectors\AbstractAlterarConnector.cs" />
     <Compile Include="Connectors\AbstractSalvarConnector.cs" />
     <Compile Include="Connectors\AbstractConsultarConnector.cs" />
     <Compile Include="Consumers\AbstractApiConsumer.cs" />

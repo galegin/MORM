@@ -15,7 +15,6 @@ namespace MORM.Dtos
 
         public class Validation
         {
-
         }
     }
 }

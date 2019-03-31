@@ -159,7 +159,6 @@
     <Compile Include="Controllers\Interfaces\IAbstractControllerFiltro.cs" />
     <Compile Include="Controllers\MessageHandler.cs" />
     <Compile Include="Controllers\nsAmbiente\AmbienteController.cs" />
-    <Compile Include="Controllers\TesteController.cs" />
     <Compile Include="Extensions\HttpAuthenticationContextExtensions.cs" />
     <Compile Include="Extensions\HttpRequestMessageExtensions.cs" />
     <Compile Include="Global.asax.cs">

@@ -2,9 +2,9 @@
 
 namespace MORM.Dtos
 {
-    public abstract class AbstractExcluirDto
+    public abstract class AbstractIncluirDto
     {
-        [URL("Excluir")]
+        [URL("Incluir")]
         public class Envio
         {
         }

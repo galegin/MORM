@@ -20,7 +20,6 @@ namespace MORM.Apresentacao.Controls
                 SetField(ref _editTipo, value);
                 EditIni.Tipo = value;
                 EditFin.Tipo = value;
-                EditDes.Tipo = value;
             }
         }
         #endregion

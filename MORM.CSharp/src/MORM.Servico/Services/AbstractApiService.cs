@@ -63,21 +63,11 @@ namespace MORM.Repositorio.Services
             AbstractRepository.Incluir(dto.Objeto);
         }
 
-        public void IncluirLista(AbstractApiDto<TObject>.IncluirLista dto)
-        {
-            AbstractRepository.Incluir(dto.Lista);
-        }
-
         //-- alterar
 
         public void Alterar(AbstractApiDto<TObject>.Alterar dto)
         {
             AbstractRepository.Alterar(dto.Objeto);
-        }
-
-        public void AlterarLista(AbstractApiDto<TObject>.AlterarLista dto)
-        {
-            AbstractRepository.Alterar(dto.Lista);
         }
 
         //-- salvar
@@ -87,21 +77,11 @@ namespace MORM.Repositorio.Services
             AbstractRepository.Salvar(dto.Objeto);
         }
 
-        public void SalvarLista(AbstractApiDto<TObject>.SalvarLista dto)
-        {
-            AbstractRepository.Salvar(dto.Lista);
-        }
-
         //-- excluir
 
         public void Excluir(AbstractApiDto<TObject>.Excluir dto)
         {
-            AbstractRepository.Excluir(dto.Objeto ?? throw new ArgumentNullException(nameof(dto.Objeto)));
-        }
-
-        public void ExcluirLista(AbstractApiDto<TObject>.ExcluirLista dto)
-        {
-            AbstractRepository.Excluir(dto.Lista);
+            AbstractRepository.Excluir(dto.Objeto);
         }
 
         //-- sequencia

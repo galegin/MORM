@@ -5,13 +5,6 @@ namespace MORM.Apresentacao.Menus.ViewModels
 {
     public class SubMenuOpcaoViewModel : AbstractViewModel
     {
-        #region construtores
-        public SubMenuOpcaoViewModel(IMenuOpcao menuOpcao)
-        {
-            MenuOpcao = menuOpcao;
-        }
-        #endregion
-        
         #region variaveis
         private IMenuOpcao _menuOpcao;
         #endregion
@@ -28,6 +21,13 @@ namespace MORM.Apresentacao.Menus.ViewModels
         public ExecutarSubMenu ExecutarSubMenu { get; } = new ExecutarSubMenu();
         #endregion
 
+        #region construtores
+        public SubMenuOpcaoViewModel(IMenuOpcao menuOpcao)
+        {
+            MenuOpcao = menuOpcao;
+        }
+        #endregion
+        
         #region metodos
         public void Executar()
         {

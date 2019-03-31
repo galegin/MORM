@@ -1,6 +1,5 @@
 D:\projeto\MORM\MORM.CSharp\bin\Debug\MORM.Enums.dll
 D:\projeto\MORM\MORM.CSharp\bin\Debug\MORM.Enums.pdb
-D:\projeto\MORM\MORM.CSharp\src\MORM.Enums\obj\Debug\MORM.Enums.csprojAssemblyReference.cache
 D:\projeto\MORM\MORM.CSharp\src\MORM.Enums\obj\Debug\MORM.Enums.csproj.CoreCompileInputs.cache
 D:\projeto\MORM\MORM.CSharp\src\MORM.Enums\obj\Debug\MORM.Enums.dll
 D:\projeto\MORM\MORM.CSharp\src\MORM.Enums\obj\Debug\MORM.Enums.pdb

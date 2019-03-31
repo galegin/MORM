@@ -4,9 +4,6 @@ namespace MORM.Apresentacao.Menus.ViewModels
 {
     public class MenuLateralViewModel : AbstractViewModel
     {
-        #region construtores
-        #endregion
-
         #region variaveis
         private bool _isExibirMenuLateral;
         #endregion
@@ -20,6 +17,9 @@ namespace MORM.Apresentacao.Menus.ViewModels
         #endregion
 
         #region comandos
+        #endregion
+
+        #region construtores
         #endregion
 
         #region metodos

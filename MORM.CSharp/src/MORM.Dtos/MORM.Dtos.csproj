@@ -41,11 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbstractApiDto.cs" />
-    <Compile Include="AbstractApiFiltroDto.cs" />
-    <Compile Include="AbstractDto.cs" />
+    <Compile Include="Classes\AbstractApiDto.cs" />
+    <Compile Include="Classes\AbstractApiFiltroDto.cs" />
+    <Compile Include="Classes\AbstractDto.cs" />
     <Compile Include="AbstractConsultarDto.cs" />
     <Compile Include="AbstractExcluirDto.cs" />
+    <Compile Include="AbstractIncluirDto.cs" />
+    <Compile Include="AbstractAlterarDto.cs" />
     <Compile Include="AbstractSalvarDto.cs" />
     <Compile Include="AbstractListarDto.cs" />
     <Compile Include="nsAmbiente\AmbienteDto.cs" />

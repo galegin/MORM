@@ -13,6 +13,8 @@ namespace MORM.Apresentacao.Controls.ViewsModel
         private bool _isExibirVoltar = true;
         private bool _isExibirLimpar = true;
         private bool _isExibirConsultar = true;
+        private bool _isExibirIncluir = false;
+        private bool _isExibirAlterar = false;
         private bool _isExibirSalvar = true;
         private bool _isExibirExcluir = true;
         private bool _isExibirExportar = false;
@@ -41,6 +43,16 @@ namespace MORM.Apresentacao.Controls.ViewsModel
         {
             get => _isExibirConsultar;
             set => SetField(ref _isExibirConsultar, value);
+        }
+        public bool IsExibirIncluir
+        {
+            get => _isExibirIncluir;
+            set => SetField(ref _isExibirIncluir, value);
+        }
+        public bool IsExibirAlterar
+        {
+            get => _isExibirAlterar;
+            set => SetField(ref _isExibirAlterar, value);
         }
         public bool IsExibirSalvar
         {
@@ -79,6 +91,8 @@ namespace MORM.Apresentacao.Controls.ViewsModel
         public VoltarTelaAnterior Voltar { get; set; } = new VoltarTelaAnterior();
         public LimparTela Limpar { get; set; } = new LimparTela();
         public ConsultarTela Consultar { get; set; } = new ConsultarTela();
+        public IncluirTela Incluir { get; set; } = new IncluirTela();
+        public AlterarTela Alterar { get; set; } = new AlterarTela();
         public SalvarTela Salvar { get; set; } = new SalvarTela();
         public ExcluirTela Excluir { get; set; } = new ExcluirTela();
         public ExportarTela Exportar { get; set; } = new ExportarTela();

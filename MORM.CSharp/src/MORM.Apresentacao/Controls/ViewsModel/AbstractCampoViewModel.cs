@@ -48,12 +48,7 @@ namespace MORM.Apresentacao.Controls.ViewsModel
         public AbstractEditTipo EditTipo
         {
             get => _editTipo;
-            set
-            {
-                SetField(ref _editTipo, value);
-                //EditIni.Tipo = value;
-                //EditFin.Tipo = value;
-            }
+            set => SetField(ref _editTipo, value);
         }
         public string ValorIni { get => _valorIni; set => SetField(ref _valorIni, value); }
         public string ValorFin { get => _valorFin; set => SetField(ref _valorFin, value); }

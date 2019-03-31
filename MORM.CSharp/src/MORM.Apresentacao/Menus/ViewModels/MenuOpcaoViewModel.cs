@@ -7,13 +7,6 @@ namespace MORM.Apresentacao.Menus.ViewModels
 {
     public class MenuOpcaoViewModel : AbstractViewModel
     {
-        #region construtores
-        public MenuOpcaoViewModel(IMenuOpcao menuOpcao)
-        {
-            MenuOpcao = menuOpcao;
-        }
-        #endregion
-
         #region constantes
         private const int ALTURA = 40;
         #endregion
@@ -61,6 +54,13 @@ namespace MORM.Apresentacao.Menus.ViewModels
         #region comandos
         public ExecutarMenu ExecutarMenu { get; } = new ExecutarMenu();
         public ExibirSubMenu ExibirSubMenu { get; } = new ExibirSubMenu();
+        #endregion
+
+        #region construtores
+        public MenuOpcaoViewModel(IMenuOpcao menuOpcao)
+        {
+            MenuOpcao = menuOpcao;
+        }
         #endregion
 
         #region metodos

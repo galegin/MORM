@@ -35,6 +35,16 @@
                                   Command="{Binding Consultar}" CommandParameter="{Binding}"
                                   />
             <local:AbstractButton Style="{StaticResource DefaultButton}" 
+                                  Content="Incluir"
+                                  Visibility="{Binding IsExibirIncluir, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                  Command="{Binding Incluir}" CommandParameter="{Binding}"
+                                  />
+            <local:AbstractButton Style="{StaticResource DefaultButton}" 
+                                  Content="Alterar"
+                                  Visibility="{Binding IsExibirAlterar, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                  Command="{Binding Alterar}" CommandParameter="{Binding}"
+                                  />
+            <local:AbstractButton Style="{StaticResource DefaultButton}" 
                                   Content="Salvar"
                                   Visibility="{Binding IsExibirSalvar, Converter={StaticResource BooleanToVisibilityConverter}}"
                                   Command="{Binding Salvar}" CommandParameter="{Binding}"
