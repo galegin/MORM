@@ -4,9 +4,6 @@ namespace MORM.Apresentacao.Controls.ViewsModel
 {
     public class AbstractCampoViewModel : AbstractViewModel
     {
-        #region constantes
-        #endregion
-
         #region variaveis
         private AbstractCampoTipo _tipo;
         private AbstractEditTipo _editTipo;
@@ -16,6 +13,12 @@ namespace MORM.Apresentacao.Controls.ViewsModel
         private bool _isExibirDes;
         private bool _isExibirPes;
         private string _descricao;
+        private int _tamanho;
+        private int _tamanhoBtn = 100;
+        private int _tamanhoIni = 100;
+        private int _tamanhoFin = 100;
+        private int _tamanhoDes = 100;
+        private int _precisao;
         private string _valorIni;
         private string _valorFin;
         private string _valorDes;
@@ -45,6 +48,20 @@ namespace MORM.Apresentacao.Controls.ViewsModel
             get => _descricao;
             set => SetField(ref _descricao, value);
         }
+        public int Tamanho
+        {
+            get => _tamanho;
+            set => SetField(ref _tamanho, value);
+        }
+        public int TamanhoBtn { get => _tamanhoBtn; set => SetField(ref _tamanhoBtn, value); }
+        public int TamanhoIni { get => _tamanhoIni; set => SetField(ref _tamanhoIni, value); }
+        public int TamanhoFin { get => _tamanhoFin; set => SetField(ref _tamanhoFin, value); }
+        public int TamanhoDes { get => _tamanhoDes; set => SetField(ref _tamanhoDes, value); }
+        public int Precisao
+        {
+            get => _precisao;
+            set => SetField(ref _precisao, value);
+        }
         public AbstractEditTipo EditTipo
         {
             get => _editTipo;
@@ -55,22 +72,30 @@ namespace MORM.Apresentacao.Controls.ViewsModel
         public string ValorDes { get => _valorDes; set => SetField(ref _valorDes, value); }
         #endregion
 
-        #region comandos
-        #endregion
-
         #region contrutores
-        public AbstractCampoViewModel(AbstractCampoTipo tipo, string descricao = null, AbstractEditTipo? editTipo = null)
+        public AbstractCampoViewModel(AbstractCampoTipo tipo, 
+            string descricao = null, int tamanho = 0, int precisao = 0,
+            AbstractEditTipo? editTipo = null)
         {
             Tipo = tipo;
 
             if (descricao != null)
                 Descricao = descricao;
+            if (tamanho >= 0)
+                SetTamanho(tamanho);
+            if (precisao >= 0)
+                Precisao = precisao;
             if (editTipo != null)
                 EditTipo = editTipo.Value;
         }
-        #endregion
 
-        #region metodos
+        private void SetTamanho(int tamanho)
+        {
+            Tamanho = tamanho;
+            TamanhoIni = tamanho * 10;
+            TamanhoFin = tamanho * 10;
+            TamanhoDes = tamanho * 10;
+        }
         #endregion
     }
 }

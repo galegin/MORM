@@ -3,12 +3,19 @@ using MORM.Apresentacao.Controls.ViewsModel;
 
 namespace MORM.Apresentacao.Controls
 {
-    public partial class AbstractOpcao : AbstractUserControlNotify
+    public partial class AbstractOpcao : AbstractUserControl
     {
-        public AbstractOpcao(object model)
+        public AbstractOpcao()
         {
             InitializeComponent();
-            DataContext = new AbstractOpcaoViewModel(model);
+        }
+    }
+
+    public partial class AbstractOpcao<TModel> : AbstractOpcao
+    {
+        public AbstractOpcao(TModel model) : base()
+        {
+            DataContext = new AbstractOpcaoViewModel<TModel>(model);
         }
     }
 }

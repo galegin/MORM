@@ -7,6 +7,8 @@ namespace MORM.Dominio.Extensoes
 {
     public static class TypeExtension
     {
+        // classes
+
         public static Type[] GetListaDeClasse(this string package, string baseType = null)
         {
             if (package == null)
@@ -30,6 +32,15 @@ namespace MORM.Dominio.Extensoes
         public static Type[] GetListaDeClasse<TObject>(string baseType = null)
         {
             return GetListaDeClasse(typeof(TObject).Assembly.Location, baseType);
+        }
+
+        // atribute
+
+        public static TAttr GetAttribute<TAttr>(this Type type)
+        {
+            return (TAttr)type
+                .GetCustomAttributes(false)
+                .FirstOrDefault(x => x.GetType() == typeof(TAttr));
         }
     }
 }

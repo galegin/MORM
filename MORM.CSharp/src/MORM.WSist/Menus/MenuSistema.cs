@@ -44,7 +44,10 @@ namespace MORM.WSist.Menus
             var subMenu = new List<IMenuOpcao>
             {
                 new MenuOpcaoTipo<IAbstractClienteViewManut>(IMenuOpcaoTipo.Opcao, "MenuManutCliente", "\tCliente", _resolverTipo),
+                new MenuOpcaoTipo<IAbstractEmpresaViewManut>(IMenuOpcaoTipo.Opcao, "MenuManutEmpresa", "\tEmpresa", _resolverTipo),
                 new MenuOpcaoTipo<IAbstractProdutoViewManut>(IMenuOpcaoTipo.Opcao, "MenuManutProduto", "\tProduto", _resolverTipo),
+                new MenuOpcaoTipo<IAbstractTerminalViewManut>(IMenuOpcaoTipo.Opcao, "MenuManutTerminal", "\tTerminal", _resolverTipo),
+                new MenuOpcaoTipo<IAbstractUsuarioViewManut>(IMenuOpcaoTipo.Opcao, "MenuManutUsuario", "\tUsuario", _resolverTipo),
             };
 
             var menu = new MenuOpcaoDescr(IMenuOpcaoTipo.SubMenu, "MenuManut", "Manutenção", subMenu);

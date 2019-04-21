@@ -12,7 +12,7 @@
         Margin="0"
         Title="MainWindow" 
         MinHeight="250" MinWidth="250"
-        ShowInTaskbar="False"
+        ShowInTaskbar="True"
         Height="300" Width="Auto">
     <Grid>
         <!--#region Principal-->

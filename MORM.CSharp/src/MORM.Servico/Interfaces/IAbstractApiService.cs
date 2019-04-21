@@ -9,19 +9,22 @@ namespace MORM.Servico.Interfaces
     {
         IAbstractUnityOfWork AbstractUnityOfWork { get; }
         void SetAmbiente(IAmbiente ambiente);
+    }
+
+    public interface IAbstractAmbApiService
+    {
         IAmbiente Ambiente { get; }
     }
 
     public interface IAbstractApiService<TObject> : IAbstractApiService where TObject : class
     {
         IAbstractRepository<TObject> AbstractRepository { get; }
-        AbstractApiDto<TObject>.ListarRet Listar(AbstractApiDto<TObject>.Listar dto);
-        AbstractApiDto<TObject>.ConsultarRet Consultar(AbstractApiDto<TObject>.Consultar dto);
-        void Incluir(AbstractApiDto<TObject>.Incluir dto);
-        void Alterar(AbstractApiDto<TObject>.Alterar dto);
-        void Salvar(AbstractApiDto<TObject>.Salvar dto);
-        void Excluir(AbstractApiDto<TObject>.Excluir dto);
-        int SequenciaGen(AbstractApiDto<TObject>.SequenciaGen dto);
-        int SequenciaMax(AbstractApiDto<TObject>.SequenciaMax dto);
+        AbstractListarDto.Retorno<TObject> Listar(AbstractListarDto.Envio<TObject> dto);
+        AbstractConsultarDto.Retorno<TObject> Consultar(AbstractConsultarDto.Envio<TObject> dto);
+        void Incluir(AbstractIncluirDto.Envio<TObject> dto);
+        void Alterar(AbstractAlterarDto.Envio<TObject> dto);
+        void Salvar(AbstractSalvarDto.Envio<TObject> dto);
+        void Excluir(AbstractExcluirDto.Envio<TObject> dto);
+        int Sequencia(AbstractSequenciaDto.Envio<TObject> dto);
     }
 }

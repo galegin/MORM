@@ -7,9 +7,7 @@ namespace MORM.WSist.Views.Manutencao
     {
         public AbstractProdutoViewManut()
         {
-            var vm = new AbstractProdutoViewModel();
-            CreateCampos(vm, vm.Model);
-            DataContext = vm;
+            CreateCampos(new AbstractProdutoViewModel());
         }
     }
 }

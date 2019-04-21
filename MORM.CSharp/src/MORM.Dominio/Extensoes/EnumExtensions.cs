@@ -38,6 +38,8 @@ namespace MORM.Dominio.Extensoes
 
     public static class EnumExtensions
     {
+        // enumerable
+
         public static IEnumerable<object> GetEnum<TEnum>()
         {
             var type = typeof(TEnum);
@@ -54,6 +56,8 @@ namespace MORM.Dominio.Extensoes
             return pairs;
         }
 
+        // attribute
+
         public static TAbtrib GetAtributeEnum<TEnum, TAbtrib>(string name)
             where TAbtrib : Attribute
         {
@@ -63,6 +67,8 @@ namespace MORM.Dominio.Extensoes
                 .GetCustomAttributes(typeof(TAbtrib), false).FirstOrDefault();
             return atrib;
         }
+
+        // enum from value
 
         public static TEnum GetEnumFromValue<TEnum>(string value)
         {
@@ -78,7 +84,9 @@ namespace MORM.Dominio.Extensoes
             return enumName;
         }
 
-        public static string GetDescriptionFromEnum<TEnum>(TEnum value)
+        // description
+
+        public static string GetDescriptionFromEnum<TEnum>(this TEnum value)
         {
             var enumStr = string.Empty;
 
@@ -87,13 +95,22 @@ namespace MORM.Dominio.Extensoes
             return enumStr;
         }
 
-        public static string GetValueFromEnum<TEnum>(TEnum value)
+        // value
+
+        public static string GetValueFromEnum<TEnum>(this TEnum value)
         {
             var enumStr = string.Empty;
 
             enumStr = GetAtributeEnum<TEnum, XmlEnumAttribute>(value.ToString())?.Name ?? value.ToString();
 
             return enumStr;
+        }
+
+        // contains
+
+        public static bool In<TEnun>(this TEnun enun, params TEnun[] enuns)
+        {
+            return enuns.Contains(enun);
         }
     }
 }

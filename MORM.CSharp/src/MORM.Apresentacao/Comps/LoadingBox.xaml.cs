@@ -1,24 +1,20 @@
-﻿using System.Threading;
+﻿using MORM.Apresentacao.Comps.ViewsModel;
+using System.Threading;
 
 namespace MORM.Apresentacao.Comps
 {
-    /// <summary>
-    /// Lógica interna para LoadingBox.xaml
-    /// </summary>
     public partial class LoadingBox : AbstractWindow
     {
         public LoadingBox() : base()
         {
             InitializeComponent();
             SetPositionInitial();
-            SetDataContext();
+            DataContext = new LoadingBoxViewModel();
         }
 
-        private string _conteudoMensagem;
-        public string ConteudoMensagem
+        public void SetMensagem(string mensagem)
         {
-            get => _conteudoMensagem;
-            set => SetField(ref _conteudoMensagem, value); 
+            (DataContext as LoadingBoxViewModel).Mensagem = mensagem; 
         }
     }
 
@@ -32,7 +28,7 @@ namespace MORM.Apresentacao.Comps
         {
             LoadingBox.Dispatcher.Invoke(() =>
             {
-                LoadingBox.ConteudoMensagem = mensagem;
+                LoadingBox.SetMensagem(mensagem);
                 LoadingBox.Show();
                 LoadingBox.Activate();
                 LoadingBox.Focus();

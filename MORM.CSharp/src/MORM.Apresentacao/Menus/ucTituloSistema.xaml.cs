@@ -4,11 +4,10 @@ using MORM.Dominio.Interfaces;
 
 namespace MORM.Apresentacao.Menus
 {
-    public partial class ucTituloSistema : AbstractUserControlNotify, ITituloSistema
+    public partial class ucTituloSistema : AbstractUserControl, ITituloSistema
     {
         #region construtores
-        public ucTituloSistema(
-            IInformacaoSistema informacaoSistema)
+        public ucTituloSistema(IInformacaoSistema informacaoSistema)
         {
             InitializeComponent();
             DataContext = new TituloSistemaViewModel(informacaoSistema);

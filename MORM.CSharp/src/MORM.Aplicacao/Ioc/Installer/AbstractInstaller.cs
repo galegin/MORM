@@ -30,28 +30,22 @@ namespace MORM.Aplicacao.Ioc.Installer
         protected virtual void Setup()
         {
             InstallerAmbiente();
-            InstallerCommands();
             InstallerConexao();
             InstallerDataConext();
             InstallerDomainServices();
-            InstallerModels();
             InstallerRepositories();
             InstallerServices();
             InstallerUnitOfWork();
-            InstallerViewModels();
             InstallerViews();
         }
 
         public abstract void InstallerAmbiente();
-        public abstract void InstallerCommands();
         public abstract void InstallerConexao();
         public abstract void InstallerDataConext();
         public abstract void InstallerDomainServices();
-        public abstract void InstallerModels();
         public abstract void InstallerRepositories();
         public abstract void InstallerServices();
         public abstract void InstallerUnitOfWork();
-        public abstract void InstallerViewModels();
         public abstract void InstallerViews();
         #endregion
 

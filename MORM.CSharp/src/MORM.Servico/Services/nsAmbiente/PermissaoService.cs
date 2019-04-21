@@ -1,8 +1,8 @@
 ﻿using MORM.Repositorio.Extensions;
 using MORM.Repositorio.Uow;
 using MORM.Dominio.Entidades;
-using MORM.Dominio.Interfaces;
 using MORM.Servico.Interfaces.nsAmbiente;
+using MORM.Dtos.nsAmbiente;
 
 namespace MORM.Servico.Services.nsAmbiente
 {
@@ -12,34 +12,48 @@ namespace MORM.Servico.Services.nsAmbiente
         {
         }
 
-        public PermissaoService(IAmbiente ambiente) : base(ambiente)
-        {
-        }
-
-        private Permissao GetPermissao(int codigoEmpresa, int codigoUsuario, string codigoServico, string codigoMetodo)
+        private Permissao GetPermissao(VerificarPermissaoDto.Envio dto)
         {
             return AbstractRepository.FirstOrDefault(f =>
-                f.CodigoEmpresa == codigoEmpresa &&
-                f.CodigoUsuario == codigoUsuario &&
-                f.CodigoServico == codigoServico &&
-                f.CodigoMetodo  == codigoMetodo);
+                f.CodigoEmpresa == dto.CodigoEmpresa &&
+                f.CodigoUsuario == dto.CodigoUsuario &&
+                f.CodigoServico == dto.CodigoServico &&
+                f.CodigoMetodo  == dto.CodigoMetodo);
         }
 
-        public bool VerificarPermissao(int codigoEmpresa, int codigoUsuario, string codigoServico, string codigoMetodo)
+        public bool VerificarPermissao(VerificarPermissaoDto.Envio dto)
         {
-            var permissao = GetPermissao(codigoEmpresa, codigoUsuario, codigoServico, codigoMetodo);
+            var permissao = GetPermissao(dto);
 
             if (permissao.CodigoEmpresa <= 0)
-                permissao = GetPermissao(codigoEmpresa, codigoUsuario, codigoServico, "TODOS");
+            {
+                dto.CodigoMetodo = "TODOS";
+                permissao = GetPermissao(dto);
+            }
 
             if (permissao.CodigoEmpresa <= 0)
-                permissao = GetPermissao(codigoEmpresa, codigoUsuario, "TODOS", "TODOS");
+            {
+                dto.CodigoServico = "TODOS";
+                dto.CodigoMetodo = "TODOS";
+                permissao = GetPermissao(dto);
+            }
 
             if (permissao.CodigoEmpresa <= 0)
-                permissao = GetPermissao(codigoEmpresa, 999999, "TODOS", "TODOS");
+            {
+                dto.CodigoUsuario = 999999;
+                dto.CodigoServico = "TODOS";
+                dto.CodigoMetodo = "TODOS";
+                permissao = GetPermissao(dto);
+            }
 
             if (permissao.CodigoEmpresa <= 0)
-                permissao = GetPermissao(9999, 999999, "TODOS", "TODOS");
+            {
+                dto.CodigoEmpresa = 9999;
+                dto.CodigoUsuario = 999999;
+                dto.CodigoServico = "TODOS";
+                dto.CodigoMetodo = "TODOS";
+                permissao = GetPermissao(dto);
+            }
 
             return permissao.CodigoEmpresa > 0;
         }

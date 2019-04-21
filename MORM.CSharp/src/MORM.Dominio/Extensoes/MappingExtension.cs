@@ -11,11 +11,7 @@ namespace MORM.Dominio.Extensoes
 
         public static TabelaAttribute GetTabela(this Type type)
         {
-            TabelaAttribute tabela = null;
-            foreach (var attr in type.GetCustomAttributes(false))
-                if (attr.GetType() == typeof(TabelaAttribute))
-                    tabela = (attr as TabelaAttribute);
-            return tabela;
+            return type.GetAttribute<TabelaAttribute>();
         }
 
         public static TabelaAttribute GetTabela(this object obj)
@@ -34,9 +30,13 @@ namespace MORM.Dominio.Extensoes
         {
             var campos = new Campos();
             foreach (var prop in type.GetProperties())
-                foreach (var attr in prop.GetCustomAttributes(false))
-                    if (attr.GetType() == typeof(CampoAttribute))
-                        campos.Add((attr as CampoAttribute).GetClone(type, prop));
+            {
+                var campo = prop.GetAttribute<CampoAttribute>();
+                if (campo != null)
+                {
+                    campos.Add(campo.GetClone(type, prop));
+                }
+            }
             return campos;
         }
 
@@ -57,10 +57,13 @@ namespace MORM.Dominio.Extensoes
         {
             var relacoes = new Relacoes();
             foreach (var prop in type.GetProperties())
-                foreach (var attr in prop.GetCustomAttributes(false))
-                    if (attr.GetType() == typeof(RelacaoAttribute))
-                        if (tipo.Contains((attr as RelacaoAttribute).Tipo))
-                            relacoes.Add((attr as RelacaoAttribute).GetClone(type, prop, ownerObj));
+            {
+                var relacao = prop.GetAttribute<RelacaoAttribute>();
+                if (relacao != null && tipo.Contains(relacao.Tipo))
+                {
+                    relacoes.Add(relacao.GetClone(type, prop, ownerObj));
+                }
+            }
             return relacoes;
         }
 
@@ -84,11 +87,7 @@ namespace MORM.Dominio.Extensoes
 
         public static SelectMaxAttribute GetSelectMax(this PropertyInfo prop)
         {
-            SelectMaxAttribute selectMax = null;
-            foreach (var attr in prop.GetCustomAttributes(false))
-                if (attr.GetType() == typeof(SelectMaxAttribute))
-                    selectMax = (attr as SelectMaxAttribute);
-            return selectMax;
+            return prop.GetAttribute<SelectMaxAttribute>();
         }
 
         public static PropertyInfo GetCampoSelectMax(this Type type)

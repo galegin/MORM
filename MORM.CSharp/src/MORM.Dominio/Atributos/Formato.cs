@@ -10,6 +10,10 @@ namespace MORM.Dominio.Atributos
             Validacao = validacao ?? throw new ArgumentNullException(nameof(validacao));
         }
 
+        public FormatoAttribute(string conteudo) : this(conteudo, string.Empty)
+        {
+        }
+
         public string Conteudo { get; private set; }
         public string Validacao { get; private set; }
     }

@@ -13,18 +13,18 @@ namespace MORM.WebApi.Controllers.nsAmbiente
     {
         private readonly IAmbienteService _ambienteService;
 
-        public AmbienteController(IAmbienteService ambienteService)
+        public AmbienteController(IAmbienteService ambienteService) : base()
         {
             _ambienteService = ambienteService;
         }
 
         [HttpPost]
-        [Route("ValidarAcesso")]
-        public HttpResponseMessage ValidarAcesso(AmbienteDto.ValidarAcesso dto)
+        [Route("Validar")]
+        public HttpResponseMessage Validar(ValidarAmbienteDto.Envio dto)
         {
             try
             {
-                var retorno = _ambienteService.ValidarAcesso(dto);
+                var retorno = _ambienteService.Validar(dto);
                 retorno.Token = new Token(retorno.Ambiente, true).GetToken();
                 retorno.Ambiente = null;
                 return Request.CreateResponse(HttpStatusCode.OK, MessageHandler.CreateMessage(conteudo: retorno));

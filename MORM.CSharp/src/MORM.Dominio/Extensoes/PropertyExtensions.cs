@@ -1,15 +1,21 @@
 ﻿using System;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Reflection;
 
 namespace MORM.Dominio.Extensoes
 {
     public static class PropertyExtensions
     {
+        // flags
+
         private static BindingFlags _bindFlags = 
             BindingFlags.Instance | 
             BindingFlags.Public | 
             BindingFlags.NonPublic | 
             BindingFlags.Static;
+
         // get
 
         public static object GetInstanceProp(this Type type, object instance, string propName)
@@ -60,6 +66,51 @@ namespace MORM.Dominio.Extensoes
         public static void ClearInstancePropAll(this object instance)
         {
             instance.GetType().ClearInstancePropAll(instance);
+        }
+
+        // clone
+
+        public static void CloneInstanceProp(this Type type, object instance, string propName, object instanceClone)
+        {
+            var value = instanceClone.GetInstancePropOrField(propName);
+            instance.SetInstanceProp(propName, value);
+        }
+
+        public static void CloneInstanceProp(this object instance, string propName, object instanceClone)
+        {
+            instance.GetType().CloneInstanceProp(instance, propName, instanceClone);
+        }
+
+        public static void CloneInstancePropAll(this Type type, object instance, object instanceClone)
+        {
+            foreach (var prop in type.GetProperties(_bindFlags))
+                instance.CloneInstanceProp(prop.Name, instanceClone);
+        }
+
+        public static void CloneInstancePropAll(this object instance, object instanceClone)
+        {
+            instance.GetType().CloneInstancePropAll(instance, instanceClone);
+        }
+
+        // atribute
+
+        public static TAttr GetAttribute<TAttr>(this PropertyInfo prop)
+        {
+            return (TAttr)prop
+                .GetCustomAttributes(false)
+                .FirstOrDefault(x => x.GetType() == typeof(TAttr));
+        }
+
+        // data annotation
+
+        public static DescriptionAttribute GetDescription(this PropertyInfo prop)
+        {
+            return prop.GetAttribute<DescriptionAttribute>();
+        }
+
+        public static StringLengthAttribute GetStringLength(this PropertyInfo prop)
+        {
+            return prop.GetAttribute<StringLengthAttribute>();
         }
     }
 }

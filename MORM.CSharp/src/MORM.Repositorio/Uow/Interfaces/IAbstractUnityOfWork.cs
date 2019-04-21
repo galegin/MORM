@@ -6,7 +6,11 @@ namespace MORM.Repositorio.Uow
     public interface IAbstractUnityOfWork
     {
         IAbstractDataContext DataContext { get; }
-        IAmbiente Ambiente { get; }
         void SetAmbiente(IAmbiente ambiente);
+    }
+
+    public interface IAbstracAmbtUnityOfWork
+    {
+        IAmbiente Ambiente { get; }
     }
 }

@@ -11,6 +11,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Controllers;
+using MORM.Dtos.nsAmbiente;
 
 namespace MORM.WebApi.Controllers
 {
@@ -23,14 +25,21 @@ namespace MORM.WebApi.Controllers
 
         // construtores
 
-        public AbstractController(IAbstractApiService<TObject> abstractApiService)
+        public AbstractController(IAbstractApiService<TObject> abstractApiService) : base()
         {
             _abstractApiService = abstractApiService;
-            _abstractApiService.SetAmbiente(Request.GetAmbiente());
             SetarPermissaoApiService();
         }
 
-        // service
+        // initialiaze
+
+        protected override void Initialize(HttpControllerContext controllerContext)
+        {
+            _abstractApiService.SetAmbiente(controllerContext.Request.GetAmbiente());
+            base.Initialize(controllerContext);
+        }
+
+        // ambiente
 
         protected IAmbiente Ambiente => _abstractApiService.AbstractRepository.DataContext.Ambiente;
 
@@ -41,7 +50,7 @@ namespace MORM.WebApi.Controllers
         private static bool _inGravarLogAcesso =
             ConfigurationManager.AppSettings[nameof(_inGravarLogAcesso)] == "true";
 
-        protected string CodigoServico => GetType().Name.Replace("Controller", "");
+        protected string _codigoServico => GetType().Name.Replace("Controller", "");
 
         protected IPermissaoService _permissaoService;
         protected ILogAcessoService _logAcessoService;
@@ -58,11 +67,15 @@ namespace MORM.WebApi.Controllers
 
         protected void GravarLogAcesso(TipoPermissao tipoPermissao)
         {
-            _logAcessoService?.GravarLog(
-                Ambiente.CodigoEmpresa,
-                Ambiente.CodigoUsuario,
-                CodigoServico,
-                tipoPermissao.ToString());
+            var dto = new GravarLogAcessoDto.Envio
+            {
+                CodigoEmpresa = Ambiente.CodigoEmpresa,
+                CodigoUsuario = Ambiente.CodigoUsuario,
+                CodigoServico = _codigoServico,
+                CodigoMetodo = tipoPermissao.ToString(),
+            };
+
+            _logAcessoService?.GravarLog(dto);
         }
 
         // permissao
@@ -73,11 +86,15 @@ namespace MORM.WebApi.Controllers
         {
             GravarLogAcesso(tipoPermissao);
 
-            var contemPermissao = _permissaoService?.VerificarPermissao(
-                Ambiente.CodigoEmpresa,
-                Ambiente.CodigoUsuario,
-                CodigoServico,
-                tipoPermissao.ToString())
+            var dto = new VerificarPermissaoDto.Envio
+            {
+                CodigoEmpresa = Ambiente.CodigoEmpresa,
+                CodigoUsuario = Ambiente.CodigoUsuario,
+                CodigoServico = _codigoServico,
+                CodigoMetodo = tipoPermissao.ToString(),
+            };
+
+            var contemPermissao = _permissaoService?.VerificarPermissao(dto)
                 ??
                 _listaDePermissao?.Contains(tipoPermissao)
                 ??
@@ -91,7 +108,7 @@ namespace MORM.WebApi.Controllers
 
         [HttpPost]
         [Route("Listar")]
-        public HttpResponseMessage Listar(AbstractApiDto<TObject>.Listar dto)
+        public HttpResponseMessage Listar(AbstractListarDto.Envio<TObject> dto)
         {
             try
             {
@@ -108,7 +125,7 @@ namespace MORM.WebApi.Controllers
 
         [HttpPost]
         [Route("Consultar")]
-        public HttpResponseMessage Consultar(AbstractApiDto<TObject>.Consultar dto)
+        public HttpResponseMessage Consultar(AbstractConsultarDto.Envio<TObject> dto)
         {
             try
             {
@@ -125,7 +142,7 @@ namespace MORM.WebApi.Controllers
 
         [HttpPost]
         [Route("Incluir")]
-        public HttpResponseMessage Incluir(AbstractApiDto<TObject>.Incluir dto)
+        public HttpResponseMessage Incluir(AbstractIncluirDto.Envio<TObject> dto)
         {
             try
             {
@@ -142,7 +159,7 @@ namespace MORM.WebApi.Controllers
 
         [HttpPost]
         [Route("Alterar")]
-        public HttpResponseMessage Alterar(AbstractApiDto<TObject>.Alterar dto)
+        public HttpResponseMessage Alterar(AbstractAlterarDto.Envio<TObject> dto)
         {
             try
             {
@@ -159,7 +176,7 @@ namespace MORM.WebApi.Controllers
 
         [HttpPost]
         [Route("Salvar")]
-        public HttpResponseMessage Salvar(AbstractApiDto<TObject>.Salvar dto)
+        public HttpResponseMessage Salvar(AbstractSalvarDto.Envio<TObject> dto)
         {
             try
             {
@@ -176,7 +193,7 @@ namespace MORM.WebApi.Controllers
 
         [HttpPost]
         [Route("Excluir")]
-        public HttpResponseMessage Excluir(AbstractApiDto<TObject>.Excluir dto)
+        public HttpResponseMessage Excluir(AbstractExcluirDto.Envio<TObject> dto)
         {
             try
             {
@@ -184,6 +201,23 @@ namespace MORM.WebApi.Controllers
 
                 _abstractApiService.Excluir(dto);
                 return Request.CreateResponse(HttpStatusCode.OK, MessageHandler.CreateMessage());
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, MessageHandler.CreateMessage(ex));
+            }
+        }
+
+        [HttpPost]
+        [Route("Sequencia")]
+        public HttpResponseMessage Sequencia(AbstractSequenciaDto.Envio<TObject> dto)
+        {
+            try
+            {
+                VerificarPermissao(TipoPermissao.Sequencia);
+
+                return Request.CreateResponse(HttpStatusCode.OK, 
+                    MessageHandler.CreateMessage(conteudo: _abstractApiService.Sequencia(dto)));
             }
             catch (Exception ex)
             {

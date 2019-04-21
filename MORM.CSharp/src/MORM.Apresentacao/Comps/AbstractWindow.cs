@@ -4,7 +4,7 @@ using System.Windows.Input;
 
 namespace MORM.Apresentacao.Comps
 {
-    public class AbstractWindow : AbstractWindowNotify, IAbstractWindow, IDisposable
+    public class AbstractWindow : Window, IAbstractWindow, IDisposable
     {
         #region construtores
         public AbstractWindow()

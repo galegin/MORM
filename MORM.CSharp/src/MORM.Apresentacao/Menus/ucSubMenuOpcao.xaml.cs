@@ -3,7 +3,7 @@ using MORM.Apresentacao.Menus.ViewModels;
 
 namespace MORM.Apresentacao.Menus
 {
-    public partial class ucSubMenuOpcao : AbstractUserControlNotify
+    public partial class ucSubMenuOpcao : AbstractUserControl
     {
         #region construtores
         public ucSubMenuOpcao(IMenuOpcao menuOpcao)

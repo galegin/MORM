@@ -64,5 +64,31 @@ namespace MORM.Dominio.Extensoes
         {
             instance.GetType().ClearInstanceFieldAll(instance);
         }
+
+        // clone
+
+        public static void CloneInstanceField(this Type type, object instance, string fieldName, object instanceClone)
+        {
+            FieldInfo field = type.GetField(fieldName, _bindFlags);
+            var value = field.GetValue(instanceClone);
+            instance.SetInstanceField(fieldName, value);
+        }
+
+        public static void CloneInstanceField(this object instance, string fieldName, object instanceClone)
+        {
+            instance.GetType().CloneInstanceField(instance, fieldName, instanceClone);
+        }
+
+        public static void CloneInstanceFieldAll(this Type type, object instance, object instanceClone)
+        {
+            FieldInfo[] fields = type.GetFields(_bindFlags);
+            foreach (var field in fields)
+                instance.GetType().CloneInstanceField(instance, field.Name, instanceClone);
+        }
+
+        public static void CloneInstanceFieldAll(this object instance, object instanceClone)
+        {
+            instance.GetType().CloneInstanceFieldAll(instance, instanceClone);
+        }
     }
 }

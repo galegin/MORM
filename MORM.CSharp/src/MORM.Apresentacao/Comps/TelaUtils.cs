@@ -19,9 +19,6 @@ namespace MORM.Apresentacao.Comps
         public IMainWindow MainWindow => Container.Resolve<IMainWindow>();
         #endregion
 
-        #region construtores
-        #endregion
-
         #region metodos
         public static ITelaUtils Factory(IAbstractContainer container)
         {

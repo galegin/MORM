@@ -17,10 +17,6 @@ namespace MORM.Apresentacao.Ioc.Installer
             Register<IInformacaoSistema, InformacaoSistema>();
         }
 
-        public override void InstallerCommands()
-        {
-        }
-
         public override void InstallerConexao()
         {
         }
@@ -33,10 +29,6 @@ namespace MORM.Apresentacao.Ioc.Installer
         {
         }
 
-        public override void InstallerModels()
-        {
-        }
-
         public override void InstallerRepositories()
         {
         }
@@ -46,10 +38,6 @@ namespace MORM.Apresentacao.Ioc.Installer
         }
 
         public override void InstallerUnitOfWork()
-        {
-        }
-
-        public override void InstallerViewModels()
         {
         }
 

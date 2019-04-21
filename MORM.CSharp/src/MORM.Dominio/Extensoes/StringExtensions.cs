@@ -127,5 +127,17 @@ namespace MORM.Dominio.Extensoes
             }
             return pars.Length > 0 ? pars[pars.Length-1] : null;
         }
+
+        public static bool NotEmpty(this string conteudo)
+        {
+            return !string.IsNullOrWhiteSpace(conteudo);
+        }
+
+        public static string PriMaiuscula(this string conteudo)
+        {
+            return
+                conteudo.Substring(0, 1).ToUpper() +
+                conteudo.Substring(1).ToLower();
+        }
     }
 }

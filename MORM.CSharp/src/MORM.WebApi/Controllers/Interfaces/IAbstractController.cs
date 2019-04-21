@@ -5,11 +5,12 @@ namespace MORM.WebApi.Controllers
 {
     public interface IAbstractController<TObject> where TObject : class
     {
-        HttpResponseMessage Listar(AbstractApiDto<TObject>.Listar dto);
-        HttpResponseMessage Consultar(AbstractApiDto<TObject>.Consultar dto);
-        HttpResponseMessage Incluir(AbstractApiDto<TObject>.Incluir dto);
-        HttpResponseMessage Alterar(AbstractApiDto<TObject>.Alterar dto);
-        HttpResponseMessage Salvar(AbstractApiDto<TObject>.Salvar dto);
-        HttpResponseMessage Excluir(AbstractApiDto<TObject>.Excluir dto);
+        HttpResponseMessage Listar(AbstractListarDto.Envio<TObject> dto);
+        HttpResponseMessage Consultar(AbstractConsultarDto.Envio<TObject> dto);
+        HttpResponseMessage Incluir(AbstractIncluirDto.Envio<TObject> dto);
+        HttpResponseMessage Alterar(AbstractAlterarDto.Envio<TObject> dto);
+        HttpResponseMessage Salvar(AbstractSalvarDto.Envio<TObject> dto);
+        HttpResponseMessage Excluir(AbstractExcluirDto.Envio<TObject> dto);
+        HttpResponseMessage Sequencia(AbstractSequenciaDto.Envio<TObject> dto);
     }
 }

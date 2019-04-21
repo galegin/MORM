@@ -2,7 +2,12 @@
 
 namespace MORM.Apresentacao.ViewsModel
 {
-    public class AbstractViewModel : AbstractNotifyPropertyChanged
+    public class AbstractViewModel : BaseNotifyPropertyChanged
     {
+    }
+
+    public class AbstractViewModel<TModel> : AbstractViewModel
+    {
+        public TModel Model { get; set; }
     }
 }

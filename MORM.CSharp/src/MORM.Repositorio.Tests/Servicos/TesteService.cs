@@ -1,5 +1,4 @@
-﻿using MORM.Dominio.Interfaces;
-using MORM.Repositorio.Uow;
+﻿using MORM.Repositorio.Uow;
 using MORM.Servico.Services;
 
 namespace MORM.Repositorio.Tests
@@ -8,11 +7,6 @@ namespace MORM.Repositorio.Tests
     {
         public TesteService(IAbstractUnityOfWork unityOfWork) : base(unityOfWork)
         {
-        }
-
-        public TesteService(IAmbiente ambiente) : base(ambiente)
-        {
-
         }
     }
 }

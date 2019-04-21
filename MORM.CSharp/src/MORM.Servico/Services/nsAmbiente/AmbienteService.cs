@@ -1,6 +1,5 @@
 ﻿using MORM.Repositorio.Uow;
 using MORM.Dominio.Entidades;
-using MORM.Dominio.Interfaces;
 using MORM.Dtos.nsAmbiente;
 using MORM.Servico.Interfaces.nsAmbiente;
 
@@ -12,13 +11,12 @@ namespace MORM.Servico.Services.nsAmbiente
         {
         }
 
-        public AmbienteService(IAmbiente ambiente) : base(ambiente)
+        public ValidarAmbienteDto.Retorno Validar(ValidarAmbienteDto.Envio dto)
         {
-        }
-
-        public AmbienteDto.ValidarAcessoRetorno ValidarAcesso(AmbienteDto.ValidarAcesso dto)
-        {
-            throw new System.NotImplementedException();
+            return new ValidarAmbienteDto.Retorno
+            {
+                Ambiente = new Ambiente(),
+            };
         }
     }
 }

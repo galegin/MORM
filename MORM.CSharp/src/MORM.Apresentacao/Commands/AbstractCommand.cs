@@ -14,4 +14,13 @@ namespace MORM.Apresentacao.Commands
             CanExecuteChanged?.Invoke(this, EventArgs.Empty);
         }
     }
+
+    public static class AbstractCommandExtension
+    {
+        public static void ExecuteCommand(this AbstractCommand command, object parameter)
+        {
+            if (command.CanExecute(parameter))
+                command.Execute(parameter);
+        }
+    }
 }

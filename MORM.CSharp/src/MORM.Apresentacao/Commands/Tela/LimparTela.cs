@@ -3,13 +3,12 @@ using MORM.Dominio.Extensoes;
 
 namespace MORM.Apresentacao.Commands.Tela
 {
-    public class LimparTela : AbstractCommand
+    public class LimparTela<TEntrada> : AbstractCommand
     {
         public override void Execute(object parameter)
         {
-            var vm = parameter as AbstractOpcaoViewModel;
+            var vm = parameter as AbstractOpcaoViewModel<TEntrada>;
             vm.Model.ClearInstancePropOrFieldAll();
-            vm.Model = vm.Model;
         }
     }
 }

@@ -1,7 +1,11 @@
 ﻿using MORM.Aplicacao.Ioc.Installer;
+using MORM.Dominio.Entidades;
 using MORM.Dominio.Interfaces;
+using MORM.Repositorio.Context;
 using MORM.Repositorio.Dapper.Context;
+using MORM.Repositorio.Interfaces;
 using MORM.Repositorio.SqLite;
+using MORM.Repositorio.Uow;
 
 namespace MORM.Repositorio.Tests.Ioc.Installer
 {
@@ -9,12 +13,10 @@ namespace MORM.Repositorio.Tests.Ioc.Installer
     {
         public override void InstallerAmbiente()
         {
-            //Register<IUsuario, Usuario>();
-            //Register<ITerminal, Terminal>();
-        }
-
-        public override void InstallerCommands()
-        {
+            Register<IAmbiente, Ambiente>();
+            Register<IEmpresa, Empresa>();
+            Register<ITerminal, Terminal>();
+            Register<IUsuario, Usuario>();
         }
 
         public override void InstallerConexao()
@@ -24,14 +26,11 @@ namespace MORM.Repositorio.Tests.Ioc.Installer
 
         public override void InstallerDataConext()
         {
+            Register<IAbstractDataContext, AbstractDataContext>();
             Register<IAbstractDataContextDapper, AbstractDataContextDapper>();
         }
 
         public override void InstallerDomainServices()
-        {
-        }
-
-        public override void InstallerModels()
         {
         }
 
@@ -49,11 +48,7 @@ namespace MORM.Repositorio.Tests.Ioc.Installer
 
         public override void InstallerUnitOfWork()
         {
-            //Register<IAbstractUnityOfWork, AbstractUnityOfWork>();
-        }
-
-        public override void InstallerViewModels()
-        {
+            Register<IAbstractUnityOfWork, AbstractUnityOfWork>();
         }
 
         public override void InstallerViews()

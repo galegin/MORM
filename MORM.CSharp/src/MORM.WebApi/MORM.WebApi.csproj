@@ -154,11 +154,12 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="App_Start\WebApiLogHandler.cs" />
     <Compile Include="Controllers\AbstractController.cs" />
-    <Compile Include="Controllers\AbstractControllerFiltro.cs" />
     <Compile Include="Controllers\Interfaces\IAbstractController.cs" />
-    <Compile Include="Controllers\Interfaces\IAbstractControllerFiltro.cs" />
     <Compile Include="Controllers\MessageHandler.cs" />
     <Compile Include="Controllers\nsAmbiente\AmbienteController.cs" />
+    <Compile Include="Controllers\nsAmbiente\TerminalController.cs" />
+    <Compile Include="Controllers\nsAmbiente\UsuarioController.cs" />
+    <Compile Include="Controllers\nsAmbiente\EmpresaController.cs" />
     <Compile Include="Extensions\HttpAuthenticationContextExtensions.cs" />
     <Compile Include="Extensions\HttpRequestMessageExtensions.cs" />
     <Compile Include="Global.asax.cs">
@@ -206,6 +207,10 @@
     <ProjectReference Include="..\MORM.Repositorio.Oracle\MORM.Repositorio.Oracle.csproj">
       <Project>{10fe132f-bd5c-493e-8f47-5a1d27b2bde9}</Project>
       <Name>MORM.Repositorio.Oracle</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MORM.Repositorio.SqLite\MORM.Repositorio.SqLite.csproj">
+      <Project>{0342CF32-A2FC-4E32-A198-1960CB4F50BF}</Project>
+      <Name>MORM.Repositorio.SqLite</Name>
     </ProjectReference>
     <ProjectReference Include="..\MORM.Repositorio\MORM.Repositorio.csproj">
       <Project>{d7ac25e1-c1f3-490a-a750-8ce02e50edb8}</Project>

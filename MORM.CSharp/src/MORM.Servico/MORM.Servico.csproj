@@ -41,13 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\nsAmbiente\IUsuarioService.cs" />
+    <Compile Include="Interfaces\nsAmbiente\ITerminalService.cs" />
+    <Compile Include="Interfaces\nsAmbiente\IEmpresaService.cs" />
     <Compile Include="Interfaces\nsAmbiente\IMigracaoService.cs" />
-    <Compile Include="Services\AbstractApiFiltroService.cs" />
     <Compile Include="Services\AbstractApiService.cs" />
     <Compile Include="Services\AbstractService.cs" />
-    <Compile Include="Interfaces\IAbstractApiFiltroService.cs" />
     <Compile Include="Interfaces\IAbstractApiService.cs" />
     <Compile Include="Interfaces\IAbstractService.cs" />
+    <Compile Include="Services\nsAmbiente\UsuarioService.cs" />
+    <Compile Include="Services\nsAmbiente\TerminalService.cs" />
+    <Compile Include="Services\nsAmbiente\EmpresaService.cs" />
     <Compile Include="Services\nsAmbiente\AmbienteService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Interfaces\nsAmbiente\IAmbienteService.cs" />

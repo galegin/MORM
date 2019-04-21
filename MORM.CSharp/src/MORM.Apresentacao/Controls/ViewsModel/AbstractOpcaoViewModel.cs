@@ -1,13 +1,11 @@
 ﻿using MORM.Apresentacao.Commands.Tela;
 using MORM.Apresentacao.ViewsModel;
+using System.Collections.Generic;
 
 namespace MORM.Apresentacao.Controls.ViewsModel
 {
-    public class AbstractOpcaoViewModel : AbstractViewModel
+    public class AbstractOpcaoViewModel<TModel> : AbstractViewModel
     {
-        #region constantes
-        #endregion
-
         #region variaveis
         private bool _isExibirFechar = false;
         private bool _isExibirVoltar = true;
@@ -20,7 +18,7 @@ namespace MORM.Apresentacao.Controls.ViewsModel
         private bool _isExibirExportar = false;
         private bool _isExibirImportar = false;
         private bool _isExibirImprimir = false;
-        private object _model;
+        private TModel _model;
         #endregion
 
         #region propriedades
@@ -79,7 +77,7 @@ namespace MORM.Apresentacao.Controls.ViewsModel
             get => _isExibirImprimir;
             set => SetField(ref _isExibirImprimir, value);
         }
-        public object Model
+        public TModel Model
         {
             get => _model;
             set => SetField(ref _model, value);
@@ -89,25 +87,54 @@ namespace MORM.Apresentacao.Controls.ViewsModel
         #region comandos
         public FecharTela Fechar { get; set; } = new FecharTela();
         public VoltarTelaAnterior Voltar { get; set; } = new VoltarTelaAnterior();
-        public LimparTela Limpar { get; set; } = new LimparTela();
-        public ConsultarTela Consultar { get; set; } = new ConsultarTela();
-        public IncluirTela Incluir { get; set; } = new IncluirTela();
-        public AlterarTela Alterar { get; set; } = new AlterarTela();
-        public SalvarTela Salvar { get; set; } = new SalvarTela();
-        public ExcluirTela Excluir { get; set; } = new ExcluirTela();
-        public ExportarTela Exportar { get; set; } = new ExportarTela();
-        public ImportarTela Importar { get; set; } = new ImportarTela();
-        public ImprimirTela Imprimir { get; set; } = new ImprimirTela();
+        public LimparTela<TModel> Limpar { get; set; } = new LimparTela<TModel>();
+        public ConsultarTela<TModel> Consultar { get; set; } = new ConsultarTela<TModel>();
+        public IncluirTela<TModel> Incluir { get; set; } = new IncluirTela<TModel>();
+        public AlterarTela<TModel> Alterar { get; set; } = new AlterarTela<TModel>();
+        public SalvarTela<TModel> Salvar { get; set; } = new SalvarTela<TModel>();
+        public ExcluirTela<TModel> Excluir { get; set; } = new ExcluirTela<TModel>();
+        public ExportarTela<TModel> Exportar { get; set; } = new ExportarTela<TModel>();
+        public ImportarTela<TModel> Importar { get; set; } = new ImportarTela<TModel>();
+        public ImprimirTela<TModel> Imprimir { get; set; } = new ImprimirTela<TModel>();
         #endregion
 
         #region contrutores
-        public AbstractOpcaoViewModel(object model)
+        public AbstractOpcaoViewModel(TModel model)
         {
             Model = model;
         }
         #endregion
+    }
 
-        #region metodos
+    public class AbstractOpcaoViewModel<TFiltro, TModel> : AbstractOpcaoViewModel<TModel>
+    {
+        #region variaveis
+        private TFiltro _filtro;
+        private List<TModel> _lista;
+        #endregion
+
+        #region propriedades
+        public TFiltro Filtro
+        {
+            get => _filtro;
+            set => SetField(ref _filtro, value);
+        }
+        public List<TModel> Lista
+        {
+            get => _lista;
+            set => SetField(ref _lista, value);
+        }
+        #endregion
+
+        #region comandos
+        public ListarTela<TFiltro, TModel> Listar { get; set; } = new ListarTela<TFiltro, TModel>();
+        #endregion
+
+        #region contrutores
+        public AbstractOpcaoViewModel(TFiltro filtro, TModel model) : base(model)
+        {
+            Lista = new List<TModel>();
+        }
         #endregion
     }
 }

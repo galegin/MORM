@@ -1,5 +1,4 @@
-﻿using MORM.Aplicacao.App_Start;
-using MORM.Dominio.Interfaces;
+﻿using MORM.Dominio.Interfaces;
 using MORM.Utils.Classes;
 using MORM.WebApi.App_Start;
 using System.Collections.Generic;

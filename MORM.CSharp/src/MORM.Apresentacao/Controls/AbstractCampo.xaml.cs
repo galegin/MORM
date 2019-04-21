@@ -5,19 +5,14 @@ using System.Windows.Data;
 
 namespace MORM.Apresentacao.Controls
 {
-    public partial class AbstractCampo : AbstractUserControlNotify
+    public partial class AbstractCampo : AbstractUserControl
     {
-        #region variaveis
-        private AbstractEditTipo _editTipo;
-        #endregion
-
         #region propriedades
         private AbstractEditTipo EditTipo
         {
-            get => _editTipo;
+            get => EditIni.Tipo;
             set
             {
-                SetField(ref _editTipo, value);
                 EditIni.Tipo = value;
                 EditFin.Tipo = value;
             }
@@ -25,10 +20,12 @@ namespace MORM.Apresentacao.Controls
         #endregion
 
         #region construtores
-        public AbstractCampo(AbstractCampoTipo tipo, string descricao = null, AbstractEditTipo? editTipo = null)
+        public AbstractCampo(AbstractCampoTipo tipo, 
+            string descricao = null, int tamanho = 0, int precisao = 0, 
+            AbstractEditTipo? editTipo = null)
         {
             InitializeComponent();
-            DataContext = new AbstractCampoViewModel(tipo, descricao, editTipo);
+            DataContext = new AbstractCampoViewModel(tipo, descricao, tamanho, precisao, editTipo);
             EditTipo = editTipo.Value;
         }
         #endregion

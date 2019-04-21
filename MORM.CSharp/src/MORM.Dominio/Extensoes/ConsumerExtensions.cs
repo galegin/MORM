@@ -1,18 +1,45 @@
 ﻿using MORM.Dominio.Atributos;
-using System.Linq;
+using System.Collections.Generic;
 
 namespace MORM.Dominio.Extensoes
 {
     public static class ConsumerExtensions
     {
-        public static string GetApi<TEntrada>()
+        public static string GetApi(this object instance,
+            string urlPadrao = null,
+            string svcPadrao = null,
+            string mtdPadrao = null)
         {
-            return $"{(typeof(TEntrada).GetCustomAttributes(true).FirstOrDefault(x => x is APIAttribute) as APIAttribute)?.Path ?? typeof(TEntrada).Name}";
+            var retorno = new List<string>();
+
+            var url = instance.GetUrl(urlPadrao);
+            if (!string.IsNullOrWhiteSpace(url))
+                retorno.Add(url);
+
+            var svc = instance.GetSvc(svcPadrao);
+            if (!string.IsNullOrWhiteSpace(svc))
+                retorno.Add(svc);
+
+            var mtd = instance.GetMtd(mtdPadrao);
+            if (!string.IsNullOrWhiteSpace(mtd))
+                retorno.Add(mtd);
+
+            return string.Join("/", retorno);
         }
 
-        public static string GetUrl<TEntrada>()
+        public static string GetMtd(this object instance, string mtdPadrao = null)
         {
-            return $"{(typeof(TEntrada).GetCustomAttributes(true).FirstOrDefault(x => x is URLAttribute) as URLAttribute)?.Path ?? typeof(TEntrada).Name}";
+            return instance.GetType().GetAttribute<MTDAttribute>()?.Path ?? mtdPadrao;
+        }
+
+        public static string GetSvc(this object instance, string svcPadrao = null)
+        {
+            return instance.GetType().GetAttribute<SVCAttribute>()?.Path ?? svcPadrao;
+        }
+
+        public static string GetUrl(this object instance, string urlPadrao = null)
+        {
+            return instance.GetType().GetAttribute<URLAttribute>()?.Path ?? urlPadrao;
         }
     }
 }

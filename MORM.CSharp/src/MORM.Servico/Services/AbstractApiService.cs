@@ -1,24 +1,27 @@
 ﻿using MORM.Dominio.Interfaces;
 using MORM.Dtos;
-using MORM.Repositorio.Context;
 using MORM.Repositorio.Repositories;
 using MORM.Repositorio.Uow;
 using MORM.Servico.Interfaces;
 using System;
+using System.Linq;
 
-namespace MORM.Repositorio.Services
+namespace MORM.Servico.Services
 {
     public class AbstractApiService : IAbstractApiService
     {
-        public AbstractApiService(IAbstractUnityOfWork abstractUnityOfWork) : this(abstractUnityOfWork.Ambiente)
+        public AbstractApiService(IAbstractUnityOfWork abstractUnityOfWork)
         {
             AbstractUnityOfWork = abstractUnityOfWork ?? throw new ArgumentNullException(nameof(abstractUnityOfWork));
         }
 
         public IAbstractUnityOfWork AbstractUnityOfWork { get; }
         public void SetAmbiente(IAmbiente ambiente) => AbstractUnityOfWork.SetAmbiente(ambiente);
+    }
 
-        public AbstractApiService(IAmbiente ambiente)
+    public class AbstractAmbApiService : IAbstractAmbApiService
+    {
+        public AbstractAmbApiService(IAmbiente ambiente)
         {
             Ambiente = ambiente ?? throw new ArgumentNullException(nameof(ambiente));
         }
@@ -36,66 +39,79 @@ namespace MORM.Repositorio.Services
 
         public IAbstractRepository<TObject> AbstractRepository { get; }
 
-        public AbstractApiService(IAmbiente ambiente) : base(ambiente)
-        {
-            AbstractRepository = new AbstractRepository<TObject>(new AbstractDataContext(ambiente));
-        }
-
         //-- listar
 
-        public AbstractApiDto<TObject>.ListarRet Listar(AbstractApiDto<TObject>.Listar dto)
+        public AbstractListarDto.Retorno<TObject> Listar(AbstractListarDto.Envio<TObject> dto)
         {
-            return new AbstractApiDto<TObject>.ListarRet(AbstractRepository.ListarO(dto.Filtro, 
-                qtde: dto.QtdeRegistro, pagina: dto.NumeroPagina));
+            return new AbstractListarDto.Retorno<TObject>
+            {
+               Lista = AbstractRepository
+                    .ListarO(dto.Filtro, qtde: dto.QtdeRegistro, pagina: dto.NumeroPagina)
+                    .ToList()
+            };
         }
 
         //-- consultar
 
-        public AbstractApiDto<TObject>.ConsultarRet Consultar(AbstractApiDto<TObject>.Consultar dto)
+        public AbstractConsultarDto.Retorno<TObject> Consultar(AbstractConsultarDto.Envio<TObject> dto)
         {
-            return new AbstractApiDto<TObject>.ConsultarRet(AbstractRepository.ConsultarO(dto.Filtro));
+            return new AbstractConsultarDto.Retorno<TObject>(AbstractRepository.ConsultarO(dto.Filtro));
         }
 
         //-- incluir
 
-        public void Incluir(AbstractApiDto<TObject>.Incluir dto)
+        public void Incluir(AbstractIncluirDto.Envio<TObject> dto)
         {
             AbstractRepository.Incluir(dto.Objeto);
         }
 
         //-- alterar
 
-        public void Alterar(AbstractApiDto<TObject>.Alterar dto)
+        public void Alterar(AbstractAlterarDto.Envio<TObject> dto)
         {
             AbstractRepository.Alterar(dto.Objeto);
         }
 
         //-- salvar
 
-        public void Salvar(AbstractApiDto<TObject>.Salvar dto)
+        public void Salvar(AbstractSalvarDto.Envio<TObject> dto)
         {
             AbstractRepository.Salvar(dto.Objeto);
         }
 
         //-- excluir
 
-        public void Excluir(AbstractApiDto<TObject>.Excluir dto)
+        public void Excluir(AbstractExcluirDto.Envio<TObject> dto)
         {
             AbstractRepository.Excluir(dto.Objeto);
         }
 
         //-- sequencia
 
-        public int SequenciaGen(AbstractApiDto<TObject>.SequenciaGen dto)
+        public int Sequencia(AbstractSequenciaDto.Envio<TObject> dto)
         {
-            return AbstractRepository.SequenciaGen();
-        }
+            var sequencia = 0;
 
-        //-- select max
+            // generator
 
-        public int SequenciaMax(AbstractApiDto<TObject>.SequenciaMax dto)
-        {
-            return AbstractRepository.SequenciaMaxO(dto.Filtro);
+            try
+            {
+                sequencia = AbstractRepository.SequenciaGen();
+            }
+            catch { sequencia = -1; }
+
+            // select max
+                
+            if (sequencia <= 0)
+            {
+                try
+                {
+                    sequencia = AbstractRepository.SequenciaMaxO(dto.Filtro);
+                }
+                catch { sequencia = -1; }
+            }
+
+            return sequencia;
         }
     }
 }

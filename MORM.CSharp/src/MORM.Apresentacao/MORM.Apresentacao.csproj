@@ -88,24 +88,22 @@
     <Compile Include="Comps\TelaUtils.cs" />
     <Compile Include="Commands\Tela\VoltarTelaInicio.cs" />
     <Compile Include="Commands\Tela\VoltarTelaAnterior.cs" />
-    <Compile Include="Comps\AbstractNotifyPropertyChanged.cs" />
+    <Compile Include="Comps\BaseNotifyPropertyChanged.cs" />
     <Compile Include="Comps\AbstractTimer.cs" />
-    <Compile Include="Comps\AbstractUserControlNotify.cs" />
-    <Compile Include="Comps\AbstractWindowNotify.cs" />
-    <Compile Include="Comps\Interfaces\IAbstractNotifyPropertyChanged.cs" />
-    <Compile Include="Comps\Interfaces\IAbstractUserControlNotify.cs" />
     <Compile Include="Comps\Interfaces\IAbstractUserControl.cs" />
     <Compile Include="Comps\Interfaces\IAbstractWindow.cs" />
-    <Compile Include="Comps\Interfaces\IAbstractWindowNotify.cs" />
+    <Compile Include="Comps\ViewsModel\LoadingBoxViewModel.cs" />
+    <Compile Include="Comps\ViewsModel\MensagemLogViewModel.cs" />
+    <Compile Include="Connectors\Ambiente\AbstractAmbienteConnector.cs" />
     <Compile Include="Connectors\AbstractConnector.cs" />
-    <Compile Include="Connectors\AbstractExcluirConnector.cs" />
-    <Compile Include="Connectors\AbstractExportarConnector.cs" />
-    <Compile Include="Connectors\AbstractImportarConnector.cs" />
-    <Compile Include="Connectors\AbstractImprimirConnector.cs" />
-    <Compile Include="Connectors\AbstractIncluirConnector.cs" />
-    <Compile Include="Connectors\AbstractAlterarConnector.cs" />
-    <Compile Include="Connectors\AbstractSalvarConnector.cs" />
-    <Compile Include="Connectors\AbstractConsultarConnector.cs" />
+    <Compile Include="Connectors\Manutencao\AbstractExcluirConnector.cs" />
+    <Compile Include="Connectors\Manutencao\AbstractExportarConnector.cs" />
+    <Compile Include="Connectors\Manutencao\AbstractImportarConnector.cs" />
+    <Compile Include="Connectors\Manutencao\AbstractImprimirConnector.cs" />
+    <Compile Include="Connectors\Manutencao\AbstractIncluirConnector.cs" />
+    <Compile Include="Connectors\Manutencao\AbstractAlterarConnector.cs" />
+    <Compile Include="Connectors\Manutencao\AbstractSalvarConnector.cs" />
+    <Compile Include="Connectors\Manutencao\AbstractConsultarConnector.cs" />
     <Compile Include="Consumers\AbstractApiConsumer.cs" />
     <Compile Include="Controls\AbstractButton.cs" />
     <Compile Include="Controls\AbstractCampo.xaml.cs">
@@ -206,7 +204,7 @@
     <Compile Include="Comps\MensagemLog.xaml.cs">
       <DependentUpon>MensagemLog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Connectors\AbstractListarConnector.cs" />
+    <Compile Include="Connectors\Manutencao\AbstractListarConnector.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

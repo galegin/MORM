@@ -20,10 +20,6 @@ namespace MORM.WSist.Ioc.Installer
             Register<IInformacaoSistema, InformacaoSistema>();
         }
 
-        public override void InstallerCommands()
-        {
-        }
-
         public override void InstallerConexao()
         {
         }
@@ -36,10 +32,6 @@ namespace MORM.WSist.Ioc.Installer
         {
         }
 
-        public override void InstallerModels()
-        {
-        }
-
         public override void InstallerRepositories()
         {
         }
@@ -49,10 +41,6 @@ namespace MORM.WSist.Ioc.Installer
         }
 
         public override void InstallerUnitOfWork()
-        {
-        }
-
-        public override void InstallerViewModels()
         {
         }
 
@@ -69,7 +57,10 @@ namespace MORM.WSist.Ioc.Installer
             Register<IMenuResolverTipo, MenuResolverTipo>();
 
             Register<IAbstractClienteViewManut, AbstractClienteViewManut>();
+            Register<IAbstractEmpresaViewManut, AbstractEmpresaViewManut>();
             Register<IAbstractProdutoViewManut, AbstractProdutoViewManut>();
+            Register<IAbstractTerminalViewManut, AbstractTerminalViewManut>();
+            Register<IAbstractUsuarioViewManut, AbstractUsuarioViewManut>();
         }
     }
 }

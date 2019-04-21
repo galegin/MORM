@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace MORM.Apresentacao.Menus
 {
-    public partial class ucMenuOpcao : AbstractUserControlNotify
+    public partial class ucMenuOpcao : AbstractUserControl
     {
         #region construtores
         public ucMenuOpcao(IMenuOpcao menuOpcao)

@@ -2,9 +2,19 @@
 
 namespace MORM.Dominio.Atributos
 {
-    public class APIAttribute : Attribute
+    public class MTDAttribute : Attribute
     {
-        public APIAttribute(string path)
+        public MTDAttribute(string path)
+        {
+            Path = path;
+        }
+
+        public string Path { get; }
+    }
+
+    public class SVCAttribute : Attribute
+    {
+        public SVCAttribute(string path)
         {
             Path = path;
         }

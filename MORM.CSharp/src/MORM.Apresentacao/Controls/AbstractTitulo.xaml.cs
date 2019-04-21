@@ -3,7 +3,7 @@ using MORM.Apresentacao.Controls.ViewsModel;
 
 namespace MORM.Apresentacao.Controls
 {
-    public partial class AbstractTitulo : AbstractUserControlNotify
+    public partial class AbstractTitulo : AbstractUserControl
     {
         public AbstractTitulo(string titulo)
         {

@@ -18,7 +18,6 @@ namespace MORM.WebApi.App_Start
         {
             await Task.Run(() =>
             {
-                //Token token = Token.Autenticar(context);
                 Token token = context.GetToken();
                 if (token == null)
                 {

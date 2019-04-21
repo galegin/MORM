@@ -1,6 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
-using MORM.Dominio.Entidades;
 using MORM.Dominio.Tipagens;
 using MORM.Repositorio.Context;
 using MORM.Repositorio.Extensions;
@@ -76,10 +75,7 @@ namespace MORM.Repositorio.Tests
 
             TipoServiceTests_Salvar();
 
-            var ambiente = new Ambiente();
-            var tipoService = new TipoService(ambiente);
-
-            var listaDeTipo = tipoService.AbstractRepository.ToList(x => x.Cd_Tipo == _codigoTipo);
+            var listaDeTipo = _tipoService.AbstractRepository.ToList(x => x.Cd_Tipo == _codigoTipo);
             Assert.AreNotEqual(0, listaDeTipo.Count);
             Assert.AreEqual(_codigoTipo, listaDeTipo.FirstOrDefault().Cd_Tipo);
         }

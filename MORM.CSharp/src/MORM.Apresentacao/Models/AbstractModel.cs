@@ -2,7 +2,7 @@
 
 namespace MORM.Apresentacao.Models
 {
-    public abstract class AbstractModel : AbstractNotifyPropertyChanged
+    public abstract class AbstractModel : BaseNotifyPropertyChanged
     {
     }
 }

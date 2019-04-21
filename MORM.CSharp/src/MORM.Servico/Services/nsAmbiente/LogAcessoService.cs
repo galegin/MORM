@@ -1,5 +1,5 @@
 ﻿using MORM.Dominio.Entidades;
-using MORM.Dominio.Interfaces;
+using MORM.Dtos.nsAmbiente;
 using MORM.Repositorio.Extensions;
 using MORM.Repositorio.Uow;
 using MORM.Servico.Interfaces.nsAmbiente;
@@ -13,37 +13,33 @@ namespace MORM.Servico.Services.nsAmbiente
         {
         }
 
-        public LogAcessoService(IAmbiente ambiente) : base(ambiente)
-        {
-        }
-
-        private LogAcesso GetLogAcesso(DateTime dataLog, int sequenciaLog, int codigoEmpresa, int codigoUsuario, string codigoServico, string codigoMetodo)
+        private LogAcesso GetLogAcesso(GravarLogAcessoDto.Envio dto)
         {
             return AbstractRepository.FirstOrDefault(f =>
-                f.DataLog == dataLog &&
-                f.SequenciaLog == sequenciaLog &&
-                f.CodigoEmpresa == codigoEmpresa &&
-                f.CodigoUsuario == codigoUsuario &&
-                f.CodigoServico == codigoServico &&
-                f.CodigoMetodo == codigoMetodo);
+                f.DataLog == dto.DataLog &&
+                f.SequenciaLog == dto.SequenciaLog &&
+                f.CodigoEmpresa == dto.CodigoEmpresa &&
+                f.CodigoUsuario == dto.CodigoUsuario &&
+                f.CodigoServico == dto.CodigoServico &&
+                f.CodigoMetodo == dto.CodigoMetodo);
         }
 
-        public void GravarLog(int codigoEmpresa, int codigoUsuario, string codigoServico, string codigoMetodo)
+        public void GravarLog(GravarLogAcessoDto.Envio dto)
         {
-            var dataLog = DateTime.Today;
-            var sequenciaLog = 1;
+            dto.DataLog = DateTime.Today;
+            dto.SequenciaLog = 1;
 
-            var logAcesso = GetLogAcesso(dataLog, sequenciaLog, codigoEmpresa, codigoUsuario, codigoServico, codigoMetodo);
+            var logAcesso = GetLogAcesso(dto);
 
             if (logAcesso.CodigoEmpresa <= 0)
                 logAcesso = new LogAcesso
                 {
-                    DataLog = dataLog,
-                    SequenciaLog = sequenciaLog,
-                    CodigoEmpresa = codigoEmpresa,
-                    CodigoUsuario = codigoUsuario,
-                    CodigoServico = codigoServico,
-                    CodigoMetodo = codigoMetodo,
+                    DataLog = dto.DataLog,
+                    SequenciaLog = dto.SequenciaLog,
+                    CodigoEmpresa = dto.CodigoEmpresa,
+                    CodigoUsuario = dto.CodigoUsuario,
+                    CodigoServico = dto.CodigoServico,
+                    CodigoMetodo = dto.CodigoMetodo,
                 };
 
             logAcesso.QtdeAcesso += 1;

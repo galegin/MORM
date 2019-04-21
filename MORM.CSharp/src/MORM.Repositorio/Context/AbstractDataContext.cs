@@ -23,11 +23,6 @@ namespace MORM.Repositorio.Context
             SetAmbiente(ambiente);
         }
 
-        public AbstractDataContext(IAmbiente ambiente)
-        {
-            SetAmbiente(ambiente);
-        }
-
         private readonly IConnectionFactory _connectionFactory;
 
         public IAmbiente Ambiente { get; private set; }

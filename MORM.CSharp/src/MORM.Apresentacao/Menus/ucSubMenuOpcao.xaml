@@ -1,4 +1,4 @@
-﻿<comps:AbstractUserControlNotify x:Class="MORM.Apresentacao.Menus.ucSubMenuOpcao"
+﻿<comps:AbstractUserControl x:Class="MORM.Apresentacao.Menus.ucSubMenuOpcao"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -26,4 +26,4 @@
         </DockPanel>
 
     </Grid>
-</comps:AbstractUserControlNotify>
+</comps:AbstractUserControl>

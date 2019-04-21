@@ -11,9 +11,9 @@ namespace MORM.Dominio.Extensoes
             return type.GetInstanceProp(instance, name) ?? type.GetInstanceField(instance, name);
         }
 
-        public static object GetInstancePropOrField(this object instance, string fieldName)
+        public static object GetInstancePropOrField(this object instance, string name)
         {
-            return instance.GetType().GetInstancePropOrField(instance, fieldName);
+            return instance.GetType().GetInstancePropOrField(instance, name);
         }
 
         // set
@@ -57,6 +57,34 @@ namespace MORM.Dominio.Extensoes
         public static void ClearInstancePropOrFieldAll(this object instance, bool isProp = true)
         {
             instance.GetType().ClearInstancePropOrFieldAll(instance, isProp);
+        }
+
+        // clone
+
+        public static void CloneInstancePropOrField(this Type type, object instance, string name, object instanceClone)
+        {
+            if (type.GetProperty(name) != null)
+                type.CloneInstanceProp(instance, name, instanceClone);
+            else
+                type.CloneInstanceField(instance, name, instanceClone);
+        }
+
+        public static void CloneInstancePropOrField(this object instance, string name, object instanceClone)
+        {
+            instance.GetType().CloneInstancePropOrField(instance, name, instanceClone);
+        }
+
+        public static void CloneInstancePropOrFieldAll(this Type type, object instance, object instanceClone, bool isProp = true)
+        {
+            if (isProp)
+                type.CloneInstancePropAll(instance, instanceClone);
+            else
+                type.CloneInstanceFieldAll(instance, instanceClone);
+        }
+
+        public static void CloneInstancePropOrFieldAll(this object instance, object instanceClone, bool isProp = true)
+        {
+            instance.GetType().CloneInstancePropOrFieldAll(instance, instanceClone, isProp);
         }
     }
 }

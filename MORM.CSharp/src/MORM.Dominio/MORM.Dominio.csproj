@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,9 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Atributos\Consumer.cs" />
     <Compile Include="Atributos\Formato.cs" />
     <Compile Include="Atributos\Mapping.cs" />
+    <Compile Include="Atributos\Metadata.cs" />
     <Compile Include="Atributos\Pesquisa.cs" />
     <Compile Include="Atributos\Tipagem.cs" />
     <Compile Include="Atributos\Validacao.cs" />
@@ -56,6 +57,7 @@
     <Compile Include="Entidades\Permissao.cs" />
     <Compile Include="Entidades\Terminal.cs" />
     <Compile Include="Entidades\Usuario.cs" />
+    <Compile Include="Atributos\Consumer.cs" />
     <Compile Include="Extensoes\ConsumerExtensions.cs" />
     <Compile Include="Extensoes\CreateCmdExtensions.cs" />
     <Compile Include="Extensoes\DataTypeExtension.cs" />

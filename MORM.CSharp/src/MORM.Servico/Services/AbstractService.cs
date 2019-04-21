@@ -1,5 +1,4 @@
 ﻿using MORM.Dominio.Interfaces;
-using MORM.Repositorio.Context;
 using MORM.Repositorio.Repositories;
 using MORM.Repositorio.Uow;
 using MORM.Servico.Interfaces;
@@ -9,19 +8,12 @@ namespace MORM.Servico.Services
 {
     public class AbstractService : IAbstractService
     {
-        public AbstractService(IAbstractUnityOfWork abstractUnityOfWork) : this(abstractUnityOfWork.Ambiente)
+        public AbstractService(IAbstractUnityOfWork abstractUnityOfWork)
         {
             AbstractUnityOfWork = abstractUnityOfWork ?? throw new ArgumentNullException(nameof(abstractUnityOfWork));
         }
 
         public IAbstractUnityOfWork AbstractUnityOfWork { get; }
-
-        public AbstractService(IAmbiente ambiente)
-        {
-            Ambiente = ambiente ?? throw new ArgumentNullException(nameof(ambiente));
-        }
-
-        public IAmbiente Ambiente { get; }
     }
 
     public class AbstractService<TObject> : AbstractService, IAbstractService<TObject> where TObject : class
@@ -31,11 +23,16 @@ namespace MORM.Servico.Services
             AbstractRepository = new AbstractRepository<TObject>(abstractUnityOfWork.DataContext);
         }
 
-        public AbstractService(IAmbiente ambiente) : base(ambiente)
+        public IAbstractRepository<TObject> AbstractRepository { get; }
+    }
+
+    public class AbstractAmbService : IAbstractAmbService
+    {
+        public AbstractAmbService(IAmbiente ambiente)
         {
-            AbstractRepository = new AbstractRepository<TObject>(new AbstractDataContext(ambiente));
+            Ambiente = ambiente ?? throw new ArgumentNullException(nameof(ambiente));
         }
 
-        public IAbstractRepository<TObject> AbstractRepository { get; }
+        public IAmbiente Ambiente { get; }
     }
 }

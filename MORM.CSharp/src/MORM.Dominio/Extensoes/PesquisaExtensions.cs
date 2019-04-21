@@ -18,8 +18,7 @@ namespace MORM.Dominio.Extensoes
 
         public static PesquisaAttribute GetCampoPesquisa(this PropertyInfo prop)
         {
-            var attr = (PesquisaAttribute)prop.GetCustomAttributes(false)
-                .FirstOrDefault(a => a is PesquisaAttribute);
+            var attr = prop.GetAttribute<PesquisaAttribute>();
             return attr?.GetClone(prop);
         }
     }

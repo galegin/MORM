@@ -41,16 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\AbstractApiDto.cs" />
-    <Compile Include="Classes\AbstractApiFiltroDto.cs" />
+    <Compile Include="Manutencao\AbstractSequenciaDto.cs" />
     <Compile Include="Classes\AbstractDto.cs" />
-    <Compile Include="AbstractConsultarDto.cs" />
-    <Compile Include="AbstractExcluirDto.cs" />
-    <Compile Include="AbstractIncluirDto.cs" />
-    <Compile Include="AbstractAlterarDto.cs" />
-    <Compile Include="AbstractSalvarDto.cs" />
-    <Compile Include="AbstractListarDto.cs" />
+    <Compile Include="Manutencao\AbstractConsultarDto.cs" />
+    <Compile Include="Manutencao\AbstractExcluirDto.cs" />
+    <Compile Include="Manutencao\AbstractIncluirDto.cs" />
+    <Compile Include="Manutencao\AbstractAlterarDto.cs" />
+    <Compile Include="Manutencao\AbstractSalvarDto.cs" />
+    <Compile Include="Manutencao\AbstractListarDto.cs" />
+    <Compile Include="Classes\AbstractValidator.cs" />
     <Compile Include="nsAmbiente\AmbienteDto.cs" />
+    <Compile Include="nsAmbiente\GravarLogAcessoDto.cs" />
+    <Compile Include="nsAmbiente\VerificarPermissaoDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

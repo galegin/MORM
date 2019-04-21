@@ -10,11 +10,21 @@ using System.Text;
 
 namespace MORM.Apresentacao.Consumers
 {
-    public class AbstractApiConsumer<TEntrada, TRetorno>
+    public class AbstractApiConsumer
+    {
+        public static string TokenInterno { get; private set; }
+
+        public static void SetTokenInterno(string tokenInterno)
+        {
+            TokenInterno = tokenInterno;
+        }
+    }
+
+    public class AbstractApiConsumer<TEntrada, TRetorno> : AbstractApiConsumer
         where TEntrada : class
         where TRetorno : class
     {
-        private readonly string _site = ConfigurationManager.AppSettings[nameof(_site)] ?? "http://localhost:55275";
+        private readonly string _site = ConfigurationManager.AppSettings[nameof(_site)] ?? "http://localhost:55275/api/";
         private readonly string _token = ConfigurationManager.AppSettings[nameof(_token)];
 
         public AbstractApiConsumer(string site = null, string token = null)
@@ -43,12 +53,20 @@ namespace MORM.Apresentacao.Consumers
             {
                 client.DefaultRequestHeaders.Add("Token", _token);
             }
+            else if (!string.IsNullOrWhiteSpace(TokenInterno))
+            {
+                client.DefaultRequestHeaders.Add("Token", TokenInterno);
+            }
 
             return client;
         }
 
-        public ApiRetorno Post(string url, TEntrada entity)
+        // http://localhost:52275/api/servico/metodo
+
+        public ApiRetorno Post(TEntrada entity, string url = null)
         {
+            url = url ?? entity.GetUrl();
+
             using (var client = GetClient())
             {
                 client.Timeout = TimeSpan.FromHours(1);
@@ -58,13 +76,6 @@ namespace MORM.Apresentacao.Consumers
 
                 return HandleHttpStatusCode(response);
             }
-        }
-
-        public ApiRetorno Post(TEntrada entity)
-        {
-            var api = ConsumerExtensions.GetApi<TEntrada>();
-            var url = ConsumerExtensions.GetUrl<TEntrada>();
-            return Post($"{api}/{url}", entity);
         }
 
         private ApiRetorno HandleHttpStatusCode(HttpResponseMessage response)
@@ -93,9 +104,6 @@ namespace MORM.Apresentacao.Consumers
             {
                 Logger.ErroException(ex);
             }
-
-            if (!string.IsNullOrWhiteSpace(retorno.Mensagem))
-                throw new Exception(retorno.Mensagem);
 
             return retorno;
         }

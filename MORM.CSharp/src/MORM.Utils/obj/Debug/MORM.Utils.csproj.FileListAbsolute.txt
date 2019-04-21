@@ -1,6 +1,7 @@
 D:\projeto\MORM\MORM.CSharp\bin\Debug\MORM.Utils.dll.config
 D:\projeto\MORM\MORM.CSharp\bin\Debug\MORM.Utils.dll
 D:\projeto\MORM\MORM.CSharp\bin\Debug\MORM.Utils.pdb
+D:\projeto\MORM\MORM.CSharp\src\MORM.Utils\obj\Debug\MORM.Utils.csprojAssemblyReference.cache
 D:\projeto\MORM\MORM.CSharp\src\MORM.Utils\obj\Debug\MORM.Utils.csproj.CoreCompileInputs.cache
 D:\projeto\MORM\MORM.CSharp\src\MORM.Utils\obj\Debug\MORM.Utils.dll
 D:\projeto\MORM\MORM.CSharp\src\MORM.Utils\obj\Debug\MORM.Utils.pdb

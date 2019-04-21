@@ -7,11 +7,15 @@ namespace MORM.Servico.Interfaces
     public interface IAbstractService
     {
         IAbstractUnityOfWork AbstractUnityOfWork { get; }
-        IAmbiente Ambiente { get; }
     }
 
     public interface IAbstractService<TObject> : IAbstractService where TObject : class
     {
         IAbstractRepository<TObject> AbstractRepository { get; }
+    }
+
+    public interface IAbstractAmbService
+    {
+        IAmbiente Ambiente { get; }
     }
 }

@@ -6,7 +6,7 @@ namespace MORM.Utils.Classes
     {
         public static string GetAppPath(this string path)
         {
-            return path.Replace("{appPath}", AppDomain.CurrentDomain.BaseDirectory); ;
+            return path?.Replace("{appPath}", AppDomain.CurrentDomain.BaseDirectory);
         }
     }
 }

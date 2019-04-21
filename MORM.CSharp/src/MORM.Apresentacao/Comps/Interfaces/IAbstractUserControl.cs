@@ -1,6 +1,6 @@
 ﻿namespace MORM.Apresentacao.Comps
 {
-    public interface IAbstractUserControl : IAbstractUserControlNotify
+    public interface IAbstractUserControl
     {
     }
 }

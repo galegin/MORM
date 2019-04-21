@@ -1,0 +1,52 @@
+﻿using MORM.Apresentacao.Models;
+using MORM.Dominio.Atributos;
+using System;
+
+namespace MORM.WSist.Models.Manutencao
+{
+    [SVC("Empresa")]
+    public class AbstractEmpresaModel : AbstractModel
+    {
+        #region variaveis
+        private int _id_Empresa;
+        private string _u_Version;
+        private int _cd_Operador;
+        private DateTime _dt_Cadastro;
+        private string _cd_Empresa;
+        private string _ds_Empresa;
+        #endregion
+
+        #region propriedades
+        public int Id_Empresa
+        {
+            get => _id_Empresa;
+            set => SetField(ref _id_Empresa, value);
+        }
+        public string U_Version
+        {
+            get => _u_Version;
+            set => SetField(ref _u_Version, value);
+        }
+        public int Cd_Operador
+        {
+            get => _cd_Operador;
+            set => SetField(ref _cd_Operador, value);
+        }
+        public DateTime Dt_Cadastro
+        {
+            get => _dt_Cadastro;
+            set => SetField(ref _dt_Cadastro, value);
+        }
+        public string Cd_Empresa
+        {
+            get => _cd_Empresa;
+            set => SetField(ref _cd_Empresa, value);
+        }
+        public string Ds_Empresa
+        {
+            get => _ds_Empresa;
+            set => SetField(ref _ds_Empresa, value);
+        }
+        #endregion
+    }
+}

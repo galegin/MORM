@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace MORM.Apresentacao.Comps
 {
-    public class AbstractUserControl : AbstractUserControlNotify, IAbstractUserControl, IDisposable
+    public class AbstractUserControl : UserControl, IAbstractUserControl, IDisposable
     {
         public AbstractUserControl()
         {
@@ -12,8 +13,7 @@ namespace MORM.Apresentacao.Comps
             Loaded += (s, e) => MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
         }
 
-        //-- key
-
+        #region key
         private void DefaultUserControl_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.Key)
@@ -53,9 +53,9 @@ namespace MORM.Apresentacao.Comps
         }
 
         public bool InConfirmado { get; protected set; }
+        #endregion
 
-        //-- metodo
-
+        #region metodo
         protected virtual void btnFechar_Click(object sender, RoutedEventArgs e)
         {
             Window.GetWindow(this).Close();
@@ -70,9 +70,9 @@ namespace MORM.Apresentacao.Comps
         protected virtual void btnImportar_Click(object sender, RoutedEventArgs e) { }
         protected virtual void btnImprimir_Click(object sender, RoutedEventArgs e) { }
         protected virtual void btnVisualizar_Click(object sender, RoutedEventArgs e) { }
+        #endregion
 
-        //-- dispose
-
+        #region dispose
         public void Dispose()
         {
             GC.SuppressFinalize(this);
@@ -82,5 +82,6 @@ namespace MORM.Apresentacao.Comps
         {
             Dispose();
         }
+        #endregion
     }
 }

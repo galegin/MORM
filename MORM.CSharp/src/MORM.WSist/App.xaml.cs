@@ -1,5 +1,6 @@
 ﻿using MORM.Apresentacao.Classes;
 using MORM.Apresentacao.Comps;
+using MORM.Apresentacao.Connectors;
 using MORM.Utils.Classes;
 using MORM.WSist.Ioc.Container;
 using System.Windows;
@@ -10,6 +11,7 @@ namespace MORM.WSist
     {
         public App()
         {
+            AbstractAmbienteConnector.ValidarAcesso();
             AbstractApplicationExtensions.SetApplication(this);
             NavegacaoComEnter.Ativar();
             Logger.CreateDirLog();

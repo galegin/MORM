@@ -1,30 +1,16 @@
-﻿using MORM.Utils.Classes;
+﻿using MORM.Apresentacao.Comps.ViewsModel;
+using MORM.Utils.Classes;
 
 namespace MORM.Apresentacao.Comps
 {
-    /// <summary>
-    /// Interação lógica para ucMensagemLog.xam
-    /// </summary>
     public partial class MensagemLog : AbstractWindow
     {
         public MensagemLog() : base()
         {
             InitializeComponent();
-            Loaded += MensagemLog_Loaded;
+            Loaded += (s, e) => (DataContext as LoadingBoxViewModel).Mensagem = LoggerMem.Mensagem;
             SetPositionInitial();
-            SetDataContext();
-        }
-
-        private void MensagemLog_Loaded(object sender, System.Windows.RoutedEventArgs e)
-        {
-            ConteudoMensagem = LoggerMem.Mensagem;
-        }
-
-        private string _conteudoMensagem;
-        public string ConteudoMensagem
-        {
-            get => _conteudoMensagem;
-            set => SetField(ref _conteudoMensagem, value);
+            DataContext = new MensagemLogViewModel();
         }
     }
 

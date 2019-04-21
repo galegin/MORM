@@ -13,5 +13,7 @@
         Salvar = 50,
 
         Excluir = 60,
+
+        Sequencia = 70,
     }
 }

@@ -26,11 +26,6 @@ namespace MORM.Repositorio.Dapper.Context
             SetAmbiente(ambiente);
         }
 
-        public AbstractDataContextDapper(IAmbiente ambiente)
-        {
-            SetAmbiente(ambiente);
-        }
-
         private readonly IConnectionFactory _connectionFactory;
 
         //-- interface

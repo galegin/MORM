@@ -19,7 +19,7 @@
 
     <Grid>
         <DockPanel>
-            <Label Content="{Binding ConteudoMensagem}" FontSize="24" Foreground="Black" 
+            <Label Content="{Binding Mensagem}" FontSize="24" Foreground="Black" 
                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
         </DockPanel>
         

@@ -1,4 +1,4 @@
-﻿<comps:AbstractUserControlNotify x:Class="MORM.Apresentacao.Menus.ucMenuLateral"
+﻿<comps:AbstractUserControl x:Class="MORM.Apresentacao.Menus.ucMenuLateral"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,9 +7,9 @@
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="300">
 
-    <comps:AbstractUserControlNotify.Resources>
+    <comps:AbstractUserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
-    </comps:AbstractUserControlNotify.Resources>
+    </comps:AbstractUserControl.Resources>
 
     <Grid>
         <DockPanel>
@@ -19,4 +19,4 @@
             
         </DockPanel>
     </Grid>
-</comps:AbstractUserControlNotify>
+</comps:AbstractUserControl>
