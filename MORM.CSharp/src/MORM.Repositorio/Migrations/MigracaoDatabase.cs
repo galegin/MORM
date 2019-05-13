@@ -13,18 +13,6 @@ namespace MORM.Repositorio.Migrations
         private const string _nomeEntidade = "_DATABASE";
         #endregion
 
-        #region variaveis
-        #endregion
-
-        #region propriedades
-        #endregion
-
-        #region comandos
-        #endregion
-
-        #region contrutores
-        #endregion
-
         #region metodos
         private static string GetVersaoModel(Type[] types)
         {
@@ -32,7 +20,7 @@ namespace MORM.Repositorio.Migrations
 
             foreach (var type in types)
                 if (type.GetTabela() != null)
-                    listaHash.Add(MigracaoEntidade.GetMd5(type));
+                    listaHash.Add(Migracao.GetMd5(type));
 
             return string.Join(",", listaHash).GerarHashMd5();
         }
@@ -40,7 +28,7 @@ namespace MORM.Repositorio.Migrations
         public static bool IsGerarVersao(IAbstractDataContext context, Type[] types, out string versaoModel)
         {
             var versaoBase = context
-                .GetObjetoF<Migracao>(f => $"{nameof(f.Codigo)} = '{_nomeEntidade}'")?.Versao;
+                .GetObjetoF((MigracaoEnt f) => $"{nameof(f.Codigo)} = '{_nomeEntidade}'")?.Versao;
 
             versaoModel = GetVersaoModel(types);
 
@@ -49,7 +37,7 @@ namespace MORM.Repositorio.Migrations
 
         public static void GravarVersao(IAbstractDataContext context, string versaoModel)
         {
-            context.SetObjeto(new Migracao(_nomeEntidade, versaoModel));
+            context.SetObjeto(new MigracaoEnt(_nomeEntidade, versaoModel));
         }
         #endregion
     }

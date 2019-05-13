@@ -33,7 +33,7 @@ namespace MORM.Repositorio.Dapper.Context
         public IAmbiente Ambiente { get; private set; }
         public IConexao Conexao { get; private set; }
         public IComando Comando { get; private set; }
-        public IMigracaoEntidade Migracao { get; private set; }
+        public IMigracao Migracao { get; private set; }
 
         //-- ambiente
 
@@ -42,7 +42,7 @@ namespace MORM.Repositorio.Dapper.Context
             Ambiente = ambiente ?? throw new ArgumentNullException(nameof(ambiente));
             Conexao = ConexaoFactory.GetConexao(ambiente, _connectionFactory);
             Comando = new Comando(ambiente.TipoDatabase);
-            Migracao = new MigracaoEntidade(this);
+            Migracao = new Migracao(this);
         }
 
         //-- lista
@@ -130,8 +130,8 @@ namespace MORM.Repositorio.Dapper.Context
                     .ComParametros(parametros)
                     .GetUpdate();
             else
-                cmd = Comando.
-                    ComParametros(parametros)
+                cmd = Comando
+                    .ComParametros(parametros)
                     .GetInsert();
 
             Conexao

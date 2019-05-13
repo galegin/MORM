@@ -1,7 +1,7 @@
 ﻿using MORM.Aplicacao.Ioc.Installer;
 using MORM.Dominio.Entidades;
 using MORM.Dominio.Interfaces;
-using MORM.Repositorio.Context;
+using MORM.Mocks;
 using MORM.Repositorio.Dapper.Context;
 using MORM.Repositorio.Interfaces;
 using MORM.Repositorio.SqLite;
@@ -26,7 +26,7 @@ namespace MORM.Repositorio.Tests.Ioc.Installer
 
         public override void InstallerDataConext()
         {
-            Register<IAbstractDataContext, AbstractDataContext>();
+            Register<IAbstractDataContext, MockDataContext>();
             Register<IAbstractDataContextDapper, AbstractDataContextDapper>();
         }
 
@@ -42,8 +42,9 @@ namespace MORM.Repositorio.Tests.Ioc.Installer
 
         public override void InstallerServices()
         {
-            Register<ITipoService, TipoService>();
+            Register<IReferenciaService, ReferenciaService>();
             Register<ITesteService, TesteService>();
+            Register<ITipoService, TipoService>();
         }
 
         public override void InstallerUnitOfWork()

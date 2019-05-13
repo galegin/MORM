@@ -9,17 +9,26 @@
     <Grid>
         <DockPanel>
             <StackPanel DockPanel.Dock="Top">
-                <Button Height="40" Width="210" Margin="0"
+                <Button Height="40" Width="Auto" Margin="0"
                         Style="{StaticResource InlineButton}"
                         Command="{Binding ExecutarSubMenu}" CommandParameter="{Binding}"
                         HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                         >
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Height="40" Width="208" 
-                                   Text="{Binding MenuOpcao.Descricao}" 
-                                   HorizontalAlignment="Center" VerticalAlignment="Center"
-                                   />
-                    </StackPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Column="1" Height="Auto" Width="Auto"
+                               Foreground="White"
+                               Content="{Binding MenuOpcao.Descricao}" 
+                               HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                               />
+                    </Grid>
                 </Button>
             </StackPanel>
 

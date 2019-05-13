@@ -38,6 +38,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\MIGR\src\packages\Castle.Windsor.4.1.1\lib\net45\Castle.Windsor.dll</HintPath>
     </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=2.5.0.1205, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MaterialDesignThemes.2.5.0.1205\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -61,6 +65,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\ViewsModel\AbstractPackIconViewModel.cs" />
+    <Compile Include="Controls\ucAbstractPackIcon.xaml.cs">
+      <DependentUpon>ucAbstractPackIcon.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Ioc\Container\BaseContainer.cs" />
     <Compile Include="Ioc\Installer\BaseInstaller.cs" />
     <Compile Include="Menus\MenuSistema.cs" />
@@ -69,15 +77,18 @@
     <Compile Include="Models\Manutencao\AbstractProdutoModel.cs" />
     <Compile Include="Models\Manutencao\AbstractTerminalModel.cs" />
     <Compile Include="Models\Manutencao\AbstractUsuarioModel.cs" />
+    <Compile Include="ViewsModel\Lista\AbstractPackIconViewModelLista.cs" />
     <Compile Include="ViewsModel\Manutencao\AbstractUsuarioViewModel.cs" />
     <Compile Include="ViewsModel\Manutencao\AbstractTerminalViewModel.cs" />
     <Compile Include="ViewsModel\Manutencao\AbstractEmpresaViewModel.cs" />
+    <Compile Include="Views\Lista\AbstractPackIconViewLista.cs" />
     <Compile Include="Views\Manutencao\AbstractUsuarioViewManut.cs" />
     <Compile Include="Views\Manutencao\AbstractTerminalViewManut.cs" />
     <Compile Include="Views\Manutencao\AbstractEmpresaViewManut.cs" />
     <Compile Include="Views\Manutencao\AbstractClienteViewManut.cs" />
     <Compile Include="Views\Manutencao\AbstractProdutoViewManut.cs" />
     <Compile Include="Views\Manutencao\Interfaces\IAbstractEmpresaViewManut.cs" />
+    <Compile Include="Views\Lista\Interfaces\IAbstractPackIconViewLista.cs" />
     <Compile Include="Views\Manutencao\Interfaces\IAbstractUsuarioViewManut.cs" />
     <Compile Include="Views\Manutencao\Interfaces\IAbstractTerminalViewManut.cs" />
     <Compile Include="Views\Manutencao\Interfaces\IAbstractClienteViewManut.cs" />
@@ -141,6 +152,11 @@
       <Name>MORM.Utils</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Page Include="Controls\ucAbstractPackIcon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

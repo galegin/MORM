@@ -21,6 +21,9 @@ namespace MORM.Dominio.Extensions
         {
             var argAnt = string.Empty;
 
+            usuario.Nm_Login = "teste";
+            usuario.Nm_Usuario = "Usuario teste";
+
             foreach (var arg in Environment.GetCommandLineArgs())
             {
                 switch (argAnt)

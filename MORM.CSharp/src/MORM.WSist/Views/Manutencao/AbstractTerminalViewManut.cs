@@ -3,11 +3,7 @@ using MORM.WSist.ViewsModel.Manutencao;
 
 namespace MORM.WSist.Views.Manutencao
 {
-    public class AbstractTerminalViewManut : AbstractViewManut, IAbstractTerminalViewManut
+    public class AbstractTerminalViewManut : AbstractViewManut<AbstractTerminalViewModel>, IAbstractTerminalViewManut
     {
-        public AbstractTerminalViewManut()
-        {
-            CreateCampos(new AbstractTerminalViewModel());
-        }
     }
 }

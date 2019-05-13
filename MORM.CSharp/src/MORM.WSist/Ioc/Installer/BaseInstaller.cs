@@ -4,8 +4,9 @@ using MORM.Aplicacao.Ioc.Installer;
 using MORM.Apresentacao.Classes;
 using MORM.Apresentacao.Menus;
 using MORM.Apresentacao;
-using MORM.WSist.Views.Manutencao;
 using MORM.WSist.Menus;
+using MORM.WSist.Views.Manutencao;
+using MORM.WSist.Views.Lista;
 
 namespace MORM.WSist.Ioc.Installer
 {
@@ -47,6 +48,7 @@ namespace MORM.WSist.Ioc.Installer
         public override void InstallerViews()
         {
             RegisterSingleton<IMainWindow, MainWindow>();
+            RegisterSingleton<IMainLogin, MainLogin>();
 
             Register<IMenuSistema, MenuSistema>();
             Register<IMenuLateral, ucMenuLateral>();
@@ -61,6 +63,8 @@ namespace MORM.WSist.Ioc.Installer
             Register<IAbstractProdutoViewManut, AbstractProdutoViewManut>();
             Register<IAbstractTerminalViewManut, AbstractTerminalViewManut>();
             Register<IAbstractUsuarioViewManut, AbstractUsuarioViewManut>();
+
+            Register<IAbstractPackIconViewLista, AbstractPackIconViewLista>();
         }
     }
 }

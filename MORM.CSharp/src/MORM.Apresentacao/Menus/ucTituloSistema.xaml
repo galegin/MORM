@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:comps="clr-namespace:MORM.Apresentacao.Comps"
-             xmlns:materialDesing="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
+             xmlns:materialDesign="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
              mc:Ignorable="d" 
              d:DesignHeight="50" d:DesignWidth="800">
     <Grid>
@@ -16,8 +16,8 @@
                         Background="Transparent"
                         >
                     <StackPanel>
-                        <materialDesing:PackIcon Kind="{Binding PackIconKindMenu}"
-                                                 Height="35" Width="50" 
+                        <materialDesign:PackIcon Kind="{Binding PackIconKindMenu}"
+                                                 Height="Auto" Width="Auto" 
                                                  VerticalAlignment="Center" HorizontalAlignment="Center" 
                                                  Margin="6,0,6,0" Foreground="#FFFFFF"/>
                     </StackPanel>

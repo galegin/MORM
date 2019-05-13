@@ -124,7 +124,15 @@
     <Compile Include="Controls\ViewsModel\AbstractCampoViewModel.cs" />
     <Compile Include="Controls\ViewsModel\AbstractOpcaoViewModel.cs" />
     <Compile Include="Controls\ViewsModel\AbstractTituloViewModel.cs" />
+    <Compile Include="Interfaces\IMainLogin.cs" />
     <Compile Include="Ioc\Installer\BaseInstaller.cs" />
+    <Compile Include="Login\Commands\FecharLogin.cs" />
+    <Compile Include="Login\Commands\LogarSistema.cs" />
+    <Compile Include="Login\Models\LoginModel.cs" />
+    <Compile Include="Login\MainLogin.xaml.cs">
+      <DependentUpon>MainLogin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Login\ViewsModel\LoginViewModel.cs" />
     <Compile Include="Menus\Commands\ExecutarMenu.cs" />
     <Compile Include="Menus\Commands\ExecutarSubMenu.cs" />
     <Compile Include="Menus\Commands\ExibirMenuLateral.cs" />
@@ -156,7 +164,16 @@
     <Compile Include="Menus\ViewModels\MenuOpcaoViewModel.cs" />
     <Compile Include="Menus\ViewModels\TituloSistemaViewModel.cs" />
     <Compile Include="Menus\ViewModels\SubMenuOpcaoViewModel.cs" />
+    <Compile Include="ViewsModel\AbstractViewModelRelat.cs" />
+    <Compile Include="ViewsModel\AbstractViewModelProc.cs" />
+    <Compile Include="ViewsModel\AbstractViewModelManut.cs" />
+    <Compile Include="ViewsModel\AbstractViewModelLista.cs" />
     <Compile Include="ViewsModel\AbstractViewModel.cs" />
+    <Compile Include="ViewsModel\Interfaces\IAbstractViewModel.cs" />
+    <Compile Include="ViewsModel\Interfaces\IAbstractViewModelLista.cs" />
+    <Compile Include="ViewsModel\Interfaces\IAbstractViewModelManut.cs" />
+    <Compile Include="ViewsModel\Interfaces\IAbstractViewModelProc.cs" />
+    <Compile Include="ViewsModel\Interfaces\IAbstractViewModelRelat.cs" />
     <Compile Include="ViewsModel\MainWindowViewModel.cs" />
     <Compile Include="Views\AbstractViewLista.cs" />
     <Compile Include="Views\AbstractViewManut.cs" />
@@ -180,6 +197,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\AbstractTitulo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Login\MainLogin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

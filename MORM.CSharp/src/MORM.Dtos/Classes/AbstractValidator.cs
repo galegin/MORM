@@ -1,47 +1,49 @@
-﻿using System.Collections.Generic;
+﻿using MORM.Dominio.Extensoes;
+using System.Collections.Generic;
 
 namespace MORM.Dtos.Classes
 {
     public abstract class AbstractValidator
     {
         public abstract void Validate();
+
+        protected bool IsEmpty(object value) => value?.IsEmpty() ?? true;
     }
 
-    public abstract class AbstractValidator<TObj> : AbstractValidator
+    public abstract class AbstractValidator<TInstance> : AbstractValidator
     {
-        private readonly TObj _instance;
+        protected readonly TInstance _instance;
 
-        public AbstractValidator(TObj instance)
-        {
-            _instance = instance;
-        }
+        public AbstractValidator(TInstance instance) => _instance = instance;
     }
-
-    public abstract class AbstractValidatorList
+    
+    public abstract class AbstractValidatorList<TInstance>
     {
-        private readonly List<AbstractValidator> _validators =
-            new List<AbstractValidator>();
+        private readonly List<AbstractValidator<TInstance>> _validators =
+            new List<AbstractValidator<TInstance>>();
 
-        public AbstractValidatorList()
-        {
-        }
+        public AbstractValidatorList(TInstance instance) { }
 
-        protected void Clear()
-        {
-            _validators.Clear();
-        }
+        protected void Add(AbstractValidator<TInstance> validator) => _validators.Add(validator);
 
-        protected void Add(AbstractValidator validator)
+        public virtual void Validate() => _validators.ForEach(validator => validator.Validate());
+    }
+    
+    public static class AbstractValidatorExtension
+    {
+        public static bool IsEmpty<TValue>(this TValue value)
         {
-            _validators.Add(validator);
-        }
+            if (value == null)
+                return true;
 
-        public virtual void Validate()
-        {
-            _validators.ForEach(validator =>
-            {
-                validator.Validate();
-            });
+            if (typeof(TValue).IsBool())
+                return false;
+
+            var valueNull = typeof(TValue).GetValueNull();
+            if (valueNull.Equals(value))
+                return true;
+
+            return false;
         }
     }
 }

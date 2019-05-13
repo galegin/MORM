@@ -27,6 +27,18 @@ namespace MORM.Repositorio.Tests
             _tipoRepository.Salvar(new TipoModel(_cdTipo, _dsTipo));
         }
 
+        [TestInitialize]
+        public void TipoServiceTests_Initialize()
+        {
+            TipoServiceTests_Cleanup();
+        }
+
+        [TestCleanup]
+        public void TipoServiceTests_Cleanup()
+        {
+            _tipoRepository.ClearAll();
+        }
+
         [TestMethod]
         public void TipoDapperTests_Listar()
         {

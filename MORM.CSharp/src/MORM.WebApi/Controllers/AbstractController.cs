@@ -21,6 +21,7 @@ namespace MORM.WebApi.Controllers
     {
         // variaveis
 
+        protected IAmbiente _ambiente;
         protected readonly IAbstractApiService<TObject> _abstractApiService;
 
         // construtores
@@ -35,13 +36,15 @@ namespace MORM.WebApi.Controllers
 
         protected override void Initialize(HttpControllerContext controllerContext)
         {
-            _abstractApiService.SetAmbiente(controllerContext.Request.GetAmbiente());
+            _ambiente = controllerContext.Request.GetAmbiente();
+            _abstractApiService.SetAmbiente(_ambiente);
             base.Initialize(controllerContext);
         }
 
         // ambiente
 
-        protected IAmbiente Ambiente => _abstractApiService.AbstractRepository.DataContext.Ambiente;
+        protected IAmbiente Ambiente => _ambiente;
+            //_abstractApiService.AbstractService.AbstractRepository.DataContext.Ambiente;
 
         // servico
 

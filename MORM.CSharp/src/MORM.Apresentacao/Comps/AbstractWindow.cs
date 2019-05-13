@@ -6,37 +6,68 @@ namespace MORM.Apresentacao.Comps
 {
     public class AbstractWindow : Window, IAbstractWindow, IDisposable
     {
+        #region variaveis
+        private bool _isAltKey;
+        private bool _isControlKey;
+        private bool _isShiftKey;
+        #endregion
+
+        #region propriedades
+        public bool IsPrincipal { get; set; }
+        #endregion
+
         #region construtores
         public AbstractWindow()
         {
             KeyDown += DefaultWindow_KeyDown;
+            Loaded += (s, e) => MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
             PreviewKeyDown += DefaultWindow_PreviewKeyDown;
             Closed += DefaultWindow_Closed;
         }
         #endregion
 
-        #region teclas
-        public bool IsPrincipal { get; set; }
+        #region metodos
 
+        #region execute
+
+        public object Execute(object parameter)
+        {
+            if (PreExecute(parameter))
+                if (ShowDialog() == false)
+                    return PosExecute(parameter);
+            return null;
+        }
+
+        protected virtual bool PreExecute(object parameter) => true;
+        protected virtual object PosExecute(object parameter) => null;
+
+        #endregion
+
+        #region fechar
+
+        public void FecharTela()
+        {
+            if (IsPrincipal)
+                Environment.Exit(0);
+            else
+                Close();
+        }
+
+        #endregion
+
+        #region teclas
         private void DefaultWindow_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.Key)
             {
                 case Key.Escape:
-                    if (IsPrincipal)
-                        Environment.Exit(0);
-                    else
-                        Close();
+                    FecharTela();
 
                     e.Handled = true;
 
                     break;
             }
         }
-
-        private bool _isAltKey;
-        private bool _isControlKey;
-        private bool _isShiftKey;
 
         private void DefaultWindow_PreviewKeyDown(object sender, KeyEventArgs e)
         {
@@ -56,7 +87,7 @@ namespace MORM.Apresentacao.Comps
         }
         #endregion
 
-        #region closed
+        #region close
         private void DefaultWindow_Closed(object sender, EventArgs e)
         {
             if (IsPrincipal)
@@ -94,6 +125,8 @@ namespace MORM.Apresentacao.Comps
         {
             Dispose();
         }
+        #endregion
+
         #endregion
     }
 }

@@ -5,9 +5,6 @@ namespace MORM.Apresentacao.ViewsModel
 {
     public class MainWindowViewModel : AbstractViewModel
     {
-        #region constantes
-        #endregion
-
         #region variaveis
         private ITituloSistema _tituloSistema;
         private IMenuLateral _menuLateral;
@@ -32,10 +29,7 @@ namespace MORM.Apresentacao.ViewsModel
         }
         #endregion
 
-        #region comandos
-        #endregion
-
-        #region contrutores
+        #region construtores
         public MainWindowViewModel(
             ITituloSistema tituloSistema,
             IMenuLateral menuLateral)
@@ -43,9 +37,6 @@ namespace MORM.Apresentacao.ViewsModel
             TituloSistema = tituloSistema ?? throw new ArgumentNullException(nameof(tituloSistema));
             MenuLateral = menuLateral ?? throw new ArgumentNullException(nameof(menuLateral));
         }
-        #endregion
-
-        #region metodos
         #endregion
     }
 }

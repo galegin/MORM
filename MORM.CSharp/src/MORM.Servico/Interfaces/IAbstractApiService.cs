@@ -1,6 +1,5 @@
 ﻿using MORM.Dominio.Interfaces;
 using MORM.Dtos;
-using MORM.Repositorio.Repositories;
 using MORM.Repositorio.Uow;
 
 namespace MORM.Servico.Interfaces
@@ -18,7 +17,7 @@ namespace MORM.Servico.Interfaces
 
     public interface IAbstractApiService<TObject> : IAbstractApiService where TObject : class
     {
-        IAbstractRepository<TObject> AbstractRepository { get; }
+        IAbstractService<TObject> AbstractService { get; }
         AbstractListarDto.Retorno<TObject> Listar(AbstractListarDto.Envio<TObject> dto);
         AbstractConsultarDto.Retorno<TObject> Consultar(AbstractConsultarDto.Envio<TObject> dto);
         void Incluir(AbstractIncluirDto.Envio<TObject> dto);

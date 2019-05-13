@@ -1,6 +1,6 @@
 ﻿namespace MORM.Dominio.Interfaces
 {
-    public interface IMigracao
+    public interface IMigracaoEnt
     {
         string Codigo { get; set; }
         string Versao { get; set; }

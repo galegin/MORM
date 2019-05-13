@@ -5,6 +5,10 @@ namespace MORM.Dtos
     public abstract class AbstractDto
     {
     }
+    
+    public abstract class AbstractDto<TInstance> : AbstractDto 
+    {
+    }
 
     public abstract class AbstractDto<TEntrada, TRetorno> : AbstractDto 
         where TEntrada : class

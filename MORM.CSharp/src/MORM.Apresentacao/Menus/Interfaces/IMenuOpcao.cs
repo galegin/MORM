@@ -1,34 +1,59 @@
-﻿using MORM.Dominio.Interfaces;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace MORM.Apresentacao.Menus
 {
-    public enum IMenuOpcaoTipo
+    public enum MenuOpcaoTipo
     {
-        Principal,
+        Principal = 1,
         SubMenu,
-        Opcao
+        Opcao,
+        Configuracao,
+        Consulta,
+        Filtro,
+        Grafico,
+        Listagem,
+        Manutencao,
+        Pesquisa,
+        Processo,
+        Relatorio
+    }
+
+    public enum MenuOpcaoPermissao
+    {
+        Suporte = 1,
+        Administrador,
+        Operador,
+        Consulta
     }
 
     public interface IMenuOpcao
     {
-        IMenuOpcaoTipo Tipo { get; }
+        MenuOpcaoTipo Tipo { get; }
         string Codigo { get; }
         string Descricao { get; }
+        string Image { get; }
         IList<IMenuOpcao> SubMenuOpcao { get; }
-        UsuarioPrivilegio Privilegio { get; }
+        MenuOpcaoPermissao Permissao { get; }
         void Executar();
     }
 
-    public interface IMenuOpcaoAcao : IMenuOpcao { }
+    // extension
 
-    public interface IMenuOpcaoDescr : IMenuOpcao { }
+    public static class MenuOpcaoTipoExtension
+    {
+        public static string GetComponente(this MenuOpcaoTipo tipo)
+        {
+            return $"Menu{tipo.ToString()}";
+        }
 
-    public interface IMenuOpcaoMetodo : IMenuOpcao { }
+        public static string GetImagem(this MenuOpcaoTipo tipo)
+        {
+            return $"Images\\{tipo.ToString().ToLower()}.png";
+        }
 
-    public interface IMenuOpcaoClasse : IMenuOpcao { }
-
-    public interface IMenuOpcaoObjeto : IMenuOpcao { }
-
-    public interface IMenuOpcaoTipo<TObject> : IMenuOpcao where TObject : class { }
+        public static string GetTitulo(this MenuOpcaoTipo tipo)
+        {
+            return $"{tipo.ToString()}";
+        }
+    }
 }

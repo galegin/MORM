@@ -8,29 +8,58 @@ namespace MORM.Repositorio.Tests
     [TestClass]
     public class ReferenciaTests
     {
+        private readonly IReferenciaService _referenciaService;
         private readonly ITesteService _testeService;
-        private readonly ReferenciaModel _referenciaModel;
-        private readonly TipoEnum _tipoEnum;
+        private readonly TipoEnum _tipoEnum = TipoEnum.Normal;
+        private const int _cdTipo = 1;
 
         public ReferenciaTests()
         {
+            _referenciaService = BaseContainer.Instance.Resolve<IReferenciaService>();
             _testeService = BaseContainer.Instance.Resolve<ITesteService>();
-            _referenciaModel = new ReferenciaModel();
-            _tipoEnum = TipoEnum.Normal;
+        }
+
+        [TestInitialize]
+        public void ReferenciaTests_Initialize()
+        {
+            ReferenciaTests_Cleanup();
+
+            var referenciaModel = new ReferenciaModel()
+            {
+                Tipo = new TipoModel { Cd_Tipo = _cdTipo },
+                Teste = new TesteModel { Cd_Tipo = _cdTipo }
+            };
+            _referenciaService.Salvar(referenciaModel);
+
+            var testeModel = new TesteModel()
+            {
+                Tipo = new TipoModel { Cd_Tipo = _cdTipo }
+            };
+            _testeService.Salvar(testeModel);
+        }
+
+        [TestCleanup]
+        public void ReferenciaTests_Cleanup()
+        {
+            _referenciaService.AbstractRepository.ClearAll();
+            _testeService.AbstractRepository.ClearAll();
         }
 
         [TestMethod]
         public void ReferenciaTests_ConsultarComConst()
         {
             _testeService.AbstractRepository
-                .FirstOrDefault(f => f.Cd_Tipo == 1);        
+                .FirstOrDefault(f => f.Cd_Tipo == _cdTipo);        
         }
 
         [TestMethod]
         public void ReferenciaTests_ConsultarComEnum()
         {
+            var referenciaModel = 
+                _referenciaService.AbstractRepository.FirstOrDefault();
+
             _testeService.AbstractRepository
-                .FirstOrDefault(f => f.Cd_Tipo == (int)_referenciaModel.TipoEnum);
+                .FirstOrDefault(f => f.Cd_Tipo == (int)referenciaModel.TipoEnum);
         }
 
         [TestMethod]
@@ -86,8 +115,11 @@ namespace MORM.Repositorio.Tests
         [TestMethod]
         public void ReferenciaTests_ConsultarComObjeto()
         {
+            var referenciaModel =
+                _referenciaService.AbstractRepository.FirstOrDefault();
+
             _testeService.AbstractRepository
-                .FirstOrDefault(f => f.Cd_Tipo == _referenciaModel.Tipo.Cd_Tipo);
+                .FirstOrDefault(f => f.Cd_Tipo == referenciaModel.Tipo.Cd_Tipo);
         }
     }
 }

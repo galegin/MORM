@@ -1,9 +1,9 @@
-﻿namespace MORM.Apresentacao
+﻿using MORM.Apresentacao.Comps;
+
+namespace MORM.Apresentacao
 {
-    public interface IMainWindow
+    public interface IMainWindow : IAbstractWindow
     {
-        bool? ShowDialog();
-        void Close();
         void Navegar(object sender);
         void SetarIsExibirMenuLateral(bool? flag = null);
     }

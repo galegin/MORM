@@ -17,15 +17,13 @@ namespace MORM.Apresentacao.Comps
         public static ITelaUtils Instance { get; private set; }
         public IAbstractContainer Container { get; private set; }
         public IMainWindow MainWindow => Container.Resolve<IMainWindow>();
+        public IMainLogin MainLogin => Container.Resolve<IMainLogin>();
         #endregion
 
         #region metodos
         public static ITelaUtils Factory(IAbstractContainer container)
         {
-            return Instance = new TelaUtils
-            {
-                Container = container,
-            };
+            return Instance ?? (Instance = new TelaUtils { Container = container });
         }
 
         public void NavegarPara(UserControl userControl)

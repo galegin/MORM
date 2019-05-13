@@ -17,20 +17,31 @@ namespace MORM.Repositorio.Tests
         }
 
         private const int _codigoTeste = 1;
-        private const string _descricaoTeste = "TESTE 1";
 
-        private TesteModel GetTeste()
+        private TesteModel GetTeste(int codigo)
         {
             return new TesteModel
             {
-                Cd_Teste = _codigoTeste,
-                Ds_Teste = _descricaoTeste,
+                Cd_Teste = codigo,
+                Ds_Teste = $"TESTE {codigo}",
                 Dt_Teste = DateTime.Now,
                 Nr_Teste = 2,
                 In_Ativo = true,
                 Vl_Teste = 3,
                 Cd_Tipo = 1
             };
+        }
+
+        [TestInitialize]
+        public void TesteServiceTests_Initialize()
+        {
+            TesteServiceTests_Cleanup();
+        }
+
+        [TestCleanup]
+        public void TesteServiceTests_Cleanup()
+        {
+            _testeService.AbstractRepository.ClearAll();
         }
 
         [TestMethod]
@@ -56,7 +67,7 @@ namespace MORM.Repositorio.Tests
         [TestMethod]
         public void TesteServiceTests_Salvar()
         {
-            var teste = GetTeste();
+            var teste = GetTeste(_codigoTeste);
 
             _testeService.AbstractRepository.Salvar(teste);
         }
@@ -66,7 +77,7 @@ namespace MORM.Repositorio.Tests
         {
             TesteServiceTests_Salvar();
 
-            var teste = new TesteModel { Cd_Teste = 1 };
+            var teste = new TesteModel { Cd_Teste = _codigoTeste };
 
             _testeService.AbstractRepository.Excluir(teste);
         }

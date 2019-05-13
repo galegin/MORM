@@ -4,13 +4,13 @@ using MORM.Dominio.Interfaces;
 namespace MORM.Dominio.Entidades
 {
     [Tabela("_MIGRACAO")]
-    public class Migracao : IMigracao
+    public class MigracaoEnt : IMigracaoEnt
     {
-        public Migracao()
+        public MigracaoEnt()
         {
         }
 
-        public Migracao(string codigo, string versao)
+        public MigracaoEnt(string codigo, string versao)
         {
             Codigo = codigo;
             Versao = versao;

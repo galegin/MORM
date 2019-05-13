@@ -45,6 +45,8 @@ namespace MORM.Dominio.Extensions
         {
             var argAnt = string.Empty;
 
+            ambiente.Codigo = "teste";
+
             foreach (var arg in Environment.GetCommandLineArgs())
             {
                 switch (argAnt)

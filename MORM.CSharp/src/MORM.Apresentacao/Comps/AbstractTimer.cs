@@ -7,13 +7,6 @@ namespace MORM.Apresentacao.Comps
 
     public class AbstractTimer
     {
-        #region construtores
-        public AbstractTimer(OnTimerExecute onTimerExecute)
-        {
-            SetarTimer(onTimerExecute ?? throw new ArgumentNullException(nameof(onTimerExecute)));
-        }
-        #endregion
-
         #region constantes
         private const int TEMPO_TIMER = 60 * 1000;
         #endregion
@@ -21,6 +14,13 @@ namespace MORM.Apresentacao.Comps
         #region variaveis
         private Timer _timer;
         private event OnTimerExecute _onTimerExecute;
+        #endregion
+
+        #region construtores
+        public AbstractTimer(OnTimerExecute onTimerExecute)
+        {
+            SetarTimer(onTimerExecute ?? throw new ArgumentNullException(nameof(onTimerExecute)));
+        }
         #endregion
 
         #region metodos

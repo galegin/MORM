@@ -3,11 +3,7 @@ using MORM.WSist.ViewsModel.Manutencao;
 
 namespace MORM.WSist.Views.Manutencao
 {
-    public class AbstractProdutoViewManut : AbstractViewManut, IAbstractProdutoViewManut
+    public class AbstractProdutoViewManut : AbstractViewManut<AbstractProdutoViewModel>, IAbstractProdutoViewManut
     {
-        public AbstractProdutoViewManut()
-        {
-            CreateCampos(new AbstractProdutoViewModel());
-        }
     }
 }

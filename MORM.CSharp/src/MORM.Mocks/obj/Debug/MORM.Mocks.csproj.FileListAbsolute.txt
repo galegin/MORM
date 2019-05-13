@@ -1,0 +1,6 @@
+D:\projeto\MORM\MORM.CSharp\bin\Tests\MORM.Mocks.dll
+D:\projeto\MORM\MORM.CSharp\bin\Tests\MORM.Mocks.pdb
+D:\projeto\MORM\MORM.CSharp\src\MORM.Mocks\obj\Debug\MORM.Mocks.csproj.CoreCompileInputs.cache
+D:\projeto\MORM\MORM.CSharp\src\MORM.Mocks\obj\Debug\MORM.Mocks.csproj.CopyComplete
+D:\projeto\MORM\MORM.CSharp\src\MORM.Mocks\obj\Debug\MORM.Mocks.dll
+D:\projeto\MORM\MORM.CSharp\src\MORM.Mocks\obj\Debug\MORM.Mocks.pdb

@@ -106,7 +106,7 @@
   <ItemGroup>
     <ProjectReference Include="..\MORM.WebApi\MORM.WebApi.csproj">
       <Project>{d2bc10e8-6805-4944-b7e2-401b59758f0c}</Project>
-      <Name>ProjetoApi.WebApi</Name>
+      <Name>MORM.WebApi</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

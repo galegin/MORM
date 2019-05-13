@@ -1,10 +1,11 @@
 ﻿using MORM.Apresentacao.Comps;
-using MORM.WSist.Views.Manutencao;
+using MORM.Apresentacao.Menus;
 using MORM.Utils.Excecoes;
+using MORM.WSist.Views.Lista;
+using MORM.WSist.Views.Manutencao;
 using System;
 using System.Collections.Generic;
 using System.Threading;
-using MORM.Apresentacao.Menus;
 
 namespace MORM.WSist.Menus
 {
@@ -34,6 +35,7 @@ namespace MORM.WSist.Menus
             listaDeMenuOpcao.Add(GetMenuRelatorio());
             listaDeMenuOpcao.Add(GetMenuConfiguracao());
             listaDeMenuOpcao.Add(GetMenuFuncao());
+            listaDeMenuOpcao.Add(GetMenuOutro());
             listaDeMenuOpcao.Add(GetMenuSair());
 
             return listaDeMenuOpcao;
@@ -43,32 +45,50 @@ namespace MORM.WSist.Menus
         {
             var subMenu = new List<IMenuOpcao>
             {
-                new MenuOpcaoTipo<IAbstractClienteViewManut>(IMenuOpcaoTipo.Opcao, "MenuManutCliente", "\tCliente", _resolverTipo),
-                new MenuOpcaoTipo<IAbstractEmpresaViewManut>(IMenuOpcaoTipo.Opcao, "MenuManutEmpresa", "\tEmpresa", _resolverTipo),
-                new MenuOpcaoTipo<IAbstractProdutoViewManut>(IMenuOpcaoTipo.Opcao, "MenuManutProduto", "\tProduto", _resolverTipo),
-                new MenuOpcaoTipo<IAbstractTerminalViewManut>(IMenuOpcaoTipo.Opcao, "MenuManutTerminal", "\tTerminal", _resolverTipo),
-                new MenuOpcaoTipo<IAbstractUsuarioViewManut>(IMenuOpcaoTipo.Opcao, "MenuManutUsuario", "\tUsuario", _resolverTipo),
+                new MenuOpcaoTipo<IAbstractClienteViewManut>(MenuOpcaoTipo.Opcao, "MenuManutCliente", "Cliente", _resolverTipo),
+                new MenuOpcaoTipo<IAbstractEmpresaViewManut>(MenuOpcaoTipo.Opcao, "MenuManutEmpresa", "Empresa", _resolverTipo),
+                new MenuOpcaoTipo<IAbstractProdutoViewManut>(MenuOpcaoTipo.Opcao, "MenuManutProduto", "Produto", _resolverTipo),
+                new MenuOpcaoTipo<IAbstractTerminalViewManut>(MenuOpcaoTipo.Opcao, "MenuManutTerminal", "Terminal", _resolverTipo),
+                new MenuOpcaoTipo<IAbstractUsuarioViewManut>(MenuOpcaoTipo.Opcao, "MenuManutUsuario", "Usuario", _resolverTipo),
             };
 
-            var menu = new MenuOpcaoDescr(IMenuOpcaoTipo.SubMenu, "MenuManut", "Manutenção", subMenu);
+            var menu = new MenuOpcaoDescr(MenuOpcaoTipo.Manutencao, "MenuManut", "Manutenção", subMenu);
             return menu;
         }
 
         private IMenuOpcao GetMenuProcesso()
         {
-            var menu = new MenuOpcaoDescr(IMenuOpcaoTipo.SubMenu, "MenuProc", "Processo");
+            var subMenu = new List<IMenuOpcao>
+            {
+                new MenuOpcaoDescr(MenuOpcaoTipo.Opcao, "MenuProcVenda", "Venda"),
+                new MenuOpcaoDescr(MenuOpcaoTipo.Opcao, "MenuProcCompra", "Compra"),
+            };
+
+            var menu = new MenuOpcaoDescr(MenuOpcaoTipo.Processo, "MenuProc", "Processo", subMenu);
             return menu;
         }
 
         private IMenuOpcao GetMenuConsulta()
         {
-            var menu = new MenuOpcaoDescr(IMenuOpcaoTipo.SubMenu, "MenuConsult", "Consulta");
+            var subMenu = new List<IMenuOpcao>
+            {
+                new MenuOpcaoDescr(MenuOpcaoTipo.Opcao, "MenuConsultaVenda", "Venda"),
+                new MenuOpcaoDescr(MenuOpcaoTipo.Opcao, "MenuConsultaCompra", "Compra"),
+            };
+
+            var menu = new MenuOpcaoDescr(MenuOpcaoTipo.Consulta, "MenuConsult", "Consulta", subMenu);
             return menu;
         }
 
         private IMenuOpcao GetMenuRelatorio()
         {
-            var menu = new MenuOpcaoDescr(IMenuOpcaoTipo.SubMenu, "MenuRelat", "Relatório");
+            var subMenu = new List<IMenuOpcao>
+            {
+                new MenuOpcaoDescr(MenuOpcaoTipo.Opcao, "MenuRelatVenda", "Venda"),
+                new MenuOpcaoDescr(MenuOpcaoTipo.Opcao, "MenuRelatCompra", "Compra"),
+            };
+
+            var menu = new MenuOpcaoDescr(MenuOpcaoTipo.Relatorio, "MenuRelat", "Relatório", subMenu);
             return menu;
         }
 
@@ -76,11 +96,11 @@ namespace MORM.WSist.Menus
         {
             var subMenu = new List<IMenuOpcao>
             {
-                new MenuOpcaoDescr(IMenuOpcaoTipo.Opcao, "MenuConfigEmpresa", "\tEmpresa"),
-                new MenuOpcaoDescr(IMenuOpcaoTipo.Opcao, "MenuConfigUsuario", "\tUsuario"),
+                new MenuOpcaoDescr(MenuOpcaoTipo.Opcao, "MenuConfigEmpresa", "Empresa"),
+                new MenuOpcaoDescr(MenuOpcaoTipo.Opcao, "MenuConfigUsuario", "Usuario"),
             };
 
-            var menu = new MenuOpcaoDescr(IMenuOpcaoTipo.SubMenu, "MenuConfig", "Configuração", subMenu);
+            var menu = new MenuOpcaoDescr(MenuOpcaoTipo.Configuracao, "MenuConfig", "Configuração", subMenu);
             return menu;
         }
 
@@ -88,29 +108,40 @@ namespace MORM.WSist.Menus
         {
             var subMenu = new List<IMenuOpcao>
             {
-                new MenuOpcaoAcao(IMenuOpcaoTipo.Opcao, "MenuFuncaoSplashing", "\tSplashing Box", 
+                new MenuOpcaoAcao(MenuOpcaoTipo.Opcao, "MenuFuncaoSplashing", "Splashing Box", 
                     () => LoadingBoxExtensions.SplashingBox("Inicializando...")),
 
-                new MenuOpcaoAcao(IMenuOpcaoTipo.Opcao, "MenuFuncaoLoading", "\tLoading Box",
+                new MenuOpcaoAcao(MenuOpcaoTipo.Opcao, "MenuFuncaoLoading", "Loading Box",
                     () => LoadingBoxAcao()),
 
-                new MenuOpcaoAcao(IMenuOpcaoTipo.Opcao, "MenuFuncaoProgress", "\tProgress Box",
+                new MenuOpcaoAcao(MenuOpcaoTipo.Opcao, "MenuFuncaoProgress", "Progress Box",
                     () => ProgressBoxAcao()),
 
-                new MenuOpcaoAcao(IMenuOpcaoTipo.Opcao, "MenuFuncaoProgress", "\tMessage Log",
+                new MenuOpcaoAcao(MenuOpcaoTipo.Opcao, "MenuFuncaoProgress", "Message Log",
                     () => MensagemLogExtensions.ShowMensagemLog()),
 
-                new MenuOpcaoAcao(IMenuOpcaoTipo.Opcao, "MenuFuncaoProgress", "\tMessage Debug",
+                new MenuOpcaoAcao(MenuOpcaoTipo.Opcao, "MenuFuncaoProgress", "Message Debug",
                     () => throw new ExceptionDebug("Exemplo de mensagem de debug")),
 
-                new MenuOpcaoAcao(IMenuOpcaoTipo.Opcao, "MenuFuncaoProgress", "\tMessage Info",
+                new MenuOpcaoAcao(MenuOpcaoTipo.Opcao, "MenuFuncaoProgress", "Message Info",
                     () => throw new ExceptionErro("Exemplo de mensagem de erro")),
 
-                new MenuOpcaoAcao(IMenuOpcaoTipo.Opcao, "MenuFuncaoProgress", "\tMessage Erro",
+                new MenuOpcaoAcao(MenuOpcaoTipo.Opcao, "MenuFuncaoProgress", "Message Erro",
                     () => throw new ExceptionInfo("Exemplo de mensagem de info")),
             };
 
-            var menu = new MenuOpcaoDescr(IMenuOpcaoTipo.SubMenu, "MenuFuncao", "Função", subMenu);
+            var menu = new MenuOpcaoDescr(MenuOpcaoTipo.SubMenu, "MenuFuncao", "Função", subMenu);
+            return menu;
+        }
+
+        private IMenuOpcao GetMenuOutro()
+        {
+            var subMenu = new List<IMenuOpcao>
+            {
+                new MenuOpcaoTipo<IAbstractPackIconViewLista>(MenuOpcaoTipo.Opcao, "MenuOutroPackIcon", "PackIcon", _resolverTipo),
+            };
+
+            var menu = new MenuOpcaoDescr(MenuOpcaoTipo.Configuracao, "MenuOutro", "Outro", subMenu);
             return menu;
         }
 
@@ -140,7 +171,7 @@ namespace MORM.WSist.Menus
 
         private IMenuOpcao GetMenuSair()
         {
-            var menu = new MenuOpcaoAcao(IMenuOpcaoTipo.Opcao, "MenuSair", "Sair", () => { Environment.Exit(1); });
+            var menu = new MenuOpcaoAcao(MenuOpcaoTipo.Opcao, "MenuSair", "Sair", () => { Environment.Exit(1); });
             return menu;
         }
     }

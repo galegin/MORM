@@ -72,7 +72,7 @@ namespace MORM.Apresentacao.Controls.ViewsModel
         public string ValorDes { get => _valorDes; set => SetField(ref _valorDes, value); }
         #endregion
 
-        #region contrutores
+        #region construtores
         public AbstractCampoViewModel(AbstractCampoTipo tipo, 
             string descricao = null, int tamanho = 0, int precisao = 0,
             AbstractEditTipo? editTipo = null)

@@ -7,6 +7,7 @@ namespace MORM.Apresentacao.Comps.Interfaces
     {
         IAbstractContainer Container { get; }
         IMainWindow MainWindow { get; }
+        IMainLogin MainLogin { get; }
         void NavegarPara(UserControl userControl);
         void VoltarTela(bool isAnterior = false);
         void VoltarTelaAnterior();

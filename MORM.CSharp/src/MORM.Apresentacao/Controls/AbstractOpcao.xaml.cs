@@ -1,5 +1,6 @@
 ﻿using MORM.Apresentacao.Comps;
-using MORM.Apresentacao.Controls.ViewsModel;
+using MORM.Apresentacao.ViewsModel;
+using System;
 
 namespace MORM.Apresentacao.Controls
 {
@@ -9,13 +10,23 @@ namespace MORM.Apresentacao.Controls
         {
             InitializeComponent();
         }
+
+        public AbstractOpcao(IAbstractViewModel vm) : this()
+        {
+            DataContext = vm;
+        }
     }
 
     public partial class AbstractOpcao<TModel> : AbstractOpcao
     {
-        public AbstractOpcao(TModel model) : base()
+        public AbstractOpcao() : base()
         {
-            DataContext = new AbstractOpcaoViewModel<TModel>(model);
+            DataContext = Activator.CreateInstance<TModel>();
+        }
+
+        public AbstractOpcao(IAbstractViewModel<TModel> vm) : base()
+        {
+            DataContext = vm;
         }
     }
 }

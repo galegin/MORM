@@ -13,22 +13,18 @@ namespace MORM.Repositorio.Context
 {
     public class AbstractDataContext : IAbstractDataContext, IDisposable
     {
-        static AbstractDataContext()
-        {
-        }
+        private readonly IConnectionFactory _connectionFactory;
+
+        public IAmbiente Ambiente { get; private set; }
+        public IConexao Conexao { get; private set; }
+        public IComando Comando { get; private set; }
+        public IMigracao Migracao { get; private set; }
 
         public AbstractDataContext(IAmbiente ambiente, IConnectionFactory connectionFactory)
         {
             _connectionFactory = connectionFactory ?? throw new ArgumentNullException(nameof(connectionFactory));
             SetAmbiente(ambiente);
         }
-
-        private readonly IConnectionFactory _connectionFactory;
-
-        public IAmbiente Ambiente { get; private set; }
-        public IConexao Conexao { get; private set; }
-        public IComando Comando { get; private set; }
-        public IMigracaoEntidade Migracao { get; private set; }
 
         //-- ambiente
 
@@ -37,7 +33,7 @@ namespace MORM.Repositorio.Context
             Ambiente = ambiente ?? throw new ArgumentNullException(nameof(ambiente));
             Conexao = ConexaoFactory.GetConexao(ambiente, _connectionFactory);
             Comando = new Comando(ambiente.TipoDatabase);
-            Migracao = new MigracaoEntidade(this);
+            Migracao = new Migracao(this);
         }
 
         //-- lista
@@ -210,6 +206,10 @@ namespace MORM.Repositorio.Context
         {
             this.DesConectar();
             GC.SuppressFinalize(this);
+        }
+
+        static AbstractDataContext()
+        {
         }
 
         ~AbstractDataContext()

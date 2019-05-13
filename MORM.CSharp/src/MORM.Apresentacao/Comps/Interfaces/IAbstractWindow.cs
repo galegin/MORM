@@ -2,5 +2,7 @@
 {
     public interface IAbstractWindow
     {
+        object Execute(object parameter);
+        void FecharTela();
     }
 }

@@ -16,7 +16,7 @@ namespace MORM.Apresentacao.Controls.ViewsModel
         }
         #endregion
 
-        #region contrutores
+        #region construtores
         public AbstractTituloViewModel(string titulo)
         {
             Titulo = titulo;

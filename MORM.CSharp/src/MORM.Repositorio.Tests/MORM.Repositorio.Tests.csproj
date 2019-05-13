@@ -63,6 +63,8 @@
   <ItemGroup>
     <Compile Include="Ioc\Installer\BaseInstaller.cs" />
     <Compile Include="Ioc\Container\BaseContainer.cs" />
+    <Compile Include="Servicos\Interfaces\IReferenciaService.cs" />
+    <Compile Include="Servicos\ReferenciaService.cs" />
     <Compile Include="Tests\CamposTests.cs" />
     <Compile Include="Tests\TipoDapperTests.cs" />
     <Compile Include="Tests\DataContextDapperTests.cs" />
@@ -75,12 +77,12 @@
     <Compile Include="Models\TipoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\TesteModel.cs" />
-    <Compile Include="Repositories\ITipoRepository.cs" />
-    <Compile Include="Repositories\ITesteRepository.cs" />
+    <Compile Include="Repositories\Interfaces\ITipoRepository.cs" />
+    <Compile Include="Repositories\Interfaces\ITesteRepository.cs" />
     <Compile Include="Repositories\TipoRepository.cs" />
     <Compile Include="Repositories\TesteRepository.cs" />
-    <Compile Include="Servicos\ITipoService.cs" />
-    <Compile Include="Servicos\ITesteService.cs" />
+    <Compile Include="Servicos\Interfaces\ITipoService.cs" />
+    <Compile Include="Servicos\Interfaces\ITesteService.cs" />
     <Compile Include="Servicos\TipoService.cs" />
     <Compile Include="Servicos\TesteService.cs" />
   </ItemGroup>
@@ -96,6 +98,10 @@
     <ProjectReference Include="..\MORM.Dominio\MORM.Dominio.csproj">
       <Project>{C22C745B-1538-405F-A9CE-29576C708B9E}</Project>
       <Name>MORM.Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MORM.Mocks\MORM.Mocks.csproj">
+      <Project>{06F96973-52FC-4135-959A-D17D2A1751CF}</Project>
+      <Name>MORM.Mocks</Name>
     </ProjectReference>
     <ProjectReference Include="..\MORM.Repositorio.Dapper\MORM.Repositorio.Dapper.csproj">
       <Project>{5E88B144-F434-4FD5-B57F-DAC8A19FAF59}</Project>

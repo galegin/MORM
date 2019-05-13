@@ -16,6 +16,7 @@ namespace MORM.Apresentacao.Menus.ViewModels
         private bool _isExibirSubMenu;
         private bool _isContemSubMenu;
         private int _alturaMenuOpcao = ALTURA;
+        private PackIconKind _packIconKindOpcao = PackIconKind.About;
         private PackIconKind _packIconKindMenu = PackIconKind.MenuDown;
         #endregion
 
@@ -44,6 +45,11 @@ namespace MORM.Apresentacao.Menus.ViewModels
             get => _alturaMenuOpcao;
             set => SetField(ref _alturaMenuOpcao, value);
         }
+        public PackIconKind PackIconKindOpcao
+        {
+            get => _packIconKindOpcao;
+            set => SetField(ref _packIconKindOpcao, value);
+        }
         public PackIconKind PackIconKindMenu
         {
             get => _packIconKindMenu;
@@ -60,6 +66,7 @@ namespace MORM.Apresentacao.Menus.ViewModels
         public MenuOpcaoViewModel(IMenuOpcao menuOpcao)
         {
             MenuOpcao = menuOpcao;
+            PackIconKindOpcao = GetKindOpcao();
         }
         #endregion
 
@@ -78,6 +85,12 @@ namespace MORM.Apresentacao.Menus.ViewModels
                 IsExibirSubMenu ? PackIconKind.MenuDownOutline :
                 PackIconKind.MenuDown;
         }
+
+        private PackIconKind GetKindOpcao()
+        {
+            return (PackIconKind)(int)MenuOpcao.Tipo;
+        }
+
         public void Executar()
         {
             MenuOpcao.Executar();

@@ -19,15 +19,26 @@ namespace MORM.Repositorio.Tests
         }        
 
         private const int _codigoTipo = 1;
-        private const string _descricaoTipo = "TIPO 1";
 
-        private TipoModel GetTipo()
+        private TipoModel GetTipo(int codigo)
         {
             return new TipoModel
             {
-                Cd_Tipo = _codigoTipo,
-                Ds_Tipo = _descricaoTipo,
+                Cd_Tipo = codigo,
+                Ds_Tipo = $"TIPO {codigo}",
             };
+        }
+
+        [TestInitialize]
+        public void TipoServiceTests_Initialize()
+        {
+            TipoServiceTests_Cleanup();
+        }
+
+        [TestCleanup]
+        public void TipoServiceTests_Cleanup()
+        {
+            _tipoService.AbstractRepository.ClearAll();
         }
 
         [TestMethod]
@@ -53,7 +64,7 @@ namespace MORM.Repositorio.Tests
         [TestMethod]
         public void TipoServiceTests_Salvar()
         {
-            var tipo = GetTipo();
+            var tipo = GetTipo(_codigoTipo);
 
             _tipoService.AbstractRepository.Salvar(tipo);
         }
@@ -63,7 +74,7 @@ namespace MORM.Repositorio.Tests
         {
             TipoServiceTests_Salvar();
 
-            var tipo = GetTipo();
+            var tipo = GetTipo(_codigoTipo);
 
             _tipoService.AbstractRepository.Excluir(tipo);
         }

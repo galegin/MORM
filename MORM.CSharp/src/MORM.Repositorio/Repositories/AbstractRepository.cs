@@ -9,12 +9,12 @@ namespace MORM.Repositorio.Repositories
 {
     public class AbstractRepository : IAbstractRepository
     {
+        public IAbstractDataContext DataContext { get; }
+
         public AbstractRepository(IAbstractDataContext context)
         {
             DataContext = context ?? throw new ArgumentNullException(nameof(context));
         }
-
-        public IAbstractDataContext DataContext { get; }
     }
 
     public class AbstractRepository<TObject> : AbstractRepository, IAbstractRepository<TObject> where TObject : class

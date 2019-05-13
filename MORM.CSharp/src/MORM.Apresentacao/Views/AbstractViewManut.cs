@@ -1,6 +1,7 @@
 ﻿using MORM.Apresentacao.Controls;
 using MORM.Apresentacao.Extensions;
 using MORM.Apresentacao.ViewsModel;
+using System;
 //using System.IO;
 using System.Linq;
 using System.Windows;
@@ -13,29 +14,44 @@ namespace MORM.Apresentacao.Views
     public class AbstractViewManut : AbstractView
     {
         #region variaveis
-        private string[] _ignoreCampos = 
+        protected string[] _ignoreCampos =
             { "U_Version", "Cd_Operador", "Dt_Cadastro", "Cd_Senha" };
         #endregion
 
-        #region metodos
-        protected void CreateCampos<TModel>(AbstractViewModel<TModel> viewModel)
+        #region construtores
+        public AbstractViewManut(IAbstractViewModelManut vm) : base(vm)
         {
-            DataContext = viewModel;
+        }
+        #endregion
+    }
+
+    public class AbstractViewManut<TViewModel> : AbstractViewManut
+    {
+        #region construtores
+        public AbstractViewManut() : base(null)
+        {
+            CreateCampos(Activator.CreateInstance<TViewModel>() as IAbstractViewModel);
+        }
+        #endregion
+
+        #region metodos
+        private void CreateCampos(IAbstractViewModel vm)
+        {
+            DataContext = vm;
 
             var stackPanel = new StackPanel();
             stackPanel.Margin = new Thickness(10);
             AddChild(stackPanel);
 
-            var userControlTitulo = new AbstractTitulo("Manutenção de " + viewModel.Model.GetType().Name
-                .Replace("Abstract", "").Replace("Model", "").Replace("View", ""));
+            var userControlTitulo = new AbstractTitulo("Manutenção de " + vm.GetTituloModel());
             userControlTitulo.Margin = new Thickness(0, 0, 0, 10);
             stackPanel.Children.Add(userControlTitulo);
 
-            var userControlOpcao = new AbstractOpcao<TModel>(viewModel.Model);
+            var userControlOpcao = new AbstractOpcao(vm);
             userControlOpcao.Margin = new Thickness(0, 0, 0, 10);
             stackPanel.Children.Add(userControlOpcao);
 
-            viewModel.Model.GetType().GetProperties().ToList().ForEach(prop =>
+            vm.GetModel().GetType().GetProperties().ToList().ForEach(prop =>
             {
                 if (_ignoreCampos.Contains(prop.Name))
                     return;
@@ -45,7 +61,7 @@ namespace MORM.Apresentacao.Views
                 var tamanho = prop.GetTamanho();
                 var precisao = prop.GetPrecisao();
                 var editTipo = prop.GetEditTipo();
-                var bindind = prop.GetDataBinding(viewModel, nameof(viewModel.Model));
+                var bindind = prop.GetDataBinding(vm, vm.GetNomeModel());
                 var abstractCampo = new AbstractCampo(campoTipo, descricao, tamanho, precisao, editTipo);
                 abstractCampo.Margin = new Thickness(0, 0, 0, 10);
                 abstractCampo.SetDataBinding(bindind);

@@ -6,7 +6,7 @@ namespace MORM.Apresentacao.Commands.Tela
     {
         public override void Execute(object parameter)
         {
-            TelaUtils.Instance.MainWindow.Close();
+            TelaUtils.Instance.MainWindow.FecharTela();
         }
     }
 }

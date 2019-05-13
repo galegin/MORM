@@ -1,7 +1,6 @@
 ﻿using MORM.Apresentacao.Comps;
 using MORM.Apresentacao.Menus;
 using MORM.Apresentacao.ViewsModel;
-using System.Windows;
 using System.Windows.Controls;
 
 namespace MORM.Apresentacao
@@ -14,17 +13,14 @@ namespace MORM.Apresentacao
             IMenuLateral menuLateral) : base()
         {
             InitializeComponent();
-            Loaded += MainWindow_Loaded;
+            IsPrincipal = true;
+            Loaded += (s, e) => LoadingBoxExtensions.SplashingBox("Inicializando...");
             SetPositionInitial();
             DataContext = new MainWindowViewModel(tituloSistema, menuLateral);
         }
         #endregion
 
         #region metodos
-        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
-        {
-            LoadingBoxExtensions.SplashingBox("Inicializando...");
-        }
         public void Navegar(object sender)
         {
             (DataContext as MainWindowViewModel).Corpo = sender as UserControl;
@@ -32,6 +28,11 @@ namespace MORM.Apresentacao
         public void SetarIsExibirMenuLateral(bool? flag = null)
         {
             (DataContext as MainWindowViewModel).MenuLateral.SetarIsExibirMenuLateral(flag);
+        }
+        protected override bool PreExecute(object parameter)
+        {
+            var retorno = TelaUtils.Instance.MainLogin.Execute(parameter) as string;
+            return !string.IsNullOrWhiteSpace(retorno);
         }
         #endregion
     }

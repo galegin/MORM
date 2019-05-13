@@ -21,6 +21,9 @@ namespace MORM.Dominio.Extensions
         {
             var argAnt = string.Empty;
 
+            empresa.Cd_Empresa = "0";
+            empresa.Ds_Empresa = "Empresa tste";
+
             foreach (var arg in Environment.GetCommandLineArgs())
             {
                 switch (argAnt)

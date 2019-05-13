@@ -21,6 +21,9 @@ namespace MORM.Dominio.Extensions
         {
             var argAnt = string.Empty;
 
+            terminal.Cd_Terminal = "0";
+            terminal.Ds_Terminal = "Terminal teste";
+
             foreach (var arg in Environment.GetCommandLineArgs())
             {
                 switch (argAnt)

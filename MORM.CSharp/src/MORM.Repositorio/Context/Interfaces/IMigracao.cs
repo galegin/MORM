@@ -2,7 +2,7 @@
 
 namespace MORM.Repositorio.Interfaces
 {
-    public interface IMigracaoEntidade
+    public interface IMigracao
     {
         void Clear();
         void CreateOrAlter(Type type);

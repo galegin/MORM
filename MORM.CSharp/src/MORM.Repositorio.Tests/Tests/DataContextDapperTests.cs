@@ -12,11 +12,26 @@ namespace MORM.Repositorio.Tests
     {
         private readonly IAbstractDataContextDapper _dataContext;
         private readonly ITipoRepository _tipoRepository;
+        private const int _cdTipo = 1;
 
         public DataContextDapperTests()
         {
             _dataContext = BaseContainer.Instance.Resolve<IAbstractDataContextDapper>();
             _tipoRepository = BaseContainer.Instance.Resolve<ITipoRepository>();
+        }
+
+        [TestInitialize]
+        public void DataContextDapperTests_Initialize()
+        {
+            DataContextDapperTests_Cleanup();
+
+            _tipoRepository.Salvar(new TipoModel { Cd_Tipo = _cdTipo });
+        }
+
+        [TestCleanup]
+        public void DataContextDapperTests_Cleanup()
+        {
+            _tipoRepository.ClearAll();
         }
 
         [TestMethod]
@@ -30,7 +45,7 @@ namespace MORM.Repositorio.Tests
         [TestMethod]
         public void DataContextDapperTests_Conexao()
         {
-            var tipo = _tipoRepository.FirstOrDefault(f => f.Cd_Tipo == 1);
+            var tipo = _tipoRepository.FirstOrDefault(f => f.Cd_Tipo == _cdTipo);
         }
     }
 }

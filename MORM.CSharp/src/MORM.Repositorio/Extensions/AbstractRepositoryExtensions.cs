@@ -33,6 +33,8 @@ namespace MORM.Repositorio.Extensions
             return repository.AsQueryable().Or(expression);
         }
 
+        // FirstOrDefault
+
         public static TObject FirstOrDefault<TObject>(this IAbstractRepository<TObject> repository, 
             Expression<Func<TObject, bool>> expression, bool relacao = true)
             where TObject : class
@@ -46,6 +48,8 @@ namespace MORM.Repositorio.Extensions
             return repository.AsQueryable().FirstOrDefault(relacao);
         }
 
+        // ToList
+
         public static IList<TObject> ToList<TObject>(this IAbstractRepository<TObject> repository,
             Expression<Func<TObject, bool>> expression, bool relacao = false)
             where TObject : class
@@ -57,6 +61,18 @@ namespace MORM.Repositorio.Extensions
             where TObject : class
         {
             return repository.AsQueryable().ToList(relacao);
+        }
+
+        // Clear
+
+        public static void ClearAll<TObject>(this IAbstractRepository<TObject> repository)
+            where TObject : class
+        {
+            var lista = repository.AsQueryable().ToList();
+            foreach (var obj in lista)
+            {
+                repository.Excluir(obj);
+            }
         }
     }
 }

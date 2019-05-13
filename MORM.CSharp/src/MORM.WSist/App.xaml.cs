@@ -20,7 +20,7 @@ namespace MORM.WSist
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            TelaUtils.Factory(BaseContainer.Instance).MainWindow.ShowDialog();
+            TelaUtils.Factory(BaseContainer.Instance).MainWindow.Execute(null);
         }
     }
 }

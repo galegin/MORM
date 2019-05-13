@@ -65,7 +65,7 @@
     <Compile Include="Context\Interfaces\IAbstractDataContext.cs" />
     <Compile Include="Context\Interfaces\IComando.cs" />
     <Compile Include="Context\Interfaces\IConexao.cs" />
-    <Compile Include="Context\Interfaces\IMigracaoEntidade.cs" />
+    <Compile Include="Context\Interfaces\IMigracao.cs" />
     <Compile Include="Context\Interfaces\IParametro.cs" />
     <Compile Include="Context\Parametro.cs" />
     <Compile Include="Extensions\AbstractDataContextExtensions.cs" />
@@ -79,7 +79,7 @@
     <Compile Include="Factories\ProviderFactory.cs" />
     <Compile Include="Migrations\MigracaoDatabase.cs" />
     <Compile Include="Uow\AbstractUnityOfWork.cs" />
-    <Compile Include="Migrations\MigracaoEntidade.cs" />
+    <Compile Include="Migrations\Migracao.cs" />
     <Compile Include="Migrations\MigracaoContexto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queries\Interfaces\IQueryableObject.cs" />
