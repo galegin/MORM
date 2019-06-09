@@ -7,6 +7,7 @@ using MORM.Apresentacao;
 using MORM.WSist.Menus;
 using MORM.WSist.Views.Manutencao;
 using MORM.WSist.Views.Lista;
+using MORM.Apresentacao.Commands;
 
 namespace MORM.WSist.Ioc.Installer
 {
@@ -49,6 +50,7 @@ namespace MORM.WSist.Ioc.Installer
         {
             RegisterSingleton<IMainWindow, MainWindow>();
             RegisterSingleton<IMainLogin, MainLogin>();
+            RegisterSingleton<IMainCommand, MainCommand>();
 
             Register<IMenuSistema, MenuSistema>();
             Register<IMenuLateral, ucMenuLateral>();

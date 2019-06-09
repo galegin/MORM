@@ -58,6 +58,15 @@ namespace MORM.Dominio.Extensoes
 
         // attribute
 
+        public static TAbtrib GetAtributeAttr<TEnum, TAbtrib>(this TEnum enumValue)
+            where TAbtrib : Attribute
+        {
+            var enumType = enumValue.GetType().GetMember(enumValue.ToString());
+            var atrib = (TAbtrib)enumType.FirstOrDefault()?
+                .GetCustomAttributes(typeof(TAbtrib), false).FirstOrDefault();
+            return atrib;
+        }
+
         public static TAbtrib GetAtributeEnum<TEnum, TAbtrib>(string name)
             where TAbtrib : Attribute
         {

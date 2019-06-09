@@ -41,14 +41,11 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\bin\Debug\Castle.Windsor.dll</HintPath>
     </Reference>
-    <Reference Include="MaterialDesignColors, Version=1.0.0.14576, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MaterialDesignColors.1.1.1\lib\net45\MaterialDesignColors.dll</HintPath>
+    <Reference Include="MaterialDesignColors, Version=1.1.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignColors.1.1.3\lib\net45\MaterialDesignColors.dll</HintPath>
     </Reference>
-    <Reference Include="MaterialDesignThemes.Wpf, Version=2.5.0.1205, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MaterialDesignThemes.2.5.0.1205\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=2.5.1.1345, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.2.5.1\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -72,7 +69,12 @@
   <ItemGroup>
     <Compile Include="Classes\InformacaoSistema.cs" />
     <Compile Include="Classes\NavegarComEnter.cs" />
+    <Compile Include="Colors\EsquemaCor.cs" />
+    <Compile Include="Colors\EsquemaTema.cs" />
+    <Compile Include="Colors\EsquemaTipo.cs" />
     <Compile Include="Commands\AbstractCommand.cs" />
+    <Compile Include="Commands\MainCommand.cs" />
+    <Compile Include="Commands\CommandTipo.cs" />
     <Compile Include="Commands\Tela\ListarTela.cs" />
     <Compile Include="Commands\Tela\ConsultarTela.cs" />
     <Compile Include="Commands\Tela\ExcluirTela.cs" />
@@ -124,6 +126,7 @@
     <Compile Include="Controls\ViewsModel\AbstractCampoViewModel.cs" />
     <Compile Include="Controls\ViewsModel\AbstractOpcaoViewModel.cs" />
     <Compile Include="Controls\ViewsModel\AbstractTituloViewModel.cs" />
+    <Compile Include="Interfaces\IMainCommand.cs" />
     <Compile Include="Interfaces\IMainLogin.cs" />
     <Compile Include="Ioc\Installer\BaseInstaller.cs" />
     <Compile Include="Login\Commands\FecharLogin.cs" />
@@ -164,6 +167,7 @@
     <Compile Include="Menus\ViewModels\MenuOpcaoViewModel.cs" />
     <Compile Include="Menus\ViewModels\TituloSistemaViewModel.cs" />
     <Compile Include="Menus\ViewModels\SubMenuOpcaoViewModel.cs" />
+    <Compile Include="Styles\StyleExtension.cs" />
     <Compile Include="ViewsModel\AbstractViewModelRelat.cs" />
     <Compile Include="ViewsModel\AbstractViewModelProc.cs" />
     <Compile Include="ViewsModel\AbstractViewModelManut.cs" />
@@ -238,37 +242,45 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Styles\AbstractStyleFonte.xaml">
+    <Page Include="Styles\Default\AbstractStyleFonte.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Page>
-    <Page Include="Styles\AbstractStyleCor.xaml">
+    <Page Include="Styles\Default\AbstractStyleColor.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Page>
-    <Page Include="Styles\AbstractStyle.xaml">
+    <Page Include="Styles\Default\AbstractStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Page>
-    <Page Include="Styles\AbstractStyleCheck.xaml">
+    <Page Include="Styles\Default\AbstractStyleCheck.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Page>
-    <Page Include="Styles\AbstractStyleCombo.xaml">
+    <Page Include="Styles\Default\AbstractStyleCombo.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Page>
-    <Page Include="Styles\AbstractStyleEdit.xaml">
+    <Page Include="Styles\Default\AbstractStyleEdit.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Page>
-    <Page Include="Styles\AbstractStyleLabel.xaml">
+    <Page Include="Styles\Default\AbstractStyleLabel.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Page>
-    <Page Include="Styles\AbstractStyleButton.xaml">
+    <Page Include="Styles\Default\AbstractStyleButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -290,14 +302,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="esquemacor.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MORM.Aplicacao\MORM.Aplicacao.csproj">
@@ -311,10 +323,6 @@
     <ProjectReference Include="..\MORM.Dtos\MORM.Dtos.csproj">
       <Project>{C4E38812-95D9-4363-AAE8-D8505E9E141F}</Project>
       <Name>MORM.Dtos</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MORM.Enums\MORM.Enums.csproj">
-      <Project>{96D3FCF8-C8D7-4FD1-88E8-D112B2494F21}</Project>
-      <Name>MORM.Enums</Name>
     </ProjectReference>
     <ProjectReference Include="..\MORM.Utils\MORM.Utils.csproj">
       <Project>{346bed24-2dd1-4e58-939a-d72311c257f9}</Project>

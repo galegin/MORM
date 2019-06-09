@@ -26,11 +26,11 @@ namespace MORM.Dominio.Tipagens
         [XmlEnum("In")]
         Indicador,
 
-        [XmlEnum("Nr")]
-        Numero,
-
         [XmlEnum("Nm")]
         Nome,
+
+        [XmlEnum("Nr")]
+        Numero,
 
         [XmlEnum("Qt")]
         Quantidade,

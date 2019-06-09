@@ -8,7 +8,7 @@ namespace MORM.Apresentacao.Comps
         public MensagemLog() : base()
         {
             InitializeComponent();
-            Loaded += (s, e) => (DataContext as LoadingBoxViewModel).Mensagem = LoggerMem.Mensagem;
+            Loaded += (s, e) => (DataContext as MensagemLogViewModel).Mensagem = LoggerMem.Mensagem;
             SetPositionInitial();
             DataContext = new MensagemLogViewModel();
         }

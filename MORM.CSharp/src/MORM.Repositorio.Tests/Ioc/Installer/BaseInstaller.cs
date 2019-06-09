@@ -4,7 +4,6 @@ using MORM.Dominio.Interfaces;
 using MORM.Mocks;
 using MORM.Repositorio.Dapper.Context;
 using MORM.Repositorio.Interfaces;
-using MORM.Repositorio.SqLite;
 using MORM.Repositorio.Uow;
 
 namespace MORM.Repositorio.Tests.Ioc.Installer
@@ -21,7 +20,6 @@ namespace MORM.Repositorio.Tests.Ioc.Installer
 
         public override void InstallerConexao()
         {
-            Register<IConnectionFactory, SqLiteHelper>();
         }
 
         public override void InstallerDataConext()

@@ -49,9 +49,8 @@ namespace MORM.Repositorio.Tests
         {
             TesteServiceTests_Salvar();
 
-            var listaDeTeste = _testeService.AbstractRepository.ToList(x => x.Cd_Teste == _codigoTeste);
+            var listaDeTeste = _testeService.AbstractRepository.ToList();
             Assert.AreNotEqual(0, listaDeTeste.Count);
-            Assert.AreEqual(_codigoTeste, listaDeTeste.FirstOrDefault().Cd_Teste);
         }
 
         [TestMethod]
@@ -59,8 +58,7 @@ namespace MORM.Repositorio.Tests
         {
             TesteServiceTests_Salvar();
 
-            var teste = _testeService.AbstractRepository.FirstOrDefault(x => x.Cd_Teste == _codigoTeste);
-            Assert.IsNotNull(teste);
+            var teste = _testeService.AbstractRepository.ToList().FirstOrDefault(x => x.Cd_Teste == _codigoTeste);
             Assert.AreEqual(_codigoTeste, teste.Cd_Teste);
         }
 

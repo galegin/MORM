@@ -14,8 +14,6 @@ namespace MORM.Mocks
 {
     public class MockDataContext : IAbstractDataContext, IDisposable
     {
-        private readonly IConnectionFactory _connectionFactory;
-
         public IAmbiente Ambiente { get; private set; }
         public IConexao Conexao { get; private set; }
         public IComando Comando { get; private set; }
@@ -23,9 +21,8 @@ namespace MORM.Mocks
 
         private Dictionary<Type, List<object>> _dados = new Dictionary<Type, List<object>>();
 
-        public MockDataContext(IAmbiente ambiente, IConnectionFactory connectionFactory)
+        public MockDataContext(IAmbiente ambiente)
         {
-            _connectionFactory = connectionFactory ?? throw new ArgumentNullException(nameof(connectionFactory));
             SetAmbiente(ambiente);
         }
 
@@ -34,7 +31,7 @@ namespace MORM.Mocks
         public void SetAmbiente(IAmbiente ambiente)
         {
             Ambiente = ambiente ?? throw new ArgumentNullException(nameof(ambiente));
-            Conexao = ConexaoFactory.GetConexao(ambiente, _connectionFactory);
+            Conexao = ConexaoFactory.GetConexao(ambiente);
             Comando = new Comando(ambiente.TipoDatabase);
             Migracao = new Migracao(this);
         }
@@ -69,7 +66,8 @@ namespace MORM.Mocks
 
         public void GetObjeto(object obj, string where = null, bool relacao = true)
         {
-            obj.CloneInstancePropOrFieldAll(GetLista(obj.GetType()).FirstOrDefault());
+            var objConsulta = GetLista(obj.GetType()).FirstOrDefault();
+            obj.CloneInstancePropOrFieldAll(objConsulta);
         }
 
         // salvar

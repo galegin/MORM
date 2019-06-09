@@ -14,6 +14,7 @@ namespace MORM.Apresentacao.Comps
 
         #region propriedades
         public bool IsPrincipal { get; set; }
+        public virtual bool IsConfirmado { get; protected set; }
         #endregion
 
         #region construtores
@@ -30,14 +31,23 @@ namespace MORM.Apresentacao.Comps
 
         #region execute
 
-        public object Execute(object parameter)
+        public virtual object Execute(object parameter)
         {
+            if (PreConfirmado(parameter))
+                return PosConfirmado(parameter);
+
             if (PreExecute(parameter))
-                if (ShowDialog() == false)
+            {
+                ShowDialog();
+                if (IsConfirmado)
                     return PosExecute(parameter);
+            }
+
             return null;
         }
 
+        protected virtual bool PreConfirmado(object parameter) => false;
+        protected virtual object PosConfirmado(object parameter) => null;
         protected virtual bool PreExecute(object parameter) => true;
         protected virtual object PosExecute(object parameter) => null;
 
@@ -95,7 +105,7 @@ namespace MORM.Apresentacao.Comps
         }
         #endregion
 
-        #region posicao inicial
+        #region posicao
         protected void SetPositionInitial()
         {
             Top = SystemParameters.WorkArea.Top;

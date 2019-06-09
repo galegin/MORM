@@ -133,11 +133,35 @@ namespace MORM.Dominio.Extensoes
             return !string.IsNullOrWhiteSpace(conteudo);
         }
 
+        public static string AllTrim(this string str)
+        {
+            while (str.StartsWith(" "))
+                str = str.Remove(0, 1);
+            while (str.EndsWith(" "))
+                str = str.Remove(str.Length - 1, 1);
+            while (str.Contains("  "))
+                str = str.Replace("  ", " ");
+            return str;
+        }
+
+        //public static string PriMaiuscula(this string conteudo)
+        //{
+        //    return
+        //        conteudo.Substring(0, 1).ToUpper() +
+        //        conteudo.Substring(1).ToLower();
+        //}
+
         public static string PriMaiuscula(this string conteudo)
         {
-            return
-                conteudo.Substring(0, 1).ToUpper() +
-                conteudo.Substring(1).ToLower();
+            var retorno = string.Empty;
+
+            for (int i = 0; i < conteudo.Length; i++)
+                if (i == 0 || conteudo[i - 1] == '_')
+                    retorno += conteudo[i].ToString().ToUpper();
+                else
+                    retorno += conteudo[i].ToString().ToLower();
+
+            return retorno;
         }
     }
 }

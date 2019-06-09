@@ -1,4 +1,5 @@
-﻿using MORM.Apresentacao.Commands;
+﻿using MORM.Apresentacao.Colors;
+using MORM.Apresentacao.Commands;
 using MORM.Apresentacao.Commands.Tela;
 using MORM.Apresentacao.Comps;
 using System;
@@ -9,6 +10,10 @@ namespace MORM.Apresentacao.ViewsModel
     public class AbstractViewModel : BaseNotifyPropertyChanged, IAbstractViewModel
     {
         #region variaveis
+        #region confirmacao
+        private bool _isConfirmado;
+        #endregion
+        #region exibir
         private bool _isExibirFechar = false;
         private bool _isExibirVoltar = true;
         private bool _isExibirLimpar = true;
@@ -21,8 +26,26 @@ namespace MORM.Apresentacao.ViewsModel
         private bool _isExibirSalvar = true;
         private bool _isExibirExcluir = true;
         #endregion
+        #region esquema
+        private EsquemaCor _esquemaCabecalho;
+        private EsquemaCor _esquemaCorpo;
+        private EsquemaCor _esquemaDestaque;
+        private EsquemaCor _esquemaDetalhe;
+        private EsquemaCor _esquemaMenu;
+        private EsquemaCor _esquemaRodape;
+        private EsquemaCor _esquemaTitulo;
+        #endregion
+        #endregion
 
         #region propriedades
+        #region confirmacao
+        public bool IsConfirmado
+        {
+            get => _isConfirmado;
+            set => SetField(ref _isConfirmado, value);
+        }
+        #endregion
+        #region exibir
         public bool IsExibirFechar
         {
             get => _isExibirFechar;
@@ -79,6 +102,44 @@ namespace MORM.Apresentacao.ViewsModel
             set => SetField(ref _isExibirExcluir, value);
         }
         #endregion
+        #region esquema
+        public EsquemaCor EsquemaCabecalho
+        {
+            get => _esquemaCabecalho;
+            set => SetField(ref _esquemaCabecalho, value);
+        }
+        public EsquemaCor EsquemaCorpo
+        {
+            get => _esquemaCorpo;
+            set => SetField(ref _esquemaCorpo, value);
+        }
+        public EsquemaCor EsquemaDestaque
+        {
+            get => _esquemaDestaque;
+            set => SetField(ref _esquemaDestaque, value);
+        }
+        public EsquemaCor EsquemaDetalhe
+        {
+            get => _esquemaDetalhe;
+            set => SetField(ref _esquemaDetalhe, value);
+        }
+        public EsquemaCor EsquemaMenu
+        {
+            get => _esquemaMenu;
+            set => SetField(ref _esquemaMenu, value);
+        }
+        public EsquemaCor EsquemaRodape
+        {
+            get => _esquemaRodape;
+            set => SetField(ref _esquemaRodape, value);
+        }
+        public EsquemaCor EsquemaTitulo
+        {
+            get => _esquemaTitulo;
+            set => SetField(ref _esquemaTitulo, value);
+        }
+        #endregion
+        #endregion
 
         #region comandos
         public virtual AbstractCommand Fechar { get; } = new FecharTela();
@@ -92,6 +153,19 @@ namespace MORM.Apresentacao.ViewsModel
         public virtual AbstractCommand Alterar { get; }
         public virtual AbstractCommand Salvar { get; }
         public virtual AbstractCommand Excluir { get; }
+        #endregion
+
+        #region construtores
+        public AbstractViewModel()
+        {
+            EsquemaCabecalho = EsquemaTipo.Cabecalho.GetEsquema();
+            EsquemaCorpo = EsquemaTipo.Corpo.GetEsquema();
+            EsquemaDestaque = EsquemaTipo.Destaque.GetEsquema();
+            EsquemaDetalhe = EsquemaTipo.Detalhe.GetEsquema();
+            EsquemaMenu = EsquemaTipo.Menu.GetEsquema();
+            EsquemaRodape = EsquemaTipo.Rodape.GetEsquema();
+            EsquemaTitulo = EsquemaTipo.Titulo.GetEsquema();
+        }
         #endregion
 
         #region metodos
@@ -115,11 +189,34 @@ namespace MORM.Apresentacao.ViewsModel
         }
         #endregion
 
+        #region comandos
+        public override AbstractCommand Limpar { get; }
+        public override AbstractCommand Consultar { get; }
+        public override AbstractCommand Exportar { get; }
+        public override AbstractCommand Importar { get; }
+        public override AbstractCommand Imprimir { get; }
+        public override AbstractCommand Incluir { get; } 
+        public override AbstractCommand Alterar { get; } 
+        public override AbstractCommand Salvar { get; }
+        public override AbstractCommand Excluir { get; } 
+        #endregion
+
         #region construtores
-        public AbstractViewModel()
+        public AbstractViewModel() : base()
         {
             Model = Activator.CreateInstance<TModel>();
             IsExibirFechar = true;
+
+            var mainCommand = TelaUtils.Instance.MainCommand;
+            Limpar = mainCommand.GetCommand<TModel>(CommandTipo.Limpar);
+            Exportar = mainCommand.GetCommand<TModel>(CommandTipo.Exportar);
+            Importar = mainCommand.GetCommand<TModel>(CommandTipo.Importar);
+            Imprimir = mainCommand.GetCommand<TModel>(CommandTipo.Imprimir);
+            Consultar = mainCommand.GetCommand<TModel>(CommandTipo.Consultar);
+            Incluir = mainCommand.GetCommand<TModel>(CommandTipo.Incluir);
+            Alterar = mainCommand.GetCommand<TModel>(CommandTipo.Alterar);
+            Salvar = mainCommand.GetCommand<TModel>(CommandTipo.Salvar);
+            Excluir = mainCommand.GetCommand<TModel>(CommandTipo.Excluir);
         }
         #endregion
 

@@ -70,6 +70,7 @@
     <Compile Include="Extensoes\ObjectExtensions.cs" />
     <Compile Include="Extensoes\PesquisaExtensions.cs" />
     <Compile Include="Extensoes\PropertyExtensions.cs" />
+    <Compile Include="Extensoes\SplitExtensions.cs" />
     <Compile Include="Extensoes\StringExtensions.cs" />
     <Compile Include="Extensoes\TipagemExtension.cs" />
     <Compile Include="Extensoes\TypeExtension.cs" />
@@ -81,7 +82,6 @@
     <Compile Include="Interfaces\Extensions\TerminalExtensions.cs" />
     <Compile Include="Interfaces\Extensions\UsuarioExtensions.cs" />
     <Compile Include="Entidades\Interfaces\IAmbiente.cs" />
-    <Compile Include="Interfaces\IConnectionFactory.cs" />
     <Compile Include="Entidades\Interfaces\IEmpresa.cs" />
     <Compile Include="Entidades\Interfaces\IGrupoEmpresa.cs" />
     <Compile Include="Interfaces\IInformacaoSistema.cs" />

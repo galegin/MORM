@@ -1,9 +1,0 @@
-D:\projeto\MORM\MORM.CSharp\bin\RunWebApi\ApplicationInsights.config
-D:\projeto\MORM\MORM.CSharp\bin\RunWebApi\MORM.RunWebApi.exe.config
-D:\projeto\MORM\MORM.CSharp\bin\RunWebApi\MORM.RunWebApi.exe
-D:\projeto\MORM\MORM.CSharp\bin\RunWebApi\MORM.RunWebApi.pdb
-D:\projeto\MORM\MORM.CSharp\src\MORM.RunWebApi\obj\Debug\MORM.RunWebApi.csprojAssemblyReference.cache
-D:\projeto\MORM\MORM.CSharp\src\MORM.RunWebApi\obj\Debug\MORM.RunWebApi.csproj.CoreCompileInputs.cache
-D:\projeto\MORM\MORM.CSharp\src\MORM.RunWebApi\obj\Debug\MORM.RunWebApi.csproj.CopyComplete
-D:\projeto\MORM\MORM.CSharp\src\MORM.RunWebApi\obj\Debug\MORM.RunWebApi.exe
-D:\projeto\MORM\MORM.CSharp\src\MORM.RunWebApi\obj\Debug\MORM.RunWebApi.pdb

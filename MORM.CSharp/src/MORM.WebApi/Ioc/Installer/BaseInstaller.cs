@@ -3,7 +3,6 @@ using MORM.Dominio.Entidades;
 using MORM.Dominio.Interfaces;
 using MORM.Repositorio.Context;
 using MORM.Repositorio.Interfaces;
-using MORM.Repositorio.SqLite;
 using MORM.Repositorio.Uow;
 using MORM.Servico.Interfaces.nsAmbiente;
 using MORM.Servico.Services.nsAmbiente;
@@ -22,7 +21,6 @@ namespace MORM.WebApi.Ioc
 
         public override void InstallerConexao()
         {
-            Register<IConnectionFactory, SqLiteHelper>();
         }
 
         public override void InstallerDataConext()

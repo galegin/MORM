@@ -3,11 +3,6 @@ using MORM.Dominio.Extensoes;
 
 namespace MORM.GeradorDoc
 {
-    /// <summary>
-    /// criado por MFGALEGO em 16/08/2018 11:41:23
-    /// classe GerarDoctoTxt.cs
-    /// funcao  geracao dicionario formato texto
-    /// </summary>
     internal class GerarDoctoTxt : GerarDocto
     {
         public GerarDoctoTxt()

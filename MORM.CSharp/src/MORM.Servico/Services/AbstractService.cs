@@ -28,7 +28,7 @@ namespace MORM.Servico.Services
         }
     }
 
-    public class AbstractService<TObject> : AbstractService, IAbstractService<TObject> where TObject : class
+    public class AbstractService<TObject> : AbstractService, IAbstractService<TObject>
     {
         public IAbstractRepository<TObject> AbstractRepository { get; }
 

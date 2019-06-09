@@ -61,7 +61,6 @@
     <Compile Include="Context\Clausula.cs" />
     <Compile Include="Context\Comando.cs" />
     <Compile Include="Context\Conexao.cs" />
-    <Compile Include="Connections\DataContextConnection.cs" />
     <Compile Include="Context\Interfaces\IAbstractDataContext.cs" />
     <Compile Include="Context\Interfaces\IComando.cs" />
     <Compile Include="Context\Interfaces\IConexao.cs" />
@@ -75,7 +74,6 @@
     <Compile Include="Extensions\ParametroExtensions.cs" />
     <Compile Include="Extensions\AbstractRepositoryExtensions.cs" />
     <Compile Include="Factories\ConexaoFactory.cs" />
-    <Compile Include="Factories\ConnectionFactory.cs" />
     <Compile Include="Factories\ProviderFactory.cs" />
     <Compile Include="Migrations\MigracaoDatabase.cs" />
     <Compile Include="Uow\AbstractUnityOfWork.cs" />
@@ -93,6 +91,10 @@
     <Compile Include="Uow\Interfaces\IAbstractUnityOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MORM.Database\MORM.Database.csproj">
+      <Project>{dcb5615e-b518-4115-97ca-fe5a61224b8a}</Project>
+      <Name>MORM.Database</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MORM.Dominio\MORM.Dominio.csproj">
       <Project>{C22C745B-1538-405F-A9CE-29576C708B9E}</Project>
       <Name>MORM.Dominio</Name>
@@ -107,7 +109,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />

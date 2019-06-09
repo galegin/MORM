@@ -16,6 +16,7 @@ namespace MORM.Apresentacao.Comps
         #region propriedades
         public static ITelaUtils Instance { get; private set; }
         public IAbstractContainer Container { get; private set; }
+        public IMainCommand MainCommand => Container.Resolve<IMainCommand>();
         public IMainWindow MainWindow => Container.Resolve<IMainWindow>();
         public IMainLogin MainLogin => Container.Resolve<IMainLogin>();
         #endregion

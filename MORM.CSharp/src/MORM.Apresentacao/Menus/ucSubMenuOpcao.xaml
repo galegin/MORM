@@ -24,7 +24,7 @@
                         </Grid.RowDefinitions>
 
                         <Label Grid.Column="1" Height="Auto" Width="Auto"
-                               Foreground="White"
+                               Foreground="{Binding EsquemaMenu.CorFonte}"
                                Content="{Binding MenuOpcao.Descricao}" 
                                HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
                                />

@@ -1,6 +1,7 @@
 ﻿using MORM.Apresentacao.Controls;
 using MORM.Apresentacao.Extensions;
 using MORM.Apresentacao.ViewsModel;
+using MORM.Utils.Extensions;
 using System;
 //using System.IO;
 using System.Linq;
@@ -57,7 +58,7 @@ namespace MORM.Apresentacao.Views
                     return;
 
                 var campoTipo = AbstractCampoTipo.Individual;
-                var descricao = prop.GetDescricao();
+                var descricao = prop.GetDescricao().GetTraducao();
                 var tamanho = prop.GetTamanho();
                 var precisao = prop.GetPrecisao();
                 var editTipo = prop.GetEditTipo();

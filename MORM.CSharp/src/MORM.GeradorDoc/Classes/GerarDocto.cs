@@ -7,11 +7,6 @@ using System.Linq;
 
 namespace MORM.GeradorDoc
 {
-    /// <summary>
-    /// criado por MFGALEGO em 13/08/2018 18:17:41
-    /// classe GerarDocto.cs
-    /// funcao 
-    /// </summary>
     internal abstract class GerarDocto
     {
         protected string Formato { get; set; }

@@ -8,8 +8,8 @@ namespace MORM.Dominio.Tipagens
     public enum TipoDatabase
     {
         Firebird,
-        Oracle,
         MySql,
+        Oracle,
         PostgreSql,
         SqLite,
         SqlServer,
@@ -17,6 +17,8 @@ namespace MORM.Dominio.Tipagens
 
     public static class TipoDatabaseExtension
     {
+        //-- value
+
         public static string GetValueData(this TipoDatabase tipoDatabase, DateTime value)
         {
             switch (tipoDatabase)

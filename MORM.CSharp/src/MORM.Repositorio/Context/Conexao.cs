@@ -6,15 +6,16 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using MORM.Database.Extensions;
 
 namespace MORM.Repositorio.Context
 {
     public class Conexao : IConexao
     {
-        public Conexao(IAmbiente ambiente, IConnectionFactory connectionFactory)
+        public Conexao(IAmbiente ambiente)
         {
             Ambiente = ambiente ?? throw new ArgumentNullException(nameof(ambiente));
-            Connection = connectionFactory.GetConnection(ambiente);
+            Connection = ambiente.GetConnection();
             Connection.Open();
             SetarConexao();
         }

@@ -38,6 +38,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\MIGR\src\packages\Castle.Windsor.4.1.1\lib\net45\Castle.Windsor.dll</HintPath>
     </Reference>
+    <Reference Include="MaterialDesignColors, Version=1.0.0.14576, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MaterialDesignColors.1.1.1\lib\net45\MaterialDesignColors.dll</HintPath>
+    </Reference>
     <Reference Include="MaterialDesignThemes.Wpf, Version=2.5.0.1205, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\MaterialDesignThemes.2.5.0.1205\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
@@ -142,10 +146,6 @@
     <ProjectReference Include="..\MORM.Dtos\MORM.Dtos.csproj">
       <Project>{c4e38812-95d9-4363-aae8-d8505e9e141f}</Project>
       <Name>MORM.Dtos</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MORM.Enums\MORM.Enums.csproj">
-      <Project>{96d3fcf8-c8d7-4fd1-88e8-d112b2494f21}</Project>
-      <Name>MORM.Enums</Name>
     </ProjectReference>
     <ProjectReference Include="..\MORM.Utils\MORM.Utils.csproj">
       <Project>{346BED24-2DD1-4E58-939A-D72311C257F9}</Project>

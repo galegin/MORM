@@ -20,13 +20,10 @@ namespace MORM.Repositorio.Dapper.Context
 
         }
 
-        public AbstractDataContextDapper(IAmbiente ambiente, IConnectionFactory connectionFactory)
+        public AbstractDataContextDapper(IAmbiente ambiente)
         {
-            _connectionFactory = connectionFactory ?? throw new ArgumentNullException(nameof(connectionFactory));
             SetAmbiente(ambiente);
         }
-
-        private readonly IConnectionFactory _connectionFactory;
 
         //-- interface
 
@@ -40,7 +37,7 @@ namespace MORM.Repositorio.Dapper.Context
         public void SetAmbiente(IAmbiente ambiente)
         {
             Ambiente = ambiente ?? throw new ArgumentNullException(nameof(ambiente));
-            Conexao = ConexaoFactory.GetConexao(ambiente, _connectionFactory);
+            Conexao = ConexaoFactory.GetConexao(ambiente);
             Comando = new Comando(ambiente.TipoDatabase);
             Migracao = new Migracao(this);
         }

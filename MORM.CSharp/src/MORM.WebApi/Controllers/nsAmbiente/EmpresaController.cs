@@ -1,4 +1,5 @@
-﻿using MORM.Dominio.Entidades;
+﻿using MORM.Api.Controllers;
+using MORM.Dominio.Entidades;
 using MORM.Servico.Interfaces.nsAmbiente;
 using System.Web.Http;
 

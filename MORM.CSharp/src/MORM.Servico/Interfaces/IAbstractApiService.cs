@@ -15,7 +15,7 @@ namespace MORM.Servico.Interfaces
         IAmbiente Ambiente { get; }
     }
 
-    public interface IAbstractApiService<TObject> : IAbstractApiService where TObject : class
+    public interface IAbstractApiService<TObject> : IAbstractApiService
     {
         IAbstractService<TObject> AbstractService { get; }
         AbstractListarDto.Retorno<TObject> Listar(AbstractListarDto.Envio<TObject> dto);

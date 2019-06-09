@@ -17,7 +17,7 @@ namespace MORM.Repositorio.Repositories
         }
     }
 
-    public class AbstractRepository<TObject> : AbstractRepository, IAbstractRepository<TObject> where TObject : class
+    public class AbstractRepository<TObject> : AbstractRepository, IAbstractRepository<TObject>
     {
         public AbstractRepository(IAbstractDataContext context) : base(context)
         {

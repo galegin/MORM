@@ -10,7 +10,7 @@ namespace MORM.Repositorio.Repositories
         IAbstractDataContext DataContext { get; }
     }
 
-    public interface IAbstractRepository<TObject> : IAbstractRepository where TObject : class
+    public interface IAbstractRepository<TObject> : IAbstractRepository
     {
         IQueryableObject<TObject> AsQueryable();
         IList<TObject> ListarF(Func<TObject, string> filtro, int qtde = -1, int pagina = 0, bool relacao = false);

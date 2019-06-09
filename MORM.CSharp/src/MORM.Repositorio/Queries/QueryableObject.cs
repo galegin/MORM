@@ -8,7 +8,6 @@ using System.Linq.Expressions;
 namespace MORM.Repositorio.Queries
 {
     public class QueryableObject<TObject> : IQueryableObject<TObject>
-        where TObject : class
     {
         private readonly IAbstractDataContext _dataContext;
         private readonly IQueryableValue _value;

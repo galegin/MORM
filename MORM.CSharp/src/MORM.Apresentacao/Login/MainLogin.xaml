@@ -9,7 +9,11 @@
              WindowStartupLocation="CenterScreen"
              ShowInTaskbar="False"
              Topmost="True"
+             BorderThickness="0"
+             WindowStyle="None"
              ResizeMode="NoResize"
+             Background="{Binding EsquemaTitulo.CorFundo}"
+             Foreground="{Binding EsquemaTitulo.CorFonte}"
              >
     <Grid>
         <Grid.RowDefinitions>
@@ -31,18 +35,21 @@
 
         <Label Grid.Row="1" Grid.Column="1" 
                Content="Acesso do Sistema" FontSize="24"
-               HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+               HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+               Foreground="{Binding EsquemaTitulo.CorFonte}"/>
 
         <Label Grid.Row="2" Grid.Column="1" 
                Content="Login"
-               HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+               HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+               Foreground="{Binding EsquemaTitulo.CorFonte}"/>
 
         <TextBox Grid.Row="3" Grid.Column="1"
                  Text="{Binding Model.Login, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
 
         <Label Grid.Row="4" Grid.Column="1" 
                Content="Senha"
-               HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+               HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+               Foreground="{Binding EsquemaTitulo.CorFonte}"/>
 
         <PasswordBox Grid.Row="5" Grid.Column="1" PasswordChanged="PasswordBox_PasswordChanged"/>
 

@@ -5,7 +5,6 @@ using System.Linq.Expressions;
 namespace MORM.Repositorio.Queries
 {
     public interface IQueryableObject<TObject>
-        where TObject : class
     {
         IQueryableObject<TObject> Where(Expression<Func<TObject, bool>> expression);
         IQueryableObject<TObject> And(Expression<Func<TObject, bool>> expression);

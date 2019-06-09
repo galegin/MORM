@@ -1,9 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
-using MORM.Dominio.Tipagens;
-using MORM.Repositorio.Context;
 using MORM.Repositorio.Extensions;
-using MORM.Repositorio.SqLite;
 using MORM.Repositorio.Tests.Ioc.Container;
 
 namespace MORM.Repositorio.Tests
@@ -82,8 +79,6 @@ namespace MORM.Repositorio.Tests
         [TestMethod]
         public void TipoServiceTests_Ambiente()
         {
-            DataContextConnection.SetConnectionFactory(TipoDatabase.SqLite, new SqLiteHelper());
-
             TipoServiceTests_Salvar();
 
             var listaDeTipo = _tipoService.AbstractRepository.ToList(x => x.Cd_Tipo == _codigoTipo);

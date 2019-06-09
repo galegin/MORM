@@ -11,7 +11,7 @@
     <comps:AbstractUserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </comps:AbstractUserControl.Resources>
-    
+
     <Grid>
         <DockPanel>
             <StackPanel DockPanel.Dock="Top">
@@ -34,10 +34,10 @@
                                Grid.Column="0" Height="Auto" Width="Auto" 
                                Kind="{Binding PackIconKindOpcao}"
                                VerticalAlignment="Center" HorizontalAlignment="Center" 
-                               Margin="6,0,6,0" Foreground="#FFFFFF"/>
+                               Margin="6,0,6,0" Foreground="{Binding EsquemaMenu.CorFonte}"/>
 
                         <Label Grid.Column="1" Height="Auto" Width="Auto"
-                               Foreground="White"
+                               Foreground="{Binding EsquemaMenu.CorFonte}"
                                Content="{Binding MenuOpcao.Descricao}" 
                                HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
 
@@ -45,7 +45,7 @@
                                Grid.Column="2" Height="Auto" Width="Auto" 
                                Kind="{Binding PackIconKindMenu}"
                                VerticalAlignment="Center" HorizontalAlignment="Center" 
-                               Margin="6,0,6,0" Foreground="#FFFFFF"
+                               Margin="6,0,6,0" Foreground="{Binding EsquemaMenu.CorFonte}"
                                Visibility="{Binding IsContemSubMenu, Converter={StaticResource BooleanToVisibilityConverter}}"/>
                     </Grid>
                 </Button>                

@@ -20,16 +20,14 @@ namespace MORM.Repositorio.Factories
             new Dictionary<string, IConexao>();
 
         public static IConexao GetConexao(IAmbiente ambiente, 
-            IConnectionFactory connectionFactory = null, 
             TipoConexao tipoConexao = TipoConexao.Ambiente)
         {
-            var codigoAmbiente = ambiente.Codigo + "#" + tipoConexao.ToString() +
-                (connectionFactory != null ? "#unityOfWork" : string.Empty);
+            var codigoAmbiente = ambiente.Codigo + "#" + tipoConexao.ToString();
 
             var conexao = _listaDeConexao.ContainsKey(codigoAmbiente) ? _listaDeConexao[codigoAmbiente] : null;
             if (conexao == null)
             {
-                conexao = new Conexao(ambiente, connectionFactory ?? DataContextConnection.GetConnection(ambiente));
+                conexao = new Conexao(ambiente);
                 _listaDeConexao[codigoAmbiente] = conexao;
             }
 

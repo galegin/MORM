@@ -6,6 +6,7 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Threading;
+using MORM.Apresentacao.Styles;
 
 namespace MORM.Apresentacao.Comps
 {
@@ -59,6 +60,8 @@ namespace MORM.Apresentacao.Comps
     {
         public static void SetApplication(this Application application)
         {
+            //application.AddTheme();
+            //application.AddLocal();
             application.DispatcherUnhandledException += AbstractApplication.Application_DispatcherUnhandledException;
             application.Startup += AbstractApplication.OnStartup;
         }

@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:MORM.Apresentacao.Styles">
+
+    <!-- Base Colors -->
+    <Color x:Key="WhiteColor">#FFF</Color>
+    
+    <SolidColorBrush x:Key="WhiteColorBrush" Color="{DynamicResource WhiteColor}"/>
+
+    <Color x:Key="CorBranco">#FFF</Color>
+    <Color x:Key="CorCinza">#888</Color>
+    <Color x:Key="CodPreto">#000</Color>
+
+    <SolidColorBrush x:Key="CorFonte" Color="{DynamicResource CorBranco}"/>
+    <SolidColorBrush x:Key="CorFundo" Color="{DynamicResource CodPreto}"/>
+
+</ResourceDictionary>

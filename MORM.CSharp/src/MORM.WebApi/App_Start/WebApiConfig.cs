@@ -1,4 +1,4 @@
-﻿//using MORM.Repositorio.Context;
+﻿using MORM.Api.Ioc;
 using MORM.WebApi.Ioc;
 using System.Web.Http;
 
@@ -19,13 +19,13 @@ namespace MORM.WebApi.App_Start
                 defaults: new { id = RouteParameter.Optional }
             );
 
+            // Somente Json
             config.Formatters.Remove(config.Formatters.XmlFormatter);
             config.Formatters.Add(config.Formatters.JsonFormatter);
 
+            // Ioc
             var container = BaseContainer.Instance;
             config.DependencyResolver = new WindsorDependencyResolver(container);
-
-            //AbstractDataContext.SetarConnectionFactory();
         }
     }
 }

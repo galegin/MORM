@@ -42,6 +42,9 @@
     <Reference Include="Microsoft.CSharp">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core">
@@ -55,9 +58,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\TypeForConvert.cs" />
+    <Compile Include="Extensions\CampoExtensions.cs" />
+    <Compile Include="Extensions\EnunsExtensions.cs" />
     <Compile Include="Excecoes\ExceptionErro.cs" />
     <Compile Include="Excecoes\ExceptionInfo.cs" />
     <Compile Include="Excecoes\ExceptionDebug.cs" />
+    <Compile Include="Extensions\JsonExtensions.cs" />
     <Compile Include="Factories\SingletonFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Classes\ConnectionPath.cs" />
@@ -66,7 +73,7 @@
     <Compile Include="Classes\VariavelAmbiente.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,13 +1,8 @@
-﻿using System;
-using Newtonsoft.Json;
+﻿using MORM.Utils.Extensions;
+using System;
 
 namespace MORM.GeradorDoc
 {
-    /// <summary>
-    /// criado por MFGALEGO em 16/08/2018 11:41:37
-    /// classe GerarDoctoJson.cs
-    /// funcao  geracao dicionario formato json
-    /// </summary>
     internal class GerarDoctoJson : GerarDocto
     {
         public GerarDoctoJson()
@@ -18,7 +13,7 @@ namespace MORM.GeradorDoc
         protected override string GerarCampo(Type type)
         {
             var objeto = Activator.CreateInstance(type);
-            var objetoStr = JsonConvert.SerializeObject(objeto, Formatting.Indented);
+            var objetoStr = objeto.GetJsonFromObject(isIndented: true);
             return objetoStr;
         }
     }

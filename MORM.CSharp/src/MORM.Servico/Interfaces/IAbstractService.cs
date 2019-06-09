@@ -15,7 +15,7 @@ namespace MORM.Servico.Interfaces
         IAmbiente Ambiente { get; }
     }
 
-    public interface IAbstractService<TObject> : IAbstractService where TObject : class
+    public interface IAbstractService<TObject> : IAbstractService
     {
         IAbstractRepository<TObject> AbstractRepository { get; }
         List<TObject> Listar(TObject filtro);

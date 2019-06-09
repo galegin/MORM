@@ -43,6 +43,8 @@ namespace MORM.Apresentacao.Ioc.Installer
 
         public override void InstallerViews()
         {
+            //RegisterSingleton<IMainLogin, MainLogin>();
+            //RegisterSingleton<IMainCommand, MainCommand>();
             RegisterSingleton<IMainWindow, MainWindow>();
 
             //Register<IMenuSistema, MenuSistema>();

@@ -84,7 +84,8 @@ namespace MORM.Dominio.Extensoes
 
         public static void CloneInstancePropOrFieldAll(this object instance, object instanceClone, bool isProp = true)
         {
-            instance.GetType().CloneInstancePropOrFieldAll(instance, instanceClone, isProp);
+            if (instanceClone != null)
+                instance.GetType().CloneInstancePropOrFieldAll(instance, instanceClone, isProp);
         }
     }
 }

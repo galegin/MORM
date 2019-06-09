@@ -37,6 +37,7 @@ namespace MORM.Apresentacao.Login.ViewsModel
         {
             if (string.IsNullOrWhiteSpace(token))
                 return;
+            IsConfirmado = true;
             Token = token;
             FecharLogin.ExecuteCommand(this);
         }

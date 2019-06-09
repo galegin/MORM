@@ -1,6 +1,6 @@
 ﻿using MORM.Dominio.Extensoes;
 using MORM.Utils.Classes;
-using Newtonsoft.Json;
+using MORM.Utils.Extensions;
 using System;
 using System.Configuration;
 using System.Net;
@@ -71,7 +71,7 @@ namespace MORM.Apresentacao.Consumers
             {
                 client.Timeout = TimeSpan.FromHours(1);
 
-                var conteudo = new StringContent(JsonConvert.SerializeObject(entity), Encoding.UTF8, "application/json");
+                var conteudo = new StringContent(entity.GetJsonFromObject(), Encoding.UTF8, "application/json");
                 var response = client.PostAsync(url, conteudo).Result;
 
                 return HandleHttpStatusCode(response);
@@ -95,7 +95,7 @@ namespace MORM.Apresentacao.Consumers
                     case HttpStatusCode.NotFound:
                     case HttpStatusCode.Forbidden:
                     case HttpStatusCode.Accepted:
-                        retorno = JsonConvert.DeserializeObject<ApiRetorno>(retornoStr);
+                        retorno = retornoStr.GetObjectFromJson<ApiRetorno>();
                         retorno.StatusCode = response.StatusCode;
                         break;
                 }
