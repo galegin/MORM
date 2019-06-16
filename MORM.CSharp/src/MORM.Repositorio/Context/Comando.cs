@@ -37,59 +37,59 @@ namespace MORM.Repositorio.Context
 
         public IComando ComTipoDatabase(TipoDatabase tipoDatabase)
         {
-            this._tipoDatabase = tipoDatabase;
+            _tipoDatabase = tipoDatabase;
             return this;
         }
 
         private void ResetarCampos()
         {
-            this._tipoObjeto = null;
-            this._objeto = null;
-            this._parametros = null;
-            this._campoTipos = null;
+            _tipoObjeto = null;
+            _objeto = null;
+            _parametros = null;
+            _campoTipos = null;
         }
 
         public IComando ComTipoObjeto(Type tipoObjeto)
         {
             ResetarCampos();
-            this._tipoObjeto = tipoObjeto;
+            _tipoObjeto = tipoObjeto;
             return this;
         }
 
         public IComando ComObjeto(object Objeto)
         {
             ResetarCampos();
-            this._objeto = Objeto;
+            _objeto = Objeto;
             return this;
         }
 
         public IComando ComParametros(IList<IParametro> parametros)
         {
-            this._parametros = parametros;
+            _parametros = parametros;
             return this;
         }
 
         public IComando ComTipoCampo(CampoTipo[] campoTipos)
         {
-            this._campoTipos = campoTipos;
+            _campoTipos = campoTipos;
             return this;
         }
 
         public IComando ComWhere(string where)
         {
-            this._where = where;
+            _where = where;
             return this;
         }
 
         public IComando ComQtde(int qtde = -1)
         {
-            this._qtde = qtde;
+            _qtde = qtde;
             return this;
         }
 
         public IComando ComPagina(int pagina = 0)
         {
-            this._pagina = pagina;
+            _pagina = pagina;
             return this;
         }
 
@@ -129,7 +129,8 @@ namespace MORM.Repositorio.Context
             foreach (var campo in campos)
             {
                 var valueObj = campo.OwnerProp.GetValue(_objeto);
-                if (isKeyOnly || (!isKeyOnly && valueObj != null))
+                var valueNul = campo.OwnerProp.PropertyType.GetValueNull();
+                if (isKeyOnly || (!isKeyOnly && valueObj != null && !valueNul.Equals(valueObj)))
                     wheres.Add($"{campo.Atributo} = {GetValueStr(valueObj)}");
             }
 

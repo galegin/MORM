@@ -1,7 +1,7 @@
-﻿using MORM.Utils.Classes;
+﻿using MORM.Apresentacao.Comps;
+using MORM.Utils.Classes;
 using MORM.Utils.Excecoes;
 using System.Collections.Generic;
-using System.Windows;
 
 namespace MORM.Apresentacao.Connectors
 {
@@ -18,7 +18,7 @@ namespace MORM.Apresentacao.Connectors
             if (isGerarExcecao)
                 throw new ExceptionInfo(mensagem);
 
-            MessageBox.Show(mensagem, "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
+            TelaUtils.Instance.MainMensagem.MensagemErro(mensagem);
         }
     }
 

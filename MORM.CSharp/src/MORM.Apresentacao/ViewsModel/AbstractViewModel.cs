@@ -38,6 +38,9 @@ namespace MORM.Apresentacao.ViewsModel
         #endregion
 
         #region propriedades
+        #region action
+        public Action CloseAction { get; set; }
+        #endregion
         #region confirmacao
         public bool IsConfirmado
         {

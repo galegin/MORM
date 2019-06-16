@@ -2,8 +2,7 @@ using MORM.Dtos;
 using MORM.Dominio.Interfaces;
 using MORM.Dominio.Tipagens;
 using MORM.Servico.Interfaces;
-using MORM.Servico.Interfaces.nsAmbiente;
-using MORM.Servico.Services.nsAmbiente;
+using MORM.Servico.Services;
 using MORM.Api.Extensions;
 using System;
 using System.Configuration;
@@ -12,7 +11,6 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Controllers;
-using MORM.Dtos.nsAmbiente;
 
 namespace MORM.Api.Controllers
 {

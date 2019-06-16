@@ -51,7 +51,7 @@
     <Compile Include="Manutencao\AbstractSalvarDto.cs" />
     <Compile Include="Manutencao\AbstractListarDto.cs" />
     <Compile Include="Classes\AbstractValidator.cs" />
-    <Compile Include="nsAmbiente\AmbienteDto.cs" />
+    <Compile Include="nsAmbiente\ValidarAmbienteDto.cs" />
     <Compile Include="nsAmbiente\GravarLogAcessoDto.cs" />
     <Compile Include="nsAmbiente\VerificarPermissaoDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

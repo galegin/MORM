@@ -36,9 +36,9 @@ namespace MORM.Apresentacao.Views
         #endregion
 
         #region metodos
-        private void CreateCampos(IAbstractViewModel vm)
+        protected void CreateCampos(IAbstractViewModel vm)
         {
-            DataContext = vm;
+            SetDataContext(vm);
 
             var stackPanel = new StackPanel();
             stackPanel.Margin = new Thickness(10);

@@ -1,10 +1,10 @@
 ﻿using MORM.Repositorio.Extensions;
 using MORM.Repositorio.Uow;
 using MORM.Dominio.Entidades;
-using MORM.Servico.Interfaces.nsAmbiente;
-using MORM.Dtos.nsAmbiente;
+using MORM.Servico.Interfaces;
+using MORM.Dtos;
 
-namespace MORM.Servico.Services.nsAmbiente
+namespace MORM.Servico.Services
 {
     public class PermissaoService : AbstractService<Permissao>, IPermissaoService
     {

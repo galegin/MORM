@@ -1,11 +1,14 @@
 ﻿using MORM.Apresentacao.Consumers;
 using MORM.Dominio.Extensoes;
-using MORM.Dtos.nsAmbiente;
+using MORM.Dtos;
+using System.Configuration;
 
 namespace MORM.Apresentacao.Connectors
 {
     public class AbstractAmbienteConnector : AbstractConnectorObj
     {
+        private static string _token = ConfigurationManager.AppSettings[nameof(_token)] ?? string.Empty;
+
         public override object Executar(object instance)
         {
             var consumerDto = new ValidarAmbienteDto.Envio()
@@ -21,12 +24,15 @@ namespace MORM.Apresentacao.Connectors
 
         public static void ValidarAcesso()
         {
+            if (string.IsNullOrWhiteSpace(AbstractApiConsumer.TokenInterno) && !string.IsNullOrWhiteSpace(_token))
+                AbstractApiConsumer.SetTokenInterno(_token);
+
             if (string.IsNullOrWhiteSpace(AbstractApiConsumer.TokenInterno))
             {
                 var acesso = new
                 {
-                    Login = "desen",
-                    Senha = "123456"
+                    Login = "ADMIN",
+                    Senha = "admin"
                 };
                 var connector = new AbstractAmbienteConnector();
                 var token = connector.Executar(acesso) as string;

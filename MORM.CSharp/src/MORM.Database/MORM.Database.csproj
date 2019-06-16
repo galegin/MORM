@@ -74,33 +74,15 @@
     <Folder Include="Drivers\SqlServer\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Drivers\Firebird\FirebirdSql.Data.FirebirdClient.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Drivers\MySql\MySql.Data.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Drivers\Oracle\Oracle.ManagedDataAccess.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Drivers\PostgreSql\Npgsql.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Drivers\PostgreSql\Npgsql.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Drivers\SqLite\System.Data.SQLite.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Drivers\SqLite\System.Data.SQLite.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Drivers\SqLite\x64\SQLite.Interop.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Drivers\SqLite\x86\SQLite.Interop.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Drivers\Firebird\FirebirdSql.Data.FirebirdClient.dll" />
+    <Content Include="Drivers\MySql\MySql.Data.dll" />
+    <Content Include="Drivers\Oracle\Oracle.ManagedDataAccess.dll" />
+    <Content Include="Drivers\PostgreSql\Npgsql.dll" />
+    <Content Include="Drivers\PostgreSql\Npgsql.xml" />
+    <Content Include="Drivers\SqLite\System.Data.SQLite.dll" />
+    <Content Include="Drivers\SqLite\System.Data.SQLite.xml" />
+    <Content Include="Drivers\SqLite\x64\SQLite.Interop.dll" />
+    <Content Include="Drivers\SqLite\x86\SQLite.Interop.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

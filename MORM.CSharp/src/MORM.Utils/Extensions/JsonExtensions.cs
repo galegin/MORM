@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Web.Script.Serialization;
 
 namespace MORM.Utils.Extensions
 {
@@ -23,7 +23,7 @@ namespace MORM.Utils.Extensions
                     conteudo = conteudoPadrao;
 
                 if (!string.IsNullOrWhiteSpace(conteudo))
-                    lista = JsonConvert.DeserializeObject<List<TObj>>(conteudo);
+                    lista = conteudo.GetObjectFromJson<List<TObj>>();
                 else
                     lista = new List<TObj>();
             };
@@ -33,12 +33,12 @@ namespace MORM.Utils.Extensions
 
         public static string GetJsonFromObject<TObj>(this TObj obj, bool isIndented = false)
         {
-            return JsonConvert.SerializeObject(obj, isIndented ? Formatting.Indented : Formatting.None);
+            return new JavaScriptSerializer().Serialize(obj);
         }
 
         public static TObj GetObjectFromJson<TObj>(this string str)
         {
-            return JsonConvert.DeserializeObject<TObj>(str);
+            return new JavaScriptSerializer().Deserialize<TObj>(str);
         }
     }
 }

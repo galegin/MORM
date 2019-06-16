@@ -10,7 +10,7 @@
         <DockPanel>
             <StackPanel DockPanel.Dock="Top">
                 <Button Height="40" Width="Auto" Margin="0"
-                        Style="{StaticResource InlineButton}"
+                        Style="{DynamicResource InlineButton}"
                         Command="{Binding ExecutarSubMenu}" CommandParameter="{Binding}"
                         HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                         >

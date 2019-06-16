@@ -1,13 +1,13 @@
 ﻿using MORM.Api.App_Start;
 using MORM.Api.Controllers;
-using MORM.Dtos.nsAmbiente;
-using MORM.Servico.Interfaces.nsAmbiente;
+using MORM.Dtos;
+using MORM.Servico.Interfaces;
 using System;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace MORM.WebApi.Controllers.nsAmbiente
+namespace MORM.WebApi.Controllers
 {
     [RoutePrefix("api/Ambiente")]
     public class AmbienteController : ApiController

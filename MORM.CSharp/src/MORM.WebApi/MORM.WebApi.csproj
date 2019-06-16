@@ -113,9 +113,28 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\nsAmbiente\AmbienteController.cs" />
-    <Compile Include="Controllers\nsAmbiente\TerminalController.cs" />
-    <Compile Include="Controllers\nsAmbiente\UsuarioController.cs" />
-    <Compile Include="Controllers\nsAmbiente\EmpresaController.cs" />
+    <Compile Include="Controllers\nsEmpresa\EmpresaController.cs" />
+    <Compile Include="Controllers\nsEmpresa\GrupoEmpresaController.cs" />
+    <Compile Include="Controllers\nsMunicipio\BairroController.cs" />
+    <Compile Include="Controllers\nsMunicipio\EstadoController.cs" />
+    <Compile Include="Controllers\nsMunicipio\LogradouroController.cs" />
+    <Compile Include="Controllers\nsMunicipio\MunicipioController.cs" />
+    <Compile Include="Controllers\nsMunicipio\PaisController.cs" />
+    <Compile Include="Controllers\nsPessoa\PessoaController.cs" />
+    <Compile Include="Controllers\nsProduto\ProdutoBarraController.cs" />
+    <Compile Include="Controllers\nsProduto\ProdutoController.cs" />
+    <Compile Include="Controllers\nsProduto\ProdutoKitController.cs" />
+    <Compile Include="Controllers\nsProduto\ProdutoSaldoController.cs" />
+    <Compile Include="Controllers\nsProduto\ProdutoValorController.cs" />
+    <Compile Include="Controllers\nsProduto\TipoSaldoController.cs" />
+    <Compile Include="Controllers\nsProduto\TipoValorController.cs" />
+    <Compile Include="Controllers\nsTerminal\TerminalController.cs" />
+    <Compile Include="Controllers\nsOperacao\OperacaoController.cs" />
+    <Compile Include="Controllers\nsRegraFiscal\RegraFiscalController.cs" />
+    <Compile Include="Controllers\nsTransacao\TipoVariacaoController.cs" />
+    <Compile Include="Controllers\nsTransacao\TipoVariacaoMotivoController.cs" />
+    <Compile Include="Controllers\nsTransacao\TransacaoController.cs" />
+    <Compile Include="Controllers\nsUsuario\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

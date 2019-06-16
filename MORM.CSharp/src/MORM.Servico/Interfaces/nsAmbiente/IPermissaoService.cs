@@ -1,7 +1,7 @@
 ﻿using MORM.Dominio.Entidades;
-using MORM.Dtos.nsAmbiente;
+using MORM.Dtos;
 
-namespace MORM.Servico.Interfaces.nsAmbiente
+namespace MORM.Servico.Interfaces
 {
     public interface IPermissaoService : IAbstractService<Permissao>
     {

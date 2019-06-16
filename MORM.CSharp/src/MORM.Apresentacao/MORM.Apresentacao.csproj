@@ -128,6 +128,7 @@
     <Compile Include="Controls\ViewsModel\AbstractTituloViewModel.cs" />
     <Compile Include="Interfaces\IMainCommand.cs" />
     <Compile Include="Interfaces\IMainLogin.cs" />
+    <Compile Include="Interfaces\IMainMensagem.cs" />
     <Compile Include="Ioc\Installer\BaseInstaller.cs" />
     <Compile Include="Login\Commands\FecharLogin.cs" />
     <Compile Include="Login\Commands\LogarSistema.cs" />
@@ -136,6 +137,7 @@
       <DependentUpon>MainLogin.xaml</DependentUpon>
     </Compile>
     <Compile Include="Login\ViewsModel\LoginViewModel.cs" />
+    <Compile Include="Mensagens\MainMensagem.cs" />
     <Compile Include="Menus\Commands\ExecutarMenu.cs" />
     <Compile Include="Menus\Commands\ExecutarSubMenu.cs" />
     <Compile Include="Menus\Commands\ExibirMenuLateral.cs" />
@@ -159,7 +161,7 @@
     </Compile>
     <Compile Include="Menus\MenuOpcao.cs" />
     <Compile Include="Menus\MenuResolver.cs" />
-    <Compile Include="Menus\MenuSistema.cs" />
+    <Compile Include="Menus\AbstractMenuSistema.cs" />
     <Compile Include="Menus\ucSubMenuOpcao.xaml.cs">
       <DependentUpon>ucSubMenuOpcao.xaml</DependentUpon>
     </Compile>

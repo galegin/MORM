@@ -19,6 +19,7 @@ namespace MORM.Apresentacao.Comps
         public IMainCommand MainCommand => Container.Resolve<IMainCommand>();
         public IMainWindow MainWindow => Container.Resolve<IMainWindow>();
         public IMainLogin MainLogin => Container.Resolve<IMainLogin>();
+        public IMainMensagem MainMensagem => Container.Resolve<IMainMensagem>();
         #endregion
 
         #region metodos

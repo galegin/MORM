@@ -1,0 +1,9 @@
+D:\projeto\MORM\MORM.CSharp\bin\Debug\connectionconfig.json
+D:\projeto\MORM\MORM.CSharp\bin\Debug\MORM.Api.dll.config
+D:\projeto\MORM\MORM.CSharp\bin\Debug\MORM.Api.dll
+D:\projeto\MORM\MORM.CSharp\bin\Debug\MORM.Api.pdb
+D:\projeto\MORM\MORM.CSharp\src\MORM.Api\obj\Debug\MORM.Api.csprojAssemblyReference.cache
+D:\projeto\MORM\MORM.CSharp\src\MORM.Api\obj\Debug\MORM.Api.csproj.CoreCompileInputs.cache
+D:\projeto\MORM\MORM.CSharp\src\MORM.Api\obj\Debug\MORM.Api.csproj.CopyComplete
+D:\projeto\MORM\MORM.CSharp\src\MORM.Api\obj\Debug\MORM.Api.dll
+D:\projeto\MORM\MORM.CSharp\src\MORM.Api\obj\Debug\MORM.Api.pdb

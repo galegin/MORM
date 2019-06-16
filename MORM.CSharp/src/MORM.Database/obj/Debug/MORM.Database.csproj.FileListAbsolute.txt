@@ -1,0 +1,8 @@
+D:\projeto\MORM\MORM.CSharp\bin\Debug\connectionconfig.json
+D:\projeto\MORM\MORM.CSharp\bin\Debug\MORM.Database.dll
+D:\projeto\MORM\MORM.CSharp\bin\Debug\MORM.Database.pdb
+D:\projeto\MORM\MORM.CSharp\src\MORM.Database\obj\Debug\MORM.Database.csprojAssemblyReference.cache
+D:\projeto\MORM\MORM.CSharp\src\MORM.Database\obj\Debug\MORM.Database.csproj.CoreCompileInputs.cache
+D:\projeto\MORM\MORM.CSharp\src\MORM.Database\obj\Debug\MORM.Database.csproj.CopyComplete
+D:\projeto\MORM\MORM.CSharp\src\MORM.Database\obj\Debug\MORM.Database.dll
+D:\projeto\MORM\MORM.CSharp\src\MORM.Database\obj\Debug\MORM.Database.pdb

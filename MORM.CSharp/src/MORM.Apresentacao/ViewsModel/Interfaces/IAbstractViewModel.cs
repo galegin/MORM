@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace MORM.Apresentacao.ViewsModel
 {
@@ -7,6 +8,7 @@ namespace MORM.Apresentacao.ViewsModel
         object GetModel();
         string GetNomeModel();
         string GetTituloModel();
+        Action CloseAction { get; set; }
     }
 
     public interface IAbstractViewModel<TModel> : IAbstractViewModel

@@ -1,11 +1,11 @@
 ﻿using MORM.Dominio.Entidades;
-using MORM.Dtos.nsAmbiente;
+using MORM.Dtos;
 using MORM.Repositorio.Extensions;
 using MORM.Repositorio.Uow;
-using MORM.Servico.Interfaces.nsAmbiente;
+using MORM.Servico.Interfaces;
 using System;
 
-namespace MORM.Servico.Services.nsAmbiente
+namespace MORM.Servico.Services
 {
     public class LogAcessoService : AbstractService<LogAcesso>, ILogAcessoService
     {

@@ -1,4 +1,4 @@
-﻿using Castle.Windsor.Installer;
+using Castle.Windsor.Installer;
 using MORM.Aplicacao.Ioc.Container;
 
 namespace MORM.WSist.Ioc.Container
@@ -6,14 +6,14 @@ namespace MORM.WSist.Ioc.Container
     public class BaseContainer : AbstractContainer
     {
         private static IAbstractContainer _instance;
-        public static IAbstractContainer Instance =>
+        public static IAbstractContainer Instance => 
             _instance ?? (_instance = new BaseContainer());
 
         protected override void Setup()
         {
-            base.Setup();   
+            base.Setup();
 
             Install(FromAssembly.This());
         }
     }
-} 
+}

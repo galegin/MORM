@@ -77,6 +77,13 @@ namespace MORM.Dominio.Atributos
             OwnerObj = ownerObj;
         }
 
+        public RelacaoAttribute(string campo,
+            RelacaoTipo tipo = RelacaoTipo.NoUpdate)
+        {
+            Tipo = tipo;
+            Campos = new[] { campo };
+        }
+
         public string[] Campos { get; private set; }
         public RelacaoTipo Tipo { get; private set; }
         public Type OwnerType { get; set; }

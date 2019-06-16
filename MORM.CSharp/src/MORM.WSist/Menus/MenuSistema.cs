@@ -1,96 +1,174 @@
-﻿using MORM.Apresentacao.Comps;
 using MORM.Apresentacao.Menus;
-using MORM.Utils.Excecoes;
-using MORM.WSist.Views.Lista;
-using MORM.WSist.Views.Manutencao;
+using MORM.Apresentacao.Views.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Threading;
 
 namespace MORM.WSist.Menus
 {
-    public class MenuSistema : IMenuSistema
+    public class MenuSistema : AbstractMenuSistema
     {
-        private readonly IMenuResolverClasse _resolverClasse;
-        private readonly IMenuResolverObjeto _resolverObjeto;
-        private readonly IMenuResolverTipo _resolverTipo;
-
-        public MenuSistema(
-            IMenuResolverClasse resolverClasse, 
-            IMenuResolverObjeto resolverObjeto, 
-            IMenuResolverTipo resolverTipo)
+        public MenuSistema(IMenuResolverClasse rc, IMenuResolverObjeto ro, IMenuResolverTipo rt) : base(rc, ro, rt)
         {
-            _resolverClasse = resolverClasse ?? throw new ArgumentNullException(nameof(resolverClasse));
-            _resolverObjeto = resolverObjeto ?? throw new ArgumentNullException(nameof(resolverObjeto));
-            _resolverTipo = resolverTipo ?? throw new ArgumentNullException(nameof(resolverTipo));
         }
 
-        public IList<IMenuOpcao> GetListaDeMenuOpcao()
+        public override IList<IMenuOpcao> GetListaDeMenuOpcao()
         {
             var listaDeMenuOpcao = new List<IMenuOpcao>();
 
-            listaDeMenuOpcao.Add(GetMenuManutencao());
-            listaDeMenuOpcao.Add(GetMenuProcesso());
-            listaDeMenuOpcao.Add(GetMenuConsulta());
-            listaDeMenuOpcao.Add(GetMenuRelatorio());
+            listaDeMenuOpcao.Add(GetMenuAmbiente());
+            listaDeMenuOpcao.Add(GetMenuComum());
+            listaDeMenuOpcao.Add(GetMenuEmpresa());
+            listaDeMenuOpcao.Add(GetMenuMunicipio());
+            listaDeMenuOpcao.Add(GetMenuOperacao());
+            listaDeMenuOpcao.Add(GetMenuPessoa());
+            listaDeMenuOpcao.Add(GetMenuProduto());
+            listaDeMenuOpcao.Add(GetMenuRegraFiscal());
+            listaDeMenuOpcao.Add(GetMenuTerminal());
+            listaDeMenuOpcao.Add(GetMenuTransacao());
+            listaDeMenuOpcao.Add(GetMenuUsuario());
             listaDeMenuOpcao.Add(GetMenuConfiguracao());
-            listaDeMenuOpcao.Add(GetMenuFuncao());
-            listaDeMenuOpcao.Add(GetMenuOutro());
             listaDeMenuOpcao.Add(GetMenuSair());
 
             return listaDeMenuOpcao;
         }
 
-        private IMenuOpcao GetMenuManutencao()
+        private IMenuOpcao GetMenuAmbiente()
         {
             var subMenu = new List<IMenuOpcao>
             {
-                new MenuOpcaoTipo<IAbstractClienteViewManut>(MenuOpcaoTipo.Opcao, "MenuManutCliente", "Cliente", _resolverTipo),
-                new MenuOpcaoTipo<IAbstractEmpresaViewManut>(MenuOpcaoTipo.Opcao, "MenuManutEmpresa", "Empresa", _resolverTipo),
-                new MenuOpcaoTipo<IAbstractProdutoViewManut>(MenuOpcaoTipo.Opcao, "MenuManutProduto", "Produto", _resolverTipo),
-                new MenuOpcaoTipo<IAbstractTerminalViewManut>(MenuOpcaoTipo.Opcao, "MenuManutTerminal", "Terminal", _resolverTipo),
-                new MenuOpcaoTipo<IAbstractUsuarioViewManut>(MenuOpcaoTipo.Opcao, "MenuManutUsuario", "Usuario", _resolverTipo),
+                new MenuOpcaoTipo<IAmbienteView>(MenuOpcaoTipo.Opcao, "MenuAmbienteAmbiente", "Ambiente", _resolverTipo),
+                new MenuOpcaoTipo<ILogAcessoView>(MenuOpcaoTipo.Opcao, "MenuAmbienteLogAcesso", "LogAcesso", _resolverTipo),
+                new MenuOpcaoTipo<IMigracaoEntView>(MenuOpcaoTipo.Opcao, "MenuAmbienteMigracaoEnt", "MigracaoEnt", _resolverTipo),
+                new MenuOpcaoTipo<IPermissaoView>(MenuOpcaoTipo.Opcao, "MenuAmbientePermissao", "Permissao", _resolverTipo),
             };
 
-            var menu = new MenuOpcaoDescr(MenuOpcaoTipo.Manutencao, "MenuManut", "Manutenção", subMenu);
+            var menu = new MenuOpcaoDescr(MenuOpcaoTipo.SubMenu, "MenuAmbiente", "Ambiente", subMenu);
             return menu;
         }
 
-        private IMenuOpcao GetMenuProcesso()
+        private IMenuOpcao GetMenuComum()
         {
             var subMenu = new List<IMenuOpcao>
             {
-                new MenuOpcaoDescr(MenuOpcaoTipo.Opcao, "MenuProcVenda", "Venda"),
-                new MenuOpcaoDescr(MenuOpcaoTipo.Opcao, "MenuProcCompra", "Compra"),
+
             };
 
-            var menu = new MenuOpcaoDescr(MenuOpcaoTipo.Processo, "MenuProc", "Processo", subMenu);
+            var menu = new MenuOpcaoDescr(MenuOpcaoTipo.SubMenu, "MenuComum", "Comum", subMenu);
             return menu;
         }
 
-        private IMenuOpcao GetMenuConsulta()
+        private IMenuOpcao GetMenuEmpresa()
         {
             var subMenu = new List<IMenuOpcao>
             {
-                new MenuOpcaoDescr(MenuOpcaoTipo.Opcao, "MenuConsultaVenda", "Venda"),
-                new MenuOpcaoDescr(MenuOpcaoTipo.Opcao, "MenuConsultaCompra", "Compra"),
+                new MenuOpcaoTipo<IEmpresaView>(MenuOpcaoTipo.Opcao, "MenuEmpresaEmpresa", "Empresa", _resolverTipo),
+                new MenuOpcaoTipo<IGrupoEmpresaView>(MenuOpcaoTipo.Opcao, "MenuEmpresaGrupoEmpresa", "GrupoEmpresa", _resolverTipo),
             };
 
-            var menu = new MenuOpcaoDescr(MenuOpcaoTipo.Consulta, "MenuConsult", "Consulta", subMenu);
+            var menu = new MenuOpcaoDescr(MenuOpcaoTipo.SubMenu, "MenuEmpresa", "Empresa", subMenu);
             return menu;
         }
 
-        private IMenuOpcao GetMenuRelatorio()
+        private IMenuOpcao GetMenuMunicipio()
         {
             var subMenu = new List<IMenuOpcao>
             {
-                new MenuOpcaoDescr(MenuOpcaoTipo.Opcao, "MenuRelatVenda", "Venda"),
-                new MenuOpcaoDescr(MenuOpcaoTipo.Opcao, "MenuRelatCompra", "Compra"),
+                new MenuOpcaoTipo<IBairroView>(MenuOpcaoTipo.Opcao, "MenuMunicipioBairro", "Bairro", _resolverTipo),
+                new MenuOpcaoTipo<IEstadoView>(MenuOpcaoTipo.Opcao, "MenuMunicipioEstado", "Estado", _resolverTipo),
+                new MenuOpcaoTipo<ILogradouroView>(MenuOpcaoTipo.Opcao, "MenuMunicipioLogradouro", "Logradouro", _resolverTipo),
+                new MenuOpcaoTipo<IMunicipioView>(MenuOpcaoTipo.Opcao, "MenuMunicipioMunicipio", "Municipio", _resolverTipo),
+                new MenuOpcaoTipo<IPaisView>(MenuOpcaoTipo.Opcao, "MenuMunicipioPais", "Pais", _resolverTipo),
             };
 
-            var menu = new MenuOpcaoDescr(MenuOpcaoTipo.Relatorio, "MenuRelat", "Relatório", subMenu);
+            var menu = new MenuOpcaoDescr(MenuOpcaoTipo.SubMenu, "MenuMunicipio", "Municipio", subMenu);
             return menu;
         }
+
+        private IMenuOpcao GetMenuOperacao()
+        {
+            var subMenu = new List<IMenuOpcao>
+            {
+                new MenuOpcaoTipo<IOperacaoView>(MenuOpcaoTipo.Opcao, "MenuOperacaoOperacao", "Operacao", _resolverTipo),
+            };
+
+            var menu = new MenuOpcaoDescr(MenuOpcaoTipo.SubMenu, "MenuOperacao", "Operacao", subMenu);
+            return menu;
+        }
+
+        private IMenuOpcao GetMenuPessoa()
+        {
+            var subMenu = new List<IMenuOpcao>
+            {
+                new MenuOpcaoTipo<IPessoaView>(MenuOpcaoTipo.Opcao, "MenuPessoaPessoa", "Pessoa", _resolverTipo),
+            };
+
+            var menu = new MenuOpcaoDescr(MenuOpcaoTipo.SubMenu, "MenuPessoa", "Pessoa", subMenu);
+            return menu;
+        }
+
+        private IMenuOpcao GetMenuProduto()
+        {
+            var subMenu = new List<IMenuOpcao>
+            {
+                new MenuOpcaoTipo<IProdutoView>(MenuOpcaoTipo.Opcao, "MenuProdutoProduto", "Produto", _resolverTipo),
+                new MenuOpcaoTipo<IProdutoBarraView>(MenuOpcaoTipo.Opcao, "MenuProdutoProdutoBarra", "ProdutoBarra", _resolverTipo),
+                new MenuOpcaoTipo<IProdutoKitView>(MenuOpcaoTipo.Opcao, "MenuProdutoProdutoKit", "ProdutoKit", _resolverTipo),
+                new MenuOpcaoTipo<IProdutoSaldoView>(MenuOpcaoTipo.Opcao, "MenuProdutoProdutoSaldo", "ProdutoSaldo", _resolverTipo),
+                new MenuOpcaoTipo<IProdutoValorView>(MenuOpcaoTipo.Opcao, "MenuProdutoProdutoValor", "ProdutoValor", _resolverTipo),
+                new MenuOpcaoTipo<ITipoSaldoView>(MenuOpcaoTipo.Opcao, "MenuProdutoTipoSaldo", "TipoSaldo", _resolverTipo),
+                new MenuOpcaoTipo<ITipoValorView>(MenuOpcaoTipo.Opcao, "MenuProdutoTipoValor", "TipoValor", _resolverTipo),
+            };
+
+            var menu = new MenuOpcaoDescr(MenuOpcaoTipo.SubMenu, "MenuProduto", "Produto", subMenu);
+            return menu;
+        }
+
+        private IMenuOpcao GetMenuRegraFiscal()
+        {
+            var subMenu = new List<IMenuOpcao>
+            {
+                new MenuOpcaoTipo<IRegraFiscalView>(MenuOpcaoTipo.Opcao, "MenuRegraFiscalRegraFiscal", "RegraFiscal", _resolverTipo),
+            };
+
+            var menu = new MenuOpcaoDescr(MenuOpcaoTipo.SubMenu, "MenuRegraFiscal", "RegraFiscal", subMenu);
+            return menu;
+        }
+
+        private IMenuOpcao GetMenuTerminal()
+        {
+            var subMenu = new List<IMenuOpcao>
+            {
+                new MenuOpcaoTipo<ITerminalView>(MenuOpcaoTipo.Opcao, "MenuTerminalTerminal", "Terminal", _resolverTipo),
+            };
+
+            var menu = new MenuOpcaoDescr(MenuOpcaoTipo.SubMenu, "MenuTerminal", "Terminal", subMenu);
+            return menu;
+        }
+
+        private IMenuOpcao GetMenuTransacao()
+        {
+            var subMenu = new List<IMenuOpcao>
+            {
+                new MenuOpcaoTipo<ITipoVariacaoView>(MenuOpcaoTipo.Opcao, "MenuTransacaoTipoVariacao", "TipoVariacao", _resolverTipo),
+                new MenuOpcaoTipo<ITipoVariacaoMotivoView>(MenuOpcaoTipo.Opcao, "MenuTransacaoTipoVariacaoMotivo", "TipoVariacaoMotivo", _resolverTipo),
+                new MenuOpcaoTipo<ITransacaoView>(MenuOpcaoTipo.Opcao, "MenuTransacaoTransacao", "Transacao", _resolverTipo),
+            };
+
+            var menu = new MenuOpcaoDescr(MenuOpcaoTipo.SubMenu, "MenuTransacao", "Transacao", subMenu);
+            return menu;
+        }
+
+        private IMenuOpcao GetMenuUsuario()
+        {
+            var subMenu = new List<IMenuOpcao>
+            {
+                new MenuOpcaoTipo<IUsuarioView>(MenuOpcaoTipo.Opcao, "MenuUsuarioUsuario", "Usuario", _resolverTipo),
+            };
+
+            var menu = new MenuOpcaoDescr(MenuOpcaoTipo.SubMenu, "MenuUsuario", "Usuario", subMenu);
+            return menu;
+        }
+
 
         private IMenuOpcao GetMenuConfiguracao()
         {
@@ -100,73 +178,8 @@ namespace MORM.WSist.Menus
                 new MenuOpcaoDescr(MenuOpcaoTipo.Opcao, "MenuConfigUsuario", "Usuario"),
             };
 
-            var menu = new MenuOpcaoDescr(MenuOpcaoTipo.Configuracao, "MenuConfig", "Configuração", subMenu);
+            var menu = new MenuOpcaoDescr(MenuOpcaoTipo.SubMenu, "MenuConfig", "Configuração", subMenu);
             return menu;
-        }
-
-        private IMenuOpcao GetMenuFuncao()
-        {
-            var subMenu = new List<IMenuOpcao>
-            {
-                new MenuOpcaoAcao(MenuOpcaoTipo.Opcao, "MenuFuncaoSplashing", "Splashing Box", 
-                    () => LoadingBoxExtensions.SplashingBox("Inicializando...")),
-
-                new MenuOpcaoAcao(MenuOpcaoTipo.Opcao, "MenuFuncaoLoading", "Loading Box",
-                    () => LoadingBoxAcao()),
-
-                new MenuOpcaoAcao(MenuOpcaoTipo.Opcao, "MenuFuncaoProgress", "Progress Box",
-                    () => ProgressBoxAcao()),
-
-                new MenuOpcaoAcao(MenuOpcaoTipo.Opcao, "MenuFuncaoProgress", "Message Log",
-                    () => MensagemLogExtensions.ShowMensagemLog()),
-
-                new MenuOpcaoAcao(MenuOpcaoTipo.Opcao, "MenuFuncaoProgress", "Message Debug",
-                    () => throw new ExceptionDebug("Exemplo de mensagem de debug")),
-
-                new MenuOpcaoAcao(MenuOpcaoTipo.Opcao, "MenuFuncaoProgress", "Message Info",
-                    () => throw new ExceptionErro("Exemplo de mensagem de erro")),
-
-                new MenuOpcaoAcao(MenuOpcaoTipo.Opcao, "MenuFuncaoProgress", "Message Erro",
-                    () => throw new ExceptionInfo("Exemplo de mensagem de info")),
-            };
-
-            var menu = new MenuOpcaoDescr(MenuOpcaoTipo.SubMenu, "MenuFuncao", "Função", subMenu);
-            return menu;
-        }
-
-        private IMenuOpcao GetMenuOutro()
-        {
-            var subMenu = new List<IMenuOpcao>
-            {
-                new MenuOpcaoTipo<IAbstractPackIconViewLista>(MenuOpcaoTipo.Opcao, "MenuOutroPackIcon", "PackIcon", _resolverTipo),
-            };
-
-            var menu = new MenuOpcaoDescr(MenuOpcaoTipo.Configuracao, "MenuOutro", "Outro", subMenu);
-            return menu;
-        }
-
-        private void LoadingBoxAcao()
-        {
-            LoadingBoxExtensions.OpenLoadingBox("Inicializando...");
-            Thread.Sleep(1000);
-
-            LoadingBoxExtensions.CloseLoadingBox();
-        }
-
-        private void ProgressBoxAcao()
-        {
-            LoadingBoxExtensions.OpenLoadingBox("Inicializando...");
-            Thread.Sleep(1000);
-
-            int qtde = 5;
-
-            for (int i = 0; i < qtde; i++)
-            {
-                LoadingBoxExtensions.ProgressLoadingBox("Inicializando...", qtde, i + 1);
-                Thread.Sleep(1000);
-            }
-
-            LoadingBoxExtensions.CloseLoadingBox();
         }
 
         private IMenuOpcao GetMenuSair()

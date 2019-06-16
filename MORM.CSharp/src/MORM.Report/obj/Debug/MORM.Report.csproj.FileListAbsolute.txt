@@ -1,0 +1,7 @@
+D:\projeto\MORM\MORM.CSharp\bin\Debug\MORM.Report.dll
+D:\projeto\MORM\MORM.CSharp\bin\Debug\MORM.Report.pdb
+D:\projeto\MORM\MORM.CSharp\src\MORM.Report\obj\Debug\MORM.Report.csprojAssemblyReference.cache
+D:\projeto\MORM\MORM.CSharp\src\MORM.Report\obj\Debug\MORM.Report.csproj.CoreCompileInputs.cache
+D:\projeto\MORM\MORM.CSharp\src\MORM.Report\obj\Debug\MORM.Report.csproj.CopyComplete
+D:\projeto\MORM\MORM.CSharp\src\MORM.Report\obj\Debug\MORM.Report.dll
+D:\projeto\MORM\MORM.CSharp\src\MORM.Report\obj\Debug\MORM.Report.pdb

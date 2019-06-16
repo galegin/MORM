@@ -27,13 +27,13 @@ namespace MORM.Repositorio.Context
 
         public IConexao ComParametros(IList<IParametro> parametros)
         {
-            this._parametros = parametros;
+            _parametros = parametros;
             return this;
         }
 
         private void ResetarParametros()
         {
-            this._parametros = null;
+            _parametros = null;
         }
 
         // setar conexao

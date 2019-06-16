@@ -1,4 +1,4 @@
-﻿namespace MORM.Dtos.nsAmbiente
+﻿namespace MORM.Dtos
 {
     public abstract class VerificarPermissaoDto
     {

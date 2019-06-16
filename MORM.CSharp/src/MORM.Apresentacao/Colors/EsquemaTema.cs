@@ -96,7 +96,7 @@ namespace MORM.Apresentacao.Colors
         'IsNegrito':false,
         'IsSublinhado':false,
         'TamFonte':16
-    },
+    }
 ]";
         #endregion
     }

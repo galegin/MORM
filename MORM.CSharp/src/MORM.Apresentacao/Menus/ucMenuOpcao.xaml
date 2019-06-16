@@ -16,7 +16,7 @@
         <DockPanel>
             <StackPanel DockPanel.Dock="Top">
                 <Button Height="40" Width="Auto" Margin="0"
-                        Style="{StaticResource InlineButton}"
+                        Style="{DynamicResource InlineButton}"
                         Command="{Binding ExibirSubMenu}" CommandParameter="{Binding}"
                         HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                         >
