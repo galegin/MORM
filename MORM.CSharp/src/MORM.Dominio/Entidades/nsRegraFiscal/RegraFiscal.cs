@@ -8,7 +8,7 @@ namespace MORM.Dominio.Entidades
     [Tabela("REGRA_FISCAL")]
     public class RegraFiscal : IRegraFiscal
     {
-        [Campo("ID_", CampoTipo.Key)]
+        [Campo("ID_REGRAFISCAL", CampoTipo.Key)]
         public int Id_RegraFiscal { get; set; }
         [Campo("U_VERSION", CampoTipo.Nul)]
         public string U_Version { get; set; }

@@ -7,7 +7,7 @@ namespace MORM.Dominio.Entidades
     [Tabela("TRANSACAO_FISCAL")]
     public class TransacaoFiscal : ITransacaoFiscal
     {
-        [Campo("ID_TRANSACAOFISCALS", CampoTipo.Key)]
+        [Campo("ID_TRANSACAOFISCAL", CampoTipo.Key)]
         public int Id_TransacaoFiscal { get; set; }
         [Campo("U_VERSION", CampoTipo.Nul)]
         public string U_Version { get; set; }

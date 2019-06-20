@@ -8,7 +8,7 @@ namespace MORM.Dominio.Entidades
     [Tabela("OPERACAO")]
     public class Operacao : IOperacao
     {
-        [Campo("ID_", CampoTipo.Key)]
+        [Campo("ID_OPERACAO", CampoTipo.Key)]
         public int Id_Operacao { get; set; }
         [Campo("U_VERSION", CampoTipo.Nul)]
         public string U_Version { get; set; }

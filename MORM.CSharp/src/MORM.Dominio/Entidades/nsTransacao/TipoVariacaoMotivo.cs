@@ -7,7 +7,7 @@ namespace MORM.Dominio.Entidades
     [Tabela("TIPO_VARIACAO_MOTIVO")]
     public class TipoVariacaoMotivo : ITipoVariacaoMotivo
     {
-        [Campo("ID_", CampoTipo.Key)]
+        [Campo("ID_TIPOVARIACAOMOTIVO", CampoTipo.Key)]
         public int Id_TipoVariacaoMotivo { get; set; }
         [Campo("U_VERSION", CampoTipo.Nul)]
         public string U_Version { get; set; }
