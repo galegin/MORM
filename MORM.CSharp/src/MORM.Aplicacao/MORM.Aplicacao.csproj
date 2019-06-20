@@ -60,6 +60,7 @@
     <Compile Include="Ioc\Container\Interfaces\IAbstractContainer.cs" />
     <Compile Include="Ioc\Installer\AbstractInstaller.cs" />
     <Compile Include="Ioc\Installer\Interfaces\IAbstractInstaller.cs" />
+    <Compile Include="Ioc\Resolver\AbstractIocResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

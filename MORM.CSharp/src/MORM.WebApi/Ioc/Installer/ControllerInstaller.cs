@@ -10,7 +10,7 @@ namespace MORM.WebApi.Ioc
         {
             container
                 .Register(
-                    AllTypes
+                    Classes
                     .FromThisAssembly()
                     .Pick()
                     .If(t => t.Name.EndsWith("Controller"))

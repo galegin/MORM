@@ -1,0 +1,7 @@
+\bin\
+\obj\
+.axoCover
+.vs
+packages
+script
+TestResults

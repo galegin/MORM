@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+
 public static class AbstractIocResolver
 {
     static Dictionary<Type, object> _registeredTypes = new Dictionary<Type, object>();
