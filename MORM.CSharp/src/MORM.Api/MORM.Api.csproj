@@ -65,8 +65,8 @@
     <Compile Include="Controllers\MessageHandler.cs" />
     <Compile Include="Extensions\HttpAuthenticationContextExtensions.cs" />
     <Compile Include="Extensions\HttpRequestMessageExtensions.cs" />
-    <Compile Include="Ioc\Resolver\WindsorDependencyResolver.cs" />
-    <Compile Include="Ioc\Resolver\WindsorDependencyScope.cs" />
+    <Compile Include="Ioc\Resolver\AbstractDependencyResolver.cs" />
+    <Compile Include="Ioc\Resolver\AbstractDependencyScope.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -74,6 +74,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MORM.Aplicacao\MORM.Aplicacao.csproj">
+      <Project>{46BFB76E-FD5D-4BEC-B486-01C6190CC5A9}</Project>
+      <Name>MORM.Aplicacao</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MORM.Dominio\MORM.Dominio.csproj">
       <Project>{c22c745b-1538-405f-a9ce-29576c708b9e}</Project>
       <Name>MORM.Dominio</Name>

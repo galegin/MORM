@@ -19,21 +19,9 @@ namespace MORM.WebApi.Ioc
             Register<IUsuario, Usuario>();
         }
 
-        public override void InstallerConexao()
-        {
-        }
-
         public override void InstallerDataConext()
         {
             Register<IAbstractDataContext, AbstractDataContext>();
-        }
-
-        public override void InstallerDomainServices()
-        {
-        }
-
-        public override void InstallerRepositories()
-        {
         }
 
         public override void InstallerServices()
@@ -95,10 +83,6 @@ namespace MORM.WebApi.Ioc
         public override void InstallerUnitOfWork()
         {
             Register<IAbstractUnityOfWork, AbstractUnityOfWork>();
-        }
-
-        public override void InstallerViews()
-        {
         }
     }
 }

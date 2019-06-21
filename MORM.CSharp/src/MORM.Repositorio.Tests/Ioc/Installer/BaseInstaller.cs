@@ -18,18 +18,10 @@ namespace MORM.Repositorio.Tests.Ioc.Installer
             Register<IUsuario, Usuario>();
         }
 
-        public override void InstallerConexao()
-        {
-        }
-
         public override void InstallerDataConext()
         {
             Register<IAbstractDataContext, MockDataContext>();
             Register<IAbstractDataContextDapper, AbstractDataContextDapper>();
-        }
-
-        public override void InstallerDomainServices()
-        {
         }
 
         public override void InstallerRepositories()
@@ -48,10 +40,6 @@ namespace MORM.Repositorio.Tests.Ioc.Installer
         public override void InstallerUnitOfWork()
         {
             Register<IAbstractUnityOfWork, AbstractUnityOfWork>();
-        }
-
-        public override void InstallerViews()
-        {
         }
     }
 }

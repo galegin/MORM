@@ -1,21 +1,21 @@
-﻿using Castle.Windsor;
-using Castle.MicroKernel.Registration;
-using Castle.MicroKernel.SubSystems.Configuration;
+﻿using MORM.Aplicacao.Ioc.Container;
+using MORM.Aplicacao.Ioc.Installer;
+using System.Linq;
 
 namespace MORM.WebApi.Ioc
 {
-    public class ControllerInstaller : IWindsorInstaller
+    public class ControllerInstaller : BaseInstaller
     {
-        public void Install(IWindsorContainer container, IConfigurationStore store)
+        public override void Install(IAbstractContainer container)
         {
+            base.Install(container);
+
             container
-                .Register(
+                .RegisterAll(
                     Classes
                     .FromThisAssembly()
-                    .Pick()
-                    .If(t => t.Name.EndsWith("Controller"))
-                    .Configure(configurer => configurer.Named(configurer.Implementation.Name))
-                    .LifestyleTransient());
+                    .Where(t => t.Name.EndsWith("Controller"))
+                    .ToArray());
         }
     }
 }

@@ -23,30 +23,6 @@ namespace MORM.WSist.Ioc.Installer
             Register<IInformacaoSistema, InformacaoSistema>();
         }
 
-        public override void InstallerConexao()
-        {
-        }
-
-        public override void InstallerDataConext()
-        {
-        }
-
-        public override void InstallerDomainServices()
-        {
-        }
-
-        public override void InstallerRepositories()
-        {
-        }
-
-        public override void InstallerServices()
-        {
-        }
-
-        public override void InstallerUnitOfWork()
-        {
-        }
-
         public override void InstallerViews()
         {
             RegisterSingleton<IMainWindow, MainWindow>();

@@ -55,12 +55,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Ioc\Container\AbstractContainer.cs" />
     <Compile Include="Ioc\Container\BaseContainer.cs" />
     <Compile Include="Ioc\Container\Interfaces\IAbstractContainer.cs" />
     <Compile Include="Ioc\Installer\AbstractInstaller.cs" />
+    <Compile Include="Ioc\Installer\Classes\Classes.cs" />
+    <Compile Include="Ioc\Installer\Classes\FromAssembly.cs" />
     <Compile Include="Ioc\Installer\Interfaces\IAbstractInstaller.cs" />
-    <Compile Include="Ioc\Resolver\AbstractIocResolver.cs" />
+    <Compile Include="Ioc\Container\AbstractContainer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

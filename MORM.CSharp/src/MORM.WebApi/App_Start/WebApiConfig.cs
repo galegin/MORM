@@ -25,7 +25,7 @@ namespace MORM.WebApi.App_Start
 
             // Ioc
             var container = BaseContainer.Instance;
-            config.DependencyResolver = new WindsorDependencyResolver(container);
+            config.DependencyResolver = new AbstractDependencyResolver(container);
         }
     }
 }
