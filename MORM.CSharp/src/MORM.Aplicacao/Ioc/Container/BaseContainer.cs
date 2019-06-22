@@ -1,5 +1,4 @@
-﻿//using Castle.Windsor.Installer;
-//using MORM.Aplicacao.Ioc.Container;
+﻿//using MORM.Aplicacao.Ioc.Container;
 //using MORM.Aplicacao.Ioc.Installer;
 
 namespace MORM.Aplicacao.Ioc

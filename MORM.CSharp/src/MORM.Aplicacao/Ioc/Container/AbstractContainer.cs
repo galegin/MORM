@@ -1,3 +1,4 @@
+using MORM.Aplicacao.Ioc.Container.Classes;
 using MORM.Aplicacao.Ioc.Installer;
 using System;
 using System.Collections.Generic;
@@ -11,34 +12,27 @@ namespace MORM.Aplicacao.Ioc.Container
         //public static AbstractContainer Instance =>
         //    _instance ?? (_instance = new AbstractContainer());
 
+        #region variaveis
+        private Dictionary<Type, RegisterClasse> _registeredTypes = new Dictionary<Type, RegisterClasse>();
+        private Dictionary<Type, object> _registeredPerThread = new Dictionary<Type, object>();
+        private Dictionary<Type, object> _registeredPerWebRequest = new Dictionary<Type, object>();
+        private Dictionary<Type, object> _registeredScope = new Dictionary<Type, object>();
+        private Dictionary<Type, object> _registeredSingleton = new Dictionary<Type, object>();
+        #endregion
+
+        #region constructores
         protected AbstractContainer()
         {
             Setup();
         }
+        #endregion
+
+        #region metodos
 
         protected void Install(IAbstractInstaller installer)
         {
             installer.Install(this);
         }
-
-        public class RegisterClasse
-        {
-            public RegisterClasse(Type iClasse, Type tClasse, RegisterTipo tipo)
-            {
-                IClasse = iClasse ?? throw new ArgumentNullException(nameof(iClasse));
-                TClasse = tClasse ?? throw new ArgumentNullException(nameof(iClasse));
-                Tipo = tipo;
-            }
-
-            public Type IClasse { get; set; }
-            public Type TClasse { get; set; }
-            public RegisterTipo Tipo { get; set; }
-        }
-
-        #region variaveis
-        private Dictionary<Type, RegisterClasse> _registeredTypes = new Dictionary<Type, RegisterClasse>();
-        private Dictionary<Type, object> _registeredSingleton = new Dictionary<Type, object>();
-        #endregion
 
         protected virtual void Setup() { }
 
@@ -80,20 +74,34 @@ namespace MORM.Aplicacao.Ioc.Container
         #endregion
 
         #region resolver
-        public object Resolve(Type IObject)
+        public object Resolve(Type type)
         {
-            var registerClasse = _registeredTypes.ContainsKey(IObject) ? _registeredTypes[IObject] : null;
+            var registerClasse = _registeredTypes.ContainsKey(type) ? _registeredTypes[type] : null;
             if (registerClasse == null)
                 return null;
 
-            var objClasse = registerClasse.Tipo == RegisterTipo.Singleton ?
-                GetObjetoSingleton(registerClasse.TClasse) : GetObjeto(registerClasse.TClasse);
-
-            return objClasse;
+            return Resolve(registerClasse);
         }
 
-        public IObject Resolve<IObject>() 
-            where IObject : class
+        private object Resolve(RegisterClasse registerClasse)
+        {
+            switch (registerClasse.Tipo)
+            {
+                case RegisterTipo.PerThread:
+                    return GetObjetoPerThread(registerClasse.Classe);
+                case RegisterTipo.PerWebRequest:
+                    return GetObjetoPerWebRequest(registerClasse.Classe);
+                case RegisterTipo.Scope:
+                    return GetObjetoScope(registerClasse.Classe);
+                case RegisterTipo.Singleton:
+                    return GetObjetoSingleton(registerClasse.Classe);
+                default:
+                case RegisterTipo.Transient:
+                    return GetObjeto(registerClasse.Classe);
+            }
+        }
+
+        public IObject Resolve<IObject>() where IObject : class
         {
             return (IObject)Resolve(typeof(IObject));
         }
@@ -107,24 +115,67 @@ namespace MORM.Aplicacao.Ioc.Container
             return objeto;
         }
 
-        public IObject GetObjeto<IObject>()
-            where IObject : class
+        public IObject GetObjeto<IObject>() where IObject : class
         {
             return (IObject)GetObjeto(typeof(IObject));
         }
+        #endregion
 
+        #region objeto per thread
+        public object GetObjetoPerThread(Type type)
+        {
+            var objeto = _registeredPerThread.ContainsKey(type) ? _registeredPerThread[type] : null;
+            if (objeto == null)
+                _registeredPerThread[type] = objeto = GetObjeto(type);
+            return objeto;
+        }
+
+        public IObject GetObjetoPerThread<IObject>() where IObject : class
+        {
+            return (IObject)GetObjetoPerThread(typeof(IObject));
+        }
+        #endregion
+
+        #region objeto per web request
+        public object GetObjetoPerWebRequest(Type type)
+        {
+            var objeto = _registeredPerWebRequest.ContainsKey(type) ? _registeredPerWebRequest[type] : null;
+            if (objeto == null)
+                _registeredPerWebRequest[type] = objeto = GetObjeto(type);
+            return objeto;
+        }
+
+        public IObject GetObjetoPerWebRequest<IObject>() where IObject : class
+        {
+            return (IObject)GetObjetoPerWebRequest(typeof(IObject));
+        }
+        #endregion
+
+        #region scope
+        public object GetObjetoScope(Type type)
+        {
+            var objeto = _registeredScope.ContainsKey(type) ? _registeredScope[type] : null;
+            if (objeto == null)
+                _registeredScope[type] = objeto = GetObjeto(type);
+            return objeto;
+        }
+
+        public IObject GetObjetoScope<IObject>() where IObject : class
+        {
+            return (IObject)GetObjetoScope(typeof(IObject));
+        }
+        #endregion
+
+        #region singleton
         public object GetObjetoSingleton(Type type)
         {
             var objeto = _registeredSingleton.ContainsKey(type) ? _registeredSingleton[type] : null;
             if (objeto == null)
-            {
                 _registeredSingleton[type] = objeto = GetObjeto(type);
-            }
             return objeto;
         }
 
-        public IObject GetObjetoSingleton<IObject>()
-            where IObject : class
+        public IObject GetObjetoSingleton<IObject>() where IObject : class
         {
             return (IObject)GetObjetoSingleton(typeof(IObject));
         }
@@ -147,16 +198,15 @@ namespace MORM.Aplicacao.Ioc.Container
             return parametros.ToArray();
         }
 
-        public object[] GetParametros<IObject>()
-            where IObject : class
+        public object[] GetParametros<IObject>() where IObject : class
         {
             return GetParametros(typeof(IObject));
         }
         #endregion
 
-        public IEnumerable<object> ResolveAll(Type IObject)
+        public IEnumerable<object> ResolveAll(Type type)
         {
-            var objeto = Resolve(IObject);
+            var objeto = Resolve(type);
             return new List<object> { objeto };
         }
 
@@ -169,6 +219,8 @@ namespace MORM.Aplicacao.Ioc.Container
         {
             GC.SuppressFinalize(this);
         }
+
+        #endregion
     }
 }
 

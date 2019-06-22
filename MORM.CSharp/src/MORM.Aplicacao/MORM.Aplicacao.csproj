@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Ioc\Container\BaseContainer.cs" />
+    <Compile Include="Ioc\Container\Classes\RegisterClasse.cs" />
     <Compile Include="Ioc\Container\Interfaces\IAbstractContainer.cs" />
     <Compile Include="Ioc\Installer\AbstractInstaller.cs" />
     <Compile Include="Ioc\Installer\Classes\Classes.cs" />

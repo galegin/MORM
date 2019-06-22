@@ -27,7 +27,7 @@ namespace MORM.Aplicacao.Ioc.Container
 
         IObject Resolve<IObject>() where IObject : class;
 
-        object Resolve(Type IObject);
+        object Resolve(Type type);
 
         IEnumerable<object> ResolveAll(Type type);
 
