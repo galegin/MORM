@@ -1,6 +1,4 @@
 ﻿using MORM.Dominio.Interfaces;
-using MORM.Repositorio.Repositories;
-using MORM.Repositorio.Uow;
 using System.Collections.Generic;
 
 namespace MORM.Servico.Interfaces

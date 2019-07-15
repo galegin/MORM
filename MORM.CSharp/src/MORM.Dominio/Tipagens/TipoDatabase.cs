@@ -1,4 +1,4 @@
-﻿using MORM.Dominio.Extensoes;
+﻿using MORM.Dominio.Extensions;
 using System;
 using System.Globalization;
 using System.Linq;

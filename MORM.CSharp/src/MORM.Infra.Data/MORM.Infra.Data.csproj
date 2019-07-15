@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectGuid>{065554C3-207F-47D8-97C1-1AC5202ECB22}</ProjectGuid>
+    <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Library</OutputType>
+    <RootNamespace>MORM.Infra.Data</RootNamespace>
+    <AssemblyName>MORM.Infra.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>..\..\bin\Debug\</OutputPath>
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>..\..\bin\Release\</OutputPath>
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <Optimize>True</Optimize>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <Prefer32Bit>false</Prefer32Bit>
+    <OutputPath>..\..\bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="TinyMapper, Version=2.0.0.40, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TinyMapper.2.0.8\lib\net45\TinyMapper.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseInstaller.cs" />
+    <Compile Include="Context\AbstractDataContext.cs" />
+    <Compile Include="Context\Clausula.cs" />
+    <Compile Include="Context\Comando.cs" />
+    <Compile Include="Context\Conexao.cs" />
+    <Compile Include="Context\Parametro.cs" />
+    <Compile Include="Extensions\ParametroExtensions.cs" />
+    <Compile Include="Factories\ConexaoFactory.cs" />
+    <Compile Include="Factories\ProviderFactory.cs" />
+    <Compile Include="Migrations\MigracaoDatabase.cs" />
+    <Compile Include="UnityOfWork\AbstractUnityOfWork.cs" />
+    <Compile Include="Migrations\Migracao.cs" />
+    <Compile Include="Migrations\MigracaoContexto.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queries\QueryableObject.cs" />
+    <Compile Include="Queries\QueryableTranslator.cs" />
+    <Compile Include="Queries\QueryableValue.cs" />
+    <Compile Include="Repositories\AbstractRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MORM.Dominio\MORM.Dominio.csproj">
+      <Project>{C22C745B-1538-405F-A9CE-29576C708B9E}</Project>
+      <Name>MORM.Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MORM.Infra.CrossCutting\MORM.Infra.CrossCutting.csproj">
+      <Project>{346bed24-2dd1-4e58-939a-d72311c257f9}</Project>
+      <Name>MORM.Infra.CrossCutting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MORM.Infra.Database\MORM.Infra.Database.csproj">
+      <Project>{dcb5615e-b518-4115-97ca-fe5a61224b8a}</Project>
+      <Name>MORM.Infra.Database</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -25,7 +25,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\..\bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -41,124 +41,52 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\nsAmbiente\IMigracaoEntService.cs" />
-    <Compile Include="Interfaces\nsEmpresa\IEmpresaApiService.cs" />
-    <Compile Include="Interfaces\nsEmpresa\IEmpresaService.cs" />
-    <Compile Include="Interfaces\nsEmpresa\IGrupoEmpresaApiService.cs" />
-    <Compile Include="Interfaces\nsEmpresa\IGrupoEmpresaService.cs" />
-    <Compile Include="Interfaces\nsMunicipio\IBairroApiService.cs" />
-    <Compile Include="Interfaces\nsMunicipio\IBairroService.cs" />
-    <Compile Include="Interfaces\nsMunicipio\IEstadoApiService.cs" />
-    <Compile Include="Interfaces\nsMunicipio\IEstadoService.cs" />
-    <Compile Include="Interfaces\nsMunicipio\ILogradouroApiService.cs" />
-    <Compile Include="Interfaces\nsMunicipio\ILogradouroService.cs" />
-    <Compile Include="Interfaces\nsMunicipio\IMunicipioApiService.cs" />
-    <Compile Include="Interfaces\nsMunicipio\IMunicipioService.cs" />
-    <Compile Include="Interfaces\nsMunicipio\IPaisApiService.cs" />
-    <Compile Include="Interfaces\nsMunicipio\IPaisService.cs" />
-    <Compile Include="Interfaces\nsPessoa\IPessoaApiService.cs" />
-    <Compile Include="Interfaces\nsPessoa\IPessoaService.cs" />
-    <Compile Include="Interfaces\nsProduto\IProdutoApiService.cs" />
-    <Compile Include="Interfaces\nsProduto\IProdutoBarraApiService.cs" />
-    <Compile Include="Interfaces\nsProduto\IProdutoBarraService.cs" />
-    <Compile Include="Interfaces\nsProduto\IProdutoKitApiService.cs" />
-    <Compile Include="Interfaces\nsProduto\IProdutoKitService.cs" />
-    <Compile Include="Interfaces\nsProduto\IProdutoSaldoApiService.cs" />
-    <Compile Include="Interfaces\nsProduto\IProdutoSaldoService.cs" />
-    <Compile Include="Interfaces\nsProduto\IProdutoService.cs" />
-    <Compile Include="Interfaces\nsProduto\IProdutoValorApiService.cs" />
-    <Compile Include="Interfaces\nsProduto\IProdutoValorService.cs" />
-    <Compile Include="Interfaces\nsProduto\ITipoSaldoApiService.cs" />
-    <Compile Include="Interfaces\nsProduto\ITipoSaldoService.cs" />
-    <Compile Include="Interfaces\nsProduto\ITipoValorApiService.cs" />
-    <Compile Include="Interfaces\nsProduto\ITipoValorService.cs" />
-    <Compile Include="Interfaces\nsTerminal\ITerminalApiService.cs" />
-    <Compile Include="Interfaces\nsTerminal\ITerminalService.cs" />
-    <Compile Include="Interfaces\nsOperacao\IOperacaoApiService.cs" />
-    <Compile Include="Interfaces\nsOperacao\IOperacaoService.cs" />
-    <Compile Include="Interfaces\nsRegraFiscal\IRegraFiscalApiService.cs" />
-    <Compile Include="Interfaces\nsRegraFiscal\IRegraFiscalService.cs" />
-    <Compile Include="Interfaces\nsTransacao\ITipoVariacaoApiService.cs" />
-    <Compile Include="Interfaces\nsTransacao\ITipoVariacaoMotivoApiService.cs" />
-    <Compile Include="Interfaces\nsTransacao\ITipoVariacaoMotivoService.cs" />
-    <Compile Include="Interfaces\nsTransacao\ITipoVariacaoService.cs" />
-    <Compile Include="Interfaces\nsTransacao\ITransacaoApiService.cs" />
-    <Compile Include="Interfaces\nsTransacao\ITransacaoService.cs" />
-    <Compile Include="Interfaces\nsUsuario\IUsuarioApiService.cs" />
-    <Compile Include="Interfaces\nsUsuario\IUsuarioService.cs" />
-    <Compile Include="Services\AbstractApiService.cs" />
+    <Compile Include="BaseInstaller.cs" />
+    <Compile Include="Interfaces\nsAmbiente\IMigracaoAppService.cs" />
+    <Compile Include="Interfaces\nsEmpresa\IEmpresaAppService.cs" />
+    <Compile Include="Interfaces\nsTerminal\ITerminalAppService.cs" />
+    <Compile Include="Interfaces\nsUsuario\IUsuarioAppService.cs" />
+    <Compile Include="Models\AbstractDto.cs" />
+    <Compile Include="Models\AbstractValidator.cs" />
+    <Compile Include="Models\nsAmbiente\GravarLogAcessoDto.cs" />
+    <Compile Include="Models\nsAmbiente\ValidarAmbienteDto.cs" />
+    <Compile Include="Models\nsAmbiente\VerificarPermissaoDto.cs" />
+    <Compile Include="Models\nsComum\AbstractAlterarDto.cs" />
+    <Compile Include="Models\nsComum\AbstractConsultarDto.cs" />
+    <Compile Include="Models\nsComum\AbstractExcluirDto.cs" />
+    <Compile Include="Models\nsComum\AbstractIncluirDto.cs" />
+    <Compile Include="Models\nsComum\AbstractListarDto.cs" />
+    <Compile Include="Models\nsComum\AbstractSalvarDto.cs" />
+    <Compile Include="Models\nsComum\AbstractSequenciaDto.cs" />
+    <Compile Include="Models\Validator.cs" />
+    <Compile Include="Services\AbstractAppService.cs" />
     <Compile Include="Services\AbstractService.cs" />
-    <Compile Include="Interfaces\IAbstractApiService.cs" />
+    <Compile Include="Interfaces\IAbstractAppService.cs" />
     <Compile Include="Interfaces\IAbstractService.cs" />
-    <Compile Include="Services\nsAmbiente\AmbienteService.cs" />
+    <Compile Include="Services\nsAmbiente\AmbienteAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Interfaces\nsAmbiente\IAmbienteService.cs" />
-    <Compile Include="Interfaces\nsAmbiente\ILogAcessoService.cs" />
-    <Compile Include="Interfaces\nsAmbiente\IPermissaoService.cs" />
-    <Compile Include="Services\nsAmbiente\LogAcessoService.cs" />
-    <Compile Include="Services\nsAmbiente\PermissaoService.cs" />
-    <Compile Include="Services\nsAmbiente\MigracaoEntService.cs" />
-    <Compile Include="Services\nsEmpresa\EmpresaApiService.cs" />
-    <Compile Include="Services\nsEmpresa\EmpresaService.cs" />
-    <Compile Include="Services\nsEmpresa\GrupoEmpresaApiService.cs" />
-    <Compile Include="Services\nsEmpresa\GrupoEmpresaService.cs" />
-    <Compile Include="Services\nsMunicipio\BairroApiService.cs" />
-    <Compile Include="Services\nsMunicipio\BairroService.cs" />
-    <Compile Include="Services\nsMunicipio\EstadoApiService.cs" />
-    <Compile Include="Services\nsMunicipio\EstadoService.cs" />
-    <Compile Include="Services\nsMunicipio\LogradouroApiService.cs" />
-    <Compile Include="Services\nsMunicipio\LogradouroService.cs" />
-    <Compile Include="Services\nsMunicipio\MunicipioApiService.cs" />
-    <Compile Include="Services\nsMunicipio\MunicipioService.cs" />
-    <Compile Include="Services\nsMunicipio\PaisApiService.cs" />
-    <Compile Include="Services\nsMunicipio\PaisService.cs" />
-    <Compile Include="Services\nsPessoa\PessoaApiService.cs" />
-    <Compile Include="Services\nsPessoa\PessoaService.cs" />
-    <Compile Include="Services\nsProduto\ProdutoApiService.cs" />
-    <Compile Include="Services\nsProduto\ProdutoBarraApiService.cs" />
-    <Compile Include="Services\nsProduto\ProdutoBarraService.cs" />
-    <Compile Include="Services\nsProduto\ProdutoKitApiService.cs" />
-    <Compile Include="Services\nsProduto\ProdutoKitService.cs" />
-    <Compile Include="Services\nsProduto\ProdutoSaldoApiService.cs" />
-    <Compile Include="Services\nsProduto\ProdutoSaldoService.cs" />
-    <Compile Include="Services\nsProduto\ProdutoService.cs" />
-    <Compile Include="Services\nsProduto\ProdutoValorApiService.cs" />
-    <Compile Include="Services\nsProduto\ProdutoValorService.cs" />
-    <Compile Include="Services\nsProduto\TipoSaldoApiService.cs" />
-    <Compile Include="Services\nsProduto\TipoSaldoService.cs" />
-    <Compile Include="Services\nsProduto\TipoValorApiService.cs" />
-    <Compile Include="Services\nsProduto\TipoValorService.cs" />
-    <Compile Include="Services\nsTerminal\TerminalApiService.cs" />
-    <Compile Include="Services\nsTerminal\TerminalService.cs" />
-    <Compile Include="Services\nsTransacao\OperacaoApiService.cs" />
-    <Compile Include="Services\nsTransacao\OperacaoService.cs" />
-    <Compile Include="Services\nsTransacao\RegraFiscalApiService.cs" />
-    <Compile Include="Services\nsTransacao\RegraFiscalService.cs" />
-    <Compile Include="Services\nsTransacao\TipoVariacaoApiService.cs" />
-    <Compile Include="Services\nsTransacao\TipoVariacaoMotivoApiService.cs" />
-    <Compile Include="Services\nsTransacao\TipoVariacaoMotivoService.cs" />
-    <Compile Include="Services\nsTransacao\TipoVariacaoService.cs" />
-    <Compile Include="Services\nsTransacao\TransacaoApiService.cs" />
-    <Compile Include="Services\nsTransacao\TransacaoService.cs" />
-    <Compile Include="Services\nsUsuario\UsuarioApiService.cs" />
-    <Compile Include="Services\nsUsuario\UsuarioService.cs" />
+    <Compile Include="Interfaces\nsAmbiente\IAmbienteAppService.cs" />
+    <Compile Include="Interfaces\nsAmbiente\ILogAcessoAppService.cs" />
+    <Compile Include="Interfaces\nsAmbiente\IPermissaoAppService.cs" />
+    <Compile Include="Services\nsAmbiente\LogAcessoAppService.cs" />
+    <Compile Include="Services\nsAmbiente\PermissaoAppService.cs" />
+    <Compile Include="Services\nsAmbiente\MigracaoAppService.cs" />
+    <Compile Include="Services\nsEmpresa\EmpresaAppService.cs" />
+    <Compile Include="Services\nsTerminal\TerminalAppService.cs" />
+    <Compile Include="Services\nsUsuario\UsuarioAppService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MORM.Dominio\MORM.Dominio.csproj">
       <Project>{c22c745b-1538-405f-a9ce-29576c708b9e}</Project>
       <Name>MORM.Dominio</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MORM.Dtos\MORM.Dtos.csproj">
-      <Project>{C4E38812-95D9-4363-AAE8-D8505E9E141F}</Project>
-      <Name>MORM.Dtos</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MORM.Repositorio\MORM.Repositorio.csproj">
+    <ProjectReference Include="..\MORM.Infra.Data\MORM.Infra.Data.csproj">
       <Project>{065554c3-207f-47d8-97c1-1ac5202ecb22}</Project>
-      <Name>MORM.Repositorio</Name>
+      <Name>MORM.Infra.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MORM.Utils\MORM.Utils.csproj">
+    <ProjectReference Include="..\MORM.Infra.CrossCutting\MORM.Infra.CrossCutting.csproj">
       <Project>{346BED24-2DD1-4E58-939A-D72311C257F9}</Project>
-      <Name>MORM.Utils</Name>
+      <Name>MORM.Infra.CrossCutting</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

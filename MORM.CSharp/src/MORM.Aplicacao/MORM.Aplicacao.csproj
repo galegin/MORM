@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{46BFB76E-FD5D-4BEC-B486-01C6190CC5A9}</ProjectGuid>
+    <ProjectGuid>{8BCCB1D4-BD25-4586-9F95-38C2BDBC93EF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MORM.Aplicacao</RootNamespace>
@@ -25,7 +25,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\..\bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -49,15 +49,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Ioc\Container\BaseContainer.cs" />
-    <Compile Include="Ioc\Container\Classes\RegisterClasse.cs" />
-    <Compile Include="Ioc\Container\Interfaces\IAbstractContainer.cs" />
-    <Compile Include="Ioc\Installer\AbstractInstaller.cs" />
-    <Compile Include="Ioc\Installer\Classes\Classes.cs" />
-    <Compile Include="Ioc\Installer\Classes\FromAssembly.cs" />
-    <Compile Include="Ioc\Installer\Interfaces\IAbstractInstaller.cs" />
-    <Compile Include="Ioc\Container\AbstractContainer.cs" />
+    <Compile Include="Config\AuthenticationAttribute.cs" />
+    <Compile Include="Config\AuthenticationFailureResult.cs" />
+    <Compile Include="Config\Token.cs" />
+    <Compile Include="Config\WebApiConfig.cs" />
+    <Compile Include="Config\WebApiLogHandler.cs" />
+    <Compile Include="Controllers\AbstractController.cs" />
+    <Compile Include="Controllers\Interfaces\IAbstractController.cs" />
+    <Compile Include="Controllers\MessageHandler.cs" />
+    <Compile Include="Extensions\HttpAuthenticationContextExtensions.cs" />
+    <Compile Include="Extensions\HttpRequestMessageExtensions.cs" />
+    <Compile Include="Resolver\AbstractDependencyResolver.cs" />
+    <Compile Include="Resolver\AbstractDependencyScope.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MORM.Dominio\MORM.Dominio.csproj">
+      <Project>{c22c745b-1538-405f-a9ce-29576c708b9e}</Project>
+      <Name>MORM.Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MORM.Infra.CrossCutting\MORM.Infra.CrossCutting.csproj">
+      <Project>{346bed24-2dd1-4e58-939a-d72311c257f9}</Project>
+      <Name>MORM.Infra.CrossCutting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MORM.Infra.Data\MORM.Infra.Data.csproj">
+      <Project>{065554c3-207f-47d8-97c1-1ac5202ecb22}</Project>
+      <Name>MORM.Infra.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MORM.Servico\MORM.Servico.csproj">
+      <Project>{bb6fe2a7-2f85-47eb-bea8-aebeefd0d4be}</Project>
+      <Name>MORM.Servico</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

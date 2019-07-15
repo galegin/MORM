@@ -1,7 +1,7 @@
 ﻿using MORM.Apresentacao.Commands;
 using MORM.Apresentacao.Connectors;
-using MORM.Apresentacao.Consumers;
 using MORM.Apresentacao.Login.ViewsModel;
+using MORM.Infra.CrossCutting;
 
 namespace MORM.Apresentacao.Login.Commands
 {

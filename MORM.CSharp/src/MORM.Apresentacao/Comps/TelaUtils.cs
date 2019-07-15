@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using MORM.Apresentacao.Comps.Interfaces;
+using MORM.Dominio.Interfaces;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using MORM.Aplicacao.Ioc.Container;
-using MORM.Apresentacao.Comps.Interfaces;
 
 namespace MORM.Apresentacao.Comps
 {

@@ -1,4 +1,4 @@
-﻿using MORM.Dominio.Extensoes;
+﻿using MORM.Dominio.Extensions;
 using System.Xml.Serialization;
 
 namespace MORM.Dominio.Tipagens

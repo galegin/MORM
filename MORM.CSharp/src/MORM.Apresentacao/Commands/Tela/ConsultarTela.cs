@@ -1,6 +1,6 @@
 ﻿using MORM.Apresentacao.Connectors;
 using MORM.Apresentacao.ViewsModel;
-using MORM.Dominio.Extensoes;
+using MORM.Dominio.Extensions;
 
 namespace MORM.Apresentacao.Commands.Tela
 {

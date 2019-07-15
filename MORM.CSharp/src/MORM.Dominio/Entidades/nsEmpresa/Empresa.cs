@@ -21,13 +21,5 @@ namespace MORM.Dominio.Entidades
         public string Cd_Empresa { get; set; }
         [Campo("DS_EMPRESA", CampoTipo.Req)]
         public string Ds_Empresa { get; set; }
-
-        [Relacao(nameof(Id_GrupoEmpresa))]
-        public IGrupoEmpresa GrupoEmpresa { get; set; }
-
-        public Empresa()
-        {
-            GrupoEmpresa = new GrupoEmpresa();
-        }
     }
 }

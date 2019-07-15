@@ -1,4 +1,4 @@
-﻿using MORM.Aplicacao.Ioc.Container;
+﻿using MORM.Dominio.Interfaces;
 using System.Windows.Controls;
 
 namespace MORM.Apresentacao.Comps.Interfaces

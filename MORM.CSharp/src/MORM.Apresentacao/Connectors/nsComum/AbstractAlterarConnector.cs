@@ -1,6 +1,5 @@
-using MORM.Apresentacao.Consumers;
-using MORM.Dominio.Extensoes;
-using MORM.Dtos;
+using MORM.Infra.CrossCutting;
+using MORM.Dominio.Extensions;
 
 namespace MORM.Apresentacao.Connectors
 {
@@ -8,9 +7,8 @@ namespace MORM.Apresentacao.Connectors
     {
         public override void Executar(TEntrada instance)
         {
-            var consumerDto = new AbstractAlterarDto.Envio<TEntrada>(instance);
-            var consumerApi = new AbstractApiConsumer<AbstractAlterarDto.Envio<TEntrada>, object>();
-            var retorno = consumerApi.Post(consumerDto, instance.GetApi(mtdPadrao: consumerDto.GetMtd()));
+            var consumerApi = new AbstractApiConsumer<object, object>();
+            var retorno = consumerApi.Post(instance, instance.GetApi(mtdPadrao: instance.GetMtd()));
             ExibirMensagem(retorno.Mensagem);
         }
     }

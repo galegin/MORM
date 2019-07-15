@@ -1,5 +1,5 @@
 ﻿using MORM.Dominio.Atributos;
-using MORM.Dominio.Extensoes;
+using MORM.Dominio.Extensions;
 using System;
 
 namespace MORM.Apresentacao.Controls

@@ -11,7 +11,5 @@ namespace MORM.Dominio.Interfaces
         int Id_GrupoEmpresa { get; set; }
         string Cd_Empresa { get; set; }
         string Ds_Empresa { get; set; }
-
-        IGrupoEmpresa GrupoEmpresa { get; set; }
     }
 }

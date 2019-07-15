@@ -1,6 +1,6 @@
 ﻿using MORM.Apresentacao.Controls;
 using MORM.Dominio.Atributos;
-using MORM.Dominio.Extensoes;
+using MORM.Dominio.Extensions;
 using System.Reflection;
 using System.Windows.Data;
 

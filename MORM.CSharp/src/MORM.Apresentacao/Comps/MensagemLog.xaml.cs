@@ -1,5 +1,5 @@
 ﻿using MORM.Apresentacao.Comps.ViewsModel;
-using MORM.Utils.Classes;
+using MORM.Infra.CrossCutting;
 
 namespace MORM.Apresentacao.Comps
 {

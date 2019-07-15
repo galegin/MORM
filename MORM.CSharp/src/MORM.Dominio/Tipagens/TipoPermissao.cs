@@ -15,5 +15,7 @@
         Excluir = 60,
 
         Sequencia = 70,
+
+        Validar = 80,
     }
 }

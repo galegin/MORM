@@ -1,6 +1,5 @@
 ﻿using MORM.Apresentacao.Comps;
-using MORM.Utils.Classes;
-using MORM.Utils.Excecoes;
+using MORM.Infra.CrossCutting;
 using System.Collections.Generic;
 
 namespace MORM.Apresentacao.Connectors

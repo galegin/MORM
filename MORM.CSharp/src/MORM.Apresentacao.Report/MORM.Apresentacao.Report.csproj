@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{97002E61-600E-4504-A801-2614857733C7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MORM.Apresentacao.Report</RootNamespace>
+    <AssemblyName>MORM.Apresentacao.Report</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Comps\DataGridRelatorio.cs" />
+    <Compile Include="Comuns\CampoLista.cs" />
+    <Compile Include="Comuns\ICampoLista.cs" />
+    <Compile Include="Comuns\ICampoListaExtensions.cs" />
+    <Compile Include="Extensoes\RelatorioCampoExtensions.cs" />
+    <Compile Include="Extensoes\RelatorioExtensions.cs" />
+    <Compile Include="Interfaces\IRelatorio.cs" />
+    <Compile Include="Interfaces\IRelatorioCampo.cs" />
+    <Compile Include="Interfaces\IRelatorioDelimitador.cs" />
+    <Compile Include="Interfaces\IRelatorioEmail.cs" />
+    <Compile Include="Interfaces\IRelatorioEmailServidor.cs" />
+    <Compile Include="Interfaces\IRelatorioImpressora.cs" />
+    <Compile Include="Interfaces\IRelatorioParte.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Classes\Relatorio.cs" />
+    <Compile Include="Classes\RelatorioCampo.cs" />
+    <Compile Include="Classes\RelatorioDelimitador.cs" />
+    <Compile Include="Classes\RelatorioEmail.cs" />
+    <Compile Include="Classes\RelatorioEmailServidor.cs" />
+    <Compile Include="Classes\RelatorioExportacao.cs" />
+    <Compile Include="Classes\RelatorioImpressao.cs" />
+    <Compile Include="Classes\RelatorioImpressora.cs" />
+    <Compile Include="Classes\RelatorioParte.cs" />
+    <Compile Include="Classes\RelatorioVisualizacao.cs" />
+    <Compile Include="Tipagens\RelatorioAlinhamento.cs" />
+    <Compile Include="Tipagens\RelatorioFormato.cs" />
+    <Compile Include="Tipagens\RelatorioParteTipo.cs" />
+    <Compile Include="Tipagens\RelatorioSaida.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MORM.Dominio\MORM.Dominio.csproj">
+      <Project>{c22c745b-1538-405f-a9ce-29576c708b9e}</Project>
+      <Name>MORM.Dominio</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
