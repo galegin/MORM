@@ -1,4 +1,5 @@
-﻿using MORM.Dominio.Extensions;
+﻿using MORM.Apresentacao.Models;
+using MORM.Dominio.Extensions;
 using MORM.Infra.CrossCutting;
 using System.Configuration;
 
@@ -10,12 +11,12 @@ namespace MORM.Apresentacao.Connectors
 
         public override object Executar(object instance)
         {
-            var consumerDto = new
+            var consumerDto = new ValidarAmbienteInModel
             {
                 Login = instance.GetInstancePropOrField("Login") as string,
                 Senha = instance.GetInstancePropOrField("Senha") as string,
             };
-            var consumerApi = new AbstractApiConsumer<object, object>();
+            var consumerApi = new AbstractApiConsumer<ValidarAmbienteInModel, ValidarAmbienteOutModel>();
             var retorno = consumerApi.Post(consumerDto);
             ExibirMensagem(retorno.Mensagem);
             return retorno.Conteudo.GetInstancePropOrField("Token");

@@ -22,6 +22,7 @@ namespace MORM.Infra.CrossCutting
         #region constructores
         protected AbstractContainer()
         {
+            InstallerAssembly.Install(this);
         }
         #endregion
 

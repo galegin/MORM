@@ -8,8 +8,7 @@ namespace MORM.Apresentacao.Menus
     public abstract class MenuOpcao : IMenuOpcao
     {
         public MenuOpcao(MenuOpcaoTipo tipo, string codigo, string descricao, 
-            IList<IMenuOpcao> subMenuOpcao = null, MenuOpcaoPermissao? permissao = null
-        )
+            IList<IMenuOpcao> subMenuOpcao = null, MenuOpcaoPermissao? permissao = null)
         {
             Tipo = tipo;
             Codigo = codigo ?? throw new ArgumentNullException(nameof(codigo));
@@ -70,9 +69,9 @@ namespace MORM.Apresentacao.Menus
     public class MenuOpcaoClasse : MenuOpcao
     {
         private readonly Type _classe;
-        private readonly IMenuResolverClasse _resolver;
+        private readonly IMenuResolver _resolver;
 
-        public MenuOpcaoClasse(MenuOpcaoTipo tipo, string codigo, string descricao, Type classe, IMenuResolverClasse resolver, 
+        public MenuOpcaoClasse(MenuOpcaoTipo tipo, string codigo, string descricao, Type classe, IMenuResolver resolver, 
             IList<IMenuOpcao> subMenuOpcao = null, MenuOpcaoPermissao? permissao = null) 
             : base(tipo, codigo, descricao, subMenuOpcao, permissao)
         {
@@ -86,9 +85,9 @@ namespace MORM.Apresentacao.Menus
     public class MenuOpcaoObjeto : MenuOpcao
     {
         private readonly UserControl _userControl;
-        private readonly IMenuResolverObjeto _resolver;
+        private readonly IMenuResolver _resolver;
 
-        public MenuOpcaoObjeto(MenuOpcaoTipo tipo, string codigo, string descricao, UserControl userControl, IMenuResolverObjeto resolver,
+        public MenuOpcaoObjeto(MenuOpcaoTipo tipo, string codigo, string descricao, UserControl userControl, IMenuResolver resolver,
             IList<IMenuOpcao> subMenuOpcao = null, MenuOpcaoPermissao? permissao = null) 
             : base(tipo, codigo, descricao, subMenuOpcao, permissao)
         {
@@ -102,9 +101,9 @@ namespace MORM.Apresentacao.Menus
     public class MenuOpcaoTipo<TObject> : MenuOpcao
         where TObject : class
     {
-        private readonly IMenuResolverTipo _resolver;
+        private readonly IMenuResolver _resolver;
 
-        public MenuOpcaoTipo(MenuOpcaoTipo tipo, string codigo, string descricao, IMenuResolverTipo resolver, 
+        public MenuOpcaoTipo(MenuOpcaoTipo tipo, string codigo, string descricao, IMenuResolver resolver, 
             IList<IMenuOpcao> subMenuOpcao = null, MenuOpcaoPermissao? permissao = null) 
             : base(tipo, codigo, descricao, subMenuOpcao, permissao)
         {

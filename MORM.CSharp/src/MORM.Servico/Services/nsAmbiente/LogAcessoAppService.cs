@@ -13,7 +13,7 @@ namespace MORM.Servico.Services
         {
         }
 
-        private LogAcesso GetLogAcesso(GravarLogAcessoDto.Envio dto)
+        private LogAcesso GetLogAcesso(GravarLogAcessoInModel dto)
         {
             return AbstractService.AbstractRepository.FirstOrDefault(f =>
                 f.DataLog == dto.DataLog &&
@@ -24,7 +24,7 @@ namespace MORM.Servico.Services
                 f.CodigoMetodo == dto.CodigoMetodo);
         }
 
-        public void GravarLog(GravarLogAcessoDto.Envio dto)
+        public void GravarLog(GravarLogAcessoInModel dto)
         {
             dto.DataLog = DateTime.Today;
             dto.SequenciaLog = 1;

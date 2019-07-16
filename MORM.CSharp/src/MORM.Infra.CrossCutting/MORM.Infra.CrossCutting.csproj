@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Assempbly\ClassesAssembly.cs" />
     <Compile Include="Assempbly\FromAssembly.cs" />
+    <Compile Include="Assempbly\InstallerAssembly.cs" />
     <Compile Include="BaseInstaller.cs" />
     <Compile Include="Consumers\AbstractApiConsumer.cs" />
     <Compile Include="Extensions\EadExtensions.cs" />

@@ -102,7 +102,7 @@ namespace MORM.Aplicacao.Controllers
 
         protected void GravarLogAcesso(TipoPermissao tipoPermissao)
         {
-            var dto = new GravarLogAcessoDto.Envio
+            var dto = new GravarLogAcessoInModel
             {
                 CodigoEmpresa = Ambiente.CodigoEmpresa,
                 CodigoUsuario = Ambiente.CodigoUsuario,
@@ -117,7 +117,7 @@ namespace MORM.Aplicacao.Controllers
         {
             GravarLogAcesso(tipoPermissao);
 
-            var dto = new VerificarPermissaoDto.Envio
+            var dto = new VerificarPermissaoInModel
             {
                 CodigoEmpresa = Ambiente.CodigoEmpresa,
                 CodigoUsuario = Ambiente.CodigoUsuario,

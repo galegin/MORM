@@ -20,10 +20,10 @@ namespace MORM.Aplicacao.WebApi.Controllers
 
         [HttpPost]
         [Route("Validar")]
-        public HttpResponseMessage Validar(ValidarAmbienteDto.Envio dto)
+        public HttpResponseMessage Validar(ValidarAmbienteInModel dto)
         {
             return Response(TipoPermissao.Validar, () => {
-                var retorno = _ambienteService.Validar(dto);
+                var retorno = _ambienteService.Validar(dto) as ValidarAmbienteOutModel;
                 retorno.Token = new Token(retorno.Ambiente, true).GetToken();
                 retorno.Ambiente = null;
                 return retorno;

@@ -6,14 +6,6 @@ namespace MORM.Aplicacao.WebApi
 {
     public class BaseInstaller
     {
-        static BaseInstaller()
-        {
-            Install(AbstractContainer.Instance);
-        }
-
-        public static IAbstractContainer Container =>
-            AbstractContainer.Instance;
-
         public static void Install(IAbstractContainer container)
         {
             container
@@ -22,8 +14,6 @@ namespace MORM.Aplicacao.WebApi
                     .FromThisAssembly()
                     .Where(t => t.Name.EndsWith("Controller"))
                     .ToArray());
-
-            Servico.BaseInstaller.Install(container);
         }
     }
 }

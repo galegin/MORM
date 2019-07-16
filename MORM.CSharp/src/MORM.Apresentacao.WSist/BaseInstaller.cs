@@ -7,20 +7,11 @@ using MORM.Apresentacao.Mensagens;
 using MORM.Apresentacao.WSist.Menus;
 using MORM.Dominio.Entidades;
 using MORM.Dominio.Interfaces;
-using MORM.Infra.CrossCutting;
 
 namespace MORM.Apresentacao.WSist
 {
     public class BaseInstaller
     {
-        static BaseInstaller()
-        {
-            Install(AbstractContainer.Instance);
-        }
-
-        public static IAbstractContainer Container => 
-            AbstractContainer.Instance;
-
         public static void Install(IAbstractContainer container)
         {
             container.Register<IAmbiente, Ambiente>();
@@ -33,15 +24,13 @@ namespace MORM.Apresentacao.WSist
             container.RegisterSingleton<IMainLogin, MainLogin>();
             container.RegisterSingleton<IMainCommand, MainCommand>();
             container.RegisterSingleton<IMainMensagem, MainMensagem>();
-            
+
+            container.Register<IMenuResolver, MenuResolver>();
+
             container.Register<IMenuSistema, MenuSistema>();
             container.Register<IMenuLateral, ucMenuLateral>();
             container.Register<ITituloSistema, ucTituloSistema>();
             
-            container.Register<IMenuResolverClasse, MenuResolverClasse>();
-            container.Register<IMenuResolverObjeto, MenuResolverObjeto>();
-            container.Register<IMenuResolverTipo, MenuResolverTipo>();
-
             container.Register<IAmbienteView, AmbienteView>();
             container.Register<ILogAcessoView, LogAcessoView>();
             container.Register<IMigracaoEntView, MigracaoEntView>();

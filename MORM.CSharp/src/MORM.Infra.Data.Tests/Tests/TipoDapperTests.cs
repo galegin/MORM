@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MORM.Dominio.Extensions;
 using MORM.Dominio.Interfaces;
+using MORM.Infra.CrossCutting;
 using MORM.Infra.Data.Dapper.Context;
 using System.Linq;
 
@@ -14,7 +15,7 @@ namespace MORM.Infra.Data.Tests
 
         public TipoDapperTests()
         {
-            _dataContext = BaseInstaller.Container.Resolve<IAbstractDataContextDapper>();
+            _dataContext = AbstractContainer.Instance.Resolve<IAbstractDataContextDapper>();
             _tipoRepository = new TipoRepository(_dataContext);
         }
 

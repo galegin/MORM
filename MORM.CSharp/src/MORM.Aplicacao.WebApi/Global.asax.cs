@@ -7,7 +7,6 @@ namespace MORM.Aplicacao.WebApi
     {
         protected void Application_Start()
         {
-            WebApiConfig.Container = BaseInstaller.Container;
             GlobalConfiguration.Configure(WebApiConfig.Register);
             GlobalConfiguration.Configuration.MessageHandlers.Add(new WebApiLogHandler());
         }

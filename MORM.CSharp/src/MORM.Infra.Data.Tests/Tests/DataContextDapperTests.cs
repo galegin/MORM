@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MORM.Dominio.Extensions;
+using MORM.Infra.CrossCutting;
 using MORM.Infra.Data.Dapper.Context;
 using MORM.Infra.Data.Migrations;
 using System.Linq;
@@ -15,8 +16,8 @@ namespace MORM.Infra.Data.Tests
 
         public DataContextDapperTests()
         {
-            _dataContext = BaseInstaller.Container.Resolve<IAbstractDataContextDapper>();
-            _tipoRepository = BaseInstaller.Container.Resolve<ITipoRepository>();
+            _dataContext = AbstractContainer.Instance.Resolve<IAbstractDataContextDapper>();
+            _tipoRepository = AbstractContainer.Instance.Resolve<ITipoRepository>();
         }
 
         [TestInitialize]

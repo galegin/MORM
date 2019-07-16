@@ -7,7 +7,7 @@ namespace MORM.Apresentacao.WSist.Menus
 {
     public class MenuSistema : AbstractMenuSistema
     {
-        public MenuSistema(IMenuResolverClasse rc, IMenuResolverObjeto ro, IMenuResolverTipo rt) : base(rc, ro, rt)
+        public MenuSistema(IMenuResolver resolver) : base(resolver)
         {
         }
 
@@ -30,10 +30,10 @@ namespace MORM.Apresentacao.WSist.Menus
         {
             var subMenu = new List<IMenuOpcao>
             {
-                new MenuOpcaoTipo<IAmbienteView>(MenuOpcaoTipo.Opcao, "MenuAmbienteAmbiente", "Ambiente", _resolverTipo),
-                new MenuOpcaoTipo<ILogAcessoView>(MenuOpcaoTipo.Opcao, "MenuAmbienteLogAcesso", "LogAcesso", _resolverTipo),
-                new MenuOpcaoTipo<IMigracaoEntView>(MenuOpcaoTipo.Opcao, "MenuAmbienteMigracaoEnt", "MigracaoEnt", _resolverTipo),
-                new MenuOpcaoTipo<IPermissaoView>(MenuOpcaoTipo.Opcao, "MenuAmbientePermissao", "Permissao", _resolverTipo),
+                new MenuOpcaoTipo<IAmbienteView>(MenuOpcaoTipo.Opcao, "MenuAmbienteAmbiente", "Ambiente", _resolver),
+                new MenuOpcaoTipo<ILogAcessoView>(MenuOpcaoTipo.Opcao, "MenuAmbienteLogAcesso", "LogAcesso", _resolver),
+                new MenuOpcaoTipo<IMigracaoEntView>(MenuOpcaoTipo.Opcao, "MenuAmbienteMigracaoEnt", "MigracaoEnt", _resolver),
+                new MenuOpcaoTipo<IPermissaoView>(MenuOpcaoTipo.Opcao, "MenuAmbientePermissao", "Permissao", _resolver),
             };
 
             var menu = new MenuOpcaoDescr(MenuOpcaoTipo.SubMenu, "MenuAmbiente", "Ambiente", subMenu);
@@ -55,7 +55,7 @@ namespace MORM.Apresentacao.WSist.Menus
         {
             var subMenu = new List<IMenuOpcao>
             {
-                new MenuOpcaoTipo<IEmpresaView>(MenuOpcaoTipo.Opcao, "MenuEmpresaEmpresa", "Empresa", _resolverTipo),
+                new MenuOpcaoTipo<IEmpresaView>(MenuOpcaoTipo.Opcao, "MenuEmpresaEmpresa", "Empresa", _resolver),
             };
 
             var menu = new MenuOpcaoDescr(MenuOpcaoTipo.SubMenu, "MenuEmpresa", "Empresa", subMenu);
@@ -67,7 +67,7 @@ namespace MORM.Apresentacao.WSist.Menus
         {
             var subMenu = new List<IMenuOpcao>
             {
-                new MenuOpcaoTipo<ITerminalView>(MenuOpcaoTipo.Opcao, "MenuTerminalTerminal", "Terminal", _resolverTipo),
+                new MenuOpcaoTipo<ITerminalView>(MenuOpcaoTipo.Opcao, "MenuTerminalTerminal", "Terminal", _resolver),
             };
 
             var menu = new MenuOpcaoDescr(MenuOpcaoTipo.SubMenu, "MenuTerminal", "Terminal", subMenu);
@@ -78,7 +78,7 @@ namespace MORM.Apresentacao.WSist.Menus
         {
             var subMenu = new List<IMenuOpcao>
             {
-                new MenuOpcaoTipo<IUsuarioView>(MenuOpcaoTipo.Opcao, "MenuUsuarioUsuario", "Usuario", _resolverTipo),
+                new MenuOpcaoTipo<IUsuarioView>(MenuOpcaoTipo.Opcao, "MenuUsuarioUsuario", "Usuario", _resolver),
             };
 
             var menu = new MenuOpcaoDescr(MenuOpcaoTipo.SubMenu, "MenuUsuario", "Usuario", subMenu);

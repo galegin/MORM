@@ -5,6 +5,6 @@ namespace MORM.Servico.Interfaces
 {
     public interface ILogAcessoAppService : IAbstractAppService<LogAcesso>
     {
-        void GravarLog(GravarLogAcessoDto.Envio dto);
+        void GravarLog(GravarLogAcessoInModel dto);
     }
 }

@@ -19,7 +19,7 @@ namespace MORM.Apresentacao.WSist
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            TelaUtils.Factory(BaseInstaller.Container).MainWindow.Execute(null);
+            TelaUtils.Factory(AbstractContainer.Instance).MainWindow.Execute(null);
         }
     }
 }

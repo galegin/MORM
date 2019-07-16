@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MORM.Dominio.Extensions;
+using MORM.Infra.CrossCutting;
 using System;
 using System.Linq;
 
@@ -12,7 +13,7 @@ namespace MORM.Infra.Data.Tests
 
         public TesteServiceTests()
         {
-            _testeService = BaseInstaller.Container.Resolve<ITesteService>();
+            _testeService = AbstractContainer.Instance.Resolve<ITesteService>();
         }
 
         private const int _codigoTeste = 1;

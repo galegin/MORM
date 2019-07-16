@@ -163,6 +163,8 @@
     <Compile Include="Menus\ViewModels\MenuOpcaoViewModel.cs" />
     <Compile Include="Menus\ViewModels\TituloSistemaViewModel.cs" />
     <Compile Include="Menus\ViewModels\SubMenuOpcaoViewModel.cs" />
+    <Compile Include="Models\nsAmbiente\ValidarAmbienteOutModel.cs" />
+    <Compile Include="Models\nsAmbiente\ValidarAmbienteInModel.cs" />
     <Compile Include="Styles\StyleExtension.cs" />
     <Compile Include="ViewsModel\AbstractViewModelRelat.cs" />
     <Compile Include="ViewsModel\AbstractViewModelProc.cs" />

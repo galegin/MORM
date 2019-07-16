@@ -5,6 +5,6 @@ namespace MORM.Servico.Interfaces
 {
     public interface IPermissaoAppService : IAbstractAppService<Permissao>
     {
-        bool VerificarPermissao(VerificarPermissaoDto.Envio dto);
+        bool VerificarPermissao(VerificarPermissaoInModel dto);
     }
 }

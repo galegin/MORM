@@ -48,9 +48,10 @@
     <Compile Include="Interfaces\nsUsuario\IUsuarioAppService.cs" />
     <Compile Include="Models\AbstractDto.cs" />
     <Compile Include="Models\AbstractValidator.cs" />
-    <Compile Include="Models\nsAmbiente\GravarLogAcessoDto.cs" />
-    <Compile Include="Models\nsAmbiente\ValidarAmbienteDto.cs" />
-    <Compile Include="Models\nsAmbiente\VerificarPermissaoDto.cs" />
+    <Compile Include="Models\nsAmbiente\GravarLogAcessoInModel.cs" />
+    <Compile Include="Models\nsAmbiente\ValidarAmbienteInModel.cs" />
+    <Compile Include="Models\nsAmbiente\ValidarAmbienteOutModel.cs" />
+    <Compile Include="Models\nsAmbiente\VerificarPermissaoInModel.cs" />
     <Compile Include="Models\nsComum\AbstractAlterarDto.cs" />
     <Compile Include="Models\nsComum\AbstractConsultarDto.cs" />
     <Compile Include="Models\nsComum\AbstractExcluirDto.cs" />

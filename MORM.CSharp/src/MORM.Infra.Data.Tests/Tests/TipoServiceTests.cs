@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MORM.Dominio.Extensions;
+using MORM.Infra.CrossCutting;
 using System.Linq;
 
 namespace MORM.Infra.Data.Tests
@@ -11,7 +12,7 @@ namespace MORM.Infra.Data.Tests
 
         public TipoServiceTests()
         {
-            _tipoService = BaseInstaller.Container.Resolve<ITipoService>();
+            _tipoService = AbstractContainer.Instance.Resolve<ITipoService>();
         }        
 
         private const int _codigoTipo = 1;

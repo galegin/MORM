@@ -2,17 +2,11 @@
 using MORM.Dominio.Interfaces;
 using MORM.Apresentacao.Classes;
 using MORM.Apresentacao.Menus;
-using MORM.Infra.CrossCutting;
 
 namespace MORM.Apresentacao
 {
     public class BaseInstaller
     {
-        static BaseInstaller()
-        {
-            Install(AbstractContainer.Instance);
-        }
-
         public static void Install(IAbstractContainer container)
         {
             container.Register<IAmbiente, Ambiente>();
@@ -26,9 +20,7 @@ namespace MORM.Apresentacao
             container.Register<IMenuLateral, ucMenuLateral>();
             container.Register<ITituloSistema, ucTituloSistema>();
 
-            container.Register<IMenuResolverObjeto, MenuResolverObjeto>();
-            container.Register<IMenuResolverClasse, MenuResolverClasse>();
-            container.Register<IMenuResolverTipo, MenuResolverTipo>();
+            container.Register<IMenuResolver, MenuResolver>();
         }
     }
 }

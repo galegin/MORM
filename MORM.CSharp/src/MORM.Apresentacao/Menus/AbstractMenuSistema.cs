@@ -5,18 +5,11 @@ namespace MORM.Apresentacao.Menus
 {
     public abstract class AbstractMenuSistema : IMenuSistema
     {
-        protected readonly IMenuResolverClasse _resolverClasse;
-        protected readonly IMenuResolverObjeto _resolverObjeto;
-        protected readonly IMenuResolverTipo _resolverTipo;
+        protected readonly IMenuResolver _resolver;
 
-        public AbstractMenuSistema(
-            IMenuResolverClasse resolverClasse,
-            IMenuResolverObjeto resolverObjeto,
-            IMenuResolverTipo resolverTipo)
+        public AbstractMenuSistema(IMenuResolver resolver)
         {
-            _resolverClasse = resolverClasse ?? throw new ArgumentNullException(nameof(resolverClasse));
-            _resolverObjeto = resolverObjeto ?? throw new ArgumentNullException(nameof(resolverObjeto));
-            _resolverTipo = resolverTipo ?? throw new ArgumentNullException(nameof(resolverTipo));
+            _resolver = resolver ?? throw new ArgumentNullException(nameof(resolver));
         }
 
         public abstract IList<IMenuOpcao> GetListaDeMenuOpcao();

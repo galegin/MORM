@@ -12,7 +12,7 @@ namespace MORM.Servico.Services
         {
         }
 
-        private Permissao GetPermissao(VerificarPermissaoDto.Envio dto)
+        private Permissao GetPermissao(VerificarPermissaoInModel dto)
         {
             return AbstractService.AbstractRepository.FirstOrDefault(f =>
                 f.CodigoEmpresa == dto.CodigoEmpresa &&
@@ -21,7 +21,7 @@ namespace MORM.Servico.Services
                 f.CodigoMetodo  == dto.CodigoMetodo);
         }
 
-        public bool VerificarPermissao(VerificarPermissaoDto.Envio dto)
+        public bool VerificarPermissao(VerificarPermissaoInModel dto)
         {
             var permissao = GetPermissao(dto);
 

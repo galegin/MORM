@@ -5,6 +5,6 @@ namespace MORM.Servico.Interfaces
 {
     public interface IAmbienteAppService : IAbstractAppService<Ambiente>
     {
-        ValidarAmbienteDto.Retorno Validar(ValidarAmbienteDto.Envio dto);
+        object Validar(ValidarAmbienteInModel dto);
     }
 }

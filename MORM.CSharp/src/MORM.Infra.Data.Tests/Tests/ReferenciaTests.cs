@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MORM.Dominio.Extensions;
+using MORM.Infra.CrossCutting;
 using System.Linq;
 
 namespace MORM.Infra.Data.Tests
@@ -14,8 +15,8 @@ namespace MORM.Infra.Data.Tests
 
         public ReferenciaTests()
         {
-            _referenciaService = BaseInstaller.Container.Resolve<IReferenciaService>();
-            _testeService = BaseInstaller.Container.Resolve<ITesteService>();
+            _referenciaService = AbstractContainer.Instance.Resolve<IReferenciaService>();
+            _testeService = AbstractContainer.Instance.Resolve<ITesteService>();
         }
 
         [TestInitialize]

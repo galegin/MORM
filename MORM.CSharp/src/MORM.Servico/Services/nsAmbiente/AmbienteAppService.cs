@@ -17,7 +17,7 @@ namespace MORM.Servico.Services
             _usuarioAppService = usuarioAppService;
         }
 
-        public ValidarAmbienteDto.Retorno Validar(ValidarAmbienteDto.Envio dto)
+        public object Validar(ValidarAmbienteInModel dto)
         {
             if (string.IsNullOrWhiteSpace(dto.Login))
                 throw new Exception("Usuario deve ser informado");
@@ -35,7 +35,7 @@ namespace MORM.Servico.Services
             if (!Md5Extensions.IsValidMd5(senhaHash, senhaMd5))
                 throw new Exception("Senha nao cadastrada");
 
-            return new ValidarAmbienteDto.Retorno
+            return new ValidarAmbienteOutModel
             {
                 Ambiente = new Ambiente(),
             };

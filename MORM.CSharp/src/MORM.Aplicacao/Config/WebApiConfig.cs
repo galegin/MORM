@@ -1,13 +1,11 @@
 ﻿using MORM.Aplicacao.Resolver;
-using MORM.Dominio.Interfaces;
+using MORM.Infra.CrossCutting;
 using System.Web.Http;
 
 namespace MORM.Aplicacao.Config
 {
     public static class WebApiConfig
     {
-        public static IAbstractContainer Container { get; set; }
-
         public static void Register(HttpConfiguration config)
         {
             // Serviços e configuração da API da Web
@@ -26,7 +24,8 @@ namespace MORM.Aplicacao.Config
             config.Formatters.Add(config.Formatters.JsonFormatter);
 
             // Ioc
-            config.DependencyResolver = new AbstractDependencyResolver(Container);
+            var container = AbstractContainer.Instance;
+            config.DependencyResolver = new AbstractDependencyResolver(container);
         }
     }
 }

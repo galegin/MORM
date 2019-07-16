@@ -3,20 +3,11 @@ using MORM.Dominio.Interfaces;
 using MORM.Infra.Data.UnityOfWork;
 using MORM.Infra.Mocks;
 using MORM.Infra.Data.Dapper.Context;
-using MORM.Infra.CrossCutting;
 
 namespace MORM.Infra.Data.Tests
 {
     public class BaseInstaller
     {
-        static BaseInstaller()
-        {
-            Install(AbstractContainer.Instance);
-        }
-
-        public static IAbstractContainer Container =>
-            AbstractContainer.Instance;
-
         public static void Install(IAbstractContainer container)
         {
             container.Register<IAmbiente, Ambiente>();

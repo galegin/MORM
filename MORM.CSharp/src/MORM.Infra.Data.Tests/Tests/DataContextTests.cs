@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MORM.Dominio.Extensions;
 using MORM.Dominio.Interfaces;
+using MORM.Infra.CrossCutting;
 using MORM.Infra.Data.Migrations;
 
 namespace MORM.Infra.Data.Tests
@@ -14,8 +15,8 @@ namespace MORM.Infra.Data.Tests
 
         public DataContextTests()
         {
-            _dataContext = BaseInstaller.Container.Resolve<IAbstractDataContext>();
-            _tipoRepository = BaseInstaller.Container.Resolve<ITipoRepository>();
+            _dataContext = AbstractContainer.Instance.Resolve<IAbstractDataContext>();
+            _tipoRepository = AbstractContainer.Instance.Resolve<ITipoRepository>();
         }
 
         [TestInitialize]
@@ -49,7 +50,7 @@ namespace MORM.Infra.Data.Tests
         [TestMethod]
         public void DataContextTests_Dispose()
         {
-            using (var context = BaseInstaller.Container.Resolve<IAbstractDataContext>() as IAbstractDataContext)
+            using (var context = AbstractContainer.Instance.Resolve<IAbstractDataContext>() as IAbstractDataContext)
             {
                 var lista = context.GetListaW<TipoModel>(string.Empty);
             }
