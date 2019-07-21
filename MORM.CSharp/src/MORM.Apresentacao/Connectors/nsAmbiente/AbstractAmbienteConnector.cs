@@ -1,25 +1,19 @@
 ﻿using MORM.Apresentacao.Models;
-using MORM.Dominio.Extensions;
 using MORM.Infra.CrossCutting;
 using System.Configuration;
 
 namespace MORM.Apresentacao.Connectors
 {
-    public class AbstractAmbienteConnector : AbstractConnectorObj
+    public class AbstractAmbienteConnector : AbstractConnector<ValidarAmbienteInModel, ValidarAmbienteOutModel>
     {
         private static string _token = ConfigurationManager.AppSettings[nameof(_token)] ?? string.Empty;
 
-        public override object Executar(object instance)
+        public override ValidarAmbienteOutModel Executar(ValidarAmbienteInModel instance)
         {
-            var consumerDto = new ValidarAmbienteInModel
-            {
-                Login = instance.GetInstancePropOrField("Login") as string,
-                Senha = instance.GetInstancePropOrField("Senha") as string,
-            };
             var consumerApi = new AbstractApiConsumer<ValidarAmbienteInModel, ValidarAmbienteOutModel>();
-            var retorno = consumerApi.Post(consumerDto);
+            var retorno = consumerApi.Post(instance);
             ExibirMensagem(retorno.Mensagem);
-            return retorno.Conteudo.GetInstancePropOrField("Token");
+            return retorno.Conteudo;
         }
 
         public static void ValidarAcesso()
@@ -27,17 +21,17 @@ namespace MORM.Apresentacao.Connectors
             if (string.IsNullOrWhiteSpace(AbstractApiConsumer.TokenInterno) && !string.IsNullOrWhiteSpace(_token))
                 AbstractApiConsumer.SetTokenInterno(_token);
 
-            if (string.IsNullOrWhiteSpace(AbstractApiConsumer.TokenInterno))
+            if (!string.IsNullOrWhiteSpace(AbstractApiConsumer.TokenInterno))
+                return;
+
+            var acesso = new ValidarAmbienteInModel
             {
-                var acesso = new
-                {
-                    Login = "ADMIN",
-                    Senha = "admin"
-                };
-                var connector = new AbstractAmbienteConnector();
-                var token = connector.Executar(acesso) as string;
-                AbstractApiConsumer.SetTokenInterno(token);
-            }
+                Login = "ADMIN",
+                Senha = "admin"
+            };
+            var connector = new AbstractAmbienteConnector();
+            var token = connector.Executar(acesso).Token;
+            AbstractApiConsumer.SetTokenInterno(token);
         }
     }
 }

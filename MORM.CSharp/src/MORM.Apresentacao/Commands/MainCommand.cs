@@ -4,14 +4,18 @@ namespace MORM.Apresentacao.Commands
 {
     public class MainCommand : IMainCommand
     {
-        public AbstractCommand GetCommand<TEntrada>(CommandTipo tipo)
+        public AbstractCommand GetCommand<TEntrada, TRetorno>(CommandTipo tipo)
+            where TEntrada : class
+            where TRetorno : class
         {
             switch (tipo)
             {
                 case CommandTipo.Alterar:
                     return new AlterarTela<TEntrada>();
+                case CommandTipo.Listar:
+                    return new ListarTela<TEntrada, TRetorno>();
                 case CommandTipo.Consultar:
-                    return new ConsultarTela<TEntrada>();
+                    return new ConsultarTela<TEntrada, TRetorno>();
                 case CommandTipo.Excluir:
                     return new ExcluirTela<TEntrada>();
                 case CommandTipo.Exportar:
@@ -26,17 +30,6 @@ namespace MORM.Apresentacao.Commands
                     return new LimparTela<TEntrada>();
                 case CommandTipo.Salvar:
                     return new AlterarTela<TEntrada>();
-            }
-
-            return null;
-        }
-
-        public AbstractCommand GetCommandLista<TEntrada, TRetorno>(CommandTipo tipo)
-        {
-            switch (tipo)
-            {
-                case CommandTipo.Listar:
-                    return new ListarTela<TEntrada, TRetorno>();
             }
 
             return null;

@@ -1,9 +1,11 @@
-﻿namespace MORM.Apresentacao.Connectors
+﻿using MORM.Dominio.Atributos;
+
+namespace MORM.Apresentacao.Connectors
 {
-    public class AbstractExportarConnector<TEntrada> : AbstractConnector<TEntrada>
+    [MTD("Exportar")]
+    public class AbstractExportarConnector<TEntrada, TRetorno> : AbstractConnector<TEntrada, TRetorno>
+        where TEntrada : class
+        where TRetorno : class
     {
-        public override void Executar(TEntrada instance)
-        {
-        }
     }
 }

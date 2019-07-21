@@ -1,6 +1,8 @@
 ﻿namespace MORM.Apresentacao.ViewsModel
 {
-    public class AbstractViewModelLista<TModel> : AbstractViewModel<TModel>, IAbstractViewModelLista
+    public class AbstractViewModelLista<TModel, TFiltro> : AbstractViewModel<TModel, TFiltro>, IAbstractViewModel
+        where TModel : class
+        where TFiltro : class
     {
         #region construtores
         public AbstractViewModelLista() : base()

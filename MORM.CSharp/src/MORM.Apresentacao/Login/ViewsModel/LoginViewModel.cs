@@ -5,7 +5,7 @@ using MORM.Apresentacao.ViewsModel;
 
 namespace MORM.Apresentacao.Login.ViewsModel
 {
-    public class LoginViewModel : AbstractViewModel<LoginModel>
+    public class LoginViewModel : AbstractViewModel<LoginModel, object>
     {
         #region variaveis
         private string _token;

@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\bin\Debug\</OutputPath>
+    <OutputPath>..\..\bin\Library\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -25,7 +25,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\bin\Release\</OutputPath>
+    <OutputPath>..\..\bin\Library\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -46,20 +46,10 @@
     <Compile Include="Interfaces\nsEmpresa\IEmpresaAppService.cs" />
     <Compile Include="Interfaces\nsTerminal\ITerminalAppService.cs" />
     <Compile Include="Interfaces\nsUsuario\IUsuarioAppService.cs" />
-    <Compile Include="Models\AbstractDto.cs" />
-    <Compile Include="Models\AbstractValidator.cs" />
     <Compile Include="Models\nsAmbiente\GravarLogAcessoInModel.cs" />
     <Compile Include="Models\nsAmbiente\ValidarAmbienteInModel.cs" />
     <Compile Include="Models\nsAmbiente\ValidarAmbienteOutModel.cs" />
     <Compile Include="Models\nsAmbiente\VerificarPermissaoInModel.cs" />
-    <Compile Include="Models\nsComum\AbstractAlterarDto.cs" />
-    <Compile Include="Models\nsComum\AbstractConsultarDto.cs" />
-    <Compile Include="Models\nsComum\AbstractExcluirDto.cs" />
-    <Compile Include="Models\nsComum\AbstractIncluirDto.cs" />
-    <Compile Include="Models\nsComum\AbstractListarDto.cs" />
-    <Compile Include="Models\nsComum\AbstractSalvarDto.cs" />
-    <Compile Include="Models\nsComum\AbstractSequenciaDto.cs" />
-    <Compile Include="Models\Validator.cs" />
     <Compile Include="Services\AbstractAppService.cs" />
     <Compile Include="Services\AbstractService.cs" />
     <Compile Include="Interfaces\IAbstractAppService.cs" />

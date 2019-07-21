@@ -18,13 +18,14 @@ namespace MORM.Apresentacao.Controls
     }
 
     public partial class AbstractOpcao<TModel> : AbstractOpcao
+        where TModel : class
     {
         public AbstractOpcao() : base()
         {
             DataContext = Activator.CreateInstance<TModel>();
         }
 
-        public AbstractOpcao(IAbstractViewModel<TModel> vm) : base()
+        public AbstractOpcao(IAbstractViewModel<TModel, object> vm) : base()
         {
             DataContext = vm;
         }

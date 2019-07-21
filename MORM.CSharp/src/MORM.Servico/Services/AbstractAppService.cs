@@ -1,5 +1,4 @@
 ﻿using MORM.Dominio.Interfaces;
-using MORM.Servico.Models;
 using MORM.Servico.Interfaces;
 using System;
 
@@ -39,51 +38,51 @@ namespace MORM.Servico.Services
 
         //-- listar
 
-        public object Listar(AbstractListarDto.Envio<TObject> dto)
+        public object Listar(TObject filtro)
         {
-            return new AbstractListarDto.Retorno<TObject>(AbstractService.Listar(dto.Filtro));
+            return AbstractService.Listar(filtro);
         }
 
         //-- consultar
 
-        public object Consultar(AbstractConsultarDto.Envio<TObject> dto)
+        public object Consultar(TObject filtro)
         {
-            return new AbstractConsultarDto.Retorno<TObject>(AbstractService.Consultar(dto.Filtro));
+            return AbstractService.Consultar(filtro);
         }
 
         //-- incluir
 
-        public object Incluir(AbstractIncluirDto.Envio<TObject> dto)
+        public object Incluir(TObject objeto)
         {
-            AbstractService.Incluir(dto.Objeto); return null;
+            AbstractService.Incluir(objeto); return null;
         }
 
         //-- alterar
 
-        public object Alterar(AbstractAlterarDto.Envio<TObject> dto)
+        public object Alterar(TObject objeto)
         {
-            AbstractService.Alterar(dto.Objeto); return null;
+            AbstractService.Alterar(objeto); return null;
         }
 
         //-- salvar
 
-        public object Salvar(AbstractSalvarDto.Envio<TObject> dto)
+        public object Salvar(TObject objeto)
         {
-            AbstractService.Salvar(dto.Objeto); return null;
+            AbstractService.Salvar(objeto); return null;
         }
 
         //-- excluir
 
-        public object Excluir(AbstractExcluirDto.Envio<TObject> dto)
+        public object Excluir(TObject objeto)
         {
-            AbstractService.Excluir(dto.Objeto); return null;
+            AbstractService.Excluir(objeto); return null;
         }
 
         //-- sequencia
 
-        public object Sequencia(AbstractSequenciaDto.Envio<TObject> dto)
+        public object Sequencia(TObject filtro)
         {
-            return AbstractService.Sequencia(dto.Filtro);
+            return AbstractService.Sequencia(filtro);
         }
     }
 }

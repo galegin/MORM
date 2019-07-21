@@ -1,16 +1,11 @@
-using MORM.Infra.CrossCutting;
-using MORM.Dominio.Extensions;
+using MORM.Dominio.Atributos;
 
 namespace MORM.Apresentacao.Connectors
 {
-    public class AbstractConsultarConnector<TEntrada, TRetorno> : AbstractConnectorRet<TEntrada, TRetorno>
+    [MTD("Consultar")]
+    public class AbstractConsultarConnector<TEntrada, TRetorno> : AbstractConnector<TEntrada, TRetorno>
+        where TEntrada : class
+        where TRetorno : class
     {
-        public override TRetorno Executar(TEntrada instance)
-        {
-            var consumerApi = new AbstractApiConsumer<object, object>();
-            var retorno = consumerApi.Post(instance, instance.GetApi(mtdPadrao: instance.GetMtd()));
-            ExibirMensagem(retorno.Mensagem);
-            return (TRetorno)retorno.Conteudo;
-        }
     }
 }

@@ -137,51 +137,51 @@ namespace MORM.Aplicacao.Controllers
 
         [HttpPost]
         [Route("Listar")]
-        public HttpResponseMessage Listar(AbstractListarDto.Envio<TObject> dto)
+        public HttpResponseMessage Listar(TObject filtro)
         {
-            return Response(TipoPermissao.Listar, () => _abstractAppService.Listar(dto));
+            return Response(TipoPermissao.Listar, () => _abstractAppService.Listar(filtro));
         }
 
         [HttpPost]
         [Route("Consultar")]
-        public HttpResponseMessage Consultar(AbstractConsultarDto.Envio<TObject> dto)
+        public HttpResponseMessage Consultar(TObject filtro)
         {
-            return Response(TipoPermissao.Consultar, () => _abstractAppService.Consultar(dto));
+            return Response(TipoPermissao.Consultar, () => _abstractAppService.Consultar(filtro));
         }
 
         [HttpPost]
         [Route("Incluir")]
-        public HttpResponseMessage Incluir(AbstractIncluirDto.Envio<TObject> dto)
+        public HttpResponseMessage Incluir(TObject objeto)
         {
-            return Response(TipoPermissao.Incluir, () => _abstractAppService.Incluir(dto));
+            return Response(TipoPermissao.Incluir, () => _abstractAppService.Incluir(objeto));
         }
 
         [HttpPost]
         [Route("Alterar")]
-        public HttpResponseMessage Alterar(AbstractAlterarDto.Envio<TObject> dto)
+        public HttpResponseMessage Alterar(TObject objeto)
         {
-            return Response(TipoPermissao.Alterar, () => _abstractAppService.Alterar(dto));
+            return Response(TipoPermissao.Alterar, () => _abstractAppService.Alterar(objeto));
         }
 
         [HttpPost]
         [Route("Salvar")]
-        public HttpResponseMessage Salvar(AbstractSalvarDto.Envio<TObject> dto)
+        public HttpResponseMessage Salvar(TObject objeto)
         {
-            return Response(TipoPermissao.Salvar, () => _abstractAppService.Salvar(dto));
+            return Response(TipoPermissao.Salvar, () => _abstractAppService.Salvar(objeto));
         }
 
         [HttpPost]
         [Route("Excluir")]
-        public HttpResponseMessage Excluir(AbstractExcluirDto.Envio<TObject> dto)
+        public HttpResponseMessage Excluir(TObject objeto)
         {
-            return Response(TipoPermissao.Excluir, () => _abstractAppService.Excluir(dto));
+            return Response(TipoPermissao.Excluir, () => _abstractAppService.Excluir(objeto));
         }
 
         [HttpPost]
         [Route("Sequencia")]
-        public HttpResponseMessage Sequencia(AbstractSequenciaDto.Envio<TObject> dto)
+        public HttpResponseMessage Sequencia(TObject filtro)
         {
-            return Response(TipoPermissao.Sequencia, () => _abstractAppService.Sequencia(dto));
+            return Response(TipoPermissao.Sequencia, () => _abstractAppService.Sequencia(filtro));
         }
         #endregion
     }

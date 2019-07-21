@@ -1,6 +1,6 @@
 ﻿using MORM.Apresentacao.Comps;
+using MORM.Dominio.Extensions;
 using MORM.Infra.CrossCutting;
-using System.Collections.Generic;
 
 namespace MORM.Apresentacao.Connectors
 {
@@ -21,23 +21,16 @@ namespace MORM.Apresentacao.Connectors
         }
     }
 
-    public abstract class AbstractConnector<TEntrada> : AbstractConnector
+    public abstract class AbstractConnector<TEntrada, TRetorno> : AbstractConnector
+        where TEntrada : class
+        where TRetorno : class
     {
-        public abstract void Executar(TEntrada instance);
-    }
-
-    public abstract class AbstractConnectorObj : AbstractConnector
-    {
-        public abstract object Executar(object instance);
-    }
-
-    public abstract class AbstractConnectorList<TEntrada, TRetorno> : AbstractConnector
-    {
-        public abstract List<TRetorno> Executar(TEntrada instance);
-    }
-
-    public abstract class AbstractConnectorRet<TEntrada, TRetorno> : AbstractConnector
-    {
-        public abstract TRetorno Executar(TEntrada instance);
+        public virtual TRetorno Executar(TEntrada instance)
+        {
+            var consumerApi = new AbstractApiConsumer<TEntrada, TRetorno>();
+            var retorno = consumerApi.Post(instance, instance.GetApi(mtdPadrao: this.GetMtd()));
+            ExibirMensagem(retorno.Mensagem);
+            return retorno.Conteudo;
+        }
     }
 }

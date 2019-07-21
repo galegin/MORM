@@ -148,6 +148,7 @@ namespace MORM.Apresentacao.ViewsModel
         public virtual AbstractCommand Fechar { get; } = new FecharTela();
         public virtual AbstractCommand Voltar { get; } = new VoltarTelaAnterior();
         public virtual AbstractCommand Limpar { get; }
+        public virtual AbstractCommand Listar { get; }
         public virtual AbstractCommand Consultar { get; }
         public virtual AbstractCommand Exportar { get; }
         public virtual AbstractCommand Importar { get; }
@@ -178,10 +179,14 @@ namespace MORM.Apresentacao.ViewsModel
         #endregion
     }
 
-    public class AbstractViewModel<TModel> : AbstractViewModel, IAbstractViewModel<TModel>
+    public class AbstractViewModel<TModel, TFiltro> : AbstractViewModel, IAbstractViewModel<TModel, TFiltro>
+        where TModel : class
+        where TFiltro : class
     {
         #region variaveis
         private TModel _model;
+        private TFiltro _filtro;
+        private List<TModel> _lista;
         #endregion
 
         #region propriedades
@@ -190,10 +195,21 @@ namespace MORM.Apresentacao.ViewsModel
             get => _model;
             set => SetField(ref _model, value);
         }
+        public TFiltro Filtro
+        {
+            get => _filtro;
+            set => SetField(ref _filtro, value);
+        }
+        public List<TModel> Lista
+        {
+            get => _lista;
+            set => SetField(ref _lista, value);
+        }
         #endregion
 
         #region comandos
         public override AbstractCommand Limpar { get; }
+        public override AbstractCommand Listar { get; }
         public override AbstractCommand Consultar { get; }
         public override AbstractCommand Exportar { get; }
         public override AbstractCommand Importar { get; }
@@ -208,18 +224,21 @@ namespace MORM.Apresentacao.ViewsModel
         public AbstractViewModel() : base()
         {
             Model = Activator.CreateInstance<TModel>();
+            Filtro = Activator.CreateInstance<TFiltro>();
+            Lista = new List<TModel>();
             IsExibirFechar = true;
 
             var mainCommand = TelaUtils.Instance.MainCommand;
-            Limpar = mainCommand.GetCommand<TModel>(CommandTipo.Limpar);
-            Exportar = mainCommand.GetCommand<TModel>(CommandTipo.Exportar);
-            Importar = mainCommand.GetCommand<TModel>(CommandTipo.Importar);
-            Imprimir = mainCommand.GetCommand<TModel>(CommandTipo.Imprimir);
-            Consultar = mainCommand.GetCommand<TModel>(CommandTipo.Consultar);
-            Incluir = mainCommand.GetCommand<TModel>(CommandTipo.Incluir);
-            Alterar = mainCommand.GetCommand<TModel>(CommandTipo.Alterar);
-            Salvar = mainCommand.GetCommand<TModel>(CommandTipo.Salvar);
-            Excluir = mainCommand.GetCommand<TModel>(CommandTipo.Excluir);
+            Limpar = mainCommand.GetCommand<TModel, TModel>(CommandTipo.Limpar);
+            Exportar = mainCommand.GetCommand<TModel, object>(CommandTipo.Exportar);
+            Importar = mainCommand.GetCommand<TModel, object>(CommandTipo.Importar);
+            Imprimir = mainCommand.GetCommand<TModel, object>(CommandTipo.Imprimir);
+            Listar = mainCommand.GetCommand<TFiltro, TModel>(CommandTipo.Listar);
+            Consultar = mainCommand.GetCommand<TFiltro, TModel>(CommandTipo.Consultar);
+            Incluir = mainCommand.GetCommand<TModel, object>(CommandTipo.Incluir);
+            Alterar = mainCommand.GetCommand<TModel, object>(CommandTipo.Alterar);
+            Salvar = mainCommand.GetCommand<TModel, object>(CommandTipo.Salvar);
+            Excluir = mainCommand.GetCommand<TModel, object>(CommandTipo.Excluir);
         }
         #endregion
 
@@ -233,39 +252,6 @@ namespace MORM.Apresentacao.ViewsModel
                     .Replace("Abstract", "")
                     .Replace("Model", "")
                     .Replace("View", "");
-        }
-        #endregion
-    }
-
-    public class AbstractViewModel<TFiltro, TModel> : AbstractViewModel<TModel>, IAbstractViewModel<TFiltro, TModel>
-    {
-        #region variaveis
-        private TFiltro _filtro;
-        private List<TModel> _lista;
-        #endregion
-
-        #region propriedades
-        public TFiltro Filtro
-        {
-            get => _filtro;
-            set => SetField(ref _filtro, value);
-        }
-        public List<TModel> Lista
-        {
-            get => _lista;
-            set => SetField(ref _lista, value);
-        }
-        #endregion
-
-        #region comandos
-        public ListarTela<TFiltro, TModel> Listar { get; set; } = new ListarTela<TFiltro, TModel>();
-        #endregion
-
-        #region construtores
-        public AbstractViewModel() : base()
-        {
-            Filtro = Activator.CreateInstance<TFiltro>();
-            Lista = new List<TModel>();
         }
         #endregion
     }

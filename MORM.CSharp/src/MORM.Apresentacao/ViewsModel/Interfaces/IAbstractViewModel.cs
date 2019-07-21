@@ -11,13 +11,11 @@ namespace MORM.Apresentacao.ViewsModel
         Action CloseAction { get; set; }
     }
 
-    public interface IAbstractViewModel<TModel> : IAbstractViewModel
+    public interface IAbstractViewModel<TModel, TFiltro> : IAbstractViewModel
+        where TModel : class
+        where TFiltro : class
     {
         TModel Model { get; }
-    }
-
-    public interface IAbstractViewModel<TFiltro, TModel> : IAbstractViewModel<TModel>
-    {
         TFiltro Filtro { get; }
         List<TModel> Lista { get; }
     }

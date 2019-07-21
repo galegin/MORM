@@ -16,7 +16,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-    <OutputPath>..\..\bin\Debug\</OutputPath>
+    <OutputPath>..\..\bin\Library\Debug\</OutputPath>
     <DebugSymbols>True</DebugSymbols>
     <DebugType>Full</DebugType>
     <Optimize>False</Optimize>
@@ -24,7 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-    <OutputPath>..\..\bin\Release\</OutputPath>
+    <OutputPath>..\..\bin\Library\Release\</OutputPath>
     <DebugSymbols>False</DebugSymbols>
     <DebugType>None</DebugType>
     <Optimize>True</Optimize>
@@ -33,7 +33,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <Prefer32Bit>false</Prefer32Bit>
-    <OutputPath>..\..\bin\Debug\</OutputPath>
+    <OutputPath>..\..\Library\bin\Debug\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <Prefer32Bit>false</Prefer32Bit>
@@ -56,9 +56,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assempbly\ClassesAssembly.cs" />
-    <Compile Include="Assempbly\FromAssembly.cs" />
-    <Compile Include="Assempbly\InstallerAssembly.cs" />
+    <Compile Include="Assemblies\ClassesAssembly.cs" />
+    <Compile Include="Assemblies\FromAssembly.cs" />
+    <Compile Include="Assemblies\InstallerAssembly.cs" />
     <Compile Include="BaseInstaller.cs" />
     <Compile Include="Consumers\AbstractApiConsumer.cs" />
     <Compile Include="Extensions\EadExtensions.cs" />

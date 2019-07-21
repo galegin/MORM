@@ -1,9 +1,8 @@
 using MORM.Apresentacao.Models;
-using MORM.Apresentacao.ViewsModel;
 
 namespace MORM.Apresentacao.ViewsModel
 {
-    public class EmpresaViewModel : AbstractViewModel<EmpresaModel>
+    public class EmpresaViewModel : AbstractViewModel<EmpresaModel, EmpresaModel>
     {
     }
 }
