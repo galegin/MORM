@@ -1,0 +1,141 @@
+dotnet
+
+    Usage: dotnet [options]
+    Usage: dotnet [path-to-application]
+
+    Options:
+      -h|--help         Display help.
+      --info            Display .NET Core information.
+      --list-sdks       Display the installed SDKs.
+      --list-runtimes   Display the installed runtimes.
+
+    path-to-application:
+      The path to an application .dll file to execute.
+
+dotnet -h
+
+    Ferramentas de Linha de Comando do .NET (2.2.300)
+    Uso: dotnet [runtime-options] [path-to-application] [arguments]
+
+    Executar um aplicativo do .NET Core.
+
+    runtime-options:
+      --additionalprobingpath <path>     Caminho contendo a política de investigação e os assemblies a investigar.
+      --additional-deps <path>           Caminho para o arquivo deps.json adicional.
+      --fx-version <version>             Versão do Shared Framework instalada a ser usada para a execução do aplicativo.
+      --roll-forward-on-no-candidate-fx  Avançar quando nenhuma estrutura compartilhada candidata estiver habilitada.
+
+    path-to-application:
+      O caminho para um arquivo .dll de aplicativo a ser executado.
+
+    Uso: dotnet [sdk-options] [command] [command-options] [arguments]
+
+    Executar um comando do SDK do .NET Core.
+
+    sdk-options:
+      -d|--diagnostics  Habilitar saída de diagnóstico.
+      -h|--help         Mostrar a ajuda da linha de comando.
+      --info            Exibir informações do .NET Core.
+      --list-runtimes   Exiba os runtimes instalados.
+      --list-sdks       Exiba os SDKs instalados.
+      --version         Exibir versão do SDK do .NET Core em uso.
+
+    Comandos do SDK:
+      add               Adicionar um pacote ou uma referência a um projeto do .NET.
+      build             Criar um projeto do .NET.
+      build-server      Interagir com servidores iniciados por um build.
+      clean             Limpar as saídas do build de um projeto do .NET.
+      help              Mostrar a ajuda da linha de comando.
+      list              Listar as referências de um projeto do .NET.
+      migrate           Migrar um projeto project.json para um projeto do MSBuild.
+      msbuild           Executar comandos do MSBuild (Microsoft Build Engine).
+      new               Criar um novo projeto ou arquivo do .NET.
+      nuget             Fornece comandos adicionais do NuGet.
+      pack              Criar um pacote do NuGet.
+      publish           Publicar um projeto do .NET para implantação.
+      remove            Remover um pacote ou uma referência de um projeto do .NET.
+      restore           Restaurar as dependências especificadas em um projeto do .NET.
+      run               Criar e executar uma saída de projeto do .NET.
+      sln               Modificar os arquivos da solução do Visual Studio.
+      store             Armazenar os assemblies especificados no repositório de pacotes do tempo de execução.
+      test              Executar testes de unidade usando o executor de testes especificado em um projeto do .NET.
+      tool              Instalar ou gerenciar ferramentas que ampliam a experiência do .NET.
+      vstest            Executar comandos do VSTest (Microsoft Test Engine).
+
+    Comandos adicionais de ferramentas em pacote:
+      dev-certs         Crie e gerencie certificados de desenvolvimento.
+      ef                Ferramentas de linha de comando do Entity Framework Core.
+      fsi               Iniciar F# interativo / executar scripts F#.
+      sql-cache         Ferramentas de linha de comando do cache do SQL Server.
+      user-secrets      Gerencie segredos do usuário de desenvolvimento.
+      watch             Inicie um observador de arquivo que executa um comando quando os arquivos são alterados.
+
+    Execute 'dotnet [command] --help' para obter mais informações sobre um comando.
+
+dotnet run
+dotnet restore
+dotnet new
+
+    Uso: new [opções]
+
+    Opções:
+      -h, --help          Exibe a ajuda para esse comando.
+      -l, --list          Lista os modelos contendo o nome especificado. Se nenhum nome for especificado, listará todos os modelos.
+      -n, --name          O nome para a saída que está sendo criada. Se nenhum nome for especificado, o nome do diretório atual será usado.
+      -o, --output        Local para colocar a saída gerada.
+      -i, --install       Instala uma fonte ou um pacote de modelos.
+      -u, --uninstall     Desinstala uma fonte ou um pacote de modelos.
+      --nuget-source      Especifica uma origem do NuGet a ser usada durante a instalação.
+      --type              Filtra os modelos com base nos tipos disponíveis. Os valores predefinidos são "project", "item" ou "other".
+      --dry-run           Exibe um resumo do que aconteceria se a linha de comando fornecida fosse executada, se resultasse em uma criação de modelo.
+      --force             Força o conteúdo a ser gerado, mesmo que isso altere arquivos existentes.
+      -lang, --language   Filtra os modelos com base na linguagem e especifica a linguagem do modelo a ser criado.
+
+
+    Modelos                                           Nome Curto         Idioma            Marcas                           
+    ----------------------------------------------------------------------------------------------------------------------------
+    Console Application                               console            [C#], F#, VB      Common/Console                   
+    Class library                                     classlib           [C#], F#, VB      Common/Library                   
+    Unit Test Project                                 mstest             [C#], F#, VB      Test/MSTest                      
+    NUnit 3 Test Project                              nunit              [C#], F#, VB      Test/NUnit                       
+    NUnit 3 Test Item                                 nunit-test         [C#], F#, VB      Test/NUnit                       
+    xUnit Test Project                                xunit              [C#], F#, VB      Test/xUnit                       
+    Razor Page                                        page               [C#]              Web/ASP.NET                      
+    MVC ViewImports                                   viewimports        [C#]              Web/ASP.NET                      
+    MVC ViewStart                                     viewstart          [C#]              Web/ASP.NET                      
+    ASP.NET Core Empty                                web                [C#], F#          Web/Empty                        
+    ASP.NET Core Web App (Model-View-Controller)      mvc                [C#], F#          Web/MVC                          
+    ASP.NET Core Web App                              webapp             [C#]              Web/MVC/Razor Pages              
+    ASP.NET Core with Angular                         angular            [C#]              Web/MVC/SPA                      
+    ASP.NET Core with React.js                        react              [C#]              Web/MVC/SPA                      
+    ASP.NET Core with React.js and Redux              reactredux         [C#]              Web/MVC/SPA                      
+    Razor Class Library                               razorclasslib      [C#]              Web/Razor/Library/Razor Class Library
+    ASP.NET Core Web API                              webapi             [C#], F#          Web/WebAPI                       
+    global.json file                                  globaljson                           Config                           
+    NuGet Config                                      nugetconfig                          Config                           
+    Web Config                                        webconfig                            Config                           
+    Solution File                                     sln                                  Solution                         
+
+    Examples:
+        dotnet new mvc --auth Individual
+        dotnet new globaljson
+        dotnet new --help
+        
+dotnet sln
+
+    O comando necessário não foi fornecido.
+    Uso: dotnet sln [opções] <SLN_FILE> [comando]
+
+    Argumentos:
+      <SLN_FILE>   O arquivo de solução no qual a operação ocorrerá. Se não for especificado, o comando pesquisará um arquivo de solução no diretório atual.
+
+    Opções:
+      -h, --help   Mostrar a ajuda da linha de comando.
+
+    Comandos:
+      add <PROJECT_PATH>      Adicionar um ou mais projetos em um arquivo de solução.
+      list                    Listar todos os projetos em um arquivo de solução.
+      remove <PROJECT_PATH>   Remover um ou mais projetos de um arquivo de solução.
+      
+dotnet build MORM.sln
+

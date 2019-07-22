@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26124.0
+MinimumVisualStudioVersion = 15.0.26124.0
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MORM.Application", "MORM.Application\MORM.Application.csproj", "{596B44F9-4A8A-4B76-AEFB-291D0D150B5A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MORM.Domain", "MORM.Domain\MORM.Domain.csproj", "{2179D11B-275D-45E1-B5B9-988FC2FA42A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MORM.Infrastructure.CrossCutting", "MORM.Infrastructure.CrossCutting\MORM.Infrastructure.CrossCutting.csproj", "{C26BAD41-B1D2-4687-B7BC-2083FAD8D022}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MORM.Infrastructure.Data", "MORM.Infrastructure.Data\MORM.Infrastructure.Data.csproj", "{5F6BA930-B298-4637-A0EF-8A00C6E53445}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MORM.WebApi", "MORM.WebApi\MORM.WebApi.csproj", "{BB704819-A57C-45A3-872A-988BD9227DBB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MORM.Presentation", "MORM.Presentation\MORM.Presentation.csproj", "{69D98239-1661-4F1A-81DE-E2BC7B4F1114}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{596B44F9-4A8A-4B76-AEFB-291D0D150B5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{596B44F9-4A8A-4B76-AEFB-291D0D150B5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{596B44F9-4A8A-4B76-AEFB-291D0D150B5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{596B44F9-4A8A-4B76-AEFB-291D0D150B5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2179D11B-275D-45E1-B5B9-988FC2FA42A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2179D11B-275D-45E1-B5B9-988FC2FA42A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2179D11B-275D-45E1-B5B9-988FC2FA42A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2179D11B-275D-45E1-B5B9-988FC2FA42A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C26BAD41-B1D2-4687-B7BC-2083FAD8D022}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C26BAD41-B1D2-4687-B7BC-2083FAD8D022}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C26BAD41-B1D2-4687-B7BC-2083FAD8D022}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C26BAD41-B1D2-4687-B7BC-2083FAD8D022}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F6BA930-B298-4637-A0EF-8A00C6E53445}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F6BA930-B298-4637-A0EF-8A00C6E53445}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F6BA930-B298-4637-A0EF-8A00C6E53445}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F6BA930-B298-4637-A0EF-8A00C6E53445}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB704819-A57C-45A3-872A-988BD9227DBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB704819-A57C-45A3-872A-988BD9227DBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB704819-A57C-45A3-872A-988BD9227DBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB704819-A57C-45A3-872A-988BD9227DBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69D98239-1661-4F1A-81DE-E2BC7B4F1114}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69D98239-1661-4F1A-81DE-E2BC7B4F1114}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69D98239-1661-4F1A-81DE-E2BC7B4F1114}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69D98239-1661-4F1A-81DE-E2BC7B4F1114}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6A95E0BF-66CC-4A89-88EB-6D7A381E470F}
+	EndGlobalSection
+EndGlobal
