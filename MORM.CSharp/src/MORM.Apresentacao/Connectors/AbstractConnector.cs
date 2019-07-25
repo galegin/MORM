@@ -25,8 +25,15 @@ namespace MORM.Apresentacao.Connectors
         where TEntrada : class
         where TRetorno : class
     {
+        protected bool IsContemServico => ServiceAssembly.IsContemServico();
+
         public virtual TRetorno Executar(TEntrada instance)
         {
+            if (IsContemServico)
+            {
+                return ServiceAssembly.Execute<TEntrada, TRetorno>(this.GetMtd(), instance, this);
+            }
+
             var consumerApi = new AbstractApiConsumer<TEntrada, TRetorno>();
             var retorno = consumerApi.Post(instance, instance.GetApi(mtdPadrao: this.GetMtd()));
             ExibirMensagem(retorno.Mensagem);

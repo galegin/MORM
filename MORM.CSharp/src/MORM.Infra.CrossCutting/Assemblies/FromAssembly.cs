@@ -6,11 +6,11 @@ namespace MORM.Infra.CrossCutting
 {
     public class FromAssembly
     {
-        public static object This()
+        public static object This(Assembly assemblyPar = null)
         {
-            var assembly = Assembly.GetCallingAssembly();
-            var instance = assembly.GetTypes().FirstOrDefault(x => x.Name.EndsWith("Installer"));
-            return Activator.CreateInstance(instance);
+            var assembly = assemblyPar ?? Assembly.GetCallingAssembly();
+            var instanceType = assembly.GetTypes().FirstOrDefault(x => x.Name.EndsWith("Installer"));
+            return Activator.CreateInstance(instanceType);
         }
     }
 }

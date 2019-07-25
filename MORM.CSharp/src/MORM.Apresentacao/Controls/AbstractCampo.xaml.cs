@@ -20,6 +20,11 @@ namespace MORM.Apresentacao.Controls
         #endregion
 
         #region construtores
+        public AbstractCampo()
+        {
+            InitializeComponent();
+            DataContext = new AbstractCampoViewModel();
+        }
         public AbstractCampo(AbstractCampoTipo tipo, 
             string descricao = null, int tamanho = 0, int precisao = 0, 
             AbstractEditTipo? editTipo = null)

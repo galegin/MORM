@@ -1,6 +1,6 @@
 ﻿namespace MORM.Apresentacao.ViewsModel
 {
-    public class AbstractViewModelProc<TModel> : AbstractViewModel<TModel, object>, IAbstractViewModelProc
+    public class AbstractViewModelProc<TModel> : AbstractViewModel<TModel>, IAbstractViewModelProc
         where TModel : class
     {
         #region construtores

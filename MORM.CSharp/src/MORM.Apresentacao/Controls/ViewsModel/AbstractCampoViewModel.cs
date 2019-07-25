@@ -73,6 +73,9 @@ namespace MORM.Apresentacao.Controls.ViewsModel
         #endregion
 
         #region construtores
+        public AbstractCampoViewModel()
+        {
+        }
         public AbstractCampoViewModel(AbstractCampoTipo tipo, 
             string descricao = null, int tamanho = 0, int precisao = 0,
             AbstractEditTipo? editTipo = null)

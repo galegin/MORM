@@ -16,7 +16,7 @@ namespace MORM.Apresentacao.Colors
                 return _listaEsquemaCor;
 
             var arquivo = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "esquemacor.json");
-            _listaEsquemaCor = JsonExtensions.GetLista<EsquemaCor>(arquivo, _esquemaPadrao.Replace("'", "\""));
+            _listaEsquemaCor = JsonExtensions.GetListaFromJson<EsquemaCor>(arquivo, _esquemaPadrao.Replace("'", "\""));
 
             return _listaEsquemaCor;
         }

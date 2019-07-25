@@ -51,7 +51,6 @@
   <ItemGroup>
     <Compile Include="Config\AuthenticationAttribute.cs" />
     <Compile Include="Config\AuthenticationFailureResult.cs" />
-    <Compile Include="Config\Token.cs" />
     <Compile Include="Config\WebApiConfig.cs" />
     <Compile Include="Config\WebApiLogHandler.cs" />
     <Compile Include="Controllers\AbstractController.cs" />

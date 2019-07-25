@@ -1,10 +1,10 @@
 ﻿using MORM.Apresentacao.ViewsModel;
+using MORM.Apresentacao.Comps;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace MORM.Apresentacao.Views
 {
-    public class AbstractView : UserControl
+    public class AbstractView : AbstractUserControl
     {
         #region construtores
         public AbstractView(IAbstractViewModel vm)
@@ -20,7 +20,6 @@ namespace MORM.Apresentacao.Views
             if (vm != null)
                 vm.CloseAction += OnCloseAction;
         }
-
         private void OnCloseAction()
         {
             Window.GetWindow(this)?.Close();
@@ -32,7 +31,7 @@ namespace MORM.Apresentacao.Views
         where TModel : class
     {
         #region construtores
-        public AbstractView(IAbstractViewModel<TModel, object> vm) : base(vm)
+        public AbstractView(IAbstractViewModel<TModel> vm) : base(vm)
         {
         }
         #endregion

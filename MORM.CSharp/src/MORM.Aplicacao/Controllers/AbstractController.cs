@@ -102,7 +102,7 @@ namespace MORM.Aplicacao.Controllers
 
         protected void GravarLogAcesso(TipoPermissao tipoPermissao)
         {
-            var dto = new GravarLogAcessoInModel
+            var model = new GravarLogAcessoInModel
             {
                 CodigoEmpresa = Ambiente.CodigoEmpresa,
                 CodigoUsuario = Ambiente.CodigoUsuario,
@@ -110,14 +110,14 @@ namespace MORM.Aplicacao.Controllers
                 CodigoMetodo = tipoPermissao.ToString(),
             };
 
-            _logAcessoService?.GravarLog(dto);
+            _logAcessoService?.GravarLog(model);
         }
 
         protected override void VerificarPermissao(TipoPermissao tipoPermissao)
         {
             GravarLogAcesso(tipoPermissao);
 
-            var dto = new VerificarPermissaoInModel
+            var model = new VerificarPermissaoInModel
             {
                 CodigoEmpresa = Ambiente.CodigoEmpresa,
                 CodigoUsuario = Ambiente.CodigoUsuario,
@@ -125,7 +125,7 @@ namespace MORM.Aplicacao.Controllers
                 CodigoMetodo = tipoPermissao.ToString(),
             };
 
-            var contemPermissao = _permissaoService?.VerificarPermissao(dto)
+            var contemPermissao = _permissaoService?.VerificarPermissao(model)
                 ??
                 _listaDePermissao?.Contains(tipoPermissao)
                 ??

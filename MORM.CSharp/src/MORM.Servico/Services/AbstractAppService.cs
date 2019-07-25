@@ -1,5 +1,4 @@
 ﻿using MORM.Dominio.Interfaces;
-using MORM.Servico.Interfaces;
 using System;
 
 namespace MORM.Servico.Services

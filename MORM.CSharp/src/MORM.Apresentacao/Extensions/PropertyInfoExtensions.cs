@@ -1,6 +1,7 @@
 ﻿using MORM.Apresentacao.Controls;
 using MORM.Dominio.Atributos;
 using MORM.Dominio.Extensions;
+using System.Linq;
 using System.Reflection;
 using System.Windows.Data;
 
@@ -8,6 +9,19 @@ namespace MORM.Apresentacao.Extensions
 {
     public static class PropertyInfoExtensions
     {
+        private static string[] _ignoreCampos =
+            { "U_Version", "Cd_Operador", "Dt_Cadastro", "Cd_Senha" };
+
+        public static bool IsIgnoreCampo(this string campo)
+        {
+            return _ignoreCampos.Contains(campo);
+        }
+
+        public static bool IsIgnoreCampo(this PropertyInfo prop)
+        {
+            return prop.Name.IsIgnoreCampo();
+        }
+
         public static string GetDescricao(this PropertyInfo prop)
         {
             var descricao = prop.GetAttribute<DescricaoAttribute>();
@@ -102,12 +116,13 @@ namespace MORM.Apresentacao.Extensions
 
         public static Binding GetDataBinding(this PropertyInfo prop, object source, string path)
         {
-            var binding = new Binding($"{path}.{prop.Name}");
-            binding.Source = source;
-            binding.Mode = BindingMode.TwoWay;
-            binding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
-            binding.StringFormat = prop.GetFormato();
-            return binding;
+            return new Binding($"{path}.{prop.Name}")
+            {
+                Source = source,
+                Mode = BindingMode.TwoWay,
+                UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged,
+                StringFormat = prop.GetFormato(),
+            };
         }
     }
 }

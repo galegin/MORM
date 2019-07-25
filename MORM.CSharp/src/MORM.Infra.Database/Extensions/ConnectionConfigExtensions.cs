@@ -16,7 +16,7 @@ namespace MORM.Infra.Database.Extensions
                 return _listaConnectionConfig;
 
             var arquivo = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "connectionconfig.json");
-            _listaConnectionConfig = JsonExtensions.GetLista<ConnectionConfig>(arquivo, _connectionConfigPadrao.Replace("'", "\""));
+            _listaConnectionConfig = JsonExtensions.GetListaFromJson<ConnectionConfig>(arquivo, _connectionConfigPadrao.Replace("'", "\""));
 
             return _listaConnectionConfig;
         }

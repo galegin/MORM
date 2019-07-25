@@ -15,13 +15,13 @@ namespace MORM.Apresentacao.Login.Commands
             if (string.IsNullOrWhiteSpace(vm?.Model?.Login) || string.IsNullOrWhiteSpace(vm?.Model?.Senha))
                 return;
 
-            var dto = new ValidarAmbienteInModel
+            var model = new ValidarAmbienteInModel
             {
                 Login = vm.Model.Login,
                 Senha = vm.Model.Senha,
             };
             var connector = new AbstractAmbienteConnector();
-            var token = connector.Executar(dto).Token;
+            var token = connector.Executar(model).Token;
 
             vm.SetarLogin(token);
             AbstractApiConsumer.SetTokenInterno(token);

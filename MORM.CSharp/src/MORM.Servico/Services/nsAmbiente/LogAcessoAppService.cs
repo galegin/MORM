@@ -13,33 +13,33 @@ namespace MORM.Servico.Services
         {
         }
 
-        private LogAcesso GetLogAcesso(GravarLogAcessoInModel dto)
+        private LogAcesso GetLogAcesso(GravarLogAcessoInModel model)
         {
             return AbstractService.AbstractRepository.FirstOrDefault(f =>
-                f.DataLog == dto.DataLog &&
-                f.SequenciaLog == dto.SequenciaLog &&
-                f.CodigoEmpresa == dto.CodigoEmpresa &&
-                f.CodigoUsuario == dto.CodigoUsuario &&
-                f.CodigoServico == dto.CodigoServico &&
-                f.CodigoMetodo == dto.CodigoMetodo);
+                f.DataLog == model.DataLog &&
+                f.SequenciaLog == model.SequenciaLog &&
+                f.CodigoEmpresa == model.CodigoEmpresa &&
+                f.CodigoUsuario == model.CodigoUsuario &&
+                f.CodigoServico == model.CodigoServico &&
+                f.CodigoMetodo == model.CodigoMetodo);
         }
 
-        public void GravarLog(GravarLogAcessoInModel dto)
+        public void GravarLog(GravarLogAcessoInModel model)
         {
-            dto.DataLog = DateTime.Today;
-            dto.SequenciaLog = 1;
+            model.DataLog = DateTime.Today;
+            model.SequenciaLog = 1;
 
-            var logAcesso = GetLogAcesso(dto);
+            var logAcesso = GetLogAcesso(model);
 
             if (logAcesso.CodigoEmpresa <= 0)
                 logAcesso = new LogAcesso
                 {
-                    DataLog = dto.DataLog,
-                    SequenciaLog = dto.SequenciaLog,
-                    CodigoEmpresa = dto.CodigoEmpresa,
-                    CodigoUsuario = dto.CodigoUsuario,
-                    CodigoServico = dto.CodigoServico,
-                    CodigoMetodo = dto.CodigoMetodo,
+                    DataLog = model.DataLog,
+                    SequenciaLog = model.SequenciaLog,
+                    CodigoEmpresa = model.CodigoEmpresa,
+                    CodigoUsuario = model.CodigoUsuario,
+                    CodigoServico = model.CodigoServico,
+                    CodigoMetodo = model.CodigoMetodo,
                 };
 
             logAcesso.QtdeAcesso += 1;

@@ -6,7 +6,8 @@ namespace MORM.Apresentacao.Classes
 {
     public static class NavegacaoComEnter
     {
-        private static bool _isNavegacaoComEnter = (ConfigurationManager.AppSettings[nameof(_isNavegacaoComEnter)] ?? "true") == "true";
+        private static bool _isNavegacaoComEnter = 
+            (ConfigurationManager.AppSettings[nameof(_isNavegacaoComEnter)] ?? "true") == "true";
 
         public static void Ativar()
         {

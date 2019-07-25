@@ -7,7 +7,8 @@ namespace MORM.Apresentacao.Styles
 {
     public static class StyleExtension
     {
-        private static string _nomeStyle = ConfigurationManager.AppSettings[nameof(_nomeStyle)] ?? "Default";
+        private static string _nomeStyle = 
+            ConfigurationManager.AppSettings[nameof(_nomeStyle)] ?? "Default";
 
         public static void AddTheme(this Application application)
         {

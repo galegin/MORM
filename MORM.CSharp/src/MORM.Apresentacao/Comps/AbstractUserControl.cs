@@ -7,11 +7,15 @@ namespace MORM.Apresentacao.Comps
 {
     public class AbstractUserControl : UserControl, IAbstractUserControl, IDisposable
     {
+        #region construtores
         public AbstractUserControl()
         {
             KeyDown += DefaultUserControl_KeyDown;
             Loaded += (s, e) => MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
         }
+        #endregion
+
+        #region metodos
 
         #region key
         private void DefaultUserControl_KeyDown(object sender, KeyEventArgs e)
@@ -55,7 +59,7 @@ namespace MORM.Apresentacao.Comps
         public bool InConfirmado { get; protected set; }
         #endregion
 
-        #region metodo
+        #region opcao
         protected virtual void btnFechar_Click(object sender, RoutedEventArgs e)
         {
             Window.GetWindow(this).Close();
@@ -82,6 +86,8 @@ namespace MORM.Apresentacao.Comps
         {
             Dispose();
         }
+        #endregion
+
         #endregion
     }
 }

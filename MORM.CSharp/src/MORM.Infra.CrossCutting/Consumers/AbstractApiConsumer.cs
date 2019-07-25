@@ -22,8 +22,10 @@ namespace MORM.Infra.CrossCutting
         where TEntrada : class
         where TRetorno : class
     {
-        private readonly string _site = ConfigurationManager.AppSettings[nameof(_site)] ?? "http://localhost:55275/api/";
-        private readonly string _token = ConfigurationManager.AppSettings[nameof(_token)];
+        private readonly string _site = 
+            ConfigurationManager.AppSettings[nameof(_site)] ?? "http://localhost:55275/api/";
+        private readonly string _token = 
+            ConfigurationManager.AppSettings[nameof(_token)];
 
         public AbstractApiConsumer(string site = null, string token = null)
         {

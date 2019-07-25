@@ -18,6 +18,7 @@
         public static string[] GetLista(this string conteudo, char separador)
         {
             return
+                string.IsNullOrWhiteSpace(conteudo) ? null :
                 conteudo.Contains(separador.ToString()) ?
                 conteudo.Split(separador) : new string[] { conteudo };
         }

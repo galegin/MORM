@@ -12,47 +12,47 @@ namespace MORM.Servico.Services
         {
         }
 
-        private Permissao GetPermissao(VerificarPermissaoInModel dto)
+        private Permissao GetPermissao(VerificarPermissaoInModel model)
         {
             return AbstractService.AbstractRepository.FirstOrDefault(f =>
-                f.CodigoEmpresa == dto.CodigoEmpresa &&
-                f.CodigoUsuario == dto.CodigoUsuario &&
-                f.CodigoServico == dto.CodigoServico &&
-                f.CodigoMetodo  == dto.CodigoMetodo);
+                f.CodigoEmpresa == model.CodigoEmpresa &&
+                f.CodigoUsuario == model.CodigoUsuario &&
+                f.CodigoServico == model.CodigoServico &&
+                f.CodigoMetodo  == model.CodigoMetodo);
         }
 
-        public bool VerificarPermissao(VerificarPermissaoInModel dto)
+        public bool VerificarPermissao(VerificarPermissaoInModel model)
         {
-            var permissao = GetPermissao(dto);
+            var permissao = GetPermissao(model);
 
             if (permissao.CodigoEmpresa <= 0)
             {
-                dto.CodigoMetodo = "TODOS";
-                permissao = GetPermissao(dto);
+                model.CodigoMetodo = "TODOS";
+                permissao = GetPermissao(model);
             }
 
             if (permissao.CodigoEmpresa <= 0)
             {
-                dto.CodigoServico = "TODOS";
-                dto.CodigoMetodo = "TODOS";
-                permissao = GetPermissao(dto);
+                model.CodigoServico = "TODOS";
+                model.CodigoMetodo = "TODOS";
+                permissao = GetPermissao(model);
             }
 
             if (permissao.CodigoEmpresa <= 0)
             {
-                dto.CodigoUsuario = 999999;
-                dto.CodigoServico = "TODOS";
-                dto.CodigoMetodo = "TODOS";
-                permissao = GetPermissao(dto);
+                model.CodigoUsuario = 999999;
+                model.CodigoServico = "TODOS";
+                model.CodigoMetodo = "TODOS";
+                permissao = GetPermissao(model);
             }
 
             if (permissao.CodigoEmpresa <= 0)
             {
-                dto.CodigoEmpresa = 9999;
-                dto.CodigoUsuario = 999999;
-                dto.CodigoServico = "TODOS";
-                dto.CodigoMetodo = "TODOS";
-                permissao = GetPermissao(dto);
+                model.CodigoEmpresa = 9999;
+                model.CodigoUsuario = 999999;
+                model.CodigoServico = "TODOS";
+                model.CodigoMetodo = "TODOS";
+                permissao = GetPermissao(model);
             }
 
             return permissao.CodigoEmpresa > 0;

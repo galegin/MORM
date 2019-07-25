@@ -1,11 +1,11 @@
 using MORM.Dominio.Atributos;
+using System.Collections.Generic;
 
 namespace MORM.Apresentacao.Connectors
 {
     [MTD("Listar")]
-    public class AbstractListarConnector<TEntrada, TRetorno> : AbstractConnector<TEntrada, TRetorno>
-        where TEntrada : class
-        where TRetorno : class
+    public class AbstractListarConnector<TModel> : AbstractConnector<TModel, List<TModel>>
+        where TModel : class
     {
     }
 }

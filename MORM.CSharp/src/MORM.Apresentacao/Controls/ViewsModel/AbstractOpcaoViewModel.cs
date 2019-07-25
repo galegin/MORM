@@ -2,8 +2,7 @@
 
 namespace MORM.Apresentacao.Controls.ViewsModel
 {
-    public class AbstractOpcaoViewModel<TFiltro, TModel> : AbstractViewModel<TFiltro, TModel>
-        where TFiltro : class
+    public class AbstractOpcaoViewModel<TModel> : AbstractViewModel<TModel>
         where TModel : class
     {
     }

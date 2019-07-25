@@ -1,4 +1,4 @@
-﻿using MORM.Servico.Interfaces;
+﻿using MORM.Dominio.Interfaces;
 
 namespace MORM.Infra.Data.Tests
 {

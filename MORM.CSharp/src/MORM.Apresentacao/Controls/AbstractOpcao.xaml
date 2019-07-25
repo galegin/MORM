@@ -30,6 +30,11 @@
                                   Command="{Binding Limpar}" CommandParameter="{Binding}"
                                   />
             <local:AbstractButton Style="{StaticResource DefaultButton}" 
+                                  Content="Listar"
+                                  Visibility="{Binding IsExibirListar, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                  Command="{Binding Listar}" CommandParameter="{Binding}"
+                                  />
+            <local:AbstractButton Style="{StaticResource DefaultButton}" 
                                   Content="Consultar"
                                   Visibility="{Binding IsExibirConsultar, Converter={StaticResource BooleanToVisibilityConverter}}"
                                   Command="{Binding Consultar}" CommandParameter="{Binding}"
@@ -68,6 +73,16 @@
                                   Content="Imprimir"
                                   Visibility="{Binding IsExibirImprimir, Converter={StaticResource BooleanToVisibilityConverter}}"
                                   Command="{Binding Imprimir}" CommandParameter="{Binding}"
+                                  />
+            <local:AbstractButton Style="{StaticResource DefaultButton}" 
+                                  Content="Retornar"
+                                  Visibility="{Binding IsExibirRetornar, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                  Command="{Binding Retornar}" CommandParameter="{Binding}"
+                                  />
+            <local:AbstractButton Style="{StaticResource DefaultButton}" 
+                                  Content="Selecionar"
+                                  Visibility="{Binding IsExibirSelecionar, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                  Command="{Binding Selecionar}" CommandParameter="{Binding}"
                                   />
         </StackPanel>
     </Grid>

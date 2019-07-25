@@ -17,27 +17,32 @@ namespace MORM.Servico.Services
             _usuarioAppService = usuarioAppService;
         }
 
-        public object Validar(ValidarAmbienteInModel dto)
+        public object Validar(ValidarAmbienteInModel model)
         {
-            if (string.IsNullOrWhiteSpace(dto.Login))
+            if (string.IsNullOrWhiteSpace(model.Login))
                 throw new Exception("Usuario deve ser informado");
-            if (string.IsNullOrWhiteSpace(dto.Senha))
+            if (string.IsNullOrWhiteSpace(model.Senha))
                 throw new Exception("Senha deve ser informada");
 
-            var usuarioFiltro = new Usuario { Nm_Login = dto.Login };
+            var usuarioFiltro = new Usuario { Nm_Login = model.Login };
             var usuario = _usuarioAppService.AbstractService.Listar(usuarioFiltro)?.FirstOrDefault();
             if (string.IsNullOrWhiteSpace(usuario?.Nm_Usuario))
                 throw new Exception("Usuario nao cadastrado");
 
-            var senhaHash = HashExtensions.GetHash(dto.Login, dto.Senha);
+            var senhaHash = HashExtensions.GetHash(model.Login, model.Senha);
             var senhaMd5 = Md5Extensions.GetMd5(senhaHash);
 
             if (!Md5Extensions.IsValidMd5(senhaHash, senhaMd5))
                 throw new Exception("Senha nao cadastrada");
 
+            var ambiente = new Ambiente(); // provisorio
+
+            var token = new Token(ambiente, true).GetToken();
+
             return new ValidarAmbienteOutModel
             {
-                Ambiente = new Ambiente(),
+                Ambiente = null,
+                Token = token,
             };
         }
     }

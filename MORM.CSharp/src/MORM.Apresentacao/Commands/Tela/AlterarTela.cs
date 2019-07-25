@@ -3,13 +3,13 @@ using MORM.Apresentacao.Controls.ViewsModel;
 
 namespace MORM.Apresentacao.Commands.Tela
 {
-    public class AlterarTela<TEntrada> : AbstractCommand
-        where TEntrada : class
+    public class AlterarTela<TModel> : AbstractCommand
+        where TModel : class
     {
         public override void Execute(object parameter)
         {
-            var vm = parameter as AbstractOpcaoViewModel<TEntrada, TEntrada>;
-            var connector = new AbstractAlterarConnector<TEntrada, TEntrada>();
+            var vm = parameter as AbstractOpcaoViewModel<TModel>;
+            var connector = new AbstractAlterarConnector<TModel>();
             connector.Executar(vm.Model);
         }
     }

@@ -1,35 +1,38 @@
 ﻿using MORM.Dominio.Extensions;
 using MORM.Dominio.Interfaces;
+using MORM.Infra.CrossCutting;
 using System;
-using System.IO;
-using System.Reflection;
+using System.Configuration;
+using System.Linq;
 
 namespace MORM.Infra.Data.Migrations
 {
     public class MigracaoContexto
     {
-        public static void Gerar(IAbstractDataContext context, string package)
+        private static readonly bool _isMigracaoAuto;
+
+        static MigracaoContexto()
+        {
+            _isMigracaoAuto = (ConfigurationManager.AppSettings[nameof(_isMigracaoAuto)] ?? "true") == "true";
+        }
+
+        public static void Gerar(IAbstractDataContext context)
         {
             if (context == null)
                 throw new ArgumentNullException(nameof(context));
-            if (package == null)
-                throw new ArgumentNullException(nameof(package));
 
-            if (!File.Exists(package))
-                return;
-
-            Assembly assembly = Assembly.LoadFile(package);
-
-            Type[] types = assembly.GetTypes();
+            var types = MigrationAssembly
+                .GetTypes(filtro: (f) => f.GetTabela() != null)
+                .ToArray();
 
             if (!MigracaoDatabase.IsGerarVersao(context, types, out string versaoBase))
                 return;
 
             context.Migracao.Clear();
 
-            foreach (var type in types)
-                if (type.GetTabela() != null)
-                    context.Migracao.CreateOrAlter(type);
+            types
+                .ToList()
+                .ForEach(type => context.Migracao.CreateOrAlter(type));
 
             context.Migracao.DropForeigns();
             context.Migracao.CreateForeigns();

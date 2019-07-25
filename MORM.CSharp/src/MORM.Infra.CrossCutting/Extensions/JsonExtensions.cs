@@ -10,7 +10,7 @@ namespace MORM.Infra.CrossCutting
         private static Dictionary<Type, object> _listaDeObj =
             new Dictionary<Type, object>();
 
-        public static List<TObj> GetLista<TObj>(this string arquivo, string conteudoPadrao = null)
+        public static List<TObj> GetListaFromJson<TObj>(this string arquivo, string conteudoPadrao = null)
         {
             var lista = _listaDeObj.ContainsKey(typeof(TObj)) ? _listaDeObj[typeof(TObj)] : null;
             if (lista == null)

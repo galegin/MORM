@@ -20,7 +20,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>..\..\bin\Library\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;DESKTOP</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -81,7 +81,9 @@
     <Compile Include="Commands\Tela\LimparTela.cs" />
     <Compile Include="Commands\Tela\IncluirTela.cs" />
     <Compile Include="Commands\Tela\AlterarTela.cs" />
+    <Compile Include="Commands\Tela\RetornarTela.cs" />
     <Compile Include="Commands\Tela\SalvarTela.cs" />
+    <Compile Include="Commands\Tela\SelecionarTela.cs" />
     <Compile Include="Comps\Interfaces\ITelaUtils.cs" />
     <Compile Include="Comps\TelaUtils.cs" />
     <Compile Include="Commands\Tela\VoltarTelaInicio.cs" />
@@ -102,6 +104,9 @@
     <Compile Include="Connectors\nsComum\AbstractAlterarConnector.cs" />
     <Compile Include="Connectors\nsComum\AbstractSalvarConnector.cs" />
     <Compile Include="Connectors\nsComum\AbstractConsultarConnector.cs" />
+    <Compile Include="Controls\AbstractBusca.xaml.cs">
+      <DependentUpon>AbstractBusca.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\AbstractButton.cs" />
     <Compile Include="Controls\AbstractCampo.xaml.cs">
       <DependentUpon>AbstractCampo.xaml</DependentUpon>
@@ -112,6 +117,12 @@
     <Compile Include="Controls\AbstractEditTipo.cs" />
     <Compile Include="Controls\AbstractLabel.cs" />
     <Compile Include="Controls\AbstractEdit.cs" />
+    <Compile Include="Controls\AbstractLista.xaml.cs">
+      <DependentUpon>AbstractLista.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AbstractManut.xaml.cs">
+      <DependentUpon>AbstractManut.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\AbstractOpcao.xaml.cs">
       <DependentUpon>AbstractOpcao.xaml</DependentUpon>
     </Compile>
@@ -190,7 +201,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Controls\AbstractBusca.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\AbstractCampo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\AbstractLista.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\AbstractManut.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

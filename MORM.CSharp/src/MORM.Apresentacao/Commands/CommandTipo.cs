@@ -11,6 +11,17 @@
         Incluir,
         Limpar,
         Listar,
+        Retornar,
         Salvar,
+        Selecionar
+    }
+
+    public static class CommandTipoExtensions
+    {
+        public static CommandTipo GetCommandTipo(this string value)
+        {
+            System.Enum.TryParse(value, true, out CommandTipo tipo);
+            return tipo;
+        }
     }
 }

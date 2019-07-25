@@ -1,7 +1,6 @@
 ﻿using MORM.Dominio.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Reflection;
 
@@ -47,10 +46,10 @@ namespace MORM.Infra.CrossCutting
             AddAssembly(Assembly.GetEntryAssembly());
             AddAssembly(Assembly.GetExecutingAssembly());
 
-            var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            foreach (var dllNome in Directory.GetFiles(path, "*.dll"))
-                if (IsContainName(dllNome) && !IsContainLocation(dllNome))
-                    AddAssembly(Assembly.LoadFile(dllNome));
+            FilesAssembly
+                .GetAssemblies(null, (x) => IsContainName(x) && !IsContainLocation(x))
+                .ForEach(assembly => AddAssembly(assembly))
+                ;
 
             var assemblies = _assemblies.ToArray();
 
@@ -69,10 +68,16 @@ namespace MORM.Infra.CrossCutting
             if (assembly == null)
                 return;
 
+            var METHOD = $"{nameof(InstallerAssembly)}.InstallAssembly()";
+
+            Logger.Debug(METHOD, $"assembly.FullName: {assembly.FullName}");
+
             var types = assembly.GetTypes()?.Where(x => x.Name.EndsWith("BaseInstaller"));
 
             foreach (var type in types)
             {
+                Logger.Debug(METHOD, $"type.FullName: {type.FullName}");
+
                 type.GetMethod("Install")?.Invoke(null, new[] { container });
             }
         }

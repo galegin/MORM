@@ -11,7 +11,7 @@ namespace MORM.Apresentacao.Views
         #endregion
     }
 
-    public class AbstractViewProc<TModel> : AbstractViewProc
+    public class AbstractViewProc<TViewModel> : AbstractViewProc
     {
         #region construtores
         public AbstractViewProc() : base(null)

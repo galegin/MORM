@@ -29,6 +29,8 @@ namespace MORM.Dominio.Interfaces
 
         object Resolve(Type type);
 
+        object Resolve(string typeName);
+
         IEnumerable<object> ResolveAll(Type type);
 
         IAbstractContainer BeginScope();

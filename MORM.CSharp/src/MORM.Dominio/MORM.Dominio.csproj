@@ -112,9 +112,9 @@
     <Compile Include="Entidades\nsUsuario\Interfaces\IUsuario.cs" />
     <Compile Include="Interfaces\Repositories\IDomainRepository.cs" />
     <Compile Include="Interfaces\Repositories\IDomainUnityOfWork.cs" />
-    <Compile Include="Interfaces\Services\IAppService.cs" />
+    <Compile Include="Interfaces\Services\IAbstractAppService.cs" />
+    <Compile Include="Interfaces\Services\IAbstractService.cs" />
     <Compile Include="Interfaces\Services\IDomainService.cs" />
-    <Compile Include="Interfaces\Services\IService.cs" />
     <Compile Include="Interfaces\UnityOfWorks\IAbstractUnityOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tipagens\CampoPreFixo.cs" />

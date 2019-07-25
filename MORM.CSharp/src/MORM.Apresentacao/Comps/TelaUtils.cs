@@ -58,11 +58,15 @@ namespace MORM.Apresentacao.Comps
         {
             var defaultWindow = new AbstractWindow();
             defaultWindow.Content = userControl;
-            defaultWindow.SizeToContent = SizeToContent.WidthAndHeight;
-            defaultWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            defaultWindow.ShowInTaskbar = false;
 
             if (isFullScreen)
                 defaultWindow.WindowState = WindowState.Maximized;
+            else
+            {
+                defaultWindow.SizeToContent = SizeToContent.WidthAndHeight;
+                defaultWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            }
 
             return defaultWindow.ShowDialog();
         }

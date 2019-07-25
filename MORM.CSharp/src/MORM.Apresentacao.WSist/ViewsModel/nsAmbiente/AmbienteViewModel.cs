@@ -2,7 +2,7 @@ using MORM.Apresentacao.Models;
 
 namespace MORM.Apresentacao.ViewsModel
 {
-    public class AmbienteViewModel : AbstractViewModel<AmbienteModel, AmbienteModel>
+    public class AmbienteViewModel : AbstractViewModel<AmbienteModel>
     {
     }
 }

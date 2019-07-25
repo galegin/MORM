@@ -6,10 +6,16 @@ namespace MORM.Apresentacao.Connectors
 {
     public class AbstractAmbienteConnector : AbstractConnector<ValidarAmbienteInModel, ValidarAmbienteOutModel>
     {
-        private static string _token = ConfigurationManager.AppSettings[nameof(_token)] ?? string.Empty;
+        private static string _token = 
+            ConfigurationManager.AppSettings[nameof(_token)] ?? string.Empty;
 
         public override ValidarAmbienteOutModel Executar(ValidarAmbienteInModel instance)
         {
+            if (IsContemServico)
+            {
+                return base.Executar(instance);
+            }
+
             var consumerApi = new AbstractApiConsumer<ValidarAmbienteInModel, ValidarAmbienteOutModel>();
             var retorno = consumerApi.Post(instance);
             ExibirMensagem(retorno.Mensagem);

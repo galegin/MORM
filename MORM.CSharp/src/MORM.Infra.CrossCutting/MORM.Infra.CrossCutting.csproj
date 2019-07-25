@@ -56,10 +56,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assemblies\FilesAssembly.cs" />
     <Compile Include="Assemblies\ClassesAssembly.cs" />
     <Compile Include="Assemblies\FromAssembly.cs" />
     <Compile Include="Assemblies\InstallerAssembly.cs" />
+    <Compile Include="Assemblies\MigrationAssembly.cs" />
+    <Compile Include="Assemblies\ServiceAssembly.cs" />
     <Compile Include="BaseInstaller.cs" />
+    <Compile Include="Classes\ClasseExecute.cs" />
+    <Compile Include="Classes\ObjetoMapper.cs" />
+    <Compile Include="Classes\Token.cs" />
     <Compile Include="Consumers\AbstractApiConsumer.cs" />
     <Compile Include="Extensions\EadExtensions.cs" />
     <Compile Include="Extensions\HashExtensions.cs" />

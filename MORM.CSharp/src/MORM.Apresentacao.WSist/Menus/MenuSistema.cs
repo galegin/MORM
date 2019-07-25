@@ -16,7 +16,6 @@ namespace MORM.Apresentacao.WSist.Menus
             var listaDeMenuOpcao = new List<IMenuOpcao>();
 
             listaDeMenuOpcao.Add(GetMenuAmbiente());
-            listaDeMenuOpcao.Add(GetMenuComum());
             listaDeMenuOpcao.Add(GetMenuEmpresa());
             listaDeMenuOpcao.Add(GetMenuTerminal());
             listaDeMenuOpcao.Add(GetMenuUsuario());
@@ -37,17 +36,6 @@ namespace MORM.Apresentacao.WSist.Menus
             };
 
             var menu = new MenuOpcaoDescr(MenuOpcaoTipo.SubMenu, "MenuAmbiente", "Ambiente", subMenu);
-            return menu;
-        }
-
-        private IMenuOpcao GetMenuComum()
-        {
-            var subMenu = new List<IMenuOpcao>
-            {
-
-            };
-
-            var menu = new MenuOpcaoDescr(MenuOpcaoTipo.SubMenu, "MenuComum", "Comum", subMenu);
             return menu;
         }
 

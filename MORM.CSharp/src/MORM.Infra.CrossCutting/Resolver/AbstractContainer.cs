@@ -77,6 +77,15 @@ namespace MORM.Infra.CrossCutting
             return Resolve(registerClasse);
         }
 
+        public object Resolve(string typeName)
+        {
+            var registerClasse = _registeredTypes.FirstOrDefault(x => x.Key.Name == typeName).Value;
+            if (registerClasse == null)
+                return null;
+
+            return Resolve(registerClasse);
+        }
+
         private object Resolve(RegisterClasse registerClasse)
         {
             switch (registerClasse.Tipo)

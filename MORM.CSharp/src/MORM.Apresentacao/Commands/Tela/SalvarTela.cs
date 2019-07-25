@@ -3,13 +3,13 @@ using MORM.Apresentacao.ViewsModel;
 
 namespace MORM.Apresentacao.Commands.Tela
 {
-    public class SalvarTela<TEntrada> : AbstractCommand
-        where TEntrada : class
+    public class SalvarTela<TModel> : AbstractCommand
+        where TModel : class
     {
         public override void Execute(object parameter)
         {
-            var vm = parameter as AbstractViewModel<TEntrada, TEntrada>;
-            var connector = new AbstractSalvarConnector<TEntrada, TEntrada>();
+            var vm = parameter as AbstractViewModel<TModel>;
+            var connector = new AbstractSalvarConnector<TModel>();
             connector.Executar(vm.Model);
         }
     }

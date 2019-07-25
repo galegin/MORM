@@ -52,8 +52,6 @@
     <Compile Include="Models\nsAmbiente\VerificarPermissaoInModel.cs" />
     <Compile Include="Services\AbstractAppService.cs" />
     <Compile Include="Services\AbstractService.cs" />
-    <Compile Include="Interfaces\IAbstractAppService.cs" />
-    <Compile Include="Interfaces\IAbstractService.cs" />
     <Compile Include="Services\nsAmbiente\AmbienteAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Interfaces\nsAmbiente\IAmbienteAppService.cs" />

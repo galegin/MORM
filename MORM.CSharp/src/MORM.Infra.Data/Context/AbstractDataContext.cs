@@ -19,6 +19,7 @@ namespace MORM.Infra.Data.Context
         public AbstractDataContext(IAmbiente ambiente)
         {
             SetAmbiente(ambiente);
+            SetMigracao();
         }
 
         //-- ambiente
@@ -29,6 +30,13 @@ namespace MORM.Infra.Data.Context
             Conexao = ConexaoFactory.GetConexao(ambiente);
             Comando = new Comando(ambiente.TipoDatabase);
             Migracao = new Migracao(this);
+        }
+
+        //-- migracao
+
+        private void SetMigracao()
+        {
+            MigracaoContexto.Gerar(this);
         }
 
         //-- lista

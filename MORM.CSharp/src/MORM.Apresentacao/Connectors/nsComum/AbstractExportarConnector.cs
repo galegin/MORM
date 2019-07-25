@@ -3,9 +3,8 @@
 namespace MORM.Apresentacao.Connectors
 {
     [MTD("Exportar")]
-    public class AbstractExportarConnector<TEntrada, TRetorno> : AbstractConnector<TEntrada, TRetorno>
-        where TEntrada : class
-        where TRetorno : class
+    public class AbstractExportarConnector<TModel> : AbstractConnector<TModel, object>
+        where TModel : class
     {
     }
 }

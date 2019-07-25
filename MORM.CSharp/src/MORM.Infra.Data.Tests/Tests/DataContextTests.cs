@@ -36,9 +36,7 @@ namespace MORM.Infra.Data.Tests
         [TestMethod]
         public void DataContextTests_Migracao()
         {
-            var arquivo = GetType().Assembly.Location;
-
-            MigracaoContexto.Gerar(_dataContext, arquivo);
+            MigracaoContexto.Gerar(_dataContext);
         }
 
         [TestMethod]

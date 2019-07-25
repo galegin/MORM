@@ -1,5 +1,4 @@
-﻿using MORM.Aplicacao.Config;
-using MORM.Aplicacao.Controllers;
+﻿using MORM.Aplicacao.Controllers;
 using MORM.Dominio.Tipagens;
 using MORM.Servico.Interfaces;
 using MORM.Servico.Models;
@@ -22,12 +21,7 @@ namespace MORM.Aplicacao.WebApi.Controllers
         [Route("Validar")]
         public HttpResponseMessage Validar(ValidarAmbienteInModel dto)
         {
-            return Response(TipoPermissao.Validar, () => {
-                var retorno = _ambienteService.Validar(dto) as ValidarAmbienteOutModel;
-                retorno.Token = new Token(retorno.Ambiente, true).GetToken();
-                retorno.Ambiente = null;
-                return retorno;
-            });
+            return Response(TipoPermissao.Validar, () => _ambienteService.Validar(dto));
         }
     }
 }
