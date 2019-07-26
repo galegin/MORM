@@ -1,5 +1,5 @@
 ﻿using MORM.Apresentacao.Connectors;
-using MORM.Apresentacao.Controls.ViewsModel;
+using MORM.Apresentacao.ViewsModel;
 
 namespace MORM.Apresentacao.Commands.Tela
 {
@@ -8,9 +8,9 @@ namespace MORM.Apresentacao.Commands.Tela
     {
         public override void Execute(object parameter)
         {
-            var vm = parameter as AbstractOpcaoViewModel<TModel>;
+            var vm = parameter as IAbstractViewModel<TModel>;
             var connector = new AbstractAlterarConnector<TModel>();
-            connector.Executar(vm.Model);
+            connector.Executar(vm.oModel);
         }
     }
 }

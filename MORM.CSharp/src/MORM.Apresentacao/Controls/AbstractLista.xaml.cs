@@ -29,8 +29,8 @@ namespace MORM.Apresentacao.Controls
             dockPanel.Margin = new Thickness(10);
             Content = dockPanel;
 
-            var bindingLista = new Binding(vm.GetNomeLista()) { Source = vm };
-            var bindingModel = new Binding(vm.GetNomeModel()) { Source = vm };
+            var bindingLista = new Binding(nameof(vm.Lista)) { Source = vm };
+            var bindingModel = new Binding(nameof(vm.Model)) { Source = vm };
 
             var dataGrid = new DataGrid();
             dataGrid.Margin = new Thickness(10);
@@ -43,7 +43,7 @@ namespace MORM.Apresentacao.Controls
 
             //var style = FindResource("DataGridCellStyle") as Style;
 
-            vm.GetModel().GetType().GetProperties().ToList().ForEach(prop =>
+            vm.Model.GetType().GetProperties().ToList().ForEach(prop =>
             {
                 if (prop.IsIgnoreCampo())
                     return;

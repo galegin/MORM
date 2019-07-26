@@ -7,7 +7,7 @@ namespace MORM.Apresentacao.Commands.Tela
     {
         public override void Execute(object parameter)
         {
-            var vm = parameter as AbstractViewModel<TModel>;
+            var vm = parameter as IAbstractViewModel<TModel>;
             vm.RetornarModel();
         }
     }

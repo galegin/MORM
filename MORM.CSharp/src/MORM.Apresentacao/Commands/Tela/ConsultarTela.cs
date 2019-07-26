@@ -9,9 +9,9 @@ namespace MORM.Apresentacao.Commands.Tela
     {
         public override void Execute(object parameter)
         {
-            var vm = parameter as AbstractViewModel<TModel>;
+            var vm = parameter as IAbstractViewModel<TModel>;
             var connector = new AbstractConsultarConnector<TModel>();
-            var retorno = connector.Executar(vm.Model);
+            var retorno = connector.Executar(vm.oModel);
             vm.Model.CloneInstancePropOrFieldAll(retorno);
         }
     }

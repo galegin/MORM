@@ -6,10 +6,10 @@ using System.Windows.Controls;
 
 namespace MORM.Apresentacao.Views
 {
-    public class AbstractViewManut : AbstractView
+    public class AbstractViewFiltro : AbstractView
     {
         #region construtores
-        public AbstractViewManut(IAbstractViewModelManut vm) : base(vm)
+        public AbstractViewFiltro(IAbstractViewModelManut vm) : base(vm)
         {
         }
         #endregion
@@ -17,9 +17,9 @@ namespace MORM.Apresentacao.Views
 
     /*
 
-    Manutenção de ...
+    Filtro de ...
 
-    [ Voltar ] [ Limpar ] [ Consultar ] [ Salvar ] [ Excluir ]
+    [ Limpar ] [ Salvar ] [ Confirmar ] [ Cancelar ]
 
     [ Codigo ] [          ]
     [ Nome   ] [                        ]
@@ -28,11 +28,11 @@ namespace MORM.Apresentacao.Views
 
     */
 
-    public class AbstractViewManut<TViewModel> : AbstractViewManut
+    public class AbstractViewFiltro<TViewModel> : AbstractViewFiltro
         where TViewModel : IAbstractViewModel
     {
         #region construtores
-        public AbstractViewManut() : base(null)
+        public AbstractViewFiltro() : base(null)
         {
             CreateComps(Activator.CreateInstance<TViewModel>());
         }
@@ -43,23 +43,22 @@ namespace MORM.Apresentacao.Views
         {
             SetDataContext(vm);
 
-            vm.SelecionarAction = () => SelecionarLista();
+            vm.ConfirmarAction = () => ConfirmarFiltro();
+            vm.CancelarAction = () => CancelarFiltro();
 
             vm.SetOpcoes(new[]
             {
-                nameof(vm.IsExibirVoltar),
-                nameof(vm.IsExibirLimpar),
-                nameof(vm.IsExibirConsultar),
+                nameof(vm.IsExibirConfirmar),
+                nameof(vm.IsExibirCancelar),
                 nameof(vm.IsExibirSalvar),
-                nameof(vm.IsExibirExcluir),
-                nameof(vm.IsExibirSelecionar),
+                nameof(vm.IsExibirLimpar),
             });
 
             var stackPanel = new StackPanel();
             stackPanel.Margin = new Thickness(10);
             Content = stackPanel;
 
-            var userControlTitulo = new AbstractTitulo("Manutenção de " + vm.GetTitulo());
+            var userControlTitulo = new AbstractTitulo("Filtro de " + vm.GetTitulo());
             userControlTitulo.Margin = new Thickness(0, 0, 0, 10);
             stackPanel.Children.Add(userControlTitulo);
 
@@ -67,17 +66,17 @@ namespace MORM.Apresentacao.Views
             userControlOpcao.Margin = new Thickness(0, 0, 0, 10);
             stackPanel.Children.Add(userControlOpcao);
 
-            var userControlManut = new AbstractManut(vm);
-            userControlManut.Margin = new Thickness(0, 0, 0, 10);
-            stackPanel.Children.Add(userControlManut);
+            var userControlFiltro = new AbstractFiltro(vm);
+            userControlFiltro.Margin = new Thickness(0, 0, 0, 10);
+            stackPanel.Children.Add(userControlFiltro);
         }
 
-        public void SelecionarLista()
+        public void ConfirmarFiltro()
         {
-            var vm = DataContext as IAbstractViewModel;
-            var objeto = AbstractViewLista<TViewModel>.Execute(vm.Filtro);
-            if (objeto != null)
-                vm.Model = objeto;
+        }
+
+        public void CancelarFiltro()
+        {
         }
         #endregion
     }

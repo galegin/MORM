@@ -1,5 +1,7 @@
-﻿using MORM.Apresentacao.Controls;
+﻿using MORM.Apresentacao.Comps;
+using MORM.Apresentacao.Controls;
 using MORM.Apresentacao.ViewsModel;
+using MORM.Infra.CrossCutting;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -9,7 +11,7 @@ namespace MORM.Apresentacao.Views
     public class AbstractViewLista : AbstractView
     {
         #region construtores
-        public AbstractViewLista(IAbstractViewModelLista vm) : base(vm)
+        protected AbstractViewLista(IAbstractViewModelLista vm) : base(vm)
         {
         }
         #endregion
@@ -19,7 +21,7 @@ namespace MORM.Apresentacao.Views
 
     Lista de ...
 
-    [ Limpar ] [ Consultar ]
+    [ Fechar ] [ Limpar ] [ Listar ] [ Retornar ]
 
     [ Expressão ] [                                 ]
 
@@ -38,9 +40,10 @@ namespace MORM.Apresentacao.Views
     */
 
     public class AbstractViewLista<TViewModel> : AbstractViewLista
+        where TViewModel : IAbstractViewModel
     {
         #region construtores
-        public AbstractViewLista() : base(null)
+        private AbstractViewLista() : base(null)
         {
             CreateComps(Activator.CreateInstance<TViewModel>() as IAbstractViewModel);
         }
@@ -54,7 +57,6 @@ namespace MORM.Apresentacao.Views
             vm.SetOpcoes(new[] 
             {
                 nameof(vm.IsExibirFechar),
-                nameof(vm.IsExibirVoltar),
                 nameof(vm.IsExibirLimpar),
                 nameof(vm.IsExibirListar),
                 nameof(vm.IsExibirRetornar),
@@ -64,7 +66,7 @@ namespace MORM.Apresentacao.Views
             dockPanel.Margin = new Thickness(10);
             Content = dockPanel;
 
-            var userControlTitulo = new AbstractTitulo("Lista de " + vm.GetTituloModel());
+            var userControlTitulo = new AbstractTitulo("Lista de " + vm.GetTitulo());
             userControlTitulo.Margin = new Thickness(0, 0, 0, 10);
             DockPanel.SetDock(userControlTitulo, Dock.Top);
             dockPanel.Children.Add(userControlTitulo);
@@ -82,6 +84,20 @@ namespace MORM.Apresentacao.Views
             var userControlLista = new AbstractLista(vm);
             userControlLista.Margin = new Thickness(0, 0, 0, 10);
             dockPanel.Children.Add(userControlLista);
+        }
+
+        public static object Execute(object objeto)
+        {
+            var viewLista = new AbstractViewLista<TViewModel>();
+
+            if (TelaUtils.Instance.AbrirDialog(viewLista, isFullScreen: true) == true)
+                return null;
+
+            var vmLista = viewLista.DataContext as IAbstractViewModel;
+            if (!vmLista.IsConfirmado)
+                return null;
+
+            return ObjetoMapper.GetObjetoRetorno(vmLista.Model.GetType(), vmLista.Model);
         }
         #endregion
     }

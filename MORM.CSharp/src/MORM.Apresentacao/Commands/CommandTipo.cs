@@ -13,7 +13,9 @@
         Listar,
         Retornar,
         Salvar,
-        Selecionar
+        Selecionar,
+        Confirmar,
+        Cancelar
     }
 
     public static class CommandTipoExtensions

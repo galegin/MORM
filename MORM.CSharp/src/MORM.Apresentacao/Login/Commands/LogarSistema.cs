@@ -12,13 +12,13 @@ namespace MORM.Apresentacao.Login.Commands
         {
             var vm = parameter as LoginViewModel;
 
-            if (string.IsNullOrWhiteSpace(vm?.Model?.Login) || string.IsNullOrWhiteSpace(vm?.Model?.Senha))
+            if (string.IsNullOrWhiteSpace(vm?.oModel?.Login) || string.IsNullOrWhiteSpace(vm?.oModel?.Senha))
                 return;
 
             var model = new ValidarAmbienteInModel
             {
-                Login = vm.Model.Login,
-                Senha = vm.Model.Senha,
+                Login = vm.oModel.Login,
+                Senha = vm.oModel.Senha,
             };
             var connector = new AbstractAmbienteConnector();
             var token = connector.Executar(model).Token;

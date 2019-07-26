@@ -71,6 +71,8 @@
     <Compile Include="Commands\AbstractCommand.cs" />
     <Compile Include="Commands\MainCommand.cs" />
     <Compile Include="Commands\CommandTipo.cs" />
+    <Compile Include="Commands\Tela\CancelarTela.cs" />
+    <Compile Include="Commands\Tela\ConfirmarTela.cs" />
     <Compile Include="Commands\Tela\ListarTela.cs" />
     <Compile Include="Commands\Tela\ConsultarTela.cs" />
     <Compile Include="Commands\Tela\ExcluirTela.cs" />
@@ -119,6 +121,9 @@
     <Compile Include="Controls\AbstractEdit.cs" />
     <Compile Include="Controls\AbstractLista.xaml.cs">
       <DependentUpon>AbstractLista.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AbstractFiltro.xaml.cs">
+      <DependentUpon>AbstractFiltro.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\AbstractManut.xaml.cs">
       <DependentUpon>AbstractManut.xaml</DependentUpon>
@@ -189,6 +194,7 @@
     <Compile Include="ViewsModel\Interfaces\IAbstractViewModelRelat.cs" />
     <Compile Include="ViewsModel\MainWindowViewModel.cs" />
     <Compile Include="Views\AbstractViewLista.cs" />
+    <Compile Include="Views\AbstractViewFiltro.cs" />
     <Compile Include="Views\AbstractViewManut.cs" />
     <Compile Include="Views\AbstractViewRelat.cs" />
     <Compile Include="Views\AbstractViewProc.cs" />
@@ -212,6 +218,10 @@
     <Page Include="Controls\AbstractLista.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\AbstractFiltro.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\AbstractManut.xaml">
       <SubType>Designer</SubType>

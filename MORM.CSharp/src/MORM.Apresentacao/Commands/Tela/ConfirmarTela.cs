@@ -2,13 +2,13 @@
 
 namespace MORM.Apresentacao.Commands.Tela
 {
-    public class SelecionarTela<TModel> : AbstractCommand
+    public class ConfirmarTela<TModel> : AbstractCommand
         where TModel : class
     {
         public override void Execute(object parameter)
         {
             var vm = parameter as IAbstractViewModel<TModel>;
-            vm.SelecionarLista();
+            vm.ConfirmarTela();
         }
     }
 }

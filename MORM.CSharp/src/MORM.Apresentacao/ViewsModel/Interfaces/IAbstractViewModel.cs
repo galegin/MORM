@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace MORM.Apresentacao.ViewsModel
@@ -12,6 +13,8 @@ namespace MORM.Apresentacao.ViewsModel
     {
         bool IsExibirFechar { get; set; }
         bool IsExibirVoltar { get; set; }
+        bool IsExibirConfirmar { get; set; }
+        bool IsExibirCancelar { get; set; }
         bool IsExibirLimpar { get; set; }
         bool IsExibirListar { get; set; }
         bool IsExibirConsultar { get; set; }
@@ -28,32 +31,27 @@ namespace MORM.Apresentacao.ViewsModel
 
     public interface IAbstractViewModel : IAbstractViewModelOpcao
     {
-        object GetFiltro();
-        void SetFiltro(object filtro);
-        object GetLista();
-        void SetLista(object lista);
-        object GetModel();
-        void SetModel(object model);
-        string GetNomeFiltro();
-        string GetNomeLista();
-        string GetNomeModel();
-        string GetTituloModel();
-        void SetOpcoes(string[] opcoes);
+        object Filtro { get; set; }
+        object Model { get; set; }
+        IList Lista { get; set; }
+        string GetTitulo();
         void ClearAll();
-        void ClearFiltro();
-        void ClearLista();
-        void ClearModel();
+        void SetOpcoes(string[] opcoes);
         Action CloseAction { get; set; }
-        Action SelecionarListaAction { get; set; }
+        Action SelecionarAction { get; set; }
+        Action ConfirmarAction { get; set; }
+        Action CancelarAction { get; set; }
         void RetornarModel();
         void SelecionarLista();
+        void ConfirmarTela();
+        void CancelarTela();
     }
 
     public interface IAbstractViewModel<TModel> : IAbstractViewModel
         where TModel : class
     {
-        TModel Filtro { get; }
-        TModel Model { get; }
-        List<TModel> Lista { get; }
+        TModel oFiltro { get; set; }
+        TModel oModel { get; set; }
+        List<TModel> oLista { get; set; }
     }
 }

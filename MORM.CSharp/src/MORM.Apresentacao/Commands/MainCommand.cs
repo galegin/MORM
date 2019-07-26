@@ -38,6 +38,11 @@ namespace MORM.Apresentacao.Commands
                     return new RetornarTela<TModel>();
                 case CommandTipo.Selecionar:
                     return new SelecionarTela<TModel>();
+
+                case CommandTipo.Confirmar:
+                    return new ConfirmarTela<TModel>();
+                case CommandTipo.Cancelar:
+                    return new CancelarTela<TModel>();
             }
 
             return null;

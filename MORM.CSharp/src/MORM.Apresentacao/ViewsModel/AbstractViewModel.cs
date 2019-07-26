@@ -4,6 +4,7 @@ using MORM.Apresentacao.Commands.Tela;
 using MORM.Apresentacao.Comps;
 using MORM.Dominio.Extensions;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -12,12 +13,19 @@ namespace MORM.Apresentacao.ViewsModel
     public class AbstractViewModel : BaseNotifyPropertyChanged, IAbstractViewModel
     {
         #region variaveis
+        #region objeto
+        protected object _filtro;
+        protected object _model;
+        protected IList _lista;
+        #endregion
         #region confirmacao
         private bool _isConfirmado;
         #endregion
         #region exibir
         private bool _isExibirFechar = false;
         private bool _isExibirVoltar = false;
+        private bool _isExibirConfirmar = false;
+        private bool _isExibirCancelar = false;
         private bool _isExibirLimpar = false;
         private bool _isExibirListar = false;
         private bool _isExibirConsultar = false;
@@ -43,9 +51,28 @@ namespace MORM.Apresentacao.ViewsModel
         #endregion
 
         #region propriedades
+        #region objeto
+        public virtual object Filtro
+        {
+            get => _filtro;
+            set => SetField(ref _filtro, value);
+        }
+        public virtual object Model
+        {
+            get => _model;
+            set => SetField(ref _model, value);
+        }
+        public virtual IList Lista
+        {
+            get => _lista;
+            set => SetField(ref _lista, value);
+        }
+        #endregion
         #region action
         public Action CloseAction { get; set; }
-        public Action SelecionarListaAction { get; set; }
+        public Action SelecionarAction { get; set; }
+        public Action ConfirmarAction { get; set; }
+        public Action CancelarAction { get; set; }
         #endregion
         #region confirmacao
         public bool IsConfirmado
@@ -64,6 +91,16 @@ namespace MORM.Apresentacao.ViewsModel
         {
             get => _isExibirVoltar;
             set => SetField(ref _isExibirVoltar, value);
+        }
+        public bool IsExibirConfirmar
+        {
+            get => _isExibirConfirmar;
+            set => SetField(ref _isExibirConfirmar, value);
+        }
+        public bool IsExibirCancelar
+        {
+            get => _isExibirCancelar;
+            set => SetField(ref _isExibirCancelar, value);
         }
         public bool IsExibirLimpar
         {
@@ -166,20 +203,22 @@ namespace MORM.Apresentacao.ViewsModel
         #endregion
 
         #region comandos
-        public virtual AbstractCommand Fechar { get; } = new FecharTela();
-        public virtual AbstractCommand Voltar { get; } = new VoltarTelaAnterior();
-        public virtual AbstractCommand Limpar { get; }
-        public virtual AbstractCommand Listar { get; }
-        public virtual AbstractCommand Consultar { get; }
-        public virtual AbstractCommand Exportar { get; }
-        public virtual AbstractCommand Importar { get; }
-        public virtual AbstractCommand Imprimir { get; }
-        public virtual AbstractCommand Incluir { get; }
-        public virtual AbstractCommand Alterar { get; }
-        public virtual AbstractCommand Salvar { get; }
-        public virtual AbstractCommand Excluir { get; }
-        public virtual AbstractCommand Retornar { get; }
-        public virtual AbstractCommand Selecionar { get; }
+        public AbstractCommand Fechar { get; set; } = new FecharTela();
+        public AbstractCommand Voltar { get; set; } = new VoltarTelaAnterior();
+        public AbstractCommand Limpar { get; set; }
+        public AbstractCommand Listar { get; set; }
+        public AbstractCommand Consultar { get; set; }
+        public AbstractCommand Exportar { get; set; }
+        public AbstractCommand Importar { get; set; }
+        public AbstractCommand Imprimir { get; set; }
+        public AbstractCommand Incluir { get; set; }
+        public AbstractCommand Alterar { get; set; }
+        public AbstractCommand Salvar { get; set; }
+        public AbstractCommand Excluir { get; set; }
+        public AbstractCommand Retornar { get; set; }
+        public AbstractCommand Selecionar { get; set; }
+        public AbstractCommand Confirmar { get; set; }
+        public AbstractCommand Cancelar { get; set; }
         #endregion
 
         #region construtores
@@ -196,43 +235,28 @@ namespace MORM.Apresentacao.ViewsModel
         #endregion
 
         #region metodos
-        public virtual object GetFiltro() => null;
-        public virtual void SetFiltro(object filtro) { }
-
-        public virtual object GetLista() => null;
-        public virtual void SetLista(object lista) { }
-
-        public virtual object GetModel() => null;
-        public virtual void SetModel(object model) { }
-
-        public virtual string GetNomeFiltro() => null;
-        public virtual string GetNomeLista() => null;
-        public virtual string GetNomeModel() => null;
-
-        public virtual string GetTituloModel() => null;
+        public virtual string GetTitulo() => null;
+        public virtual void ClearAll() { }
 
         public void SetOpcoes(string[] opcoes)
         {
-            var properties = GetType().GetProperties().Where(x => x.Name.StartsWith("IsExibir"));
-            foreach (var prop in properties)
-            {
-                prop.SetValue(this, opcoes.ToList().Any(x => prop.Name.EndsWith(x)));
-            }
+            GetType()
+                .GetProperties()
+                .Where(x => x.Name.StartsWith("IsExibir"))
+                .ToList()
+                .ForEach(prop => prop.SetValue(this, opcoes.ToList().Any(x => prop.Name.EndsWith(x))));
         }
 
-        public void ClearAll()
+        public virtual void RetornarModel()
         {
-            ClearFiltro();
-            ClearLista();
-            ClearModel();
+            IsConfirmado = true;
+            Fechar.ExecuteCommand(this);
         }
-        public virtual void ClearFiltro() { }
-        public virtual void ClearLista() { }
-        public virtual void ClearModel() { }
 
-        public virtual void RetornarModel() { }
+        public virtual void SelecionarLista() => SelecionarAction?.Invoke();
 
-        public virtual void SelecionarLista() => SelecionarListaAction?.Invoke();
+        public virtual void ConfirmarTela() { }
+        public virtual void CancelarTela() { }
         #endregion
     }
 
@@ -240,42 +264,27 @@ namespace MORM.Apresentacao.ViewsModel
         where TModel : class
     {
         #region variaveis
-        private TModel _filtro;
-        private List<TModel> _lista;
-        private TModel _model;
+        //private TModel _filtro;
+        //private List<TModel> _lista;
+        //private TModel _model;
         #endregion
 
         #region propriedades
-        public TModel Filtro
+        public TModel oFiltro
         {
-            get => _filtro;
+            get => _filtro as TModel;
             set => SetField(ref _filtro, value);
         }
-        public List<TModel> Lista
+        public List<TModel> oLista
         {
-            get => _lista;
+            get => _lista as List<TModel>;
             set => SetField(ref _lista, value);
         }
-        public TModel Model
+        public TModel oModel
         {
-            get => _model;
+            get => _model as TModel;
             set => SetField(ref _model, value);
         }
-        #endregion
-
-        #region comandos
-        public override AbstractCommand Limpar { get; }
-        public override AbstractCommand Listar { get; }
-        public override AbstractCommand Consultar { get; }
-        public override AbstractCommand Exportar { get; }
-        public override AbstractCommand Importar { get; }
-        public override AbstractCommand Imprimir { get; }
-        public override AbstractCommand Incluir { get; } 
-        public override AbstractCommand Alterar { get; } 
-        public override AbstractCommand Salvar { get; }
-        public override AbstractCommand Excluir { get; }
-        public override AbstractCommand Retornar { get; }
-        public override AbstractCommand Selecionar { get; }
         #endregion
 
         #region construtores
@@ -289,45 +298,24 @@ namespace MORM.Apresentacao.ViewsModel
 
             var mainCommand = TelaUtils.Instance.MainCommand;
             Limpar = mainCommand.GetCommand<TModel>(CommandTipo.Limpar);
+            Listar = mainCommand.GetCommand<TModel>(CommandTipo.Listar);
+            Consultar = mainCommand.GetCommand<TModel>(CommandTipo.Consultar);
             Exportar = mainCommand.GetCommand<TModel>(CommandTipo.Exportar);
             Importar = mainCommand.GetCommand<TModel>(CommandTipo.Importar);
             Imprimir = mainCommand.GetCommand<TModel>(CommandTipo.Imprimir);
-            Listar = mainCommand.GetCommand<TModel>(CommandTipo.Listar);
-            Consultar = mainCommand.GetCommand<TModel>(CommandTipo.Consultar);
             Incluir = mainCommand.GetCommand<TModel>(CommandTipo.Incluir);
             Alterar = mainCommand.GetCommand<TModel>(CommandTipo.Alterar);
             Salvar = mainCommand.GetCommand<TModel>(CommandTipo.Salvar);
             Excluir = mainCommand.GetCommand<TModel>(CommandTipo.Excluir);
             Retornar = mainCommand.GetCommand<TModel>(CommandTipo.Retornar);
             Selecionar = mainCommand.GetCommand<TModel>(CommandTipo.Selecionar);
+            Confirmar = mainCommand.GetCommand<TModel>(CommandTipo.Confirmar);
+            Cancelar = mainCommand.GetCommand<TModel>(CommandTipo.Cancelar);
         }
         #endregion
 
         #region metodos
-        public override object GetFiltro() => Filtro;
-        public override void SetFiltro(object filtro)
-        {
-            Filtro.CloneInstancePropOrFieldAll(filtro);
-        }
-
-        public override object GetLista() => Lista;
-        public override void SetLista(object lista)
-        {
-            if (lista is List<TModel>)
-                Lista = lista as List<TModel>;
-        }
-
-        public override object GetModel() => Model;
-        public override void SetModel(object model)
-        {
-            Model.CloneInstancePropOrFieldAll(model);
-        }            
-
-        public override string GetNomeFiltro() => nameof(Filtro);
-        public override string GetNomeLista() => nameof(Lista);
-        public override string GetNomeModel() => nameof(Model);
-
-        public override string GetTituloModel()
+        public override string GetTitulo()
         {
             return
                 typeof(TModel).Name
@@ -335,18 +323,11 @@ namespace MORM.Apresentacao.ViewsModel
                     .Replace("Model", "")
                     .Replace("View", "");
         }
-
-        public override void ClearFiltro() => 
-            Filtro.ClearInstancePropOrFieldAll();
-        public override void ClearLista() => 
-            Lista = new List<TModel>();
-        public override void ClearModel() => 
-            Model.ClearInstancePropOrFieldAll();
-
-        public override void RetornarModel()
+        public override void ClearAll()
         {
-            IsConfirmado = true;
-            Fechar.ExecuteCommand(this);
+            Filtro.ClearInstancePropOrFieldAll();
+            Lista = null;
+            Model.ClearInstancePropOrFieldAll();
         }
         #endregion
     }

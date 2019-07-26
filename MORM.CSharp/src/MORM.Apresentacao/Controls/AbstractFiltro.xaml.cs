@@ -8,14 +8,14 @@ using System.Windows.Controls;
 
 namespace MORM.Apresentacao.Controls
 {
-    public partial class AbstractManut : AbstractUserControl
+    public partial class AbstractFiltro : AbstractUserControl
     {
-        public AbstractManut()
+        public AbstractFiltro()
         {
             InitializeComponent();
         }
 
-        public AbstractManut(IAbstractViewModel vm) : this()
+        public AbstractFiltro(IAbstractViewModel vm) : this()
         {
             CreateComps(vm);
         }
@@ -40,7 +40,7 @@ namespace MORM.Apresentacao.Controls
                 if (prop.IsIgnoreCampo())
                     return;
 
-                var campoTipo = AbstractCampoTipo.Individual;
+                var campoTipo = AbstractCampoTipo.Intervalo;
                 var descricao = prop.GetDescricao().GetTraducao();
                 var tamanho = prop.GetTamanho();
                 var precisao = prop.GetPrecisao();

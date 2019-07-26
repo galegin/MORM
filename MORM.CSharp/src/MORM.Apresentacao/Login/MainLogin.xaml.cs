@@ -20,7 +20,7 @@ namespace MORM.Apresentacao
 
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
-            (DataContext as LoginViewModel).Model.Senha = (sender as PasswordBox).Password;
+            (DataContext as LoginViewModel).oModel.Senha = (sender as PasswordBox).Password;
         }
 
         public override bool IsConfirmado

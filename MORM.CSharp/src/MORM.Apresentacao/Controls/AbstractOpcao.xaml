@@ -84,6 +84,16 @@
                                   Visibility="{Binding IsExibirSelecionar, Converter={StaticResource BooleanToVisibilityConverter}}"
                                   Command="{Binding Selecionar}" CommandParameter="{Binding}"
                                   />
+            <local:AbstractButton Style="{StaticResource DefaultButton}" 
+                                  Content="Confirmar"
+                                  Visibility="{Binding IsExibirConfirmar, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                  Command="{Binding Confirmar}" CommandParameter="{Binding}"
+                                  />
+            <local:AbstractButton Style="{StaticResource DefaultButton}" 
+                                  Content="Cancelar"
+                                  Visibility="{Binding IsExibirCancelar, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                  Command="{Binding Cancelar}" CommandParameter="{Binding}"
+                                  />
         </StackPanel>
     </Grid>
 </comps:AbstractUserControl>
