@@ -64,6 +64,8 @@
     <Compile Include="Assemblies\ServiceAssembly.cs" />
     <Compile Include="BaseInstaller.cs" />
     <Compile Include="Classes\ClasseExecute.cs" />
+    <Compile Include="Classes\ObjetoExecute.cs" />
+    <Compile Include="Classes\MetodoExecute.cs" />
     <Compile Include="Classes\ObjetoMapper.cs" />
     <Compile Include="Classes\Token.cs" />
     <Compile Include="Consumers\AbstractApiConsumer.cs" />

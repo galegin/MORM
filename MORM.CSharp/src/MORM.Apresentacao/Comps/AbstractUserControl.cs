@@ -76,6 +76,67 @@ namespace MORM.Apresentacao.Comps
         protected virtual void btnVisualizar_Click(object sender, RoutedEventArgs e) { }
         #endregion
 
+        #region painel
+        protected object AddPainel(object painel, object parent = null, 
+            Orientation? orientation = null, Dock? dock = null)
+        {
+            var content = parent ?? Content;
+
+            if (content == null)
+                return AddContent(painel as UIElement);
+
+            else if (content is ScrollViewer)
+                return AddScrollViewer(painel as UIElement, content as ScrollViewer);
+            else if (content is StackPanel)
+                return AddStackPanel(painel as UIElement, content as StackPanel, orientation);
+            else if (content is DockPanel)
+                return AddDockPanel(painel as UIElement, content as DockPanel, dock);
+
+            return painel;
+        }
+
+        private object AddContent(UIElement painel)
+        {
+            if (painel is FrameworkElement)
+                (painel as FrameworkElement).Margin = new Thickness(10);
+            Content = painel;
+            return painel;
+        }
+
+        private object AddScrollViewer(UIElement painel, ScrollViewer parent)
+        {
+            if (parent.Content == null)
+                parent.Content = new StackPanel();
+            if (parent.Content is StackPanel)
+                return AddStackPanel(painel, parent.Content as StackPanel);
+            return painel;
+        }
+
+        private object AddFrameworkElement(UIElement painel, Panel parent)
+        {
+            if (painel is FrameworkElement)
+                (painel as FrameworkElement).Margin = new Thickness(0, 0, 0, 10);
+            parent.Children.Add(painel);
+            return painel;
+        }
+
+        private object AddStackPanel(UIElement painel, StackPanel parent, Orientation? orientation = null)
+        {
+            AddFrameworkElement(painel, parent);
+            if (orientation != null)
+                parent.Orientation = orientation.Value;
+            return painel;
+        }
+
+        private object AddDockPanel(UIElement painel, DockPanel parent, Dock? dock = null)
+        {
+            AddFrameworkElement(painel, parent);
+            if (dock != null)
+                DockPanel.SetDock(painel, dock.Value);
+            return painel;
+        }
+        #endregion
+
         #region dispose
         public void Dispose()
         {

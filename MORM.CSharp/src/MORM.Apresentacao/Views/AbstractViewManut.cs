@@ -1,7 +1,6 @@
 ﻿using MORM.Apresentacao.Controls;
 using MORM.Apresentacao.ViewsModel;
 using System;
-using System.Windows;
 using System.Windows.Controls;
 
 namespace MORM.Apresentacao.Views
@@ -16,7 +15,6 @@ namespace MORM.Apresentacao.Views
     }
 
     /*
-
     Manutenção de ...
 
     [ Voltar ] [ Limpar ] [ Consultar ] [ Salvar ] [ Excluir ]
@@ -25,7 +23,6 @@ namespace MORM.Apresentacao.Views
     [ Nome   ] [                        ]
     [ Data   ] [          ]
     [ Valor  ] [          ]
-
     */
 
     public class AbstractViewManut<TViewModel> : AbstractViewManut
@@ -55,21 +52,13 @@ namespace MORM.Apresentacao.Views
                 nameof(vm.IsExibirSelecionar),
             });
 
-            var stackPanel = new StackPanel();
-            stackPanel.Margin = new Thickness(10);
-            Content = stackPanel;
+            AddPainel(new StackPanel());
 
-            var userControlTitulo = new AbstractTitulo("Manutenção de " + vm.GetTitulo());
-            userControlTitulo.Margin = new Thickness(0, 0, 0, 10);
-            stackPanel.Children.Add(userControlTitulo);
+            AddPainel(new AbstractTitulo("Manutenção de " + vm.GetTitulo()));
 
-            var userControlOpcao = new AbstractOpcao(vm);
-            userControlOpcao.Margin = new Thickness(0, 0, 0, 10);
-            stackPanel.Children.Add(userControlOpcao);
+            AddPainel(new AbstractOpcao(vm));
 
-            var userControlManut = new AbstractManut(vm);
-            userControlManut.Margin = new Thickness(0, 0, 0, 10);
-            stackPanel.Children.Add(userControlManut);
+            AddPainel(new AbstractManut(vm));
         }
 
         public void SelecionarLista()
@@ -82,53 +71,3 @@ namespace MORM.Apresentacao.Views
         #endregion
     }
 }
-
-#region xaml
-/*
-using System.IO;
-using System.Windows.Markup;
-using System.Xml;
-
-var xamlDefinition = string.Empty;
-var xamlCampo = string.Empty;
-var nroRow = 0;
-
-viewModel.Model.GetType().GetProperties().ToList().ForEach(prop =>
-{
-    var descricao = prop.GetDescricao();
-
-    xamlDefinition +=
-        "<RowDefinition Height='Auto' />";
-
-    xamlCampo +=
-        $"<TextBlock Text='{descricao}' Height='19' Grid.Row='{nroRow}' Grid.Column='0' />" +
-        $"<TextBox Text='{{Binding Model.{prop.Name}}}' Margin='3' Grid.Row='{nroRow}' Grid.Column='1' />";
-
-    nroRow++;
-});
-
-string xaml =
-    "<UserControl " +
-        "xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation' " +
-        "xmlns:x='http://schemas.microsoft.com/winfx/2006/xaml' " +
-        ">" +
-        "<Grid>" +
-            "<Grid.ColumnDefinitions>" +
-                "<ColumnDefinition Width='100' />" +
-                "<ColumnDefinition Width='*' />" +
-            "</Grid.ColumnDefinitions>" +
-            "<Grid.RowDefinitions>" +
-                xamlDefinition +
-                "<RowDefinition Height='*' />" +
-            "</Grid.RowDefinitions>" +
-            xamlCampo +
-        "</Grid>" +
-    "</UserControl>";
-
-StringReader stringReader = new StringReader(xaml);
-XmlReader xmlReader = XmlReader.Create(stringReader);
-UserControl userControl = (UserControl)XamlReader.Load(xmlReader);
-userControl.DataContext = viewModel;
-stackPanel.Children.Add(userControl);
-*/
-#endregion

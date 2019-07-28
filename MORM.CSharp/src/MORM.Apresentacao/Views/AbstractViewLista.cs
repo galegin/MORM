@@ -3,7 +3,6 @@ using MORM.Apresentacao.Controls;
 using MORM.Apresentacao.ViewsModel;
 using MORM.Infra.CrossCutting;
 using System;
-using System.Windows;
 using System.Windows.Controls;
 
 namespace MORM.Apresentacao.Views
@@ -18,7 +17,6 @@ namespace MORM.Apresentacao.Views
     }
 
     /*
-
     Lista de ...
 
     [ Fechar ] [ Limpar ] [ Listar ] [ Retornar ]
@@ -36,7 +34,6 @@ namespace MORM.Apresentacao.Views
     | 999999 | XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX |
     | 999999 | XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX |
     +--------+--------------------------------------+
-
     */
 
     public class AbstractViewLista<TViewModel> : AbstractViewLista
@@ -62,28 +59,15 @@ namespace MORM.Apresentacao.Views
                 nameof(vm.IsExibirRetornar),
             });
 
-            var dockPanel = new DockPanel();
-            dockPanel.Margin = new Thickness(10);
-            Content = dockPanel;
+            AddPainel(new DockPanel());
 
-            var userControlTitulo = new AbstractTitulo("Lista de " + vm.GetTitulo());
-            userControlTitulo.Margin = new Thickness(0, 0, 0, 10);
-            DockPanel.SetDock(userControlTitulo, Dock.Top);
-            dockPanel.Children.Add(userControlTitulo);
+            AddPainel(new AbstractTitulo("Lista de " + vm.GetTitulo()), dock: Dock.Top);
 
-            var userControlOpcao = new AbstractOpcao(vm);
-            userControlOpcao.Margin = new Thickness(0, 0, 0, 10);
-            DockPanel.SetDock(userControlOpcao, Dock.Top);
-            dockPanel.Children.Add(userControlOpcao);
+            AddPainel(new AbstractOpcao(vm), dock: Dock.Top);
 
-            var userControlBusca = new AbstractBusca(vm);
-            userControlBusca.Margin = new Thickness(0, 0, 0, 10);
-            DockPanel.SetDock(userControlBusca, Dock.Top);
-            dockPanel.Children.Add(userControlBusca);
+            AddPainel(new AbstractBusca(vm), dock: Dock.Top);
 
-            var userControlLista = new AbstractLista(vm);
-            userControlLista.Margin = new Thickness(0, 0, 0, 10);
-            dockPanel.Children.Add(userControlLista);
+            AddPainel(new AbstractLista(vm));
         }
 
         public static object Execute(object objeto)

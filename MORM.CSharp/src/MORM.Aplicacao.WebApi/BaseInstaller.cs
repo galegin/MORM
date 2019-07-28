@@ -1,6 +1,5 @@
 ﻿using MORM.Dominio.Interfaces;
 using MORM.Infra.CrossCutting;
-using System.Linq;
 
 namespace MORM.Aplicacao.WebApi
 {
@@ -11,9 +10,8 @@ namespace MORM.Aplicacao.WebApi
             container
                 .RegisterAll(
                     ClassesAssembly
-                    .FromThisAssembly()
-                    .Where(t => t.Name.EndsWith("Controller"))
-                    .ToArray());
+                        .GetTypes(null, (t) => t.Name.EndsWith("Controller"))
+                        .ToArray());
         }
     }
 }

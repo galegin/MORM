@@ -3,11 +3,17 @@ using System.Reflection;
 
 namespace MORM.Infra.CrossCutting
 {
-    public class ClasseExecute
+    public class ObjetoExecute
     {
+        public static object Execute(object objeto, string metodo, params object[] parametros)
+        {
+            return MetodoExecute.Execute(objeto.GetType(), objeto, metodo, parametros);
+        }
+
         public static object Execute(Type type, string metodo, params object[] parametros)
         {
-			return MetodoExecute.Execute(type, null, metodo, parametros);
+            var objeto = Activator.CreateInstance(type);
+            return Execute(objeto, metodo, parametros);
         }
 
         public static object Execute(string typeName, string metodo, params object[] parametros)

@@ -71,15 +71,14 @@ namespace MORM.Infra.CrossCutting
             var METHOD = $"{nameof(InstallerAssembly)}.InstallAssembly()";
 
             Logger.Debug(METHOD, $"assembly.FullName: {assembly.FullName}");
-
-            var types = assembly.GetTypes()?.Where(x => x.Name.EndsWith("BaseInstaller"));
-
-            foreach (var type in types)
-            {
-                Logger.Debug(METHOD, $"type.FullName: {type.FullName}");
-
-                type.GetMethod("Install")?.Invoke(null, new[] { container });
-            }
+            
+            ClassesAssembly
+                .GetTypes(assembly, (x) => x.Name.EndsWith("BaseInstaller"))
+                .ForEach(type =>
+                {
+                    Logger.Debug(METHOD, $"type.FullName: {type.FullName}");
+                    ClasseExecute.Execute(type, "Install", new[] { container });
+                });
         }
     }
 }

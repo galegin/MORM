@@ -48,14 +48,12 @@ namespace MORM.Infra.CrossCutting
             client.BaseAddress = new Uri(_site);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+			
+			var token = "".Coalesce(_token, TokenInterno);
 
-            if (!string.IsNullOrWhiteSpace(_token))
+            if (!string.IsNullOrWhiteSpace(token))
             {
-                client.DefaultRequestHeaders.Add("Token", _token);
-            }
-            else if (!string.IsNullOrWhiteSpace(TokenInterno))
-            {
-                client.DefaultRequestHeaders.Add("Token", TokenInterno);
+                client.DefaultRequestHeaders.Add("Token", token);
             }
 
             return client;
