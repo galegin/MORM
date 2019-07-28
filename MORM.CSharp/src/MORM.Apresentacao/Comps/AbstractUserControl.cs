@@ -1,4 +1,9 @@
-﻿using System;
+﻿using MORM.Apresentacao.Controls;
+using MORM.Apresentacao.Extensions;
+using MORM.Apresentacao.ViewsModel;
+using MORM.Infra.CrossCutting;
+using System;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -82,7 +87,7 @@ namespace MORM.Apresentacao.Comps
         {
             var content = parent ?? Content;
 
-            if (content == null)
+            if (content == null || content is Grid)
                 return AddContent(painel as UIElement);
 
             else if (content is ScrollViewer)
@@ -134,6 +139,21 @@ namespace MORM.Apresentacao.Comps
             if (dock != null)
                 DockPanel.SetDock(painel, dock.Value);
             return painel;
+        }
+        #endregion
+
+        #region campo
+        protected void AddCampo(IAbstractViewModel vm, string nomeBinding, PropertyInfo prop, AbstractCampoTipo campoTipo)
+        {
+            var descricao = prop.GetDescricao().GetTraducao();
+            var tamanho = prop.GetTamanho();
+            var precisao = prop.GetPrecisao();
+            var editTipo = prop.GetEditTipo();
+            var bindind = prop.GetDataBinding(vm, nomeBinding);
+            var abstractCampo = new AbstractCampo(campoTipo, descricao, tamanho, precisao, editTipo);
+            abstractCampo.Margin = new Thickness(0, 0, 0, 10);
+            abstractCampo.SetDataBinding(bindind);
+            AddPainel(abstractCampo);
         }
         #endregion
 

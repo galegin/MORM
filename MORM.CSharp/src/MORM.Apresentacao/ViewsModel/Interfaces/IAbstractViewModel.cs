@@ -31,6 +31,7 @@ namespace MORM.Apresentacao.ViewsModel
 
     public interface IAbstractViewModel : IAbstractViewModelOpcao
     {
+        Type ElementType { get; }
         object Filtro { get; set; }
         object Model { get; set; }
         IList Lista { get; set; }

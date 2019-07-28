@@ -25,44 +25,45 @@ namespace MORM.Apresentacao.Controls
         {
             DataContext = vm;
 
-            var dockPanel = new DockPanel();
-            dockPanel.Margin = new Thickness(10);
-            Content = dockPanel;
+            AddPainel(new DockPanel());
 
             var bindingLista = new Binding(nameof(vm.Lista)) { Source = vm };
             var bindingModel = new Binding(nameof(vm.Model)) { Source = vm };
 
-            var dataGrid = new DataGrid();
-            dataGrid.Margin = new Thickness(10);
-            dataGrid.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
-            dataGrid.HorizontalScrollBarVisibility = ScrollBarVisibility.Auto;
-            dataGrid.AutoGenerateColumns = false;
+            var dataGrid = new DataGrid()
+            {
+                Margin = new Thickness(10),
+                VerticalScrollBarVisibility = ScrollBarVisibility.Auto,
+                HorizontalScrollBarVisibility = ScrollBarVisibility.Auto,
+                AutoGenerateColumns = false,
+            };
             dataGrid.SetBinding(DataGrid.ItemsSourceProperty, bindingLista);
             dataGrid.SetBinding(DataGrid.SelectedItemProperty, bindingModel);
-            dockPanel.Children.Add(dataGrid);
+            AddPainel(dataGrid);
 
             //var style = FindResource("DataGridCellStyle") as Style;
 
-            vm.Model.GetType().GetProperties().ToList().ForEach(prop =>
-            {
-                if (prop.IsIgnoreCampo())
-                    return;
-
-                var descricao = prop.GetDescricao().GetTraducao();
-                var formato = prop.GetFormato();
-
-                var bindingDataGridColumn = new Binding(prop.Name)
+            vm.ElementType
+                .GetProperties()
+                .Where(p => !p.IsIgnoreCampo())
+                .ToList()
+                .ForEach(prop =>
                 {
-                    StringFormat = (!string.IsNullOrWhiteSpace(formato) ? formato : null),
-                };
+                    var descricao = prop.GetDescricao().GetTraducao();
+                    var formato = prop.GetFormato();
 
-                dataGrid.Columns.Add(new DataGridTextColumn()
-                {
-                    Header = descricao,
-                    Binding = bindingDataGridColumn,
-                    //CellStyle = style,
+                    var bindingDataGridColumn = new Binding(prop.Name)
+                    {
+                        StringFormat = (!string.IsNullOrWhiteSpace(formato) ? formato : null),
+                    };
+
+                    dataGrid.Columns.Add(new DataGridTextColumn()
+                    {
+                        Header = descricao,
+                        Binding = bindingDataGridColumn,
+                        //CellStyle = style,
+                    });
                 });
-            });
         }
     }
 }

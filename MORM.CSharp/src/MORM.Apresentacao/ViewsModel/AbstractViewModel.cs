@@ -52,6 +52,7 @@ namespace MORM.Apresentacao.ViewsModel
 
         #region propriedades
         #region objeto
+        public virtual Type ElementType => Model.GetType();
         public virtual object Filtro
         {
             get => _filtro;
@@ -270,6 +271,7 @@ namespace MORM.Apresentacao.ViewsModel
         #endregion
 
         #region propriedades
+        public override Type ElementType => typeof(TModel);
         public TModel oFiltro
         {
             get => _filtro as TModel;
