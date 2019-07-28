@@ -7,7 +7,7 @@ namespace MORM.Infra.CrossCutting
     {
         public static object Execute(Type type, string metodo, params object[] parametros)
         {
-			return MetodoExecute.Execute(type, null, metodo, parametros);
+            return MetodoExecute.Execute(type, null, metodo, parametros);
         }
 
         public static object Execute(string typeName, string metodo, params object[] parametros)

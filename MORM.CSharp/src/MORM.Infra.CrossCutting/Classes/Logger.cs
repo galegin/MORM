@@ -117,11 +117,9 @@ namespace MORM.Infra.CrossCutting
         }
 
         public static void DebugMensagem(string message,
-            [CallerMemberName] string metodo = "",
-            [CallerFilePath] string filePath = "",
-            [CallerLineNumber] int line = 0)
+            [CallerMemberName] string metodo = "", [CallerFilePath] string filePath = "", [CallerLineNumber] int line = 0)
         {
-            Log(TipoLog.Debug, metodo, $"{message} / FilePath: {filePath} na linha {line}");
+            Log(TipoLog.Debug, metodo, message.GetMessageLinha(filePath, line));
         }
 
         // erro
@@ -132,11 +130,9 @@ namespace MORM.Infra.CrossCutting
         }
 
         public static void ErroMensagem(string message,
-            [CallerMemberName] string metodo = "",
-            [CallerFilePath] string filePath = "",
-            [CallerLineNumber] int line = 0)
+            [CallerMemberName] string metodo = "", [CallerFilePath] string filePath = "", [CallerLineNumber] int line = 0)
         {
-            Log(TipoLog.Erro, metodo, $"{message} / FilePath: {filePath} na linha {line}");
+            Log(TipoLog.Erro, metodo, message.GetMessageLinha(filePath, line));
         }
 
         // info
@@ -147,44 +143,61 @@ namespace MORM.Infra.CrossCutting
         }
 
         public static void InfoMensagem(string message,
-            [CallerMemberName] string metodo = "",
-            [CallerFilePath] string filePath = "",
-            [CallerLineNumber] int line = 0)
+            [CallerMemberName] string metodo = "", [CallerFilePath] string filePath = "", [CallerLineNumber] int line = 0)
         {
-            Log(TipoLog.Info, metodo, $"{message} / FilePath: {filePath} na linha {line}");
+            Log(TipoLog.Info, metodo, message.GetMessageLinha(filePath, line));
         }
 
         // exception
 
         public static void DebugException(Exception ex, string mensagem = null,
-            [CallerMemberName] string metodo = "",
-            [CallerFilePath] string filePath = "",
-            [CallerLineNumber] int line = 0)
+            [CallerMemberName] string metodo = "", [CallerFilePath] string filePath = "", [CallerLineNumber] int line = 0)
         {
-            Log(TipoLog.Debug, metodo, (!string.IsNullOrWhiteSpace(mensagem) ? $"{mensagem} / " : null) +
-                $"Message: {ex.Message} / StackTrace: {ex.StackTrace} / " +
-                $"FilePath: {filePath} na linha {line}");
+            Log(TipoLog.Debug, metodo, ex.GetMessageExceptLinha(mensagem, filePath, line));
         }
 
         public static void ErroException(Exception ex, string mensagem = null,
-            [CallerMemberName] string metodo = "", 
-            [CallerFilePath] string filePath = "", 
-            [CallerLineNumber] int line = 0)
+            [CallerMemberName] string metodo = "", [CallerFilePath] string filePath = "", [CallerLineNumber] int line = 0)
         {
-            Log(TipoLog.Erro, metodo, (!string.IsNullOrWhiteSpace(mensagem) ? $"{mensagem} / " : null) +
-                $"Message: {ex.Message} / StackTrace: {ex.StackTrace} / " +
-                $"FilePath: {filePath} na linha {line}");
+            Log(TipoLog.Erro, metodo, ex.GetMessageExceptLinha(mensagem, filePath, line));
         }
 
         public static void InfoException(Exception ex, string mensagem = null,
-            [CallerMemberName] string metodo = "",
-            [CallerFilePath] string filePath = "",
-            [CallerLineNumber] int line = 0)
+            [CallerMemberName] string metodo = "", [CallerFilePath] string filePath = "", [CallerLineNumber] int line = 0)
         {
-            Log(TipoLog.Info, metodo, (!string.IsNullOrWhiteSpace(mensagem) ? $"{mensagem} / " : null) +
-                $"Message: {ex.Message} / StackTrace: {ex.StackTrace} / " +
-                $"FilePath: {filePath} na linha {line}");
+            Log(TipoLog.Info, metodo, ex.GetMessageExceptLinha(mensagem, filePath, line));
         }
         #endregion
+    }
+
+    public static class LoggerExtensions
+    {
+        public static string GetMessageExcept(this Exception ex)
+        {
+            return
+                $"Message: {ex.Message} / StackTrace: {ex.StackTrace}"
+                ;
+        }
+
+        public static string GetMessageLinha(this string message, string filePath, int line)
+        {
+            return 
+                $"{message} / FilePath: {filePath} na linha {line}"
+                ;
+        }
+
+        public static string GetMessageExceptLinha(this Exception ex, string mensagem, string filePath, int line)
+        {
+            var message =
+                (!string.IsNullOrWhiteSpace(mensagem) ? $"{mensagem} / " : null) +
+                $"{ex.GetMessageExcept()}"
+                ;
+
+            message =
+                $"{message.GetMessageLinha(filePath, line)}"
+                ;
+
+            return message;
+        }
     }
 }
