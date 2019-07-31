@@ -37,6 +37,12 @@
                                 Text="{Binding ValorDes}" 
                                 Visibility="{Binding IsExibirDes, Converter={StaticResource BooleanToVisibilityConverter}}" 
                                 />
+            <local:AbstractCombo x:Name="ComboTip"
+                                Focusable="False"
+                                Width="{Binding TamanhoTip}"
+                                Text="{Binding ValorTip}" 
+                                Visibility="{Binding IsExibirTip, Converter={StaticResource BooleanToVisibilityConverter}}" 
+                                />
         </StackPanel>
     </Grid>
 </comps:AbstractUserControl>

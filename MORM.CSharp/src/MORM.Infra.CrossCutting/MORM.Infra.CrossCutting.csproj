@@ -74,7 +74,6 @@
     <Compile Include="Classes\TypeForConvert.cs" />
     <Compile Include="Extensions\CampoExtensions.cs" />
     <Compile Include="Extensions\CriptoExtensions.cs" />
-    <Compile Include="Extensions\EnunsExtensions.cs" />
     <Compile Include="Exceptions\ExceptionErro.cs" />
     <Compile Include="Exceptions\ExceptionInfo.cs" />
     <Compile Include="Exceptions\ExceptionDebug.cs" />

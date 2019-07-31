@@ -1,4 +1,4 @@
-﻿using MORM.Infra.CrossCutting;
+﻿using MORM.Dominio.Extensions;
 
 namespace MORM.Apresentacao.Controls
 {
@@ -12,6 +12,8 @@ namespace MORM.Apresentacao.Controls
         IntervaloComDescricao,
         IntervaloComPesquisa,
         IntervaloComPesquisaEDescricao,
+        Selecao,
+        Tipagem,
     }
 
     public static class AbstractCampoTipoExtensions
@@ -50,6 +52,32 @@ namespace MORM.Apresentacao.Controls
                 AbstractCampoTipo.IndividualComPesquisaEDescricao,
                 AbstractCampoTipo.IntervaloComPesquisa,
                 AbstractCampoTipo.IntervaloComPesquisaEDescricao);
+        }
+
+        public static bool IsSelecao(this AbstractCampoTipo tipo)
+        {
+            return tipo.In(
+                AbstractCampoTipo.Selecao);
+        }
+
+        public static bool IsTipagem(this AbstractCampoTipo tipo)
+        {
+            return tipo.In(
+                AbstractCampoTipo.Tipagem);
+        }
+
+        public static AbstractCampoTipo GetCampoTipoFiltro(this string campo)
+        {
+            var preFixo = campo.GetLista('_').GetParte(0);
+            switch (preFixo)
+            {
+                case "Cd_":
+                    return AbstractCampoTipo.Selecao;
+                case "Tp_":
+                    return AbstractCampoTipo.Tipagem;
+                default:
+                    return AbstractCampoTipo.Intervalo;
+            }
         }
     }
 }

@@ -36,14 +36,19 @@ namespace MORM.Apresentacao.Controls
         #endregion
 
         #region metodos
-        public void SetDataBinding(Binding bindingIni = null, Binding bindingFin = null, Binding bindingDes = null)
+        public void SetDataBinding(Binding bindingIni = null, Binding bindingFin = null, 
+            Binding bindingDes = null, Binding bindingTip = null)
         {
+            var vm = DataContext as AbstractCampoViewModel;
+
             if (bindingIni != null)
                 EditIni.SetBinding(TextBox.TextProperty, bindingIni);
             if (bindingFin != null)
                 EditFin.SetBinding(TextBox.TextProperty, bindingFin);
             if (bindingDes != null)
                 EditDes.SetBinding(TextBox.TextProperty, bindingDes);
+            if (bindingTip != null)
+                ComboTip.SetBinding(ComboBox.TextProperty, bindingTip);
         }
         #endregion
     }

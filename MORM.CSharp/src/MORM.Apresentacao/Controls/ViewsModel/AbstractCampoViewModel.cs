@@ -12,16 +12,19 @@ namespace MORM.Apresentacao.Controls.ViewsModel
         private bool _isExibirFin;
         private bool _isExibirDes;
         private bool _isExibirPes;
+        private bool _isExibirTip;
         private string _descricao;
         private int _tamanho;
         private int _tamanhoBtn = 100;
         private int _tamanhoIni = 100;
         private int _tamanhoFin = 100;
         private int _tamanhoDes = 100;
+        private int _tamanhoTip = 100;
         private int _precisao;
         private string _valorIni;
         private string _valorFin;
         private string _valorDes;
+        private string _valorTip;
         #endregion
 
         #region propriedades
@@ -36,6 +39,7 @@ namespace MORM.Apresentacao.Controls.ViewsModel
                 IsExibirFin = value.IsInter();
                 IsExibirDes = value.IsDescr();
                 IsExibirPes = value.IsPesq();
+                IsExibirTip = value.IsTipagem();
             }
         }
         public bool IsExibirBtn { get => _isExibirBtn; set => SetField(ref _isExibirBtn, value); }
@@ -43,6 +47,7 @@ namespace MORM.Apresentacao.Controls.ViewsModel
         public bool IsExibirFin { get => _isExibirFin; set => SetField(ref _isExibirFin, value); }
         public bool IsExibirDes { get => _isExibirDes; set => SetField(ref _isExibirDes, value); }
         public bool IsExibirPes { get => _isExibirPes; set => SetField(ref _isExibirPes, value); }
+        public bool IsExibirTip { get => _isExibirPes; set => SetField(ref _isExibirPes, value); }
         public string Descricao
         {
             get => _descricao;
@@ -57,6 +62,7 @@ namespace MORM.Apresentacao.Controls.ViewsModel
         public int TamanhoIni { get => _tamanhoIni; set => SetField(ref _tamanhoIni, value); }
         public int TamanhoFin { get => _tamanhoFin; set => SetField(ref _tamanhoFin, value); }
         public int TamanhoDes { get => _tamanhoDes; set => SetField(ref _tamanhoDes, value); }
+        public int TamanhoTip { get => _tamanhoTip; set => SetField(ref _tamanhoTip, value); }
         public int Precisao
         {
             get => _precisao;
@@ -70,6 +76,7 @@ namespace MORM.Apresentacao.Controls.ViewsModel
         public string ValorIni { get => _valorIni; set => SetField(ref _valorIni, value); }
         public string ValorFin { get => _valorFin; set => SetField(ref _valorFin, value); }
         public string ValorDes { get => _valorDes; set => SetField(ref _valorDes, value); }
+        public string ValorTip { get => _valorTip; set => SetField(ref _valorTip, value); }
         #endregion
 
         #region construtores

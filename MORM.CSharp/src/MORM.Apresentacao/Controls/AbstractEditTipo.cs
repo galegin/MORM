@@ -30,7 +30,7 @@ namespace MORM.Apresentacao.Controls
         [Formato("#,#0", "[^0-9.-]")]
         Numero,
 
-        [Formato("", "[^0-9A-Za-z !@#$%&()]+")]
+        [Formato("", "[^0-9A-Za-z !@#$%&().,-]+")]
         Texto,
 
         [Formato("#,#0.00", "[^0-9.,-]")]

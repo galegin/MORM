@@ -30,6 +30,7 @@ namespace MORM.Infra.CrossCutting
             new CampoDefinicao("Hr", "Hora", 10, 0),
             new CampoDefinicao("Id", "Id", 10, 0),
             new CampoDefinicao("In", "", 10, 0),
+            new CampoDefinicao("Ip", "", 20, 0),
             new CampoDefinicao("Nm", "Nome", 60, 0),
             new CampoDefinicao("Nr", "Nro", 10, 0),
             new CampoDefinicao("Pr", "Perc.", 10, 0),

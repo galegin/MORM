@@ -37,7 +37,7 @@ namespace MORM.Apresentacao.Controls
                 .ToList()
                 .ForEach(prop =>
                 {
-                    AddCampo(vm, nameof(vm.Filtro), prop, AbstractCampoTipo.Intervalo);
+                    AddCampo(vm, nameof(vm.Filtro), prop, prop.Name.GetCampoTipoFiltro());
                 });
         }
     }
