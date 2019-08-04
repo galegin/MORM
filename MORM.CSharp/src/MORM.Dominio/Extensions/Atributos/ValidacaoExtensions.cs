@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace MORM.Dominio.Extensions
 {
-    public static class ValidacaoExtension
+    public static class ValidacaoExtensions
     {
         //-- validacao
 

@@ -51,13 +51,13 @@ namespace MORM.Apresentacao.Views
                 nameof(vm.IsExibirLimpar),
             });
 
-            AddPainel(new StackPanel());
+            this.AddPainel(new StackPanel());
 
-            AddPainel(new AbstractTitulo("Filtro de " + vm.GetTitulo()));
+            this.AddPainel(new AbstractTitulo("Filtro de " + vm.GetTitulo()));
 
-            AddPainel(new AbstractOpcao(vm));
+            this.AddPainel(new AbstractOpcao(vm));
 
-            AddPainel(new AbstractFiltro(vm));
+            this.AddPainel(new AbstractFiltro(vm));
         }
 
         public void ConfirmarFiltro()

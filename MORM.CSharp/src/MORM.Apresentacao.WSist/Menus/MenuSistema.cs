@@ -44,6 +44,7 @@ namespace MORM.Apresentacao.WSist.Menus
             var subMenu = new List<IMenuOpcao>
             {
                 new MenuOpcaoTipo<IEmpresaView>(MenuOpcaoTipo.Opcao, "MenuEmpresaEmpresa", "Empresa", _resolver),
+                new MenuOpcaoTipo<IGrupoEmpresaView>(MenuOpcaoTipo.Opcao, "MenuGrupoEmpresaEmpresa", "GrupoEmpresa", _resolver),
             };
 
             var menu = new MenuOpcaoDescr(MenuOpcaoTipo.SubMenu, "MenuEmpresa", "Empresa", subMenu);

@@ -1,6 +1,8 @@
 ﻿using MORM.Apresentacao.Controls;
 using MORM.Dominio.Atributos;
 using MORM.Dominio.Extensions;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Data;
@@ -22,8 +24,23 @@ namespace MORM.Apresentacao.Extensions
             return prop.Name.IsIgnoreCampo();
         }
 
+        public static CampoTipo? GetCampoTipoProp(this PropertyInfo prop)
+        {
+            if (prop.GetAttribute<KeyAttribute>() != null)
+                return CampoTipo.Key;
+            else if (prop.GetAttribute<RequiredAttribute>() != null)
+                return CampoTipo.Req;
+
+            var campoTipo = prop.GetAttribute<CampoAttribute>();
+            return campoTipo?.Tipo;
+        }
+
         public static string GetDescricao(this PropertyInfo prop)
         {
+            var description = prop.GetAttribute<DescriptionAttribute>();
+            if (description != null)
+                return description.Description;
+
             var descricao = prop.GetAttribute<DescricaoAttribute>();
             return descricao?.Value ?? prop.Name;
         }
@@ -114,9 +131,9 @@ namespace MORM.Apresentacao.Extensions
             return AbstractEditTipo.Texto;
         }
 
-        public static Binding GetDataBinding(this PropertyInfo prop, object source, string path)
+        public static Binding GetDataBinding(this PropertyInfo prop, object source, string path, string pathBinding = null)
         {
-            return new Binding($"{path}.{prop.Name}")
+            return new Binding(pathBinding ?? $"{path}.{prop.Name}")
             {
                 Source = source,
                 Mode = BindingMode.TwoWay,

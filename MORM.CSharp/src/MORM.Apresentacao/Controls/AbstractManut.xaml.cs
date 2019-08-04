@@ -1,5 +1,6 @@
 ﻿using MORM.Apresentacao.Comps;
 using MORM.Apresentacao.Extensions;
+using MORM.Apresentacao.Views;
 using MORM.Apresentacao.ViewsModel;
 using System.Linq;
 using System.Windows;
@@ -23,7 +24,7 @@ namespace MORM.Apresentacao.Controls
         {
             DataContext = vm;
 
-            AddPainel(new ScrollViewer()
+            this.AddPainel(new ScrollViewer()
             {
                 Margin = new Thickness(10),
                 VerticalScrollBarVisibility = ScrollBarVisibility.Auto,
@@ -32,12 +33,13 @@ namespace MORM.Apresentacao.Controls
             });
 
             vm.ElementType
-                .GetProperties()
-                .Where(p => !p.IsIgnoreCampo())
+                .GetMetadata()
+                .Campos
+                .Where(p => !p.Prop.IsIgnoreCampo())
                 .ToList()
-                .ForEach(prop =>
+                .ForEach(campo =>
                 {
-                    AddCampo(vm, nameof(vm.Model), prop, AbstractCampoTipo.Individual);
+                    this.AddCampo(vm, nameof(vm.Model), campo, AbstractCampoTipo.Individual);
                 });
         }
     }

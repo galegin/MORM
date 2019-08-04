@@ -1,5 +1,6 @@
 ﻿using MORM.Apresentacao.Comps;
 using MORM.Apresentacao.Extensions;
+using MORM.Apresentacao.Views;
 using MORM.Apresentacao.ViewsModel;
 using MORM.Infra.CrossCutting;
 using System.Linq;
@@ -25,7 +26,7 @@ namespace MORM.Apresentacao.Controls
         {
             DataContext = vm;
 
-            AddPainel(new DockPanel());
+            this.AddPainel(new DockPanel());
 
             var bindingLista = new Binding(nameof(vm.Lista)) { Source = vm };
             var bindingModel = new Binding(nameof(vm.Model)) { Source = vm };
@@ -39,7 +40,7 @@ namespace MORM.Apresentacao.Controls
             };
             dataGrid.SetBinding(DataGrid.ItemsSourceProperty, bindingLista);
             dataGrid.SetBinding(DataGrid.SelectedItemProperty, bindingModel);
-            AddPainel(dataGrid);
+            this.AddPainel(dataGrid);
 
             //var style = FindResource("DataGridCellStyle") as Style;
 

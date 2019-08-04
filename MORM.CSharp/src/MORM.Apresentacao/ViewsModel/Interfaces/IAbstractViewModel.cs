@@ -43,7 +43,10 @@ namespace MORM.Apresentacao.ViewsModel
         Action ConfirmarAction { get; set; }
         Action CancelarAction { get; set; }
         void RetornarModel();
+        void ConsultarChave();
         void SelecionarLista();
+        void BuscarDescricao();
+        void GerarIntervalo();
         void ConfirmarTela();
         void CancelarTela();
     }

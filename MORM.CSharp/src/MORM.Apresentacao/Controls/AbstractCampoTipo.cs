@@ -4,16 +4,21 @@ namespace MORM.Apresentacao.Controls
 {
     public enum AbstractCampoTipo
     {
+        // Manutenção
         Individual,
         IndividualComDescricao,
         IndividualComPesquisa,
         IndividualComPesquisaEDescricao,
+        IndividualComSelecao,
+        IndividualComTipagem,
+
+        // Filtro
         Intervalo,
         IntervaloComDescricao,
         IntervaloComPesquisa,
         IntervaloComPesquisaEDescricao,
-        Selecao,
-        Tipagem,
+        IntervaloComSelecao,
+        IntervaloComTipagem,
     }
 
     public static class AbstractCampoTipoExtensions
@@ -57,27 +62,15 @@ namespace MORM.Apresentacao.Controls
         public static bool IsSelecao(this AbstractCampoTipo tipo)
         {
             return tipo.In(
-                AbstractCampoTipo.Selecao);
+                AbstractCampoTipo.IndividualComSelecao,
+                AbstractCampoTipo.IntervaloComSelecao);
         }
 
         public static bool IsTipagem(this AbstractCampoTipo tipo)
         {
             return tipo.In(
-                AbstractCampoTipo.Tipagem);
-        }
-
-        public static AbstractCampoTipo GetCampoTipoFiltro(this string campo)
-        {
-            var preFixo = campo.GetLista('_').GetParte(0);
-            switch (preFixo)
-            {
-                case "Cd_":
-                    return AbstractCampoTipo.Selecao;
-                case "Tp_":
-                    return AbstractCampoTipo.Tipagem;
-                default:
-                    return AbstractCampoTipo.Intervalo;
-            }
+                AbstractCampoTipo.IndividualComTipagem,
+                AbstractCampoTipo.IntervaloComTipagem);
         }
     }
 }

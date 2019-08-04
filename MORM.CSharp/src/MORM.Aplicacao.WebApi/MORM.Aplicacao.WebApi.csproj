@@ -104,6 +104,7 @@
   <ItemGroup>
     <Compile Include="BaseInstaller.cs" />
     <Compile Include="Controllers\nsAmbiente\AmbienteController.cs" />
+    <Compile Include="Controllers\nsEmpresa\GrupoEmpresaController.cs" />
     <Compile Include="Controllers\nsEmpresa\EmpresaController.cs" />
     <Compile Include="Controllers\nsTerminal\TerminalController.cs" />
     <Compile Include="Controllers\nsUsuario\UsuarioController.cs" />

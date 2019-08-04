@@ -1,4 +1,10 @@
-﻿using MORM.Apresentacao.ViewsModel;
+﻿using MORM.Apresentacao.Controls.Commands;
+using MORM.Apresentacao.Extensions;
+using MORM.Apresentacao.Views;
+using MORM.Apresentacao.ViewsModel;
+using MORM.Infra.CrossCutting;
+using System;
+using System.Collections;
 
 namespace MORM.Apresentacao.Controls.ViewsModel
 {
@@ -7,105 +13,165 @@ namespace MORM.Apresentacao.Controls.ViewsModel
         #region variaveis
         private AbstractCampoTipo _tipo;
         private AbstractEditTipo _editTipo;
-        private bool _isExibirBtn;
-        private bool _isExibirIni;
-        private bool _isExibirFin;
-        private bool _isExibirDes;
-        private bool _isExibirPes;
-        private bool _isExibirTip;
-        private string _descricao;
-        private int _tamanho;
-        private int _tamanhoBtn = 100;
-        private int _tamanhoIni = 100;
-        private int _tamanhoFin = 100;
-        private int _tamanhoDes = 100;
-        private int _tamanhoTip = 100;
-        private int _precisao;
-        private string _valorIni;
-        private string _valorFin;
-        private string _valorDes;
-        private string _valorTip;
+        private MetadataCampo _campo;
+        private CampoDef _campoBtn = new CampoDef { Tamanho = 150 };
+        private CampoDef _campoDes = new CampoDef { Tamanho = 100 };
+        private CampoDef _campoIni = new CampoDef { Tamanho = 100 };
+        private CampoDef _campoFin = new CampoDef { Tamanho = 100 };
+        private CampoDef _campoSel = new CampoDef { Tamanho = 300 };
+        private CampoDef _campoTip = new CampoDef { Tamanho = 300 };
         #endregion
 
         #region propriedades
-        private AbstractCampoTipo Tipo
+        public AbstractCampoTipo Tipo
         {
             get => _tipo;
             set
             {
                 SetField(ref _tipo, value);
-                IsExibirBtn = value.IsIndiv() || value.IsInter();
-                IsExibirIni = value.IsIndiv() || value.IsInter();
-                IsExibirFin = value.IsInter();
-                IsExibirDes = value.IsDescr();
-                IsExibirPes = value.IsPesq();
-                IsExibirTip = value.IsTipagem();
+                CampoBtn.IsExibir = value.IsIndiv() || value.IsInter();
+                CampoIni.IsExibir = value.IsIndiv() || value.IsInter();
+                CampoFin.IsExibir = value.IsInter();
+                CampoDes.IsExibir = value.IsDescr();
+                CampoSel.IsExibir = value.IsSelecao();
+                CampoTip.IsExibir = value.IsTipagem();
             }
         }
-        public bool IsExibirBtn { get => _isExibirBtn; set => SetField(ref _isExibirBtn, value); }
-        public bool IsExibirIni { get => _isExibirIni; set => SetField(ref _isExibirIni, value); }
-        public bool IsExibirFin { get => _isExibirFin; set => SetField(ref _isExibirFin, value); }
-        public bool IsExibirDes { get => _isExibirDes; set => SetField(ref _isExibirDes, value); }
-        public bool IsExibirPes { get => _isExibirPes; set => SetField(ref _isExibirPes, value); }
-        public bool IsExibirTip { get => _isExibirPes; set => SetField(ref _isExibirPes, value); }
-        public string Descricao
-        {
-            get => _descricao;
-            set => SetField(ref _descricao, value);
-        }
-        public int Tamanho
-        {
-            get => _tamanho;
-            set => SetField(ref _tamanho, value);
-        }
-        public int TamanhoBtn { get => _tamanhoBtn; set => SetField(ref _tamanhoBtn, value); }
-        public int TamanhoIni { get => _tamanhoIni; set => SetField(ref _tamanhoIni, value); }
-        public int TamanhoFin { get => _tamanhoFin; set => SetField(ref _tamanhoFin, value); }
-        public int TamanhoDes { get => _tamanhoDes; set => SetField(ref _tamanhoDes, value); }
-        public int TamanhoTip { get => _tamanhoTip; set => SetField(ref _tamanhoTip, value); }
-        public int Precisao
-        {
-            get => _precisao;
-            set => SetField(ref _precisao, value);
-        }
+
         public AbstractEditTipo EditTipo
         {
             get => _editTipo;
             set => SetField(ref _editTipo, value);
         }
-        public string ValorIni { get => _valorIni; set => SetField(ref _valorIni, value); }
-        public string ValorFin { get => _valorFin; set => SetField(ref _valorFin, value); }
-        public string ValorDes { get => _valorDes; set => SetField(ref _valorDes, value); }
-        public string ValorTip { get => _valorTip; set => SetField(ref _valorTip, value); }
+
+        public MetadataCampo Campo
+        {
+            get => _campo;
+            set
+            {
+                SetField(ref _campo, value);
+                if (_campo != null)
+                {
+                    Descricao = _campo.Descricao;
+                    Tamanho = _campo.Tamanho;
+                    Precisao = _campo.Precisao;
+                    EditTipo = _campo.Prop.GetEditTipo();
+                    Valores = _campo.Prop.GetValoresCampo();
+                    Classe = Valores == null ? _campo.Prop.GetClasseCampo() : null;
+                }
+            }
+        }
+
+        public string Descricao
+        {
+            get => CampoBtn.Descricao;
+            set => CampoBtn.Descricao = value;
+        }
+
+        public int Tamanho
+        {
+            get => CampoIni.Tamanho / 10;
+            set
+            {
+                CampoIni.Tamanho = value * 10;
+                CampoFin.Tamanho = value * 10;
+                CampoDes.Tamanho = value * 10 * 2;
+            }
+        }
+
+        public int Precisao
+        {
+            get => CampoIni.Precisao;
+            set
+            {
+                CampoIni.Precisao = value;
+                CampoFin.Precisao = value;
+            }
+        }
+
+        public IList Valores
+        {
+            get => CampoBtn.Valores;
+            set
+            {
+                CampoBtn.Valores = value;
+                CampoIni.Valores = value;
+                CampoFin.Valores = value;
+                CampoDes.Valores = value;
+            }
+        }
+
+        public Type Classe
+        {
+            get => CampoBtn.Classe;
+            set
+            {
+                CampoBtn.Classe = value;
+                CampoIni.Classe = value;
+                CampoFin.Classe = value;
+                CampoDes.Classe = value;
+            }
+        }
+
+        public CampoDef CampoBtn { get => _campoBtn; set => SetField(ref _campoBtn, value); }
+        public CampoDef CampoIni { get => _campoIni; set => SetField(ref _campoIni, value); }
+        public CampoDef CampoFin { get => _campoFin; set => SetField(ref _campoFin, value); }
+        public CampoDef CampoDes { get => _campoDes; set => SetField(ref _campoDes, value); }
+        public CampoDef CampoSel { get => _campoSel; set => SetField(ref _campoSel, value); }
+        public CampoDef CampoTip { get => _campoTip; set => SetField(ref _campoTip, value); }
         #endregion
 
         #region construtores
         public AbstractCampoViewModel()
         {
+            Selecionar = new SelecionarCampo();
         }
-        public AbstractCampoViewModel(AbstractCampoTipo tipo, 
-            string descricao = null, int tamanho = 0, int precisao = 0,
-            AbstractEditTipo? editTipo = null)
+
+        public AbstractCampoViewModel(AbstractCampoTipo tipo, MetadataCampo campo) 
+            : this()
         {
             Tipo = tipo;
-
-            if (descricao != null)
-                Descricao = descricao;
-            if (tamanho >= 0)
-                SetTamanho(tamanho);
-            if (precisao >= 0)
-                Precisao = precisao;
-            if (editTipo != null)
-                EditTipo = editTipo.Value;
+            Campo = campo;
         }
+        #endregion
 
-        private void SetTamanho(int tamanho)
+        #region metodos
+        public override void ConsultarChave()
         {
-            Tamanho = tamanho;
-            TamanhoIni = tamanho * 10;
-            TamanhoFin = tamanho * 10;
-            TamanhoDes = tamanho * 10;
         }
+
+        public override void BuscarDescricao()
+        {
+        }
+
+        public override void GerarIntervalo()
+        {
+        }
+
+        public override void SelecionarLista()
+        {
+            if (Classe != null)
+                SelecionarClasse();
+            else if (Valores != null)
+                SelecionarValores();
+        }
+
+        private void SelecionarClasse()
+        {
+            var typeFor = TypeForConvert
+                .GetTypeFor(typeof(AbstractViewModel<>), Classe);
+
+            var objeto = AbstractViewListaExtensions.Execute(typeFor, null);
+            if (objeto != null)
+                CampoIni.Valor = objeto;
+        }
+
+        private void SelecionarValores()
+        {
+            throw new NotImplementedException();
+        }
+
+
         #endregion
     }
 }

@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="BaseInstaller.cs" />
     <Compile Include="Interfaces\nsAmbiente\IMigracaoAppService.cs" />
+    <Compile Include="Interfaces\nsEmpresa\IGrupoEmpresaAppService.cs" />
     <Compile Include="Interfaces\nsEmpresa\IEmpresaAppService.cs" />
     <Compile Include="Interfaces\nsTerminal\ITerminalAppService.cs" />
     <Compile Include="Interfaces\nsUsuario\IUsuarioAppService.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="Services\nsAmbiente\LogAcessoAppService.cs" />
     <Compile Include="Services\nsAmbiente\PermissaoAppService.cs" />
     <Compile Include="Services\nsAmbiente\MigracaoAppService.cs" />
+    <Compile Include="Services\nsEmpresa\GrupoEmpresaAppService.cs" />
     <Compile Include="Services\nsEmpresa\EmpresaAppService.cs" />
     <Compile Include="Services\nsTerminal\TerminalAppService.cs" />
     <Compile Include="Services\nsUsuario\UsuarioAppService.cs" />

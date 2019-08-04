@@ -15,6 +15,7 @@ namespace MORM.Servico
             container.Register<IMigracaoAppService, MigracaoAppService>();
             container.Register<IPermissaoAppService, PermissaoAppService>();
             container.Register<IEmpresaAppService, EmpresaAppService>();
+            container.Register<IGrupoEmpresaAppService, GrupoEmpresaAppService>();
         }
     }
 }

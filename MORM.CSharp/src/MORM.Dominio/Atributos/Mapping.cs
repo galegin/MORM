@@ -25,7 +25,7 @@ namespace MORM.Dominio.Atributos
         Nul,
         Pwd
     }
-   
+
     public class CampoAttribute : Attribute
     {
         public CampoAttribute(string nome, CampoTipo tipo = CampoTipo.Nul, 

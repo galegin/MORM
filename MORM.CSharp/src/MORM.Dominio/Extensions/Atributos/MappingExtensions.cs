@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace MORM.Dominio.Extensions
 {
-    public static class MappingExtension
+    public static class MappingExtensions
     {
         //-- tabela
 
@@ -44,6 +44,19 @@ namespace MORM.Dominio.Extensions
         {
             return obj.GetType().GetCampos();
         }
+
+        // campo tipo
+
+        public static CampoTipo GetCampoTipo(this PropertyInfo prop)
+        {
+            var campo = prop.GetAttribute<CampoAttribute>();
+            return campo?.Tipo ?? CampoTipo.Nul;
+        }
+
+        public static bool IsKey(this CampoTipo tipo) => tipo.In(CampoTipo.Key);
+        public static bool IsReq(this CampoTipo tipo) => tipo.In(CampoTipo.Req);
+        public static bool IsNul(this CampoTipo tipo) => tipo.In(CampoTipo.Nul);
+        public static bool IsPwd(this CampoTipo tipo) => tipo.In(CampoTipo.Pwd);
 
         //-- relacao
 

@@ -1,5 +1,6 @@
 ﻿using MORM.Apresentacao.Controls;
 using MORM.Apresentacao.ViewsModel;
+using MORM.Dominio.Extensions;
 using System;
 using System.Windows.Controls;
 
@@ -52,21 +53,30 @@ namespace MORM.Apresentacao.Views
                 nameof(vm.IsExibirSelecionar),
             });
 
-            AddPainel(new StackPanel());
+            this.AddPainel(new StackPanel());
 
-            AddPainel(new AbstractTitulo("Manutenção de " + vm.GetTitulo()));
+            this.AddPainel(new AbstractTitulo("Manutenção de " + vm.GetTitulo()));
 
-            AddPainel(new AbstractOpcao(vm));
+            this.AddPainel(new AbstractOpcao(vm));
 
-            AddPainel(new AbstractManut(vm));
+            this.AddPainel(new AbstractManut(vm));
         }
 
         public void SelecionarLista()
         {
             var vm = DataContext as IAbstractViewModel;
-            var objeto = AbstractViewLista<TViewModel>.Execute(vm.Filtro);
+            var objeto = AbstractViewListaExtensions.Execute<TViewModel>(vm.Filtro);
             if (objeto != null)
                 vm.Model = objeto;
+        }
+
+        public void ConsultarChave()
+        {
+            var vm = DataContext as IAbstractViewModel;
+            if (vm.Model.IsChavePreenchida())
+            {
+                vm.ConsultarChave();
+            }
         }
         #endregion
     }

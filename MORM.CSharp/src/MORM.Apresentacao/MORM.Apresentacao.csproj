@@ -44,6 +44,7 @@
       <HintPath>..\packages\MaterialDesignThemes.2.5.1\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -86,6 +87,8 @@
     <Compile Include="Commands\Tela\RetornarTela.cs" />
     <Compile Include="Commands\Tela\SalvarTela.cs" />
     <Compile Include="Commands\Tela\SelecionarTela.cs" />
+    <Compile Include="Views\Extensions\AbstractViewCampoExtensions.cs" />
+    <Compile Include="Views\Extensions\AbstractViewPainelExtensions.cs" />
     <Compile Include="Comps\Interfaces\ITelaUtils.cs" />
     <Compile Include="Comps\TelaUtils.cs" />
     <Compile Include="Commands\Tela\VoltarTelaInicio.cs" />
@@ -134,6 +137,8 @@
     <Compile Include="Controls\AbstractTitulo.xaml.cs">
       <DependentUpon>AbstractTitulo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\CampoDef.cs" />
+    <Compile Include="Controls\Commands\SelecionarCampo.cs" />
     <Compile Include="Controls\ViewsModel\AbstractCampoViewModel.cs" />
     <Compile Include="Controls\ViewsModel\AbstractOpcaoViewModel.cs" />
     <Compile Include="Controls\ViewsModel\AbstractTituloViewModel.cs" />
@@ -199,6 +204,10 @@
     <Compile Include="Views\AbstractViewRelat.cs" />
     <Compile Include="Views\AbstractViewProc.cs" />
     <Compile Include="Views\AbstractView.cs" />
+    <Compile Include="Views\Extensions\ClasseCampoExtensions.cs" />
+    <Compile Include="Views\Extensions\MetadataExtensions.cs" />
+    <Compile Include="Views\Extensions\TipoCampoExtensions.cs" />
+    <Compile Include="Views\Extensions\ValoresCampoExtensions.cs" />
     <Page Include="Comps\LoadingBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

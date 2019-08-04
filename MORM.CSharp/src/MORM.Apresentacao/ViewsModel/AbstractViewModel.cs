@@ -254,6 +254,10 @@ namespace MORM.Apresentacao.ViewsModel
             Fechar.ExecuteCommand(this);
         }
 
+        public virtual void ConsultarChave() { }
+        public virtual void BuscarDescricao() { }
+        public virtual void GerarIntervalo() { }
+
         public virtual void SelecionarLista() => SelecionarAction?.Invoke();
 
         public virtual void ConfirmarTela() { }

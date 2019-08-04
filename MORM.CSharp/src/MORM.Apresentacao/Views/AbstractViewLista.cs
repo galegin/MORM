@@ -40,7 +40,7 @@ namespace MORM.Apresentacao.Views
         where TViewModel : IAbstractViewModel
     {
         #region construtores
-        private AbstractViewLista() : base(null)
+        public AbstractViewLista() : base(null)
         {
             CreateComps(Activator.CreateInstance<TViewModel>() as IAbstractViewModel);
         }
@@ -59,20 +59,26 @@ namespace MORM.Apresentacao.Views
                 nameof(vm.IsExibirRetornar),
             });
 
-            AddPainel(new DockPanel());
+            this.AddPainel(new DockPanel());
 
-            AddPainel(new AbstractTitulo("Lista de " + vm.GetTitulo()), dock: Dock.Top);
+            this.AddPainel(new AbstractTitulo("Lista de " + vm.GetTitulo()), dock: Dock.Top);
 
-            AddPainel(new AbstractOpcao(vm), dock: Dock.Top);
+            this.AddPainel(new AbstractOpcao(vm), dock: Dock.Top);
 
-            AddPainel(new AbstractBusca(vm), dock: Dock.Top);
+            this.AddPainel(new AbstractBusca(vm), dock: Dock.Top);
 
-            AddPainel(new AbstractLista(vm));
+            this.AddPainel(new AbstractLista(vm));
         }
+        #endregion
+    }
 
-        public static object Execute(object objeto)
+    #region extensions
+    public static class AbstractViewListaExtensions
+    {
+        public static object Execute(Type classe, object objeto)
         {
-            var viewLista = new AbstractViewLista<TViewModel>();
+            var viewLista = TypeForConvert
+                .GetObjectFor(typeof(AbstractViewLista<>), classe) as AbstractViewLista;
 
             if (TelaUtils.Instance.AbrirDialog(viewLista, isFullScreen: true) == true)
                 return null;
@@ -83,6 +89,12 @@ namespace MORM.Apresentacao.Views
 
             return ObjetoMapper.GetObjetoRetorno(vmLista.Model.GetType(), vmLista.Model);
         }
-        #endregion
+
+        public static object Execute<TViewModel>(object objeto)
+            where TViewModel : IAbstractViewModel
+        {
+            return Execute(typeof(TViewModel), objeto);
+        }
     }
+    #endregion
 }

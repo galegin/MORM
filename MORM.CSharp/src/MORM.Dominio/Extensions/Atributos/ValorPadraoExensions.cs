@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace MORM.Dominio.Extensions
 {
-    public static class ValorPadraoExension
+    public static class ValorPadraoExensions
     {
         //-- valor padrao
 

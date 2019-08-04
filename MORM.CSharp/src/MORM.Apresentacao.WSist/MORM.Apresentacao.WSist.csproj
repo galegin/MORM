@@ -73,6 +73,7 @@
     <Compile Include="Models\nsAmbiente\LogAcessoModel.cs" />
     <Compile Include="Models\nsAmbiente\MigracaoEntModel.cs" />
     <Compile Include="Models\nsAmbiente\PermissaoModel.cs" />
+    <Compile Include="Models\nsEmpresa\GrupoEmpresaModel.cs" />
     <Compile Include="Models\nsEmpresa\EmpresaModel.cs" />
     <Compile Include="Models\nsTerminal\TerminalModel.cs" />
     <Compile Include="Models\nsUsuario\UsuarioModel.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="ViewsModel\nsAmbiente\LogAcessoViewModel.cs" />
     <Compile Include="ViewsModel\nsAmbiente\MigracaoEntViewModel.cs" />
     <Compile Include="ViewsModel\nsAmbiente\PermissaoViewModel.cs" />
+    <Compile Include="ViewsModel\nsEmpresa\GrupoEmpresaViewModel.cs" />
     <Compile Include="ViewsModel\nsEmpresa\EmpresaViewModel.cs" />
     <Compile Include="ViewsModel\nsTerminal\TerminalViewModel.cs" />
     <Compile Include="ViewsModel\nsUsuario\UsuarioViewModel.cs" />
@@ -95,7 +97,9 @@
     <Compile Include="Views\nsAmbiente\LogAcessoView.cs" />
     <Compile Include="Views\nsAmbiente\MigracaoEntView.cs" />
     <Compile Include="Views\nsAmbiente\PermissaoView.cs" />
+    <Compile Include="Views\nsEmpresa\GrupoEmpresaView.cs" />
     <Compile Include="Views\nsEmpresa\EmpresaView.cs" />
+    <Compile Include="Views\nsEmpresa\Interfaces\IGrupoEmpresaView.cs" />
     <Compile Include="Views\nsEmpresa\Interfaces\IEmpresaView.cs" />
     <Compile Include="Views\nsTerminal\Interfaces\ITerminalView.cs" />
     <Compile Include="Views\nsTerminal\TerminalView.cs" />
