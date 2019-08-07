@@ -1,8 +1,6 @@
 ﻿using MORM.Apresentacao.Comps;
-using MORM.Apresentacao.Extensions;
 using MORM.Apresentacao.Views;
 using MORM.Apresentacao.ViewsModel;
-using MORM.Infra.CrossCutting;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -45,15 +43,16 @@ namespace MORM.Apresentacao.Controls
             //var style = FindResource("DataGridCellStyle") as Style;
 
             vm.ElementType
-                .GetProperties()
-                .Where(p => !p.IsIgnoreCampo())
+                .GetMetadata()
+                .Campos
+                .Where(p => !p.Prop.IsIgnoreCampo())
                 .ToList()
-                .ForEach(prop =>
+                .ForEach(campo =>
                 {
-                    var descricao = prop.GetDescricao().GetTraducao();
-                    var formato = prop.GetFormato();
+                    var descricao = campo.Descricao;
+                    var formato = campo.Formato;
 
-                    var bindingDataGridColumn = new Binding(prop.Name)
+                    var bindingDataGridColumn = new Binding(campo.Prop.Name)
                     {
                         StringFormat = (!string.IsNullOrWhiteSpace(formato) ? formato : null),
                     };

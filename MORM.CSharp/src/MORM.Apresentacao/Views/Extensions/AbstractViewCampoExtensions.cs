@@ -32,9 +32,9 @@ namespace MORM.Apresentacao.Views
 
         private static AbstractCampoTipo GetCampoSubTipoIndividual(this AbstractCampoTipo tipo, MetadataCampo campo)
         {
-            if (campo.Prop.IsValoresCampo())
+            if (campo.IsValores())
                 return AbstractCampoTipo.IndividualComTipagem;
-            else if (campo.Prop.IsClasseCampo() && !campo.Tipo.IsKey())
+            else if (campo.IsClasse() && !campo.IsKey())
                 return AbstractCampoTipo.IndividualComPesquisaEDescricao;
             else
                 return tipo;
@@ -42,9 +42,9 @@ namespace MORM.Apresentacao.Views
 
         private static AbstractCampoTipo GetCampoSubTipoIntervalo(this AbstractCampoTipo tipo, MetadataCampo campo)
         {
-            if (campo.Prop.IsValoresCampo())
+            if (campo.IsValores())
                 return AbstractCampoTipo.IntervaloComSelecao;
-            else if (campo.Prop.IsClasseCampo())
+            else if (campo.IsClasse())
                 return AbstractCampoTipo.IntervaloComPesquisa;
             else
                 return tipo;

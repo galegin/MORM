@@ -1,6 +1,5 @@
 ﻿using MORM.Apresentacao.Controls;
 using MORM.Apresentacao.ViewsModel;
-using MORM.Dominio.Extensions;
 using System;
 using System.Windows.Controls;
 
@@ -73,10 +72,7 @@ namespace MORM.Apresentacao.Views
         public void ConsultarChave()
         {
             var vm = DataContext as IAbstractViewModel;
-            if (vm.Model.IsChavePreenchida())
-            {
-                vm.ConsultarChave();
-            }
+            vm.ConsultarChave();
         }
         #endregion
     }

@@ -2,6 +2,7 @@
 using MORM.Apresentacao.Commands;
 using MORM.Apresentacao.Commands.Tela;
 using MORM.Apresentacao.Comps;
+using MORM.Apresentacao.Views;
 using MORM.Dominio.Extensions;
 using System;
 using System.Collections;
@@ -334,6 +335,13 @@ namespace MORM.Apresentacao.ViewsModel
             Filtro.ClearInstancePropOrFieldAll();
             Lista = null;
             Model.ClearInstancePropOrFieldAll();
+        }
+        public override void ConsultarChave()
+        {
+            if (this.IsModelChavePreenchida())
+            {
+                Consultar.ExecuteCommand(this);
+            }
         }
         #endregion
     }

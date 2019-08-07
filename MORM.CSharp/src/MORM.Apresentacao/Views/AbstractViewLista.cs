@@ -3,6 +3,7 @@ using MORM.Apresentacao.Controls;
 using MORM.Apresentacao.ViewsModel;
 using MORM.Infra.CrossCutting;
 using System;
+using System.Collections;
 using System.Windows.Controls;
 
 namespace MORM.Apresentacao.Views
@@ -75,7 +76,7 @@ namespace MORM.Apresentacao.Views
     #region extensions
     public static class AbstractViewListaExtensions
     {
-        public static object Execute(Type classe, object objeto)
+        public static object Execute(Type classe, object objeto, IList valores = null)
         {
             var viewLista = TypeForConvert
                 .GetObjectFor(typeof(AbstractViewLista<>), classe) as AbstractViewLista;

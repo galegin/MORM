@@ -9,6 +9,8 @@ namespace MORM.Apresentacao.Commands.Tela
         public override void Execute(object parameter)
         {
             var vm = parameter as IAbstractViewModel<TModel>;
+            if (!vm.IsExibirIncluir)
+                return;
             var connector = new AbstractIncluirConnector<TModel>();
             connector.Executar(vm.oModel);
         }

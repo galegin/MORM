@@ -88,6 +88,7 @@
     <Compile Include="Commands\Tela\SalvarTela.cs" />
     <Compile Include="Commands\Tela\SelecionarTela.cs" />
     <Compile Include="Views\Extensions\AbstractViewCampoExtensions.cs" />
+    <Compile Include="Views\Extensions\AbstractViewChaveExtensions.cs" />
     <Compile Include="Views\Extensions\AbstractViewPainelExtensions.cs" />
     <Compile Include="Comps\Interfaces\ITelaUtils.cs" />
     <Compile Include="Comps\TelaUtils.cs" />
@@ -116,10 +117,10 @@
     <Compile Include="Controls\AbstractCampo.xaml.cs">
       <DependentUpon>AbstractCampo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\AbstractCampoFormato.cs" />
     <Compile Include="Controls\AbstractCampoTipo.cs" />
     <Compile Include="Controls\AbstractCheck.cs" />
     <Compile Include="Controls\AbstractCombo.cs" />
-    <Compile Include="Controls\AbstractEditTipo.cs" />
     <Compile Include="Controls\AbstractLabel.cs" />
     <Compile Include="Controls\AbstractEdit.cs" />
     <Compile Include="Controls\AbstractLista.xaml.cs">
@@ -137,7 +138,7 @@
     <Compile Include="Controls\AbstractTitulo.xaml.cs">
       <DependentUpon>AbstractTitulo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\CampoDef.cs" />
+    <Compile Include="Controls\AbstractCampoDef.cs" />
     <Compile Include="Controls\Commands\SelecionarCampo.cs" />
     <Compile Include="Controls\ViewsModel\AbstractCampoViewModel.cs" />
     <Compile Include="Controls\ViewsModel\AbstractOpcaoViewModel.cs" />
@@ -165,7 +166,7 @@
       <DependentUpon>ucTituloSistema.xaml</DependentUpon>
     </Compile>
     <Compile Include="Menus\Interfaces\ITituloSistema.cs" />
-    <Compile Include="Extensions\PropertyInfoExtensions.cs" />
+    <Compile Include="Views\Extensions\PropertyInfoExtensions.cs" />
     <Compile Include="Interfaces\IMainWindow.cs" />
     <Compile Include="Menus\Interfaces\IMenuLateral.cs" />
     <Compile Include="Menus\Interfaces\IMenuOpcao.cs" />

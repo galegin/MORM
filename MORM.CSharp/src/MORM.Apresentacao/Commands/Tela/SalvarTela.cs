@@ -9,6 +9,8 @@ namespace MORM.Apresentacao.Commands.Tela
         public override void Execute(object parameter)
         {
             var vm = parameter as IAbstractViewModel<TModel>;
+            if (!vm.IsExibirSalvar)
+                return;
             var connector = new AbstractSalvarConnector<TModel>();
             connector.Executar(vm.oModel);
         }

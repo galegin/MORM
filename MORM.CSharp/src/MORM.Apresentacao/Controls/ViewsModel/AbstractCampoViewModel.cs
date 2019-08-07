@@ -1,7 +1,7 @@
 ﻿using MORM.Apresentacao.Controls.Commands;
-using MORM.Apresentacao.Extensions;
 using MORM.Apresentacao.Views;
 using MORM.Apresentacao.ViewsModel;
+using MORM.Dominio.Extensions;
 using MORM.Infra.CrossCutting;
 using System;
 using System.Collections;
@@ -11,18 +11,23 @@ namespace MORM.Apresentacao.Controls.ViewsModel
     public class AbstractCampoViewModel : AbstractViewModel
     {
         #region variaveis
+        private object _source;
+        private string _nomeBinding;
         private AbstractCampoTipo _tipo;
-        private AbstractEditTipo _editTipo;
+        private AbstractCampoFormato _formato;
         private MetadataCampo _campo;
-        private CampoDef _campoBtn = new CampoDef { Tamanho = 150 };
-        private CampoDef _campoDes = new CampoDef { Tamanho = 100 };
-        private CampoDef _campoIni = new CampoDef { Tamanho = 100 };
-        private CampoDef _campoFin = new CampoDef { Tamanho = 100 };
-        private CampoDef _campoSel = new CampoDef { Tamanho = 300 };
-        private CampoDef _campoTip = new CampoDef { Tamanho = 300 };
+        private AbstractCampoDef _campoBtn = new AbstractCampoDef { Tamanho = 150 };
+        private AbstractCampoDef _campoDes = new AbstractCampoDef { Tamanho = 100 };
+        private AbstractCampoDef _campoIni = new AbstractCampoDef { Tamanho = 100 };
+        private AbstractCampoDef _campoFin = new AbstractCampoDef { Tamanho = 100 };
+        private AbstractCampoDef _campoSel = new AbstractCampoDef { Tamanho = 300 };
+        private AbstractCampoDef _campoTip = new AbstractCampoDef { Tamanho = 300 };
         #endregion
 
         #region propriedades
+        public object Source { get => _source; set => SetField(ref _source, value); }
+        public string NomeBinding { get => _nomeBinding; set => SetField(ref _nomeBinding, value); }
+
         public AbstractCampoTipo Tipo
         {
             get => _tipo;
@@ -38,10 +43,10 @@ namespace MORM.Apresentacao.Controls.ViewsModel
             }
         }
 
-        public AbstractEditTipo EditTipo
+        public AbstractCampoFormato Formato
         {
-            get => _editTipo;
-            set => SetField(ref _editTipo, value);
+            get => _formato;
+            set => SetField(ref _formato, value);
         }
 
         public MetadataCampo Campo
@@ -55,9 +60,9 @@ namespace MORM.Apresentacao.Controls.ViewsModel
                     Descricao = _campo.Descricao;
                     Tamanho = _campo.Tamanho;
                     Precisao = _campo.Precisao;
-                    EditTipo = _campo.Prop.GetEditTipo();
-                    Valores = _campo.Prop.GetValoresCampo();
-                    Classe = Valores == null ? _campo.Prop.GetClasseCampo() : null;
+                    Formato = _campo.Prop.GetCampoFormato();
+                    Valores = _campo.Valores;
+                    Classe = Valores == null ? _campo.Classe : null;
                 }
             }
         }
@@ -113,12 +118,12 @@ namespace MORM.Apresentacao.Controls.ViewsModel
             }
         }
 
-        public CampoDef CampoBtn { get => _campoBtn; set => SetField(ref _campoBtn, value); }
-        public CampoDef CampoIni { get => _campoIni; set => SetField(ref _campoIni, value); }
-        public CampoDef CampoFin { get => _campoFin; set => SetField(ref _campoFin, value); }
-        public CampoDef CampoDes { get => _campoDes; set => SetField(ref _campoDes, value); }
-        public CampoDef CampoSel { get => _campoSel; set => SetField(ref _campoSel, value); }
-        public CampoDef CampoTip { get => _campoTip; set => SetField(ref _campoTip, value); }
+        public AbstractCampoDef CampoBtn { get => _campoBtn; set => SetField(ref _campoBtn, value); }
+        public AbstractCampoDef CampoIni { get => _campoIni; set => SetField(ref _campoIni, value); }
+        public AbstractCampoDef CampoFin { get => _campoFin; set => SetField(ref _campoFin, value); }
+        public AbstractCampoDef CampoDes { get => _campoDes; set => SetField(ref _campoDes, value); }
+        public AbstractCampoDef CampoSel { get => _campoSel; set => SetField(ref _campoSel, value); }
+        public AbstractCampoDef CampoTip { get => _campoTip; set => SetField(ref _campoTip, value); }
         #endregion
 
         #region construtores
@@ -127,19 +132,17 @@ namespace MORM.Apresentacao.Controls.ViewsModel
             Selecionar = new SelecionarCampo();
         }
 
-        public AbstractCampoViewModel(AbstractCampoTipo tipo, MetadataCampo campo) 
+        public AbstractCampoViewModel(object source, string nomeBinding, AbstractCampoTipo tipo, MetadataCampo campo) 
             : this()
         {
+            Source = source;
+            NomeBinding = nomeBinding;
             Tipo = tipo;
             Campo = campo;
         }
         #endregion
 
         #region metodos
-        public override void ConsultarChave()
-        {
-        }
-
         public override void BuscarDescricao()
         {
         }
@@ -151,27 +154,24 @@ namespace MORM.Apresentacao.Controls.ViewsModel
         public override void SelecionarLista()
         {
             if (Classe != null)
-                SelecionarClasse();
+                SelecionarLista(Classe, null);
             else if (Valores != null)
-                SelecionarValores();
+                SelecionarLista(typeof(ValorTipagem), Valores);
         }
 
-        private void SelecionarClasse()
+        private void SelecionarLista(Type classe, IList valores)
         {
             var typeFor = TypeForConvert
                 .GetTypeFor(typeof(AbstractViewModel<>), Classe);
 
-            var objeto = AbstractViewListaExtensions.Execute(typeFor, null);
+            var objeto = AbstractViewListaExtensions.Execute(typeFor, null, valores: Valores);
             if (objeto != null)
-                CampoIni.Valor = objeto;
+            {
+                var valor = objeto.GetInstancePropOrField(Campo.Prop.Name);
+                var model = (Source as IAbstractViewModel).GetInstancePropOrField(NomeBinding);
+                model.SetInstancePropOrField(Campo.Prop.Name, valor);
+            }
         }
-
-        private void SelecionarValores()
-        {
-            throw new NotImplementedException();
-        }
-
-
         #endregion
     }
 }

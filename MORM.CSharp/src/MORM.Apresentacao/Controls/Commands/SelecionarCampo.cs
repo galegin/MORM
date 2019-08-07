@@ -8,6 +8,8 @@ namespace MORM.Apresentacao.Controls.Commands
         public override void Execute(object parameter)
         {
             var vm = parameter as AbstractCampoViewModel;
+            if (!vm.IsExibirSelecionar)
+                return;
             vm.SelecionarLista();
         }
     }

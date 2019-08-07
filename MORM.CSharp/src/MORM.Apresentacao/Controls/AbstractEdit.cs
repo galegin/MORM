@@ -8,42 +8,42 @@ namespace MORM.Apresentacao.Controls
     public class AbstractEdit : TextBox
     {
         #region Variaveis
-        private AbstractEditTipo _tipo;
+        private AbstractCampoFormato _formato;
         #endregion
 
         #region Construtores
-        public AbstractEdit(AbstractEditTipo tipo)
+        public AbstractEdit(AbstractCampoFormato tipo)
         {
-            SetTipo(_tipo);
+            SetTipo(_formato);
             PreviewTextInput += AbstractEdit_PreviewTextInput;
             GotFocus += AbstractEdit_GotFocus;
             LostFocus += AbstractEdit_LostFocus;
         }
-        public AbstractEdit() : this(AbstractEditTipo.Texto)
+        public AbstractEdit() : this(AbstractCampoFormato.Texto)
         {
         }
         #endregion
 
         #region Properties
-        private void SetTipo(AbstractEditTipo tipo)
+        private void SetTipo(AbstractCampoFormato tipo)
         {
-            _tipo = tipo;
-            _regex = new Regex(_tipo.GetValidacao());
+            _formato = tipo;
+            _regex = new Regex(_formato.GetValidacao());
         }
-        public AbstractEditTipo Tipo
+        public AbstractCampoFormato Formato
         {
-            get => _tipo;
+            get => _formato;
             set => SetTipo(value);
         }
         new public string Text
         {
-            get => _tipo.GetFormatValue(base.Text);
-            set => base.Text = _tipo.GetFormatValue(value?.ToString());
+            get => _formato.GetFormatValue(base.Text);
+            set => base.Text = _formato.GetFormatValue(value?.ToString());
         }
         public object Value
         {
-            get => _tipo.GetValue(base.Text);
-            set => base.Text = _tipo.GetFormatValue(value?.ToString());
+            get => _formato.GetValue(base.Text);
+            set => base.Text = _formato.GetFormatValue(value?.ToString());
         }
         #endregion
 
@@ -66,7 +66,7 @@ namespace MORM.Apresentacao.Controls
         }
         protected void AbstractEdit_LostFocus(object sender, RoutedEventArgs e)
         {
-            var value = _tipo.GetFormatValue(base.Text);
+            var value = _formato.GetFormatValue(base.Text);
             base.Text = !string.IsNullOrWhiteSpace(value) ? value : string.Empty;
         }
         #endregion
@@ -76,52 +76,52 @@ namespace MORM.Apresentacao.Controls
 
     public class AbstractEditData : AbstractEdit
     {
-        public AbstractEditData() : base(AbstractEditTipo.Data) { }
+        public AbstractEditData() : base(AbstractCampoFormato.Data) { }
     }
 
     public class AbstractEditDataHora : AbstractEdit
     {
-        public AbstractEditDataHora() : base(AbstractEditTipo.DataHora) { }
+        public AbstractEditDataHora() : base(AbstractCampoFormato.DataHora) { }
     }
 
     public class AbstractEditDataHoraSegundo : AbstractEdit
     {
-        public AbstractEditDataHoraSegundo() : base(AbstractEditTipo.DataHoraSegundo) { }
+        public AbstractEditDataHoraSegundo() : base(AbstractCampoFormato.DataHoraSegundo) { }
     }
 
     public class AbstractEditDataRef : AbstractEdit
     {
-        public AbstractEditDataRef() : base(AbstractEditTipo.DataRef) { }
+        public AbstractEditDataRef() : base(AbstractCampoFormato.DataRef) { }
     }
 
     public class AbstractEditDataAno : AbstractEdit
     {
-        public AbstractEditDataAno() : base(AbstractEditTipo.DataAno) { }
+        public AbstractEditDataAno() : base(AbstractCampoFormato.DataAno) { }
     }
 
     public class AbstractEditHora : AbstractEdit
     {
-        public AbstractEditHora() : base(AbstractEditTipo.Hora) { }
+        public AbstractEditHora() : base(AbstractCampoFormato.Hora) { }
     }
 
     public class AbstractEditHoraSegundo : AbstractEdit
     {
-        public AbstractEditHoraSegundo() : base(AbstractEditTipo.HoraSegundo) { }
+        public AbstractEditHoraSegundo() : base(AbstractCampoFormato.HoraSegundo) { }
     }
 
     public class AbstractEditNumero : AbstractEdit
     {
-        public AbstractEditNumero() : base(AbstractEditTipo.Numero) { }
+        public AbstractEditNumero() : base(AbstractCampoFormato.Numero) { }
     }
 
     public class AbstractEditTexto : AbstractEdit
     {
-        public AbstractEditTexto() : base(AbstractEditTipo.Texto) { }
+        public AbstractEditTexto() : base(AbstractCampoFormato.Texto) { }
     }
 
     public class AbstractEditValor : AbstractEdit
     {
-        public AbstractEditValor() : base(AbstractEditTipo.Valor) { }
+        public AbstractEditValor() : base(AbstractCampoFormato.Valor) { }
     }
 
     #endregion 

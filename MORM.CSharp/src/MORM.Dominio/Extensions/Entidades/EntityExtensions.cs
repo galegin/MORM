@@ -7,18 +7,15 @@ namespace MORM.Dominio.Extensions
     {
         public static bool IsChavePreenchida(this object obj)
         {
-            var campos = obj.GetType().GetCampos();
-            var preenchido = campos.Any();
+            var camposKey = obj.GetType().GetCampos().Where(x => x.IsKey);
+            var preenchido = camposKey.Any();
 
-            foreach (var campo in campos)
+            foreach (var campo in camposKey)
             {
-                if (campo.IsKey)
+                var value = campo.OwnerProp.GetValue(obj);
+                if (value?.IsValueNull() != false)
                 {
-                    var value = campo.OwnerProp.GetValue(obj);
-                    if (value?.IsValueNull() != false)
-                    {
-                        preenchido = false;
-                    }
+                    preenchido = false;
                 }
             }
 

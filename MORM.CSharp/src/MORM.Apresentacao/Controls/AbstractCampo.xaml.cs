@@ -1,7 +1,7 @@
 ﻿using MORM.Apresentacao.Comps;
 using MORM.Apresentacao.Controls.ViewsModel;
-using MORM.Apresentacao.Extensions;
 using MORM.Apresentacao.Views;
+using MORM.Apresentacao.ViewsModel;
 using MORM.Dominio.Extensions;
 using System;
 using System.Reflection;
@@ -14,13 +14,13 @@ namespace MORM.Apresentacao.Controls
     public partial class AbstractCampo : AbstractUserControl
     {
         #region propriedades
-        private AbstractEditTipo EditTipo
+        private AbstractCampoFormato Formato
         {
-            get => EditIni.Tipo;
+            get => EditIni.Formato;
             set
             {
-                EditIni.Tipo = value;
-                EditFin.Tipo = value;
+                EditIni.Formato = value;
+                EditFin.Formato = value;
             }
         }
         #endregion
@@ -35,8 +35,8 @@ namespace MORM.Apresentacao.Controls
         public AbstractCampo(object source, string nomeBinding, AbstractCampoTipo tipo, MetadataCampo campo)
         {
             InitializeComponent();
-            DataContext = new AbstractCampoViewModel(tipo, campo);
-            EditTipo = campo.Prop.GetEditTipo();
+            DataContext = new AbstractCampoViewModel(source, nomeBinding, tipo, campo);
+            Formato = campo.Prop.GetCampoFormato();
             SetBindingCampo(campo.Prop, source, nomeBinding);
         }
         #endregion
@@ -54,7 +54,8 @@ namespace MORM.Apresentacao.Controls
 
             var vm = DataContext as AbstractCampoViewModel;
             vm.SelecionarLista();
-            vm.BuscarDescricao();
+
+            Edit_LostFocus(sender, e);
         }
         #endregion
 
@@ -65,9 +66,16 @@ namespace MORM.Apresentacao.Controls
                 return;
 
             var vm = DataContext as AbstractCampoViewModel;
-            vm.ConsultarChave();
-            vm.BuscarDescricao();
-            vm.GerarIntervalo();
+            if (vm.Campo.IsKey())
+            {
+                var vms = vm.Source as IAbstractViewModel;
+                vms?.ConsultarChave();
+            }
+            else
+            {
+                vm.BuscarDescricao();
+                vm.GerarIntervalo();
+            }
         }
         #endregion
 
