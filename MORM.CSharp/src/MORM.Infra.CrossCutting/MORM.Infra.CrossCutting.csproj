@@ -57,12 +57,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assemblies\CampoAssembly.cs" />
+    <Compile Include="Assemblies\CompilerAssembly.cs" />
+    <Compile Include="Assemblies\DynamicAssembly.cs" />
     <Compile Include="Assemblies\FilesAssembly.cs" />
     <Compile Include="Assemblies\ClassesAssembly.cs" />
     <Compile Include="Assemblies\FromAssembly.cs" />
     <Compile Include="Assemblies\InstallerAssembly.cs" />
     <Compile Include="Assemblies\MigrationAssembly.cs" />
     <Compile Include="Assemblies\ServiceAssembly.cs" />
+    <Compile Include="Assemblies\TypeBuilderAssembly.cs" />
     <Compile Include="BaseInstaller.cs" />
     <Compile Include="Classes\ClasseExecute.cs" />
     <Compile Include="Classes\ObjetoExecute.cs" />

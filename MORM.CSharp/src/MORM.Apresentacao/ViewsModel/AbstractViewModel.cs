@@ -4,6 +4,7 @@ using MORM.Apresentacao.Commands.Tela;
 using MORM.Apresentacao.Comps;
 using MORM.Apresentacao.Views;
 using MORM.Dominio.Extensions;
+using MORM.Infra.CrossCutting;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -297,7 +298,9 @@ namespace MORM.Apresentacao.ViewsModel
         #region construtores
         public AbstractViewModel() : base()
         {
-            Filtro = Activator.CreateInstance<TModel>();
+            //Filtro = Activator.CreateInstance<TModel>();
+            //Filtro = CompilerAssembly.GetClasse(typeof(TModel));
+            Filtro = DynamicAssembly.GetTypeDynamic(typeof(TModel));
             Lista = new List<TModel>();
             Model = Activator.CreateInstance<TModel>();
 

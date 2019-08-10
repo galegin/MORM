@@ -15,16 +15,21 @@ namespace MORM.Apresentacao.Controls
             InitializeComponent();
         }
 
-        public AbstractLista(IAbstractViewModel vm) : this()
+        public AbstractLista(IAbstractViewModel vm, object filtro = null) : this()
         {
             CreateComps(vm);
         }
 
-        private void CreateComps(IAbstractViewModel vm)
+        private void CreateComps(IAbstractViewModel vm, object filtro = null)
         {
             DataContext = vm;
 
             this.AddPainel(new DockPanel());
+
+            if (filtro != null)
+            {
+                this.AddPainel(filtro, dock: Dock.Top);
+            }
 
             var bindingLista = new Binding(nameof(vm.Lista)) { Source = vm };
             var bindingModel = new Binding(nameof(vm.Model)) { Source = vm };

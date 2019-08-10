@@ -15,6 +15,7 @@ namespace MORM.Apresentacao.Controls
         private object _valor;
         private IList _valores; // valores para combo
         private Type _classe; // classe para extrangeira
+        private Type _tipo; // tipo de dado do campo
         #endregion
 
         #region propriedades
@@ -26,6 +27,7 @@ namespace MORM.Apresentacao.Controls
         public object Valor { get => _valor; set => SetField(ref _valor, value); }
         public IList Valores { get => _valores; set => SetField(ref _valores, value); }
         public Type Classe { get => _classe; set => SetField(ref _classe, value); }
+        public Type Tipo { get => _tipo; set => SetField(ref _tipo, value); }
         #endregion
 
         #region comandos

@@ -19,7 +19,6 @@ namespace MORM.Apresentacao.WSist.Menus
             listaDeMenuOpcao.Add(GetMenuEmpresa());
             listaDeMenuOpcao.Add(GetMenuTerminal());
             listaDeMenuOpcao.Add(GetMenuUsuario());
-            listaDeMenuOpcao.Add(GetMenuConfiguracao());
             listaDeMenuOpcao.Add(GetMenuSair());
 
             return listaDeMenuOpcao;
@@ -51,7 +50,6 @@ namespace MORM.Apresentacao.WSist.Menus
             return menu;
         }
 
-
         private IMenuOpcao GetMenuTerminal()
         {
             var subMenu = new List<IMenuOpcao>
@@ -71,19 +69,6 @@ namespace MORM.Apresentacao.WSist.Menus
             };
 
             var menu = new MenuOpcaoDescr(MenuOpcaoTipo.SubMenu, "MenuUsuario", "Usuario", subMenu);
-            return menu;
-        }
-
-
-        private IMenuOpcao GetMenuConfiguracao()
-        {
-            var subMenu = new List<IMenuOpcao>
-            {
-                new MenuOpcaoDescr(MenuOpcaoTipo.Opcao, "MenuConfigEmpresa", "Empresa"),
-                new MenuOpcaoDescr(MenuOpcaoTipo.Opcao, "MenuConfigUsuario", "Usuario"),
-            };
-
-            var menu = new MenuOpcaoDescr(MenuOpcaoTipo.SubMenu, "MenuConfig", "Configuração", subMenu);
             return menu;
         }
 

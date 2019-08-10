@@ -47,6 +47,8 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -87,8 +89,18 @@
     <Compile Include="Commands\Tela\RetornarTela.cs" />
     <Compile Include="Commands\Tela\SalvarTela.cs" />
     <Compile Include="Commands\Tela\SelecionarTela.cs" />
+    <Compile Include="Controls\AbstractCampoFiltro.cs" />
+    <Compile Include="Controls\AbstractCorpo.xaml.cs">
+      <DependentUpon>AbstractCorpo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AbstractViewItem.cs" />
+    <Compile Include="Views\AbstractViewTipo.cs" />
     <Compile Include="Views\Extensions\AbstractViewCampoExtensions.cs" />
     <Compile Include="Views\Extensions\AbstractViewChaveExtensions.cs" />
+    <Compile Include="Views\Extensions\AbstractViewListaExtensions.cs" />
+    <Compile Include="Views\Extensions\AbstractViewManutExtensions.cs" />
+    <Compile Include="Views\Extensions\AbstractViewControlExtensions.cs" />
+    <Compile Include="Views\Extensions\AbstractViewOpcaoExtensions.cs" />
     <Compile Include="Views\Extensions\AbstractViewPainelExtensions.cs" />
     <Compile Include="Comps\Interfaces\ITelaUtils.cs" />
     <Compile Include="Comps\TelaUtils.cs" />
@@ -234,6 +246,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\AbstractManut.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\AbstractCorpo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

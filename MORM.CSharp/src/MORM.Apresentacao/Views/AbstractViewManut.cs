@@ -1,6 +1,8 @@
 ﻿using MORM.Apresentacao.Controls;
 using MORM.Apresentacao.ViewsModel;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Controls;
 
 namespace MORM.Apresentacao.Views
@@ -28,6 +30,13 @@ namespace MORM.Apresentacao.Views
     public class AbstractViewManut<TViewModel> : AbstractViewManut
         where TViewModel : IAbstractViewModel
     {
+        #region variaveis
+        private AbstractViewTipo _tipo = AbstractViewTipo.ListaManutencao;
+        private const string _consulta = "Consulta";
+        private const string _cadastro = "Cadastro";
+        private const string _filtro = "Filtro";
+        #endregion
+
         #region construtores
         public AbstractViewManut() : base(null)
         {
@@ -40,39 +49,50 @@ namespace MORM.Apresentacao.Views
         {
             SetDataContext(vm);
 
-            vm.SelecionarAction = () => SelecionarLista();
+            this.AddPainel(new DockPanel());
 
-            vm.SetOpcoes(new[]
+            this.AddPainel(new AbstractTitulo(_tipo.GetDescription() + " de " + vm.GetTitulo()), dock: Dock.Top);
+
+            this.AddPainel(new AbstractOpcao(vm), dock: Dock.Top);
+
+            this.AddPainel(new AbstractCorpo(GetUserControls(vm), OnHabilitarOpcao));
+        }
+
+        private void OnHabilitarOpcao(object sender, SelectionChangedEventArgs e)
+        {
+            var parameter = GetParameter(sender);
+
+            var vm = DataContext as IAbstractViewModel;
+
+            vm.OnHabilitarOpcao(
+                isExibirConsulta: _tipo.IsConsulta() && _consulta.Equals(parameter),
+                isExibirCadastro: _tipo.IsCadastro() && _cadastro.Equals(parameter),
+                isExibirFiltro: _tipo.IsFiltro() && _filtro.Equals(parameter)
+                );
+        }
+
+        private object GetParameter(object sender)
+        {
+            var tabControl = sender as TabControl;
+            var tabItem = tabControl?.SelectedItem as TabItem;
+            return tabItem?.Header ??
+                (_tipo.IsConsulta() ? _consulta : null) ??
+                (_tipo.IsCadastro() ? _cadastro : null) ??
+                (_tipo.IsFiltro() ? _filtro : null)
+                ;
+        }
+
+        private List<AbstractViewItem> GetUserControls(IAbstractViewModel vm)
+        {
+            return new List<AbstractViewItem>
             {
-                nameof(vm.IsExibirVoltar),
-                nameof(vm.IsExibirLimpar),
-                nameof(vm.IsExibirConsultar),
-                nameof(vm.IsExibirSalvar),
-                nameof(vm.IsExibirExcluir),
-                nameof(vm.IsExibirSelecionar),
-            });
-
-            this.AddPainel(new StackPanel());
-
-            this.AddPainel(new AbstractTitulo("Manutenção de " + vm.GetTitulo()));
-
-            this.AddPainel(new AbstractOpcao(vm));
-
-            this.AddPainel(new AbstractManut(vm));
-        }
-
-        public void SelecionarLista()
-        {
-            var vm = DataContext as IAbstractViewModel;
-            var objeto = AbstractViewListaExtensions.Execute<TViewModel>(vm.Filtro);
-            if (objeto != null)
-                vm.Model = objeto;
-        }
-
-        public void ConsultarChave()
-        {
-            var vm = DataContext as IAbstractViewModel;
-            vm.ConsultarChave();
+                _tipo.IsConsulta() ? new AbstractViewItem(_consulta, new AbstractBusca(vm), new AbstractLista(vm)) : null,
+                _tipo.IsCadastro() ? new AbstractViewItem(_cadastro, new AbstractManut(vm)) : null,
+                _tipo.IsFiltro() ? new AbstractViewItem(_filtro, new AbstractFiltro(vm)) : null,
+            }
+            .Where(x => x != null)
+            .ToList()
+            ;
         }
         #endregion
     }

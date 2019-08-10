@@ -31,20 +31,20 @@ namespace MORM.Apresentacao.Views
             return painel;
         }
 
+        private static object AddFrameworkElement(this UserControl userControl, UIElement painel, Panel parent)
+        {
+            if (painel is FrameworkElement)
+                (painel as FrameworkElement).Margin = new Thickness(0, 0, 0, 10);
+            parent.Children.Add(painel);
+            return painel;
+        }
+
         private static object AddScrollViewer(this UserControl userControl, UIElement painel, ScrollViewer parent)
         {
             if (parent.Content == null)
                 parent.Content = new StackPanel();
             if (parent.Content is StackPanel)
                 return userControl.AddStackPanel(painel, parent.Content as StackPanel);
-            return painel;
-        }
-
-        private static object AddFrameworkElement(this UserControl userControl, UIElement painel, Panel parent)
-        {
-            if (painel is FrameworkElement)
-                (painel as FrameworkElement).Margin = new Thickness(0, 0, 0, 10);
-            parent.Children.Add(painel);
             return painel;
         }
 

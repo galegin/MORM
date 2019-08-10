@@ -1,4 +1,5 @@
-﻿using MORM.Apresentacao.Controls.Commands;
+﻿using MORM.Apresentacao.Connectors;
+using MORM.Apresentacao.Controls.Commands;
 using MORM.Apresentacao.Views;
 using MORM.Apresentacao.ViewsModel;
 using MORM.Dominio.Extensions;
@@ -145,10 +146,30 @@ namespace MORM.Apresentacao.Controls.ViewsModel
         #region metodos
         public override void BuscarDescricao()
         {
+            var model = Source.GetInstancePropOrField(NomeBinding);
+
+            var valorCod = model.GetInstancePropOrField(CampoIni.Codigo);
+
+            var objeto = Activator.CreateInstance(CampoIni.Classe);
+            objeto.SetInstancePropOrField(CampoIni.Codigo, valorCod);
+
+            var connector = CampoIni.Classe.GetConsultarConnector();
+            var retorno = ObjetoExecute.Execute(connector, "Execute", objeto);
+            var valorDes = retorno.GetInstancePropOrField(CampoDes.Codigo);
+
+            model.SetInstancePropOrField(CampoDes.Codigo, valorDes);
         }
 
         public override void GerarIntervalo()
         {
+            var model = Source.GetInstancePropOrField(NomeBinding);
+
+            var campoFiltro = CampoIni.Tipo.GetCampoFiltro();
+            campoFiltro.SetInstancePropOrField("ValorIni", model.GetInstancePropOrField(CampoIni.Codigo));
+            campoFiltro.SetInstancePropOrField("ValorFin", model.GetInstancePropOrField(CampoFin.Codigo));
+            campoFiltro.SetInstancePropOrField("ValorSel", model.GetInstancePropOrField(CampoSel.Codigo));
+
+            model.SetInstancePropOrField("ValorDes", campoFiltro.GetInstancePropOrField("ValorDes"));
         }
 
         public override void SelecionarLista()

@@ -1,9 +1,6 @@
-﻿using MORM.Apresentacao.Comps;
-using MORM.Apresentacao.Controls;
+﻿using MORM.Apresentacao.Controls;
 using MORM.Apresentacao.ViewsModel;
-using MORM.Infra.CrossCutting;
 using System;
-using System.Collections;
 using System.Windows.Controls;
 
 namespace MORM.Apresentacao.Views
@@ -72,30 +69,4 @@ namespace MORM.Apresentacao.Views
         }
         #endregion
     }
-
-    #region extensions
-    public static class AbstractViewListaExtensions
-    {
-        public static object Execute(Type classe, object objeto, IList valores = null)
-        {
-            var viewLista = TypeForConvert
-                .GetObjectFor(typeof(AbstractViewLista<>), classe) as AbstractViewLista;
-
-            if (TelaUtils.Instance.AbrirDialog(viewLista, isFullScreen: true) == true)
-                return null;
-
-            var vmLista = viewLista.DataContext as IAbstractViewModel;
-            if (!vmLista.IsConfirmado)
-                return null;
-
-            return ObjetoMapper.GetObjetoRetorno(vmLista.Model.GetType(), vmLista.Model);
-        }
-
-        public static object Execute<TViewModel>(object objeto)
-            where TViewModel : IAbstractViewModel
-        {
-            return Execute(typeof(TViewModel), objeto);
-        }
-    }
-    #endregion
 }
