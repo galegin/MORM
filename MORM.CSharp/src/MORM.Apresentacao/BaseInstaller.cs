@@ -3,6 +3,7 @@ using MORM.Apresentacao.Classes;
 using MORM.Apresentacao.Menus;
 using MORM.Apresentacao.Commands;
 using MORM.Apresentacao.Mensagens;
+using MORM.Infra.CrossCutting;
 
 namespace MORM.Apresentacao
 {

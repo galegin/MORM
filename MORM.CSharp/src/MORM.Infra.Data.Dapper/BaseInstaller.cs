@@ -1,4 +1,4 @@
-﻿using MORM.Dominio.Interfaces;
+﻿using MORM.Infra.CrossCutting;
 using MORM.Infra.Data.Dapper.Context;
 
 namespace MORM.Infra.Data.Dapper

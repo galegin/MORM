@@ -96,7 +96,7 @@ namespace MORM.Infra.Data.Migrations
             }
             catch (Exception ex)
             {
-                Logger.ErroException(ex);
+                Logger.Erro("erro create", ex: ex);
                 throw;
             }
         }
@@ -113,7 +113,7 @@ namespace MORM.Infra.Data.Migrations
                 }
                 catch (Exception ex)
                 {
-                    Logger.ErroException(ex);
+                    Logger.Erro("erro alter", ex: ex);
                 }
             }
         }
@@ -145,7 +145,7 @@ namespace MORM.Infra.Data.Migrations
                 }
                 catch (Exception ex)
                 {
-                    Logger.ErroException(ex);
+                    Logger.Erro("erro drop foreing", ex: ex);
                 }
             }
         }
@@ -160,7 +160,7 @@ namespace MORM.Infra.Data.Migrations
                 }
                 catch (Exception ex)
                 {
-                    Logger.ErroException(ex);
+                    Logger.Erro("erro create foreigns", ex: ex);
                 }
             }
         }

@@ -1,5 +1,5 @@
 ﻿using MORM.Apresentacao.Comps.Interfaces;
-using MORM.Dominio.Interfaces;
+using MORM.Infra.CrossCutting;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;

@@ -21,7 +21,7 @@ namespace MORM.Aplicacao.Controllers
         {
             var message = $"Message: {ex.Message} / StackTrace: {ex.StackTrace}";
 
-            Logger.ErroMensagem(message);
+            Logger.Erro($"Message: {ex.Message}", ex: ex);
 
             return CreateMessage(message);
         }

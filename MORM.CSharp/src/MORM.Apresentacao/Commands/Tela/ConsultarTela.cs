@@ -1,6 +1,7 @@
 ﻿using MORM.Apresentacao.Connectors;
+using MORM.Apresentacao.Views;
 using MORM.Apresentacao.ViewsModel;
-using MORM.Dominio.Extensions;
+using MORM.Infra.CrossCutting;
 
 namespace MORM.Apresentacao.Commands.Tela
 {
@@ -14,7 +15,8 @@ namespace MORM.Apresentacao.Commands.Tela
                 return;
             var connector = new AbstractConsultarConnector<TModel>();
             var retorno = connector.Executar(vm.oModel);
-            vm.Model.CloneInstancePropOrFieldAll(retorno);
+            if (retorno.IsModelChavePreenchida())
+                vm.Model.CloneInstancePropOrFieldAll(retorno);
         }
     }
 }

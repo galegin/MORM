@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
 
@@ -7,21 +8,32 @@ namespace MORM.Infra.CrossCutting
 {
     public class TypeBuilderAssembly
     {
-        public static void CreateNewObject()
+        public static object CreateNewObject(Type typePar = null)
         {
-            var myType = CompileResultType();
+            var myType = CompileResultType(typePar);
             var myObject = Activator.CreateInstance(myType);
+            return myObject;
         }
 
-        public static Type CompileResultType()
+        public static Type CompileResultType(Type typePar = null)
         {
             TypeBuilder tb = GetTypeBuilder();
-            ConstructorBuilder constructor = tb.DefineDefaultConstructor(MethodAttributes.Public | MethodAttributes.SpecialName | MethodAttributes.RTSpecialName);
-            List<Field> yourListOfFields = null;
+            ConstructorBuilder constructor = tb.DefineDefaultConstructor(
+                MethodAttributes.Public | 
+                MethodAttributes.SpecialName | 
+                MethodAttributes.RTSpecialName);
+
+            List<Field> fields = 
+                typePar != null ? typePar
+                    .GetProperties()
+                    .ToList()
+                    .ConvertAll(prop => new Field(prop.Name, prop.PropertyType)) : null;
 
             // NOTE: assuming your list contains Field objects with fields FieldName(string) and FieldType(Type)
-            foreach (var field in yourListOfFields)
+            fields.ForEach(field => 
+            {
                 CreateProperty(tb, field.FieldName, field.FieldType);
+            });
 
             Type objectType = tb.CreateType();
             return objectType;
@@ -31,7 +43,8 @@ namespace MORM.Infra.CrossCutting
         {
             var typeSignature = "MyDynamicType";
             var an = new AssemblyName(typeSignature);
-            AssemblyBuilder assemblyBuilder = AppDomain.CurrentDomain.DefineDynamicAssembly(an, AssemblyBuilderAccess.Run);
+            AssemblyBuilder assemblyBuilder = AppDomain.CurrentDomain
+                .DefineDynamicAssembly(an, AssemblyBuilderAccess.Run);
             ModuleBuilder moduleBuilder = assemblyBuilder.DefineDynamicModule("MainModule");
             TypeBuilder tb = moduleBuilder.DefineType(typeSignature,
                     TypeAttributes.Public |
@@ -48,10 +61,15 @@ namespace MORM.Infra.CrossCutting
         {
             FieldBuilder fieldBuilder = tb.DefineField("_" + propertyName, propertyType, FieldAttributes.Private);
 
-            PropertyBuilder propertyBuilder = tb.DefineProperty(propertyName, PropertyAttributes.HasDefault, propertyType, null);
-            MethodBuilder getPropMthdBldr = tb.DefineMethod("get_" + propertyName, MethodAttributes.Public | MethodAttributes.SpecialName | MethodAttributes.HideBySig, propertyType, Type.EmptyTypes);
-            ILGenerator getIl = getPropMthdBldr.GetILGenerator();
+            PropertyBuilder propertyBuilder = tb.DefineProperty(propertyName, 
+                PropertyAttributes.HasDefault, propertyType, null);
+            MethodBuilder getPropMthdBldr = tb.DefineMethod("get_" + propertyName, 
+                MethodAttributes.Public | 
+                MethodAttributes.SpecialName | 
+                MethodAttributes.HideBySig, 
+                propertyType, Type.EmptyTypes);
 
+            ILGenerator getIl = getPropMthdBldr.GetILGenerator();
             getIl.Emit(OpCodes.Ldarg_0);
             getIl.Emit(OpCodes.Ldfld, fieldBuilder);
             getIl.Emit(OpCodes.Ret);

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
 using System.Runtime.CompilerServices;
@@ -8,196 +7,114 @@ namespace MORM.Infra.CrossCutting
 {
     public class Logger
     {
-        protected enum TipoLog
-        {
-            Debug,
-            Info,
-            Erro
-        }
-
         #region variaveis
-        private static string _arqLog;
-
-        private static bool _inArqLog =
-            (ConfigurationManager.AppSettings[nameof(_inArqLog)] ?? "true") == "true";
-        private static bool _inDebug =
-            (ConfigurationManager.AppSettings[nameof(_inDebug)] ?? "false") == "true";
-        private static bool _inErro =
-            (ConfigurationManager.AppSettings[nameof(_inErro)] ?? "true") == "true";
-        private static bool _inInfo =
-            (ConfigurationManager.AppSettings[nameof(_inInfo)] ?? "false") == "true";
+        private static readonly object FileLock = new object();
+        private static bool _inArqLog;
+        private static bool _inDebug;
+        private static bool _inErro;
+        private static bool _inInfo;
         #endregion
 
         #region propriedades
-        public static string PrgLog { get; set; } = "logging";
-        public static DateTime DatLog { get; set; } = DateTime.Today;
+        public static string ArquivoLog => $"logging.{DateTime.Now:yyyy-MM-dd}.xml";
+        public static string PastaLog => CaminhoPadrao.GetPathSubPasta("log", isCreateSubPasta: true);
+        public static string CaminhoLog => Path.Combine(PastaLog, ArquivoLog);
+        public static string DadosCabecalho;
+        #endregion
 
-        public static string ArqLog
+        #region Construtores
+        static Logger()
         {
-            get
-            {
-                if (string.IsNullOrWhiteSpace(_arqLog))
-                    _arqLog = Path.Combine(GetDirLog(), PrgLog + "." + DateTime.Today.ToString("yyyy.MM.dd") + ".xml");
-                return _arqLog;
-            }
-            set { _arqLog = value; }
+            _inArqLog = (ConfigurationManager.AppSettings[nameof(_inArqLog)] ?? "true") == "true";
+            _inDebug = (ConfigurationManager.AppSettings[nameof(_inDebug)] ?? "false") == "true";
+            _inErro = (ConfigurationManager.AppSettings[nameof(_inErro)] ?? "true") == "true";
+            _inInfo = (ConfigurationManager.AppSettings[nameof(_inInfo)] ?? "false") == "true";
         }
         #endregion
 
         #region metodos
-        private static string GetDirLog()
-        {
-            var _listDirLog = new List<string>
-            {
-                ConfigurationManager.AppSettings["dirlog"],
-                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Log"),
-                "c:\\temp\\",
-            };
-
-            foreach (var dirLog in _listDirLog)
-                if (!string.IsNullOrWhiteSpace(dirLog) && Directory.Exists(dirLog))
-                    return dirLog;
-
-            return "c:\\";
-        }
-
-        public static void CreateDirLog()
-        {
-            var dirLog = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Log");
-            if (!Directory.Exists(dirLog))
-                Directory.CreateDirectory(dirLog);
-        }
-
-        // validar tipo
-
-        private static bool ValidarTipo(TipoLog tipo)
-        {
-            return (tipo == TipoLog.Debug && _inDebug) || (tipo == TipoLog.Erro && _inErro) ||
-                (tipo == TipoLog.Info && _inInfo);
-        }
 
         // log
 
-        protected static void Log(TipoLog tipo, string metodo, string message)
+        protected static void Log(string tipo, string metodo, string message, string gerador, Exception ex = null)
         {
-            if (!ValidarTipo(tipo))
-                return;
-            
-            // gerar novo arquivo quando virada do dia
-            if (DatLog != DateTime.Today)
+            var data = DateTime.Now;
+
+            var exception = string.Empty;
+
+            while (ex != null)
             {
-                _arqLog = null;
-                DatLog = DateTime.Today;
+                exception += (!string.IsNullOrWhiteSpace(exception) ? " / " : null) + 
+                    $"{ex.Message} / Trace: {ex.StackTrace}";
+                ex = ex.InnerException;
             }
 
-            var conteudo =
+            var mensagemArq =
                 "<log>" + "\r\n" +
-                "<data>" + DateTime.Now.ToString() + "</data>" + "\r\n" +
-                "<tipo>" + tipo.ToString() + "</tipo>" + "\r\n" +
+                "<data>" + data.ToString() + "</data>" + "\r\n" +
+                "<tipo>" + tipo + "</tipo>" + "\r\n" +
                 "<metodo>" + metodo + "</metodo>" + "\r\n" +
                 "<message>" + message + "</message>" + "\r\n" +
+                "<gerador>" + gerador + "</gerador>" + "\r\n" +
+                "<exception>" + exception + "</exception>" + "\r\n" +
                 "</log>" + "\r\n";
 
             if (_inArqLog)
-            {
-                StreamWriter vWriter = new StreamWriter(ArqLog, true);
-                vWriter.WriteLine(conteudo);
-                vWriter.Flush();
-                vWriter.Close();
-            }
+                try
+                {
+                    if (!File.Exists(CaminhoLog))
+                    {
+                        Directory.CreateDirectory(PastaLog);
+                        if (!string.IsNullOrWhiteSpace(DadosCabecalho))
+                            File.AppendAllText(CaminhoLog, DadosCabecalho);
+                    }
 
-            LoggerMem.AddMensagem(conteudo);
+                    lock (FileLock)
+                        File.AppendAllText(CaminhoLog, mensagemArq);
+                }
+                catch (Exception exx)
+                {
+                    System.Diagnostics.Debug.WriteLine(exx);
+                }
+
+            var mensagemMem =
+                "[ " + data.ToString() + " ]" + "\r\n" +
+                "Tipo: " + tipo + " / " + 
+                "Metodo: " + metodo + "\r\n" +
+                "Message: " + message + "\r\n" ;
+
+            LoggerMem.AddMensagem(mensagemMem);
         }
 
         // debug
 
-        public static void Debug(string metodo, string message)
+        public static void Debug(string message,
+            [CallerMemberName] string metodo = "", [CallerFilePath] string filePath = "", [CallerLineNumber] int line = 0,
+            Exception ex = null)
         {
-            Log(TipoLog.Debug, metodo, message);
-        }
-
-        public static void DebugMensagem(string message,
-            [CallerMemberName] string metodo = "", [CallerFilePath] string filePath = "", [CallerLineNumber] int line = 0)
-        {
-            Log(TipoLog.Debug, metodo, message.GetMessageLinha(filePath, line));
+            if (_inDebug)
+                Log("Debug", metodo, message, $"FilePath {filePath} ({line})", ex);
         }
 
         // erro
 
-        public static void Erro(string metodo, string message)
+        public static void Erro(string message,
+            [CallerMemberName] string metodo = "", [CallerFilePath] string filePath = "", [CallerLineNumber] int line = 0,
+            Exception ex = null)
         {
-            Log(TipoLog.Erro, metodo, message);
-        }
-
-        public static void ErroMensagem(string message,
-            [CallerMemberName] string metodo = "", [CallerFilePath] string filePath = "", [CallerLineNumber] int line = 0)
-        {
-            Log(TipoLog.Erro, metodo, message.GetMessageLinha(filePath, line));
+            if (_inErro)
+                Log("Erro", metodo, message, $"FilePath {filePath} ({line})", ex);
         }
 
         // info
 
-        public static void Info(string metodo, string message)
+        public static void Info(string message,
+            [CallerMemberName] string metodo = "", [CallerFilePath] string filePath = "", [CallerLineNumber] int line = 0,
+            Exception ex = null)
         {
-            Log(TipoLog.Info, metodo, message);
-        }
-
-        public static void InfoMensagem(string message,
-            [CallerMemberName] string metodo = "", [CallerFilePath] string filePath = "", [CallerLineNumber] int line = 0)
-        {
-            Log(TipoLog.Info, metodo, message.GetMessageLinha(filePath, line));
-        }
-
-        // exception
-
-        public static void DebugException(Exception ex, string mensagem = null,
-            [CallerMemberName] string metodo = "", [CallerFilePath] string filePath = "", [CallerLineNumber] int line = 0)
-        {
-            Log(TipoLog.Debug, metodo, ex.GetMessageExceptLinha(mensagem, filePath, line));
-        }
-
-        public static void ErroException(Exception ex, string mensagem = null,
-            [CallerMemberName] string metodo = "", [CallerFilePath] string filePath = "", [CallerLineNumber] int line = 0)
-        {
-            Log(TipoLog.Erro, metodo, ex.GetMessageExceptLinha(mensagem, filePath, line));
-        }
-
-        public static void InfoException(Exception ex, string mensagem = null,
-            [CallerMemberName] string metodo = "", [CallerFilePath] string filePath = "", [CallerLineNumber] int line = 0)
-        {
-            Log(TipoLog.Info, metodo, ex.GetMessageExceptLinha(mensagem, filePath, line));
+            if (_inInfo)
+                Log("Info", metodo, message, $"FilePath {filePath} ({line})", ex);
         }
         #endregion
-    }
-
-    public static class LoggerExtensions
-    {
-        public static string GetMessageExcept(this Exception ex)
-        {
-            return
-                $"Message: {ex.Message} / StackTrace: {ex.StackTrace}"
-                ;
-        }
-
-        public static string GetMessageLinha(this string message, string filePath, int line)
-        {
-            return 
-                $"{message} / FilePath: {filePath} na linha {line}"
-                ;
-        }
-
-        public static string GetMessageExceptLinha(this Exception ex, string mensagem, string filePath, int line)
-        {
-            var message =
-                (!string.IsNullOrWhiteSpace(mensagem) ? $"{mensagem} / " : null) +
-                $"{ex.GetMessageExcept()}"
-                ;
-
-            message =
-                $"{message.GetMessageLinha(filePath, line)}"
-                ;
-
-            return message;
-        }
     }
 }

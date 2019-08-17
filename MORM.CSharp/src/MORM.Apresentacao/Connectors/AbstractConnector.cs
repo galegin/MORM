@@ -12,7 +12,7 @@ namespace MORM.Apresentacao.Connectors
                 return;
 
             if (isGerarLog)
-                Logger.InfoMensagem(mensagem);
+                Logger.Info(mensagem);
 
             if (isGerarExcecao)
                 throw new ExceptionInfo(mensagem);

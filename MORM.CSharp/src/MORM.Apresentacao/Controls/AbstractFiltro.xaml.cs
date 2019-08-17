@@ -1,6 +1,7 @@
 ﻿using MORM.Apresentacao.Comps;
 using MORM.Apresentacao.Views;
 using MORM.Apresentacao.ViewsModel;
+using MORM.Infra.CrossCutting;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -31,6 +32,8 @@ namespace MORM.Apresentacao.Controls
                 CanContentScroll = true,
             });
 
+            var source = new AbstractSource(vm, nameof(vm.Filtro));
+
             vm.ElementType
                 .GetMetadata()
                 .Campos
@@ -38,7 +41,7 @@ namespace MORM.Apresentacao.Controls
                 .ToList()
                 .ForEach(campo =>
                 {
-                    this.AddCampo(vm, nameof(vm.Filtro), campo, AbstractCampoTipo.Intervalo);
+                    this.AddCampo(source, campo, AbstractCampoTipo.Intervalo);
                 });
         }
     }

@@ -1,5 +1,5 @@
 using MORM.Aplicacao.Extensions;
-using MORM.Infra.CrossCutting;
+using MORM.Dominio.Entidades;
 using System;
 using System.Threading;
 using System.Threading.Tasks;

@@ -20,7 +20,7 @@ namespace MORM.Apresentacao.Controls
         private string _valorDes;
         #endregion
 
-        #region propriedadeds
+        #region propriedades
         public TFiltro Valor
         {
             get => _valor;
@@ -72,7 +72,7 @@ namespace MORM.Apresentacao.Controls
         {
             var isValorIni = !string.IsNullOrWhiteSpace($"{ValorIni}");
             var isValorFin = !string.IsNullOrWhiteSpace($"{ValorFin}");
-            return ValorSel.Any() ? string.Join(", ", ValorSel) 
+            return ValorSel.Any() ? string.Join(",", ValorSel) 
                 : isValorIni && isValorFin ? $">={ValorIni}&<={ValorFin}"
                 : isValorIni ? $">={ValorIni}"
                 : isValorFin ? $"<={ValorFin}" 

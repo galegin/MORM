@@ -2,7 +2,7 @@ using MORM.Apresentacao.Menus;
 using MORM.Apresentacao.Views.Interfaces;
 using MORM.Apresentacao.Views;
 using MORM.Apresentacao.WSist.Menus;
-using MORM.Dominio.Interfaces;
+using MORM.Infra.CrossCutting;
 
 namespace MORM.Apresentacao.WSist
 {

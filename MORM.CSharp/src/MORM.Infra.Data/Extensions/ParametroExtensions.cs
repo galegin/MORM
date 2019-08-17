@@ -1,6 +1,7 @@
 ﻿using MORM.Dominio.Atributos;
 using MORM.Dominio.Extensions;
 using MORM.Dominio.Interfaces;
+using MORM.Infra.CrossCutting;
 using MORM.Infra.Data.Context;
 using System.Collections.Generic;
 using System.Linq;

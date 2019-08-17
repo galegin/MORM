@@ -52,6 +52,7 @@
     <Compile Include="Atributos\ValorPadrao.cs" />
     <Compile Include="BaseInstaller.cs" />
     <Compile Include="Entidades\AbstractEntidade.cs" />
+    <Compile Include="Entidades\nsAcesso\Token.cs" />
     <Compile Include="Entidades\nsAmbiente\Ambiente.cs" />
     <Compile Include="Entidades\nsAmbiente\Interfaces\ILogAcesso .cs" />
     <Compile Include="Entidades\nsAmbiente\Interfaces\IPermissao.cs" />
@@ -63,35 +64,26 @@
     <Compile Include="Entidades\nsEmpresa\Interfaces\IGrupoEmpresa.cs" />
     <Compile Include="Entidades\nsTerminal\Terminal.cs" />
     <Compile Include="Entidades\nsUsuario\Usuario.cs" />
-    <Compile Include="Atributos\Consumer.cs" />
-    <Compile Include="Extensions\Atributos\ChaveExtensions.cs" />
+    <Compile Include="Extensions\Atributos\CampoTipoExtensions.cs" />
+    <Compile Include="Extensions\Atributos\DynamicExtensions.cs" />
     <Compile Include="Extensions\Atributos\FormExtensions.cs" />
     <Compile Include="Extensions\Atributos\MappingExtensions.cs" />
     <Compile Include="Extensions\Atributos\PesquisaExtensions.cs" />
+    <Compile Include="Extensions\Atributos\TipagemExtension.cs" />
     <Compile Include="Extensions\Atributos\ValidacaoExtensions.cs" />
     <Compile Include="Extensions\Atributos\ValorPadraoExensions.cs" />
     <Compile Include="Extensions\Contexts\AbstractDataContextExtensions.cs" />
     <Compile Include="Extensions\Contexts\AbstractDataContextFiltroExtensions.cs" />
     <Compile Include="Extensions\Contexts\AbstractRepositoryExtensions.cs" />
+    <Compile Include="Extensions\Contexts\DatabaseTypeExtension.cs" />
     <Compile Include="Extensions\Contexts\DataReaderExtensions.cs" />
     <Compile Include="Extensions\Contexts\FiltroExtension.cs" />
     <Compile Include="Extensions\Entidades\AmbienteExtensions.cs" />
-    <Compile Include="Extensions\Entidades\ConsumerExtensions.cs" />
     <Compile Include="Extensions\Entidades\CreateCmdExtensions.cs" />
     <Compile Include="Extensions\Entidades\EmpresaExtensions.cs" />
     <Compile Include="Extensions\Entidades\EntityExtensions.cs" />
     <Compile Include="Extensions\Entidades\TerminalExtensions.cs" />
     <Compile Include="Extensions\Entidades\UsuarioExtensions.cs" />
-    <Compile Include="Extensions\Enuns\EnumExtensions.cs" />
-    <Compile Include="Extensions\Objetos\DataTypeExtension.cs" />
-    <Compile Include="Extensions\Objetos\DynamicExtensions.cs" />
-    <Compile Include="Extensions\Objetos\FieldExtensions.cs" />
-    <Compile Include="Extensions\Objetos\ObjectExtensions.cs" />
-    <Compile Include="Extensions\Objetos\PropertyExtensions.cs" />
-    <Compile Include="Extensions\Objetos\TipagemExtension.cs" />
-    <Compile Include="Extensions\Objetos\TypeExtension.cs" />
-    <Compile Include="Extensions\Values\SplitExtensions.cs" />
-    <Compile Include="Extensions\Values\StringExtensions.cs" />
     <Compile Include="Interfaces\Contexts\IAbstractDataContext.cs" />
     <Compile Include="Interfaces\Contexts\IComando.cs" />
     <Compile Include="Interfaces\Contexts\IConexao.cs" />
@@ -101,8 +93,6 @@
     <Compile Include="Interfaces\Queries\IQueryableTranslator.cs" />
     <Compile Include="Interfaces\Queries\IQueryableValue.cs" />
     <Compile Include="Interfaces\Repositories\IAbstractRepository.cs" />
-    <Compile Include="Interfaces\Resolvers\IAbstractContainer.cs" />
-    <Compile Include="Interfaces\Resolvers\IAbstractInstaller.cs" />
     <Compile Include="Interfaces\Entidades\IEntidade.cs" />
     <Compile Include="Entidades\nsAmbiente\Interfaces\IAmbiente.cs" />
     <Compile Include="Entidades\nsEmpresa\Interfaces\IEmpresa.cs" />
@@ -124,6 +114,12 @@
     <Compile Include="Tipagens\TipoDatabase.cs" />
     <Compile Include="Tipagens\TipoPermissao.cs" />
     <Compile Include="Tipagens\TipoValorPadrao.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MORM.Infra.CrossCutting\MORM.Infra.CrossCutting.csproj">
+      <Project>{346bed24-2dd1-4e58-939a-d72311c257f9}</Project>
+      <Name>MORM.Infra.CrossCutting</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

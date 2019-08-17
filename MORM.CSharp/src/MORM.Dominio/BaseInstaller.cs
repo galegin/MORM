@@ -1,5 +1,6 @@
 ﻿using MORM.Dominio.Entidades;
 using MORM.Dominio.Interfaces;
+using MORM.Infra.CrossCutting;
 
 namespace MORM.Dominio
 {

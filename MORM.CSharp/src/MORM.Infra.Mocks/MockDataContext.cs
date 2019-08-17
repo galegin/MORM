@@ -1,5 +1,6 @@
 ﻿using MORM.Dominio.Extensions;
 using MORM.Dominio.Interfaces;
+using MORM.Infra.CrossCutting;
 using MORM.Infra.Data.Context;
 using MORM.Infra.Data.Factories;
 using MORM.Infra.Data.Migrations;

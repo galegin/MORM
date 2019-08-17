@@ -5,6 +5,7 @@ using MORM.Dominio.Atributos;
 using MORM.Dominio.Extensions;
 using MORM.Dominio.Interfaces;
 using MORM.Dominio.Tipagens;
+using MORM.Infra.CrossCutting;
 
 namespace MORM.Infra.Data.Context
 {

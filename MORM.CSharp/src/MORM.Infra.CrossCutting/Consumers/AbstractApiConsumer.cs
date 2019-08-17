@@ -1,5 +1,4 @@
-﻿using MORM.Dominio.Extensions;
-using System;
+﻿using System;
 using System.Configuration;
 using System.Net;
 using System.Net.Http;
@@ -48,8 +47,8 @@ namespace MORM.Infra.CrossCutting
             client.BaseAddress = new Uri(_site);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-			
-			var token = "".Coalesce(_token, TokenInterno);
+            
+            var token = "".Coalesce(_token, TokenInterno);
 
             if (!string.IsNullOrWhiteSpace(token))
             {
@@ -63,7 +62,7 @@ namespace MORM.Infra.CrossCutting
 
         public ApiRetorno Post(TEntrada entity, string url = null)
         {
-            url = url ?? entity.GetUrl();
+            //url = url ?? entity.GetUrl();
 
             using (var client = GetClient())
             {
@@ -82,7 +81,7 @@ namespace MORM.Infra.CrossCutting
 
             var retornoStr = response.Content.ReadAsStringAsync().Result;
 
-            Logger.DebugMensagem(retornoStr);
+            Logger.Debug(retornoStr);
 
             try
             {
@@ -100,7 +99,7 @@ namespace MORM.Infra.CrossCutting
             }
             catch (Exception ex)
             {
-                Logger.ErroException(ex);
+                Logger.Erro("Erro na requisicao", ex: ex);
             }
 
             return retorno;
@@ -262,7 +261,7 @@ namespace VirtualPDV.Util.Classes
                     break;
 
                 default:
-                    Logger.ErroMensagem("StatusCode: " + response.StatusCode + " / retornoStr: " + retornoStr);
+                    Logger.Erro("StatusCode: " + response.StatusCode + " / retornoStr: " + retornoStr);
                     throw new Exception(response.StatusCode.ToString());
             }
 

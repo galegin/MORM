@@ -1,4 +1,4 @@
-﻿using MORM.Aplicacao.Config;
+﻿using MORM.Dominio.Entidades;
 using MORM.Dominio.Interfaces;
 using MORM.Infra.CrossCutting;
 using System.Collections.Generic;
@@ -15,10 +15,10 @@ namespace MORM.Aplicacao.Extensions
             if (!request.Headers.TryGetValues("Token", out headerValues))
                 return null;
 
-            Logger.DebugMensagem($"headerValues: {string.Join(" / ", headerValues)}");
+            Logger.Debug($"headerValues: {string.Join(" / ", headerValues)}");
             var token = headerValues.FirstOrDefault();
 
-            Logger.DebugMensagem($"Token: {token}");
+            Logger.Debug($"Token: {token}");
             return Token.Autenticar(token);
         }
 
@@ -26,7 +26,7 @@ namespace MORM.Aplicacao.Extensions
         {
             var ambiente = request.GetToken()?.Ambiente;
 
-            Logger.DebugMensagem($"Ambiente: {ambiente?.Codigo}");
+            Logger.Debug($"Ambiente: {ambiente?.Codigo}");
             return ambiente;
         }
     }

@@ -43,6 +43,7 @@
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -66,42 +67,57 @@
     <Compile Include="Assemblies\MigrationAssembly.cs" />
     <Compile Include="Assemblies\ServiceAssembly.cs" />
     <Compile Include="Assemblies\TypeBuilderAssembly.cs" />
+    <Compile Include="Atributos\Consumer.cs" />
     <Compile Include="BaseInstaller.cs" />
+    <Compile Include="Classes\AppPath.cs" />
+    <Compile Include="Classes\ArquivoDiretorio.cs" />
+    <Compile Include="Classes\CaminhoPadrao.cs" />
     <Compile Include="Classes\ClasseExecute.cs" />
-    <Compile Include="Classes\ObjetoExecute.cs" />
+    <Compile Include="Classes\Logger.cs" />
+    <Compile Include="Classes\LoggerMem.cs" />
     <Compile Include="Classes\MetodoExecute.cs" />
+    <Compile Include="Classes\ObjetoExecute.cs" />
     <Compile Include="Classes\ObjetoMapper.cs" />
-    <Compile Include="Classes\Token.cs" />
-    <Compile Include="Consumers\AbstractApiConsumer.cs" />
-    <Compile Include="Extensions\EadExtensions.cs" />
-    <Compile Include="Extensions\HashExtensions.cs" />
     <Compile Include="Classes\TypeForConvert.cs" />
-    <Compile Include="Extensions\CampoExtensions.cs" />
-    <Compile Include="Extensions\CriptoExtensions.cs" />
+    <Compile Include="Classes\VariavelAmbiente.cs" />
+    <Compile Include="Consumers\AbstractApiConsumer.cs" />
     <Compile Include="Exceptions\ExceptionErro.cs" />
     <Compile Include="Exceptions\ExceptionInfo.cs" />
     <Compile Include="Exceptions\ExceptionDebug.cs" />
-    <Compile Include="Extensions\JsonExtensions.cs" />
-    <Compile Include="Extensions\Md5Extensions.cs" />
-    <Compile Include="Extensions\Sha1Extensions.cs" />
+    <Compile Include="Extensions\Attrs\ConsumerExtensions.cs" />
+    <Compile Include="Extensions\Metadatas\ClasseCampoExtensions.cs" />
+    <Compile Include="Extensions\Metadatas\ClasseExtensions.cs" />
+    <Compile Include="Extensions\Metadatas\MetadataExtensions.cs" />
+    <Compile Include="Extensions\Metadatas\ValoresCampoExtensions.cs" />
+    <Compile Include="Extensions\Objetos\PropertyAttrExtensions.cs" />
+    <Compile Include="Extensions\Objetos\TipoDadoExtensions.cs" />
+    <Compile Include="Extensions\Types\AttributeExtensions.cs" />
+    <Compile Include="Extensions\Types\CampoExtensions.cs" />
+    <Compile Include="Extensions\Enuns\EnumExtensions.cs" />
+    <Compile Include="Extensions\Objetos\DataTypeExtension.cs" />
+    <Compile Include="Extensions\Objetos\FieldExtensions.cs" />
+    <Compile Include="Extensions\Objetos\ObjectExtensions.cs" />
+    <Compile Include="Extensions\Objetos\PropertyExtensions.cs" />
+    <Compile Include="Extensions\Hashs\CriptoExtensions.cs" />
+    <Compile Include="Extensions\Hashs\EadExtensions.cs" />
+    <Compile Include="Extensions\Hashs\HashExtensions.cs" />
+    <Compile Include="Extensions\Layouts\JsonExtensions.cs" />
+    <Compile Include="Extensions\Hashs\Md5Extensions.cs" />
+    <Compile Include="Extensions\Hashs\Sha1Extensions.cs" />
+    <Compile Include="Extensions\Objetos\TypeExtensions.cs" />
+    <Compile Include="Extensions\Layouts\XmlExtensions.cs" />
+    <Compile Include="Extensions\Values\SplitExtensions.cs" />
+    <Compile Include="Extensions\Values\StringExtensions.cs" />
     <Compile Include="Factories\SingletonFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Classes\AppPath.cs" />
-    <Compile Include="Classes\Logger.cs" />
-    <Compile Include="Classes\LoggerMem.cs" />
-    <Compile Include="Classes\VariavelAmbiente.cs" />
     <Compile Include="Resolver\AbstractContainer.cs" />
     <Compile Include="Resolver\Classes\RegisterClasse.cs" />
+    <Compile Include="Resolver\Interfaces\IAbstractContainer.cs" />
+    <Compile Include="Resolver\Interfaces\IAbstractInstaller.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <ProjectReference Include="..\MORM.Dominio\MORM.Dominio.csproj">
-      <Project>{C22C745B-1538-405F-A9CE-29576C708B9E}</Project>
-      <Name>MORM.Dominio</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

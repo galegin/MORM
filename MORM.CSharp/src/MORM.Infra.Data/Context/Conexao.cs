@@ -49,7 +49,7 @@ namespace MORM.Infra.Data.Context
 
         private DbCommand GetCommand(string cmd)
         {
-            Logger.DebugMensagem("cmd: " + cmd);
+            Logger.Debug("cmd: " + cmd);
 
             if (Connection.State == ConnectionState.Closed)
                 Connection.Open();
@@ -78,7 +78,7 @@ namespace MORM.Infra.Data.Context
                 listaParametro.Add($"{parametro.Nome} = {parametro.Valor}");
             }
 
-            Logger.DebugMensagem($"listaParametro: {string.Join(" / ", listaParametro)}");
+            Logger.Debug($"listaParametro: {string.Join(" / ", listaParametro)}");
 
             ResetarParametros();
         }

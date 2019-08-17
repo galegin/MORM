@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MORM.Infra.CrossCutting;
+using System;
 using System.Data.Common;
 
 namespace MORM.Dominio.Extensions

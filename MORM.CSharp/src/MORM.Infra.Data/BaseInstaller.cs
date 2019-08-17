@@ -1,4 +1,5 @@
 ﻿using MORM.Dominio.Interfaces;
+using MORM.Infra.CrossCutting;
 using MORM.Infra.Data.Context;
 using MORM.Infra.Data.UnityOfWork;
 

@@ -1,11 +1,15 @@
 ﻿using MORM.Dominio.Atributos;
-using MORM.Dominio.Extensions;
+using MORM.Infra.CrossCutting;
 using System;
+using System.Reflection;
 
 namespace MORM.Apresentacao.Controls
 {
     public enum AbstractCampoFormato
     {
+        [Formato("", "")]
+        Bool, 
+
         [Formato("dd/MM/yyyy", "[^0-9/]+")]
         Data,
 
@@ -122,6 +126,27 @@ namespace MORM.Apresentacao.Controls
                 case AbstractCampoFormato.Valor:
                     return value.GetValueOnlyNumber().ObterValor();
             }
+        }
+
+        public static AbstractCampoFormato GetCampoFormato(this PropertyInfo prop)
+        {
+            var tipoDado = prop.PropertyType.GetTipoDadoModel();
+
+            switch (tipoDado.TipoDado)
+            {
+                case TipoDadoEnum.Bool:
+                    return AbstractCampoFormato.Bool;
+                case TipoDadoEnum.Date:
+                    return AbstractCampoFormato.Data;
+                case TipoDadoEnum.Real:
+                    return AbstractCampoFormato.Valor;
+                case TipoDadoEnum.Int:
+                    return AbstractCampoFormato.Numero;
+                case TipoDadoEnum.Str:
+                    return AbstractCampoFormato.Texto;
+            }
+
+            return AbstractCampoFormato.Texto;
         }
     }
 }

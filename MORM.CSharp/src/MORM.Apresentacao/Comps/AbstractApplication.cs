@@ -19,9 +19,9 @@ namespace MORM.Apresentacao.Comps
         public static void Application_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
             var messageBoxAction =
-                e.Exception is ExceptionDebug ? new Action(() => Logger.DebugException(e.Exception)) :
-                e.Exception is ExceptionInfo ? new Action(() => Logger.InfoException(e.Exception)) :
-                new Action(() => Logger.ErroException(e.Exception));
+                e.Exception is ExceptionDebug ? new Action(() => Logger.Debug("exception debug", ex: e.Exception)) :
+                e.Exception is ExceptionInfo ? new Action(() => Logger.Info("exception info", ex: e.Exception)) :
+                new Action(() => Logger.Erro("exception erro", ex: e.Exception));
 
             messageBoxAction?.Invoke();
 

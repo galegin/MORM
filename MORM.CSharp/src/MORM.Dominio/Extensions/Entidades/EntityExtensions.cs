@@ -1,4 +1,4 @@
-﻿using System;
+﻿using MORM.Infra.CrossCutting;
 using System.Linq;
 
 namespace MORM.Dominio.Extensions
@@ -12,30 +12,14 @@ namespace MORM.Dominio.Extensions
 
             foreach (var campo in camposKey)
             {
-                var value = campo.OwnerProp.GetValue(obj);
-                if (value?.IsValueNull() != false)
+                var valueObj = campo.OwnerProp.GetValue(obj);
+                if (valueObj?.IsValueNull() != false)
                 {
                     preenchido = false;
                 }
             }
 
             return preenchido;
-        }
-
-        public static bool IsValueNull(this object value)
-        {
-            return (
-                value == null ? true :
-                value is bool ? (!((bool)value)) :
-                value is DateTime ? (((DateTime)value) == DateTime.MinValue) :
-                value is decimal ? (((decimal)value) == decimal.MinValue) :
-                value is double ? (((double)value) == double.MinValue) :
-                value is float ? (((float)value) == double.MinValue) :
-                value is long ? (((long)value) == long.MinValue) :
-                value is int ? (((int)value) == int.MinValue) :
-                value is short ? (((short)value) == short.MinValue) :
-                value is string[] ? ((string[])value).Length > 0 :
-                value is string ? (value.ToString() == "") : true);
         }
     }
 }

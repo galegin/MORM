@@ -1,4 +1,4 @@
-﻿using MORM.Dominio.Extensions;
+﻿using MORM.Infra.CrossCutting;
 
 namespace MORM.Apresentacao.Controls
 {

@@ -1,8 +1,8 @@
 ﻿using MORM.Apresentacao.Report.Interfaces;
-using MORM.Dominio.Extensions;
 using System.Collections;
 using System.Collections.Generic;
 using MORM.Apresentacao.Report.Tipagens;
+using MORM.Infra.CrossCutting;
 
 namespace MORM.Apresentacao.Report.Extensoes
 {

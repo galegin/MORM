@@ -2,7 +2,6 @@
 using MORM.Apresentacao.Controls.Commands;
 using MORM.Apresentacao.Views;
 using MORM.Apresentacao.ViewsModel;
-using MORM.Dominio.Extensions;
 using MORM.Infra.CrossCutting;
 using System;
 using System.Collections;
@@ -12,42 +11,29 @@ namespace MORM.Apresentacao.Controls.ViewsModel
     public class AbstractCampoViewModel : AbstractViewModel
     {
         #region variaveis
-        private object _source;
-        private string _nomeBinding;
+        private AbstractSource _source;
         private AbstractCampoTipo _tipo;
-        private AbstractCampoFormato _formato;
         private MetadataCampo _campo;
-        private AbstractCampoDef _campoBtn = new AbstractCampoDef { Tamanho = 150 };
-        private AbstractCampoDef _campoDes = new AbstractCampoDef { Tamanho = 100 };
-        private AbstractCampoDef _campoIni = new AbstractCampoDef { Tamanho = 100 };
-        private AbstractCampoDef _campoFin = new AbstractCampoDef { Tamanho = 100 };
-        private AbstractCampoDef _campoSel = new AbstractCampoDef { Tamanho = 300 };
-        private AbstractCampoDef _campoTip = new AbstractCampoDef { Tamanho = 300 };
+        private AbstractCampoFiltro _filtros;
         #endregion
 
         #region propriedades
-        public object Source { get => _source; set => SetField(ref _source, value); }
-        public string NomeBinding { get => _nomeBinding; set => SetField(ref _nomeBinding, value); }
+        public AbstractSource Source
+        {
+            get => _source;
+            set => SetField(ref _source, value);
+        }
 
         public AbstractCampoTipo Tipo
         {
             get => _tipo;
-            set
-            {
-                SetField(ref _tipo, value);
-                CampoBtn.IsExibir = value.IsIndiv() || value.IsInter();
-                CampoIni.IsExibir = value.IsIndiv() || value.IsInter();
-                CampoFin.IsExibir = value.IsInter();
-                CampoDes.IsExibir = value.IsDescr();
-                CampoSel.IsExibir = value.IsSelecao();
-                CampoTip.IsExibir = value.IsTipagem();
-            }
+            set => SetField(ref _tipo, value);
         }
 
-        public AbstractCampoFormato Formato
+        public string Formato
         {
-            get => _formato;
-            set => SetField(ref _formato, value);
+            get => Campo.Formato;
+            set => Campo.Formato = value;
         }
 
         public MetadataCampo Campo
@@ -58,73 +44,47 @@ namespace MORM.Apresentacao.Controls.ViewsModel
                 SetField(ref _campo, value);
                 if (_campo != null)
                 {
-                    Descricao = _campo.Descricao;
-                    Tamanho = _campo.Tamanho;
-                    Precisao = _campo.Precisao;
-                    Formato = _campo.Prop.GetCampoFormato();
-                    Valores = _campo.Valores;
-                    Classe = Valores == null ? _campo.Classe : null;
+                    if (Tipo.IsInter() || Tipo.IsSelecao())
+                        Filtro = _campo.Prop.PropertyType.GetCampoFiltro();
                 }
             }
         }
 
         public string Descricao
         {
-            get => CampoBtn.Descricao;
-            set => CampoBtn.Descricao = value;
+            get => Campo.Descricao;
+            set => Campo.Descricao = value;
         }
 
         public int Tamanho
         {
-            get => CampoIni.Tamanho / 10;
-            set
-            {
-                CampoIni.Tamanho = value * 10;
-                CampoFin.Tamanho = value * 10;
-                CampoDes.Tamanho = value * 10 * 2;
-            }
+            get => Campo.Tamanho;
+            set => Campo.Tamanho = value;
         }
 
         public int Precisao
         {
-            get => CampoIni.Precisao;
-            set
-            {
-                CampoIni.Precisao = value;
-                CampoFin.Precisao = value;
-            }
+            get => Campo.Precisao;
+            set => Campo.Precisao = value;
         }
 
         public IList Valores
         {
-            get => CampoBtn.Valores;
-            set
-            {
-                CampoBtn.Valores = value;
-                CampoIni.Valores = value;
-                CampoFin.Valores = value;
-                CampoDes.Valores = value;
-            }
+            get => Campo.Valores;
+            set => Campo.Valores = value;
         }
 
         public Type Classe
         {
-            get => CampoBtn.Classe;
-            set
-            {
-                CampoBtn.Classe = value;
-                CampoIni.Classe = value;
-                CampoFin.Classe = value;
-                CampoDes.Classe = value;
-            }
+            get => Campo.Classe;
+            set => Campo.Classe = value;
         }
 
-        public AbstractCampoDef CampoBtn { get => _campoBtn; set => SetField(ref _campoBtn, value); }
-        public AbstractCampoDef CampoIni { get => _campoIni; set => SetField(ref _campoIni, value); }
-        public AbstractCampoDef CampoFin { get => _campoFin; set => SetField(ref _campoFin, value); }
-        public AbstractCampoDef CampoDes { get => _campoDes; set => SetField(ref _campoDes, value); }
-        public AbstractCampoDef CampoSel { get => _campoSel; set => SetField(ref _campoSel, value); }
-        public AbstractCampoDef CampoTip { get => _campoTip; set => SetField(ref _campoTip, value); }
+        public AbstractCampoFiltro Filtros
+        {
+            get => _filtros;
+            set => SetField(ref _filtros, value);
+        }
         #endregion
 
         #region construtores
@@ -133,43 +93,42 @@ namespace MORM.Apresentacao.Controls.ViewsModel
             Selecionar = new SelecionarCampo();
         }
 
-        public AbstractCampoViewModel(object source, string nomeBinding, AbstractCampoTipo tipo, MetadataCampo campo) 
+        public AbstractCampoViewModel(AbstractSource source, AbstractCampoTipo tipo, MetadataCampo campo) 
             : this()
         {
             Source = source;
-            NomeBinding = nomeBinding;
             Tipo = tipo;
             Campo = campo;
         }
         #endregion
 
         #region metodos
+
         public override void BuscarDescricao()
         {
-            var model = Source.GetInstancePropOrField(NomeBinding);
+            if (Campo.Classe == null)
+                return;
 
-            var valorCod = model.GetInstancePropOrField(CampoIni.Codigo);
+            var campoProp = Campo.Prop.Name;
+            var campoPropDes = $"{Campo.Prop.Name}Des";
+            var campoCod = Campo.Classe.GetCampoCod();
+            var campoDes = Campo.Classe.GetCampoDes();
 
-            var objeto = Activator.CreateInstance(CampoIni.Classe);
-            objeto.SetInstancePropOrField(CampoIni.Codigo, valorCod);
+            if (string.IsNullOrWhiteSpace(campoCod) || string.IsNullOrWhiteSpace(campoDes))
+                return;
+            if (!campoProp.Equals(campoCod))
+                return;
 
-            var connector = CampoIni.Classe.GetConsultarConnector();
+            var valorCod = Source.Model.GetInstancePropOrField(campoProp);
+
+            var objeto = Activator.CreateInstance(Campo.Classe);
+            objeto.SetInstancePropOrField(campoCod, valorCod);
+
+            var connector = Campo.Classe.GetConsultarConnector();
             var retorno = ObjetoExecute.Execute(connector, "Execute", objeto);
-            var valorDes = retorno.GetInstancePropOrField(CampoDes.Codigo);
+            var valorDes = retorno.GetInstancePropOrField(campoDes);
 
-            model.SetInstancePropOrField(CampoDes.Codigo, valorDes);
-        }
-
-        public override void GerarIntervalo()
-        {
-            var model = Source.GetInstancePropOrField(NomeBinding);
-
-            var campoFiltro = CampoIni.Tipo.GetCampoFiltro();
-            campoFiltro.SetInstancePropOrField("ValorIni", model.GetInstancePropOrField(CampoIni.Codigo));
-            campoFiltro.SetInstancePropOrField("ValorFin", model.GetInstancePropOrField(CampoFin.Codigo));
-            campoFiltro.SetInstancePropOrField("ValorSel", model.GetInstancePropOrField(CampoSel.Codigo));
-
-            model.SetInstancePropOrField("ValorDes", campoFiltro.GetInstancePropOrField("ValorDes"));
+            Source.Model.SetInstancePropOrField(campoPropDes, valorDes);
         }
 
         public override void SelecionarLista()
@@ -189,8 +148,7 @@ namespace MORM.Apresentacao.Controls.ViewsModel
             if (objeto != null)
             {
                 var valor = objeto.GetInstancePropOrField(Campo.Prop.Name);
-                var model = (Source as IAbstractViewModel).GetInstancePropOrField(NomeBinding);
-                model.SetInstancePropOrField(Campo.Prop.Name, valor);
+                Source.Model.SetInstancePropOrField(Campo.Prop.Name, valor);
             }
         }
         #endregion

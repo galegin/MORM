@@ -93,6 +93,7 @@
     <Compile Include="Controls\AbstractCorpo.xaml.cs">
       <DependentUpon>AbstractCorpo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\AbstractSource.cs" />
     <Compile Include="Views\AbstractViewItem.cs" />
     <Compile Include="Views\AbstractViewTipo.cs" />
     <Compile Include="Views\Extensions\AbstractViewCampoExtensions.cs" />
@@ -150,7 +151,6 @@
     <Compile Include="Controls\AbstractTitulo.xaml.cs">
       <DependentUpon>AbstractTitulo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\AbstractCampoDef.cs" />
     <Compile Include="Controls\Commands\SelecionarCampo.cs" />
     <Compile Include="Controls\ViewsModel\AbstractCampoViewModel.cs" />
     <Compile Include="Controls\ViewsModel\AbstractOpcaoViewModel.cs" />
@@ -178,7 +178,7 @@
       <DependentUpon>ucTituloSistema.xaml</DependentUpon>
     </Compile>
     <Compile Include="Menus\Interfaces\ITituloSistema.cs" />
-    <Compile Include="Views\Extensions\PropertyInfoExtensions.cs" />
+    <Compile Include="Views\Extensions\BindingExtensions.cs" />
     <Compile Include="Interfaces\IMainWindow.cs" />
     <Compile Include="Menus\Interfaces\IMenuLateral.cs" />
     <Compile Include="Menus\Interfaces\IMenuOpcao.cs" />
@@ -217,10 +217,6 @@
     <Compile Include="Views\AbstractViewRelat.cs" />
     <Compile Include="Views\AbstractViewProc.cs" />
     <Compile Include="Views\AbstractView.cs" />
-    <Compile Include="Views\Extensions\ClasseCampoExtensions.cs" />
-    <Compile Include="Views\Extensions\MetadataExtensions.cs" />
-    <Compile Include="Views\Extensions\TipoCampoExtensions.cs" />
-    <Compile Include="Views\Extensions\ValoresCampoExtensions.cs" />
     <Page Include="Comps\LoadingBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

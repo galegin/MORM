@@ -1,4 +1,4 @@
-﻿using MORM.Dominio.Interfaces;
+﻿using MORM.Infra.CrossCutting;
 using System.Windows.Controls;
 
 namespace MORM.Apresentacao.Comps.Interfaces

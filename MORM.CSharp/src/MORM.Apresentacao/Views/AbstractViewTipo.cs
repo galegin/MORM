@@ -1,4 +1,4 @@
-﻿using MORM.Dominio.Extensions;
+﻿using MORM.Infra.CrossCutting;
 using System.ComponentModel;
 
 namespace MORM.Apresentacao.Views

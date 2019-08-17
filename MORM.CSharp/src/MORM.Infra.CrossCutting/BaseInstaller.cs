@@ -1,6 +1,4 @@
-﻿using MORM.Dominio.Interfaces;
-
-namespace MORM.Infra.CrossCutting
+﻿namespace MORM.Infra.CrossCutting
 {
     public class BaseInstaller
     {

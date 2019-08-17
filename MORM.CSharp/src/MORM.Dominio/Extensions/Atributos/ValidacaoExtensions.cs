@@ -1,4 +1,5 @@
 ﻿using MORM.Dominio.Atributos;
+using MORM.Infra.CrossCutting;
 using System;
 using System.Reflection;
 
@@ -10,11 +11,7 @@ namespace MORM.Dominio.Extensions
 
         public static ValidacaoCampo GetValidacao(this PropertyInfo prop)
         {
-            ValidacaoCampo validacao = null;
-            foreach (var attr in prop.GetCustomAttributes(false))
-                if (attr.GetType() == typeof(ValidacaoCampo))
-                    validacao = (attr as ValidacaoCampo);
-            return validacao;
+            return prop.GetAttribute<ValidacaoCampo>();
         }
 
         public static void ValidarCampos(this object obj)
@@ -35,7 +32,7 @@ namespace MORM.Dominio.Extensions
                     }
                     catch (Exception ex)
                     {
-                        //Logger.ErroException(ex, "Entidade: " + obj.GetType().Name + " / Campo : " + prop.Name);
+                        Logger.Erro($"Entidade: {obj.GetType().Name} / Campo: {prop.Name}", ex: ex);
                         throw ex;
                     }
                 }

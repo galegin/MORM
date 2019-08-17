@@ -1,5 +1,7 @@
 ﻿using MORM.Dominio.Atributos;
+using MORM.Infra.CrossCutting;
 using System;
+using System.Linq;
 using System.Reflection;
 
 namespace MORM.Dominio.Extensions
@@ -16,10 +18,17 @@ namespace MORM.Dominio.Extensions
         public static ValorPadroes GetValorPadroes(this Type type)
         {
             var valorPadroes = new ValorPadroes();
-            foreach (var prop in type.GetProperties())
-                foreach (var attr in prop.GetCustomAttributes(false))
-                    if (attr.GetType() == typeof(ValorPadraoAttribute))
-                        valorPadroes.Add((attr as ValorPadraoAttribute).GetClone(prop));
+
+            type
+                .GetProperties()
+                .ToList()
+                .ForEach(prop =>
+                {
+                    var valorPadrao = prop.GetAttribute<ValorPadraoAttribute>()?.GetClone(prop);
+                    if (valorPadrao != null)
+                        valorPadroes.Add(valorPadrao);
+                });
+
             return valorPadroes;
         }
         
@@ -33,10 +42,17 @@ namespace MORM.Dominio.Extensions
         public static FiltroPadroes GetFiltroPadroes(this Type type)
         {
             var filtroPadroes = new FiltroPadroes();
-            foreach (var prop in type.GetProperties())
-                foreach (var attr in prop.GetCustomAttributes(false))
-                    if (attr.GetType() == typeof(FiltroPadraoAttribute))
-                        filtroPadroes.Add((attr as FiltroPadraoAttribute).GetClone(prop));
+
+            type
+                .GetProperties()
+                .ToList()
+                .ForEach(prop =>
+                {
+                    var filtoPadrao = prop.GetAttribute<FiltroPadraoAttribute>().GetClone(prop);
+                    if (filtoPadrao != null)
+                        filtroPadroes.Add(filtoPadrao);
+                });
+
             return filtroPadroes;
         }
     }

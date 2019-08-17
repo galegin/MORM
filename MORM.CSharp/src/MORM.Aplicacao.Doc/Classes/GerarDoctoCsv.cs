@@ -1,5 +1,5 @@
 ﻿using MORM.Dominio.Atributos;
-using MORM.Dominio.Extensions;
+using MORM.Infra.CrossCutting;
 
 namespace MORM.Aplicacao.Doc
 {

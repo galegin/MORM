@@ -1,5 +1,5 @@
 ﻿using MORM.Apresentacao.Controls;
-using MORM.Apresentacao.ViewsModel;
+using MORM.Infra.CrossCutting;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -8,11 +8,11 @@ namespace MORM.Apresentacao.Views
     public static class AbstractViewCampoExtensions
     {
         public static void AddCampo(this UserControl userControl, 
-            IAbstractViewModel vm, string nomeBinding, MetadataCampo campo, AbstractCampoTipo campoTipo)
+            AbstractSource source, MetadataCampo campo, AbstractCampoTipo campoTipo)
         {
             campoTipo = campoTipo.GetCampoSubTipo(campo);
 
-            var abstractCampo = new AbstractCampo(vm, nomeBinding, campoTipo, campo);
+            var abstractCampo = new AbstractCampo(source, campoTipo, campo);
             abstractCampo.Margin = new Thickness(0, 0, 0, 10);
             userControl.AddPainel(abstractCampo);
         }

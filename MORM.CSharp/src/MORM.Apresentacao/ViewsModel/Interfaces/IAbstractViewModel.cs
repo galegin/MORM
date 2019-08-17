@@ -46,7 +46,6 @@ namespace MORM.Apresentacao.ViewsModel
         void ConsultarChave();
         void SelecionarLista();
         void BuscarDescricao();
-        void GerarIntervalo();
         void ConfirmarTela();
         void CancelarTela();
     }
@@ -57,5 +56,7 @@ namespace MORM.Apresentacao.ViewsModel
         TModel oFiltro { get; set; }
         TModel oModel { get; set; }
         List<TModel> oLista { get; set; }
+
+        void SetarAtualizacao();
     }
 }

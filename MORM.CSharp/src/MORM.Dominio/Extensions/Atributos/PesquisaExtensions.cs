@@ -1,4 +1,5 @@
 ﻿using MORM.Dominio.Atributos;
+using MORM.Infra.CrossCutting;
 using System.Linq;
 using System.Reflection;
 

@@ -34,7 +34,7 @@ namespace MORM.Aplicacao.Config
         {
             var requestBody = await request.Content.ReadAsStringAsync();
 
-            Logger.DebugMensagem($"WebApi: {request.RequestUri}, Request: {requestBody}");
+            Logger.Debug($"WebApi: {request.RequestUri}, Request: {requestBody}");
 
             var result = await base.SendAsync(request, cancellationToken);
 
@@ -43,9 +43,9 @@ namespace MORM.Aplicacao.Config
                 var responseBody = await result.Content.ReadAsStringAsync();
 
                 if (result.StatusCode == HttpStatusCode.OK)
-                    Logger.DebugMensagem($"WebApi: {request.RequestUri}, Response: {responseBody}");
+                    Logger.Debug($"WebApi: {request.RequestUri}, Response: {responseBody}");
                 else
-                    Logger.ErroMensagem($"WebApi: {request.RequestUri}, Response: {responseBody}");
+                    Logger.Erro($"WebApi: {request.RequestUri}, Response: {responseBody}");
             }
 
             return result;

@@ -1,4 +1,4 @@
-using MORM.Dominio.Atributos;
+using MORM.Infra.CrossCutting;
 
 namespace MORM.Apresentacao.Connectors
 {

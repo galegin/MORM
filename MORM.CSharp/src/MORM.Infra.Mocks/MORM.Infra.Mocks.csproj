@@ -50,6 +50,10 @@
       <Project>{C22C745B-1538-405F-A9CE-29576C708B9E}</Project>
       <Name>MORM.Dominio</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MORM.Infra.CrossCutting\MORM.Infra.CrossCutting.csproj">
+      <Project>{346BED24-2DD1-4E58-939A-D72311C257F9}</Project>
+      <Name>MORM.Infra.CrossCutting</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MORM.Infra.Data\MORM.Infra.Data.csproj">
       <Project>{065554C3-207F-47D8-97C1-1AC5202ECB22}</Project>
       <Name>MORM.Infra.Data</Name>

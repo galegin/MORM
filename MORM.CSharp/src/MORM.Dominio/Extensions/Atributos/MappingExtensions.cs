@@ -1,4 +1,5 @@
 ﻿using MORM.Dominio.Atributos;
+using MORM.Infra.CrossCutting;
 using System;
 using System.Linq;
 using System.Reflection;
@@ -29,14 +30,17 @@ namespace MORM.Dominio.Extensions
         public static Campos GetCampos(this Type type)
         {
             var campos = new Campos();
-            foreach (var prop in type.GetProperties())
-            {
-                var campo = prop.GetAttribute<CampoAttribute>();
-                if (campo != null)
+
+            type?
+                .GetProperties()
+                .ToList()
+                .ForEach(prop =>
                 {
-                    campos.Add(campo.GetClone(type, prop));
-                }
-            }
+                    var campo = prop.GetAttribute<CampoAttribute>()?.GetClone(type, prop);
+                    if (campo != null)
+                        campos.Add(campo);
+                });
+
             return campos;
         }
 
@@ -46,7 +50,7 @@ namespace MORM.Dominio.Extensions
         }
 
         // campo tipo
-
+                
         public static CampoTipo GetCampoTipo(this PropertyInfo prop)
         {
             var campo = prop.GetAttribute<CampoAttribute>();
@@ -69,14 +73,17 @@ namespace MORM.Dominio.Extensions
         public static Relacoes GetRelacoes(this Type type, RelacaoTipo[] tipo, object ownerObj = null)
         {
             var relacoes = new Relacoes();
-            foreach (var prop in type.GetProperties())
-            {
-                var relacao = prop.GetAttribute<RelacaoAttribute>();
-                if (relacao != null && tipo.Contains(relacao.Tipo))
+
+            type?
+                .GetProperties()
+                .ToList()
+                .ForEach(prop => 
                 {
-                    relacoes.Add(relacao.GetClone(type, prop, ownerObj));
-                }
-            }
+                    var relacao = prop.GetAttribute<RelacaoAttribute>()?.GetClone(type, prop, ownerObj);
+                    if (relacao != null)
+                        relacoes.Add(relacao);
+                });
+
             return relacoes;
         }
 
@@ -105,16 +112,9 @@ namespace MORM.Dominio.Extensions
 
         public static PropertyInfo GetCampoSelectMax(this Type type)
         {
-            foreach (var prop in type.GetProperties())
-            {
-                var selectMax = prop.GetSelectMax();
-                if (selectMax != null)
-                {
-                    return prop;
-                }
-            }
-
-            return null;
+            return type.GetProperties()
+                .FirstOrDefault(prop => prop.GetSelectMax() != null)
+                ;
         }
     }
 }

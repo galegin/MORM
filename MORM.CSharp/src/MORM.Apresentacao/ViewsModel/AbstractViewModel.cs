@@ -258,7 +258,6 @@ namespace MORM.Apresentacao.ViewsModel
 
         public virtual void ConsultarChave() { }
         public virtual void BuscarDescricao() { }
-        public virtual void GerarIntervalo() { }
 
         public virtual void SelecionarLista() => SelecionarAction?.Invoke();
 
@@ -298,14 +297,13 @@ namespace MORM.Apresentacao.ViewsModel
         #region construtores
         public AbstractViewModel() : base()
         {
-            //Filtro = Activator.CreateInstance<TModel>();
-            //Filtro = CompilerAssembly.GetClasse(typeof(TModel));
-            Filtro = DynamicAssembly.GetTypeDynamic(typeof(TModel));
+            Filtro = Activator.CreateInstance<TModel>();
             Lista = new List<TModel>();
             Model = Activator.CreateInstance<TModel>();
-
+            
             SetOpcoes(new[] { nameof(IsExibirFechar) });
 
+            #region commands
             var mainCommand = TelaUtils.Instance.MainCommand;
             Limpar = mainCommand.GetCommand<TModel>(CommandTipo.Limpar);
             Listar = mainCommand.GetCommand<TModel>(CommandTipo.Listar);
@@ -321,6 +319,7 @@ namespace MORM.Apresentacao.ViewsModel
             Selecionar = mainCommand.GetCommand<TModel>(CommandTipo.Selecionar);
             Confirmar = mainCommand.GetCommand<TModel>(CommandTipo.Confirmar);
             Cancelar = mainCommand.GetCommand<TModel>(CommandTipo.Cancelar);
+            #endregion
         }
         #endregion
 
@@ -337,7 +336,7 @@ namespace MORM.Apresentacao.ViewsModel
         {
             Filtro.ClearInstancePropOrFieldAll();
             Lista = null;
-            Model.ClearInstancePropOrFieldAll();
+            Model?.ClearInstancePropOrFieldAll();
         }
         public override void ConsultarChave()
         {
@@ -345,6 +344,11 @@ namespace MORM.Apresentacao.ViewsModel
             {
                 Consultar.ExecuteCommand(this);
             }
+        }
+        public void SetarAtualizacao()
+        {
+            oModel?.SetInstancePropOrField("Cd_Operador", 1); // ?????
+            oModel?.SetInstancePropOrField("Dt_Cadastro", DateTime.Now);
         }
         #endregion
     }

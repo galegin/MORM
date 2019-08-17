@@ -1,5 +1,4 @@
-﻿using MORM.Dominio.Interfaces;
-using System;
+﻿using System;
 
 namespace MORM.Infra.CrossCutting
 {

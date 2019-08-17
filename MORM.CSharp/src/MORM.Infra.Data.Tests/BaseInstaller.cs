@@ -3,6 +3,7 @@ using MORM.Dominio.Interfaces;
 using MORM.Infra.Data.UnityOfWork;
 using MORM.Infra.Mocks;
 using MORM.Infra.Data.Dapper.Context;
+using MORM.Infra.CrossCutting;
 
 namespace MORM.Infra.Data.Tests
 {

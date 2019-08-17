@@ -1,4 +1,4 @@
-﻿using MORM.Infra.CrossCutting;
+﻿using MORM.Dominio.Entidades;
 using System.Web.Http.Filters;
 
 namespace MORM.Aplicacao.Extensions

@@ -1,5 +1,4 @@
-﻿using MORM.Dominio.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -59,7 +58,7 @@ namespace MORM.Infra.CrossCutting
                 {
                     InstallAssembly(container, assembly);
                 }
-                catch (Exception ex) { Logger.DebugException(ex); }
+                catch (Exception ex) { Logger.Debug("erro install", ex: ex); }
             }
         }
 
@@ -68,15 +67,13 @@ namespace MORM.Infra.CrossCutting
             if (assembly == null)
                 return;
 
-            var METHOD = $"{nameof(InstallerAssembly)}.InstallAssembly()";
-
-            Logger.Debug(METHOD, $"assembly.FullName: {assembly.FullName}");
+            Logger.Debug($"assembly.FullName: {assembly.FullName}");
             
             ClassesAssembly
                 .GetTypes(assembly, (x) => x.Name.EndsWith("BaseInstaller"))
                 .ForEach(type =>
                 {
-                    Logger.Debug(METHOD, $"type.FullName: {type.FullName}");
+                    Logger.Debug($"type.FullName: {type.FullName}");
                     ClasseExecute.Execute(type, "Install", new[] { container });
                 });
         }
