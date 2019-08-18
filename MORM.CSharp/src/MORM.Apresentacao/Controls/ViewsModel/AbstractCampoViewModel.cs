@@ -45,7 +45,10 @@ namespace MORM.Apresentacao.Controls.ViewsModel
                 if (_campo != null)
                 {
                     if (Tipo.IsInter() || Tipo.IsSelecao() || _campo.IsClasse())
+                    {
                         Filtros = _campo.Prop.PropertyType.GetCampoFiltro();
+                        Filtros.Tipo = Tipo;
+                    }
                 }
             }
         }

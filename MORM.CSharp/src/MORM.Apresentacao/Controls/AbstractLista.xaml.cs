@@ -3,9 +3,7 @@ using MORM.Apresentacao.Views;
 using MORM.Apresentacao.ViewsModel;
 using MORM.Infra.CrossCutting;
 using System.Linq;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 
 namespace MORM.Apresentacao.Controls
 {
@@ -32,21 +30,9 @@ namespace MORM.Apresentacao.Controls
                 this.AddPainel(filtro, dock: Dock.Top);
             }
 
-            var bindingLista = new Binding(nameof(vm.Lista)) { Source = vm };
-            var bindingModel = new Binding(nameof(vm.Model)) { Source = vm };
-
-            var dataGrid = new DataGrid()
-            {
-                Margin = new Thickness(10),
-                VerticalScrollBarVisibility = ScrollBarVisibility.Auto,
-                HorizontalScrollBarVisibility = ScrollBarVisibility.Auto,
-                AutoGenerateColumns = false,
-                CanUserAddRows = false,
-                CanUserDeleteRows = false,
-                IsReadOnly = true,
-            };
-            dataGrid.SetBinding(DataGrid.ItemsSourceProperty, bindingLista);
-            dataGrid.SetBinding(DataGrid.SelectedItemProperty, bindingModel);
+            var dataGrid = new AbstractDataGrid();
+            dataGrid.SetBindingDataGridLista(vm);
+            dataGrid.SetBindingDataGridModel(vm);
             this.AddPainel(dataGrid);
 
             //var style = FindResource("DataGridCellStyle") as Style;
@@ -58,18 +44,10 @@ namespace MORM.Apresentacao.Controls
                 .ToList()
                 .ForEach(campo =>
                 {
-                    var descricao = campo.Descricao;
-                    var formato = campo.Formato;
-
-                    var bindingDataGridColumn = new Binding(campo.Prop.Name)
-                    {
-                        StringFormat = (!string.IsNullOrWhiteSpace(formato) ? formato : null),
-                    };
-
                     dataGrid.Columns.Add(new DataGridTextColumn()
                     {
-                        Header = descricao,
-                        Binding = bindingDataGridColumn,
+                        Header = campo.Descricao,
+                        Binding = campo.GetBindingCampo(),
                         //CellStyle = style,
                     });
                 });

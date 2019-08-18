@@ -8,6 +8,17 @@ namespace MORM.Apresentacao.Controls
 {
     public class AbstractCampoFiltro : AbstractModel
     {
+        #region variaveis
+        private AbstractCampoTipo _tipo;
+        #endregion
+
+        #region propriedades
+        public AbstractCampoTipo Tipo
+        {
+            get => _tipo;
+            set => SetField(ref _tipo, value);
+        }
+        #endregion
     }
 
     public class AbstractCampoFiltro<TFiltro> : AbstractCampoFiltro
@@ -76,12 +87,24 @@ namespace MORM.Apresentacao.Controls
         }
         private string GetValorDes()
         {
+            return Tipo.IsSelecao() ? GetValorSel() 
+                : Tipo.IsInter() ? GetValorInt()
+                : null
+                ;
+        }
+        private string GetValorInt()
+        {
             var isValorIni = IsValor($"{ValorIni}");
             var isValorFin = IsValor($"{ValorFin}");
-            return ValorSel.Any() ? string.Join(",", ValorSel) 
-                : isValorIni && isValorFin ? $">={ValorIni}&<={ValorFin}"
+            return isValorIni && isValorFin ? $">={ValorIni}&<={ValorFin}"
                 : isValorIni ? $">={ValorIni}"
-                : isValorFin ? $"<={ValorFin}" 
+                : isValorFin ? $"<={ValorFin}"
+                : null
+                ;
+        }
+        private string GetValorSel()
+        {
+            return ValorSel.Any() ? string.Join(",", ValorSel)
                 : null
                 ;
         }

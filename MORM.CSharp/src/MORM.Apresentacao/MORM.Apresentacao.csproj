@@ -93,6 +93,7 @@
     <Compile Include="Controls\AbstractCorpo.xaml.cs">
       <DependentUpon>AbstractCorpo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\AbstractDataGrid.cs" />
     <Compile Include="Controls\AbstractSource.cs" />
     <Compile Include="Views\AbstractViewItem.cs" />
     <Compile Include="Views\AbstractViewTipo.cs" />
