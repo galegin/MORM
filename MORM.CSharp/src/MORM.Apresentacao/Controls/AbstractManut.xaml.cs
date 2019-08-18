@@ -2,9 +2,6 @@
 using MORM.Apresentacao.Views;
 using MORM.Apresentacao.ViewsModel;
 using MORM.Infra.CrossCutting;
-using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
 
 namespace MORM.Apresentacao.Controls
 {
@@ -24,21 +21,13 @@ namespace MORM.Apresentacao.Controls
         {
             DataContext = vm;
 
-            this.AddPainel(new ScrollViewer()
-            {
-                Margin = new Thickness(10),
-                VerticalScrollBarVisibility = ScrollBarVisibility.Auto,
-                HorizontalScrollBarVisibility = ScrollBarVisibility.Auto,
-                CanContentScroll = true,
-            });
+            this.AddPainel(new AbstractScrollViewer());
 
             var source = new AbstractSource(vm, nameof(vm.Model));
 
             vm.ElementType
                 .GetMetadata()
-                .Campos
-                .Where(p => !p.Prop.IsIgnoreCampo())
-                .ToList()
+                .GetCamposIgnore()
                 .ForEach(campo =>
                 {
                     this.AddCampo(source, campo, AbstractCampoTipo.Individual);

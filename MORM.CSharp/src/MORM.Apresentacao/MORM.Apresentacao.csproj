@@ -94,6 +94,10 @@
       <DependentUpon>AbstractCorpo.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\AbstractDataGrid.cs" />
+    <Compile Include="Controls\AbstractRelatorio.xaml.cs">
+      <DependentUpon>AbstractRelatorio.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AbstractScrollViewer.cs" />
     <Compile Include="Controls\AbstractSource.cs" />
     <Compile Include="Views\AbstractViewItem.cs" />
     <Compile Include="Views\AbstractViewTipo.cs" />
@@ -251,6 +255,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\AbstractOpcao.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\AbstractRelatorio.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -5,7 +5,8 @@ namespace MORM.Apresentacao.Views
     public static class AbstractViewOpcaoExtensions
     {
         public static void OnHabilitarOpcao(this IAbstractViewModel vm, 
-            bool isExibirConsulta, bool isExibirCadastro, bool isExibirFiltro)
+            bool isExibirConsulta, bool isExibirCadastro, 
+            bool isExibirFiltro, bool isExibirRelatorio)
         {
             vm.IsExibirFechar = false;
             vm.IsExibirVoltar = true;
@@ -14,7 +15,7 @@ namespace MORM.Apresentacao.Views
             vm.IsExibirListar = isExibirConsulta;
             vm.IsExibirExportar = isExibirConsulta;
             vm.IsExibirImportar = isExibirConsulta;
-            vm.IsExibirImprimir = isExibirConsulta;
+            vm.IsExibirImprimir = isExibirConsulta || isExibirRelatorio;
 
             vm.IsExibirConsultar = isExibirCadastro;
             vm.IsExibirSalvar = isExibirCadastro;

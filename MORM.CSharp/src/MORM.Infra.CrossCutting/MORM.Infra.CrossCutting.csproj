@@ -49,6 +49,7 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
@@ -85,12 +86,20 @@
     <Compile Include="Exceptions\ExceptionInfo.cs" />
     <Compile Include="Exceptions\ExceptionDebug.cs" />
     <Compile Include="Extensions\Consumers\ConsumerExtensions.cs" />
+    <Compile Include="Extensions\Hashs\Base64Extensions.cs" />
+    <Compile Include="Extensions\Images\AjusteImagem.cs" />
+    <Compile Include="Extensions\Initializers\InicializacaoApp.cs" />
     <Compile Include="Extensions\Metadatas\ClasseCampoExtensions.cs" />
     <Compile Include="Extensions\Metadatas\ClasseExtensions.cs" />
     <Compile Include="Extensions\Metadatas\MetadataExtensions.cs" />
     <Compile Include="Extensions\Metadatas\ValoresCampoExtensions.cs" />
     <Compile Include="Extensions\Objetos\PropertyAttrExtensions.cs" />
     <Compile Include="Extensions\Objetos\TipoDadoExtensions.cs" />
+    <Compile Include="Extensions\Printers\PrinterDispositivo.cs" />
+    <Compile Include="Extensions\Printers\PrinterExtensions.cs" />
+    <Compile Include="Extensions\Printers\PrinterPortalSerial.cs" />
+    <Compile Include="Extensions\Printers\WinSpool.cs" />
+    <Compile Include="Extensions\Registers\RegistryExtensions.cs" />
     <Compile Include="Extensions\Types\AttributeExtensions.cs" />
     <Compile Include="Extensions\Types\CampoExtensions.cs" />
     <Compile Include="Extensions\Enuns\EnumExtensions.cs" />

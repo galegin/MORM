@@ -2,7 +2,6 @@
 using MORM.Apresentacao.Views;
 using MORM.Apresentacao.ViewsModel;
 using MORM.Infra.CrossCutting;
-using System.Linq;
 using System.Windows.Controls;
 
 namespace MORM.Apresentacao.Controls
@@ -39,9 +38,7 @@ namespace MORM.Apresentacao.Controls
 
             vm.ElementType
                 .GetMetadata()
-                .Campos
-                .Where(p => !p.Prop.IsIgnoreCampo())
-                .ToList()
+                .GetCamposIgnore()
                 .ForEach(campo =>
                 {
                     dataGrid.Columns.Add(new DataGridTextColumn()

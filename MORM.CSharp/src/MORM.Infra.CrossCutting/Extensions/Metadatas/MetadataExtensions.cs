@@ -143,5 +143,14 @@ namespace MORM.Infra.CrossCutting
             var metadata = prop.ReflectedType.GetMetadata();
             return metadata.GetCampo(prop.Name);
         }
+
+        public static List<MetadataCampo> GetCamposIgnore(this Metadata metadata)
+        {
+            return metadata
+                .Campos
+                .Where(p => !p.Prop.IsIgnoreCampo())
+                .ToList()
+                ;
+        }
     }
 }

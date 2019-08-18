@@ -31,15 +31,17 @@ namespace MORM.Apresentacao.Views
         where TViewModel : IAbstractViewModel
     {
         #region variaveis
-        private AbstractViewTipo _tipo = AbstractViewTipo.FiltroListaManutencao; // AbstractViewTipo.ListaManutencao;
+        private AbstractViewTipo _tipo = AbstractViewTipo.ListaManutencao;
         private const string _consulta = "Consulta";
         private const string _cadastro = "Cadastro";
         private const string _filtro = "Filtro";
+        private const string _relatorio = "Relatorio";
         #endregion
 
         #region construtores
         public AbstractViewManut() : base(null)
         {
+            SetAbstractViewTipo();
             CreateComps(Activator.CreateInstance<TViewModel>());
         }
         #endregion
@@ -58,6 +60,11 @@ namespace MORM.Apresentacao.Views
             this.AddPainel(new AbstractCorpo(GetUserControls(vm), OnHabilitarOpcao));
         }
 
+        private void SetAbstractViewTipo()
+        {
+            _tipo = _tipo.GetAbstractViewTipoPadrao();
+        }
+
         private void OnHabilitarOpcao(object sender, SelectionChangedEventArgs e)
         {
             var parameter = GetParameter(sender);
@@ -67,7 +74,8 @@ namespace MORM.Apresentacao.Views
             vm.OnHabilitarOpcao(
                 isExibirConsulta: _tipo.IsConsulta() && _consulta.Equals(parameter),
                 isExibirCadastro: _tipo.IsCadastro() && _cadastro.Equals(parameter),
-                isExibirFiltro: _tipo.IsFiltro() && _filtro.Equals(parameter)
+                isExibirFiltro: _tipo.IsFiltro() && _filtro.Equals(parameter),
+                isExibirRelatorio: _tipo.IsRelatorio() && _filtro.Equals(parameter)
                 );
         }
 
@@ -78,7 +86,8 @@ namespace MORM.Apresentacao.Views
             return tabItem?.Header ??
                 (_tipo.IsConsulta() ? _consulta : null) ??
                 (_tipo.IsCadastro() ? _cadastro : null) ??
-                (_tipo.IsFiltro() ? _filtro : null)
+                (_tipo.IsFiltro() ? _filtro : null) ??
+                (_tipo.IsRelatorio() ? _relatorio : null)
                 ;
         }
 
@@ -89,6 +98,7 @@ namespace MORM.Apresentacao.Views
                 _tipo.IsConsulta() ? new AbstractViewItem(_consulta, new AbstractBusca(vm), new AbstractLista(vm)) : null,
                 _tipo.IsCadastro() ? new AbstractViewItem(_cadastro, new AbstractManut(vm)) : null,
                 _tipo.IsFiltro() ? new AbstractViewItem(_filtro, new AbstractFiltro(vm)) : null,
+                _tipo.IsRelatorio() ? new AbstractViewItem(_relatorio, new AbstractRelatorio(vm)) : null,
             }
             .Where(x => x != null)
             .ToList()

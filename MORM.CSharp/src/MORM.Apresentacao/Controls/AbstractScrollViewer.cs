@@ -3,18 +3,15 @@ using System.Windows.Controls;
 
 namespace MORM.Apresentacao.Controls
 {
-    public class AbstractDataGrid : DataGrid
+    public class AbstractScrollViewer : ScrollViewer
     {
         #region construtores
-        public AbstractDataGrid()
+        public AbstractScrollViewer()
         {
             Margin = new Thickness(10);
             VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
             HorizontalScrollBarVisibility = ScrollBarVisibility.Auto;
-            AutoGenerateColumns = false;
-            CanUserAddRows = false;
-            CanUserDeleteRows = false;
-            IsReadOnly = true;
+            CanContentScroll = true;
         }
         #endregion
     }
