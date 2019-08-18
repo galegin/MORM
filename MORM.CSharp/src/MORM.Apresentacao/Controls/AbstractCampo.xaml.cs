@@ -6,7 +6,6 @@ using MORM.Dominio.Extensions;
 using MORM.Infra.CrossCutting;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -16,6 +15,10 @@ namespace MORM.Apresentacao.Controls
     public partial class AbstractCampo : AbstractUserControl
     {
         #region propriedades
+        private AbstractCampoViewModel _vm => DataContext as AbstractCampoViewModel;
+        private AbstractSource _source => _vm.Source;
+        private AbstractCampoTipo _tipo => _vm.Tipo;
+        private MetadataCampo _campo => _vm.Campo;
         private AbstractCampoFormato Formato
         {
             get => EditIni.Formato;
@@ -39,9 +42,9 @@ namespace MORM.Apresentacao.Controls
             InitializeComponent();
             DataContext = new AbstractCampoViewModel(source, tipo, campo);
             Formato = campo.Prop.GetCampoFormato();
-            HabilitaCampo(tipo);
-            SetarTamanho(campo);
-            SetBindingCampo(tipo, campo, source);
+            HabilitaCampo();
+            SetarTamanho();
+            SetBindingCampo();
         }
         #endregion
 
@@ -91,39 +94,31 @@ namespace MORM.Apresentacao.Controls
         #endregion
 
         #region binding
-        private void SetBindingCampo(AbstractCampoTipo tipo, MetadataCampo campo, AbstractSource source)
+        private void SetBindingCampo()
         {
-            var vm = DataContext as AbstractCampoViewModel;
-            var cod = campo.Prop.Name;
+            var cod = _campo.Prop.Name;
 
-            if (tipo.IsIndiv())
+            if (_tipo.IsIndiv())
             {
-                SetBindingObjeto(EditIni, source, cod);
-                SetBindingObjeto(ComboTip, source, cod);
-            }
-            else
-            {
-                //SetBindingObjeto(EditIni, source, $"{cod}Ini");
-                //SetBindingObjeto(EditFin, source, $"{cod}Fin");
-                //SetBindingObjeto(EditDes, source, $"{cod}Des");
-                //SetBindingObjeto(ComboTip, source, $"{cod}Tip");
+                SetBindingObjeto(EditIni, cod);
+                SetBindingObjeto(ComboTip, cod);
             }
         }
 
-        private void SetBindingObjeto(UIElement control, AbstractSource source, params string[] campos)
+        private void SetBindingObjeto(UIElement control, params string[] campos)
         {
             if (control.Visibility != Visibility.Visible)
                 return;
 
-            var objeto = source.GetInstancePropOrField(source.Nome);
-            var objetoType = source.Source.GetInstancePropOrField("ElementType") as Type;
+            var objeto = _source.GetInstancePropOrField(_source.Nome);
+            var objetoType = _source.Source.GetInstancePropOrField("ElementType") as Type;
 
             foreach (var campo in campos)
             {
                 var prop = objetoType.GetProperty(campo);
                 if (prop != null)
                 {
-                    var binding = prop.GetDataBinding(source);
+                    var binding = prop.GetDataBinding(_source);
                     if (control is TextBox)
                         (control as TextBox).SetBinding(TextBox.TextProperty, binding);
                     else if (control is ComboBox)
@@ -135,42 +130,30 @@ namespace MORM.Apresentacao.Controls
         #endregion
 
         #region habilitaCampo
-        private void HabilitaCampo(AbstractCampoTipo tipo)
+        private void HabilitaCampo()
         {
-            //var comps = new List<object>
-            //{
-            //    tipo.IsIndiv() || tipo.IsInter() || tipo.IsTipagem() ? LabelBtn : null,
-            //    (tipo.IsIndiv() || tipo.IsInter()) && !tipo.IsTipagem() ? EditIni : null,
-            //    tipo.IsInter() ? EditFin : null,
-            //    tipo.IsDescr() || tipo.IsSelecao() ? EditDes : null,
-            //    tipo.IsTipagem() ? ComboTip : null,
-            //};
-
             var comps = new List<object>
             {
                 LabelBtn,
             };
 
-            if (tipo.IsTipagem())
+            if (_tipo.IsTipagem())
                 comps.Add(ComboTip);
-            else if (tipo.IsSelecao())
+            else if (_tipo.IsSelecao())
                 comps.Add(EditDes);
-            else if (tipo.IsInter())
+            else if (_tipo.IsInter())
             {
                 comps.Add(EditIni);
                 comps.Add(EditFin);
-                comps.Add(EditDes);
             }
-            else if (tipo.IsIndiv())
+            else if (_tipo.IsIndiv())
             {
                 comps.Add(EditIni);
-                if (tipo.IsDescr())
+                if (_tipo.IsDescr())
                     comps.Add(EditDes);
             }
 
             comps
-                //.Where(c => c != null)
-                //.ToList()
                 .ForEach(comp =>
                 {
                     (comp as UIElement).Visibility = Visibility.Visible;
@@ -179,13 +162,13 @@ namespace MORM.Apresentacao.Controls
         #endregion
 
         #region setarTamanho
-        private void SetarTamanho(MetadataCampo campo)
+        private void SetarTamanho()
         {
             LabelBtn.Width = 150;
-            EditIni.Width = campo.Tamanho * 10;
-            EditFin.Width = campo.Tamanho * 10;
-            EditDes.Width = 300;
-            EditDes.Width = 150;
+            EditIni.Width = _tipo.IsInter() ? 150 : _campo.Tamanho * 10;
+            EditFin.Width = _tipo.IsInter() ? 150 : _campo.Tamanho * 10;
+            EditDes.Width = _tipo.IsInter() ? 300 : 150;
+            ComboTip.Width = _tipo.IsInter() ? 300 : 150;
         }
         #endregion
 

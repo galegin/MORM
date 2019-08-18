@@ -41,6 +41,9 @@ namespace MORM.Apresentacao.Controls
                 VerticalScrollBarVisibility = ScrollBarVisibility.Auto,
                 HorizontalScrollBarVisibility = ScrollBarVisibility.Auto,
                 AutoGenerateColumns = false,
+                CanUserAddRows = false,
+                CanUserDeleteRows = false,
+                IsReadOnly = true,
             };
             dataGrid.SetBinding(DataGrid.ItemsSourceProperty, bindingLista);
             dataGrid.SetBinding(DataGrid.SelectedItemProperty, bindingModel);
