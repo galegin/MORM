@@ -18,7 +18,7 @@ namespace MORM.Apresentacao.Views
             foreach (var campo in camposKey)
             {
                 var valueObj = campo.Prop.GetValue(obj);
-                if (valueObj?.IsValueNull() != false)
+                if (valueObj?.IsValueNull() ?? true)
                 {
                     preenchido = false;
                 }

@@ -130,8 +130,7 @@ namespace MORM.Infra.Data.Context
             foreach (var campo in campos)
             {
                 var valueObj = campo.OwnerProp.GetValue(_objeto);
-                var valueNul = campo.OwnerProp.PropertyType.GetValueNull();
-                if (isKeyOnly || (!isKeyOnly && valueObj != null && !valueNul.Equals(valueObj)))
+                if (isKeyOnly || (!valueObj.IsValueNull()))
                     wheres.Add($"{campo.Atributo} = {GetValueStr(valueObj)}");
             }
 

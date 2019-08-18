@@ -31,7 +31,7 @@ namespace MORM.Apresentacao.Views
         where TViewModel : IAbstractViewModel
     {
         #region variaveis
-        private AbstractViewTipo _tipo = AbstractViewTipo.ListaManutencao;
+        private AbstractViewTipo _tipo = AbstractViewTipo.FiltroListaManutencao; // AbstractViewTipo.ListaManutencao;
         private const string _consulta = "Consulta";
         private const string _cadastro = "Cadastro";
         private const string _filtro = "Filtro";
@@ -51,7 +51,7 @@ namespace MORM.Apresentacao.Views
 
             this.AddPainel(new DockPanel());
 
-            this.AddPainel(new AbstractTitulo(_tipo.GetDescription() + " de " + vm.GetTitulo()), dock: Dock.Top);
+            this.AddPainel(new AbstractTitulo(_tipo.GetDescricao() + " de " + vm.GetTitulo()), dock: Dock.Top);
 
             this.AddPainel(new AbstractOpcao(vm), dock: Dock.Top);
 

@@ -43,7 +43,6 @@
                                 Width="300"
                                 />
             <local:AbstractCombo x:Name="ComboTip"
-                                 Focusable="False"
                                  SelectedValue="{Binding Campo.Valor}" ItemsSource="{Binding Campo.Valores}"
                                  DisplayMemberPath="Descricao" SelectedValuePath="Codigo"
                                  Visibility="Collapsed" 

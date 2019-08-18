@@ -44,8 +44,8 @@ namespace MORM.Apresentacao.Controls.ViewsModel
                 SetField(ref _campo, value);
                 if (_campo != null)
                 {
-                    if (Tipo.IsInter() || Tipo.IsSelecao())
-                        Filtro = _campo.Prop.PropertyType.GetCampoFiltro();
+                    if (Tipo.IsInter() || Tipo.IsSelecao() || _campo.IsClasse())
+                        Filtros = _campo.Prop.PropertyType.GetCampoFiltro();
                 }
             }
         }
@@ -110,7 +110,6 @@ namespace MORM.Apresentacao.Controls.ViewsModel
                 return;
 
             var campoProp = Campo.Prop.Name;
-            var campoPropDes = $"{Campo.Prop.Name}Des";
             var campoCod = Campo.Classe.GetCampoCod();
             var campoDes = Campo.Classe.GetCampoDes();
 
@@ -120,15 +119,17 @@ namespace MORM.Apresentacao.Controls.ViewsModel
                 return;
 
             var valorCod = Source.Model.GetInstancePropOrField(campoProp);
+            if (valorCod?.IsValueNull() ?? true)
+                return;
 
             var objeto = Activator.CreateInstance(Campo.Classe);
             objeto.SetInstancePropOrField(campoCod, valorCod);
 
             var connector = Campo.Classe.GetConsultarConnector();
-            var retorno = ObjetoExecute.Execute(connector, "Execute", objeto);
+            var retorno = ObjetoExecute.Execute(connector, "Executar", objeto);
             var valorDes = retorno.GetInstancePropOrField(campoDes);
 
-            Source.Model.SetInstancePropOrField(campoPropDes, valorDes);
+            Filtros.SetInstancePropOrField("ValorDes", valorDes);
         }
 
         public override void SelecionarLista()

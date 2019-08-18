@@ -18,6 +18,7 @@ namespace MORM.Apresentacao.Controls
         private TFiltro _valorFin;
         private IList<TFiltro> _valorSel;
         private string _valorDes;
+        private string[] _valoresNulos = { "0" };
         #endregion
 
         #region propriedades
@@ -68,10 +69,15 @@ namespace MORM.Apresentacao.Controls
         #endregion
 
         #region metodos
+        private bool IsValor(object valor)
+        {
+            var stValor = $"{valor}";
+            return !string.IsNullOrWhiteSpace(stValor) && !_valoresNulos.Contains(stValor);
+        }
         private string GetValorDes()
         {
-            var isValorIni = !string.IsNullOrWhiteSpace($"{ValorIni}");
-            var isValorFin = !string.IsNullOrWhiteSpace($"{ValorFin}");
+            var isValorIni = IsValor($"{ValorIni}");
+            var isValorFin = IsValor($"{ValorFin}");
             return ValorSel.Any() ? string.Join(",", ValorSel) 
                 : isValorIni && isValorFin ? $">={ValorIni}&<={ValorFin}"
                 : isValorIni ? $">={ValorIni}"

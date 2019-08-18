@@ -1,7 +1,6 @@
 ﻿using MORM.Dominio.Extensions;
 using MORM.Infra.CrossCutting;
 using System;
-using System.Globalization;
 using System.Linq;
 
 namespace MORM.Dominio.Tipagens
@@ -40,20 +39,10 @@ namespace MORM.Dominio.Tipagens
 
         public static string GetValueStr(this TipoDatabase tipoDatabase, object value)
         {
-            value = value.GetValueNullable();
-
-            return (
-                value == null ? "null" :
-                value is bool ? "'" + ((bool)value ? "T" : "F") + "'" :
+            var tipoDado = value?.GetType().GetTipoDadoModel();
+            return value == null ? "null" :
                 value is DateTime ? tipoDatabase.GetValueData((DateTime)value) :
-                value is decimal ? ((decimal)value).ToString(CultureInfo.InvariantCulture) :
-                value is double ? ((double)value).ToString(CultureInfo.InvariantCulture) :
-                value is float ? ((float)value).ToString(CultureInfo.InvariantCulture) :
-                value is long ? ((long)value).ToString() :
-                value is int ? ((int)value).ToString() :
-                value is short ? ((short)value).ToString() :
-                value is string[] ? "'" + string.Join("|", value as string[]).Replace("'", "''") + "'" :
-                value is string ? "'" + value.ToString().Replace("'", "''") + "'" : value.ToString());
+                tipoDado != null ? tipoDado.ConvertStr.Invoke(value) : value.ToString();
         }
 
         public static string GetSqlTableExiste(this TipoDatabase tipo, string tablename)

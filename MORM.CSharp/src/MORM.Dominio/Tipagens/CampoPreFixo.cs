@@ -1,5 +1,4 @@
-﻿using MORM.Dominio.Extensions;
-using MORM.Infra.CrossCutting;
+﻿using MORM.Infra.CrossCutting;
 using System.Xml.Serialization;
 
 namespace MORM.Dominio.Tipagens

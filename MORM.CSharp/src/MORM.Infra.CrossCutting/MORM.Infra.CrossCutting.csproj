@@ -67,7 +67,7 @@
     <Compile Include="Assemblies\MigrationAssembly.cs" />
     <Compile Include="Assemblies\ServiceAssembly.cs" />
     <Compile Include="Assemblies\TypeBuilderAssembly.cs" />
-    <Compile Include="Atributos\Consumer.cs" />
+    <Compile Include="Attributes\Consumer.cs" />
     <Compile Include="BaseInstaller.cs" />
     <Compile Include="Classes\AppPath.cs" />
     <Compile Include="Classes\ArquivoDiretorio.cs" />
@@ -84,7 +84,7 @@
     <Compile Include="Exceptions\ExceptionErro.cs" />
     <Compile Include="Exceptions\ExceptionInfo.cs" />
     <Compile Include="Exceptions\ExceptionDebug.cs" />
-    <Compile Include="Extensions\Attrs\ConsumerExtensions.cs" />
+    <Compile Include="Extensions\Consumers\ConsumerExtensions.cs" />
     <Compile Include="Extensions\Metadatas\ClasseCampoExtensions.cs" />
     <Compile Include="Extensions\Metadatas\ClasseExtensions.cs" />
     <Compile Include="Extensions\Metadatas\MetadataExtensions.cs" />
@@ -94,7 +94,7 @@
     <Compile Include="Extensions\Types\AttributeExtensions.cs" />
     <Compile Include="Extensions\Types\CampoExtensions.cs" />
     <Compile Include="Extensions\Enuns\EnumExtensions.cs" />
-    <Compile Include="Extensions\Objetos\DataTypeExtension.cs" />
+    <Compile Include="Extensions\Objetos\DataTypeExtensions.cs" />
     <Compile Include="Extensions\Objetos\FieldExtensions.cs" />
     <Compile Include="Extensions\Objetos\ObjectExtensions.cs" />
     <Compile Include="Extensions\Objetos\PropertyExtensions.cs" />

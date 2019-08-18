@@ -41,7 +41,7 @@ namespace MORM.Apresentacao.Controls
             Formato = campo.Prop.GetCampoFormato();
             HabilitaCampo(tipo);
             SetarTamanho(campo);
-            SetBindingCampo(campo, source);
+            SetBindingCampo(tipo, campo, source);
         }
         #endregion
 
@@ -91,15 +91,23 @@ namespace MORM.Apresentacao.Controls
         #endregion
 
         #region binding
-        private void SetBindingCampo(MetadataCampo campo, AbstractSource source)
+        private void SetBindingCampo(AbstractCampoTipo tipo, MetadataCampo campo, AbstractSource source)
         {
             var vm = DataContext as AbstractCampoViewModel;
             var cod = campo.Prop.Name;
 
-            SetBindingObjeto(EditIni, source, $"{cod}Ini", $"{cod}");
-            SetBindingObjeto(EditFin, source, $"{cod}Fin");
-            SetBindingObjeto(EditDes, source, $"{cod}Des");
-            SetBindingObjeto(ComboTip, source, $"{cod}Tip");
+            if (tipo.IsIndiv())
+            {
+                SetBindingObjeto(EditIni, source, cod);
+                SetBindingObjeto(ComboTip, source, cod);
+            }
+            else
+            {
+                //SetBindingObjeto(EditIni, source, $"{cod}Ini");
+                //SetBindingObjeto(EditFin, source, $"{cod}Fin");
+                //SetBindingObjeto(EditDes, source, $"{cod}Des");
+                //SetBindingObjeto(ComboTip, source, $"{cod}Tip");
+            }
         }
 
         private void SetBindingObjeto(UIElement control, AbstractSource source, params string[] campos)
@@ -129,18 +137,40 @@ namespace MORM.Apresentacao.Controls
         #region habilitaCampo
         private void HabilitaCampo(AbstractCampoTipo tipo)
         {
+            //var comps = new List<object>
+            //{
+            //    tipo.IsIndiv() || tipo.IsInter() || tipo.IsTipagem() ? LabelBtn : null,
+            //    (tipo.IsIndiv() || tipo.IsInter()) && !tipo.IsTipagem() ? EditIni : null,
+            //    tipo.IsInter() ? EditFin : null,
+            //    tipo.IsDescr() || tipo.IsSelecao() ? EditDes : null,
+            //    tipo.IsTipagem() ? ComboTip : null,
+            //};
+
             var comps = new List<object>
             {
-                tipo.IsIndiv() || tipo.IsInter() ? LabelBtn : null,
-                tipo.IsIndiv() || tipo.IsInter() ? EditIni : null,
-                tipo.IsInter() ? EditFin : null,
-                tipo.IsDescr() || tipo.IsSelecao() ? EditDes : null,
-                tipo.IsTipagem() ? ComboTip : null,
+                LabelBtn,
             };
 
+            if (tipo.IsTipagem())
+                comps.Add(ComboTip);
+            else if (tipo.IsSelecao())
+                comps.Add(EditDes);
+            else if (tipo.IsInter())
+            {
+                comps.Add(EditIni);
+                comps.Add(EditFin);
+                comps.Add(EditDes);
+            }
+            else if (tipo.IsIndiv())
+            {
+                comps.Add(EditIni);
+                if (tipo.IsDescr())
+                    comps.Add(EditDes);
+            }
+
             comps
-                .Where(c => c != null)
-                .ToList()
+                //.Where(c => c != null)
+                //.ToList()
                 .ForEach(comp =>
                 {
                     (comp as UIElement).Visibility = Visibility.Visible;

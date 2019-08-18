@@ -16,16 +16,16 @@ namespace MORM.Infra.CrossCutting
     {
         public static IList GetValoresCampo(this PropertyInfo prop)
         {
-            if (!prop.ReflectedType.IsEnum)
+            if (!prop.PropertyType.IsEnum)
                 return null;
 
             IList retorno = new List<ValorTipagem>();
 
-            foreach (var value in Enum.GetValues(prop.ReflectedType))
+            foreach (var value in Enum.GetValues(prop.PropertyType))
             {
                 retorno.Add(new ValorTipagem
                 {
-                    ElementType = prop.ReflectedType,
+                    ElementType = prop.PropertyType,
                     Codigo = value,
                     Descricao = value.ToString()
                 });

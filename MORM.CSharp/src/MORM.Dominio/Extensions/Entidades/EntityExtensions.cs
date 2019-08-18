@@ -13,7 +13,7 @@ namespace MORM.Dominio.Extensions
             foreach (var campo in camposKey)
             {
                 var valueObj = campo.OwnerProp.GetValue(obj);
-                if (valueObj?.IsValueNull() != false)
+                if (valueObj?.IsValueNull() ?? true)
                 {
                     preenchido = false;
                 }

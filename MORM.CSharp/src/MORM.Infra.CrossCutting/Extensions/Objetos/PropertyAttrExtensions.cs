@@ -1,18 +1,24 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Reflection;
 
 namespace MORM.Infra.CrossCutting
 {
     public static class PropertyAttrExtensions
     {
-        private static string[] _ignoreCampos =
-            { "U_Version", "Cd_Operador", "Dt_Cadastro", "Cd_Senha" };
+        private static Dictionary<string, object> _ignoreCampos = new Dictionary<string, object>
+        {
+            ["U_Version"] = "",
+            ["Cd_Operador"] = 1,
+            ["Dt_Cadastro"] = DateTime.Now,
+            ["Cd_Senha"] = "123@mudar"
+        };
 
         public static bool IsIgnoreCampo(this string campo)
         {
-            return _ignoreCampos.Contains(campo);
+            return _ignoreCampos.ContainsKey(campo);
         }
 
         public static bool IsIgnoreCampo(this PropertyInfo prop)
@@ -28,16 +34,6 @@ namespace MORM.Infra.CrossCutting
             return prop.Name;
         }
 
-        //public static DescriptionAttribute GetDescription(this PropertyInfo prop)
-        //{
-        //    return prop.GetAttribute<DescriptionAttribute>();
-        //}
-
-        //public static StringLengthAttribute GetStringLength(this PropertyInfo prop)
-        //{
-        //    return prop.GetAttribute<StringLengthAttribute>();
-        //}
-
         public static string GetFormato(this PropertyInfo prop)
         {
             var formato = prop.GetAttribute<DisplayAttribute>()?.Description;
@@ -46,19 +42,19 @@ namespace MORM.Infra.CrossCutting
 
             var tipoDado = prop.PropertyType.GetTipoDadoModel();
 
-            switch (tipoDado.TipoDado)
+            switch (tipoDado.Dado)
             {
-                case TipoDadoEnum.Bool:
+                case TipoDado.Bool:
                     return null;
-                case TipoDadoEnum.Date:
+                case TipoDado.Date:
                     return "dd/MM/yyyy";
-                case TipoDadoEnum.Real:
+                case TipoDado.Real:
                     var precisao = prop.GetPrecisao();
                     var precisaoStr = precisao > 0 ? "." + new string('0', precisao) : string.Empty;
                     return $"#,##0{precisaoStr}";
-                case TipoDadoEnum.Int:
+                case TipoDado.Int:
                     return "#,##0";
-                case TipoDadoEnum.Str:
+                case TipoDado.Str:
                     return null;
             }
 
@@ -73,17 +69,17 @@ namespace MORM.Infra.CrossCutting
 
             var tipoDado = prop.PropertyType.GetTipoDadoModel();
 
-            switch (tipoDado.TipoDado)
+            switch (tipoDado.Dado)
             {
-                case TipoDadoEnum.Bool:
+                case TipoDado.Bool:
                     return 10;
-                case TipoDadoEnum.Date:
+                case TipoDado.Date:
                     return 10;
-                case TipoDadoEnum.Real:
+                case TipoDado.Real:
                     return 10;
-                case TipoDadoEnum.Int:
+                case TipoDado.Int:
                     return 10;
-                case TipoDadoEnum.Str:
+                case TipoDado.Str:
                     return 50;
             }
 
@@ -98,17 +94,17 @@ namespace MORM.Infra.CrossCutting
 
             var tipoDado = prop.PropertyType.GetTipoDadoModel();
 
-            switch (tipoDado.TipoDado)
+            switch (tipoDado.Dado)
             {
-                case TipoDadoEnum.Bool:
+                case TipoDado.Bool:
                     return 0;
-                case TipoDadoEnum.Date:
+                case TipoDado.Date:
                     return 0;
-                case TipoDadoEnum.Real:
+                case TipoDado.Real:
                     return 2;
-                case TipoDadoEnum.Int:
+                case TipoDado.Int:
                     return 0;
-                case TipoDadoEnum.Str:
+                case TipoDado.Str:
                     return 0;
             }
 

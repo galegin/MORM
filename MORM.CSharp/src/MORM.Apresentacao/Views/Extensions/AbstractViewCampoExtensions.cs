@@ -43,9 +43,9 @@ namespace MORM.Apresentacao.Views
         private static AbstractCampoTipo GetCampoSubTipoIntervalo(this AbstractCampoTipo tipo, MetadataCampo campo)
         {
             if (campo.IsValores())
-                return AbstractCampoTipo.IntervaloComSelecao;
+                return AbstractCampoTipo.IntervaloComTipagem;
             else if (campo.IsClasse())
-                return AbstractCampoTipo.IntervaloComPesquisa;
+                return AbstractCampoTipo.IntervaloComSelecao;
             else
                 return tipo;
         }

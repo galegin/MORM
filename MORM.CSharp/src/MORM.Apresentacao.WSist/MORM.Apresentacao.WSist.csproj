@@ -81,6 +81,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Types\UsuarioBloqueio.cs" />
+    <Compile Include="Types\UsuarioPrivilerio.cs" />
     <Compile Include="ViewsModel\nsAmbiente\AmbienteViewModel.cs" />
     <Compile Include="ViewsModel\nsAmbiente\LogAcessoViewModel.cs" />
     <Compile Include="ViewsModel\nsAmbiente\MigracaoEntViewModel.cs" />

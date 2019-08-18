@@ -132,17 +132,17 @@ namespace MORM.Apresentacao.Controls
         {
             var tipoDado = prop.PropertyType.GetTipoDadoModel();
 
-            switch (tipoDado.TipoDado)
+            switch (tipoDado.Dado)
             {
-                case TipoDadoEnum.Bool:
+                case TipoDado.Bool:
                     return AbstractCampoFormato.Bool;
-                case TipoDadoEnum.Date:
+                case TipoDado.Date:
                     return AbstractCampoFormato.Data;
-                case TipoDadoEnum.Real:
+                case TipoDado.Real:
                     return AbstractCampoFormato.Valor;
-                case TipoDadoEnum.Int:
+                case TipoDado.Int:
                     return AbstractCampoFormato.Numero;
-                case TipoDadoEnum.Str:
+                case TipoDado.Str:
                     return AbstractCampoFormato.Texto;
             }
 

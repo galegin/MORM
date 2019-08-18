@@ -10,6 +10,9 @@ namespace MORM.Infra.CrossCutting
 
         public static Type GetClasseCampo(this PropertyInfo prop)
         {
+            //if (!prop.PropertyType.IsClass)
+            //    return null;
+
             var preFixo = prop.Name.GetPreFixo();
             var posFixo = prop.Name.GetPosFixo();
             var nameEnt = prop.ReflectedType.Name;

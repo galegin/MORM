@@ -1,3 +1,4 @@
+using MORM.Apresentacao.WSist.Types;
 using MORM.Infra.CrossCutting;
 using System;
 
@@ -15,8 +16,8 @@ namespace MORM.Apresentacao.Models
         private string _nm_Login;
         private string _cd_Senha;
         private string _cd_Papel;
-        private int _tp_Privilegio;
-        private int _tp_Bloqueio;
+        private UsuarioPrivilegio _tp_Privilegio;
+        private UsuarioBloqueio _tp_Bloqueio;
         private DateTime _dt_Bloqueio;
         #endregion
         
@@ -61,12 +62,12 @@ namespace MORM.Apresentacao.Models
             get => _cd_Papel;
             set => SetField(ref _cd_Papel, value);
         }
-        public int Tp_Privilegio
+        public UsuarioPrivilegio Tp_Privilegio
         {
             get => _tp_Privilegio;
             set => SetField(ref _tp_Privilegio, value);
         }
-        public int Tp_Bloqueio
+        public UsuarioBloqueio Tp_Bloqueio
         {
             get => _tp_Bloqueio;
             set => SetField(ref _tp_Bloqueio, value);

@@ -1,13 +1,13 @@
 ﻿using MORM.Dominio.Atributos;
 using MORM.Dominio.Tipagens;
-using System.Collections.Generic;
 using MORM.Infra.CrossCutting;
+using System.Collections.Generic;
 
 namespace MORM.Dominio.Extensions
 {
     public static class DatabaseTypeExtensions
     {
-        private static Dictionary<TipoDadoEnum, string> GetTypes(this TipoDatabase tipo)
+        private static Dictionary<TipoDado, string> GetTypes(this TipoDatabase tipo)
         {
             switch (tipo)
             {
@@ -15,31 +15,31 @@ namespace MORM.Dominio.Extensions
                 case TipoDatabase.Firebird:
                 case TipoDatabase.MySql:
                 case TipoDatabase.PostgreSql:
-                    return new Dictionary<TipoDadoEnum, string>
+                    return new Dictionary<TipoDado, string>
                     {
-                        { TipoDadoEnum.Bool, "char(1)" },
-                        { TipoDadoEnum.Date, "timestamp" },
-                        { TipoDadoEnum.Real, "numeric{tam}" },
-                        { TipoDadoEnum.Int, "integer" },
-                        { TipoDadoEnum.Str, "varchar{tam}" },
+                        { TipoDado.Bool, "char(1)" },
+                        { TipoDado.Date, "timestamp" },
+                        { TipoDado.Real, "numeric{tam}" },
+                        { TipoDado.Int, "integer" },
+                        { TipoDado.Str, "varchar{tam}" },
                     };
                 case TipoDatabase.Oracle:
-                    return new Dictionary<TipoDadoEnum, string>
+                    return new Dictionary<TipoDado, string>
                     {
-                        { TipoDadoEnum.Bool, "char(1)" },
-                        { TipoDadoEnum.Date, "date" },
-                        { TipoDadoEnum.Real, "number{tam}" },
-                        { TipoDadoEnum.Int, "integer" },
-                        { TipoDadoEnum.Str, "varchar{tam}" },
+                        { TipoDado.Bool, "char(1)" },
+                        { TipoDado.Date, "date" },
+                        { TipoDado.Real, "number{tam}" },
+                        { TipoDado.Int, "integer" },
+                        { TipoDado.Str, "varchar{tam}" },
                     };
                 case TipoDatabase.SqLite:
-                    return new Dictionary<TipoDadoEnum, string>
+                    return new Dictionary<TipoDado, string>
                     {
-                        { TipoDadoEnum.Bool, "text" },
-                        { TipoDadoEnum.Date, "text" },
-                        { TipoDadoEnum.Real, "real" },
-                        { TipoDadoEnum.Int, "integer" },
-                        { TipoDadoEnum.Str, "text" },
+                        { TipoDado.Bool, "text" },
+                        { TipoDado.Date, "text" },
+                        { TipoDado.Real, "real" },
+                        { TipoDado.Int, "integer" },
+                        { TipoDado.Str, "text" },
                     };
             }
         }
@@ -48,7 +48,7 @@ namespace MORM.Dominio.Extensions
         {
             var types = tipo.GetTypes();
             var tipoDado = campo.DataType.GetTipoDadoModel();
-            var str = types[tipoDado.TipoDado];
+            var str = types[tipoDado.Dado];
             var tam = string.Empty;
 
             if (campo.Tamanho > 0)
