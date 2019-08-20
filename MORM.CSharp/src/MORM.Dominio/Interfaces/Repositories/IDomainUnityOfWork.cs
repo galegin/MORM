@@ -1,4 +1,4 @@
-﻿namespace MORM.Dominio.Interfaces.Repositories
+﻿namespace MORM.Dominio.Interfaces
 {
     public interface IDomainUnityOfWork
     {

@@ -81,9 +81,11 @@
     <Compile Include="Extensions\Entidades\AmbienteExtensions.cs" />
     <Compile Include="Extensions\Entidades\CreateCmdExtensions.cs" />
     <Compile Include="Extensions\Entidades\EmpresaExtensions.cs" />
+    <Compile Include="Extensions\Repositories\EntidadeExtensions.cs" />
     <Compile Include="Extensions\Entidades\EntityExtensions.cs" />
     <Compile Include="Extensions\Entidades\TerminalExtensions.cs" />
     <Compile Include="Extensions\Entidades\UsuarioExtensions.cs" />
+    <Compile Include="Extensions\Repositories\RepositoryExtensions.cs" />
     <Compile Include="Interfaces\Contexts\IAbstractDataContext.cs" />
     <Compile Include="Interfaces\Contexts\IComando.cs" />
     <Compile Include="Interfaces\Contexts\IConexao.cs" />
@@ -105,6 +107,7 @@
     <Compile Include="Entidades\nsUsuario\Interfaces\IUsuario.cs" />
     <Compile Include="Interfaces\Repositories\IDomainRepository.cs" />
     <Compile Include="Interfaces\Repositories\IDomainUnityOfWork.cs" />
+    <Compile Include="Interfaces\Repositories\IRepository.cs" />
     <Compile Include="Interfaces\Services\IAbstractAppService.cs" />
     <Compile Include="Interfaces\Services\IAbstractService.cs" />
     <Compile Include="Interfaces\Services\IDomainService.cs" />

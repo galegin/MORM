@@ -67,6 +67,7 @@
     <Compile Include="Factories\ConexaoFactory.cs" />
     <Compile Include="Factories\ProviderFactory.cs" />
     <Compile Include="Migrations\MigracaoDatabase.cs" />
+    <Compile Include="Repositories\Repository.cs" />
     <Compile Include="UnityOfWork\AbstractUnityOfWork.cs" />
     <Compile Include="Migrations\Migracao.cs" />
     <Compile Include="Migrations\MigracaoContexto.cs" />
