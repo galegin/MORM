@@ -86,6 +86,7 @@
     <Compile Include="Exceptions\ExceptionInfo.cs" />
     <Compile Include="Exceptions\ExceptionDebug.cs" />
     <Compile Include="Extensions\Consumers\ConsumerExtensions.cs" />
+    <Compile Include="Extensions\Exceptions\ExceptionExtensions.cs" />
     <Compile Include="Extensions\Hashs\Base64Extensions.cs" />
     <Compile Include="Extensions\Images\AjusteImagem.cs" />
     <Compile Include="Extensions\Initializers\InicializacaoApp.cs" />

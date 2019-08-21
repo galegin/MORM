@@ -148,12 +148,26 @@ namespace MORM.Apresentacao.Controls.ViewsModel
             var typeFor = TypeForConvert
                 .GetTypeFor(typeof(AbstractViewModel<>), Classe);
 
-            var objeto = AbstractViewListaExtensions.Execute(typeFor, null, valores: Valores);
+            var objeto = AbstractViewListaExtensions.Execute(typeFor, null, 
+                valores: valores, isSelecao: Tipo.IsSelecao());
             if (objeto != null)
             {
-                var valor = objeto.GetInstancePropOrField(Campo.Prop.Name);
-                Source.Model.SetInstancePropOrField(Campo.Prop.Name, valor);
+                if (Tipo.IsSelecao())
+                    SetarRetornoLista(objeto as IList);
+                else
+                    SetarRetornoValor(objeto);
             }
+        }
+
+        private void SetarRetornoLista(IList lista)
+        {
+            Filtros.SetInstancePropOrField("ValorSel", lista); // ?????
+        }
+
+        private void SetarRetornoValor(object objeto)
+        {
+            var valor = objeto.GetInstancePropOrField(Campo.Prop.Name);
+            Source.Model.SetInstancePropOrField(Campo.Prop.Name, valor);
         }
         #endregion
     }

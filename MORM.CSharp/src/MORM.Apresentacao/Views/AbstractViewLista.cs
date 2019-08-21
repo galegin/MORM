@@ -1,16 +1,34 @@
 ﻿using MORM.Apresentacao.Controls;
 using MORM.Apresentacao.ViewsModel;
 using System;
+using System.Collections;
 using System.Windows.Controls;
 
 namespace MORM.Apresentacao.Views
 {
-    public class AbstractViewLista : AbstractView
+    public abstract class AbstractViewLista : AbstractView
     {
+        #region variaveis
+        //protected IAbstractViewModel _vm => DataContext as IAbstractViewModel;
+        #endregion
+
+        #region propriedades
+        //public IList Valores
+        //{
+        //    get => _vm.Valores;
+        //    set => _vm.Valores = value;
+        //}
+        #endregion
+
         #region construtores
         protected AbstractViewLista(IAbstractViewModelLista vm) : base(vm)
         {
         }
+        #endregion
+
+        #region metodos
+        //public abstract void SetSelecao();
+        //public abstract void SetValores(IList valores);
         #endregion
     }
 
@@ -38,7 +56,7 @@ namespace MORM.Apresentacao.Views
         where TViewModel : IAbstractViewModel
     {
         #region construtores
-        public AbstractViewLista() : base(null)
+        public AbstractViewLista(IList valores = null, bool isSelecao = false) : base(null)
         {
             CreateComps(Activator.CreateInstance<TViewModel>() as IAbstractViewModel);
         }
@@ -67,6 +85,16 @@ namespace MORM.Apresentacao.Views
 
             this.AddPainel(new AbstractLista(vm));
         }
+
+        //public override void SetSelecao()
+        //{
+
+        //}
+
+        //public override void SetValores(IList valores)
+        //{
+
+        //}
         #endregion
     }
 }

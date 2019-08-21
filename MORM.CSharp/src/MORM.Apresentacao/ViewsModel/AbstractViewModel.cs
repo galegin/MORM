@@ -203,6 +203,9 @@ namespace MORM.Apresentacao.ViewsModel
             set => SetField(ref _esquemaTitulo, value);
         }
         #endregion
+        #region valores
+        public IList Valores { get; set; }
+        #endregion
         #endregion
 
         #region comandos
@@ -347,8 +350,7 @@ namespace MORM.Apresentacao.ViewsModel
         }
         public void SetarAtualizacao()
         {
-            oModel?.SetInstancePropOrField("Cd_Operador", 1); // ?????
-            oModel?.SetInstancePropOrField("Dt_Cadastro", DateTime.Now);
+            oModel?.SetCampoPadrao();
         }
         #endregion
     }

@@ -99,6 +99,7 @@
     </Compile>
     <Compile Include="Controls\AbstractScrollViewer.cs" />
     <Compile Include="Controls\AbstractSource.cs" />
+    <Compile Include="Controls\Models\SelecaoItemModel.cs" />
     <Compile Include="Views\AbstractViewItem.cs" />
     <Compile Include="Views\AbstractViewTipo.cs" />
     <Compile Include="Views\Extensions\AbstractViewCampoExtensions.cs" />

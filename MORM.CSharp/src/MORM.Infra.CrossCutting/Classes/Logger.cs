@@ -16,6 +16,9 @@ namespace MORM.Infra.CrossCutting
         #endregion
 
         #region propriedades
+        public const string TipoDebug = "Debug";
+        public const string TipoErro = "Erro";
+        public const string TipoInfo = "Info";
         public static string ArquivoLog => $"logging.{DateTime.Now:yyyy-MM-dd}.xml";
         public static string PastaLog => CaminhoPadrao.GetPathSubPasta("log", isCreateSubPasta: true);
         public static string CaminhoLog => Path.Combine(PastaLog, ArquivoLog);
@@ -36,18 +39,12 @@ namespace MORM.Infra.CrossCutting
 
         // log
 
-        protected static void Log(string tipo, string metodo, string message, string gerador, Exception ex = null)
+        public static void Log(string tipo, string message, 
+            [CallerMemberName] string metodo = "", string gerador = null, Exception ex = null)
         {
             var data = DateTime.Now;
 
-            var exception = string.Empty;
-
-            while (ex != null)
-            {
-                exception += (!string.IsNullOrWhiteSpace(exception) ? " / " : null) + 
-                    $"{ex.Message} / Trace: {ex.StackTrace}";
-                ex = ex.InnerException;
-            }
+            var exception = ex?.GetMensagemInnerExpcetion();
 
             var mensagemArq =
                 "<log>" + "\r\n" +
@@ -93,7 +90,7 @@ namespace MORM.Infra.CrossCutting
             Exception ex = null)
         {
             if (_inDebug)
-                Log("Debug", metodo, message, $"FilePath {filePath} ({line})", ex);
+                Log(TipoDebug, metodo, message, $"FilePath {filePath} ({line})", ex);
         }
 
         // erro
@@ -103,7 +100,7 @@ namespace MORM.Infra.CrossCutting
             Exception ex = null)
         {
             if (_inErro)
-                Log("Erro", metodo, message, $"FilePath {filePath} ({line})", ex);
+                Log(TipoErro, metodo, message, $"FilePath {filePath} ({line})", ex);
         }
 
         // info
@@ -113,7 +110,7 @@ namespace MORM.Infra.CrossCutting
             Exception ex = null)
         {
             if (_inInfo)
-                Log("Info", metodo, message, $"FilePath {filePath} ({line})", ex);
+                Log(TipoInfo, metodo, message, $"FilePath {filePath} ({line})", ex);
         }
         #endregion
     }

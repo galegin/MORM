@@ -8,10 +8,19 @@ namespace MORM.Apresentacao.Views
 {
     public static class AbstractViewListaExtensions
     {
-        public static object Execute(Type classe, object objeto, IList valores = null)
+        public static object Execute(Type classe, object objeto, 
+            IList valores = null, bool isSelecao = false)
         {
+            var clasLista = new Type[] { classe };
+            var argsLista = new object[] { valores, isSelecao };
+
             var viewLista = TypeForConvert
-                .GetObjectFor(typeof(AbstractViewLista<>), classe) as AbstractViewLista;
+                .GetObjectFor(typeof(AbstractViewLista<>), clasLista, argsLista) as AbstractViewLista;
+
+            //if (valores != null)
+            //    viewLista.SetValores(valores);
+            //if (isSelecao)
+            //    viewLista.SetSelecao();
 
             if (TelaUtils.Instance.AbrirDialog(viewLista, isFullScreen: true) == true)
                 return null;

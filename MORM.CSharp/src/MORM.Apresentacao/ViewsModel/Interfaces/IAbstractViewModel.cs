@@ -35,6 +35,7 @@ namespace MORM.Apresentacao.ViewsModel
         object Filtro { get; set; }
         object Model { get; set; }
         IList Lista { get; set; }
+        IList Valores { get; set; }
         string GetTitulo();
         void ClearAll();
         void SetOpcoes(string[] opcoes);

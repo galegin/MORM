@@ -17,7 +17,7 @@ namespace MORM.Infra.Data.Repositories
         }
         #endregion
 
-        #region metodosS
+        #region metodos
         public void Add(object instance)
         {
             if (instance is IAbstractEntidadeId)

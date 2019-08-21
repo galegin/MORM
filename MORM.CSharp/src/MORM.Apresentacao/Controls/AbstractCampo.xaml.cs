@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace MORM.Apresentacao.Controls
 {
@@ -41,6 +42,7 @@ namespace MORM.Apresentacao.Controls
             Formato = campo.Prop.GetCampoFormato();
             HabilitaCampo();
             SetarTamanho();
+            SetarFonte();
             SetBindingCampo();
         }
         #endregion
@@ -98,7 +100,7 @@ namespace MORM.Apresentacao.Controls
         }
         #endregion
 
-        #region binding
+        #region setarBinding
         private void SetBindingCampo()
         {
             if (_vm.Tipo.IsIndiv())
@@ -181,6 +183,19 @@ namespace MORM.Apresentacao.Controls
             EditFin.Width = _vm.Tipo.IsInter() ? 150 : _vm.Campo.Tamanho * 10;
             EditDes.Width = _vm.Tipo.IsInter() ? 300 : 150;
             ComboTip.Width = _vm.Tipo.IsInter() ? 300 : 150;
+        }
+        #endregion
+
+        #region setarFonte
+        private void SetarFonte()
+        {
+            if (_vm.Campo.IsKey() || _vm.Campo.IsReq())
+                LabelBtn.FontWeight = FontWeights.Bold;
+            if (_vm.Campo.IsClasse())
+            {
+                LabelBtn.FontStyle = FontStyles.Italic;
+                LabelBtn.Foreground = Brushes.Blue;
+            }
         }
         #endregion
 

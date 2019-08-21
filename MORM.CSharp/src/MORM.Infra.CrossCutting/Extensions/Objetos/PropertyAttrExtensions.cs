@@ -8,13 +8,25 @@ namespace MORM.Infra.CrossCutting
 {
     public static class PropertyAttrExtensions
     {
-        private static Dictionary<string, object> _ignoreCampos = new Dictionary<string, object>
+        private static Dictionary<string, object> _ignoreCampos = 
+            new Dictionary<string, object>
+            {
+                ["U_Version"] = "",
+                ["Cd_Operador"] = 1,
+                ["Cd_OperIncl"] = 1,
+                ["Dt_Cadastro"] = DateTime.Now,
+                ["Dt_Inclusao"] = DateTime.Now,
+                ["Cd_Senha"] = "123@mudar"
+            };
+
+        public static void SetCampoPadrao(this object model)
         {
-            ["U_Version"] = "",
-            ["Cd_Operador"] = 1,
-            ["Dt_Cadastro"] = DateTime.Now,
-            ["Cd_Senha"] = "123@mudar"
-        };
+            _ignoreCampos["Dt_Cadastro"] = DateTime.Now;
+            _ignoreCampos["Dt_Inclusao"] = DateTime.Now;
+
+            foreach (var campo in _ignoreCampos)
+                model.SetInstancePropOrField(campo.Key, campo.Value);
+        }
 
         public static bool IsIgnoreCampo(this string campo)
         {
