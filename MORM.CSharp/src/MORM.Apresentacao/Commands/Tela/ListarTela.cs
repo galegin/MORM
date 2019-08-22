@@ -13,6 +13,11 @@ namespace MORM.Apresentacao.Commands.Tela
                 return;
             var connector = new AbstractListarConnector<TModel>();
             vm.Lista = connector.Executar(vm.Filtro as TModel);
+
+            // ?????
+            // aqui logica para listagem / selecao 
+            // ?????
+
         }
     }
 }

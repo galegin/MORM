@@ -41,7 +41,7 @@ namespace MORM.Infra.CrossCutting
                     if (value == null)
                     {
                         // Add startup reg key
-                        RegistryExtensions.SetValue(AppName, RunKey, AppPath);
+                        RegistryExtensions.SetValue(AppName, AppPath, RunKey);
                     }
                 }
                 else //Nao iniciar mais

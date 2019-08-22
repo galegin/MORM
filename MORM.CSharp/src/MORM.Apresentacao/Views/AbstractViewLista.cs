@@ -8,27 +8,10 @@ namespace MORM.Apresentacao.Views
 {
     public abstract class AbstractViewLista : AbstractView
     {
-        #region variaveis
-        //protected IAbstractViewModel _vm => DataContext as IAbstractViewModel;
-        #endregion
-
-        #region propriedades
-        //public IList Valores
-        //{
-        //    get => _vm.Valores;
-        //    set => _vm.Valores = value;
-        //}
-        #endregion
-
         #region construtores
         protected AbstractViewLista(IAbstractViewModelLista vm) : base(vm)
         {
         }
-        #endregion
-
-        #region metodos
-        //public abstract void SetSelecao();
-        //public abstract void SetValores(IList valores);
         #endregion
     }
 
@@ -56,14 +39,15 @@ namespace MORM.Apresentacao.Views
         where TViewModel : IAbstractViewModel
     {
         #region construtores
-        public AbstractViewLista(IList valores = null, bool isSelecao = false) : base(null)
+        public AbstractViewLista(AbstractSelecao selecao = null) : base(null)
         {
-            CreateComps(Activator.CreateInstance<TViewModel>() as IAbstractViewModel);
+            CreateComps(Activator.CreateInstance<TViewModel>(), selecao);
         }
         #endregion
 
         #region metodos
-        protected void CreateComps(IAbstractViewModel vm)
+        protected void CreateComps(IAbstractViewModel vm,
+            AbstractSelecao selecao = null)
         {
             SetDataContext(vm);
 
@@ -77,24 +61,16 @@ namespace MORM.Apresentacao.Views
 
             this.AddPainel(new DockPanel());
 
-            this.AddPainel(new AbstractTitulo("Lista de " + vm.GetTitulo()), dock: Dock.Top);
+            var preTitulo = (selecao?.IsSelecao ?? false) ? "Seleção" : "Lista";
+
+            this.AddPainel(new AbstractTitulo(preTitulo + " de " + vm.GetTitulo()), dock: Dock.Top);
 
             this.AddPainel(new AbstractOpcao(vm), dock: Dock.Top);
 
             this.AddPainel(new AbstractBusca(vm), dock: Dock.Top);
 
-            this.AddPainel(new AbstractLista(vm));
+            this.AddPainel(new AbstractLista(vm, selecao: selecao));
         }
-
-        //public override void SetSelecao()
-        //{
-
-        //}
-
-        //public override void SetValores(IList valores)
-        //{
-
-        //}
         #endregion
     }
 }

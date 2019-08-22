@@ -98,6 +98,7 @@
       <DependentUpon>AbstractRelatorio.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\AbstractScrollViewer.cs" />
+    <Compile Include="Controls\AbstractSelecao.cs" />
     <Compile Include="Controls\AbstractSource.cs" />
     <Compile Include="Controls\Models\SelecaoItemModel.cs" />
     <Compile Include="Views\AbstractViewItem.cs" />

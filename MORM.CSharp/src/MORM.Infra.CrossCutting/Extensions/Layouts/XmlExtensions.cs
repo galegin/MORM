@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Web;
 using System.Xml;
 using System.Xml.Serialization;
 
@@ -43,6 +44,16 @@ namespace MORM.Infra.CrossCutting
         public static string GetXml(this object objeto)
         {
             return GetXMLFromObject(objeto);
+        }
+
+        public static string XmlDecode(this string value)
+        {
+            return HttpUtility.HtmlDecode(value);
+        }
+
+        public static string XmlEncode(this string value)
+        {
+            return HttpUtility.HtmlEncode(value);
         }
         #endregion
 

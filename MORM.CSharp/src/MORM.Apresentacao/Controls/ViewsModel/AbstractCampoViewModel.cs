@@ -30,12 +30,6 @@ namespace MORM.Apresentacao.Controls.ViewsModel
             set => SetField(ref _tipo, value);
         }
 
-        public string Formato
-        {
-            get => Campo.Formato;
-            set => Campo.Formato = value;
-        }
-
         public MetadataCampo Campo
         {
             get => _campo;
@@ -57,30 +51,6 @@ namespace MORM.Apresentacao.Controls.ViewsModel
         {
             get => Campo.Descricao;
             set => Campo.Descricao = value;
-        }
-
-        public int Tamanho
-        {
-            get => Campo.Tamanho;
-            set => Campo.Tamanho = value;
-        }
-
-        public int Precisao
-        {
-            get => Campo.Precisao;
-            set => Campo.Precisao = value;
-        }
-
-        public IList Valores
-        {
-            get => Campo.Valores;
-            set => Campo.Valores = value;
-        }
-
-        public Type Classe
-        {
-            get => Campo.Classe;
-            set => Campo.Classe = value;
         }
 
         public AbstractCampoFiltro Filtros
@@ -137,19 +107,21 @@ namespace MORM.Apresentacao.Controls.ViewsModel
 
         public override void SelecionarLista()
         {
-            if (Classe != null)
-                SelecionarLista(Classe, null);
-            else if (Valores != null)
-                SelecionarLista(typeof(ValorTipagem), Valores);
+            if (Campo.Classe != null)
+                SelecionarLista(Campo.Classe, null);
+            else if (Campo.Valores != null)
+                SelecionarLista(typeof(ValorTipagem), Campo.Valores);
         }
 
         private void SelecionarLista(Type classe, IList valores)
         {
             var typeFor = TypeForConvert
-                .GetTypeFor(typeof(AbstractViewModel<>), Classe);
+                .GetTypeFor(typeof(AbstractViewModel<>), Campo.Classe);
+
+            var selecao = GetSelecao(valores);
 
             var objeto = AbstractViewListaExtensions.Execute(typeFor, null, 
-                valores: valores, isSelecao: Tipo.IsSelecao());
+                selecao: selecao);
             if (objeto != null)
             {
                 if (Tipo.IsSelecao())
@@ -168,6 +140,13 @@ namespace MORM.Apresentacao.Controls.ViewsModel
         {
             var valor = objeto.GetInstancePropOrField(Campo.Prop.Name);
             Source.Model.SetInstancePropOrField(Campo.Prop.Name, valor);
+        }
+
+        private AbstractSelecao GetSelecao(IList valores)
+        {
+            if (Tipo.IsSelecao() || Campo.Classe != null || Campo.Valores != null)
+                return new AbstractSelecao(Tipo.IsSelecao(), Campo.Classe, Campo.Valores);
+            return null;
         }
         #endregion
     }

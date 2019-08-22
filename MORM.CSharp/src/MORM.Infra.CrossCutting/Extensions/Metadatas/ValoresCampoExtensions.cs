@@ -38,5 +38,10 @@ namespace MORM.Infra.CrossCutting
         {
             return prop.GetValoresCampo() != null;
         }
+
+        public static Metadata GetMetadata()
+        {
+            return typeof(ValorTipagem).GetMetadata();
+        }
     }
 }

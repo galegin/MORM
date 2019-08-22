@@ -13,12 +13,14 @@ namespace MORM.Apresentacao.Controls
             InitializeComponent();
         }
 
-        public AbstractLista(IAbstractViewModel vm, object filtro = null) : this()
+        public AbstractLista(IAbstractViewModel vm, object filtro = null,
+            AbstractSelecao selecao = null) : this()
         {
-            CreateComps(vm);
+            CreateComps(vm, filtro, selecao);
         }
 
-        private void CreateComps(IAbstractViewModel vm, object filtro = null)
+        private void CreateComps(IAbstractViewModel vm, object filtro = null,
+            AbstractSelecao selecao = null)
         {
             DataContext = vm;
 
@@ -36,8 +38,7 @@ namespace MORM.Apresentacao.Controls
 
             //var style = FindResource("DataGridCellStyle") as Style;
 
-            vm.ElementType
-                .GetMetadata()
+            GetMetadata(vm, selecao)
                 .GetCamposIgnore()
                 .ForEach(campo =>
                 {
@@ -48,6 +49,13 @@ namespace MORM.Apresentacao.Controls
                         //CellStyle = style,
                     });
                 });
+        }
+
+        private Metadata GetMetadata(IAbstractViewModel vm, 
+            AbstractSelecao selecao = null)
+        {
+            return selecao != null ? selecao.GetMetadata(vm) : 
+                vm.ElementType.GetMetadata();
         }
     }
 }

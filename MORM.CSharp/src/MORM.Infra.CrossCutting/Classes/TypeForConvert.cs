@@ -11,7 +11,7 @@ namespace MORM.Infra.CrossCutting
         /// <param name="parameters"></param>
         /// <param name="args"></param>
         /// <returns></returns>
-        public static object GetObjectFor(this Type definition, Type[] parameters, object[] args)
+        public static object GetObjectForArg(this Type definition, Type[] parameters, object[] args = null)
         {
             var specificType = definition.MakeGenericType(parameters);
             return Activator.CreateInstance(specificType, args);
@@ -25,7 +25,7 @@ namespace MORM.Infra.CrossCutting
         /// <returns></returns>
         public static object GetObjectFor(this Type definition, params Type[] parameters)
         {
-            return GetObjectFor(definition, parameters);
+            return GetObjectForArg(definition, parameters);
         }
 
         /// <summary>

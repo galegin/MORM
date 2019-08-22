@@ -1,4 +1,5 @@
 ﻿using MORM.Apresentacao.Models;
+using MORM.Infra.CrossCutting;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -8,14 +9,23 @@ namespace MORM.Apresentacao.Controls
     {
         #region variaveis
         private object _model;
+        private string _codigoCampo;
+        private string _codigoValor;
+        private string _descricaoCampo;
+        private string _descricaoValor;
         private bool _isSelecionado;
         #endregion
 
         #region propriedades
-        public object Model
+        public string Codigo
         {
-            get => _model;
-            set => SetField(ref _model, value);
+            get => _codigoValor;
+            set => SetField(ref _codigoValor, value);
+        }
+        public string Descricao
+        {
+            get => _descricaoValor;
+            set => SetField(ref _descricaoValor, value);
         }
         public bool IsSelecionado
         {
@@ -27,12 +37,20 @@ namespace MORM.Apresentacao.Controls
         #region construtores
         public SelecaoItemModel(object model, bool? isSelecionado = null)
         {
-            _model = model;
+            SetModel(model);
             _isSelecionado = isSelecionado ?? false;
         }
         #endregion
 
         #region metodos
+        private void SetModel(object model)
+        {
+            _model = model;
+            _codigoCampo = model.GetCampoCod();
+            _codigoValor = model.GetInstancePropOrField(_codigoCampo) as string;
+            _descricaoCampo = model.GetCampoCod();
+            _descricaoValor = model.GetInstancePropOrField(_codigoCampo) as string;
+        }
         public void Selecionar(bool isSelecionado)
         {
             IsSelecionado = isSelecionado;
@@ -52,6 +70,11 @@ namespace MORM.Apresentacao.Controls
             foreach (var item in lista)
                 retorno.Add(new SelecaoItemModel(item));
             return retorno;
+        }
+
+        public static Metadata GetMetadata()
+        {
+            return typeof(SelecaoItemModel).GetMetadata();
         }
     }
 }

@@ -203,8 +203,8 @@ namespace MORM.Apresentacao.ViewsModel
             set => SetField(ref _esquemaTitulo, value);
         }
         #endregion
-        #region valores
-        public IList Valores { get; set; }
+        #region selecao
+        public object Selecao { get; set; }
         #endregion
         #endregion
 
