@@ -26,10 +26,11 @@ namespace MORM.Apresentacao.Commands.Tela
             else
             {
                 listaRet = connector.Executar(vm.Filtro as TModel) as IList;
-                if (selecao?.IsSelecao ?? false)
-                {
-                    listaRet = listaRet.GetListaSelecaoItem();
-                }
+            }
+
+            if (selecao?.IsSelecao ?? false)
+            {
+                listaRet = listaRet.GetListaSelecaoItem();
             }
 
             vm.Lista = null;
