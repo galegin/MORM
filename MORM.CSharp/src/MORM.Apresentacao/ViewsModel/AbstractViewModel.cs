@@ -204,7 +204,7 @@ namespace MORM.Apresentacao.ViewsModel
         }
         #endregion
         #region selecao
-        public object Selecao { get; set; }
+        public virtual object Selecao { get; set; }
         #endregion
         #endregion
 

@@ -14,6 +14,7 @@ namespace MORM.Apresentacao.Controls.ViewsModel
         private AbstractSource _source;
         private AbstractCampoTipo _tipo;
         private MetadataCampo _campo;
+        private AbstractSelecao _selecao;
         private AbstractCampoFiltro _filtros;
         #endregion
 
@@ -36,21 +37,15 @@ namespace MORM.Apresentacao.Controls.ViewsModel
             set
             {
                 SetField(ref _campo, value);
-                if (_campo != null)
-                {
-                    if (Tipo.IsInter() || Tipo.IsSelecao() || _campo.IsClasse())
-                    {
-                        Filtros = _campo.Prop.PropertyType.GetCampoFiltro();
-                        Filtros.Tipo = Tipo;
-                    }
-                }
+                SetarFiltros();
+                SetarSelecao();
             }
         }
 
-        public string Descricao
+        public override object Selecao
         {
-            get => Campo.Descricao;
-            set => Campo.Descricao = value;
+            get => _selecao;
+            set => SetField(ref _selecao, value as AbstractSelecao);
         }
 
         public AbstractCampoFiltro Filtros
@@ -76,6 +71,24 @@ namespace MORM.Apresentacao.Controls.ViewsModel
         #endregion
 
         #region metodos
+
+        private void SetarFiltros()
+        {
+            if (_campo != null)
+            {
+                if (Tipo.IsInter() || Tipo.IsSelecao() || _campo.IsClasse())
+                {
+                    Filtros = _campo.Prop.PropertyType.GetCampoFiltro();
+                    Filtros.Tipo = Tipo;
+                }
+            }
+        }
+
+        private void SetarSelecao()
+        {
+            if (Tipo.IsSelecao() || Campo.Classe != null || Campo.Valores != null)
+                _selecao = new AbstractSelecao(Tipo.IsSelecao(), Campo.Classe, Campo.Valores);
+        }
 
         public override void BuscarDescricao()
         {
@@ -107,21 +120,17 @@ namespace MORM.Apresentacao.Controls.ViewsModel
 
         public override void SelecionarLista()
         {
-            if (Campo.Classe != null)
-                SelecionarLista(Campo.Classe, null);
-            else if (Campo.Valores != null)
-                SelecionarLista(typeof(ValorTipagem), Campo.Valores);
-        }
+            var classe = Campo.IsClasse() ? Campo.Classe :
+                Campo.IsValores() ? typeof(ValorTipagem) : null;
+            if (classe == null)
+                return;
 
-        private void SelecionarLista(Type classe, IList valores)
-        {
             var typeFor = TypeForConvert
-                .GetTypeFor(typeof(AbstractViewModel<>), Campo.Classe);
-
-            var selecao = GetSelecao(valores);
+                .GetTypeFor(typeof(AbstractViewModel<>), classe);
 
             var objeto = AbstractViewListaExtensions.Execute(typeFor, null, 
-                selecao: selecao);
+                selecao: _selecao);
+
             if (objeto != null)
             {
                 if (Tipo.IsSelecao())
@@ -140,13 +149,6 @@ namespace MORM.Apresentacao.Controls.ViewsModel
         {
             var valor = objeto.GetInstancePropOrField(Campo.Prop.Name);
             Source.Model.SetInstancePropOrField(Campo.Prop.Name, valor);
-        }
-
-        private AbstractSelecao GetSelecao(IList valores)
-        {
-            if (Tipo.IsSelecao() || Campo.Classe != null || Campo.Valores != null)
-                return new AbstractSelecao(Tipo.IsSelecao(), Campo.Classe, Campo.Valores);
-            return null;
         }
         #endregion
     }

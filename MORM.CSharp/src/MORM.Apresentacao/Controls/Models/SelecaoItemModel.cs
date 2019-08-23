@@ -10,14 +10,14 @@ namespace MORM.Apresentacao.Controls
         #region variaveis
         private object _model;
         private string _codigoCampo;
-        private string _codigoValor;
+        private object _codigoValor;
         private string _descricaoCampo;
         private string _descricaoValor;
         private bool _isSelecionado;
         #endregion
 
         #region propriedades
-        public string Codigo
+        public object Codigo
         {
             get => _codigoValor;
             set => SetField(ref _codigoValor, value);
@@ -40,6 +40,9 @@ namespace MORM.Apresentacao.Controls
             SetModel(model);
             _isSelecionado = isSelecionado ?? false;
         }
+        public SelecaoItemModel()
+        {
+        }
         #endregion
 
         #region metodos
@@ -47,9 +50,9 @@ namespace MORM.Apresentacao.Controls
         {
             _model = model;
             _codigoCampo = model.GetCampoCod();
-            _codigoValor = model.GetInstancePropOrField(_codigoCampo) as string;
-            _descricaoCampo = model.GetCampoCod();
-            _descricaoValor = model.GetInstancePropOrField(_codigoCampo) as string;
+            _codigoValor = model.GetInstancePropOrField(_codigoCampo).ToString();
+            _descricaoCampo = model.GetCampoDes();
+            _descricaoValor = model.GetInstancePropOrField(_descricaoCampo).ToString();
         }
         public void Selecionar(bool isSelecionado)
         {

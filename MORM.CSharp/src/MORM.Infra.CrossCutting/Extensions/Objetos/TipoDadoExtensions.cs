@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Reflection;
 
 namespace MORM.Infra.CrossCutting
 {
@@ -14,6 +15,7 @@ namespace MORM.Infra.CrossCutting
         Int,
         Str,
         Lst,
+        Obj,
         Enum
     }
     #endregion
@@ -116,9 +118,16 @@ namespace MORM.Infra.CrossCutting
                 (value) => "'" + value.ToString().Replace("'", "''") + "'"),
             #endregion
             #region lst
+            new TipoDadoModel(TipoDado.Obj,
+                new[]{ typeof(object), typeof(object) }, new object[]{ null, null },
+                (value) => (value as object), 
+                (value) => null,
+                (value) => null),
+            #endregion
+            #region lst
             new TipoDadoModel(TipoDado.Lst,
                 new[]{ typeof(string[]), typeof(string[]) }, new object[]{ null, null },
-                (value) => (value as string[]), 
+                (value) => (value as string[]),
                 (value) => Convert.ToString(value).Split('\n'),
                 (value) => "'" + string.Join("\n", value as string[]).Replace("'", "''") + "'"),
             #endregion
@@ -136,6 +145,11 @@ namespace MORM.Infra.CrossCutting
             if (type.IsEnum)
                 type = typeof(Enum);
             return ListaDeTipo.FirstOrDefault(x => x.Tipo.Contains(type));
+        }
+
+        public static TipoDadoModel GetTipoDadoModel(this PropertyInfo prop)
+        {
+            return prop.PropertyType.GetTipoDadoModel();
         }
         #endregion
     }

@@ -52,7 +52,7 @@ namespace MORM.Infra.CrossCutting
             if (!string.IsNullOrWhiteSpace(formato))
                 return formato;
 
-            var tipoDado = prop.PropertyType.GetTipoDadoModel();
+            var tipoDado = prop.GetTipoDadoModel();
 
             switch (tipoDado.Dado)
             {
@@ -79,7 +79,7 @@ namespace MORM.Infra.CrossCutting
             if (tamanho != 0)
                 return tamanho;
 
-            var tipoDado = prop.PropertyType.GetTipoDadoModel();
+            var tipoDado = prop.GetTipoDadoModel();
 
             switch (tipoDado.Dado)
             {
@@ -104,7 +104,7 @@ namespace MORM.Infra.CrossCutting
             if (precisao != 0)
                 return precisao;
 
-            var tipoDado = prop.PropertyType.GetTipoDadoModel();
+            var tipoDado = prop.GetTipoDadoModel();
 
             switch (tipoDado.Dado)
             {

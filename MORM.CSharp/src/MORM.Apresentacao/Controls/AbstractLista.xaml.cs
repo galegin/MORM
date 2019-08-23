@@ -42,13 +42,41 @@ namespace MORM.Apresentacao.Controls
                 .GetCamposIgnore()
                 .ForEach(campo =>
                 {
-                    dataGrid.Columns.Add(new DataGridTextColumn()
-                    {
-                        Header = campo.Descricao,
-                        Binding = campo.GetBindingCampo(),
-                        //CellStyle = style,
-                    });
+                    dataGrid.Columns.Add(GetDataGridColumn(campo));
                 });
+        }
+
+        private DataGridColumn GetDataGridColumn(MetadataCampo campo)
+        {
+            var tipoDado = campo.Prop.GetTipoDadoModel();
+
+            switch (tipoDado.Dado)
+            {
+                case TipoDado.Bool:
+                    return GetDataGridCheckBoxColumn(campo);
+                default:
+                    return GetDataGridTextBoxColumn(campo);
+            }
+        }
+
+        private DataGridCheckBoxColumn GetDataGridCheckBoxColumn(MetadataCampo campo)
+        {
+            return new DataGridCheckBoxColumn()
+            {
+                Header = campo.Descricao,
+                Binding = campo.GetBindingCampo(),
+                //CellStyle = style,
+            };
+        }
+
+        private DataGridTextColumn GetDataGridTextBoxColumn(MetadataCampo campo)
+        {
+            return new DataGridTextColumn()
+            {
+                Header = campo.Descricao,
+                Binding = campo.GetBindingCampo(),
+                //CellStyle = style,
+            };
         }
 
         private Metadata GetMetadata(IAbstractViewModel vm, 

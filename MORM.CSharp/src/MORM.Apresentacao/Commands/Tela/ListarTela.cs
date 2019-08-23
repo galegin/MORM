@@ -1,5 +1,7 @@
 ﻿using MORM.Apresentacao.Connectors;
+using MORM.Apresentacao.Controls;
 using MORM.Apresentacao.ViewsModel;
+using System.Collections;
 
 namespace MORM.Apresentacao.Commands.Tela
 {
@@ -11,13 +13,27 @@ namespace MORM.Apresentacao.Commands.Tela
             var vm = parameter as IAbstractViewModel<TModel>;
             if (!vm.IsExibirListar)
                 return;
+
+            var lista = vm.Lista;
+            IList listaRet = null;
+
             var connector = new AbstractListarConnector<TModel>();
-            vm.Lista = connector.Executar(vm.Filtro as TModel);
+            var selecao = vm.Selecao as AbstractSelecao;
+            if (selecao?.Valores != null)
+            {
+                listaRet = selecao.Valores;
+            }
+            else
+            {
+                listaRet = connector.Executar(vm.Filtro as TModel) as IList;
+                if (selecao?.IsSelecao ?? false)
+                {
+                    listaRet = listaRet.GetListaSelecaoItem();
+                }
+            }
 
-            // ?????
-            // aqui logica para listagem / selecao 
-            // ?????
-
+            vm.Lista = null;
+            vm.Lista = listaRet ?? lista;
         }
     }
 }
