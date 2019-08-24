@@ -15,6 +15,8 @@ namespace MORM.Apresentacao.Comps
         #region propriedades
         public bool IsPrincipal { get; set; }
         public virtual bool IsConfirmado { get; protected set; }
+        public AbstractTimer Timer { get; private set; }
+        public AbstractNotifyIcon NotifyIcon { get; private set; }
         #endregion
 
         #region construtores
@@ -116,14 +118,31 @@ namespace MORM.Apresentacao.Comps
         #endregion
 
         #region timer
-        private AbstractTimer _timer;
         protected void SetarTimer(OnTimerExecute onTimerExecute)
         {
-            if (_timer == null)
-                _timer = new AbstractTimer(onTimerExecute);
+            if (Timer == null)
+                Timer = new AbstractTimer(onTimerExecute);
         }
-        protected void IniciarTimer() => _timer?.Iniciar();
-        protected void PararTimer() => _timer?.Parar();
+        protected void IniciarTimer() => Timer?.Iniciar();
+        protected void PararTimer() => Timer?.Parar();
+        #endregion
+
+        #region notifyIcon
+        protected void SetarNotifyIcon(EventHandler onRestaurar = null)
+        {
+            if (NotifyIcon == null)
+                NotifyIcon = new AbstractNotifyIcon(onRestaurar ?? OnRestaurar);
+        }
+        protected void OnMinimizar(object sender, EventArgs e)
+        {
+            NotifyIcon.Ativo = true;
+            this.MinimizarApp();
+        }
+        protected void OnRestaurar(object sender, EventArgs e)
+        {
+            this.MinimizarApp();
+            NotifyIcon.Ativo = false;
+        }
         #endregion
 
         #region dispose

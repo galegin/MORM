@@ -19,7 +19,6 @@ namespace MORM.Apresentacao.Menus.ViewModels
         private Image _imagemUsuario;
         private string _nomeSistema;
         private string _dataSistema;
-        private AbstractTimer _timer;
         #endregion
 
         #region propriedades
@@ -69,6 +68,7 @@ namespace MORM.Apresentacao.Menus.ViewModels
             get => _dataSistema;
             set => SetField(ref _dataSistema, value);
         }
+        public AbstractTimer Timer { get; }
         #endregion
 
         #region comandos
@@ -80,20 +80,13 @@ namespace MORM.Apresentacao.Menus.ViewModels
         {
             InformacaoSistema = informacaoSistema ?? throw new ArgumentNullException(nameof(informacaoSistema));
             NomeSistema = AppDomain.CurrentDomain.FriendlyName;
-            SetarTimer(SetarDataSistema);
+            Timer = new AbstractTimer(SetarDataSistema);
         }
         #endregion
 
         #region metodos
-        protected void SetarTimer(OnTimerExecute onTimerExecute)
-        {
-            if (_timer == null)
-                _timer = new AbstractTimer(onTimerExecute);
-        }
-
-        protected void IniciarTimer() => _timer?.Iniciar();
-        protected void PararTimer() => _timer?.Parar();
-        protected void SetarDataSistema(object sender) => DataSistema = DateTime.Now.ToString("dd/MM\nHH:mm");
+        protected void SetarDataSistema(object sender) =>
+            DataSistema = DateTime.Now.ToString("dd/MM\nHH:mm");
 
         public void SetarIsExibirMenuLateral()
         {

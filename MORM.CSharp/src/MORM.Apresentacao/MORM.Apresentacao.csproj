@@ -89,16 +89,23 @@
     <Compile Include="Commands\Tela\RetornarTela.cs" />
     <Compile Include="Commands\Tela\SalvarTela.cs" />
     <Compile Include="Commands\Tela\SelecionarTela.cs" />
+    <Compile Include="Comps\AbstractAppAction.cs" />
+    <Compile Include="Comps\AbstractNotifyIcon.cs" />
     <Compile Include="Controls\AbstractCampoFiltro.cs" />
     <Compile Include="Controls\AbstractCorpo.xaml.cs">
       <DependentUpon>AbstractCorpo.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\AbstractDataGrid.cs" />
+    <Compile Include="Controls\AbstractImage.cs" />
     <Compile Include="Controls\AbstractRelatorio.xaml.cs">
       <DependentUpon>AbstractRelatorio.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\AbstractScrollViewer.cs" />
     <Compile Include="Controls\AbstractSelecao.cs" />
+    <Compile Include="Controls\AbstractSlider.xaml.cs">
+      <DependentUpon>AbstractSlider.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ViewsModel\AbstractSliderViewModel.cs" />
     <Compile Include="Controls\AbstractSource.cs" />
     <Compile Include="Controls\Models\SelecaoItemModel.cs" />
     <Compile Include="Views\AbstractViewItem.cs" />
@@ -264,6 +271,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\AbstractSlider.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\AbstractTitulo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -365,6 +376,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="esquemacor.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -400,6 +412,8 @@
     <Resource Include="Images\relatorio.png" />
     <Resource Include="Images\usuario.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\AppIcon.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

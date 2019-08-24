@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Threading;
+using System.Timers;
 
 namespace MORM.Apresentacao.Comps
 {
@@ -7,45 +7,54 @@ namespace MORM.Apresentacao.Comps
 
     public class AbstractTimer
     {
-        #region constantes
-        private const int TEMPO_TIMER = 60 * 1000;
-        #endregion
-
         #region variaveis
         private Timer _timer;
         private event OnTimerExecute _onTimerExecute;
+        private object _lock = new object();
+        private int _tempo;
+        #endregion
+
+        #region propriedades
+        public const int TEMPO_SECOND = 1000;
+        public const int TEMPO_TIMER = 60 * TEMPO_SECOND;
+        public bool Ativo
+        {
+            get => _timer.Enabled;
+            set => _timer.Enabled = value;
+        }
         #endregion
 
         #region construtores
-        public AbstractTimer(OnTimerExecute onTimerExecute)
+        public AbstractTimer(OnTimerExecute onTimerExecute, int? tempo = null)
         {
+            _tempo = tempo ?? TEMPO_TIMER;
             SetarTimer(onTimerExecute ?? throw new ArgumentNullException(nameof(onTimerExecute)));
         }
         #endregion
 
         #region metodos
-        private void OnCallBack(object sender)
-        {
-            Parar();
-            _onTimerExecute?.Invoke(sender);
-            Iniciar();
-        }
+        public void Iniciar() => _timer.Start();
+        public void Parar() => _timer.Stop();
         private void SetarTimer(OnTimerExecute onTimerExecute)
         {
             _onTimerExecute = onTimerExecute;
+
             if (_timer == null)
-                _timer = new Timer(OnCallBack, null, TEMPO_TIMER, Timeout.Infinite);
-            _onTimerExecute?.Invoke(null);
+            {
+                _timer = new Timer(_tempo);
+                _timer.Elapsed += OnTimedEvent;
+                _timer.AutoReset = true;
+                _timer.Enabled = true;
+            }
         }
-        public void Iniciar()
+        private void OnTimedEvent(object sender, ElapsedEventArgs e)
         {
-            if (_timer != null)
-                _timer.Change(0, TEMPO_TIMER); //restarts the timer
-        }
-        public void Parar()
-        {
-            if (_timer != null)
-                _timer.Change(Timeout.Infinite, Timeout.Infinite); //stops the timer
+            lock (_lock)
+            {
+                Parar();
+                _onTimerExecute?.Invoke(sender);
+                Iniciar();
+            }
         }
         #endregion
     }

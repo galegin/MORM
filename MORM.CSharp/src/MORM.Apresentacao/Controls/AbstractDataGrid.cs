@@ -6,7 +6,7 @@ namespace MORM.Apresentacao.Controls
     public class AbstractDataGrid : DataGrid
     {
         #region construtores
-        public AbstractDataGrid()
+        public AbstractDataGrid(bool isReadOnly = true)
         {
             Margin = new Thickness(10);
             VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
@@ -14,7 +14,7 @@ namespace MORM.Apresentacao.Controls
             AutoGenerateColumns = false;
             CanUserAddRows = false;
             CanUserDeleteRows = false;
-            IsReadOnly = true;
+            IsReadOnly = isReadOnly;
         }
         #endregion
     }

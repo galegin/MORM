@@ -14,16 +14,12 @@ namespace MORM.Apresentacao.Commands.Tela
             if (!vm.IsExibirListar)
                 return;
 
-            var lista = vm.Lista;
-            IList listaRet = null;
-
             var connector = new AbstractListarConnector<TModel>();
             var selecao = vm.Selecao as AbstractSelecao;
-            if (selecao?.Valores != null)
-            {
-                listaRet = selecao.Valores;
-            }
-            else
+            var listaRet = selecao?.Valores;
+            var lista = vm.Lista;
+
+            if (listaRet == null)
             {
                 listaRet = connector.Executar(vm.Filtro as TModel) as IList;
             }

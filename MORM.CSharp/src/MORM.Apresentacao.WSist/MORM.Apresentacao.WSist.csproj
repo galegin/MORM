@@ -147,18 +147,6 @@
       <Project>{346BED24-2DD1-4E58-939A-D72311C257F9}</Project>
       <Name>MORM.Infra.CrossCutting</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MORM.Infra.Database\MORM.Infra.Database.csproj">
-      <Project>{dcb5615e-b518-4115-97ca-fe5a61224b8a}</Project>
-      <Name>MORM.Infra.Database</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MORM.Infra.Data\MORM.Infra.Data.csproj">
-      <Project>{065554c3-207f-47d8-97c1-1ac5202ecb22}</Project>
-      <Name>MORM.Infra.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MORM.Servico\MORM.Servico.csproj">
-      <Project>{bb6fe2a7-2f85-47eb-bea8-aebeefd0d4be}</Project>
-      <Name>MORM.Servico</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Page Include="Controls\ucAbstractPackIcon.xaml">

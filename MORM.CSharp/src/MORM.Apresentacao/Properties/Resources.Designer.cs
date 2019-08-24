@@ -59,5 +59,15 @@ namespace MORM.Apresentacao.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Icon semelhante a (Ícone).
+        /// </summary>
+        internal static System.Drawing.Icon AppIcon {
+            get {
+                object obj = ResourceManager.GetObject("AppIcon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
     }
 }

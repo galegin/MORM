@@ -1,0 +1,13 @@
+slider tela principal
+- visual studio
+- c#
+- .net
+- sqlite
+- ado
+
+minimizar bandeja
+
+projeto compilar pasta apresentacao
+- MORM.Infra.Data     -> WinExe
+- MORM.Infra.Database -> WinExe
+- MORM.Servico        -> WinExe

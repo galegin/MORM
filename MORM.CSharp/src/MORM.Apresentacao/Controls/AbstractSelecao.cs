@@ -3,6 +3,7 @@ using MORM.Apresentacao.ViewsModel;
 using MORM.Infra.CrossCutting;
 using System;
 using System.Collections;
+using System.Linq;
 
 namespace MORM.Apresentacao.Controls
 {
@@ -56,5 +57,20 @@ namespace MORM.Apresentacao.Controls
             return null;
         }
         #endregion
+    }
+
+    public static class AbstractSelecaoExtensions
+    {
+        private static string[] _lstCampoSel =
+        {
+            nameof(SelecaoItemModel.IsSelecionado)
+        };
+
+        public static bool IsEditavel(this AbstractSelecao selecao, string campo)
+        {
+            if (selecao?.IsSelecao ?? false)
+                return _lstCampoSel.Contains(campo);
+            return false;
+        }
     }
 }

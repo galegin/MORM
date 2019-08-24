@@ -13,10 +13,10 @@ namespace MORM.Apresentacao
         {
             container.Register<IInformacaoSistema, InformacaoSistema>();
 
-            container.RegisterSingleton<IMainWindow, MainWindow>();
-            container.RegisterSingleton<IMainLogin, MainLogin>();
-            container.RegisterSingleton<IMainCommand, MainCommand>();
-            container.RegisterSingleton<IMainMensagem, MainMensagem>();
+            container.Register<IMainWindow, MainWindow>().PerSingleton();
+            container.Register<IMainLogin, MainLogin>().PerSingleton();
+            container.Register<IMainCommand, MainCommand>().PerSingleton();
+            container.Register<IMainMensagem, MainMensagem>().PerSingleton();
 
             container.Register<IMenuLateral, ucMenuLateral>();
             container.Register<ITituloSistema, ucTituloSistema>();

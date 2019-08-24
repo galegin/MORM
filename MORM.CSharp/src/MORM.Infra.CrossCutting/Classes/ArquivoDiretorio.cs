@@ -13,9 +13,9 @@ namespace MORM.Infra.CrossCutting
         public static string GetPastaResposta() =>
             CaminhoPadrao.GetPathSubPasta("resposta", isCreateSubPasta: true);
 
-        public static List<string> GetListaDeArquivo(string pasta)
+        public static List<string> GetListaDeArquivo(string pasta, string extensao = "*.xml")
         {
-            return Directory.GetFiles(pasta, "*.xml").ToList();
+            return Directory.GetFiles(pasta, extensao).ToList();
         }
 
         public static string CarregarArquivo(string arquivo)

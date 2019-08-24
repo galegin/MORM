@@ -31,7 +31,7 @@ namespace MORM.Apresentacao.Controls
                 this.AddPainel(filtro, dock: Dock.Top);
             }
 
-            var dataGrid = new AbstractDataGrid();
+            var dataGrid = new AbstractDataGrid(isReadOnly: !selecao?.IsSelecao ?? true);
             dataGrid.SetBindingDataGridLista(vm);
             dataGrid.SetBindingDataGridModel(vm);
             this.AddPainel(dataGrid);
@@ -42,6 +42,7 @@ namespace MORM.Apresentacao.Controls
                 .GetCamposIgnore()
                 .ForEach(campo =>
                 {
+                    campo.IsEditar = selecao.IsEditavel(campo.Prop.Name);
                     dataGrid.Columns.Add(GetDataGridColumn(campo));
                 });
         }
@@ -65,6 +66,7 @@ namespace MORM.Apresentacao.Controls
             {
                 Header = campo.Descricao,
                 Binding = campo.GetBindingCampo(),
+                IsReadOnly = !campo.IsEditar,
                 //CellStyle = style,
             };
         }
@@ -75,6 +77,7 @@ namespace MORM.Apresentacao.Controls
             {
                 Header = campo.Descricao,
                 Binding = campo.GetBindingCampo(),
+                IsReadOnly = !campo.IsEditar,
                 //CellStyle = style,
             };
         }
