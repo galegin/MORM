@@ -11,9 +11,6 @@ namespace MORM.Apresentacao.Commands.Tela
         public override void Execute(object parameter)
         {
             var vm = parameter as IAbstractViewModel<TModel>;
-            if (!vm.IsExibirListar)
-                return;
-
             var connector = new AbstractListarConnector<TModel>();
             var selecao = vm.Selecao as AbstractSelecao;
             var listaRet = selecao?.Valores;

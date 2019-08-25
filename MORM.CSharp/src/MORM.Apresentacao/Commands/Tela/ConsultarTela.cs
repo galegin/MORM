@@ -11,8 +11,6 @@ namespace MORM.Apresentacao.Commands.Tela
         public override void Execute(object parameter)
         {
             var vm = parameter as IAbstractViewModel<TModel>;
-            if (!vm.IsExibirConsultar)
-                return;
             var connector = new AbstractConsultarConnector<TModel>();
             var retorno = connector.Executar(vm.oModel);
             if (retorno.IsModelChavePreenchida())

@@ -12,8 +12,8 @@
              BorderThickness="0"
              WindowStyle="None"
              ResizeMode="NoResize"
-             Background="{Binding EsquemaTitulo.CorFundo}"
-             Foreground="{Binding EsquemaTitulo.CorFonte}"
+             Background="{Binding Esquema.Titulo.CorFundo}"
+             Foreground="{Binding Esquema.Titulo.CorFonte}"
              >
     <Grid>
         <Grid.RowDefinitions>
@@ -36,12 +36,12 @@
         <Label Grid.Row="1" Grid.Column="1" 
                Content="Acesso do Sistema" FontSize="24"
                HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-               Foreground="{Binding EsquemaTitulo.CorFonte}"/>
+               Foreground="{Binding Esquema.Titulo.CorFonte}"/>
 
         <Label Grid.Row="2" Grid.Column="1" 
                Content="Login"
                HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-               Foreground="{Binding EsquemaTitulo.CorFonte}"/>
+               Foreground="{Binding Esquema.Titulo.CorFonte}"/>
 
         <TextBox Grid.Row="3" Grid.Column="1"
                  Text="{Binding Model.Login, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
@@ -49,7 +49,7 @@
         <Label Grid.Row="4" Grid.Column="1" 
                Content="Senha"
                HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-               Foreground="{Binding EsquemaTitulo.CorFonte}"/>
+               Foreground="{Binding Esquema.Titulo.CorFonte}"/>
 
         <PasswordBox Grid.Row="5" Grid.Column="1" PasswordChanged="PasswordBox_PasswordChanged"/>
 

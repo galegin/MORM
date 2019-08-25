@@ -30,10 +30,9 @@ namespace MORM.Apresentacao.Controls.ViewsModel
             get => _sequencia;
             set
             {
-                if (value < 0)
-                    value = 0;
-                else if (value > UltimaSequencia)
-                    value = UltimaSequencia;
+                value = value < 0 ? 0 
+                    : value > UltimaSequencia ? UltimaSequencia 
+                    : value;
                 SetField(ref _sequencia, value);
                 ImageSelecionada = Images.Count > 0 ? Images[Sequencia] : null;
             }

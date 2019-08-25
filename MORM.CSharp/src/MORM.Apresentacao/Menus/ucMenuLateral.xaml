@@ -6,7 +6,7 @@
              xmlns:comps="clr-namespace:MORM.Apresentacao.Comps"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="300"
-             Background="{Binding EsquemaMenu.CorFundo}">
+             Background="{Binding Esquema.Menu.CorFundo}">
 
     <comps:AbstractUserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />

@@ -11,22 +11,6 @@ namespace MORM.Apresentacao.ViewsModel
 
     public interface IAbstractViewModelOpcao : IAbstractViewModelConf
     {
-        bool IsExibirFechar { get; set; }
-        bool IsExibirVoltar { get; set; }
-        bool IsExibirConfirmar { get; set; }
-        bool IsExibirCancelar { get; set; }
-        bool IsExibirLimpar { get; set; }
-        bool IsExibirListar { get; set; }
-        bool IsExibirConsultar { get; set; }
-        bool IsExibirExportar { get; set; }
-        bool IsExibirImportar { get; set; }
-        bool IsExibirImprimir { get; set; }
-        bool IsExibirIncluir { get; set; }
-        bool IsExibirAlterar { get; set; }
-        bool IsExibirSalvar { get; set; }
-        bool IsExibirExcluir { get; set; }
-        bool IsExibirRetornar { get; set; }
-        bool IsExibirSelecionar { get; set; }
     }
 
     public interface IAbstractViewModel : IAbstractViewModelOpcao

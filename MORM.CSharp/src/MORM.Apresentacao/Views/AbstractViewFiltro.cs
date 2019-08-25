@@ -1,7 +1,9 @@
-﻿using MORM.Apresentacao.Controls;
+﻿using MORM.Apresentacao.Commands;
+using MORM.Apresentacao.Controls;
 using MORM.Apresentacao.ViewsModel;
 using System;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace MORM.Apresentacao.Views
 {
@@ -43,19 +45,11 @@ namespace MORM.Apresentacao.Views
             vm.ConfirmarAction = () => ConfirmarFiltro();
             vm.CancelarAction = () => CancelarFiltro();
 
-            vm.SetOpcoes(new[]
-            {
-                nameof(vm.IsExibirConfirmar),
-                nameof(vm.IsExibirCancelar),
-                nameof(vm.IsExibirSalvar),
-                nameof(vm.IsExibirLimpar),
-            });
-
             this.AddPainel(new StackPanel());
 
             this.AddPainel(new AbstractTitulo("Filtro de " + vm.GetTitulo()));
 
-            this.AddPainel(new AbstractOpcao(vm));
+            this.AddPainel(new AbstractOpcao(vm, GetCommands()));
 
             this.AddPainel(new AbstractFiltro(vm));
         }
@@ -66,6 +60,21 @@ namespace MORM.Apresentacao.Views
 
         public void CancelarFiltro()
         {
+        }
+
+        private ICommand[] GetCommands()
+        {
+            var vm = DataContext as IAbstractViewModel;
+
+            var mainCommand = vm.ElementType.GetMainCommand();
+
+            return new ICommand[]
+            {
+                mainCommand.GetCommand(CommandTipo.Confirmar),
+                mainCommand.GetCommand(CommandTipo.Cancelar),
+                mainCommand.GetCommand(CommandTipo.Limpar),
+                mainCommand.GetCommand(CommandTipo.Salvar),
+            };
         }
         #endregion
     }

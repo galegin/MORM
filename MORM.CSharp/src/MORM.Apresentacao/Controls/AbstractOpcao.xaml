@@ -13,7 +13,8 @@
     </comps:AbstractUserControl.Resources>
     
     <Grid>
-        <StackPanel Orientation="Horizontal">
+        <StackPanel x:Name="stkOpcao" Orientation="Horizontal">
+            <!--
             <local:AbstractButton Style="{StaticResource DefaultButton}" 
                                   Content="Fechar"
                                   Visibility="{Binding IsExibirFechar, Converter={StaticResource BooleanToVisibilityConverter}}"
@@ -94,6 +95,7 @@
                                   Visibility="{Binding IsExibirCancelar, Converter={StaticResource BooleanToVisibilityConverter}}"
                                   Command="{Binding Cancelar}" CommandParameter="{Binding}"
                                   />
+            -->
         </StackPanel>
     </Grid>
 </comps:AbstractUserControl>

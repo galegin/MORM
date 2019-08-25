@@ -58,7 +58,7 @@ namespace MORM.Apresentacao.Controls.ViewsModel
         #region construtores
         public AbstractCampoViewModel()
         {
-            Selecionar = new SelecionarCampo();
+            //Selecionar = new SelecionarCampo();
         }
 
         public AbstractCampoViewModel(AbstractSource source, AbstractCampoTipo tipo, MetadataCampo campo) 

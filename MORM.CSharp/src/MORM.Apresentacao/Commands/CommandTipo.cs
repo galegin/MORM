@@ -2,6 +2,8 @@
 {
     public enum CommandTipo
     {
+        Fechar,
+        Voltar,
         Alterar,
         Consultar,
         Excluir,

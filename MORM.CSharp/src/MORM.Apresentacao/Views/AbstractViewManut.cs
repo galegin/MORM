@@ -1,4 +1,5 @@
-﻿using MORM.Apresentacao.Controls;
+﻿using MORM.Apresentacao.Commands;
+using MORM.Apresentacao.Controls;
 using MORM.Apresentacao.ViewsModel;
 using System;
 using System.Collections.Generic;
@@ -36,6 +37,7 @@ namespace MORM.Apresentacao.Views
         private const string _cadastro = "Cadastro";
         private const string _filtro = "Filtro";
         private const string _relatorio = "Relatorio";
+        private AbstractOpcao _opcao;
         #endregion
 
         #region construtores
@@ -55,7 +57,7 @@ namespace MORM.Apresentacao.Views
 
             this.AddPainel(new AbstractTitulo(_tipo.GetDescricao() + " de " + vm.GetTitulo()), dock: Dock.Top);
 
-            this.AddPainel(new AbstractOpcao(vm), dock: Dock.Top);
+            this.AddPainel(_opcao = new AbstractOpcao(vm, null), dock: Dock.Top);
 
             this.AddPainel(new AbstractCorpo(GetUserControls(vm), OnHabilitarOpcao));
         }
@@ -71,7 +73,7 @@ namespace MORM.Apresentacao.Views
 
             var vm = DataContext as IAbstractViewModel;
 
-            vm.OnHabilitarOpcao(
+            vm.OnHabilitarOpcao(_opcao,
                 isExibirConsulta: _tipo.IsConsulta() && _consulta.Equals(parameter),
                 isExibirCadastro: _tipo.IsCadastro() && _cadastro.Equals(parameter),
                 isExibirFiltro: _tipo.IsFiltro() && _filtro.Equals(parameter),

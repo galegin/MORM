@@ -1,28 +1,42 @@
-﻿using MORM.Apresentacao.ViewsModel;
+﻿using MORM.Apresentacao.Commands;
+using MORM.Apresentacao.Controls;
+using MORM.Apresentacao.ViewsModel;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Input;
 
 namespace MORM.Apresentacao.Views
 {
     public static class AbstractViewOpcaoExtensions
     {
-        public static void OnHabilitarOpcao(this IAbstractViewModel vm, 
+        public static void OnHabilitarOpcao(this IAbstractViewModel vm, AbstractOpcao opcao,
             bool isExibirConsulta, bool isExibirCadastro, 
             bool isExibirFiltro, bool isExibirRelatorio)
         {
-            vm.IsExibirFechar = false;
-            vm.IsExibirVoltar = true;
-            vm.IsExibirLimpar = true;
+            var mainCommand = vm.ElementType.GetMainCommand();
 
-            vm.IsExibirListar = isExibirConsulta;
-            vm.IsExibirExportar = isExibirConsulta;
-            vm.IsExibirImportar = isExibirConsulta;
-            vm.IsExibirImprimir = isExibirConsulta || isExibirRelatorio;
+            var commands = new List<ICommand>
+            {
+                mainCommand.GetCommand(CommandTipo.Voltar),
+                mainCommand.GetCommand(CommandTipo.Limpar),
 
-            vm.IsExibirConsultar = isExibirCadastro;
-            vm.IsExibirSalvar = isExibirCadastro;
-            vm.IsExibirExcluir = isExibirCadastro;
+                isExibirConsulta ? mainCommand.GetCommand(CommandTipo.Listar) : null,
+                isExibirConsulta ? mainCommand.GetCommand(CommandTipo.Exportar) : null,
+                isExibirConsulta ? mainCommand.GetCommand(CommandTipo.Importar) : null,
+                isExibirConsulta || isExibirRelatorio ? mainCommand.GetCommand(CommandTipo.Imprimir) : null,
 
-            vm.IsExibirConfirmar = isExibirFiltro;
-            vm.IsExibirCancelar = isExibirFiltro;
+                isExibirCadastro ? mainCommand.GetCommand(CommandTipo.Consultar) : null,
+                isExibirCadastro ? mainCommand.GetCommand(CommandTipo.Salvar) : null,
+                isExibirCadastro ? mainCommand.GetCommand(CommandTipo.Excluir) : null,
+
+                isExibirFiltro ? mainCommand.GetCommand(CommandTipo.Confirmar) : null,
+                isExibirFiltro ? mainCommand.GetCommand(CommandTipo.Cancelar) : null,
+            }
+            .Where(c => c != null)
+            .ToArray()
+            ;
+
+            opcao.CreateComps(commands);
         }
     }
 }

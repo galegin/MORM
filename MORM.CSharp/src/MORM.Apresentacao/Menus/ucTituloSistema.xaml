@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="50" d:DesignWidth="800">
     <Grid>
-        <DockPanel DockPanel.Dock="Top" Height="50" Background="{Binding EsquemaTitulo.CorFundo}">
+        <DockPanel DockPanel.Dock="Top" Height="50" Background="{Binding Esquema.Titulo.CorFundo}">
             <StackPanel DockPanel.Dock="Left">
                 <Button Width="50" Height="50"
                         Command="{Binding ExibirMenuLateral}"
@@ -19,28 +19,28 @@
                         <materialDesign:PackIcon Kind="{Binding PackIconKindMenu}"
                                                  Height="Auto" Width="Auto" 
                                                  VerticalAlignment="Center" HorizontalAlignment="Center" 
-                                                 Margin="6,0,6,0" Foreground="{Binding EsquemaTitulo.CorFonte}"/>
+                                                 Margin="6,0,6,0" Foreground="{Binding Esquema.Titulo.CorFonte}"/>
                     </StackPanel>
                 </Button>
             </StackPanel>
             
             <Label Content="{Binding NomeEmpresa}" DockPanel.Dock="Left" 
-                   FontSize="{Binding EsquemaTitulo.TamFonte}" Foreground="{Binding EsquemaTitulo.CorFonte}" 
+                   FontSize="{Binding Esquema.Titulo.TamFonte}" Foreground="{Binding Esquema.Titulo.CorFonte}" 
                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                    />
             <Label Content="{Binding DataSistema}" DockPanel.Dock="Right" 
-                   FontSize="{Binding EsquemaTitulo.TamFonte}" Foreground="{Binding EsquemaTitulo.CorFonte}" 
+                   FontSize="{Binding Esquema.Titulo.TamFonte}" Foreground="{Binding Esquema.Titulo.CorFonte}" 
                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                    />
             <Label Content="{Binding NomeUsuario}" DockPanel.Dock="Right" 
-                   FontSize="{Binding EsquemaTitulo.TamFonte}" Foreground="{Binding EsquemaTitulo.CorFonte}" 
+                   FontSize="{Binding Esquema.Titulo.TamFonte}" Foreground="{Binding Esquema.Titulo.CorFonte}" 
                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                    />
             <Image Source="{Binding ImageUsuario}" DockPanel.Dock="Right" 
                    Width="50" Stretch="Fill"
                    />
             <Label Content="{Binding NomeSistema}" 
-                   FontSize="{Binding EsquemaTitulo.TamFonte}" Foreground="{Binding EsquemaTitulo.CorFonte}" 
+                   FontSize="{Binding Esquema.Titulo.TamFonte}" Foreground="{Binding Esquema.Titulo.CorFonte}" 
                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                    />
         </DockPanel>

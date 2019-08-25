@@ -6,8 +6,6 @@
         #region construtores
         public AbstractViewModelRelat() : base()
         {
-            IsExibirLimpar = true;
-            IsExibirConsultar = true;
         }
         #endregion
     }

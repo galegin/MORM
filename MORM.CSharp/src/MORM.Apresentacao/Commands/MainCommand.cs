@@ -2,13 +2,23 @@
 
 namespace MORM.Apresentacao.Commands
 {
-    public class MainCommand : IMainCommand
+    public abstract class MainCommand : IMainCommand
     {
-        public AbstractCommand GetCommand<TModel>(CommandTipo tipo)
-            where TModel : class
+        public abstract AbstractCommand GetCommand(CommandTipo tipo);
+    }
+
+    public class MainCommand<TModel> : MainCommand, IMainCommand<TModel>
+        where TModel : class
+    {
+        public override AbstractCommand GetCommand(CommandTipo tipo)
         {
             switch (tipo)
             {
+                case CommandTipo.Fechar:
+                    return new FecharTela();
+                case CommandTipo.Voltar:
+                    return new VoltarTelaAnterior();
+
                 case CommandTipo.Limpar:
                     return new LimparTela<TModel>();
 

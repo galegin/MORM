@@ -6,12 +6,6 @@
         #region construtores
         public AbstractViewModelManut() : base()
         {
-            IsExibirLimpar = true;
-            IsExibirConsultar = true;
-            IsExibirIncluir = true;
-            IsExibirAlterar = true;
-            IsExibirSalvar = true;
-            IsExibirExcluir = true;
         }
         #endregion
     }
