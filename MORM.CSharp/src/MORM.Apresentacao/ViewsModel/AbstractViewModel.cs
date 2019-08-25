@@ -70,9 +70,6 @@ namespace MORM.Apresentacao.ViewsModel
         #endregion
         #endregion
 
-        #region comandos
-        #endregion
-
         #region construtores
         public AbstractViewModel()
         {
@@ -96,7 +93,7 @@ namespace MORM.Apresentacao.ViewsModel
         public virtual void RetornarModel()
         {
             IsConfirmado = true;
-            //Fechar.ExecuteCommand(this);
+            CloseAction?.Invoke();
         }
 
         public virtual void ConsultarChave() { }
