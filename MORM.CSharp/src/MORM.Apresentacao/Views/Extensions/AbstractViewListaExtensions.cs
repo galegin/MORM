@@ -24,6 +24,11 @@ namespace MORM.Apresentacao.Views
             if (!vmLista.IsConfirmado)
                 return null;
 
+            if (selecao?.IsSelecao ?? false)
+            {
+                return vmLista.Lista.GetListaSelecaoItemCodigo();
+            }
+
             return ObjetoMapper.GetObjetoRetorno(vmLista.Model.GetType(), vmLista.Model);
         }
 

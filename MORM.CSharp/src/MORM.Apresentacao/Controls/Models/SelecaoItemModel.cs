@@ -75,6 +75,30 @@ namespace MORM.Apresentacao.Controls
             return retorno;
         }
 
+        public static IList GetListaSelecaoItemCodigo(this IList lista)
+        {
+            var retorno = new List<object>();
+            foreach (var item in lista)
+            {
+                var selecaoItem = item as SelecaoItemModel;
+                if (selecaoItem?.IsSelecionado ?? false)
+                    retorno.Add(selecaoItem.Codigo);
+            }
+            return retorno;
+        }
+
+        public static void SetInverterSelecao(this IList lista)
+        {
+            foreach (var item in lista)
+                (item as SelecaoItemModel)?.InverterSelecao();
+        }
+
+        public static void SetSelecionarTodos(this IList lista)
+        {
+            foreach (var item in lista)
+                (item as SelecaoItemModel)?.Selecionar(true);
+        }
+
         public static Metadata GetMetadata()
         {
             return typeof(SelecaoItemModel).GetMetadata();

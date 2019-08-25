@@ -76,9 +76,9 @@ namespace MORM.Apresentacao.Views
                 mainCommand.GetCommand(CommandTipo.Fechar),
                 mainCommand.GetCommand(CommandTipo.Limpar),
                 mainCommand.GetCommand(CommandTipo.Listar),
-                mainCommand.GetCommand(CommandTipo.Retornar),
                 selecao?.IsSelecao ?? false ? mainCommand.GetCommand(CommandTipo.InverterSelecao) : null,
                 selecao?.IsSelecao ?? false ? mainCommand.GetCommand(CommandTipo.SelecionarTodos) : null,
+                mainCommand.GetCommand(CommandTipo.Retornar),
             };
         }
         #endregion

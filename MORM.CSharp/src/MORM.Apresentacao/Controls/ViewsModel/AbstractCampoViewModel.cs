@@ -1,5 +1,4 @@
 ﻿using MORM.Apresentacao.Connectors;
-using MORM.Apresentacao.Controls.Commands;
 using MORM.Apresentacao.Views;
 using MORM.Apresentacao.ViewsModel;
 using MORM.Infra.CrossCutting;
@@ -58,7 +57,6 @@ namespace MORM.Apresentacao.Controls.ViewsModel
         #region construtores
         public AbstractCampoViewModel()
         {
-            //Selecionar = new SelecionarCampo();
         }
 
         public AbstractCampoViewModel(AbstractSource source, AbstractCampoTipo tipo, MetadataCampo campo) 
@@ -71,7 +69,6 @@ namespace MORM.Apresentacao.Controls.ViewsModel
         #endregion
 
         #region metodos
-
         private void SetarFiltros()
         {
             if (_campo != null)
@@ -142,7 +139,7 @@ namespace MORM.Apresentacao.Controls.ViewsModel
 
         private void SetarRetornoLista(IList lista)
         {
-            Filtros.SetInstancePropOrField("ValorSel", lista); // ?????
+            Filtros.SetInstancePropOrField("ValorSel", lista);
         }
 
         private void SetarRetornoValor(object objeto)

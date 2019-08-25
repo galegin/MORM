@@ -1,6 +1,7 @@
 ﻿using MORM.Apresentacao.Models;
 using MORM.Infra.CrossCutting;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -27,7 +28,7 @@ namespace MORM.Apresentacao.Controls
         private TFiltro _valor;
         private TFiltro _valorIni;
         private TFiltro _valorFin;
-        private IList<TFiltro> _valorSel;
+        private IList _valorSel;
         private string _valorDes;
         private string[] _valoresNulos = { "0" };
         #endregion
@@ -56,7 +57,7 @@ namespace MORM.Apresentacao.Controls
                 ValorDes = GetValorDes();
             }
         }
-        public IList<TFiltro> ValorSel
+        public IList ValorSel
         {
             get => _valorSel;
             set
@@ -104,7 +105,10 @@ namespace MORM.Apresentacao.Controls
         }
         private string GetValorSel()
         {
-            return ValorSel.Any() ? string.Join(",", ValorSel)
+            var retorno = new List<string>();
+            foreach(var valor in ValorSel)
+                retorno.Add(valor.ToString());
+            return retorno.Any() ? string.Join(",", retorno)
                 : null
                 ;
         }

@@ -4,15 +4,14 @@ using System.ComponentModel;
 
 namespace MORM.Apresentacao.Commands
 {
-    [Description("Inverter Seleção")]
+    [Description("Inverter")]
     public class InverterSelecaoTela<TModel> : AbstractCommand
         where TModel : class
     {
         public override void Execute(object parameter)
         {
             var vm = parameter as IAbstractViewModel<TModel>;
-            foreach (var item in vm.Lista)
-                (item as SelecaoItemModel)?.InverterSelecao();
+            vm.Lista.SetInverterSelecao();
         }
     }
 }
