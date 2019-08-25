@@ -1,8 +1,10 @@
 ﻿using MORM.Apresentacao.Connectors;
 using MORM.Apresentacao.ViewsModel;
+using System.ComponentModel;
 
 namespace MORM.Apresentacao.Commands.Tela
 {
+    [Description("Importar")]
     public class ImportarTela<TModel> : AbstractCommand
         where TModel : class
     {

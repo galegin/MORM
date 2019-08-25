@@ -53,6 +53,11 @@ namespace MORM.Apresentacao.Commands
                     return new ConfirmarTela<TModel>();
                 case CommandTipo.Cancelar:
                     return new CancelarTela<TModel>();
+
+                case CommandTipo.InverterSelecao:
+                    return new InverterSelecaoTela<TModel>();
+                case CommandTipo.SelecionarTodos:
+                    return new SelecionarTodosTela<TModel>();
             }
 
             return null;

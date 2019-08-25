@@ -17,7 +17,9 @@
         Salvar,
         Selecionar,
         Confirmar,
-        Cancelar
+        Cancelar,
+        InverterSelecao,
+        SelecionarTodos,
     }
 
     public static class CommandTipoExtensions

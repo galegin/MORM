@@ -1,4 +1,5 @@
-﻿using MORM.Apresentacao.Comps;
+﻿using MORM.Apresentacao.Commands;
+using MORM.Apresentacao.Comps;
 using MORM.Apresentacao.ViewsModel;
 using System;
 using System.Windows;
@@ -30,19 +31,14 @@ namespace MORM.Apresentacao.Controls
 
             foreach (var command in commands)
             {
-                var content = command.GetType().Name
-                    .Replace("TelaAnterior", "")
-                    .Replace("Tela`1", "");
-                var name = $"Button{content}";
-                var button = new AbstractButton()
+                stkOpcao.Children.Add(new AbstractButton()
                 {
-                    Content = content,
                     Command = command,
                     CommandParameter = DataContext,
+                    Content = command.GetDescription(),
+                    Name = command.GetNameButton(),
                     Style = style,
-                    Name = name,
-                };
-                stkOpcao.Children.Add(button);
+                });
             }
         }
     }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MORM.Infra.CrossCutting;
+using System;
+using System.ComponentModel;
 using System.Windows.Input;
 
 namespace MORM.Apresentacao.Commands
@@ -17,10 +19,20 @@ namespace MORM.Apresentacao.Commands
 
     public static class AbstractCommandExtension
     {
-        public static void ExecuteCommand(this AbstractCommand command, object parameter)
+        public static void ExecuteCommand(this ICommand command, object parameter)
         {
             if (command.CanExecute(parameter))
                 command.Execute(parameter);
+        }
+
+        public static string GetDescription(this ICommand command)
+        {
+            return command.GetType().GetAttributeType<DescriptionAttribute>().Description;
+        }
+
+        public static string GetNameButton(this ICommand command)
+        {
+            return $"Button{command.GetType().Name.Replace("`1", "")}";
         }
     }
 }

@@ -1,10 +1,7 @@
 ﻿using MORM.Apresentacao.Commands;
 using MORM.Apresentacao.Controls;
 using MORM.Apresentacao.ViewsModel;
-using MORM.Infra.CrossCutting;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -61,14 +58,14 @@ namespace MORM.Apresentacao.Views
 
             this.AddPainel(new AbstractTitulo(preTitulo + " de " + vm.GetTitulo()), dock: Dock.Top);
 
-            this.AddPainel(new AbstractOpcao(vm, GetCommands()), dock: Dock.Top);
+            this.AddPainel(new AbstractOpcao(vm, GetCommands(selecao)), dock: Dock.Top);
 
             this.AddPainel(new AbstractBusca(vm), dock: Dock.Top);
 
             this.AddPainel(new AbstractLista(vm, selecao: selecao));
         }
 
-        private ICommand[] GetCommands()
+        private ICommand[] GetCommands(AbstractSelecao selecao)
         {
             var vm = DataContext as IAbstractViewModel;
 
@@ -78,8 +75,10 @@ namespace MORM.Apresentacao.Views
             {
                 mainCommand.GetCommand(CommandTipo.Fechar),
                 mainCommand.GetCommand(CommandTipo.Limpar),
-                mainCommand.GetCommand(CommandTipo.Consultar),
+                mainCommand.GetCommand(CommandTipo.Listar),
                 mainCommand.GetCommand(CommandTipo.Retornar),
+                selecao?.IsSelecao ?? false ? mainCommand.GetCommand(CommandTipo.InverterSelecao) : null,
+                selecao?.IsSelecao ?? false ? mainCommand.GetCommand(CommandTipo.SelecionarTodos) : null,
             };
         }
         #endregion

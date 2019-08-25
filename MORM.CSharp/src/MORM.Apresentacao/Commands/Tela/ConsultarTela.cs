@@ -2,9 +2,11 @@
 using MORM.Apresentacao.Views;
 using MORM.Apresentacao.ViewsModel;
 using MORM.Infra.CrossCutting;
+using System.ComponentModel;
 
 namespace MORM.Apresentacao.Commands.Tela
 {
+    [Description("Consultar")]
     public class ConsultarTela<TModel> : AbstractCommand
         where TModel : class
     {

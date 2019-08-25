@@ -2,9 +2,11 @@
 using MORM.Apresentacao.Controls;
 using MORM.Apresentacao.ViewsModel;
 using System.Collections;
+using System.ComponentModel;
 
 namespace MORM.Apresentacao.Commands.Tela
 {
+    [Description("Listar")]
     public class ListarTela<TModel> : AbstractCommand
         where TModel : class
     {

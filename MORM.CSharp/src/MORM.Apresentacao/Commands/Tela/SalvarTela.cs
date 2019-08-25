@@ -1,8 +1,10 @@
 ﻿using MORM.Apresentacao.Connectors;
 using MORM.Apresentacao.ViewsModel;
+using System.ComponentModel;
 
 namespace MORM.Apresentacao.Commands.Tela
 {
+    [Description("Salvar")]
     public class SalvarTela<TModel> : AbstractCommand
         where TModel : class
     {
