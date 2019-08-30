@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MORM.Infra.CrossCutting;
+using System;
 using System.Windows;
 using System.Windows.Input;
 
@@ -54,7 +55,7 @@ namespace MORM.Apresentacao.Comps
         protected virtual object PosExecute(object parameter) => null;
 
         #endregion
-
+        
         #region fechar
 
         public void FecharTela()
@@ -142,6 +143,10 @@ namespace MORM.Apresentacao.Comps
         {
             this.MinimizarApp();
             NotifyIcon.Ativo = false;
+        }
+        protected void OnInicializar(object sender, EventArgs e)
+        {
+            InicializacaoApp.SetarInicializacao();
         }
         #endregion
 

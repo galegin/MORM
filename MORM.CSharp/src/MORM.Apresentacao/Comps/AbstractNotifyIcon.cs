@@ -19,15 +19,15 @@ namespace MORM.Apresentacao.Comps
         #endregion
 
         #region Construtores
-        public AbstractNotifyIcon(EventHandler eventoRestaurar)
+        public AbstractNotifyIcon(EventHandler onRestaurar = null)
         {
             _trayIcon = new NotifyIcon()
             {
                 Icon = Resources.AppIcon,
                 ContextMenu = new ContextMenu(new MenuItem[]
                 {
-                    new MenuItem("Restaurar", eventoRestaurar),
-                    new MenuItem("Finalizar", EventoFinalizar),
+                    new MenuItem("Restaurar", onRestaurar),
+                    new MenuItem("Finalizar", OnFinalizar),
                 }),
                 Visible = false
             };
@@ -35,7 +35,7 @@ namespace MORM.Apresentacao.Comps
         #endregion
 
         #region Metodos
-        public void EventoFinalizar(object sender, EventArgs e)
+        public void OnFinalizar(object sender, EventArgs e)
         {
             if (MessageBox.Show("Finalizar ?", "Confirmação", MessageBoxButtons.YesNo) != DialogResult.Yes)
                 return;

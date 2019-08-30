@@ -82,6 +82,7 @@
     <Compile Include="Classes\ObjetoMapper.cs" />
     <Compile Include="Classes\TypeForConvert.cs" />
     <Compile Include="Classes\VariavelAmbiente.cs" />
+    <Compile Include="Configs\ConfigurationManagerApp.cs" />
     <Compile Include="Consumers\AbstractApiConsumer.cs" />
     <Compile Include="Exceptions\ExceptionErro.cs" />
     <Compile Include="Exceptions\ExceptionInfo.cs" />

@@ -5,9 +5,20 @@ namespace MORM.Infra.CrossCutting
     public class InicializacaoApp
     {
         #region Variaveis
+        private const string _isTrue = "true";
+        private const string _isFalse = "false";
         private static string RunKey = RegistryExtensions.RunKey;
         private static string AppName = RegistryExtensions.AppName;
         private static string AppPath = RegistryExtensions.AppPath;
+        private static bool _isInicializacaoAtiva;
+        #endregion
+        
+        #region constructors
+        static InicializacaoApp()
+        {
+            _isInicializacaoAtiva = (ConfigurationManagerApp
+                .GetAppSettings(nameof(_isInicializacaoAtiva)) as string ?? _isFalse) == _isTrue;
+        }
         #endregion
 
         #region Metodos
@@ -25,6 +36,14 @@ namespace MORM.Infra.CrossCutting
         {
             SetStartup(false);
         }
+        public static void SetarInicializacao()
+        {
+            if (!_isInicializacaoAtiva)
+            {
+                InicializacaoApp.Ativar();
+                ConfigurationManagerApp.AddOrUpdateAppSettings(nameof(_isInicializacaoAtiva), _isTrue);
+            }
+        }        
         #endregion
 
         #region Metodos Privados
@@ -52,7 +71,7 @@ namespace MORM.Infra.CrossCutting
             }
             catch (Exception ex)
             {
-                Logger.Erro("Erro inicializar com windows", ex: ex);
+                Logger.Erro("Erro inicializacao aplicativo", ex: ex);
             }
         }
         #endregion
