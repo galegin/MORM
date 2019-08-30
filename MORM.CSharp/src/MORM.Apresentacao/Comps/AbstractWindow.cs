@@ -141,7 +141,7 @@ namespace MORM.Apresentacao.Comps
         }
         protected void OnRestaurar(object sender, EventArgs e)
         {
-            this.MinimizarApp();
+            this.RestaurarApp();
             NotifyIcon.Ativo = false;
         }
         protected void OnInicializar(object sender, EventArgs e)
