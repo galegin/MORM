@@ -19,6 +19,7 @@ MORM
 - restaurar - OK
 
 MRFID
+- salvar leitura
 - requisicao arquivo
   - iniciar
   - carregar

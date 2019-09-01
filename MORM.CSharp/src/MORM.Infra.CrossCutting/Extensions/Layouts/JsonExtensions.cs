@@ -30,6 +30,12 @@ namespace MORM.Infra.CrossCutting
 
             return lista as List<TObj>;
         }
+        
+        public static void SetListaFromJson<TObj>(this List<TObj> lista, string arquivo)
+        {
+            var conteudo = lista.GetJsonFromObject();
+            File.WriteAllText(arquivo, conteudo);
+        }
 
         public static string GetJsonFromObject<TObj>(this TObj obj, bool isIndented = false)
         {
