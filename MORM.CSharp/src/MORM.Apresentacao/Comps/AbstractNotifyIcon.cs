@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using MORM.Apresentacao.Properties;
+using MORM.Infra.CrossCutting;
 
 namespace MORM.Apresentacao.Comps
 {
@@ -27,6 +28,7 @@ namespace MORM.Apresentacao.Comps
                 ContextMenu = new ContextMenu(new MenuItem[]
                 {
                     new MenuItem("Restaurar", onRestaurar),
+                    new MenuItem("Inicializar", OnInicializar),
                     new MenuItem("Finalizar", OnFinalizar),
                 }),
                 Visible = false
@@ -35,6 +37,28 @@ namespace MORM.Apresentacao.Comps
         #endregion
 
         #region Metodos
+        public void OnInicializar(object sender, EventArgs e)
+        {
+            var isAtivo = InicializacaoApp.IsAtivo();
+            var tituloConfirma = isAtivo ? "Desativar" : "Ativar";
+            var tituloMensagem = isAtivo ? "desativada" : "ativada";
+
+            if (MessageBox.Show($"{tituloConfirma} Inicialização ?", "Confirmação", MessageBoxButtons.YesNo) != DialogResult.Yes)
+                return;
+
+            if (isAtivo)
+            {
+                InicializacaoApp.Desativar();
+                InicializacaoApp.IsInicializacao = true;
+            }
+            else
+            {
+                InicializacaoApp.Ativar();
+                InicializacaoApp.IsInicializacao = false;
+            }
+
+            MessageBox.Show($"Inicialização {tituloMensagem} com sucesso");
+        }
         public void OnFinalizar(object sender, EventArgs e)
         {
             if (MessageBox.Show("Finalizar ?", "Confirmação", MessageBoxButtons.YesNo) != DialogResult.Yes)

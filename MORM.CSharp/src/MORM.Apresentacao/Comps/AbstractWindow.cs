@@ -24,9 +24,15 @@ namespace MORM.Apresentacao.Comps
         public AbstractWindow()
         {
             KeyDown += DefaultWindow_KeyDown;
-            Loaded += (s, e) => MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+            Loaded += AbstractWindow_Loaded;
             PreviewKeyDown += DefaultWindow_PreviewKeyDown;
             Closed += DefaultWindow_Closed;
+        }
+
+        private void AbstractWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+            OnInicializar(null, null);
         }
         #endregion
 
@@ -129,24 +135,26 @@ namespace MORM.Apresentacao.Comps
         #endregion
 
         #region notifyIcon
-        protected void SetarNotifyIcon(EventHandler onRestaurar = null)
+        public void SetarNotifyIcon(EventHandler onRestaurar = null)
         {
             if (NotifyIcon == null)
                 NotifyIcon = new AbstractNotifyIcon(onRestaurar ?? OnRestaurar);
         }
         protected void OnMinimizar(object sender, EventArgs e)
         {
-            NotifyIcon.Ativo = true;
             this.MinimizarApp();
         }
         protected void OnRestaurar(object sender, EventArgs e)
         {
             this.RestaurarApp();
-            NotifyIcon.Ativo = false;
         }
         protected void OnInicializar(object sender, EventArgs e)
         {
-            InicializacaoApp.SetarInicializacao();
+            if (InicializacaoApp.IsInicializacao)
+            {
+                SetarNotifyIcon(null);
+                OnMinimizar(null, null);
+            }
         }
         #endregion
 

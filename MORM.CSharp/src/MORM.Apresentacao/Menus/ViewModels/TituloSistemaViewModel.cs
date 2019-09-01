@@ -1,4 +1,5 @@
 ﻿using MaterialDesignThemes.Wpf;
+using MORM.Apresentacao.Commands.Tela;
 using MORM.Apresentacao.Comps;
 using MORM.Apresentacao.Menus.Commands;
 using MORM.Apresentacao.ViewsModel;
@@ -12,6 +13,8 @@ namespace MORM.Apresentacao.Menus.ViewModels
     {
         #region variaveis
         private PackIconKind _packIconKindMenu = PackIconKind.HamburgerMenu;
+        private PackIconKind _packIconKindMinimizar = PackIconKind.WindowMinimize;
+        private PackIconKind _packIconKindFechar = PackIconKind.WindowClose;
         private IInformacaoSistema _informacaoSistema;
         private string _nomeEmpresa;
         private string _nomeTerminal;
@@ -26,6 +29,16 @@ namespace MORM.Apresentacao.Menus.ViewModels
         {
             get => _packIconKindMenu;
             set => SetField(ref _packIconKindMenu, value);
+        }
+        public PackIconKind PackIconKindMinimizar
+        {
+            get => _packIconKindMinimizar;
+            set => SetField(ref _packIconKindMinimizar, value);
+        }
+        public PackIconKind PackIconKindFechar
+        {
+            get => _packIconKindFechar;
+            set => SetField(ref _packIconKindFechar, value);
         }
         public IInformacaoSistema InformacaoSistema
         {
@@ -72,13 +85,18 @@ namespace MORM.Apresentacao.Menus.ViewModels
         #endregion
 
         #region comandos
-        public ExibirMenuLateral ExibirMenuLateral { get; } = new ExibirMenuLateral();
+        public ExibirMenuLateral ExibirMenuLateral { get; }
+        public FecharTela FecharTela { get; }
+        public MinimizarTela MinimizarTela { get; }
         #endregion
 
         #region construtores
         public TituloSistemaViewModel(IInformacaoSistema informacaoSistema)
         {
             InformacaoSistema = informacaoSistema ?? throw new ArgumentNullException(nameof(informacaoSistema));
+            ExibirMenuLateral = new ExibirMenuLateral();
+            FecharTela = new FecharTela();
+            MinimizarTela = new MinimizarTela();
             NomeSistema = AppDomain.CurrentDomain.FriendlyName;
             Timer = new AbstractTimer(SetarDataSistema);
         }

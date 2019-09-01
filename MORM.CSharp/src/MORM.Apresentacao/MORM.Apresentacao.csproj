@@ -90,6 +90,7 @@
     <Compile Include="Commands\Tela\LimparTela.cs" />
     <Compile Include="Commands\Tela\IncluirTela.cs" />
     <Compile Include="Commands\Tela\AlterarTela.cs" />
+    <Compile Include="Commands\Tela\RestaurarTela.cs" />
     <Compile Include="Commands\Tela\RetornarTela.cs" />
     <Compile Include="Commands\Tela\SalvarTela.cs" />
     <Compile Include="Commands\Tela\SelecionarTela.cs" />
@@ -113,6 +114,7 @@
     <Compile Include="Controls\ViewsModel\AbstractSliderViewModel.cs" />
     <Compile Include="Controls\AbstractSource.cs" />
     <Compile Include="Controls\Models\SelecaoItemModel.cs" />
+    <Compile Include="Commands\Tela\MinimizarTela.cs" />
     <Compile Include="Views\AbstractViewItem.cs" />
     <Compile Include="Views\AbstractViewTipo.cs" />
     <Compile Include="Views\Extensions\AbstractViewCampoExtensions.cs" />

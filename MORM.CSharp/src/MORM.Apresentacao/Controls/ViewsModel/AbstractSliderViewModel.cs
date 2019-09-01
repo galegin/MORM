@@ -1,6 +1,7 @@
 ﻿using MORM.Apresentacao.ViewsModel;
 using MORM.Infra.CrossCutting;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace MORM.Apresentacao.Controls.ViewsModel
@@ -51,6 +52,9 @@ namespace MORM.Apresentacao.Controls.ViewsModel
         public void CarregarImagens()
         {
             var pastaImagem = CaminhoPadrao.GetPathSubPasta(subPasta: "Images");
+            if (!Directory.Exists(pastaImagem))
+                return;
+
             var extensoes = new[] { "*.png", "*.jpg" };
             foreach(var extensao in extensoes)
                 ArquivoDiretorio.GetListaDeArquivo(pastaImagem, extensao)
@@ -60,6 +64,7 @@ namespace MORM.Apresentacao.Controls.ViewsModel
                     {
                         Images.Add(new AbstractImage(arquivo));
                     });
+
             Sequencia = 0;
         }
         public void Primeira() => Sequencia = 0;
@@ -68,6 +73,9 @@ namespace MORM.Apresentacao.Controls.ViewsModel
         public void Ultima() => Sequencia = UltimaSequencia;
         public void SetarProxima()
         {
+            if (UltimaSequencia == 1)
+                return;
+
             if (Sequencia >= UltimaSequencia)
                 Primeira();
             else

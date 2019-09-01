@@ -16,7 +16,9 @@ namespace MORM.Apresentacao.Comps
 
         #region propriedades
         public const int TEMPO_SECOND = 1000;
-        public const int TEMPO_TIMER = 60 * TEMPO_SECOND;
+        public const int TEMPO_MINUTE = 60 * TEMPO_SECOND;
+        public const int TEMPO_HOUR = 60 * TEMPO_MINUTE;
+        public const int TEMPO_DAY = 24 * TEMPO_HOUR;
         public bool Ativo
         {
             get => _timer.Enabled;
@@ -27,7 +29,7 @@ namespace MORM.Apresentacao.Comps
         #region construtores
         public AbstractTimer(OnTimerExecute onTimerExecute, int? tempo = null)
         {
-            _tempo = tempo ?? TEMPO_TIMER;
+            _tempo = tempo ?? TEMPO_MINUTE;
             SetarTimer(onTimerExecute ?? throw new ArgumentNullException(nameof(onTimerExecute)));
         }
         #endregion

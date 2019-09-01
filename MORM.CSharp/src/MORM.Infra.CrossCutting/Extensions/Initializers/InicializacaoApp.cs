@@ -10,14 +10,14 @@ namespace MORM.Infra.CrossCutting
         private static string RunKey = RegistryExtensions.RunKey;
         private static string AppName = RegistryExtensions.AppName;
         private static string AppPath = RegistryExtensions.AppPath;
-        private static bool _isInicializacaoAtiva;
+        private static bool _isInicializacao;
         #endregion
-        
-        #region constructors
-        static InicializacaoApp()
+
+        #region propriedades
+        public static bool IsInicializacao
         {
-            _isInicializacaoAtiva = (ConfigurationManagerApp
-                .GetAppSettings(nameof(_isInicializacaoAtiva)) as string ?? _isFalse) == _isTrue;
+            get => GetInicializacao();
+            set => SetInicializacao(value);
         }
         #endregion
 
@@ -36,14 +36,17 @@ namespace MORM.Infra.CrossCutting
         {
             SetStartup(false);
         }
-        public static void SetarInicializacao()
+        private static bool GetInicializacao()
         {
-            if (!_isInicializacaoAtiva)
-            {
-                InicializacaoApp.Ativar();
-                ConfigurationManagerApp.AddOrUpdateAppSettings(nameof(_isInicializacaoAtiva), _isTrue);
-            }
-        }        
+            var isInicializacaoAtiva = ConfigurationManagerApp.GetAppSettings(nameof(_isInicializacao)) as string ?? _isFalse;
+            _isInicializacao = isInicializacaoAtiva.Equals(_isTrue);
+            return _isInicializacao;
+        }
+        private static void SetInicializacao(bool isInicializacaoAtiva)
+        {
+            _isInicializacao = isInicializacaoAtiva;
+            ConfigurationManagerApp.AddOrUpdateAppSettings(nameof(_isInicializacao), _isTrue);
+        }
         #endregion
 
         #region Metodos Privados

@@ -11,3 +11,15 @@ projeto compilar pasta apresentacao
 - MORM.Infra.Data     -> WinExe
 - MORM.Infra.Database -> WinExe
 - MORM.Servico        -> WinExe
+
+MORM
+- images pasta - OK
+- inicializao no notifyIcon - OK
+- minimizar - OK
+- restaurar - OK
+
+MRFID
+- requisicao arquivo
+  - iniciar
+  - carregar
+  - finalizar

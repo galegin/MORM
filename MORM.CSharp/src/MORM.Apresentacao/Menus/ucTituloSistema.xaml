@@ -28,6 +28,37 @@
                    FontSize="{Binding Esquema.Titulo.TamFonte}" Foreground="{Binding Esquema.Titulo.CorFonte}" 
                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                    />
+
+            <StackPanel DockPanel.Dock="Right">
+                <Button Width="50" Height="50"
+                        Command="{Binding FecharTela}"
+                        CommandParameter="{Binding}"
+                        Background="Transparent"
+                        >
+                    <StackPanel>
+                        <materialDesign:PackIcon Kind="{Binding PackIconKindFechar}"
+                                                 Height="Auto" Width="Auto" 
+                                                 VerticalAlignment="Center" HorizontalAlignment="Center" 
+                                                 Margin="6,0,6,0" Foreground="{Binding Esquema.Titulo.CorFonte}"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+
+            <StackPanel DockPanel.Dock="Right">
+                <Button Width="50" Height="50"
+                        Command="{Binding MinimizarTela}"
+                        CommandParameter="{Binding}"
+                        Background="Transparent"
+                        >
+                    <StackPanel>
+                        <materialDesign:PackIcon Kind="{Binding PackIconKindMinimizar}"
+                                                 Height="Auto" Width="Auto" 
+                                                 VerticalAlignment="Center" HorizontalAlignment="Center" 
+                                                 Margin="6,0,6,0" Foreground="{Binding Esquema.Titulo.CorFonte}"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+
             <Label Content="{Binding DataSistema}" DockPanel.Dock="Right" 
                    FontSize="{Binding Esquema.Titulo.TamFonte}" Foreground="{Binding Esquema.Titulo.CorFonte}" 
                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
@@ -39,6 +70,7 @@
             <Image Source="{Binding ImageUsuario}" DockPanel.Dock="Right" 
                    Width="50" Stretch="Fill"
                    />
+
             <Label Content="{Binding NomeSistema}" 
                    FontSize="{Binding Esquema.Titulo.TamFonte}" Foreground="{Binding Esquema.Titulo.CorFonte}" 
                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center"

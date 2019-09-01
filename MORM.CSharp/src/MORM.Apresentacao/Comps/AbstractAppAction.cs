@@ -7,12 +7,12 @@ namespace MORM.Apresentacao.Comps
     {
         #region variaveis
         private static Window _currentWindow;
-        private static Window CurrentWindow => _currentWindow ??
-            (_currentWindow = Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive));
         #endregion
 
         #region propriedades
-        public static bool IsActiveApp { get; set; }
+        public static Window CurrentWindow => _currentWindow ?? (_currentWindow = GetWindowActive());
+        public static AbstractWindow AbstractWindow => CurrentWindow as AbstractWindow;
+        public static bool IsActiveApp { get; private set; }
         #endregion
 
         #region construtores
@@ -23,6 +23,11 @@ namespace MORM.Apresentacao.Comps
         #endregion
 
         #region metodos
+        private static Window GetWindowActive()
+        {
+            return Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
+        }
+
         public static void MinimizarApp(this object obj)
         {
             if (CurrentWindow == null)
@@ -31,6 +36,12 @@ namespace MORM.Apresentacao.Comps
             CurrentWindow.ShowInTaskbar = false;
             CurrentWindow.Hide();
             IsActiveApp = false;
+
+            if (AbstractWindow != null)
+            {
+                AbstractWindow.SetarNotifyIcon();
+                AbstractWindow.NotifyIcon.Ativo = true;
+            }
         }
 
         public static void RestaurarApp(this object obj)
@@ -41,6 +52,9 @@ namespace MORM.Apresentacao.Comps
             CurrentWindow.ShowInTaskbar = true;
             CurrentWindow.Show();
             IsActiveApp = true;
+
+            if (AbstractWindow != null)
+                AbstractWindow.NotifyIcon.Ativo = false;
 
             _currentWindow = null;
         }
