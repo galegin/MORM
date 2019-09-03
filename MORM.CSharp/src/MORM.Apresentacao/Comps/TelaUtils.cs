@@ -41,7 +41,7 @@ namespace MORM.Apresentacao.Comps
 
         public void VoltarTela(bool isAnterior = false)
         {
-            if (isAnterior)
+            if (isAnterior && _lista.Count() > 1)
                 _lista.RemoveAt(_lista.Count - 1);
             else
                 _lista.Clear();
