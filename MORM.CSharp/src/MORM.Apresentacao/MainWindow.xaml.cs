@@ -2,6 +2,8 @@
 using MORM.Apresentacao.Controls;
 using MORM.Apresentacao.Menus;
 using MORM.Apresentacao.ViewsModel;
+using MORM.Infra.CrossCutting;
+using System.Configuration;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -11,6 +13,7 @@ namespace MORM.Apresentacao
     {
         #region variaveis
         private MainWindowViewModel _vm => DataContext as MainWindowViewModel;
+        private object _classePrincipal;
         #endregion
 
         #region propriedades
@@ -24,7 +27,7 @@ namespace MORM.Apresentacao
         {
             InitializeComponent();
             IsPrincipal = true;
-            Loaded += MainWindow_Loaded; // (s, e) => LoadingBoxExtensions.SplashingBox("Inicializando...");
+            Loaded += MainWindow_Loaded;
             SetPositionInitial();
             DataContext = new MainWindowViewModel(tituloSistema, menuLateral);
             Slider = new AbstractSlider();
@@ -35,7 +38,8 @@ namespace MORM.Apresentacao
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             LoadingBoxExtensions.SplashingBox("Inicializando...");
-            Navegar(null);
+            var classePrincipal = GetClassePrincipal();
+            Navegar(classePrincipal);
         }
         public void Navegar(object sender)
         {
@@ -51,6 +55,16 @@ namespace MORM.Apresentacao
         {
             var retorno = TelaUtils.Instance.MainLogin.Execute(parameter) as string;
             return !string.IsNullOrWhiteSpace(retorno);
+        }
+        private object GetClassePrincipal()
+        {
+            if (_classePrincipal == null)
+            {
+                var classePrincipal = ConfigurationManager.AppSettings[nameof(_classePrincipal)];
+                if (!string.IsNullOrWhiteSpace(classePrincipal))
+                    _classePrincipal = AbstractContainer.Instance.Resolve(classePrincipal);
+            }
+            return _classePrincipal;;
         }
         #endregion
     }
