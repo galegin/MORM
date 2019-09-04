@@ -1,4 +1,5 @@
 ﻿using MORM.Apresentacao.Colors;
+using MORM.Apresentacao.Commands;
 using MORM.Apresentacao.Comps;
 using MORM.Apresentacao.Views;
 using MORM.Dominio.Extensions;
@@ -7,6 +8,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Input;
 
 namespace MORM.Apresentacao.ViewsModel
 {
@@ -68,6 +70,10 @@ namespace MORM.Apresentacao.ViewsModel
         #region selecao
         public virtual object Selecao { get; set; }
         #endregion
+        #endregion
+
+        #region comandos
+        public ICommand[] Commands { get; set; }
         #endregion
 
         #region construtores
@@ -138,6 +144,7 @@ namespace MORM.Apresentacao.ViewsModel
         #endregion
 
         #region metodos
+        #region metodos publicos
         public override string GetTitulo()
         {
             return
@@ -156,13 +163,25 @@ namespace MORM.Apresentacao.ViewsModel
         {
             if (this.IsModelChavePreenchida())
             {
-                //Consultar.ExecuteCommand(this);
+                var consultar = GetCommand("Consultar");
+                if (consultar != null)
+                    consultar.ExecuteCommand(this);
             }
         }
         public void SetarAtualizacao()
         {
             oModel?.SetCampoPadrao();
         }
+        #endregion
+        #region metodos privados
+        private ICommand GetCommand(string nome)
+        {
+            foreach (var command in this.Commands)
+                if (command.GetType().Name.Contains(nome))
+                    return command;
+            return null;
+        }
+        #endregion
         #endregion
     }
 }

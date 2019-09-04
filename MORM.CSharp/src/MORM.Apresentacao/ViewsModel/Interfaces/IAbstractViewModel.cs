@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Windows.Input;
 
 namespace MORM.Apresentacao.ViewsModel
 {
@@ -20,6 +21,7 @@ namespace MORM.Apresentacao.ViewsModel
         object Model { get; set; }
         object Selecao { get; set; }
         IList Lista { get; set; }
+        ICommand[] Commands { get; set; }
         string GetTitulo();
         void ClearAll();
         void SetOpcoes(string[] opcoes);

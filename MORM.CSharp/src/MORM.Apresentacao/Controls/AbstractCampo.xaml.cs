@@ -108,12 +108,6 @@ namespace MORM.Apresentacao.Controls
                 SetBindingObjeto(EditIni, _vm.Campo.Prop.Name);
                 SetBindingObjeto(ComboTip, _vm.Campo.Prop.Name);
             }
-            else if (_vm.Tipo.IsInter())
-            {
-                SetBindingFiltro(EditIni, nameof(_vm.Filtros), "ValorIni");
-                SetBindingFiltro(EditFin, nameof(_vm.Filtros), "ValorIni");
-                SetBindingFiltro(EditDes, nameof(_vm.Filtros), "ValorDes");
-            }
         }
 
         private void SetBindingObjeto(UIElement control, params string[] campos)

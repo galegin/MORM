@@ -52,13 +52,15 @@ namespace MORM.Apresentacao.Views
         {
             SetDataContext(vm);
 
+            vm.Commands = GetCommands(selecao);
+
             this.AddPainel(new DockPanel());
 
             var preTitulo = (selecao?.IsSelecao ?? false) ? "Seleção" : "Lista";
 
             this.AddPainel(new AbstractTitulo(preTitulo + " de " + vm.GetTitulo()), dock: Dock.Top);
 
-            this.AddPainel(new AbstractOpcao(vm, GetCommands(selecao)), dock: Dock.Top);
+            this.AddPainel(new AbstractOpcao(vm), dock: Dock.Top);
 
             this.AddPainel(new AbstractBusca(vm), dock: Dock.Top);
 

@@ -36,6 +36,8 @@ namespace MORM.Apresentacao.Views
             .ToArray()
             ;
 
+            vm.Commands = commands;
+
             opcao.CreateComps(commands);
         }
     }

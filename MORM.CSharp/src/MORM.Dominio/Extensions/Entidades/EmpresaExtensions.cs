@@ -1,5 +1,4 @@
-﻿using MORM.Dominio.Extensions;
-using MORM.Dominio.Interfaces;
+﻿using MORM.Dominio.Interfaces;
 using MORM.Infra.CrossCutting;
 using System;
 
@@ -23,7 +22,7 @@ namespace MORM.Dominio.Extensions
             var argAnt = string.Empty;
 
             empresa.Cd_Empresa = "0";
-            empresa.Ds_Empresa = "Empresa tste";
+            empresa.Ds_Empresa = "Empresa teste";
 
             foreach (var arg in Environment.GetCommandLineArgs())
             {

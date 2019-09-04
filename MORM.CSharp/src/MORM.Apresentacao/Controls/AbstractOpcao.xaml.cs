@@ -14,10 +14,10 @@ namespace MORM.Apresentacao.Controls
             InitializeComponent();
         }
 
-        public AbstractOpcao(IAbstractViewModel vm, ICommand[] commands) : this()
+        public AbstractOpcao(IAbstractViewModel vm) : this()
         {
             DataContext = vm;
-            CreateComps(commands);
+            CreateComps(vm.Commands);
         }
 
         public void CreateComps(ICommand[] commands)

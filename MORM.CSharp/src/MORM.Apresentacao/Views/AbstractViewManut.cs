@@ -56,7 +56,7 @@ namespace MORM.Apresentacao.Views
 
             this.AddPainel(new AbstractTitulo(_tipo.GetDescricao() + " de " + vm.GetTitulo()), dock: Dock.Top);
 
-            this.AddPainel(_opcao = new AbstractOpcao(vm, null), dock: Dock.Top);
+            this.AddPainel(_opcao = new AbstractOpcao(vm), dock: Dock.Top);
 
             this.AddPainel(new AbstractCorpo(GetUserControls(vm), OnHabilitarOpcao));
         }

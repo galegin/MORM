@@ -44,12 +44,13 @@ namespace MORM.Apresentacao.Views
 
             vm.ConfirmarAction = () => ConfirmarFiltro();
             vm.CancelarAction = () => CancelarFiltro();
+            vm.Commands = GetCommands();
 
             this.AddPainel(new StackPanel());
 
             this.AddPainel(new AbstractTitulo("Filtro de " + vm.GetTitulo()));
 
-            this.AddPainel(new AbstractOpcao(vm, GetCommands()));
+            this.AddPainel(new AbstractOpcao(vm));
 
             this.AddPainel(new AbstractFiltro(vm));
         }

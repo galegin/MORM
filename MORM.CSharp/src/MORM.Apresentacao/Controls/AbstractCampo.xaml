@@ -46,7 +46,8 @@
                                 Width="300"
                                 />
             <local:AbstractCombo x:Name="ComboTip"
-                                 SelectedValue="{Binding Campo.Valor}" ItemsSource="{Binding Campo.Valores}"
+                                 SelectedValue="{Binding Campo.Valor}" 
+                                 ItemsSource="{Binding Campo.Valores}"
                                  DisplayMemberPath="Descricao" SelectedValuePath="Codigo"
                                  Visibility="Collapsed" 
                                  Width="150"
