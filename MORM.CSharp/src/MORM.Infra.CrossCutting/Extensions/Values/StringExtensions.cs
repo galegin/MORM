@@ -163,5 +163,28 @@ namespace MORM.Infra.CrossCutting
 
             return retorno;
         }
+
+        public static string RemoveAcento(this string str)
+        {
+            str = str
+                .Replace("[ÂÀÁÄÃ]", "A")
+                .Replace("[âãàáä]", "a")
+                .Replace("[ÊÈÉË]", "E")
+                .Replace("[êèéë]", "e")
+                .Replace("[ÎÍÌÏ]", "I")
+                .Replace("[îíìï]", "i")
+                .Replace("[ÔÕÒÓÖ]", "O")
+                .Replace("[ôõòóö]", "o")
+                .Replace("[ÛÙÚÜ]", "U")
+                .Replace("[ûúùü]", "u")
+                .Replace("Ç", "C")
+                .Replace("ç", "c")
+                .Replace("Ý", "Y")
+                .Replace("[ýÿ]", "y")
+                .Replace("Ñ", "N")
+                .Replace("ñ", "n")
+                .Replace("['<>\\|/]", "");
+            return str;
+        }
     }
 }
