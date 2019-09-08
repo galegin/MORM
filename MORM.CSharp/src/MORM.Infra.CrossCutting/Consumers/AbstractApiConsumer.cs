@@ -9,8 +9,13 @@ namespace MORM.Infra.CrossCutting
 {
     public class AbstractApiConsumer
     {
+        public static string SiteInterno { get; private set; }
         public static string TokenInterno { get; private set; }
 
+        public static void SetSiteInterno(string siteInterno)
+        {
+            SiteInterno = siteInterno;
+        }
         public static void SetTokenInterno(string tokenInterno)
         {
             TokenInterno = tokenInterno;
@@ -41,10 +46,15 @@ namespace MORM.Infra.CrossCutting
             public string Mensagem { get; set; }
         }
 
+        public string GetSite() => _site;
+        public string GetToken() => _token;
+
         private HttpClient GetClient()
         {
+            var site = "".Coalesce(_site, SiteInterno);
+
             var client = new HttpClient();
-            client.BaseAddress = new Uri(_site);
+            client.BaseAddress = new Uri(site);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             
