@@ -43,22 +43,25 @@ namespace MORM.Infra.CrossCutting
         {
             public HttpStatusCode StatusCode { get; set; }
             public TRetorno Conteudo { get; set; }
+            public string CodigoMensagem { get; set; }
             public string Mensagem { get; set; }
         }
 
-        public string GetSite() => _site;
-        public string GetToken() => _token;
+        public string GetSite(string site = null) => 
+            "".Coalesce(site, _site, SiteInterno);
+        public string GetToken(string token = null) => 
+            "".Coalesce(token, _token, TokenInterno);
 
         private HttpClient GetClient()
         {
-            var site = "".Coalesce(_site, SiteInterno);
+            var site = GetSite();
+            var token = GetToken();
 
             var client = new HttpClient();
             client.BaseAddress = new Uri(site);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            
-            var token = "".Coalesce(_token, TokenInterno);
+            client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("Mozilla", "5.0"));
 
             if (!string.IsNullOrWhiteSpace(token))
             {
@@ -72,16 +75,31 @@ namespace MORM.Infra.CrossCutting
 
         public ApiRetorno Post(TEntrada entity, string url = null)
         {
-            //url = url ?? entity.GetUrl();
+            url = url ?? entity.GetUrl();
 
             using (var client = GetClient())
             {
                 client.Timeout = TimeSpan.FromHours(1);
 
-                var conteudo = new StringContent(entity.GetJsonFromObject(), Encoding.UTF8, "application/json");
+                var conteudoJson = entity.GetJsonFromObject();
+                var conteudo = new StringContent(conteudoJson, Encoding.UTF8, "application/json");
                 var response = client.PostAsync(url, conteudo).Result;
 
                 return HandleHttpStatusCode(response);
+            }
+        }
+
+        public string GetString(string sitePar = null)
+        {
+            using (var client = new HttpClient())
+            {
+                var site = GetSite(sitePar);
+
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("Mozilla", "5.0"));
+
+                var sResponse = client.GetStringAsync(site).Result;
+                return sResponse;
             }
         }
 
@@ -113,6 +131,14 @@ namespace MORM.Infra.CrossCutting
             }
 
             return retorno;
+        }
+
+        public void SetProtocolo()
+        {
+            var site = GetSite();
+            if (site.StartsWith("https://") || site.Contains(":443"))
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 |
+                    SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
         }
     }
 }
