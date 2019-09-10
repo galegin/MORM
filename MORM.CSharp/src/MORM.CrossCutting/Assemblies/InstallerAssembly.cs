@@ -8,7 +8,15 @@ namespace MORM.CrossCutting
     public class InstallerAssembly
     {
         private static string[] _namespaces =
-            { ".Aplicacao.", ".Apresentacao.", ".Database.", ".Dominio.", ".Repositorio.", ".Servico." };
+        {
+            ".Aplicacao.",
+            ".Apresentacao.",
+            ".Database.",
+            ".Dominio.",
+            ".Driver.",
+            ".Repositorio.",
+            ".Servico."
+        };
 
         private static List<Assembly> _assemblies = new List<Assembly>();
 
