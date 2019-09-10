@@ -2,7 +2,7 @@
 using MORM.Dominio.Interfaces;
 using MORM.Servico.Models;
 using MORM.Servico.Interfaces;
-using MORM.Infra.CrossCutting;
+using MORM.CrossCutting;
 using System;
 using System.Linq;
 

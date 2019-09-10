@@ -1,7 +1,7 @@
 ﻿using MORM.Apresentacao.Connectors;
 using MORM.Apresentacao.Views;
 using MORM.Apresentacao.ViewsModel;
-using MORM.Infra.CrossCutting;
+using MORM.CrossCutting;
 using System;
 using System.Collections;
 

@@ -1,7 +1,7 @@
 ﻿using MORM.Apresentacao.Classes;
 using MORM.Apresentacao.Comps;
 using MORM.Apresentacao.Connectors;
-using MORM.Infra.CrossCutting;
+using MORM.CrossCutting;
 using System.Windows;
 
 namespace MORM.Apresentacao.WSist

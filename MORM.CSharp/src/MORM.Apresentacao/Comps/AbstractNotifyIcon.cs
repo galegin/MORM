@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using MORM.Apresentacao.Properties;
-using MORM.Infra.CrossCutting;
+using MORM.CrossCutting;
 
 namespace MORM.Apresentacao.Comps
 {

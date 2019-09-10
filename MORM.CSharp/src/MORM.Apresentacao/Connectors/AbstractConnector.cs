@@ -1,5 +1,5 @@
 ﻿using MORM.Apresentacao.Comps;
-using MORM.Infra.CrossCutting;
+using MORM.CrossCutting;
 
 namespace MORM.Apresentacao.Connectors
 {

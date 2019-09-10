@@ -1,7 +1,7 @@
 ﻿using MORM.Apresentacao.Comps;
 using MORM.Apresentacao.Views;
 using MORM.Apresentacao.ViewsModel;
-using MORM.Infra.CrossCutting;
+using MORM.CrossCutting;
 
 namespace MORM.Apresentacao.Controls
 {

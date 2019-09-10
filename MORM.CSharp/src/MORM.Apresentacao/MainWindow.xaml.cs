@@ -2,7 +2,7 @@
 using MORM.Apresentacao.Controls;
 using MORM.Apresentacao.Menus;
 using MORM.Apresentacao.ViewsModel;
-using MORM.Infra.CrossCutting;
+using MORM.CrossCutting;
 using System.Configuration;
 using System.Windows;
 using System.Windows.Controls;

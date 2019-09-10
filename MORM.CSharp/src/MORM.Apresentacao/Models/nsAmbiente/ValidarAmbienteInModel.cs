@@ -1,4 +1,4 @@
-﻿using MORM.Infra.CrossCutting;
+﻿using MORM.CrossCutting;
 
 namespace MORM.Apresentacao.Models
 {

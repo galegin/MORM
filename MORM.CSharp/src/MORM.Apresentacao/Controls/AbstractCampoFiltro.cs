@@ -1,5 +1,5 @@
 ﻿using MORM.Apresentacao.Models;
-using MORM.Infra.CrossCutting;
+using MORM.CrossCutting;
 using System;
 using System.Collections;
 using System.Collections.Generic;

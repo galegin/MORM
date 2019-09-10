@@ -1,6 +1,6 @@
 ﻿using MORM.Dominio.Atributos;
 using MORM.Dominio.Tipagens;
-using MORM.Infra.CrossCutting;
+using MORM.CrossCutting;
 using System.Collections.Generic;
 
 namespace MORM.Dominio.Extensions

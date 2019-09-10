@@ -3,7 +3,7 @@ using MORM.Apresentacao.Controls.ViewsModel;
 using MORM.Apresentacao.Views;
 using MORM.Apresentacao.ViewsModel;
 using MORM.Dominio.Extensions;
-using MORM.Infra.CrossCutting;
+using MORM.CrossCutting;
 using System;
 using System.Collections.Generic;
 using System.Windows;

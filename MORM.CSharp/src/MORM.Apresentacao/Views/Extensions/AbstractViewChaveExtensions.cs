@@ -1,6 +1,6 @@
 ﻿using MORM.Apresentacao.ViewsModel;
 using MORM.Dominio.Extensions;
-using MORM.Infra.CrossCutting;
+using MORM.CrossCutting;
 using System.Linq;
 
 namespace MORM.Apresentacao.Views

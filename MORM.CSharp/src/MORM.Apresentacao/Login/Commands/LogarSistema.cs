@@ -2,7 +2,7 @@
 using MORM.Apresentacao.Connectors;
 using MORM.Apresentacao.Login.ViewsModel;
 using MORM.Apresentacao.Models;
-using MORM.Infra.CrossCutting;
+using MORM.CrossCutting;
 
 namespace MORM.Apresentacao.Login.Commands
 {

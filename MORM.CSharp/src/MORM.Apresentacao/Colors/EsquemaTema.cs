@@ -1,4 +1,4 @@
-﻿using MORM.Infra.CrossCutting;
+﻿using MORM.CrossCutting;
 using System;
 using System.Collections.Generic;
 using System.IO;

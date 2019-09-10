@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using MORM.Apresentacao.Report.Tipagens;
-using MORM.Infra.CrossCutting;
+using MORM.CrossCutting;
 
 namespace MORM.Apresentacao.Report.Extensoes
 {

@@ -146,9 +146,9 @@
       <Project>{c22c745b-1538-405f-a9ce-29576c708b9e}</Project>
       <Name>MORM.Dominio</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MORM.Infra.CrossCutting\MORM.Infra.CrossCutting.csproj">
+    <ProjectReference Include="..\MORM.CrossCutting\MORM.CrossCutting.csproj">
       <Project>{346BED24-2DD1-4E58-939A-D72311C257F9}</Project>
-      <Name>MORM.Infra.CrossCutting</Name>
+      <Name>MORM.CrossCutting</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

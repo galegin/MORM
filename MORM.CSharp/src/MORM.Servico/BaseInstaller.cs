@@ -1,4 +1,4 @@
-﻿using MORM.Infra.CrossCutting;
+﻿using MORM.CrossCutting;
 using MORM.Servico.Interfaces;
 using MORM.Servico.Services;
 

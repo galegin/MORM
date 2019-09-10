@@ -1,5 +1,5 @@
 ﻿using MORM.Apresentacao.Controls;
-using MORM.Infra.CrossCutting;
+using MORM.CrossCutting;
 using System.Windows;
 using System.Windows.Controls;
 

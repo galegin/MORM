@@ -1,6 +1,6 @@
 ﻿using MORM.Apresentacao.Controls;
 using MORM.Apresentacao.ViewsModel;
-using MORM.Infra.CrossCutting;
+using MORM.CrossCutting;
 using System.Linq;
 using System.Reflection;
 using System.Windows;

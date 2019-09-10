@@ -1,5 +1,5 @@
 ﻿using MORM.Dominio.Interfaces;
-using MORM.Infra.CrossCutting;
+using MORM.CrossCutting;
 
 namespace MORM.Aplicacao.WebApi
 {

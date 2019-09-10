@@ -1,6 +1,6 @@
 ﻿using MORM.Dominio.Entidades;
 using MORM.Dominio.Interfaces;
-using MORM.Infra.CrossCutting;
+using MORM.CrossCutting;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;

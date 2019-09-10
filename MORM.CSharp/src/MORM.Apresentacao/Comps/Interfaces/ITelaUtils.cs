@@ -1,4 +1,4 @@
-﻿using MORM.Infra.CrossCutting;
+﻿using MORM.CrossCutting;
 using System.Windows.Controls;
 
 namespace MORM.Apresentacao.Comps.Interfaces
