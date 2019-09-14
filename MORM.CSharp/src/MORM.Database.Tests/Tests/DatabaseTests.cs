@@ -1,19 +1,19 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MORM.Dominio.Entidades;
+using MORM.Database.Tests;
 using MORM.Dominio.Interfaces;
 using MORM.Repositorio.Extensions;
 
 namespace MORM.Repositorio.Tests
 {
     [TestClass]
-    public class DatabaseTests
+    public class DatabaseTests : BaseTests
     {
         private IAmbiente _ambiente;
 
         [TestInitialize]
-        public void DatabaseTests_Initializse()
+        public void DatabaseTests_Initialize()
         {
-            _ambiente = new Ambiente();
+            _ambiente = Resolve<IAmbiente>();
         }
 
         [TestCleanup]

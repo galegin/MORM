@@ -5,9 +5,9 @@ using MORM.Repositorio.UnityOfWork;
 
 namespace MORM.Repositorio
 {
-    public class BaseInstaller
+    public static class BaseInstaller
     {
-        public static void Install(IAbstractContainer container)
+        public static void AddRepositorio(this IAbstractContainer container)
         {
             container.Register<IAbstractDataContext, AbstractDataContext>();
             container.Register<IAbstractUnityOfWork, AbstractUnityOfWork>();

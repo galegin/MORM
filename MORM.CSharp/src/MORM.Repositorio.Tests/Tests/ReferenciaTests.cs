@@ -1,12 +1,11 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MORM.Dominio.Extensions;
-using MORM.CrossCutting;
 using System.Linq;
 
 namespace MORM.Repositorio.Tests
 {
     [TestClass]
-    public class ReferenciaTests
+    public class ReferenciaTests : BaseTests
     {
         private readonly IReferenciaService _referenciaService;
         private readonly ITesteService _testeService;
@@ -15,8 +14,8 @@ namespace MORM.Repositorio.Tests
 
         public ReferenciaTests()
         {
-            _referenciaService = AbstractContainer.Instance.Resolve<IReferenciaService>();
-            _testeService = AbstractContainer.Instance.Resolve<ITesteService>();
+            _referenciaService = Resolve<IReferenciaService>();
+            _testeService = Resolve<ITesteService>();
         }
 
         [TestInitialize]

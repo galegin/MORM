@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using MORM.Dominio.Atributos;
 
 namespace MORM.Repositorio.Tests
@@ -20,5 +21,18 @@ namespace MORM.Repositorio.Tests
         public int Cd_Tipo { get; set; }
         [Campo("DS_TIPO", CampoTipo.Req)]
         public string Ds_Tipo { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return (obj as TipoModel)?.Cd_Tipo == Cd_Tipo;
+        }
+
+        public override int GetHashCode()
+        {
+            var hashCode = 23932796;
+            hashCode = hashCode * -1521134295 + Cd_Tipo.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Ds_Tipo);
+            return hashCode;
+        }
     }
 }

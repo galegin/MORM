@@ -8,6 +8,12 @@ namespace MORM.Apresentacao.WSist
 {
     public partial class App : Application
     {
+        static App()
+        {
+            var container = AbstractContainer.Instance;
+            container.AddInstaller();
+        }
+
         public App()
         {
             AbstractAmbienteConnector.ValidarAcesso();
@@ -18,7 +24,7 @@ namespace MORM.Apresentacao.WSist
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            TelaUtils.Factory(AbstractContainer.Instance).MainWindow.Execute(null);
+            TelaUtils.Instance.MainWindow.Execute();
         }
     }
 }

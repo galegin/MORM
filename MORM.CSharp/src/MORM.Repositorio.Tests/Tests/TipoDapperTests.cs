@@ -1,22 +1,21 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MORM.Dominio.Extensions;
 using MORM.Dominio.Interfaces;
-using MORM.CrossCutting;
 using MORM.Repositorio.Dapper.Context;
 using System.Linq;
 
 namespace MORM.Repositorio.Tests
 {
     [TestClass]
-    public class TipoDapperTests
+    public class TipoDapperTests : BaseTests
     {
         private readonly IAbstractDataContext _dataContext;
         private readonly ITipoRepository _tipoRepository;
 
         public TipoDapperTests()
         {
-            _dataContext = AbstractContainer.Instance.Resolve<IAbstractDataContextDapper>();
-            _tipoRepository = new TipoRepository(_dataContext);
+            _dataContext = Resolve<IAbstractDataContextDapper>();
+            _tipoRepository = Resolve<ITipoRepository>();
         }
 
         private const int _cdTipo = 1;

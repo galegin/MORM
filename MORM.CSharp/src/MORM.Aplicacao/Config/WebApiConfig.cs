@@ -25,6 +25,8 @@ namespace MORM.Aplicacao.Config
 
             // Ioc
             var container = AbstractContainer.Instance;
+            container.AddInstaller();
+
             config.DependencyResolver = new AbstractDependencyResolver(container);
         }
     }

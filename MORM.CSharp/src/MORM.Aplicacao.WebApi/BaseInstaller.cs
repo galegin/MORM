@@ -1,11 +1,10 @@
-﻿using MORM.Dominio.Interfaces;
-using MORM.CrossCutting;
+﻿using MORM.CrossCutting;
 
 namespace MORM.Aplicacao.WebApi
 {
-    public class BaseInstaller
+    public static class BaseInstaller
     {
-        public static void Install(IAbstractContainer container)
+        public static void AddAplicacaoWebApi(this IAbstractContainer container)
         {
             container
                 .RegisterAll(

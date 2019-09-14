@@ -7,9 +7,9 @@ using MORM.CrossCutting;
 
 namespace MORM.Apresentacao
 {
-    public class BaseInstaller
+    public static class BaseInstaller
     {
-        public static void Install(IAbstractContainer container)
+        public static void AddApresentacao(this IAbstractContainer container)
         {
             container.Register<IInformacaoSistema, InformacaoSistema>();
 

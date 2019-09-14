@@ -10,24 +10,27 @@ namespace MORM.Apresentacao.Comps
     public class TelaUtils : ITelaUtils
     {
         #region variavies
+        private static ITelaUtils _instance;
         private List<UserControl> _lista = new List<UserControl>();
         #endregion
 
         #region propriedades
-        public static ITelaUtils Instance { get; private set; }
-        public IAbstractContainer Container { get; private set; }
+        public static ITelaUtils Instance => _instance ?? (_instance = new TelaUtils());
+        public IAbstractContainer Container { get; }
         public IMainCommand MainCommand => Container.Resolve<IMainCommand>();
         public IMainWindow MainWindow => Container.Resolve<IMainWindow>();
         public IMainLogin MainLogin => Container.Resolve<IMainLogin>();
         public IMainMensagem MainMensagem => Container.Resolve<IMainMensagem>();
         #endregion
 
-        #region metodos
-        public static ITelaUtils Factory(IAbstractContainer container)
+        #region construtores
+        public TelaUtils()
         {
-            return Instance ?? (Instance = new TelaUtils { Container = container });
+            Container = AbstractContainer.Instance;
         }
+        #endregion
 
+        #region metodos
         public void NavegarPara(UserControl userControl)
         {
             if (MainWindow != null)

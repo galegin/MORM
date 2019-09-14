@@ -1,13 +1,12 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MORM.Dominio.Extensions;
 using MORM.Dominio.Interfaces;
-using MORM.CrossCutting;
 using MORM.Repositorio.Migrations;
 
 namespace MORM.Repositorio.Tests
 {
     [TestClass]
-    public class DataContextTests
+    public class DataContextTests : BaseTests
     {
         private readonly IAbstractDataContext _dataContext;
         private readonly ITipoRepository _tipoRepository;
@@ -15,8 +14,8 @@ namespace MORM.Repositorio.Tests
 
         public DataContextTests()
         {
-            _dataContext = AbstractContainer.Instance.Resolve<IAbstractDataContext>();
-            _tipoRepository = AbstractContainer.Instance.Resolve<ITipoRepository>();
+            _dataContext = Resolve<IAbstractDataContext>();
+            _tipoRepository = Resolve<ITipoRepository>();
         }
 
         [TestInitialize]
@@ -48,7 +47,7 @@ namespace MORM.Repositorio.Tests
         [TestMethod]
         public void DataContextTests_Dispose()
         {
-            using (var context = AbstractContainer.Instance.Resolve<IAbstractDataContext>() as IAbstractDataContext)
+            using (var context = Resolve<IAbstractDataContext>())
             {
                 var lista = context.GetListaW<TipoModel>(string.Empty);
             }

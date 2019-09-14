@@ -1,18 +1,17 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MORM.Dominio.Extensions;
-using MORM.CrossCutting;
 using System.Linq;
 
 namespace MORM.Repositorio.Tests
 {
     [TestClass]
-    public class TipoServiceTests
+    public class TipoServiceTests : BaseTests
     {
         private readonly ITipoService _tipoService;
 
         public TipoServiceTests()
         {
-            _tipoService = AbstractContainer.Instance.Resolve<ITipoService>();
+            _tipoService = Resolve<ITipoService>();
         }        
 
         private const int _codigoTipo = 1;

@@ -150,6 +150,14 @@
       <Project>{346BED24-2DD1-4E58-939A-D72311C257F9}</Project>
       <Name>MORM.CrossCutting</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MORM.Repositorio\MORM.Repositorio.csproj">
+      <Project>{065554c3-207f-47d8-97c1-1ac5202ecb22}</Project>
+      <Name>MORM.Repositorio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MORM.Servico\MORM.Servico.csproj">
+      <Project>{BB6FE2A7-2F85-47EB-BEA8-AEBEEFD0D4BE}</Project>
+      <Name>MORM.Servico</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Page Include="Controls\ucAbstractPackIcon.xaml">

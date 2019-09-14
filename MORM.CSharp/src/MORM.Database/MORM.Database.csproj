@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseInstaller.cs" />
     <Compile Include="Classes\ConnectionConfig.cs" />
     <Compile Include="Classes\DataBase.cs" />
     <Compile Include="Classes\DataBaseFactory.cs" />

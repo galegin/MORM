@@ -4,9 +4,9 @@ using MORM.CrossCutting;
 
 namespace MORM.Dominio
 {
-    public class BaseInstaller
+    public static class BaseInstaller
     {
-        public static void Install(IAbstractContainer container)
+        public static void AddDominio(this IAbstractContainer container)
         {
             container.Register<IAmbiente, Ambiente>();
             container.Register<IEmpresa, Empresa>();

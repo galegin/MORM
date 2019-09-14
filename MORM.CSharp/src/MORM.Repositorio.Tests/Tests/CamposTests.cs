@@ -4,7 +4,7 @@ using MORM.Dominio.Extensions;
 namespace MORM.Repositorio.Tests
 {
     [TestClass]
-    public class CamposTests
+    public class CamposTests : BaseTests
     {
         [TestMethod]
         public void CamposTests_GetCamposFiltro()

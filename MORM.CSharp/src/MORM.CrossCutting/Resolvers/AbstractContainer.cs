@@ -7,6 +7,7 @@ namespace MORM.CrossCutting
     public class AbstractContainer : IAbstractContainer
     {
         #region variaveis
+        private static IAbstractContainer _instance;
         private static Dictionary<Type, RegisterClasse> _registeredTypes = new Dictionary<Type, RegisterClasse>();
         private Dictionary<Type, object> _registeredPerThread = new Dictionary<Type, object>();
         private Dictionary<Type, object> _registeredPerWebRequest = new Dictionary<Type, object>();
@@ -14,17 +15,12 @@ namespace MORM.CrossCutting
         private static Dictionary<Type, object> _registeredSingleton = new Dictionary<Type, object>();
         #endregion
 
-        #region construtores
-        private static IAbstractContainer _instance;
-        public static IAbstractContainer Instance =>
-            _instance ?? (_instance = new AbstractContainer());
+        #region propriedades
+        public static IAbstractContainer Instance => _instance ?? (_instance = new AbstractContainer());
         #endregion
 
         #region constructores
-        protected AbstractContainer()
-        {
-            InstallerAssembly.Install(this);
-        }
+        private AbstractContainer() { }
         #endregion
 
         #region metodos

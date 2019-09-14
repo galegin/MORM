@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseInstaller.cs" />
+    <Compile Include="BaseTests.cs" />
     <Compile Include="Servicos\Interfaces\IReferenciaService.cs" />
     <Compile Include="Servicos\ReferenciaService.cs" />
     <Compile Include="Tests\CamposTests.cs" />

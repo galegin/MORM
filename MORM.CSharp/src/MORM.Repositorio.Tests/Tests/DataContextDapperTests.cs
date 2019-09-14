@@ -1,6 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MORM.Dominio.Extensions;
-using MORM.CrossCutting;
 using MORM.Repositorio.Dapper.Context;
 using MORM.Repositorio.Migrations;
 using System.Linq;
@@ -8,7 +7,7 @@ using System.Linq;
 namespace MORM.Repositorio.Tests
 {
     [TestClass]
-    public class DataContextDapperTests
+    public class DataContextDapperTests : BaseTests
     {
         private readonly IAbstractDataContextDapper _dataContext;
         private readonly ITipoRepository _tipoRepository;
@@ -16,12 +15,12 @@ namespace MORM.Repositorio.Tests
 
         public DataContextDapperTests()
         {
-            _dataContext = AbstractContainer.Instance.Resolve<IAbstractDataContextDapper>();
-            _tipoRepository = AbstractContainer.Instance.Resolve<ITipoRepository>();
+            _dataContext = Resolve<IAbstractDataContextDapper>();
+            _tipoRepository = Resolve<ITipoRepository>();
         }
 
         [TestInitialize]
-        public void DataContextDapperTests_Initialize()
+        public void DataContextDapperTests_Initialize() 
         {
             DataContextDapperTests_Cleanup();
 

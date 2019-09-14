@@ -95,7 +95,10 @@ namespace MORM.Repositorio.Mocks
 
         public void RemObjeto(object obj, bool relacao = true)
         {
-            GetLista(obj.GetType()).Remove(obj);
+            var lista = GetLista(obj.GetType());
+            var instance = lista.FirstOrDefault(o => o.Equals(obj));
+            if (instance != null)
+                lista.Remove(instance);
         }
 
         // dispose

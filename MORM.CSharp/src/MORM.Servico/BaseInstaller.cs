@@ -4,9 +4,9 @@ using MORM.Servico.Services;
 
 namespace MORM.Servico
 {
-    public class BaseInstaller
+    public static class BaseInstaller
     {
-        public static void Install(IAbstractContainer container)
+        public static void AddServico(this IAbstractContainer container)
         {
             container.Register<ITerminalAppService, TerminalAppService>();
             container.Register<IUsuarioAppService, UsuarioAppService>();

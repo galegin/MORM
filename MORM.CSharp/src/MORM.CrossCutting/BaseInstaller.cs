@@ -1,8 +1,8 @@
 ﻿namespace MORM.CrossCutting
 {
-    public class BaseInstaller
+    public static class BaseInstaller
     {
-        public static void Install(IAbstractContainer container)
+        public static void AddCrossCutting(this IAbstractContainer container)
         {
         }
     }
