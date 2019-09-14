@@ -13,22 +13,22 @@ namespace MORM.Repositorio.Dapper.Context
 {
     public class AbstractDataContextDapper : IAbstractDataContextDapper, IDisposable
     {
-        static AbstractDataContextDapper()
-        {
-
-        }
+        public IAmbiente Ambiente { get; private set; }
+        public IConexao Conexao { get; private set; }
+        public IComando Comando { get; private set; }
+        public IMigracao Migracao { get; private set; }
 
         public AbstractDataContextDapper(IAmbiente ambiente)
         {
             SetAmbiente(ambiente);
         }
 
-        //-- interface
+        //-- set
 
-        public IAmbiente Ambiente { get; private set; }
-        public IConexao Conexao { get; private set; }
-        public IComando Comando { get; private set; }
-        public IMigracao Migracao { get; private set; }
+        public IDbSet<TObject> Set<TObject>()
+        {
+            return new DbSet<TObject>(this);
+        }
 
         //-- ambiente
 

@@ -22,6 +22,13 @@ namespace MORM.Repositorio.Context
             SetMigracao();
         }
 
+        //-- set
+
+        public IDbSet<TObject> Set<TObject>()
+        {
+            return new DbSet<TObject>(this);
+        }
+
         //-- ambiente
 
         public void SetAmbiente(IAmbiente ambiente)

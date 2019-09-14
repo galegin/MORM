@@ -62,6 +62,7 @@
     <Compile Include="Context\Clausula.cs" />
     <Compile Include="Context\Comando.cs" />
     <Compile Include="Context\Conexao.cs" />
+    <Compile Include="Context\DbSet.cs" />
     <Compile Include="Context\Parametro.cs" />
     <Compile Include="Extensions\ParametroExtensions.cs" />
     <Compile Include="Factories\ConexaoFactory.cs" />

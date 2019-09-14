@@ -19,8 +19,11 @@ namespace MORM.Repositorio.Repositories
 
     public class AbstractRepository<TObject> : AbstractRepository, IAbstractRepository<TObject>
     {
+        public IDbSet<TObject> DbSet { get; }
+
         public AbstractRepository(IAbstractDataContext context) : base(context)
         {
+            DbSet = context.Set<TObject>();
         }
 
         // query

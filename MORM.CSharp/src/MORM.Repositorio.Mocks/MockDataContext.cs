@@ -25,6 +25,13 @@ namespace MORM.Repositorio.Mocks
             SetAmbiente(ambiente);
         }
 
+        //-- set
+
+        public IDbSet<TObject> Set<TObject>()
+        {
+            return new DbSet<TObject>(this);
+        }
+
         //-- ambiente
 
         public void SetAmbiente(IAmbiente ambiente)
@@ -65,7 +72,7 @@ namespace MORM.Repositorio.Mocks
 
         public void GetObjeto(object obj, string where = null, bool relacao = true)
         {
-            var objConsulta = GetLista(obj.GetType()).FirstOrDefault();
+            var objConsulta = GetLista(obj.GetType()).FirstOrDefault(o => o.Equals(obj));
             obj.CloneInstancePropOrFieldAll(objConsulta);
         }
 
