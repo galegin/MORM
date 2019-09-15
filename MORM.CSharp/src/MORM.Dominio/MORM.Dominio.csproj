@@ -85,7 +85,6 @@
     <Compile Include="Extensions\Entidades\EntityExtensions.cs" />
     <Compile Include="Extensions\Entidades\TerminalExtensions.cs" />
     <Compile Include="Extensions\Entidades\UsuarioExtensions.cs" />
-    <Compile Include="Extensions\Repositories\RepositoryExtensions.cs" />
     <Compile Include="Interfaces\Contexts\IDbSet.cs" />
     <Compile Include="Interfaces\Contexts\IAbstractDataContext.cs" />
     <Compile Include="Interfaces\Contexts\IComando.cs" />

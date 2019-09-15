@@ -1,12 +1,12 @@
-﻿using MORM.Dominio.Interfaces;
-using MORM.Servico.Services;
-
-namespace MORM.Repositorio.Tests
+﻿namespace MORM.Repositorio.Tests
 {
-    public class TesteService : AbstractService<TesteModel>, ITesteService
+    public class TesteService : ITesteService
     {
-        public TesteService(IAbstractUnityOfWork unityOfWork) : base(unityOfWork)
+        private readonly ITesteRepository _testeRepository;
+
+        public TesteService(ITesteRepository testeRepository)
         {
+            _testeRepository = testeRepository;
         }
     }
 }

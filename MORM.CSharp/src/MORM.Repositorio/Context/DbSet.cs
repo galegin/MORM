@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Linq;
 using MORM.Dominio.Interfaces;
 using MORM.Repositorio.Queries;
 
@@ -20,12 +20,11 @@ namespace MORM.Repositorio.Context
         #region metodos
         public TInstance GetById(TInstance instance)
         {
-            var instanceFind = Activator.CreateInstance<TInstance>();
             _dataContext.GetObjeto(instance);
-            return instanceFind;
+            return instance;
         }
 
-        public IQueryableObject<TInstance> GetListAll() => new QueryableObject<TInstance>(_dataContext);
+        public IQueryable<TInstance> GetAll() => new Queryable<TInstance>(new QueryableObject<TInstance>(_dataContext));
         public void Add(object instance) => _dataContext.InsObjeto(instance);
         public void AddOrUpdate(object instance) => _dataContext.SetObjeto(instance);
         public void Update(object instance) => _dataContext.UpdObjeto(instance);

@@ -2,7 +2,7 @@
 
 namespace MORM.Repositorio.Tests
 {
-    public interface ITesteRepository : IAbstractRepository<TesteModel>
+    public interface ITesteRepository : IRepository<TesteModel>
     {
     }
 }

@@ -1,12 +1,12 @@
-﻿using MORM.Dominio.Interfaces;
-using MORM.Servico.Services;
-
-namespace MORM.Repositorio.Tests
+﻿namespace MORM.Repositorio.Tests
 {
-    public class ReferenciaService : AbstractService<ReferenciaModel>, IReferenciaService
+    public class ReferenciaService : IReferenciaService
     {
-        public ReferenciaService(IAbstractUnityOfWork unityOfWork) : base(unityOfWork)
+        private readonly IReferenciaRepository _ReferenciaRepository;
+
+        public ReferenciaService(IReferenciaRepository ReferenciaRepository)
         {
+            _ReferenciaRepository = ReferenciaRepository;
         }
     }
 }

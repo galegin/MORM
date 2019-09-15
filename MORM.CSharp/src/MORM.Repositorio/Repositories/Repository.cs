@@ -1,58 +1,30 @@
-﻿using MORM.Dominio.Extensions;
-using MORM.Dominio.Interfaces;
-using MORM.Repositorio.Queries;
+﻿using MORM.Dominio.Interfaces;
+using System.Linq;
 
 namespace MORM.Repositorio.Repositories
 {
-    public class Repository
+    public class Repository<TInstance> : IRepository<TInstance> where TInstance : class
     {
         #region variaveis
-        protected readonly IAbstractDataContext _context;
+        protected readonly IAbstractDataContext _dataContext;
+        protected readonly IDbSet<TInstance> _dbSet;
         #endregion
 
         #region construtores
-        public Repository(IAbstractDataContext context)
+        public Repository(IAbstractDataContext dataContext)
         {
-            _context = context;
+            _dataContext = dataContext;
+            _dbSet = dataContext.Set<TInstance>();
         }
         #endregion
 
         #region metodos
-        public void Add(object instance)
-        {
-            if (instance is IAbstractEntidadeId)
-                (instance as IAbstractEntidadeId).SetAddEntidade();
-            _context.InsObjeto(instance);
-        }
-        public void Update(object instance)
-        {
-            _context.UpdObjeto(instance);
-        }
-        public void Remove(object instance)
-        {
-            _context.RemObjeto(instance);
-        }
-        #endregion
-    }
-
-    public class Repository<TInstance> : Repository, IRepository<TInstance>
-        where TInstance : class, IAbstractEntidadeId
-    {
-        #region construtores
-        public Repository(IAbstractDataContext context) : base(context)
-        {
-        }
-        #endregion
-
-        #region metodos
-        public IQueryableObject<TInstance> GetAll()
-        {
-            return new QueryableObject<TInstance>(_context);
-        }
-        public TInstance FindId(string id)
-        {
-            return GetAll().FirstOrDefault(x => x.Id == id);
-        }
+        public IQueryable<TInstance> GetAll() => _dbSet.GetAll();
+        public TInstance GetById(TInstance instance) => _dbSet.GetById(instance);
+        public void Add(TInstance instance) => _dbSet.Add(instance);
+        public void AddOrUpdate(TInstance instance) => _dbSet.AddOrUpdate(instance);
+        public void Update(TInstance instance) => _dbSet.Update(instance);
+        public void Delete(TInstance instance) => _dbSet.Delete(instance);
         #endregion
     }
 }

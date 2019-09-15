@@ -2,7 +2,7 @@
 
 namespace MORM.Repositorio.Tests
 {
-    public interface ITipoRepository : IAbstractRepository<TipoModel>
+    public interface ITipoRepositoryDapper : IRepository<TipoModel>
     {
     }
 }

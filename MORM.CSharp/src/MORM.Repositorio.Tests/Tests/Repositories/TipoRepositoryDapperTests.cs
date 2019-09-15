@@ -7,43 +7,31 @@ using System.Linq;
 namespace MORM.Repositorio.Tests
 {
     [TestClass]
-    public class TipoDapperTests : BaseTests
+    public class TipoRepositoryDapperTests : BaseTests
     {
-        private readonly IAbstractDataContext _dataContext;
-        private readonly ITipoRepository _tipoRepository;
-
-        public TipoDapperTests()
-        {
-            _dataContext = Resolve<IAbstractDataContextDapper>();
-            _tipoRepository = Resolve<ITipoRepository>();
-        }
-
+        private readonly ITipoRepositoryDapper _tipoRepository;
         private const int _cdTipo = 1;
-        private const string _dsTipo = "TIPO 1";
+        private const string _dsTipo = "Tipo 1";
 
-        private void IncluirTipo()
+        public TipoRepositoryDapperTests()
         {
-            _tipoRepository.Salvar(new TipoModel(_cdTipo, _dsTipo));
+            _tipoRepository = Resolve<ITipoRepositoryDapper>();
         }
 
         [TestInitialize]
         public void TipoServiceTests_Initialize()
         {
-            TipoServiceTests_Cleanup();
         }
 
         [TestCleanup]
         public void TipoServiceTests_Cleanup()
         {
-            _tipoRepository.ClearAll();
         }
 
         [TestMethod]
         public void TipoDapperTests_Listar()
         {
-            IncluirTipo();
-
-            var listaDeTipo = _tipoRepository.ToList(f => f.Cd_Tipo == _cdTipo);
+            var listaDeTipo = _tipoRepository.GetAll().Where(f => f.Cd_Tipo == _cdTipo).ToList();
             Assert.AreNotEqual(0, listaDeTipo.Count);
 
             var tipo = listaDeTipo.FirstOrDefault();
@@ -54,9 +42,7 @@ namespace MORM.Repositorio.Tests
         [TestMethod]
         public void TipoDapperTests_Consultar()
         {
-            IncluirTipo();
-
-            var tipo = _tipoRepository.FirstOrDefault(f => f.Cd_Tipo == _cdTipo);
+            var tipo = _tipoRepository.GetAll().FirstOrDefault(f => f.Cd_Tipo == _cdTipo);
             Assert.AreEqual(_cdTipo, tipo.Cd_Tipo);
             Assert.AreEqual(_dsTipo, tipo.Ds_Tipo);
         }
@@ -64,9 +50,7 @@ namespace MORM.Repositorio.Tests
         [TestMethod]
         public void TipoDapperTests_Salvar()
         {
-            IncluirTipo();
-
-            var tipoCons = _tipoRepository.FirstOrDefault(f => f.Cd_Tipo == _cdTipo);
+            var tipoCons = _tipoRepository.GetAll().FirstOrDefault(f => f.Cd_Tipo == _cdTipo);
             Assert.AreEqual(_cdTipo, tipoCons.Cd_Tipo);
             Assert.AreEqual(_dsTipo, tipoCons.Ds_Tipo);
         }
@@ -74,13 +58,10 @@ namespace MORM.Repositorio.Tests
         [TestMethod]
         public void TipoDapperTests_Excluir()
         {
-            IncluirTipo();
+            _tipoRepository.Delete(new TipoModel { Cd_Tipo = _cdTipo });
 
-            _tipoRepository.Excluir(new TipoModel { Cd_Tipo = _cdTipo });
-
-            var tipoCons = _tipoRepository.FirstOrDefault(f => f.Cd_Tipo == _cdTipo);
-            Assert.AreNotEqual(_cdTipo, tipoCons.Cd_Tipo);
-            Assert.AreNotEqual(_dsTipo, tipoCons.Ds_Tipo);
+            var tipoCons = _tipoRepository.GetAll().FirstOrDefault(f => f.Cd_Tipo == _cdTipo);
+            Assert.IsNull(tipoCons);
         }
     }
 }

@@ -42,8 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseInstaller.cs" />
-    <Compile Include="MockDataContext.cs" />
-    <Compile Include="MockGenericRepository.cs" />
+    <Compile Include="RepositoryMock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

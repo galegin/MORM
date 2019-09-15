@@ -28,5 +28,15 @@ namespace MORM.Repositorio.Tests
 
         [Relacao(new string[] { nameof(Cd_Tipo) + "=" + nameof(TipoModel.Cd_Tipo) })]
         public TipoModel Tipo { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return (obj as TesteModel)?.Cd_Teste == Cd_Teste;
+        }
+
+        public override int GetHashCode()
+        {
+            return 1857009019 + Cd_Teste.GetHashCode();
+        }
     }
 }

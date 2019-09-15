@@ -1,6 +1,7 @@
-﻿using MORM.Dominio.Interfaces;
-using MORM.Repositorio.Mocks;
-using MORM.CrossCutting;
+﻿using MORM.CrossCutting;
+using MORM.Dominio.Interfaces;
+using MORM.Repositorio.Context;
+using MORM.Repositorio.Dapper.Context;
 
 namespace MORM.Repositorio.Tests
 {
@@ -8,9 +9,12 @@ namespace MORM.Repositorio.Tests
     {
         public static void AddRepositorioTests(this IAbstractContainer container)
         {
-            container.Register<IAbstractDataContext, MockDataContext>();
+            container.Register<IAbstractDataContext, AbstractDataContext>();
+            container.Register<IAbstractDataContextDapper, AbstractDataContextDapper>();
 
+            container.Register<IReferenciaRepository, ReferenciaRepository>();
             container.Register<ITipoRepository, TipoRepository>();
+            container.Register<ITipoRepositoryDapper, TipoRepositoryDapper>();
             container.Register<ITesteRepository, TesteRepository>();
 
             container.Register<IReferenciaService, ReferenciaService>();

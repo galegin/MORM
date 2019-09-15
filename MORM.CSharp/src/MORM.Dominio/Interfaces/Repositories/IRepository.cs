@@ -1,16 +1,14 @@
-﻿namespace MORM.Dominio.Interfaces
-{
-    public interface IRepository
-    {
-        void Add(object instance);
-        void Update(object instance);
-        void Remove(object instance);
-    }
+﻿using System.Linq;
 
-    public interface IRepository<TInstance> 
-        where TInstance : class
+namespace MORM.Dominio.Interfaces
+{
+    public interface IRepository<TInstance> where TInstance : class
     {
-        IQueryableObject<TInstance> GetAll();
-        TInstance FindId(string id);
+        IQueryable<TInstance> GetAll();
+        TInstance GetById(TInstance instance);
+        void Add(TInstance instance);
+        void AddOrUpdate(TInstance instance);
+        void Update(TInstance instance);
+        void Delete(TInstance instance);
     }
 }

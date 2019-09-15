@@ -1,9 +1,11 @@
-﻿namespace MORM.Dominio.Interfaces
+﻿using System.Linq;
+
+namespace MORM.Dominio.Interfaces
 {
     public interface IDbSet<TInstance>
     {
         TInstance GetById(TInstance instance);
-        IQueryableObject<TInstance> GetListAll();
+        IQueryable<TInstance> GetAll();
         void Add(object instance);
         void AddOrUpdate(object instance);
         void Update(object instance);

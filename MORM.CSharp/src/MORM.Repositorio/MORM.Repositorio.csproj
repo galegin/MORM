@@ -68,6 +68,9 @@
     <Compile Include="Factories\ConexaoFactory.cs" />
     <Compile Include="Factories\ProviderFactory.cs" />
     <Compile Include="Migrations\MigracaoDatabase.cs" />
+    <Compile Include="Queries\Queryable.cs" />
+    <Compile Include="Queries\QueryExpression.cs" />
+    <Compile Include="Queries\QueryProvider.cs" />
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="UnityOfWork\AbstractUnityOfWork.cs" />
     <Compile Include="Migrations\Migracao.cs" />

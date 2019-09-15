@@ -1,12 +1,12 @@
-﻿using MORM.Dominio.Interfaces;
-using MORM.Servico.Services;
-
-namespace MORM.Repositorio.Tests
+﻿namespace MORM.Repositorio.Tests
 {
-    public class TipoService : AbstractService<TipoModel>, ITipoService
+    public class TipoService : ITipoService
     {
-        public TipoService(IAbstractUnityOfWork unityOfWork) : base(unityOfWork)
+        private readonly ITipoRepository _tipoRepository;
+
+        public TipoService(ITipoRepository tipoRepository)
         {
+            _tipoRepository = tipoRepository;
         }
     }
 }
