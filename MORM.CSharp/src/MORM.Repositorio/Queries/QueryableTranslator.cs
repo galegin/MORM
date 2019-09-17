@@ -10,24 +10,31 @@ namespace MORM.Repositorio.Queries
 {
     public class QueryableTranslator : ExpressionVisitor, IQueryableTranslator
     {
+        #region variaveis
+        private readonly string[] _namesInitials = { "Where", "FirstOrDefault", "ToList" };
+        private readonly IQueryableValue _queryableValue;
+        private StringBuilder sb;
+        #endregion
+
+        #region propriedades
+        public int? Skip { get; private set; }
+        public int? Take { get; private set; }
+        public string OrderBy { get; private set; }
+        public string WhereClause { get; private set; }
+        #endregion
+
+        #region construtores
         public QueryableTranslator()
         {
         }
-
-        private readonly IQueryableValue _queryableValue;
 
         public QueryableTranslator(IQueryableValue queryableValue)
         {
             _queryableValue = queryableValue ?? throw new ArgumentNullException(nameof(queryableValue));
         }
+        #endregion
 
-        private StringBuilder sb;
-
-        public int? Skip { get; private set; }
-        public int? Take { get; private set; }
-        public string OrderBy { get; private set; }
-        public string WhereClause { get; private set; }
-
+        #region metodos
         public string Translate(Expression expression)
         {
             this.sb = new StringBuilder();
@@ -45,11 +52,9 @@ namespace MORM.Repositorio.Queries
             return e;
         }
 
-        private readonly string[] _names = { "Where", "FirstOrDefault", "ToList" };
-
         protected override Expression VisitMethodCall(MethodCallExpression m)
         {
-            if (m.Method.DeclaringType == typeof(Queryable) && _names.Contains(m.Method.Name))
+            if (m.Method.DeclaringType == typeof(Queryable) && _namesInitials.Contains(m.Method.Name))
             {
                 this.Visit(m.Arguments[0]);
                 LambdaExpression lambda = (LambdaExpression)StripQuotes(m.Arguments[1]);
@@ -346,5 +351,6 @@ namespace MORM.Repositorio.Queries
 
             return false;
         }
+        #endregion
     }
 }
