@@ -45,9 +45,11 @@ namespace MORM.Repositorio.Queries
             return e;
         }
 
+        private readonly string[] _names = { "Where", "FirstOrDefault", "ToList" };
+
         protected override Expression VisitMethodCall(MethodCallExpression m)
         {
-            if (m.Method.DeclaringType == typeof(Queryable) && m.Method.Name == "Where")
+            if (m.Method.DeclaringType == typeof(Queryable) && _names.Contains(m.Method.Name))
             {
                 this.Visit(m.Arguments[0]);
                 LambdaExpression lambda = (LambdaExpression)StripQuotes(m.Arguments[1]);

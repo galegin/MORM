@@ -17,6 +17,14 @@ namespace MORM.Dominio.Tipagens
 
     public static class TipoDatabaseExtension
     {
+        //-- text
+
+        public static TipoDatabase GetTipoDatabase(this string value)
+        {
+            Enum.TryParse(value, true, out TipoDatabase tipoDatabase);
+            return tipoDatabase;
+        }
+
         //-- value
 
         public static string GetValueData(this TipoDatabase tipoDatabase, DateTime value)

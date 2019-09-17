@@ -14,8 +14,10 @@ namespace MORM.Repositorio.Tests
 
             container.Register<IReferenciaRepository, ReferenciaRepository>();
             container.Register<ITipoRepository, TipoRepository>();
-            container.Register<ITipoRepositoryDapper, TipoRepositoryDapper>();
             container.Register<ITesteRepository, TesteRepository>();
+
+            container.Register<ITipoRepositoryContext, TipoRepositoryContext>();
+            container.Register<ITipoRepositoryContextDapper, TipoRepositoryContextDapper>();
 
             container.Register<IReferenciaService, ReferenciaService>();
             container.Register<ITesteService, TesteService>();

@@ -24,7 +24,11 @@ namespace MORM.Repositorio.Context
             return instance;
         }
 
-        public IQueryable<TInstance> GetAll() => new Queryable<TInstance>(new QueryableObject<TInstance>(_dataContext));
+        public IQueryable<TInstance> GetAll()
+        {
+            var provider = new QueryableProvider<TInstance>(_dataContext);
+            return new Queryable<TInstance>(provider, null);
+        }
         public void Add(object instance) => _dataContext.InsObjeto(instance);
         public void AddOrUpdate(object instance) => _dataContext.SetObjeto(instance);
         public void Update(object instance) => _dataContext.UpdObjeto(instance);

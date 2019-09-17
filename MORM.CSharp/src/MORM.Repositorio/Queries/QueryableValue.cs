@@ -1,18 +1,18 @@
 ﻿using MORM.Dominio.Interfaces;
 using MORM.Dominio.Tipagens;
-using System;
 using System.Configuration;
 
 namespace MORM.Repositorio.Queries
 {
     public class QueryableValue : IQueryableValue
     {
+        private readonly TipoDatabase _tipoDatabase;
+
         public QueryableValue()
         {
-            _tipoDatabase = (TipoDatabase)Enum.Parse(typeof(TipoDatabase), ConfigurationManager.AppSettings["tipoDatabase"], false);
+            var tipoDatabaseStr = ConfigurationManager.AppSettings["tipoDatabase"] ?? string.Empty;
+            _tipoDatabase = tipoDatabaseStr.GetTipoDatabase();
         }
-
-        private readonly TipoDatabase _tipoDatabase;
 
         public string GetString(object value)
         {

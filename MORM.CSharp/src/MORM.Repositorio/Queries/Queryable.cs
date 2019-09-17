@@ -1,5 +1,4 @@
-﻿using MORM.Dominio.Interfaces;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,27 +8,24 @@ namespace MORM.Repositorio.Queries
 {
     public class Queryable<TInstance> : IQueryable<TInstance>
     {
-        private IQueryableObject<TInstance> _queryableObject;
-
-        public Expression Expression { get; }
         public Type ElementType => typeof(TInstance);
+        public Expression Expression { get; }
         public IQueryProvider Provider { get; }
 
-        public Queryable(IQueryableObject<TInstance> queryableObject)
+        public Queryable(IQueryProvider provider, Expression expression)
         {
-            _queryableObject = queryableObject;
-
-            Expression = new QueryExpression();
-            Provider = new QueryProvider<TInstance>(queryableObject);
+            Provider = provider;
+            Expression = expression ?? Expression.Constant(this);
         }
 
         public IEnumerator<TInstance> GetEnumerator()
         {
-            return _queryableObject.ToList().GetEnumerator();
+            return Provider.Execute<IEnumerable<TInstance>>(Expression).GetEnumerator();
         }
+
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return _queryableObject.ToList().GetEnumerator();
+            return GetEnumerator();
         }
     }
 }
