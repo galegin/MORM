@@ -108,6 +108,14 @@
     <Compile Include="Interfaces\Repositories\IDomainRepository.cs" />
     <Compile Include="Interfaces\Repositories\IDomainUnityOfWork.cs" />
     <Compile Include="Interfaces\Repositories\IRepository.cs" />
+    <Compile Include="Interfaces\Repositories\nsAmbiente\IAmbienteRepository.cs" />
+    <Compile Include="Interfaces\Repositories\nsEmpresa\IEmpresaRepository.cs" />
+    <Compile Include="Interfaces\Repositories\nsEmpresa\IGrupoEmpresaRepository.cs" />
+    <Compile Include="Interfaces\Repositories\nsAmbiente\ILogAcessoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\nsAmbiente\IMigracaoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\nsAmbiente\IPermissaoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\nsTerminal\ITerminalRepository.cs" />
+    <Compile Include="Interfaces\Repositories\nsUsuario\IUsuarioRepository.cs" />
     <Compile Include="Interfaces\Services\IAbstractAppService.cs" />
     <Compile Include="Interfaces\Services\IAbstractService.cs" />
     <Compile Include="Interfaces\Services\IDomainService.cs" />

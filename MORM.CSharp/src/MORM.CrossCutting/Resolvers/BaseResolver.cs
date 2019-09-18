@@ -2,7 +2,7 @@
 
 namespace MORM.CrossCutting
 {
-    public abstract class BaseResolver : IBaseResolver
+    public class BaseResolver : IBaseResolver
     {
         #region variaveis
         private IAbstractContainer _container => AbstractContainer.Instance;

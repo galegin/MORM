@@ -1,10 +1,8 @@
-﻿using MORM.Dominio.Entidades;
-using MORM.Dominio.Interfaces;
-using MORM.Servico.Models;
+﻿using MORM.Servico.Models;
 
 namespace MORM.Servico.Interfaces
 {
-    public interface IPermissaoAppService : IAbstractAppService<Permissao>
+    public interface IPermissaoAppService
     {
         bool VerificarPermissao(VerificarPermissaoInModel model);
     }

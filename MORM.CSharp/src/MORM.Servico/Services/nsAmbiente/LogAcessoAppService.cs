@@ -4,18 +4,22 @@ using MORM.Servico.Models;
 using MORM.Servico.Interfaces;
 using System;
 using MORM.Dominio.Extensions;
+using System.Linq;
 
 namespace MORM.Servico.Services
 {
-    public class LogAcessoAppService : AbstractAppService<LogAcesso>, ILogAcessoAppService
+    public class LogAcessoAppService : ILogAcessoAppService
     {
-        public LogAcessoAppService(IAbstractUnityOfWork unityOfWork) : base(unityOfWork)
+        private readonly ILogAcessoRepository _logAcessoRepository;
+
+        public LogAcessoAppService(ILogAcessoRepository logAcessoRepository)
         {
+            _logAcessoRepository = logAcessoRepository;
         }
 
         private LogAcesso GetLogAcesso(GravarLogAcessoInModel model)
         {
-            return AbstractService.AbstractRepository.FirstOrDefault(f =>
+            return _logAcessoRepository.GetAll().FirstOrDefault(f =>
                 f.DataLog == model.DataLog &&
                 f.SequenciaLog == model.SequenciaLog &&
                 f.CodigoEmpresa == model.CodigoEmpresa &&
@@ -44,7 +48,7 @@ namespace MORM.Servico.Services
 
             logAcesso.QtdeAcesso += 1;
 
-            AbstractService.AbstractRepository.Salvar(logAcesso);
+            _logAcessoRepository.Add(logAcesso);
         }
     }
 }

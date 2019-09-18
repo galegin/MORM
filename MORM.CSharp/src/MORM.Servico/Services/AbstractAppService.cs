@@ -1,18 +1,24 @@
 ﻿using MORM.Dominio.Interfaces;
+using MORM.Repositorio.Repositories;
 using System;
+using System.Linq;
 
 namespace MORM.Servico.Services
 {
     public class AbstractAppService : IAbstractAppService
     {
-        public IAbstractUnityOfWork AbstractUnityOfWork { get; }
+        //public IAbstractUnityOfWork AbstractUnityOfWork { get; }
+        private IAbstractDataContext _dataContext;
 
-        public AbstractAppService(IAbstractUnityOfWork abstractUnityOfWork)
+        //public AbstractAppService(IAbstractUnityOfWork abstractUnityOfWork)
+        public AbstractAppService(IAbstractDataContext dataContext)
         {
-            AbstractUnityOfWork = abstractUnityOfWork ?? throw new ArgumentNullException(nameof(abstractUnityOfWork));
+            //AbstractUnityOfWork = abstractUnityOfWork ?? throw new ArgumentNullException(nameof(abstractUnityOfWork));
+            _dataContext = dataContext;
         }
 
-        public void SetAmbiente(IAmbiente ambiente) => AbstractUnityOfWork.SetAmbiente(ambiente);
+        //public void SetAmbiente(IAmbiente ambiente) => AbstractUnityOfWork.SetAmbiente(ambiente);
+        public void SetAmbiente(IAmbiente ambiente) => _dataContext.SetAmbiente(ambiente);
     }
 
     public class AbstractAmbAppService : IAbstractAmbAppService
@@ -28,60 +34,63 @@ namespace MORM.Servico.Services
     public class AbstractAppService<TObject> : AbstractAppService, IAbstractAppService<TObject> 
         where TObject : class
     {
-        public IAbstractService<TObject> AbstractService { get; }
+        //public IAbstractService<TObject> AbstractService { get; }
+        public IRepository<TObject> Repository { get; }
 
-        public AbstractAppService(IAbstractUnityOfWork abstractUnityOfWork) : base(abstractUnityOfWork)
+        //public AbstractAppService(IAbstractUnityOfWork abstractUnityOfWork) : base(abstractUnityOfWork)
+        public AbstractAppService(IAbstractDataContext dataContext) : base(dataContext)
         {
-            AbstractService = new AbstractService<TObject>(abstractUnityOfWork);
+            //AbstractService = new AbstractService<TObject>(abstractUnityOfWork);
+            Repository = RepositoryExtensions.GetRepository<TObject>(dataContext);
         }
 
         //-- listar
 
         public object Listar(TObject filtro)
         {
-            return AbstractService.Listar(filtro);
+            return Repository.GetAll().Where(filtro).ToList();
         }
 
         //-- consultar
 
         public object Consultar(TObject filtro)
         {
-            return AbstractService.Consultar(filtro);
+            return Repository.GetAll().FirstOrDefault(filtro);
         }
 
         //-- incluir
 
         public object Incluir(TObject objeto)
         {
-            AbstractService.Incluir(objeto); return null;
+            Repository.Add(objeto); return null;
         }
 
         //-- alterar
 
         public object Alterar(TObject objeto)
         {
-            AbstractService.Alterar(objeto); return null;
+            Repository.Update(objeto); return null;
         }
 
         //-- salvar
 
         public object Salvar(TObject objeto)
         {
-            AbstractService.Salvar(objeto); return null;
+            Repository.AddOrUpdate(objeto); return null;
         }
 
         //-- excluir
 
         public object Excluir(TObject objeto)
         {
-            AbstractService.Excluir(objeto); return null;
+            Repository.Delete(objeto); return null;
         }
 
         //-- sequencia
 
         public object Sequencia(TObject filtro)
         {
-            return AbstractService.Sequencia(filtro);
+            return Repository.Sequencia(filtro);
         }
     }
 }

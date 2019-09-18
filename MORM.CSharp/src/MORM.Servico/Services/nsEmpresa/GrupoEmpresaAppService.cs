@@ -1,13 +1,15 @@
-using MORM.Dominio.Entidades;
 using MORM.Dominio.Interfaces;
 using MORM.Servico.Interfaces;
 
 namespace MORM.Servico.Services
 {
-    public class GrupoEmpresaAppService : AbstractAppService<GrupoEmpresa>, IGrupoEmpresaAppService
+    public class GrupoEmpresaAppService : IGrupoEmpresaAppService
     {
-        public GrupoEmpresaAppService(IAbstractUnityOfWork unityOfWork) : base(unityOfWork)
+        private readonly IGrupoEmpresaRepository _grupoEmpresaRepository;
+
+        public GrupoEmpresaAppService(IGrupoEmpresaRepository grupoEmpresaRepository)
         {
+            _grupoEmpresaRepository = grupoEmpresaRepository;
         }
     }
 }

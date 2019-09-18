@@ -8,6 +8,7 @@ namespace MORM.Repositorio.Mocks
         where TInstance : class
     {
         #region variaveis
+        protected int _sequencia = 0;
         protected List<TInstance> DbSet = new List<TInstance>();
         #endregion
 
@@ -32,6 +33,8 @@ namespace MORM.Repositorio.Mocks
             if (instanceExiste != null)
                 DbSet.Remove(instanceExiste);
         }
+
+        public long Sequencia(TInstance instance) => ++_sequencia;
         #endregion
     }
 }

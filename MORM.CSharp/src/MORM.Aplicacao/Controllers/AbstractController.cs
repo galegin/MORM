@@ -1,4 +1,5 @@
 using MORM.Aplicacao.Extensions;
+using MORM.CrossCutting;
 using MORM.Dominio.Interfaces;
 using MORM.Dominio.Tipagens;
 using MORM.Servico.Interfaces;
@@ -24,37 +25,49 @@ namespace MORM.Aplicacao.Controllers
             TipoPermissao.Validar };
         #endregion
 
-        #region metodos
-        protected virtual void VerificarPermissao(TipoPermissao tipoPermissao)
+        #region propriedades
+        public IBaseResolver Resolver { get; }
+        #endregion
+
+        #region construtores
+        public AbstractController()
         {
-            var contemPermissao = 
-                _listaDePermissao?.Contains(tipoPermissao)
-                ??
-                true;
-
-            if (!contemPermissao)
-                throw new Exception("Sem permissao para acessar o servico / metodo");
-        }
-
-        public HttpResponseMessage Response(TipoPermissao tipo, Func<object> funcao)
-        {
-            try
-            {
-                VerificarPermissao(tipo);
-
-                return Request.CreateResponse(HttpStatusCode.OK,
-                    MessageHandler.CreateMessage(conteudo: funcao.Invoke()));
-            }
-            catch (Exception ex)
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, MessageHandler.CreateMessage(ex));
-            }
+            Resolver = new BaseResolver();
         }
         #endregion
+
+        #region metodos
+        protected virtual void VerificarPermissao(TipoPermissao tipoPermissao)
+            {
+                var contemPermissao = 
+                    _listaDePermissao?.Contains(tipoPermissao)
+                    ??
+                    true;
+
+                if (!contemPermissao)
+                    throw new Exception("Sem permissao para acessar o servico / metodo");
+            }
+
+            public HttpResponseMessage Response(TipoPermissao tipo, Func<object> funcao)
+            {
+                try
+                {
+                    VerificarPermissao(tipo);
+
+                    return Request.CreateResponse(HttpStatusCode.OK,
+                        MessageHandler.CreateMessage(conteudo: funcao.Invoke()));
+                }
+                catch (Exception ex)
+                {
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, MessageHandler.CreateMessage(ex));
+                }
+            }
+            #endregion
     }
 
     //[RoutePrefix("api/AbstractController")]
-    public class AbstractController<TObject> : AbstractController, IAbstractController<TObject> where TObject : class
+    public class AbstractController<TObject> : AbstractController, IAbstractController<TObject> 
+        where TObject : class
     {
         #region variaveis
         protected IAmbiente _ambiente;
@@ -95,9 +108,9 @@ namespace MORM.Aplicacao.Controllers
         protected void SetarPermissaoAppService()
         {
             if (_inVerificarPermissao)
-                _permissaoService = new PermissaoAppService(_abstractAppService.AbstractUnityOfWork);
+                _permissaoService = Resolver.Resolve<IPermissaoAppService>();
             if (_inGravarLogAcesso)
-                _logAcessoService = new LogAcessoAppService(_abstractAppService.AbstractUnityOfWork);
+                _logAcessoService = Resolver.Resolve<ILogAcessoAppService>();
         }
 
         protected void GravarLogAcesso(TipoPermissao tipoPermissao)
@@ -137,49 +150,49 @@ namespace MORM.Aplicacao.Controllers
 
         [HttpPost]
         [Route("Listar")]
-        public HttpResponseMessage Listar(TObject filtro)
+        public object Listar(TObject filtro)
         {
             return Response(TipoPermissao.Listar, () => _abstractAppService.Listar(filtro));
         }
 
         [HttpPost]
         [Route("Consultar")]
-        public HttpResponseMessage Consultar(TObject filtro)
+        public object Consultar(TObject filtro)
         {
             return Response(TipoPermissao.Consultar, () => _abstractAppService.Consultar(filtro));
         }
 
         [HttpPost]
         [Route("Incluir")]
-        public HttpResponseMessage Incluir(TObject objeto)
+        public object Incluir(TObject objeto)
         {
             return Response(TipoPermissao.Incluir, () => _abstractAppService.Incluir(objeto));
         }
 
         [HttpPost]
         [Route("Alterar")]
-        public HttpResponseMessage Alterar(TObject objeto)
+        public object Alterar(TObject objeto)
         {
             return Response(TipoPermissao.Alterar, () => _abstractAppService.Alterar(objeto));
         }
 
         [HttpPost]
         [Route("Salvar")]
-        public HttpResponseMessage Salvar(TObject objeto)
+        public object Salvar(TObject objeto)
         {
             return Response(TipoPermissao.Salvar, () => _abstractAppService.Salvar(objeto));
         }
 
         [HttpPost]
         [Route("Excluir")]
-        public HttpResponseMessage Excluir(TObject objeto)
+        public object Excluir(TObject objeto)
         {
             return Response(TipoPermissao.Excluir, () => _abstractAppService.Excluir(objeto));
         }
 
         [HttpPost]
         [Route("Sequencia")]
-        public HttpResponseMessage Sequencia(TObject filtro)
+        public object Sequencia(TObject filtro)
         {
             return Response(TipoPermissao.Sequencia, () => _abstractAppService.Sequencia(filtro));
         }

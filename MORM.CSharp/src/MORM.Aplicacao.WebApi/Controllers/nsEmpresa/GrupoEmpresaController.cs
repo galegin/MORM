@@ -7,8 +7,11 @@ namespace MORM.Aplicacao.Controllers
     [RoutePrefix("api/GrupoEmpresa")]
     public class GrupoEmpresaController : AbstractController<GrupoEmpresa>
     {
-        public GrupoEmpresaController(IGrupoEmpresaAppService grupoEmpresaAppService) : base(grupoEmpresaAppService)
+        private readonly IGrupoEmpresaAppService _grupoEmpresaAppService;
+
+        public GrupoEmpresaController(IGrupoEmpresaAppService grupoEmpresaAppService) : base(null)
         {
+            _grupoEmpresaAppService = grupoEmpresaAppService;
         }
     }
 }

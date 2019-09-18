@@ -17,5 +17,6 @@ namespace MORM.Dominio.Interfaces
         void InsObjeto(object obj, bool relacao = true);
         void UpdObjeto(object obj, bool relacao = true);
         void RemObjeto(object obj, bool relacao = true);
+        long IncObjeto(object obj);
     }
 }

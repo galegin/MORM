@@ -1,13 +1,15 @@
-﻿using MORM.Dominio.Entidades;
-using MORM.Dominio.Interfaces;
+﻿using MORM.Dominio.Interfaces;
 using MORM.Servico.Interfaces;
 
 namespace MORM.Servico.Services
 {
-    public class MigracaoAppService : AbstractService<MigracaoEnt>, IMigracaoAppService
+    public class MigracaoAppService : IMigracaoAppService
     {
-        public MigracaoAppService(IAbstractUnityOfWork abstractUnityOfWork) : base(abstractUnityOfWork)
+        private readonly IMigracaoRepository _migracaoRepository;
+
+        public MigracaoAppService(IMigracaoRepository migracaoRepository)
         {
+            _migracaoRepository = migracaoRepository;
         }
     }
 }

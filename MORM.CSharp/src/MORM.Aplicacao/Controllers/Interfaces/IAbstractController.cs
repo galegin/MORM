@@ -1,15 +1,13 @@
-using System.Net.Http;
-
 namespace MORM.Aplicacao.Controllers
 {
     public interface IAbstractController<TObject> where TObject : class
     {
-        HttpResponseMessage Listar(TObject filtro);
-        HttpResponseMessage Consultar(TObject filtro);
-        HttpResponseMessage Incluir(TObject objeto);
-        HttpResponseMessage Alterar(TObject objeto);
-        HttpResponseMessage Salvar (TObject objeto);
-        HttpResponseMessage Excluir(TObject objeto);
-        HttpResponseMessage Sequencia(TObject filtro);
+        object Listar(TObject filtro);
+        object Consultar(TObject filtro);
+        object Incluir(TObject objeto);
+        object Alterar(TObject objeto);
+        object Salvar (TObject objeto);
+        object Excluir(TObject objeto);
+        object Sequencia(TObject filtro);
     }
 }

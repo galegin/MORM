@@ -10,5 +10,6 @@ namespace MORM.Dominio.Interfaces
         void AddOrUpdate(TInstance instance);
         void Update(TInstance instance);
         void Delete(TInstance instance);
+        long Sequencia(TInstance instance);
     }
 }

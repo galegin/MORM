@@ -8,13 +8,13 @@ using System.Linq;
 
 namespace MORM.Servico.Services
 {
-    public class AmbienteAppService : AbstractAppService<Ambiente>, IAmbienteAppService
+    public class AmbienteAppService : IAmbienteAppService
     {
-        private readonly IUsuarioAppService _usuarioAppService;
+        private readonly IUsuarioRepository _usuarioRepository;
 
-        public AmbienteAppService(IAbstractUnityOfWork unityOfWork, IUsuarioAppService usuarioAppService) : base(unityOfWork)
+        public AmbienteAppService(IUsuarioRepository usuarioRepository)
         {
-            _usuarioAppService = usuarioAppService;
+            _usuarioRepository = usuarioRepository;
         }
 
         public object Validar(ValidarAmbienteInModel model)
@@ -24,8 +24,7 @@ namespace MORM.Servico.Services
             if (string.IsNullOrWhiteSpace(model.Senha))
                 throw new Exception("Senha deve ser informada");
 
-            var usuarioFiltro = new Usuario { Nm_Login = model.Login };
-            var usuario = _usuarioAppService.AbstractService.Listar(usuarioFiltro)?.FirstOrDefault();
+            var usuario = _usuarioRepository.GetAll()?.FirstOrDefault(x => x.Nm_Login == model.Login);
             if (string.IsNullOrWhiteSpace(usuario?.Nm_Usuario))
                 throw new Exception("Usuario nao cadastrado");
 

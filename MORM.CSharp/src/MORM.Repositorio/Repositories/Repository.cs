@@ -25,6 +25,16 @@ namespace MORM.Repositorio.Repositories
         public void AddOrUpdate(TInstance instance) => _dbSet.AddOrUpdate(instance);
         public void Update(TInstance instance) => _dbSet.Update(instance);
         public void Delete(TInstance instance) => _dbSet.Delete(instance);
+        public long Sequencia(TInstance instance) => _dbSet.Sequencia(instance);
         #endregion
+    }
+
+    public static class RepositoryExtensions
+    {
+        public static IRepository<TInstance> GetRepository<TInstance>(this IAbstractDataContext dataContext)
+            where TInstance : class
+        {
+            return null;
+        }
     }
 }

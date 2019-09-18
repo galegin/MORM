@@ -70,6 +70,14 @@
     <Compile Include="Migrations\MigracaoDatabase.cs" />
     <Compile Include="Queries\Queryable.cs" />
     <Compile Include="Queries\QueryableProvider.cs" />
+    <Compile Include="Repositories\nsAmbiente\AmbienteRepository.cs" />
+    <Compile Include="Repositories\nsAmbiente\LogAcessoRepository.cs" />
+    <Compile Include="Repositories\nsAmbiente\MigracaoRepository.cs" />
+    <Compile Include="Repositories\nsAmbiente\PermissaoRepository.cs" />
+    <Compile Include="Repositories\nsEmpresa\EmpresaRepository.cs" />
+    <Compile Include="Repositories\nsEmpresa\GrupoEmpresaRepository.cs" />
+    <Compile Include="Repositories\nsTerminal\TerminalRepository.cs" />
+    <Compile Include="Repositories\nsUsuario\UsuarioRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="UnityOfWork\AbstractUnityOfWork.cs" />
     <Compile Include="Migrations\Migracao.cs" />

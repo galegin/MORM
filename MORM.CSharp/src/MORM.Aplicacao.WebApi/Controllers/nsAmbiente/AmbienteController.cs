@@ -12,7 +12,7 @@ namespace MORM.Aplicacao.WebApi.Controllers
     {
         private readonly IAmbienteAppService _ambienteService;
 
-        public AmbienteController(IAmbienteAppService ambienteService) : base()
+        public AmbienteController(IAmbienteAppService ambienteService)
         {
             _ambienteService = ambienteService;
         }

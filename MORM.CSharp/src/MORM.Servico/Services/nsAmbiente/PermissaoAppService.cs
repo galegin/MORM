@@ -3,18 +3,22 @@ using MORM.Dominio.Extensions;
 using MORM.Dominio.Interfaces;
 using MORM.Servico.Interfaces;
 using MORM.Servico.Models;
+using System.Linq;
 
 namespace MORM.Servico.Services
 {
-    public class PermissaoAppService : AbstractAppService<Permissao>, IPermissaoAppService
+    public class PermissaoAppService : IPermissaoAppService
     {
-        public PermissaoAppService(IAbstractUnityOfWork unityOfWork) : base(unityOfWork)
+        private readonly IPermissaoRepository _permissaoRepository;
+
+        public PermissaoAppService(IPermissaoRepository permissaoRepository)
         {
+            _permissaoRepository = permissaoRepository;
         }
 
         private Permissao GetPermissao(VerificarPermissaoInModel model)
         {
-            return AbstractService.AbstractRepository.FirstOrDefault(f =>
+            return _permissaoRepository.GetAll().FirstOrDefault(f =>
                 f.CodigoEmpresa == model.CodigoEmpresa &&
                 f.CodigoUsuario == model.CodigoUsuario &&
                 f.CodigoServico == model.CodigoServico &&

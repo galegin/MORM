@@ -7,8 +7,11 @@ namespace MORM.Aplicacao.Controllers
     [RoutePrefix("api/Usuario")]
     public class UsuarioController : AbstractController<Usuario>
     {
-        public UsuarioController(IUsuarioAppService usuarioAppService) : base(usuarioAppService)
+        private readonly IUsuarioAppService _usuarioAppService;
+
+        public UsuarioController(IUsuarioAppService usuarioAppService) : base(null)
         {
+            _usuarioAppService = usuarioAppService;
         }
     }
 }

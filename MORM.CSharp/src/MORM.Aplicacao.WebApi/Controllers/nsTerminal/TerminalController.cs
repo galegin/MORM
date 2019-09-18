@@ -7,8 +7,11 @@ namespace MORM.Aplicacao.Controllers
     [RoutePrefix("api/Terminal")]
     public class TerminalController : AbstractController<Terminal>
     {
-        public TerminalController(ITerminalAppService terminalAppService) : base(terminalAppService)
+        private readonly ITerminalAppService _terminalAppService;
+
+        public TerminalController(ITerminalAppService terminalAppService) : base(null)
         {
+            _terminalAppService = terminalAppService;
         }
     }
 }
