@@ -1,4 +1,5 @@
 ﻿using MORM.CrossCutting;
+using MORM.Dominio.Interfaces;
 
 namespace MORM.Repositorio.Mocks
 {
@@ -6,7 +7,10 @@ namespace MORM.Repositorio.Mocks
     {
         public static void AddRepositorioMocks(this IAbstractContainer container)
         {
-            //container.Register<IClasseRepository, ClasseRepositoryMock>();
+            container.Register<IEmpresaRepository, EmpresaRepositoryMock>();
+            container.Register<IGrupoEmpresaRepository, GrupoEmpresaRepositoryMock>();
+            container.Register<ITerminalRepository, TerminalRepositoryMock>();
+            container.Register<IUsuarioRepository, UsuarioRepositoryMock>();
         }
     }
 }

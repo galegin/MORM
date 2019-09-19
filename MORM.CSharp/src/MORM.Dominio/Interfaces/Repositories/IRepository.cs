@@ -2,7 +2,16 @@
 
 namespace MORM.Dominio.Interfaces
 {
-    public interface IRepository<TInstance> where TInstance : class
+    public interface IRepository
+    {
+    }
+
+    public interface IRepositoryDataContext
+    {
+        IAbstractDataContext DataContext { get; }
+    }
+
+    public interface IRepository<TInstance> : IRepository where TInstance : class
     {
         IQueryable<TInstance> GetAll();
         TInstance GetById(TInstance instance);

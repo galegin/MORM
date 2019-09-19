@@ -9,7 +9,7 @@ namespace MORM.Aplicacao.Controllers
     {
         private readonly ITerminalAppService _terminalAppService;
 
-        public TerminalController(ITerminalAppService terminalAppService) : base(null)
+        public TerminalController(ITerminalAppService terminalAppService) : base(terminalAppService)
         {
             _terminalAppService = terminalAppService;
         }

@@ -42,6 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseInstaller.cs" />
+    <Compile Include="Mocks\nsEmpresa\EmpresaRepositoryMock.cs" />
+    <Compile Include="Mocks\nsEmpresa\GrupoEmpresaRepositoryMock.cs" />
+    <Compile Include="Mocks\nsTerminal\TerminalRepositoryMock.cs" />
+    <Compile Include="Mocks\nsUsuario\UsuarioRepositoryMock.cs" />
     <Compile Include="RepositoryMock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -59,5 +63,6 @@
       <Name>MORM.Repositorio</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

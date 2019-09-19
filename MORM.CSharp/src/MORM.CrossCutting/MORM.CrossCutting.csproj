@@ -71,6 +71,7 @@
     <Compile Include="Assemblies\TypeBuilderAssembly.cs" />
     <Compile Include="Attributes\Consumer.cs" />
     <Compile Include="BaseInstaller.cs" />
+    <Compile Include="Expressions\LambdaExpressionExtensions.cs" />
     <Compile Include="Paths\AppPath.cs" />
     <Compile Include="Paths\ArquivoDiretorio.cs" />
     <Compile Include="Paths\CaminhoPadrao.cs" />

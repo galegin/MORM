@@ -9,7 +9,7 @@ namespace MORM.Aplicacao.Controllers
     {
         private readonly IUsuarioAppService _usuarioAppService;
 
-        public UsuarioController(IUsuarioAppService usuarioAppService) : base(null)
+        public UsuarioController(IUsuarioAppService usuarioAppService) : base(usuarioAppService)
         {
             _usuarioAppService = usuarioAppService;
         }

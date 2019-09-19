@@ -10,14 +10,15 @@ namespace MORM.Repositorio
     {
         public static void AddRepositorio(this IAbstractContainer container)
         {
+            container.Register<IEmpresaRepository, EmpresaRepository>();
+            container.Register<IGrupoEmpresaRepository, GrupoEmpresaRepository>();
             container.Register<ITerminalRepository, TerminalRepository>();
             container.Register<IUsuarioRepository, UsuarioRepository>();
+
             container.Register<IAmbienteRepository, AmbienteRepository>();
             container.Register<ILogAcessoRepository, LogAcessoRepository>();
             container.Register<IMigracaoRepository, MigracaoRepository>();
             container.Register<IPermissaoRepository, PermissaoRepository>();
-            container.Register<IEmpresaRepository, EmpresaRepository>();
-            container.Register<IGrupoEmpresaRepository, GrupoEmpresaRepository>();
 
             container.Register<IAbstractDataContext, AbstractDataContext>();
             container.Register<IAbstractUnityOfWork, AbstractUnityOfWork>();

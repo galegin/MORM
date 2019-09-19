@@ -2,7 +2,6 @@
 {
     public interface IAbstractAppService
     {
-        //IAbstractUnityOfWork AbstractUnityOfWork { get; }
         void SetAmbiente(IAmbiente ambiente);
     }
 
@@ -13,8 +12,6 @@
 
     public interface IAbstractAppService<TObject> : IAbstractAppService where TObject : class
     {
-        //IAbstractService<TObject> AbstractService { get; }
-        IRepository<TObject> Repository { get; }
         object Listar(TObject filtro);
         object Consultar(TObject filtro);
         object Incluir(TObject objeto);

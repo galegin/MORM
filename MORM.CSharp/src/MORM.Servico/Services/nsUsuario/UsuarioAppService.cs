@@ -1,13 +1,14 @@
+using MORM.Dominio.Entidades;
 using MORM.Dominio.Interfaces;
 using MORM.Servico.Interfaces;
 
 namespace MORM.Servico.Services
 {
-    public class UsuarioAppService : IUsuarioAppService
+    public class UsuarioAppService : AbstractAppService<Usuario>, IUsuarioAppService
     {
         private readonly IUsuarioRepository _usuarioRepository;
 
-        public UsuarioAppService(IUsuarioRepository usuarioRepository)
+        public UsuarioAppService(IUsuarioRepository usuarioRepository) : base(usuarioRepository)
         {
             _usuarioRepository = usuarioRepository;
         }

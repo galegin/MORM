@@ -9,7 +9,7 @@ namespace MORM.Aplicacao.Controllers
     {
         private readonly IEmpresaAppService _empresaAppService;
 
-        public EmpresaController(IEmpresaAppService empresaAppService) : base(null)
+        public EmpresaController(IEmpresaAppService empresaAppService) : base(empresaAppService)
         {
             _empresaAppService = empresaAppService;
         }

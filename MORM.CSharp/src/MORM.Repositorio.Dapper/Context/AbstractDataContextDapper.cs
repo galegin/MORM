@@ -200,6 +200,15 @@ namespace MORM.Repositorio.Dapper.Context
                 this.RemRelacaoLista(obj, true);
         }
 
+        public long IncObjeto<TObject>(object obj)
+        {
+            try
+            {
+                return this.GetSequenciaMaxO<TObject>(obj);
+            }
+            catch { return this.GetSequenciaGen<TObject>(); }
+        }
+
         //-- dispose
 
         public void Dispose()

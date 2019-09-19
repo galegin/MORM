@@ -33,7 +33,7 @@ namespace MORM.Repositorio.Context
         public void AddOrUpdate(object instance) => _dataContext.SetObjeto(instance);
         public void Update(object instance) => _dataContext.UpdObjeto(instance);
         public void Delete(object instance) => _dataContext.RemObjeto(instance);
-        public long Sequencia(object instance) => _dataContext.IncObjeto(instance);
+        public long Sequencia(object instance) => _dataContext.IncObjeto<TInstance>(instance);
         #endregion
     }
 }

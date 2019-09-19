@@ -1,9 +1,9 @@
 ﻿using MORM.Dominio.Entidades;
+using MORM.Dominio.Extensions;
 using MORM.Dominio.Interfaces;
 using MORM.Servico.Models;
 using MORM.Servico.Interfaces;
 using System;
-using MORM.Dominio.Extensions;
 using System.Linq;
 
 namespace MORM.Servico.Services

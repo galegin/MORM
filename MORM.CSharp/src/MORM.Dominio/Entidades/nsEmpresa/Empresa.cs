@@ -24,5 +24,16 @@ namespace MORM.Dominio.Entidades
 
         [Relacao(new[] { nameof(Id_GrupoEmpresa) })]
         public GrupoEmpresa GrupoEmpresa { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            var empresa = obj as Empresa;
+            return empresa != null && Id_Empresa == empresa.Id_Empresa;
+        }
+
+        public override int GetHashCode()
+        {
+            return -384371728 + Id_Empresa.GetHashCode();
+        }
     }
 }
