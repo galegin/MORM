@@ -117,7 +117,7 @@ namespace MORM.CrossCutting
                 (value) => Convert.ToString(value),
                 (value) => "'" + value.ToString().Replace("'", "''") + "'"),
             #endregion
-            #region lst
+            #region obj
             new TipoDadoModel(TipoDado.Obj,
                 new[]{ typeof(object), typeof(object) }, new object[]{ null, null },
                 (value) => (value as object), 
@@ -144,6 +144,8 @@ namespace MORM.CrossCutting
         {
             if (type.IsEnum)
                 type = typeof(Enum);
+            else if (type.IsClass)
+                type = typeof(object);
             return ListaDeTipo.FirstOrDefault(x => x.Tipo.Contains(type));
         }
 

@@ -1,6 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MORM.Dominio.Entidades;
 using MORM.Servico.Interfaces;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace MORM.Servico.Tests
 {
@@ -41,7 +43,10 @@ namespace MORM.Servico.Tests
             Incluir();
 
             var empresa = new Empresa { Id_Empresa = _idEmpresa };
-            var empresaRet = _empresaAppService.Listar(empresa) as Empresa;
+            var empresaLista = _empresaAppService.Listar(empresa) as IList<Empresa>;
+            Assert.AreNotEqual(0, empresaLista.Count);
+
+            var empresaRet = empresaLista.FirstOrDefault();
             Assert.AreEqual(_idEmpresa, empresaRet.Id_Empresa);
         }
 

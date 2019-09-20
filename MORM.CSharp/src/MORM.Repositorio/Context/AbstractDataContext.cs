@@ -212,11 +212,23 @@ namespace MORM.Repositorio.Context
 
         public long IncObjeto<TObject>(object obj)
         {
+            // generator
+
+            try
+            {
+                return this.GetSequenciaGen<TObject>();
+            }
+            catch { }
+
+            // select max
+
             try
             {
                 return this.GetSequenciaMaxO<TObject>(obj);
             }
-            catch { return this.GetSequenciaGen<TObject>(); }
+            catch { }
+
+            return -1;
         }
 
         //-- dispose

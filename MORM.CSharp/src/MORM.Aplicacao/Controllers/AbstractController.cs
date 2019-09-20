@@ -4,7 +4,6 @@ using MORM.Dominio.Interfaces;
 using MORM.Dominio.Tipagens;
 using MORM.Servico.Interfaces;
 using MORM.Servico.Models;
-using MORM.Servico.Services;
 using System;
 using System.Configuration;
 using System.Linq;

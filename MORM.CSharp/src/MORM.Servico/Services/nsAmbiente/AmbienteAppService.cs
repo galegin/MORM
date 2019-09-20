@@ -4,37 +4,46 @@ using MORM.Servico.Models;
 using MORM.Servico.Interfaces;
 using MORM.CrossCutting;
 using System;
-using System.Linq;
 
 namespace MORM.Servico.Services
 {
     public class AmbienteAppService : IAmbienteAppService
     {
+        private const string _mensagemAmbienteNaoCadastrado = "Ambiente nao cadastrado";
+        private const string _mensagemUsuarioNaoCadastrado = "Usuario nao cadastrado";
+        private const string _mensagemSenhaNaoCadastrada = "Senha nao cadastrada";
+        private readonly IAmbienteRepository _ambienteRepository;
         private readonly IUsuarioRepository _usuarioRepository;
 
-        public AmbienteAppService(IUsuarioRepository usuarioRepository)
+        public AmbienteAppService(IAmbienteRepository ambienteRepository,
+            IUsuarioRepository usuarioRepository)
         {
+            _ambienteRepository = ambienteRepository;
             _usuarioRepository = usuarioRepository;
         }
 
         public object Validar(ValidarAmbienteInModel model)
         {
-            if (string.IsNullOrWhiteSpace(model.Login))
-                throw new Exception("Usuario deve ser informado");
-            if (string.IsNullOrWhiteSpace(model.Senha))
-                throw new Exception("Senha deve ser informada");
+            model.Validate();
 
-            var usuario = _usuarioRepository.GetAll()?.FirstOrDefault(x => x.Nm_Login == model.Login);
+            var ambienteFiltro = new Ambiente { Codigo = model.Ambiente };
+            var ambiente = _ambienteRepository.GetById(ambienteFiltro);
+            if (string.IsNullOrWhiteSpace(ambiente?.Codigo))
+                throw new Exception(_mensagemAmbienteNaoCadastrado);
+
+            var usuarioFiltro = new Usuario { Nm_Login = model.Login };
+            var usuario = _usuarioRepository.GetById(usuarioFiltro);
             if (string.IsNullOrWhiteSpace(usuario?.Nm_Usuario))
-                throw new Exception("Usuario nao cadastrado");
+                throw new Exception(_mensagemUsuarioNaoCadastrado);
 
             var senhaHash = HashExtensions.GetHash(model.Login, model.Senha);
             var senhaMd5 = Md5Extensions.GetMd5(senhaHash);
 
             if (!Md5Extensions.IsValidMd5(senhaHash, senhaMd5))
-                throw new Exception("Senha nao cadastrada");
+                throw new Exception(_mensagemSenhaNaoCadastrada);
 
-            var ambiente = new Ambiente(); // provisorio
+            // provisorio
+            //var ambiente = new Ambiente(); 
 
             var token = new Token(ambiente, true).GetToken();
 

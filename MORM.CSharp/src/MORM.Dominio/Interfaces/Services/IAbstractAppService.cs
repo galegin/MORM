@@ -7,7 +7,6 @@
 
     public interface IAbstractAmbAppService
     {
-        IAmbiente Ambiente { get; }
     }
 
     public interface IAbstractAppService<TObject> : IAbstractAppService where TObject : class

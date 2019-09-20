@@ -70,6 +70,7 @@
     <Compile Include="Migrations\MigracaoDatabase.cs" />
     <Compile Include="Queries\Queryable.cs" />
     <Compile Include="Queries\QueryableProvider.cs" />
+    <Compile Include="Queries\QueryableValue.cs" />
     <Compile Include="Repositories\nsAmbiente\AmbienteRepository.cs" />
     <Compile Include="Repositories\nsAmbiente\LogAcessoRepository.cs" />
     <Compile Include="Repositories\nsAmbiente\MigracaoRepository.cs" />
@@ -83,9 +84,7 @@
     <Compile Include="Migrations\Migracao.cs" />
     <Compile Include="Migrations\MigracaoContexto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Queries\QueryableObject.cs" />
     <Compile Include="Queries\QueryableTranslator.cs" />
-    <Compile Include="Queries\QueryableValue.cs" />
     <Compile Include="Repositories\AbstractRepository.cs" />
   </ItemGroup>
   <ItemGroup>

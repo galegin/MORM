@@ -48,7 +48,7 @@ namespace MORM.Servico.Services
 
             logAcesso.QtdeAcesso += 1;
 
-            _logAcessoRepository.Add(logAcesso);
+            _logAcessoRepository.AddOrUpdate(logAcesso);
         }
     }
 }

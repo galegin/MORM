@@ -10,6 +10,7 @@ namespace MORM.Servico.Services
     public class PermissaoAppService : IPermissaoAppService
     {
         private readonly IPermissaoRepository _permissaoRepository;
+        private const string TODOS = nameof(TODOS);
 
         public PermissaoAppService(IPermissaoRepository permissaoRepository)
         {
@@ -31,31 +32,25 @@ namespace MORM.Servico.Services
 
             if (permissao.CodigoEmpresa <= 0)
             {
-                model.CodigoMetodo = "TODOS";
+                model.CodigoMetodo = TODOS;
                 permissao = GetPermissao(model);
             }
 
             if (permissao.CodigoEmpresa <= 0)
             {
-                model.CodigoServico = "TODOS";
-                model.CodigoMetodo = "TODOS";
+                model.CodigoServico = TODOS;
                 permissao = GetPermissao(model);
             }
 
             if (permissao.CodigoEmpresa <= 0)
             {
                 model.CodigoUsuario = 999999;
-                model.CodigoServico = "TODOS";
-                model.CodigoMetodo = "TODOS";
                 permissao = GetPermissao(model);
             }
 
             if (permissao.CodigoEmpresa <= 0)
             {
                 model.CodigoEmpresa = 9999;
-                model.CodigoUsuario = 999999;
-                model.CodigoServico = "TODOS";
-                model.CodigoMetodo = "TODOS";
                 permissao = GetPermissao(model);
             }
 

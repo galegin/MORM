@@ -8,7 +8,7 @@ namespace MORM.Servico.Services
     {
         private readonly IGrupoEmpresaRepository _grupoEmpresaRepository;
 
-        public GrupoEmpresaAppService(IGrupoEmpresaRepository grupoEmpresaRepository) :base(grupoEmpresaRepository)
+        public GrupoEmpresaAppService(IGrupoEmpresaRepository grupoEmpresaRepository) : base(grupoEmpresaRepository)
         {
             _grupoEmpresaRepository = grupoEmpresaRepository;
         }

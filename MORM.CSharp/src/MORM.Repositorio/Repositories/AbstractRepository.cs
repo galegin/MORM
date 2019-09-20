@@ -1,6 +1,5 @@
 ﻿using MORM.Dominio.Extensions;
 using MORM.Dominio.Interfaces;
-using MORM.Repositorio.Queries;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,11 +8,11 @@ namespace MORM.Repositorio.Repositories
 {
     public class AbstractRepository : IAbstractRepository
     {
-        public IAbstractDataContext DataContext { get; }
+        protected readonly IAbstractDataContext _dataContext;
 
-        public AbstractRepository(IAbstractDataContext context)
+        public AbstractRepository(IAbstractDataContext dataContext)
         {
-            DataContext = context ?? throw new ArgumentNullException(nameof(context));
+            _dataContext = dataContext ?? throw new ArgumentNullException(nameof(dataContext));
         }
     }
 
@@ -26,46 +25,39 @@ namespace MORM.Repositorio.Repositories
             DbSet = context.Set<TObject>();
         }
 
-        // query
-
-        public IQueryableObject<TObject> AsQueryable()
-        {
-            return new QueryableObject<TObject>(DataContext);
-        }
-
         // listar
 
         public IList<TObject> ListarF(Func<TObject, string> filtro, int qtde = -1, int pagina = 0, bool relacao = false)
         {
-            return DataContext.GetListaF(filtro, qtde: qtde, pagina: pagina, relacao: relacao);
+            return _dataContext.GetListaF(filtro, qtde: qtde, pagina: pagina, relacao: relacao);
         }
 
         public IList<TObject> ListarO(object objeto, int qtde = -1, int pagina = 0, bool relacao = false)
         {
-            return DataContext.GetListaO<TObject>(objeto, qtde: qtde, pagina: pagina, relacao: relacao);
+            return _dataContext.GetListaO<TObject>(objeto, qtde: qtde, pagina: pagina, relacao: relacao);
         }
 
 
         public IList<TObject> ListarW(string where, int qtde = -1, int pagina = 0, bool relacao = false)
         {
-            return DataContext.GetListaW<TObject>(where, qtde: qtde, pagina: pagina, relacao: relacao);
+            return _dataContext.GetListaW<TObject>(where, qtde: qtde, pagina: pagina, relacao: relacao);
         }
 
         // consultar
 
         public TObject ConsultarF(Func<TObject, string> filtro, bool relacao = true)
         {
-            return DataContext.GetObjetoF(filtro, relacao: relacao);
+            return _dataContext.GetObjetoF(filtro, relacao: relacao);
         }
 
         public TObject ConsultarO(object objeto, bool relacao = true)
         {
-            return DataContext.GetObjetoO<TObject>(objeto, relacao: relacao);
+            return _dataContext.GetObjetoO<TObject>(objeto, relacao: relacao);
         }
 
         public TObject ConsultarW(string where, bool relacao = true)
         {
-            return DataContext.GetObjetoW<TObject>(where, relacao: relacao);
+            return _dataContext.GetObjetoW<TObject>(where, relacao: relacao);
         }
 
         // incluir
@@ -74,13 +66,13 @@ namespace MORM.Repositorio.Repositories
         {
             try
             {
-                DataContext.BeginTransaction();
-                DataContext.InsLista(lista as IList, relacao: relacao);
-                DataContext.CommitTransaction();
+                _dataContext.BeginTransaction();
+                _dataContext.InsLista(lista as IList, relacao: relacao);
+                _dataContext.CommitTransaction();
             }
             catch
             {
-                DataContext.RoolBackTransaction();
+                _dataContext.RoolBackTransaction();
                 throw;
             }
         }
@@ -89,13 +81,13 @@ namespace MORM.Repositorio.Repositories
         {
             try
             {
-                DataContext.BeginTransaction();
-                DataContext.InsObjeto(objeto, relacao: relacao);
-                DataContext.CommitTransaction();
+                _dataContext.BeginTransaction();
+                _dataContext.InsObjeto(objeto, relacao: relacao);
+                _dataContext.CommitTransaction();
             }
             catch
             {
-                DataContext.RoolBackTransaction();
+                _dataContext.RoolBackTransaction();
                 throw;
             }
         }
@@ -106,13 +98,13 @@ namespace MORM.Repositorio.Repositories
         {
             try
             {
-                DataContext.BeginTransaction();
-                DataContext.UpdLista(lista as IList, relacao: relacao);
-                DataContext.CommitTransaction();
+                _dataContext.BeginTransaction();
+                _dataContext.UpdLista(lista as IList, relacao: relacao);
+                _dataContext.CommitTransaction();
             }
             catch
             {
-                DataContext.RoolBackTransaction();
+                _dataContext.RoolBackTransaction();
                 throw;
             }
         }
@@ -121,13 +113,13 @@ namespace MORM.Repositorio.Repositories
         {
             try
             {
-                DataContext.BeginTransaction();
-                DataContext.UpdObjeto(objeto, relacao: relacao);
-                DataContext.CommitTransaction();
+                _dataContext.BeginTransaction();
+                _dataContext.UpdObjeto(objeto, relacao: relacao);
+                _dataContext.CommitTransaction();
             }
             catch
             {
-                DataContext.RoolBackTransaction();
+                _dataContext.RoolBackTransaction();
                 throw;
             }
         }
@@ -138,13 +130,13 @@ namespace MORM.Repositorio.Repositories
         {
             try
             {
-                DataContext.BeginTransaction();
-                DataContext.SetLista(lista as IList, relacao: relacao);
-                DataContext.CommitTransaction();
+                _dataContext.BeginTransaction();
+                _dataContext.SetLista(lista as IList, relacao: relacao);
+                _dataContext.CommitTransaction();
             }
             catch
             {
-                DataContext.RoolBackTransaction();
+                _dataContext.RoolBackTransaction();
                 throw;
             }
         }
@@ -153,13 +145,13 @@ namespace MORM.Repositorio.Repositories
         {
             try
             {
-                DataContext.BeginTransaction();
-                DataContext.SetObjeto(objeto, relacao: relacao);
-                DataContext.CommitTransaction();
+                _dataContext.BeginTransaction();
+                _dataContext.SetObjeto(objeto, relacao: relacao);
+                _dataContext.CommitTransaction();
             }
             catch
             {
-                DataContext.RoolBackTransaction();
+                _dataContext.RoolBackTransaction();
                 throw;
             }
         }
@@ -170,13 +162,13 @@ namespace MORM.Repositorio.Repositories
         {
             try
             {
-                DataContext.BeginTransaction();
-                DataContext.RemLista(lista as IList, relacao: relacao);
-                DataContext.CommitTransaction();
+                _dataContext.BeginTransaction();
+                _dataContext.RemLista(lista as IList, relacao: relacao);
+                _dataContext.CommitTransaction();
             }
             catch
             {
-                DataContext.RoolBackTransaction();
+                _dataContext.RoolBackTransaction();
                 throw;
             }
         }
@@ -185,38 +177,44 @@ namespace MORM.Repositorio.Repositories
         {
             try
             {
-                DataContext.BeginTransaction();
-                DataContext.RemObjeto(objeto, relacao: relacao);
-                DataContext.CommitTransaction();
+                _dataContext.BeginTransaction();
+                _dataContext.RemObjeto(objeto, relacao: relacao);
+                _dataContext.CommitTransaction();
             }
             catch
             {
-                DataContext.RoolBackTransaction();
+                _dataContext.RoolBackTransaction();
                 throw;
             }
         }
 
         // sequencia
 
-        public int SequenciaGen()
+        public int Sequencia(TObject objeto)
         {
-            return DataContext.GetSequenciaGen<TObject>();
+            // generator
+
+            try
+            {
+                return SequenciaGen();
+            }
+            catch { }
+
+            // select max
+
+            try
+            {
+                return SequenciaMaxO(objeto);
+            }
+            catch { }
+
+            return -1;
         }
 
-        public int SequenciaMaxF(Func<TObject, string> filtro)
-        {
-            return DataContext.GetSequenciaMaxF(filtro);
-        }
-
-        public int SequenciaMaxO(object objeto)
-        {
-            return DataContext.GetSequenciaMaxO<TObject>(objeto);
-        }
-
-        public int SequenciaMaxW(string where)
-        {
-            return DataContext.GetSequenciaMaxW<TObject>(where);
-        }
+        private int SequenciaGen() => _dataContext.GetSequenciaGen<TObject>();
+        private int SequenciaMaxF(Func<TObject, string> filtro) => _dataContext.GetSequenciaMaxF(filtro);
+        private int SequenciaMaxO(object objeto) => _dataContext.GetSequenciaMaxO<TObject>(objeto);
+        private int SequenciaMaxW(string where) => _dataContext.GetSequenciaMaxW<TObject>(where);
 
         // gatilhos
 

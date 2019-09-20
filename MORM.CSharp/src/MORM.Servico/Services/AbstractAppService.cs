@@ -57,7 +57,7 @@ namespace MORM.Servico.Services
         {
             return _repository
                 .GetAll()
-                .SetFiltroQueryable(filtro)
+                .SetFiltroQueryable(filtro, isKeyOnly: true)
                 .FirstOrDefault()
                 ;
         }

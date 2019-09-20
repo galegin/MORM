@@ -5,12 +5,10 @@ namespace MORM.Dominio.Interfaces
 {
     public interface IAbstractRepository
     {
-        IAbstractDataContext DataContext { get; }
     }
 
     public interface IAbstractRepository<TObject> : IAbstractRepository
     {
-        IQueryableObject<TObject> AsQueryable();
         IList<TObject> ListarF(Func<TObject, string> filtro, int qtde = -1, int pagina = 0, bool relacao = false);
         IList<TObject> ListarO(object objeto, int qtde = -1, int pagina = 0, bool relacao = false);
         IList<TObject> ListarW(string where, int qtde = -1, int pagina = 0, bool relacao = false);
@@ -25,10 +23,7 @@ namespace MORM.Dominio.Interfaces
         void Salvar(TObject objeto, bool relacao = true);
         void Excluir(IList<TObject> lista, bool relacao = true);
         void Excluir(TObject objeto, bool relacao = true);
-        int SequenciaGen();
-        int SequenciaMaxF(Func<TObject, string> filtro);
-        int SequenciaMaxO(object objeto);
-        int SequenciaMaxW(string where);
+        int Sequencia(TObject objeto);
         void preIncluir(TObject objeto);
         void posIncluir(TObject objeto);
         void preAlterar(TObject objeto);

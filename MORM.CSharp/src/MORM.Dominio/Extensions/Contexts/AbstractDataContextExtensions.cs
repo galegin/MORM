@@ -166,7 +166,7 @@ namespace MORM.Dominio.Extensions
 
         private static void SetRelacao(this IAbstractDataContext context, object obj, RelacaoAttribute relacao, bool inRelacao)
         {
-            if (relacao == null/* || obj == null*/)
+            if (relacao == null)
                 return;
 
             if (obj is IList)
@@ -190,7 +190,7 @@ namespace MORM.Dominio.Extensions
 
         private static void InsRelacao(this IAbstractDataContext context, object obj, RelacaoAttribute relacao, bool inRelacao)
         {
-            if (relacao == null/* || obj == null*/)
+            if (relacao == null)
                 return;
 
             if (obj is IList)
@@ -214,7 +214,7 @@ namespace MORM.Dominio.Extensions
 
         private static void UpdRelacao(this IAbstractDataContext context, object obj, RelacaoAttribute relacao, bool inRelacao)
         {
-            if (relacao == null/* || obj == null*/)
+            if (relacao == null)
                 return;
 
             if (obj is IList)
@@ -238,7 +238,7 @@ namespace MORM.Dominio.Extensions
 
         private static void RemRelacao(this IAbstractDataContext context, object obj, RelacaoAttribute relacao, bool inRelacao)
         {
-            if (relacao == null/* || obj == null*/)
+            if (relacao == null)
                 return;
 
             if (obj is IList)

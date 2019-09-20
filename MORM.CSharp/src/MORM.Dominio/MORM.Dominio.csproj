@@ -74,7 +74,6 @@
     <Compile Include="Extensions\Atributos\ValorPadraoExensions.cs" />
     <Compile Include="Extensions\Contexts\AbstractDataContextExtensions.cs" />
     <Compile Include="Extensions\Contexts\AbstractDataContextFiltroExtensions.cs" />
-    <Compile Include="Extensions\Contexts\AbstractRepositoryExtensions.cs" />
     <Compile Include="Extensions\Contexts\DatabaseTypeExtension.cs" />
     <Compile Include="Extensions\Contexts\DataReaderExtensions.cs" />
     <Compile Include="Extensions\Contexts\FiltroExtension.cs" />
@@ -91,7 +90,6 @@
     <Compile Include="Interfaces\Contexts\IConexao.cs" />
     <Compile Include="Interfaces\Contexts\IMigracao.cs" />
     <Compile Include="Interfaces\Contexts\IParametro.cs" />
-    <Compile Include="Interfaces\Queries\IQueryableObject.cs" />
     <Compile Include="Interfaces\Queries\IQueryableTranslator.cs" />
     <Compile Include="Interfaces\Queries\IQueryableValue.cs" />
     <Compile Include="Interfaces\Repositories\IAbstractRepository.cs" />

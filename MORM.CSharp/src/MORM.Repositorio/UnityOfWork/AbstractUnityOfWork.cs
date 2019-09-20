@@ -5,23 +5,24 @@ namespace MORM.Repositorio.UnityOfWork
 {
     public class AbstractUnityOfWork : IAbstractUnityOfWork
     {
-        public IAbstractDataContext DataContext { get; }
+        private readonly IAbstractDataContext _dataContext;
 
         public AbstractUnityOfWork(IAbstractDataContext dataContext)
         {
-            DataContext = dataContext ?? throw new ArgumentNullException(nameof(dataContext));
+            _dataContext = dataContext ?? throw new ArgumentNullException(nameof(dataContext));
         }
 
-        public void SetAmbiente(IAmbiente ambiente) => DataContext.SetAmbiente(ambiente);
+        public void SetAmbiente(IAmbiente ambiente) => 
+            _dataContext.SetAmbiente(ambiente);
     }
 
     public class AbstractAmbUnityOfWork : IAbstracAmbtUnityOfWork
     {
-        public IAmbiente Ambiente { get; }
+        private readonly IAmbiente _ambiente;
 
         public AbstractAmbUnityOfWork(IAmbiente ambiente)
         {
-            Ambiente = ambiente ?? throw new ArgumentNullException(nameof(ambiente));
+            _ambiente = ambiente ?? throw new ArgumentNullException(nameof(ambiente));
         }
     }
 }

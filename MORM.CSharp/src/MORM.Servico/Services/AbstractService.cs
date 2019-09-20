@@ -1,6 +1,4 @@
 ﻿using MORM.Dominio.Interfaces;
-using MORM.Repositorio.Repositories;
-using MORM.Servico.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,83 +7,59 @@ namespace MORM.Servico.Services
 {
     public class AbstractService : IAbstractService
     {
-        public IAbstractUnityOfWork AbstractUnityOfWork { get; }
+        private readonly IAbstractRepository _abstractRepository;
 
-        public AbstractService(IAbstractUnityOfWork abstractUnityOfWork)
+        public AbstractService(IAbstractRepository abstractRepository)
         {
-            AbstractUnityOfWork = abstractUnityOfWork ?? throw new ArgumentNullException(nameof(abstractUnityOfWork));
+            _abstractRepository = abstractRepository ?? throw new ArgumentNullException(nameof(abstractRepository));
         }
     }
 
     public class AbstractAmbService : IAbstractAmbService
     {
-        public IAmbiente Ambiente { get; }
+        private readonly IAmbiente _ambiente;
 
         public AbstractAmbService(IAmbiente ambiente)
         {
-            Ambiente = ambiente ?? throw new ArgumentNullException(nameof(ambiente));
+            _ambiente = ambiente ?? throw new ArgumentNullException(nameof(ambiente));
         }
     }
 
     public class AbstractService<TObject> : AbstractService, IAbstractService<TObject>
     {
-        public IAbstractRepository<TObject> AbstractRepository { get; }
+        private IAbstractRepository<TObject> _abstractRepository;
 
-        public AbstractService(IAbstractUnityOfWork abstractUnityOfWork) : base(abstractUnityOfWork)
+        public AbstractService(IAbstractRepository<TObject> abstractRepository) : base(abstractRepository)
         {
-            AbstractRepository = new AbstractRepository<TObject>(abstractUnityOfWork.DataContext);
+            _abstractRepository = abstractRepository ?? throw new ArgumentNullException(nameof(abstractRepository));
         }
 
         //-- listar
 
-        public List<TObject> Listar(TObject filtro) => AbstractRepository.ListarO(filtro).ToList();
+        public List<TObject> Listar(TObject filtro) => _abstractRepository.ListarO(filtro).ToList();
 
         //-- consultar
 
-        public TObject Consultar(TObject filtro) => AbstractRepository.ConsultarO(filtro);
+        public TObject Consultar(TObject filtro) => _abstractRepository.ConsultarO(filtro);
 
         //-- incluir
 
-        public void Incluir(TObject objeto) => AbstractRepository.Incluir(objeto);
+        public void Incluir(TObject objeto) => _abstractRepository.Incluir(objeto);
 
         //-- alterar
 
-        public void Alterar(TObject objeto) =>  AbstractRepository.Alterar(objeto);
+        public void Alterar(TObject objeto) => _abstractRepository.Alterar(objeto);
 
         //-- salvar
 
-        public void Salvar(TObject objeto) => AbstractRepository.Salvar(objeto);
+        public void Salvar(TObject objeto) => _abstractRepository.Salvar(objeto);
 
         //-- excluir
 
-        public void Excluir(TObject objeto) => AbstractRepository.Excluir(objeto);
+        public void Excluir(TObject objeto) => _abstractRepository.Excluir(objeto);
 
         //-- sequencia
 
-        public int Sequencia(TObject filtro)
-        {
-            var sequencia = 0;
-
-            // generator
-
-            try
-            {
-                sequencia = AbstractRepository.SequenciaGen();
-            }
-            catch { sequencia = -1; }
-
-            // select max
-
-            if (sequencia <= 0)
-            {
-                try
-                {
-                    sequencia = AbstractRepository.SequenciaMaxO(filtro);
-                }
-                catch { sequencia = -1; }
-            }
-
-            return sequencia;
-        }
+        public int Sequencia(TObject filtro) => _abstractRepository.Sequencia(filtro);
     }
 }

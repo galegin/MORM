@@ -41,10 +41,12 @@ namespace MORM.Repositorio.Queries
         {
             var where = new QueryableTranslator().Translate(expression);
 
-            if (isEnumerable) {
+            if (isEnumerable)
+            {
                 return ExecuteList(where);
             }
-            else {
+            else
+            {
                 return ExecuteInstance(where);
             }
         }
