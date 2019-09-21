@@ -1,7 +1,7 @@
 ﻿using MORM.CrossCutting;
 using System.Xml.Serialization;
 
-namespace MORM.Dominio.Tipagens
+namespace MORM.Dominio.Types
 {
     public enum CampoPreFixo
     {

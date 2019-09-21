@@ -1,4 +1,4 @@
-﻿namespace MORM.Dominio.Tipagens
+﻿namespace MORM.Dominio.Types
 {
     public enum TipoValorPadrao
     {

@@ -17,7 +17,7 @@ namespace MORM.Repositorio
 
             container.Register<IAmbienteRepository, AmbienteRepository>();
             container.Register<ILogAcessoRepository, LogAcessoRepository>();
-            container.Register<IMigracaoRepository, MigracaoRepository>();
+            container.Register<IMigracaoEntRepository, MigracaoEntRepository>();
             container.Register<IPermissaoRepository, PermissaoRepository>();
 
             container.Register<IAbstractDataContext, AbstractDataContext>();

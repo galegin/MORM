@@ -73,7 +73,7 @@
     <Compile Include="Queries\QueryableValue.cs" />
     <Compile Include="Repositories\nsAmbiente\AmbienteRepository.cs" />
     <Compile Include="Repositories\nsAmbiente\LogAcessoRepository.cs" />
-    <Compile Include="Repositories\nsAmbiente\MigracaoRepository.cs" />
+    <Compile Include="Repositories\nsAmbiente\MigracaoEntRepository.cs" />
     <Compile Include="Repositories\nsAmbiente\PermissaoRepository.cs" />
     <Compile Include="Repositories\nsEmpresa\EmpresaRepository.cs" />
     <Compile Include="Repositories\nsEmpresa\GrupoEmpresaRepository.cs" />

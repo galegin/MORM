@@ -1,6 +1,6 @@
 ﻿using MORM.Dominio.Extensions;
 using MORM.Dominio.Interfaces;
-using MORM.Dominio.Tipagens;
+using MORM.Dominio.Types;
 using MORM.CrossCutting;
 using System;
 

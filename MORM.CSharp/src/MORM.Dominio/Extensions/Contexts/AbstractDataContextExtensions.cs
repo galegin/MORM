@@ -1,7 +1,6 @@
 ﻿using MORM.Dominio.Atributos;
-using MORM.Dominio.Extensions;
 using MORM.Dominio.Interfaces;
-using MORM.Dominio.Tipagens;
+using MORM.Dominio.Types;
 using MORM.CrossCutting;
 using System;
 using System.Collections;
@@ -18,7 +17,7 @@ namespace MORM.Dominio.Extensions
         {
             try
             {
-                return context?.Conexao?.Connection?.State ?? null;
+                return context?.GetConexao()?.Connection?.State ?? null;
             }
             catch { }
 
@@ -28,42 +27,25 @@ namespace MORM.Dominio.Extensions
         public static void Conectar(this IAbstractDataContext context)
         {
             if (context.GetConnectionState() == ConnectionState.Closed)
-                context.Conexao.Connection.Open();
+                context.GetConexao().Connection.Open();
         }
 
         public static void DesConectar(this IAbstractDataContext context)
         {
             if (context.GetConnectionState() == ConnectionState.Open)
-                context.Conexao.Connection.Close();
+                context.GetConexao().Connection.Close();
         }
-        
+
         //-- lista
 
-        public static IList<TObject> GetListaW<TObject>(this IAbstractDataContext context, string where, bool relacao = true, int qtde = -1, int pagina = 0)
+        public static IList<TObject> GetLista<TObject>(this IAbstractDataContext context, object filtro = null, bool relacao = true, int qtde = -1, int pagina = 0)
         {
-            var lista = new List<TObject>();
-            context.GetLista(lista, where, relacao, qtde, pagina);
-            return lista;
-        }
-
-        public static IList<TObject> GetListaF<TObject>(this IAbstractDataContext context, Func<TObject, string> filtro, bool relacao = true, int qtde = -1, int pagina = 0)
-        {
-            TObject obj = Activator.CreateInstance<TObject>();
-            var lista = new List<TObject>();
-            context.GetLista(lista, filtro?.Invoke(obj), relacao, qtde, pagina);
-            return lista;
-        }
-
-        public static IList<TObject> GetListaO<TObject>(this IAbstractDataContext context, object objeto, bool relacao = true, int qtde = -1, int pagina = 0)
-        {
-            var lista = new List<TObject>();
             var listaDeCampoTipo = new[] { CampoTipo.Key, CampoTipo.Req, CampoTipo.Nul };
-            var where = context.Comando
-                .ComObjeto(objeto)
+            var where = context.GetComando()
+                .ComObjeto(filtro)
                 .ComTipoCampo(listaDeCampoTipo)
                 .GetWhereObj();
-            context.GetLista(lista, where, relacao, qtde, pagina);
-            return lista;
+            return context.GetLista(typeof(TObject), where, relacao, qtde, pagina) as IList<TObject>;
         }
 
         public static void SetLista(this IAbstractDataContext context, IList lista, bool relacao = false)
@@ -92,49 +74,34 @@ namespace MORM.Dominio.Extensions
 
         //-- objeto
 
-        public static TObject GetObjetoW<TObject>(this IAbstractDataContext context, string where, bool relacao = true)
+        public static TObject GetObjeto<TObject>(this IAbstractDataContext context, object filtro = null, bool relacao = true)
         {
-            TObject obj = Activator.CreateInstance<TObject>();
-            context.GetObjeto(obj, where, relacao);
-            return obj;
-        }
-
-        public static TObject GetObjetoF<TObject>(this IAbstractDataContext context, Func<TObject, string> filtro, bool relacao = true)
-        {
-            TObject obj = Activator.CreateInstance<TObject>();
-            context.GetObjeto(obj, filtro?.Invoke(obj), relacao);
-            return obj;
-        }
-
-        public static TObject GetObjetoO<TObject>(this IAbstractDataContext context, object objeto, bool relacao = true)
-        {
-            TObject obj = Activator.CreateInstance<TObject>();
             var listaDeCampoTipo = new[] { CampoTipo.Key };
-            var where = context.Comando
-                .ComObjeto(objeto)
+            var where = context.GetComando()
+                .ComObjeto(filtro)
                 .ComTipoCampo(listaDeCampoTipo)
                 .GetWhereObj();
-            context.GetObjeto(obj, where, relacao);
-            return obj;
+            return (TObject)context.GetObjeto(typeof(TObject), where, relacao);
         }
 
         //-- get relacao
 
-        public static void GetRelacaoLista(this IAbstractDataContext context, object obj, bool inRelacao)
+        public static void GetRelacaoLista(this IAbstractDataContext context, object obj, bool inRelacao, TipoDatabase tipoDatabase)
         {
             var relacoes = obj.GetType().GetRelacoesGet();
             foreach (var relacao in relacoes)
             {
                 relacao.OwnerObj = obj;
                 var val = relacao.OwnerProp.GetValue(obj);
-                context.GetRelacao(val, relacao, inRelacao);
+                var ret = context.GetRelacao(val.GetType(), relacao, inRelacao, tipoDatabase);
+                relacao.OwnerProp.SetValue(obj, ret);
             }
         }
 
-        private static void GetRelacao(this IAbstractDataContext context, object obj, RelacaoAttribute relacao, bool inRelacao)
+        private static object GetRelacao(this IAbstractDataContext context, Type type, RelacaoAttribute relacao, bool inRelacao, TipoDatabase tipoDatabase)
         {
             if (relacao == null)
-                return;
+                return null;
 
             var campos = RelacaoCampos.GetRelacaoCampos(relacao.Campos);
             var wheres = new List<string>();
@@ -142,13 +109,15 @@ namespace MORM.Dominio.Extensions
             foreach (var campo in campos)
             {
                 var value = relacao.OwnerObj.GetInstancePropOrField(campo.AtributoRel);
-                wheres.Add($"{campo.Atributo} = {context.Ambiente.TipoDatabase.GetValueStr(value)}");
+                wheres.Add($"{campo.Atributo} = {tipoDatabase.GetValueStr(value)}");
             }
 
-            if (obj is IList)
-                context.GetLista(obj as IList, string.Join(" and ", wheres), inRelacao);
-            else if (obj is object)
-                context.GetObjeto(obj as object, string.Join(" and ", wheres));
+            if (type is IList)
+                return context.GetLista(type, string.Join(" and ", wheres), inRelacao);
+            else if (type is object)
+                return context.GetObjeto(type, string.Join(" and ", wheres));
+
+            return null;
         }
 
         //-- set relacao
@@ -247,66 +216,34 @@ namespace MORM.Dominio.Extensions
                 context.RemObjeto(obj as object);
         }
 
-        //-- sequencia
-
-        public static int GetSequenciaGen<TObject>(this IAbstractDataContext context)
-        {
-            var sql = context.Comando
-                .ComTipoObjeto(typeof(TObject))
-                .GetSequenciaGen();
-            return context.Conexao.ExecEscalar(sql);
-        }
-
-        public static int GetSequenciaMaxW<TObject>(this IAbstractDataContext context, string where)
-        {
-            var sql = context.Comando
-                .ComTipoObjeto(typeof(TObject))
-                .ComWhere(where)
-                .GetSequenciaMax();
-            return context.Conexao.ExecEscalar(sql);
-        }
-
-        public static int GetSequenciaMaxF<TObject>(this IAbstractDataContext context, Func<TObject, string> filtro)
-        {
-            TObject obj = Activator.CreateInstance<TObject>();
-            return context.GetSequenciaMaxW<TObject>(filtro?.Invoke(obj));
-        }
-
-        public static int GetSequenciaMaxO<TObject>(this IAbstractDataContext context, object objeto)
-        {
-            var listaDeCampoTipo = new[] { CampoTipo.Key, CampoTipo.Req, CampoTipo.Nul };
-            var where = context.Comando
-                .ComObjeto(objeto)
-                .ComTipoCampo(listaDeCampoTipo)
-                .GetWhereObj();
-            return context.GetSequenciaMaxW<TObject>(where);
-        }
-
         //-- limits
 
-        public static string GetSelectLim<TObject>(this IAbstractDataContext context, string sql, int qtde, int pagina = 0)
+        public static string GetSelectLim<TObject>(this TipoDatabase tipoDatabase, string sql, int qtde, int pagina = 0)
         {
-            return context.Ambiente.TipoDatabase.GetSelectLim(sql, qtde, pagina);
+            return tipoDatabase.GetSelectLim(sql, qtde, pagina);
         }
 
         //-- transaction
 
-        public static void BeginTransaction(this IAbstractDataContext context) => context.Conexao.BeginTransaction();
-        public static void CommitTransaction(this IAbstractDataContext context) => context.Conexao.CommitTransaction();
-        public static void RoolBackTransaction(this IAbstractDataContext context) => context.Conexao.RoolBackTransaction();
+        public static void BeginTransaction(this IAbstractDataContext context) => 
+            context.GetConexao().BeginTransaction();
+        public static void CommitTransaction(this IAbstractDataContext context) =>
+            context.GetConexao().CommitTransaction();
+        public static void RoolBackTransaction(this IAbstractDataContext context) =>
+            context.GetConexao().RoolBackTransaction();
 
         //-- valor padrao
 
-        public static object GetValor(this IAbstractDataContext context, ValorPadraoAttribute valorPadrao)
+        public static object GetValor(this IAmbiente ambiente, ValorPadraoAttribute valorPadrao)
         {
             switch (valorPadrao.Tipo)
             {
                 case TipoValorPadrao.EmpresaLogada:
-                    return context.Ambiente.CodigoEmpresa;
+                    return ambiente.CodigoEmpresa;
                 case TipoValorPadrao.UsuarioLogado:
-                    return context.Ambiente.CodigoUsuario;
+                    return ambiente.CodigoUsuario;
                 case TipoValorPadrao.TerminalLogado:
-                    return context.Ambiente.CodigoTerminal;
+                    return ambiente.CodigoTerminal;
                 case TipoValorPadrao.DataSistema:
                     return DateTime.Today;
                 case TipoValorPadrao.HoraSistema:

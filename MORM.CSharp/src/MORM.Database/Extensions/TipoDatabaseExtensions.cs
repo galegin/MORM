@@ -1,5 +1,5 @@
 ﻿using MORM.Repositorio.Classes;
-using MORM.Dominio.Tipagens;
+using MORM.Dominio.Types;
 using System.Linq;
 
 namespace MORM.Repositorio.Extensions

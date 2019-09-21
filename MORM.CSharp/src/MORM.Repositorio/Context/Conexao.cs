@@ -1,5 +1,5 @@
 using MORM.Dominio.Interfaces;
-using MORM.Dominio.Tipagens;
+using MORM.Dominio.Types;
 using MORM.CrossCutting;
 using System;
 using System.Collections.Generic;

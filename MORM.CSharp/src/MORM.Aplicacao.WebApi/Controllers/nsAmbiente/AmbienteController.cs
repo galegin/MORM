@@ -1,5 +1,5 @@
 ﻿using MORM.Aplicacao.Controllers;
-using MORM.Dominio.Tipagens;
+using MORM.Dominio.Types;
 using MORM.Servico.Interfaces;
 using MORM.Servico.Models;
 using System.Net.Http;

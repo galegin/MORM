@@ -1,5 +1,5 @@
 ﻿using MORM.Dominio.Atributos;
-using MORM.Dominio.Tipagens;
+using MORM.Dominio.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;

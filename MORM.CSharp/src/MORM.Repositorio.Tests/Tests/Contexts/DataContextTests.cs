@@ -1,19 +1,19 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MORM.Dominio.Extensions;
 using MORM.Dominio.Interfaces;
 using MORM.Repositorio.Migrations;
-using System.Linq;
 
 namespace MORM.Repositorio.Tests
 {
     [TestClass]
     public class DataContextTests : BaseTests
     {
-        private readonly IAbstractDataContext _dataContext;
+        private readonly IMigracaoEntRepository _repository;
+        private readonly IMigracao _migracao;
 
         public DataContextTests()
         {
-            _dataContext = Resolve<IAbstractDataContext>();
+            _repository = Resolve<IMigracaoEntRepository>();
+            _migracao = Resolve<IMigracao>();
         }
 
         [TestInitialize]
@@ -29,7 +29,7 @@ namespace MORM.Repositorio.Tests
         [TestMethod]
         public void DataContextTests_Migracao()
         {
-            MigracaoContexto.Gerar(_dataContext);
+            MigracaoContexto.Gerar(_repository, _migracao);
         }
     }
 }

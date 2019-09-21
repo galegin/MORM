@@ -1,6 +1,6 @@
 using MORM.Dominio.Atributos;
 using MORM.Dominio.Interfaces;
-using MORM.Dominio.Tipagens;
+using MORM.Dominio.Types;
 using System;
 using System.Configuration;
 

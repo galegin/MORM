@@ -1,4 +1,4 @@
-﻿using MORM.Dominio.Tipagens;
+﻿using MORM.Dominio.Types;
 
 namespace MORM.Dominio.Interfaces
 {

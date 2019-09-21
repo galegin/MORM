@@ -1,5 +1,5 @@
 ﻿using MORM.Dominio.Interfaces;
-using MORM.Dominio.Tipagens;
+using MORM.Dominio.Types;
 using System.Configuration;
 
 namespace MORM.Repositorio.Queries

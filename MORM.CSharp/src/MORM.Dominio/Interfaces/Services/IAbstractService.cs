@@ -12,12 +12,12 @@ namespace MORM.Dominio.Interfaces
 
     public interface IAbstractService<TObject> : IAbstractService
     {
-        List<TObject> Listar(TObject filtro);
+        IList<TObject> Listar(TObject filtro);
         TObject Consultar(TObject filtro);
         void Incluir(TObject objeto);
         void Alterar(TObject objeto);
         void Salvar(TObject objeto);
         void Excluir(TObject objeto);
-        int Sequencia(TObject filtro);
+        long Sequencia(TObject filtro);
     }
 }

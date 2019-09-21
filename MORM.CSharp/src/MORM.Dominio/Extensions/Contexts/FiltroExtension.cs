@@ -1,4 +1,4 @@
-﻿using MORM.Dominio.Tipagens;
+﻿using MORM.Dominio.Types;
 using System.Collections.Generic;
 using System.Linq;
 

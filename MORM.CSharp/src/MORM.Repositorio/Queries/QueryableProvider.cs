@@ -1,7 +1,5 @@
 ﻿using MORM.Dominio.Extensions;
 using MORM.Dominio.Interfaces;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
@@ -42,27 +40,21 @@ namespace MORM.Repositorio.Queries
             var where = new QueryableTranslator().Translate(expression);
 
             if (isEnumerable)
-            {
                 return ExecuteList(where);
-            }
             else
-            {
                 return ExecuteInstance(where);
-            }
         }
 
         internal object ExecuteInstance(string where)
         {
-            var instance = Activator.CreateInstance<TInstance>();
-            _dataContext.GetObjeto(instance, where);
+            var instance = _dataContext.GetObjeto(typeof(TInstance), where);
             return instance.IsChavePreenchida() ? instance : default(TInstance);
         }
 
         internal object ExecuteList(string where)
         {
-            var lista = new List<TInstance>();
-            _dataContext.GetLista(lista, where);
-            return lista.Any() ? lista : null;
+            var lista = _dataContext.GetLista(typeof(TInstance), where);
+            return lista.Count > 0 ? lista : null;
         }
     }
 }

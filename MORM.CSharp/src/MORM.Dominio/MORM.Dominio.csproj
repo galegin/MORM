@@ -110,7 +110,7 @@
     <Compile Include="Interfaces\Repositories\nsEmpresa\IEmpresaRepository.cs" />
     <Compile Include="Interfaces\Repositories\nsEmpresa\IGrupoEmpresaRepository.cs" />
     <Compile Include="Interfaces\Repositories\nsAmbiente\ILogAcessoRepository.cs" />
-    <Compile Include="Interfaces\Repositories\nsAmbiente\IMigracaoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\nsAmbiente\IMigracaoEntRepository.cs" />
     <Compile Include="Interfaces\Repositories\nsAmbiente\IPermissaoRepository.cs" />
     <Compile Include="Interfaces\Repositories\nsTerminal\ITerminalRepository.cs" />
     <Compile Include="Interfaces\Repositories\nsUsuario\IUsuarioRepository.cs" />
@@ -119,10 +119,10 @@
     <Compile Include="Interfaces\Services\IDomainService.cs" />
     <Compile Include="Interfaces\UnityOfWorks\IAbstractUnityOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tipagens\CampoPreFixo.cs" />
-    <Compile Include="Tipagens\TipoDatabase.cs" />
-    <Compile Include="Tipagens\TipoPermissao.cs" />
-    <Compile Include="Tipagens\TipoValorPadrao.cs" />
+    <Compile Include="Types\CampoPreFixo.cs" />
+    <Compile Include="Types\TipoDatabase.cs" />
+    <Compile Include="Types\TipoPermissao.cs" />
+    <Compile Include="Types\TipoValorPadrao.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MORM.CrossCutting\MORM.CrossCutting.csproj">

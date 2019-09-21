@@ -1,4 +1,4 @@
-﻿using MORM.Dominio.Tipagens;
+﻿using MORM.Dominio.Types;
 using System;
 
 namespace MORM.Repositorio.Classes

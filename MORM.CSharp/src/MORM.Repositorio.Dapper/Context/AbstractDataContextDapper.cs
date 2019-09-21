@@ -1,9 +1,11 @@
 ﻿using Dapper;
+using MORM.CrossCutting;
 using MORM.Dominio.Extensions;
 using MORM.Dominio.Interfaces;
 using MORM.Repositorio.Context;
 using MORM.Repositorio.Factories;
 using MORM.Repositorio.Migrations;
+using MORM.Repositorio.Repositories;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,49 +15,66 @@ namespace MORM.Repositorio.Dapper.Context
 {
     public class AbstractDataContextDapper : IAbstractDataContextDapper, IDisposable
     {
-        public IAmbiente Ambiente { get; private set; }
-        public IConexao Conexao { get; private set; }
-        public IComando Comando { get; private set; }
-        public IMigracao Migracao { get; private set; }
+        private IAmbiente _ambiente;
+        private IConexao _conexao;
+        private IComando _comando;
+        private IMigracao _migracao;
 
         public AbstractDataContextDapper(IAmbiente ambiente)
         {
             SetAmbiente(ambiente);
         }
 
+        //-- conexao
+
+        public IConexao GetConexao() => _conexao;
+
+        //-- comando
+
+        public IComando GetComando() => _comando;
+
         //-- set
 
-        public IDbSet<TObject> Set<TObject>()
-        {
-            return new DbSet<TObject>(this);
-        }
+        public IDbSet<TObject> Set<TObject>() => new DbSet<TObject>(this);
 
         //-- ambiente
 
         public void SetAmbiente(IAmbiente ambiente)
         {
-            Ambiente = ambiente ?? throw new ArgumentNullException(nameof(ambiente));
-            Conexao = ConexaoFactory.GetConexao(ambiente);
-            Comando = new Comando(ambiente.TipoDatabase);
-            Migracao = new Migracao(this);
+            _ambiente = ambiente ?? throw new ArgumentNullException(nameof(ambiente));
+            _conexao = ConexaoFactory.GetConexao(ambiente);
+            _comando = new Comando(ambiente.TipoDatabase);
+            _migracao = new Migracao(GetMigracaoEntRepository(), _ambiente.TipoDatabase, _conexao);
+        }
+
+        //-- migracao
+
+        private IMigracaoEntRepository GetMigracaoEntRepository() =>
+            new MigracaoEntRepository(this);
+
+        private void SetMigracao()
+        {
+            MigracaoContexto.Gerar(GetMigracaoEntRepository(), _migracao);
         }
 
         //-- lista
 
-        public void GetLista(IList lista, string where = null, bool relacao = false, int qtde = -1, int pagina = 0)
+        public IList GetLista(Type type, object filtro = null, bool relacao = false, int qtde = -1, int pagina = 0)
         {
-            var type = lista.GetType().GetGenericArguments().Single();
+            var lista = TypeForConvert.GetTypeFor(typeof(List<>), type) as IList;
 
-            this.SetarFiltroPadraoW(type, ref where);
+            _ambiente.SetarFiltroPadrao(filtro);
 
-            var sql = Comando
+            var where = filtro is string ? filtro as string : null;
+
+            var sql = _comando
                 .ComTipoObjeto(type)
                 .ComWhere(where)
                 .ComQtde(qtde)
                 .ComPagina(pagina)
                 .GetSelect();
 
-            Conexao
+            _conexao
                 .Connection
                 .Query(sql: sql, type: type)
                 .ToList()
@@ -65,28 +84,34 @@ namespace MORM.Repositorio.Dapper.Context
                     lista.Add(obj);
                     obj.SetValueFromObjeto(dataReader);
                     if (relacao)
-                        this.GetRelacaoLista(obj, false);
+                        this.GetRelacaoLista(obj, false, _ambiente.TipoDatabase);
                 });
+
+            return lista;
         }
 
         //-- objeto
 
-        public void GetObjeto(object obj, string where = null, bool relacao = true)
+        public object GetObjeto(Type type, object filtro = null, bool relacao = true)
         {
-            this.SetarFiltroPadraoO(obj);
+            var obj = Activator.CreateInstance(type);
+
+            _ambiente.SetarFiltroPadrao(filtro);
+
+            var where = filtro is string ? filtro as string : null;
 
             var parametros = new List<IParametro>();
 
-            var whereComando = Comando
+            var whereComando = _comando
                 .ComObjeto(obj)
                 .ComParametros(parametros)
                 .GetWhereKey();
 
-            var sql = Comando
+            var sql = _comando
                 .ComWhere(where ?? whereComando)
                 .GetSelect();
 
-            var dataReader = Conexao
+            var dataReader = _conexao
                 .Connection
                 .QueryFirstOrDefault(sql: sql, type: obj.GetType(), param: obj);
 
@@ -94,25 +119,27 @@ namespace MORM.Repositorio.Dapper.Context
             {
                 obj.SetValueFromObjeto(dataReader);
                 if (relacao)
-                    this.GetRelacaoLista(obj, true);
+                    this.GetRelacaoLista(obj, true, _ambiente.TipoDatabase);
             }
+
+            return obj;
         }
 
         public void SetObjeto(object obj, bool relacao = true)
         {
-            this.SetarValorPadraoO(obj);
+            _ambiente.SetarValorPadrao(obj);
 
             obj.ValidarCampos();
             obj.ValidarTipagens();
 
             var parametrosKey = new List<IParametro>();
 
-            var sql = Comando
+            var sql = _comando
                 .ComObjeto(obj)
                 .ComParametros(parametrosKey)
                 .GetSelectKey();
 
-            var dataReader = Conexao
+            var dataReader = _conexao
                 .Connection
                 .QueryFirstOrDefault(sql: sql, type: obj.GetType(), param: obj);
 
@@ -121,15 +148,15 @@ namespace MORM.Repositorio.Dapper.Context
             var cmd = string.Empty;
 
             if (dataReader != null)
-                cmd = Comando
+                cmd = _comando
                     .ComParametros(parametros)
                     .GetUpdate();
             else
-                cmd = Comando
+                cmd = _comando
                     .ComParametros(parametros)
                     .GetInsert();
 
-            Conexao
+            _conexao
                 .Connection
                 .Execute(sql: cmd, param: obj);
 
@@ -139,19 +166,19 @@ namespace MORM.Repositorio.Dapper.Context
 
         public void InsObjeto(object obj, bool relacao = true)
         {
-            this.SetarValorPadraoO(obj);
+            _ambiente.SetarValorPadrao(obj);
 
             obj.ValidarCampos();
             obj.ValidarTipagens();
 
             var parametros = new List<IParametro>();
 
-            var cmd = Comando
+            var cmd = _comando
                 .ComObjeto(obj)
                 .ComParametros(parametros)
                 .GetInsert();
 
-            Conexao
+            _conexao
                 .Connection
                 .Execute(sql: cmd, param: obj);
 
@@ -161,19 +188,19 @@ namespace MORM.Repositorio.Dapper.Context
 
         public void UpdObjeto(object obj, bool relacao = true)
         {
-            this.SetarValorPadraoO(obj);
+            _ambiente.SetarValorPadrao(obj);
 
             obj.ValidarCampos();
             obj.ValidarTipagens();
 
             var parametros = new List<IParametro>();
 
-            var cmd = Comando
+            var cmd = _comando
                 .ComObjeto(obj)
                 .ComParametros(parametros)
                 .GetUpdate();
 
-            Conexao
+            _conexao
                 .Connection
                 .Execute(sql: cmd, param: obj);
 
@@ -183,16 +210,16 @@ namespace MORM.Repositorio.Dapper.Context
 
         public void RemObjeto(object obj, bool relacao = true)
         {
-            this.SetarValorPadraoO(obj);
+            _ambiente.SetarValorPadrao(obj);
 
             var parametros = new List<IParametro>();
 
-            var cmd = Comando
+            var cmd = _comando
                 .ComObjeto(obj)
                 .ComParametros(parametros)
                 .GetDelete();
 
-            Conexao
+            _conexao
                 .Connection
                 .Execute(sql: cmd, param: obj);
 
@@ -200,13 +227,17 @@ namespace MORM.Repositorio.Dapper.Context
                 this.RemRelacaoLista(obj, true);
         }
 
-        public long IncObjeto<TObject>(object obj)
+        public long IncObjeto<TObject>(object filtro = null)
         {
-            try
-            {
-                return this.GetSequenciaMaxO<TObject>(obj);
-            }
-            catch { return this.GetSequenciaGen<TObject>(); }
+            var where = filtro is string ? filtro as string : null;
+
+            var sql = _comando
+                .ComTipoObjeto(typeof(TObject))
+                .ComWhere(where)
+                .GetSequencia();
+
+            return _conexao
+                .ExecEscalar(sql);
         }
 
         //-- dispose

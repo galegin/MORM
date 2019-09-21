@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MORM.Repositorio.Dapper.Context;
+using MORM.Dominio.Interfaces;
 using MORM.Repositorio.Migrations;
 
 namespace MORM.Repositorio.Tests
@@ -7,11 +7,13 @@ namespace MORM.Repositorio.Tests
     [TestClass]
     public class DataContextDapperTests : BaseTests
     {
-        private readonly IAbstractDataContextDapper _dataContextDapper;
+        private readonly IMigracaoEntRepository _repository;
+        private readonly IMigracao _migracao;
 
         public DataContextDapperTests()
         {
-            _dataContextDapper = Resolve<IAbstractDataContextDapper>();
+            _repository = Resolve<IMigracaoEntRepository>();
+            _migracao = Resolve<IMigracao>();
         }
 
         [TestInitialize]
@@ -27,7 +29,7 @@ namespace MORM.Repositorio.Tests
         [TestMethod]
         public void DataContextDapperTests_MigracaoDapper()
         {
-            MigracaoContexto.Gerar(_dataContextDapper);
+            MigracaoContexto.Gerar(_repository, _migracao);
         }
     }
 }

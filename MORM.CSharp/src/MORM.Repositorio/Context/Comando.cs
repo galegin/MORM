@@ -4,7 +4,7 @@ using System.Linq;
 using MORM.Dominio.Atributos;
 using MORM.Dominio.Extensions;
 using MORM.Dominio.Interfaces;
-using MORM.Dominio.Tipagens;
+using MORM.Dominio.Types;
 using MORM.CrossCutting;
 
 namespace MORM.Repositorio.Context
@@ -231,19 +231,14 @@ namespace MORM.Repositorio.Context
                 $" where {string.Join(" and ", wheres)}";
         }
 
-        public string GetSequenciaGen()
-        {
-            return _tipoDatabase.GetSequenceGen(_tabela.Nome);
-        }
-
-        public string GetSequenciaMax()
+        public string GetSequencia()
         {
             var fieldsAtr = new List<string>();
             var fields = new List<string>();
 
             var campoSelectMax = _tipoObjeto.GetCampoSelectMax();
             if (campoSelectMax == null)
-                throw new Exception("Campo [SelectMax] deve ser configurado");
+                return _tipoDatabase.GetSequenceGen(_tabela.Nome);
 
             return
                 _tipoDatabase.GetSelectMax(GetSelect(), $"\"{campoSelectMax.Name}\"");

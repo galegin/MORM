@@ -2,7 +2,7 @@
 
 namespace MORM.Dominio.Interfaces
 {
-    public interface IMigracaoRepository : IRepository<MigracaoEnt>
+    public interface IMigracaoEntRepository : IRepository<MigracaoEnt>
     {
     }
 }

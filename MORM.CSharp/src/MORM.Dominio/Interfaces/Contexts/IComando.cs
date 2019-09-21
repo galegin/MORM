@@ -1,5 +1,5 @@
 ﻿using MORM.Dominio.Atributos;
-using MORM.Dominio.Tipagens;
+using MORM.Dominio.Types;
 using System;
 using System.Collections.Generic;
 
@@ -23,7 +23,6 @@ namespace MORM.Dominio.Interfaces
         string GetInsert();
         string GetUpdate();
         string GetDelete();
-        string GetSequenciaGen();
-        string GetSequenciaMax();
+        string GetSequencia();
     }
 }

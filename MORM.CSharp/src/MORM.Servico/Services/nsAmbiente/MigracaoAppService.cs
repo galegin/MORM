@@ -5,9 +5,9 @@ namespace MORM.Servico.Services
 {
     public class MigracaoAppService : IMigracaoAppService
     {
-        private readonly IMigracaoRepository _migracaoRepository;
+        private readonly IMigracaoEntRepository _migracaoRepository;
 
-        public MigracaoAppService(IMigracaoRepository migracaoRepository)
+        public MigracaoAppService(IMigracaoEntRepository migracaoRepository)
         {
             _migracaoRepository = migracaoRepository;
         }

@@ -1,27 +1,29 @@
-﻿using MORM.Repositorio.Extensions;
-using MORM.Dominio.Extensions;
+﻿using MORM.Dominio.Extensions;
 using MORM.CrossCutting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using MORM.Dominio.Entidades;
 using MORM.Dominio.Interfaces;
+using MORM.Dominio.Types;
 
 namespace MORM.Repositorio.Migrations
 {
     public class Migracao : IMigracao
     {
-        public Migracao(IAbstractDataContext context)
-        {
-            Context = context ?? throw new ArgumentNullException(nameof(context));
-        }
-
-        public IAbstractDataContext Context { get; }
-
-        public Func<Exception, Type, object> LogErro { get; set; }
-
+        private readonly IMigracaoEntRepository _repository;
+        private readonly TipoDatabase _tipoDatabase;
+        private readonly IConexao _conexao;
+        private Func<Exception, Type, object> _logErro;
         private List<string> _dropForeigns = new List<string>();
         private List<string> _foreigns = new List<string>();
+
+        public Migracao(IMigracaoEntRepository repository, TipoDatabase tipoDatabase, IConexao conexao)
+        {
+            _repository = repository;
+            _tipoDatabase = tipoDatabase;
+            _conexao = conexao;
+        }
 
         public void Clear()
         {
@@ -39,8 +41,8 @@ namespace MORM.Repositorio.Migrations
 
             //-- versao base
 
-            var versaoBase = Context
-                .GetObjetoF((MigracaoEnt f) => $"{nameof(f.Codigo)} = '{tabela}'")?.Versao;
+            var migracaoEnt = new MigracaoEnt { Codigo = tabela };
+            var versaoBase = _repository.GetById(migracaoEnt)?.Versao;
 
             //-- versao model
 
@@ -66,33 +68,33 @@ namespace MORM.Repositorio.Migrations
 
             try
             {
-                var dropForeigns = Context.Ambiente.TipoDatabase.GetListaDeDropForeignCmd(type);
+                var dropForeigns = _tipoDatabase.GetListaDeDropForeignCmd(type);
                 if (dropForeigns.Any())
                     _dropForeigns.AddRange(dropForeigns);
 
-                var foreigns = Context.Ambiente.TipoDatabase.GetListaDeForeignCmd(type);
+                var foreigns = _tipoDatabase.GetListaDeForeignCmd(type);
                 if (foreigns.Any())
                     _foreigns.AddRange(foreigns);
             }
             catch (Exception ex)
             {
-                LogErro?.Invoke(ex, type);
+                _logErro?.Invoke(ex, type);
             }
 
             //-- salvar versao base
 
-            Context.SetObjeto(new MigracaoEnt(tabela, versaoModel));
+            _repository.AddOrUpdate(new MigracaoEnt(tabela, versaoModel));
         }
 
         public void CreateOrAlter<TObject>() => CreateOrAlter(typeof(TObject));
 
         private void Create(Type type)
         {
-            var createCmd = Context.Ambiente.TipoDatabase.GetCreateCmd(type);
+            var createCmd = _tipoDatabase.GetCreateCmd(type);
 
             try
             {
-                Context.Conexao.ExecComando(createCmd);
+                _conexao.ExecComando(createCmd);
             }
             catch (Exception ex)
             {
@@ -103,13 +105,13 @@ namespace MORM.Repositorio.Migrations
 
         private void Alter(Type type)
         {
-            var listaAlterCmd = Context.Ambiente.TipoDatabase.GetListaAlterCmd(type);
+            var listaAlterCmd = _tipoDatabase.GetListaAlterCmd(type);
 
             foreach (var cmd in listaAlterCmd)
             {
                 try
                 {
-                    Context.Conexao.ExecComando(cmd);
+                    _conexao.ExecComando(cmd);
                 }
                 catch (Exception ex)
                 {
@@ -141,7 +143,7 @@ namespace MORM.Repositorio.Migrations
             {
                 try
                 {
-                    Context.Conexao.ExecComando(dropForeign);
+                    _conexao.ExecComando(dropForeign);
                 }
                 catch (Exception ex)
                 {
@@ -156,7 +158,7 @@ namespace MORM.Repositorio.Migrations
             {
                 try
                 {
-                    Context.Conexao.ExecComando(foreign);
+                    _conexao.ExecComando(foreign);
                 }
                 catch (Exception ex)
                 {

@@ -1,7 +1,6 @@
 ﻿using MORM.Dominio.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace MORM.Servico.Services
 {
@@ -27,39 +26,39 @@ namespace MORM.Servico.Services
 
     public class AbstractService<TObject> : AbstractService, IAbstractService<TObject>
     {
-        private IAbstractRepository<TObject> _abstractRepository;
+        private IAbstractRepository<TObject> _repository;
 
-        public AbstractService(IAbstractRepository<TObject> abstractRepository) : base(abstractRepository)
+        public AbstractService(IAbstractRepository<TObject> repository) : base(repository)
         {
-            _abstractRepository = abstractRepository ?? throw new ArgumentNullException(nameof(abstractRepository));
+            _repository = repository ?? throw new ArgumentNullException(nameof(repository));
         }
 
         //-- listar
 
-        public List<TObject> Listar(TObject filtro) => _abstractRepository.ListarO(filtro).ToList();
+        public IList<TObject> Listar(TObject filtro) => _repository.Listar(filtro);
 
         //-- consultar
 
-        public TObject Consultar(TObject filtro) => _abstractRepository.ConsultarO(filtro);
+        public TObject Consultar(TObject filtro) => _repository.Consultar(filtro);
 
         //-- incluir
 
-        public void Incluir(TObject objeto) => _abstractRepository.Incluir(objeto);
+        public void Incluir(TObject objeto) => _repository.Incluir(objeto);
 
         //-- alterar
 
-        public void Alterar(TObject objeto) => _abstractRepository.Alterar(objeto);
+        public void Alterar(TObject objeto) => _repository.Alterar(objeto);
 
         //-- salvar
 
-        public void Salvar(TObject objeto) => _abstractRepository.Salvar(objeto);
+        public void Salvar(TObject objeto) => _repository.Salvar(objeto);
 
         //-- excluir
 
-        public void Excluir(TObject objeto) => _abstractRepository.Excluir(objeto);
+        public void Excluir(TObject objeto) => _repository.Excluir(objeto);
 
         //-- sequencia
 
-        public int Sequencia(TObject filtro) => _abstractRepository.Sequencia(filtro);
+        public long Sequencia(TObject filtro) => _repository.Sequencia(filtro);
     }
 }

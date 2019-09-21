@@ -1,7 +1,7 @@
 using MORM.Aplicacao.Extensions;
 using MORM.CrossCutting;
 using MORM.Dominio.Interfaces;
-using MORM.Dominio.Tipagens;
+using MORM.Dominio.Types;
 using MORM.Servico.Interfaces;
 using MORM.Servico.Models;
 using System;

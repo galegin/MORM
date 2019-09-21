@@ -2,7 +2,6 @@
 using MORM.Apresentacao.Commands;
 using MORM.Apresentacao.Comps;
 using MORM.Apresentacao.Views;
-using MORM.Dominio.Extensions;
 using MORM.CrossCutting;
 using System;
 using System.Collections;
