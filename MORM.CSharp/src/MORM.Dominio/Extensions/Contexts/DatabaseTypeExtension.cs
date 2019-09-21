@@ -48,7 +48,10 @@ namespace MORM.Dominio.Extensions
         {
             var types = tipo.GetTypes();
             var tipoDado = campo.DataType.GetTipoDadoModel();
-            var str = types[tipoDado.Dado];
+            var str = types.ContainsKey(tipoDado.Dado) ? types[tipoDado.Dado] : null;
+            if (str == null)
+                return null;
+
             var tam = string.Empty;
 
             if (campo.Tamanho > 0)

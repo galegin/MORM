@@ -1,12 +1,15 @@
-﻿using System;
+﻿using MORM.Dominio.Types;
+using System;
 using System.Collections;
 
 namespace MORM.Dominio.Interfaces
 {
     public interface IAbstractDataContext : IDisposable
     {
+        TipoDatabase GetTipoDatabase(); 
         IConexao GetConexao();
         IComando GetComando();
+        IMigracao GetMigracao();
         IDbSet<TObject> Set<TObject>();
         void SetAmbiente(IAmbiente ambiente);
         IList GetLista(Type type, object filtro = null, bool relacao = false, int qtde = -1, int pagina = 0);

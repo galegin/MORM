@@ -7,13 +7,11 @@ namespace MORM.Repositorio.Tests
     [TestClass]
     public class DataContextTests : BaseTests
     {
-        private readonly IMigracaoEntRepository _repository;
-        private readonly IMigracao _migracao;
+        private readonly IAbstractDataContext _dataContext;
 
         public DataContextTests()
         {
-            _repository = Resolve<IMigracaoEntRepository>();
-            _migracao = Resolve<IMigracao>();
+            _dataContext = Resolve<IAbstractDataContext>();
         }
 
         [TestInitialize]
@@ -29,7 +27,7 @@ namespace MORM.Repositorio.Tests
         [TestMethod]
         public void DataContextTests_Migracao()
         {
-            MigracaoContexto.Gerar(_repository, _migracao);
+            MigracaoContexto.Gerar(_dataContext);
         }
     }
 }

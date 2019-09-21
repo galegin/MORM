@@ -25,19 +25,19 @@ namespace MORM.Repositorio.Migrations
             return string.Join(",", listaHash).GerarHashMd5();
         }
 
-        public static bool IsGerarVersao(IMigracaoEntRepository repository, Type[] types, out string versaoModel)
+        public static bool IsGerarVersao(IAbstractDataContext dataContext, Type[] types, out string versaoModel)
         {
             var migracaoEnt = new MigracaoEnt { Codigo = _nomeEntidade };
-            var versaoBase = repository.GetById(migracaoEnt)?.Versao;
+            var versaoBase = dataContext.Set<MigracaoEnt>().GetById(migracaoEnt)?.Versao;
 
             versaoModel = GetVersaoModel(types);
 
             return versaoModel.CompareTo(versaoBase) != 0;
         }
 
-        public static void GravarVersao(IMigracaoEntRepository repository, string versaoModel)
+        public static void GravarVersao(IAbstractDataContext dataContext, string versaoModel)
         {
-            repository.AddOrUpdate(new MigracaoEnt(_nomeEntidade, versaoModel));
+            dataContext.Set<MigracaoEnt>().AddOrUpdate(new MigracaoEnt(_nomeEntidade, versaoModel));
         }
         #endregion
     }

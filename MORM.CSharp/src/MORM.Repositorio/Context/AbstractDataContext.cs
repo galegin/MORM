@@ -1,9 +1,9 @@
 using MORM.CrossCutting;
 using MORM.Dominio.Extensions;
 using MORM.Dominio.Interfaces;
+using MORM.Dominio.Types;
 using MORM.Repositorio.Factories;
 using MORM.Repositorio.Migrations;
-using MORM.Repositorio.Repositories;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -23,6 +23,10 @@ namespace MORM.Repositorio.Context
             SetMigracao();
         }
 
+        //-- tipoDatabase
+
+        public TipoDatabase GetTipoDatabase() => _ambiente.TipoDatabase;
+
         //-- conexao
 
         public IConexao GetConexao() => _conexao;
@@ -31,7 +35,11 @@ namespace MORM.Repositorio.Context
 
         public IComando GetComando() => _comando;
 
-        //-- set
+        //-- migracao
+
+        public IMigracao GetMigracao() => _migracao;
+
+        //-- dbSet
 
         public IDbSet<TObject> Set<TObject>() => new DbSet<TObject>(this);
 
@@ -42,24 +50,21 @@ namespace MORM.Repositorio.Context
             _ambiente = ambiente ?? throw new ArgumentNullException(nameof(ambiente));
             _conexao = ConexaoFactory.GetConexao(ambiente);
             _comando = new Comando(ambiente.TipoDatabase);
-            _migracao = new Migracao(GetMigracaoEntRepository(), _ambiente.TipoDatabase, _conexao);
+            _migracao = new Migracao(this);
         }
 
         //-- migracao
 
-        private IMigracaoEntRepository GetMigracaoEntRepository() =>
-            new MigracaoEntRepository(this);
-
         private void SetMigracao()
         {
-            MigracaoContexto.Gerar(GetMigracaoEntRepository(), _migracao);
+            MigracaoContexto.Gerar(this);
         }
 
         //-- lista
 
         public IList GetLista(Type type, object filtro = null, bool relacao = false, int qtde = -1, int pagina = 0)
         {
-            var lista = TypeForConvert.GetTypeFor(typeof(List<>), type) as IList;
+            var lista = TypeForConvert.GetObjectFor(typeof(List<>), type) as IList;
 
             _ambiente.SetarFiltroPadrao(filtro);
 

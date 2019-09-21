@@ -11,18 +11,17 @@ namespace MORM.Repositorio.Migrations
 {
     public class Migracao : IMigracao
     {
-        private readonly IMigracaoEntRepository _repository;
-        private readonly TipoDatabase _tipoDatabase;
-        private readonly IConexao _conexao;
+        private readonly IAbstractDataContext _dataContext;
+        private IDbSet<MigracaoEnt> _dbSet => _dataContext.Set<MigracaoEnt>();
+        private IConexao _conexao => _dataContext.GetConexao();
+        private TipoDatabase _tipoDatabase => _dataContext.GetTipoDatabase();
         private Func<Exception, Type, object> _logErro;
         private List<string> _dropForeigns = new List<string>();
         private List<string> _foreigns = new List<string>();
 
-        public Migracao(IMigracaoEntRepository repository, TipoDatabase tipoDatabase, IConexao conexao)
+        public Migracao(IAbstractDataContext dataContext)
         {
-            _repository = repository;
-            _tipoDatabase = tipoDatabase;
-            _conexao = conexao;
+            _dataContext = dataContext;
         }
 
         public void Clear()
@@ -42,7 +41,7 @@ namespace MORM.Repositorio.Migrations
             //-- versao base
 
             var migracaoEnt = new MigracaoEnt { Codigo = tabela };
-            var versaoBase = _repository.GetById(migracaoEnt)?.Versao;
+            var versaoBase = _dbSet.GetById(migracaoEnt)?.Versao;
 
             //-- versao model
 
@@ -83,7 +82,7 @@ namespace MORM.Repositorio.Migrations
 
             //-- salvar versao base
 
-            _repository.AddOrUpdate(new MigracaoEnt(tabela, versaoModel));
+            _dbSet.AddOrUpdate(new MigracaoEnt(tabela, versaoModel));
         }
 
         public void CreateOrAlter<TObject>() => CreateOrAlter(typeof(TObject));

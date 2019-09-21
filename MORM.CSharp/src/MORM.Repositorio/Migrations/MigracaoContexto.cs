@@ -16,17 +16,19 @@ namespace MORM.Repositorio.Migrations
             _isMigracaoAuto = (ConfigurationManager.AppSettings[nameof(_isMigracaoAuto)] ?? "true") == "true";
         }
 
-        public static void Gerar(IMigracaoEntRepository repository, IMigracao migracao)
+        public static void Gerar(IAbstractDataContext dataContext)
         {
-            if (repository == null)
-                throw new ArgumentNullException(nameof(repository));
+            if (dataContext == null)
+                throw new ArgumentNullException(nameof(dataContext));
 
             var types = MigrationAssembly
                 .GetTypes(filtro: (f) => f.GetTabela() != null)
                 .ToArray();
 
-            if (!MigracaoDatabase.IsGerarVersao(repository, types, out string versaoBase))
+            if (!MigracaoDatabase.IsGerarVersao(dataContext, types, out string versaoBase))
                 return;
+
+            var migracao = dataContext.GetMigracao();
 
             migracao.Clear();
 
@@ -37,7 +39,7 @@ namespace MORM.Repositorio.Migrations
             migracao.DropForeigns();
             migracao.CreateForeigns();
 
-            MigracaoDatabase.GravarVersao(repository, versaoBase);
+            MigracaoDatabase.GravarVersao(dataContext, versaoBase);
         }
     }
 }

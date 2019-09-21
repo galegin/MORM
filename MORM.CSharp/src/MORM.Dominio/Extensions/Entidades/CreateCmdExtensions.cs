@@ -18,9 +18,13 @@ namespace MORM.Dominio.Extensions
 
             foreach (var campo in listaDeCampo)
             {
+                var dataType = tipo.GetDataType(campo);
+                if (dataType == null)
+                    continue;
+
                 column.Clear();
                 column.Add(campo.Nome);
-                column.Add(tipo.GetDataType(campo));
+                column.Add(dataType);
                 if (campo.Tipo != CampoTipo.Nul)
                     column.Add("Not Null");
 
@@ -44,9 +48,13 @@ namespace MORM.Dominio.Extensions
 
             foreach (var campo in listaDeCampo)
             {
+                var dataType = tipo.GetDataType(campo);
+                if (dataType == null)
+                    continue;
+
                 column.Clear();
                 column.Add(campo.Nome);
-                column.Add(tipo.GetDataType(campo));
+                column.Add(dataType);
                 if (campo.Tipo != CampoTipo.Nul)
                     column.Add("Not Null");
 
