@@ -125,7 +125,7 @@ namespace MORM.Repositorio.Repositories
 
         // sequencia
         
-        public long Sequencia(object filtro)
+        public long Sequencia(object filtro = null)
         {
             return _dataContext.IncObjeto<TObject>(filtro);
         }
