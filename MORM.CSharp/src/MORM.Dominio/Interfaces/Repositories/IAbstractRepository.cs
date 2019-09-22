@@ -10,10 +10,10 @@ namespace MORM.Dominio.Interfaces
     {
         IList<TObject> Listar(object objeto, int qtde = -1, int pagina = 0, bool relacao = false);
         TObject Consultar(object objeto, bool relacao = true);
-        void Incluir(TObject objeto, bool relacao = true);
-        void Alterar(TObject objeto, bool relacao = true);
-        void Salvar(TObject objeto, bool relacao = true);
-        void Excluir(TObject objeto, bool relacao = true);
-        long Sequencia(TObject filtro);
+        void Incluir(object objeto, bool relacao = true);
+        void Alterar(object objeto, bool relacao = true);
+        void Salvar(object objeto, bool relacao = true);
+        void Excluir(object objeto, bool relacao = true);
+        long Sequencia(object filtro);
     }
 }

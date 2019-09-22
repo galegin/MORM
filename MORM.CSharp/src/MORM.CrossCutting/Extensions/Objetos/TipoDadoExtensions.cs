@@ -144,8 +144,6 @@ namespace MORM.CrossCutting
         {
             if (type.IsEnum)
                 type = typeof(Enum);
-            //else if (type.IsClass)
-            //    type = typeof(object);
             return ListaDeTipo.FirstOrDefault(x => x.Tipo.Contains(type));
         }
 

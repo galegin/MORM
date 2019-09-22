@@ -1,11 +1,11 @@
-﻿using MORM.Dominio.Extensions;
-using MORM.CrossCutting;
+﻿using MORM.CrossCutting;
+using MORM.Dominio.Entidades;
+using MORM.Dominio.Extensions;
+using MORM.Dominio.Interfaces;
+using MORM.Dominio.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using MORM.Dominio.Entidades;
-using MORM.Dominio.Interfaces;
-using MORM.Dominio.Types;
 
 namespace MORM.Repositorio.Migrations
 {
@@ -15,9 +15,10 @@ namespace MORM.Repositorio.Migrations
         private IDbSet<MigracaoEnt> _dbSet => _dataContext.Set<MigracaoEnt>();
         private IConexao _conexao => _dataContext.GetConexao();
         private TipoDatabase _tipoDatabase => _dataContext.GetTipoDatabase();
-        private Func<Exception, Type, object> _logErro;
         private List<string> _dropForeigns = new List<string>();
         private List<string> _foreigns = new List<string>();
+
+        public Func<Exception, Type, object> LogErro { get; set; }
 
         public Migracao(IAbstractDataContext dataContext)
         {
@@ -77,7 +78,7 @@ namespace MORM.Repositorio.Migrations
             }
             catch (Exception ex)
             {
-                _logErro?.Invoke(ex, type);
+                LogErro?.Invoke(ex, type);
             }
 
             //-- salvar versao base

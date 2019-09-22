@@ -20,7 +20,7 @@ namespace MORM.Servico.Models
         public static void Validate(this ValidarAmbienteInModel model)
         {
             if (string.IsNullOrWhiteSpace(model.Ambiente))
-                throw new Exception(_mensagemUsuarioDeveSerInformado);
+                throw new Exception(_mensagemAmbienteDeveSerInformado);
             if (string.IsNullOrWhiteSpace(model.Login))
                 throw new Exception(_mensagemUsuarioDeveSerInformado);
             if (string.IsNullOrWhiteSpace(model.Senha))

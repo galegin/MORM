@@ -87,6 +87,10 @@ namespace MORM.CrossCutting
                 .ToList()
                 .ConvertAll(prop =>
                 {
+                    var tipoDadoModel = prop.PropertyType.GetTipoDadoModel();
+                    if (tipoDadoModel == null || tipoDadoModel.Dado.In(TipoDado.Obj, TipoDado.Lst))
+                        return null;
+
                     if (prop.Name.ToLower() == "id")
                         campoTipo = MetadataCampoTipo.Key;
                     else if (prop.Name.ToLower() == "u_version")
@@ -114,7 +118,10 @@ namespace MORM.CrossCutting
                         IsChave = isChave,
                         IsDescr = isDescr,
                     };
-                });
+                })
+                .Where(c => c != null)
+                .ToList()
+                ;
 
             return new Metadata
             {

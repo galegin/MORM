@@ -102,11 +102,12 @@ namespace MORM.Repositorio.Context
             _ambiente.SetarFiltroPadrao(filtro);
 
             var where = filtro is string ? filtro as string : null;
+            var filtroObj = filtro is string ? null : filtro;
 
             var parametros = new List<IParametro>();
 
             var whereComando = _comando
-                .ComObjeto(obj)
+                .ComObjeto(filtroObj)
                 .ComParametros(parametros)
                 .GetWhereKey();
 

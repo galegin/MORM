@@ -51,6 +51,7 @@ namespace MORM.Dominio.Entidades
         public int CodigoEmpresa { get; set; }
         [Campo("CD_USUARIO", CampoTipo.Nul)]
         public int CodigoUsuario { get; set; }
+        [Campo("CD_TERMINAL", CampoTipo.Nul)]
         public int CodigoTerminal { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using MORM.Dominio.Extensions;
 using MORM.Dominio.Interfaces;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace MORM.Repositorio.Repositories
@@ -40,12 +41,16 @@ namespace MORM.Repositorio.Repositories
 
         // incluir
 
-        public void Incluir(TObject objeto, bool relacao = true)
+        public void Incluir(object objeto, bool relacao = true)
         {
             try
             {
                 _dataContext.BeginTransaction();
-                _dataContext.InsObjeto(objeto, relacao: relacao);
+                if (objeto is IList)
+                    foreach (var item in (objeto as IList))
+                        _dataContext.InsObjeto(item, relacao: relacao);
+                else
+                    _dataContext.InsObjeto(objeto, relacao: relacao);
                 _dataContext.CommitTransaction();
             }
             catch
@@ -57,12 +62,16 @@ namespace MORM.Repositorio.Repositories
 
         // alterar
 
-        public void Alterar(TObject objeto, bool relacao = true)
+        public void Alterar(object objeto, bool relacao = true)
         {
             try
             {
                 _dataContext.BeginTransaction();
-                _dataContext.UpdObjeto(objeto, relacao: relacao);
+                if (objeto is IList)
+                    foreach (var item in (objeto as IList))
+                        _dataContext.UpdObjeto(item, relacao: relacao);
+                else
+                    _dataContext.UpdObjeto(objeto, relacao: relacao);
                 _dataContext.CommitTransaction();
             }
             catch
@@ -74,12 +83,16 @@ namespace MORM.Repositorio.Repositories
 
         // salvar
 
-        public void Salvar(TObject objeto, bool relacao = true)
+        public void Salvar(object objeto, bool relacao = true)
         {
             try
             {
                 _dataContext.BeginTransaction();
-                _dataContext.SetObjeto(objeto, relacao: relacao);
+                if (objeto is IList)
+                    foreach (var item in (objeto as IList))
+                        _dataContext.SetObjeto(item, relacao: relacao);
+                else
+                    _dataContext.SetObjeto(objeto, relacao: relacao);
                 _dataContext.CommitTransaction();
             }
             catch
@@ -91,12 +104,16 @@ namespace MORM.Repositorio.Repositories
 
         // excluir
 
-        public void Excluir(TObject objeto, bool relacao = true)
+        public void Excluir(object objeto, bool relacao = true)
         {
             try
             {
                 _dataContext.BeginTransaction();
-                _dataContext.RemObjeto(objeto, relacao: relacao);
+                if (objeto is IList)
+                    foreach (var item in (objeto as IList))
+                        _dataContext.RemObjeto(item, relacao: relacao);
+                else
+                    _dataContext.RemObjeto(objeto, relacao: relacao);
                 _dataContext.CommitTransaction();
             }
             catch
@@ -108,9 +125,9 @@ namespace MORM.Repositorio.Repositories
 
         // sequencia
         
-        public long Sequencia(TObject filtro)
+        public long Sequencia(object filtro)
         {
-            return _dataContext.IncObjeto<TObject>();
+            return _dataContext.IncObjeto<TObject>(filtro);
         }
     }
 }

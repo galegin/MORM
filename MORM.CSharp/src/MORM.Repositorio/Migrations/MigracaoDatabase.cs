@@ -37,7 +37,8 @@ namespace MORM.Repositorio.Migrations
 
         public static void GravarVersao(IAbstractDataContext dataContext, string versaoModel)
         {
-            dataContext.Set<MigracaoEnt>().AddOrUpdate(new MigracaoEnt(_nomeEntidade, versaoModel));
+            var migracaoEnt = new MigracaoEnt(_nomeEntidade, versaoModel);
+            dataContext.Set<MigracaoEnt>().AddOrUpdate(migracaoEnt);
         }
         #endregion
     }

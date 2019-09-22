@@ -11,7 +11,7 @@ namespace MORM.Repositorio.Queries
     public class QueryableTranslator : ExpressionVisitor, IQueryableTranslator
     {
         #region variaveis
-        private readonly string[] _namesInitials = { "Where", "FirstOrDefault", "ToList" };
+        private readonly string[] _queryableMethods = { "FirstOrDefault", "ToList", "Where" };
         private readonly IQueryableValue _queryableValue;
         private StringBuilder sb;
         #endregion
@@ -54,11 +54,14 @@ namespace MORM.Repositorio.Queries
 
         protected override Expression VisitMethodCall(MethodCallExpression m)
         {
-            if (m.Method.DeclaringType == typeof(Queryable) && _namesInitials.Contains(m.Method.Name))
+            if (m.Method.DeclaringType == typeof(Queryable) && _queryableMethods.Contains(m.Method.Name))
             {
                 this.Visit(m.Arguments[0]);
-                LambdaExpression lambda = (LambdaExpression)StripQuotes(m.Arguments[1]);
-                this.Visit(lambda.Body);
+                if (m.Arguments.Count > 1)
+                {
+                    LambdaExpression lambda = (LambdaExpression)StripQuotes(m.Arguments[1]);
+                    this.Visit(lambda.Body);
+                }
                 return m;
             }
             else if (m.Method.Name == "Take")

@@ -32,6 +32,7 @@ namespace MORM.Apresentacao.Connectors
 
             var acesso = new ValidarAmbienteInModel
             {
+                Ambiente = "desen",
                 Login = "ADMIN",
                 Senha = "admin"
             };
