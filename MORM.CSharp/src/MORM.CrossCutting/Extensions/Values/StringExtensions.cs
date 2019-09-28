@@ -46,7 +46,7 @@ namespace MORM.CrossCutting
 
         public static DateTime? ObterDataHoraInv(this string str)
         {
-            string[] formats = { "yyMMddHHmmss", "yyyyMMddHHmmss", "yy/MM/dd HH:mm:ss", "yyyy/MM/dd HH:mm:ss", "yyyy/MM/dd HH:mm", "yyMMdd HHmmss" };
+            string[] formats = { "yyMMddHHmmss", "yyyyMMddHHmmss", "yy/MM/dd HH:mm:ss", "yyyy/MM/dd HH:mm:ss", "yyyy/MM/dd HH:mm", "yyMMdd HHmmss", "yyyy-MM-ddTHH:mm:ss" };
             DateTime temp;
             if (!DateTime.TryParseExact(str, formats, CultureInfo.InvariantCulture, DateTimeStyles.None, out temp))
                 return null;

@@ -5,14 +5,14 @@ using System.Reflection;
 
 namespace MORM.CrossCutting
 {
-    public static class EdiExtensions
+    public static class SpedExtensions
     {
         #region constantes
-        private const string _formatoDataEdi = "yyyyMMddHHmmss";
+        private const string _formatoDataEdi = "yyyy-MM-ddTHH:mm:ss";
         #endregion
         #region metodos
         #region metodos publicos
-        public static string GetEdi<TObject>(this IList<TObject> lista)
+        public static string GetSped<TObject>(this IList<TObject> lista)
         {
             if (lista == null)
                 return null;
@@ -33,7 +33,7 @@ namespace MORM.CrossCutting
 
             return string.Join("\n", retorno);
         }
-        public static IList<TObject> GetListaFromEdi<TObject>(this string value)
+        public static IList<TObject> GetListaFromSped<TObject>(this string value)
         {
             if (string.IsNullOrWhiteSpace(value))
                 return null;
@@ -45,21 +45,21 @@ namespace MORM.CrossCutting
                 .GetLista('\n')
                 ;
 
-            var colunas = new Dictionary<string, int>();
+            var campos = new List<string>();
 
-            for (var l = 0; l < linhas.Length; l++)
+            for (var l = 1; l < linhas.Length; l++)
             {
                 var linha = linhas[l];
-                var tipo = linha.Substring(0, 1);
-                linha = linha.Substring(1);
+                var valores = linha.GetLista('|');
+                var tipo = valores.GetParte(1);
 
                 switch (tipo)
                 {
                     case "C":
-                        SetColunas(colunas, linha);
+                        SetColunas(campos, valores);
                         break;
                     case "R":
-                        SetRetorno(colunas, linha, retorno);
+                        SetRetorno(campos, valores, retorno);
                         break;
                 }
             }
@@ -72,9 +72,9 @@ namespace MORM.CrossCutting
         {
             var retorno = new List<string>();
             retorno.Add("A");
-            retorno.Add(typeof(TObject).Name.PadRight(30));
+            retorno.Add(typeof(TObject).Name);
 
-            return string.Join("", retorno);
+            return "|" + string.Join("|", retorno) + "|";
         }
         private static string GetColunas<TObject>()
         {
@@ -88,9 +88,8 @@ namespace MORM.CrossCutting
                 {
                     coluna.Clear();
                     coluna.Add("C");
-                    coluna.Add(p.Name.PadRight(30));
-                    coluna.Add(p.GetTamanhoEdi().ToString().PadLeft(4, '0'));
-                    retorno.Add(string.Join("", coluna));
+                    coluna.Add(p.Name);
+                    retorno.Add("|" + string.Join("|", coluna) + "|");
                 })
                 ;
 
@@ -104,24 +103,20 @@ namespace MORM.CrossCutting
             typeof(TObject)
                 .GetProperties()
                 .ToList()
-                .ForEach(p => retorno.Add(p.GetValueEdi(p.GetValue(item))))
+                .ForEach(p => retorno.Add(p.GetValueSped(p.GetValue(item))))
                 ;
 
-            return string.Join("", retorno);
+            return "|" + string.Join("|", retorno) + "|";
         }
-        private static int GetTamanhoEdi(this PropertyInfo prop)
+        private static int GetTamanhoSped(this PropertyInfo prop)
         {
-            var tipoDado = prop.GetTipoDadoModel();
-            if (tipoDado.Dado == TipoDado.Date)
-                return _formatoDataEdi.Length;
-
             var campoDef = prop.Name.GetCampoDefinicao();
             return campoDef?.Tamanho ?? 10;
         }
-        private static string GetValueEdi(this PropertyInfo prop, object value)
+        private static string GetValueSped(this PropertyInfo prop, object value)
         {
             var tipoDado = prop.GetTipoDadoModel();
-            var tamanho = prop.GetTamanhoEdi();
+            var tamanho = prop.GetTamanho();
             var valor = string.Empty;
 
             switch (tipoDado.Dado)
@@ -133,7 +128,7 @@ namespace MORM.CrossCutting
                     valor = ((DateTime)value).ToString(_formatoDataEdi);
                     break;
                 case TipoDado.Real:
-                    valor = (((double)value) * 1000).ToString();
+                    valor = ((double)value).ToString();
                     break;
                 case TipoDado.Int:
                     valor = ((int)value).ToString();
@@ -149,49 +144,29 @@ namespace MORM.CrossCutting
             if (valor == null)
                 valor = string.Empty;
 
-            switch (tipoDado.Dado)
-            {
-                case TipoDado.Bool:
-                case TipoDado.Date:
-                    valor = valor.PadRight(tamanho);
-                    break;
-                case TipoDado.Real:
-                case TipoDado.Int:
-                    valor = valor.PadLeft(tamanho, '0');
-                    break;
-                default:
-                case TipoDado.Str:
-                    valor = valor.PadRight(tamanho);
-                    break;
-            }
-
             return valor;
         }
-        private static void SetColunas(Dictionary<string, int> colunas, string linha)
+        private static void SetColunas(List<string> colunas, string[] valores)
         {
-            var nome = linha.Substring(0, 30).Trim();
-            linha = linha.Substring(30);
-            var tamanhoStr = linha.Substring(0, 4);
-            int.TryParse(tamanhoStr, out int tamanho);
-            colunas[nome] = tamanho;
+            var nome = valores.GetParte(2);
+            colunas.Add(nome);
         }
-        private static void SetRetorno<TObject>(Dictionary<string, int> colunas, string linha, List<TObject> retorno)
+        private static void SetRetorno<TObject>(List<string> campos, string[] valores, List<TObject> retorno)
         {
             var item = Activator.CreateInstance<TObject>();
             retorno.Add(item);
 
-            foreach (var coluna in colunas)
+            var index = 2;
+            foreach (var campo in campos)
             {
-                var campo = coluna.Key;
-                var tamanho = coluna.Value;
-                var valor = linha.Substring(0, tamanho);
-                linha = linha.Substring(tamanho);
+                var valor = valores.GetParte(index);
                 var prop = typeof(TObject).GetProperty(campo);
-                var valorProp = prop.GetValorPropEdi(valor);
+                var valorProp = prop.GetValorPropSped(valor);
                 item.SetInstancePropOrField(campo, valorProp);
+                index++;
             }
         }
-        private static object GetValorPropEdi(this PropertyInfo prop, string valor)
+        private static object GetValorPropSped(this PropertyInfo prop, string valor)
         {
             var tipoDado = prop.GetTipoDadoModel();
 
@@ -205,7 +180,7 @@ namespace MORM.CrossCutting
                 case TipoDado.Date:
                     return valor.ObterDataHoraInv();
                 case TipoDado.Real:
-                    return Convert.ToDouble(valor.ObterValor() / 1000);
+                    return Convert.ToDouble(valor.ObterValor());
                 case TipoDado.Int:
                     return Convert.ToInt32(valor.ObterNumero());
                 case TipoDado.Str:

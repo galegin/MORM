@@ -20,6 +20,8 @@ namespace MORM.CrossCutting
                     return lista.GetEdi();
                 case ExportsTipo.Json:
                     return lista.GetJsonFromObject(); // GetJson();
+                case ExportsTipo.Sped:
+                    return lista.GetSped();
                 case ExportsTipo.Xml:
                     return lista.GetXml();
                 case ExportsTipo.Zip:
@@ -43,6 +45,8 @@ namespace MORM.CrossCutting
                     return value.GetListaFromEdi<TObject>();
                 case ExportsTipo.Json:
                     return value.GetListaFromJson<TObject>();
+                case ExportsTipo.Sped:
+                    return value.GetListaFromSped<TObject>();
                 case ExportsTipo.Xml:
                     return value.GetObjectFromJson<IList<TObject>>(); // GetListaFromXml<TObject>();
                 case ExportsTipo.Zip:

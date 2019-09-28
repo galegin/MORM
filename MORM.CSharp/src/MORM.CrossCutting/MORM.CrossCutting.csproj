@@ -73,6 +73,7 @@
     <Compile Include="BaseInstaller.cs" />
     <Compile Include="Expressions\ExpressionExtensions.cs" />
     <Compile Include="Extensions\Layouts\CsvExtensions.cs" />
+    <Compile Include="Extensions\Layouts\SpedExtensions.cs" />
     <Compile Include="Extensions\Layouts\EdiExtensions.cs" />
     <Compile Include="Extensions\Layouts\ExportsExtensions.cs" />
     <Compile Include="Extensions\Layouts\ExportsTipo.cs" />

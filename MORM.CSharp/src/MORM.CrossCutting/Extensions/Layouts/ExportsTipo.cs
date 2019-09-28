@@ -8,6 +8,7 @@ namespace MORM.CrossCutting
         Csv,
         Edi,
         Json,
+        Sped,
         Xml,
         Zip
     }
