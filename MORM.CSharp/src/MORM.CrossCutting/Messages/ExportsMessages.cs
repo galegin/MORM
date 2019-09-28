@@ -7,11 +7,12 @@
                     "Arquivo CSV (.csv)|*.csv|" +
                     "Arquivo EDI (.edi)|*.edi|" +
                     "Arquivo JSON (.json)|*.json|" +
-                    "Arquivo XML (.xml)|*.xml";
+                    "Arquivo XML (.xml)|*.xml|" +
+                    "Arquivo ZIP (.zip)|*.zip";
         public const string FileName =
             "Arquivo";
         public const string DefaultExt =
-            ".json";
+            ".zip";
         #endregion
     }
 }

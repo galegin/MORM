@@ -2,6 +2,7 @@
 using MORM.Apresentacao.Connectors;
 using MORM.Apresentacao.ViewsModel;
 using MORM.CrossCutting;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace MORM.Apresentacao.Commands.Tela
@@ -13,7 +14,7 @@ namespace MORM.Apresentacao.Commands.Tela
         public override void Execute(object parameter)
         {
             var vm = parameter as IAbstractViewModel<TModel>;
-            var connector = new AbstractExportarConnector<TModel>();
+            //var connector = new AbstractExportarConnector<TModel>();
 
             var arquivo = DialogUtils.GetSaveFile(
                 fileName: ExportsMessages.FileName,
@@ -22,7 +23,7 @@ namespace MORM.Apresentacao.Commands.Tela
             if (string.IsNullOrWhiteSpace(arquivo))
                 return;
 
-            var conteudo = connector.Executar(vm.ObjModel, filtro: arquivo) as string;
+            var conteudo = (vm.Lista as IList<TModel>).GetExport(arquivo);
             if (string.IsNullOrWhiteSpace(conteudo))
                 return;
 
