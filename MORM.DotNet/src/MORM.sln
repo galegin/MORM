@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MORM.Application", "MORM.Application\MORM.Application.csproj", "{596B44F9-4A8A-4B76-AEFB-291D0D150B5A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MORM.Aplicacao", "MORM.Aplicacao\MORM.Aplicacao.csproj", "{596B44F9-4A8A-4B76-AEFB-291D0D150B5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MORM.Domain", "MORM.Domain\MORM.Domain.csproj", "{2179D11B-275D-45E1-B5B9-988FC2FA42A1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MORM.Aplicacao.WebApi", "MORM.Aplicacao.WebApi\MORM.Aplicacao.WebApi.csproj", "{BB704819-A57C-45A3-872A-988BD9227DBB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MORM.Infrastructure.CrossCutting", "MORM.Infrastructure.CrossCutting\MORM.Infrastructure.CrossCutting.csproj", "{C26BAD41-B1D2-4687-B7BC-2083FAD8D022}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MORM.Apresentacao", "MORM.Apresentacao\MORM.Apresentacao.csproj", "{69D98239-1661-4F1A-81DE-E2BC7B4F1114}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MORM.Infrastructure.Data", "MORM.Infrastructure.Data\MORM.Infrastructure.Data.csproj", "{5F6BA930-B298-4637-A0EF-8A00C6E53445}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MORM.CrossCutting", "MORM.CrossCutting\MORM.CrossCutting.csproj", "{C26BAD41-B1D2-4687-B7BC-2083FAD8D022}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MORM.WebApi", "MORM.WebApi\MORM.WebApi.csproj", "{BB704819-A57C-45A3-872A-988BD9227DBB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MORM.Dominio", "MORM.Domain\MORM.Dominio.csproj", "{2179D11B-275D-45E1-B5B9-988FC2FA42A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MORM.Presentation", "MORM.Presentation\MORM.Presentation.csproj", "{69D98239-1661-4F1A-81DE-E2BC7B4F1114}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MORM.Repositorio", "MORM.Repositorio\MORM.Repositorio.csproj", "{5F6BA930-B298-4637-A0EF-8A00C6E53445}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

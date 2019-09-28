@@ -14,7 +14,7 @@ namespace MORM.Apresentacao.Commands.Tela
         {
             var vm = parameter as IAbstractViewModel<TModel>;
             var connector = new AbstractConsultarConnector<TModel>();
-            var retorno = connector.Executar(vm.oModel);
+            var retorno = connector.Executar(vm.ObjModel);
             if (retorno.IsModelChavePreenchida())
                 vm.Model.CloneInstancePropOrFieldAll(retorno);
         }

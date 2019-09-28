@@ -1,4 +1,4 @@
-﻿using MORM.Apresentacao.Report.Tipagens;
+﻿using MORM.Apresentacao.Report.Types;
 
 namespace MORM.Apresentacao.Report.Interfaces
 {

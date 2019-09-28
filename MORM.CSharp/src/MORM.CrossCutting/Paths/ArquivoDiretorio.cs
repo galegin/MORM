@@ -25,16 +25,16 @@ namespace MORM.CrossCutting
             return null;
         }
 
-        public static void GravarArquivo(string arquivo, string conteudo)
+        public static void GravarArquivo(string arquivo, string conteudo, bool isDeleteOnExists = true)
         {
-            if (File.Exists(arquivo))
+            if (isDeleteOnExists && File.Exists(arquivo))
                 File.Delete(arquivo);
             File.WriteAllText(arquivo, conteudo);
         }
 
-        public static void MoverArquivo(string arquivo, string arquivoDestino)
+        public static void MoverArquivo(string arquivo, string arquivoDestino, bool isDeleteOnExists = true)
         {
-            if (File.Exists(arquivoDestino))
+            if (isDeleteOnExists && File.Exists(arquivoDestino))
                 File.Delete(arquivoDestino);
             File.Move(arquivo, arquivoDestino);
         }

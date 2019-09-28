@@ -29,18 +29,18 @@ namespace MORM.Apresentacao.ViewsModel
 
         #region propriedades
         #region objeto
-        public virtual Type ElementType => Model.GetType();
-        public virtual object Filtro
+        public  Type ElementType => Model.GetType();
+        public object Filtro
         {
             get => _filtro;
             set => SetField(ref _filtro, value);
         }
-        public virtual object Model
+        public object Model
         {
             get => _model;
             set => SetField(ref _model, value);
         }
-        public virtual IList Lista
+        public IList Lista
         {
             get => _lista;
             set => SetField(ref _lista, value);
@@ -115,18 +115,7 @@ namespace MORM.Apresentacao.ViewsModel
         where TModel : class
     {
         #region propriedades
-        public override Type ElementType => typeof(TModel);
-        public TModel oFiltro
-        {
-            get => _filtro as TModel;
-            set => SetField(ref _filtro, value);
-        }
-        public List<TModel> oLista
-        {
-            get => _lista as List<TModel>;
-            set => SetField(ref _lista, value);
-        }
-        public TModel oModel
+        public TModel ObjModel
         {
             get => _model as TModel;
             set => SetField(ref _model, value);
@@ -169,7 +158,7 @@ namespace MORM.Apresentacao.ViewsModel
         }
         public void SetarAtualizacao()
         {
-            oModel?.SetCampoPadrao();
+            Model?.SetCampoPadrao();
         }
         #endregion
         #region metodos privados

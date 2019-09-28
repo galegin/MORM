@@ -1,6 +1,6 @@
 ﻿using MORM.Apresentacao.Report.Classes;
 using MORM.Apresentacao.Report.Interfaces;
-using MORM.Apresentacao.Report.Tipagens;
+using MORM.Apresentacao.Report.Types;
 using System.Collections.Generic;
 using System.Linq;
 

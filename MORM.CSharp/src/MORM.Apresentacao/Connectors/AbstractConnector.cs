@@ -26,7 +26,7 @@ namespace MORM.Apresentacao.Connectors
     {
         protected bool IsContemServico => ServiceAssembly.IsContemServico();
 
-        public virtual TRetorno Executar(TEntrada instance)
+        public virtual TRetorno Executar(TEntrada instance, object filtro = null)
         {
             if (IsContemServico)
             {

@@ -7,8 +7,8 @@
     <ProjectGuid>{2179D11B-275D-45E1-B5B9-988FC2FA42A1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MORM.Domain</RootNamespace>
-    <AssemblyName>MORM.Domain</AssemblyName>
+    <RootNamespace>MORM.Dominio</RootNamespace>
+    <AssemblyName>MORM.Dominio</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

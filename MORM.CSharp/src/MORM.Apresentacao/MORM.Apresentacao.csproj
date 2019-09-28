@@ -25,6 +25,7 @@
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>
     </DocumentationFile>
+    <LangVersion>7.2</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,6 +35,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>7.2</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
@@ -97,6 +99,7 @@
     <Compile Include="Commands\Tela\SelecionarTodosTela.cs" />
     <Compile Include="Comps\AbstractAppAction.cs" />
     <Compile Include="Comps\AbstractNotifyIcon.cs" />
+    <Compile Include="Comps\DialogUtils.cs" />
     <Compile Include="Controls\AbstractCampoFiltro.cs" />
     <Compile Include="Controls\AbstractCorpo.xaml.cs">
       <DependentUpon>AbstractCorpo.xaml</DependentUpon>
@@ -115,6 +118,16 @@
     <Compile Include="Controls\AbstractSource.cs" />
     <Compile Include="Controls\Models\SelecaoItemModel.cs" />
     <Compile Include="Commands\Tela\MinimizarTela.cs" />
+    <Compile Include="Reports\AbstractReport.xaml.cs">
+      <DependentUpon>AbstractReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Commands\ArquivoReportCommand.cs" />
+    <Compile Include="Reports\Commands\CancelarReportCommand.cs" />
+    <Compile Include="Reports\Commands\ConfirmarReportCommand.cs" />
+    <Compile Include="Reports\Models\ReportModel.cs" />
+    <Compile Include="Reports\Types\ReportTipo.cs" />
+    <Compile Include="Reports\Validations\ReportModelValidations.cs" />
+    <Compile Include="Reports\ViewsModel\AbstractReportViewModel.cs" />
     <Compile Include="Views\AbstractViewItem.cs" />
     <Compile Include="Views\AbstractViewTipo.cs" />
     <Compile Include="Views\Extensions\AbstractViewCampoExtensions.cs" />
@@ -321,6 +334,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Menus\ucSubMenuOpcao.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\AbstractReport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

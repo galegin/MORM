@@ -1,5 +1,7 @@
-﻿using MORM.Apresentacao.Connectors;
+﻿using MORM.Apresentacao.Comps;
+using MORM.Apresentacao.Connectors;
 using MORM.Apresentacao.ViewsModel;
+using MORM.CrossCutting;
 using System.ComponentModel;
 
 namespace MORM.Apresentacao.Commands.Tela
@@ -12,7 +14,21 @@ namespace MORM.Apresentacao.Commands.Tela
         {
             var vm = parameter as IAbstractViewModel<TModel>;
             var connector = new AbstractImportarConnector<TModel>();
-            connector.Executar(vm.oModel);
+
+            var arquivo = DialogUtils.GetOpenFile(
+                fileName: ExportsMessages.FileName,
+                filter: ExportsMessages.Filters,
+                defaultExt: ExportsMessages.DefaultExt);
+            if (string.IsNullOrWhiteSpace(arquivo))
+                return;
+
+            var conteudo = ArquivoDiretorio.CarregarArquivo(arquivo);
+            if (string.IsNullOrWhiteSpace(conteudo))
+                return;
+
+            connector.Executar(vm.ObjModel, filtro: conteudo);
+
+            DialogsMessages.ArquivoImportadoComSucesso.GetMensagem();
         }
     }
 }

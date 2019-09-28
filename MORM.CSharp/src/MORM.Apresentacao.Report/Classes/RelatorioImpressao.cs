@@ -1,6 +1,6 @@
-﻿using MORM.Apresentacao.Report.Extensoes;
+﻿using MORM.Apresentacao.Report.Extensions;
 using MORM.Apresentacao.Report.Interfaces;
-using MORM.Apresentacao.Report.Tipagens;
+using MORM.Apresentacao.Report.Types;
 
 namespace MORM.Apresentacao.Report.Classes
 {

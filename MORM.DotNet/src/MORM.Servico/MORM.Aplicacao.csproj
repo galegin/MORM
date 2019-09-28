@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C26BAD41-B1D2-4687-B7BC-2083FAD8D022}</ProjectGuid>
+    <ProjectGuid>{596B44F9-4A8A-4B76-AEFB-291D0D150B5A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MORM.Infrastructure.CrossCutting</RootNamespace>
-    <AssemblyName>MORM.Infrastructure.CrossCutting</AssemblyName>
+    <RootNamespace>MORM.Aplicacao</RootNamespace>
+    <AssemblyName>MORM.Aplicacao</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -45,13 +45,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Bus\" />
-    <Folder Include="Commands\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Entities\" />
     <Folder Include="Interfaces\" />
     <Folder Include="Models\" />
-    <Folder Include="Notifications\" />
     <Folder Include="Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

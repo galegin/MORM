@@ -1,5 +1,8 @@
-﻿using MORM.Apresentacao.Connectors;
+﻿using MORM.Apresentacao.Comps;
+using MORM.Apresentacao.Connectors;
+using MORM.Apresentacao.Reports;
 using MORM.Apresentacao.ViewsModel;
+using MORM.CrossCutting;
 using System.ComponentModel;
 
 namespace MORM.Apresentacao.Commands.Tela
@@ -12,7 +15,16 @@ namespace MORM.Apresentacao.Commands.Tela
         {
             var vm = parameter as IAbstractViewModel<TModel>;
             var connector = new AbstractImprimirConnector<TModel>();
-            connector.Executar(vm.oModel);
+
+            var report = AbstractReport.GetReport();
+            if (report == null)
+                return;
+
+            var conteudo = connector.Executar(vm.ObjModel, filtro: report) as string;
+            if (string.IsNullOrWhiteSpace(conteudo))
+                return;
+
+            DialogsMessages.RelatorioGeradoComSucesso.GetMensagem();
         }
     }
 }

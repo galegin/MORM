@@ -47,8 +47,8 @@
     <Compile Include="Comuns\CampoLista.cs" />
     <Compile Include="Comuns\ICampoLista.cs" />
     <Compile Include="Comuns\ICampoListaExtensions.cs" />
-    <Compile Include="Extensoes\RelatorioCampoExtensions.cs" />
-    <Compile Include="Extensoes\RelatorioExtensions.cs" />
+    <Compile Include="Extensions\RelatorioCampoExtensions.cs" />
+    <Compile Include="Extensions\RelatorioExtensions.cs" />
     <Compile Include="Interfaces\IRelatorio.cs" />
     <Compile Include="Interfaces\IRelatorioCampo.cs" />
     <Compile Include="Interfaces\IRelatorioDelimitador.cs" />
@@ -67,10 +67,10 @@
     <Compile Include="Classes\RelatorioImpressora.cs" />
     <Compile Include="Classes\RelatorioParte.cs" />
     <Compile Include="Classes\RelatorioVisualizacao.cs" />
-    <Compile Include="Tipagens\RelatorioAlinhamento.cs" />
-    <Compile Include="Tipagens\RelatorioFormato.cs" />
-    <Compile Include="Tipagens\RelatorioParteTipo.cs" />
-    <Compile Include="Tipagens\RelatorioSaida.cs" />
+    <Compile Include="Types\RelatorioAlinhamento.cs" />
+    <Compile Include="Types\RelatorioFormato.cs" />
+    <Compile Include="Types\RelatorioParteTipo.cs" />
+    <Compile Include="Types\RelatorioSaida.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MORM.Dominio\MORM.Dominio.csproj">

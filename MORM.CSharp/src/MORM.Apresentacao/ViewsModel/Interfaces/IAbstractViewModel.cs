@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Windows.Input;
 
 namespace MORM.Apresentacao.ViewsModel
@@ -40,10 +39,7 @@ namespace MORM.Apresentacao.ViewsModel
     public interface IAbstractViewModel<TModel> : IAbstractViewModel
         where TModel : class
     {
-        TModel oFiltro { get; set; }
-        TModel oModel { get; set; }
-        List<TModel> oLista { get; set; }
-
+        TModel ObjModel { get; set; }
         void SetarAtualizacao();
     }
 }

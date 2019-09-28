@@ -1,5 +1,5 @@
 ﻿using MORM.Apresentacao.Report.Interfaces;
-using MORM.Apresentacao.Report.Tipagens;
+using MORM.Apresentacao.Report.Types;
 using System;
 using System.Collections.Generic;
 

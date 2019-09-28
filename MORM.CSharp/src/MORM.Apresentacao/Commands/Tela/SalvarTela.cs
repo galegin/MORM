@@ -13,7 +13,7 @@ namespace MORM.Apresentacao.Commands.Tela
             var vm = parameter as IAbstractViewModel<TModel>;
             vm.SetarAtualizacao();
             var connector = new AbstractSalvarConnector<TModel>();
-            connector.Executar(vm.oModel);
+            connector.Executar(vm.ObjModel);
         }
     }
 }

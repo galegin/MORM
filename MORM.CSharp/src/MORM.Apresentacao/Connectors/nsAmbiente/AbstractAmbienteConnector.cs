@@ -9,7 +9,7 @@ namespace MORM.Apresentacao.Connectors
         private static string _token = 
             ConfigurationManager.AppSettings[nameof(_token)] ?? string.Empty;
 
-        public override ValidarAmbienteOutModel Executar(ValidarAmbienteInModel instance)
+        public override ValidarAmbienteOutModel Executar(ValidarAmbienteInModel instance, object filtro = null)
         {
             if (IsContemServico)
             {

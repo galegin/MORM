@@ -72,7 +72,12 @@
     <Compile Include="Attributes\Consumer.cs" />
     <Compile Include="BaseInstaller.cs" />
     <Compile Include="Expressions\ExpressionExtensions.cs" />
-    <Compile Include="HttpContexts\IHttpControllerContext.cs" />
+    <Compile Include="Extensions\Layouts\CsvExtensions.cs" />
+    <Compile Include="Extensions\Layouts\EdiExtensions.cs" />
+    <Compile Include="Mails\HttpContexts\IHttpControllerContext.cs" />
+    <Compile Include="Messages\DialogsMessages.cs" />
+    <Compile Include="Messages\ExportsMessages.cs" />
+    <Compile Include="Messages\ReportsMessages.cs" />
     <Compile Include="Paths\AppPath.cs" />
     <Compile Include="Paths\ArquivoDiretorio.cs" />
     <Compile Include="Paths\CaminhoPadrao.cs" />
@@ -138,6 +143,7 @@
     <Compile Include="Resolvers\Interfaces\IBaseResolver.cs" />
     <Compile Include="Resolvers\Interfaces\IRegisterClasse.cs" />
     <Compile Include="Tests\AbstractTests.cs" />
+    <Compile Include="Validations\EmailValidations.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
