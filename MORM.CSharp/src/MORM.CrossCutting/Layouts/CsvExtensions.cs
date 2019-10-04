@@ -8,7 +8,7 @@ namespace MORM.CrossCutting
     public static class CsvExtensions
     {
         #region constantes
-        private const string _formatoDataEdi = "dd/MM/yyyy HH:mm:ss";
+        private const string _formatoDataCsv = "dd/MM/yyyy HH:mm:ss";
         #endregion
         #region metodos        
         #region metodos publicos
@@ -91,7 +91,7 @@ namespace MORM.CrossCutting
                     valor = ((bool)value) ? "T" : "F";
                     break;
                 case TipoDado.Date:
-                    valor = ((DateTime)value).ToString(_formatoDataEdi);
+                    valor = ((DateTime)value).ToString(_formatoDataCsv);
                     break;
                 case TipoDado.Real:
                     valor = ((double)value).ToString();
