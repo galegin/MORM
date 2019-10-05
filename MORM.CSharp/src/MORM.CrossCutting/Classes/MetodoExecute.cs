@@ -15,8 +15,8 @@ namespace MORM.CrossCutting
             foreach (var parameter in metodoParameters)
             {
                 if (index >= parametros.Length)
-                    continue;
-                if (parameter.ParameterType.IsInterface)
+                    metodoValues.Add(null);
+                else if (parameter.ParameterType.IsInterface)
                     metodoValues.Add(parametros[index]);
                 else
                     metodoValues.Add(ObjetoMapper.GetObjetoRetorno(parameter.ParameterType, parametros[index]));
