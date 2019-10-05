@@ -114,6 +114,8 @@
     <Compile Include="Printers\PrinterExtensions.cs" />
     <Compile Include="Printers\PrinterPortalSerial.cs" />
     <Compile Include="Printers\WinSpool.cs" />
+    <Compile Include="Queryables\ExpressionDelegateVisitor.cs" />
+    <Compile Include="Queryables\SystemLinqExpressionsExpressionExtensions.cs" />
     <Compile Include="Registers\RegistryExtensions.cs" />
     <Compile Include="Types\AttributeExtensions.cs" />
     <Compile Include="Types\CampoExtensions.cs" />

@@ -12,6 +12,7 @@ namespace MORM.CrossCutting
             var metadata = typeof(TInstance).GetMetadata();
 
             var campos = isKeyOnly ? metadata.Campos.Where(x => x.IsKey()) : metadata.Campos;
+            Expression<Func<TInstance, bool>> expressionWhere = null;
 
             foreach (var campo in campos)
             {
@@ -20,9 +21,15 @@ namespace MORM.CrossCutting
                 {
                     var value = campo.Prop.GetValue(filtro);
                     var expression = GetEquality<TInstance>(value, new[] { campo.Prop.Name });
-                    queryable = queryable.Where(expression);
+                    expressionWhere = expressionWhere == null 
+                        ? expression
+                        : expressionWhere.CombineAnd(expression)
+                        ;
                 }
             }
+
+            if (expressionWhere != null)
+                queryable = queryable.Where(expressionWhere);
 
             return queryable;
         }

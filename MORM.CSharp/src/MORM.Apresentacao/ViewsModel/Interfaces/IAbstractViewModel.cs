@@ -39,6 +39,5 @@ namespace MORM.Apresentacao.ViewsModel
     public interface IAbstractViewModel<TModel> : IAbstractViewModel
         where TModel : class
     {
-        TModel ObjModel { get; set; }
     }
 }

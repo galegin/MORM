@@ -15,6 +15,7 @@ namespace MORM.Apresentacao.ViewsModel
     {
         #region variaveis
         #region objeto
+        protected Type _elementType;
         protected object _filtro;
         protected object _model;
         protected IList _lista;
@@ -29,7 +30,11 @@ namespace MORM.Apresentacao.ViewsModel
 
         #region propriedades
         #region objeto
-        public  Type ElementType => Model.GetType();
+        public Type ElementType
+        {
+            get => _elementType;
+            set => SetField(ref _elementType, value);
+        }
         public object Filtro
         {
             get => _filtro;
@@ -114,17 +119,10 @@ namespace MORM.Apresentacao.ViewsModel
     public class AbstractViewModel<TModel> : AbstractViewModel, IAbstractViewModel<TModel>
         where TModel : class
     {
-        #region propriedades
-        public TModel ObjModel
-        {
-            get => _model as TModel;
-            set => SetField(ref _model, value);
-        }
-        #endregion
-
         #region construtores
         public AbstractViewModel() : base()
         {
+            ElementType = typeof(TModel);
             Filtro = Activator.CreateInstance<TModel>();
             Lista = new List<TModel>();
             Model = Activator.CreateInstance<TModel>();
