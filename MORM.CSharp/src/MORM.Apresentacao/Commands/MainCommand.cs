@@ -1,66 +1,53 @@
 ﻿using MORM.Apresentacao.Commands.Tela;
+using System;
+using System.Collections.Generic;
 
 namespace MORM.Apresentacao.Commands
 {
-    public abstract class MainCommand : IMainCommand
+    public class MainCommand : IMainCommand
     {
-        public abstract AbstractCommand GetCommand(CommandTipo tipo);
+        private static Dictionary<CommandTipo, Type> _commands =
+            new Dictionary<CommandTipo, Type>
+            {
+                { CommandTipo.Fechar, typeof(FecharCommand) },
+                { CommandTipo.Voltar, typeof(VoltarTelaAnteriorCommand) },
+
+                { CommandTipo.Limpar, typeof(LimparCommand) },
+                { CommandTipo.Listar, typeof(ListarCommand) },
+                { CommandTipo.Consultar, typeof(ConsultarCommand) },
+
+                { CommandTipo.Incluir, typeof(IncluirCommand) },
+                { CommandTipo.Alterar, typeof(AlterarCommand) },
+                { CommandTipo.Salvar, typeof(SalvarCommand) },
+                { CommandTipo.Excluir, typeof(ExcluirCommand) },
+
+                { CommandTipo.Exportar, typeof(ExportarCommand) },
+                { CommandTipo.Importar, typeof(ImportarCommand) },
+
+                { CommandTipo.Imprimir, typeof(ImprimirCommand) },
+
+                { CommandTipo.Retornar, typeof(RetornarCommand) },
+                { CommandTipo.Selecionar, typeof(SelecionarCommand) },
+
+                { CommandTipo.Confirmar, typeof(ConfirmarCommand) },
+                { CommandTipo.Cancelar, typeof(CancelarCommand) },
+
+                { CommandTipo.InverterSelecao, typeof(InverterSelecaoCommand) },
+                { CommandTipo.SelecionarTodos, typeof(SelecionarTodosCommand) },
+            };
+
+        public AbstractCommand GetCommand(CommandTipo tipo)
+        {
+            var typeCommand = _commands.ContainsKey(tipo) ? _commands[tipo] : null;
+            return typeCommand != null ? Activator.CreateInstance(typeCommand) as AbstractCommand : null;
+        }
     }
 
-    public class MainCommand<TModel> : MainCommand, IMainCommand<TModel>
-        where TModel : class
+    public static class MainCommandExtensions
     {
-        public override AbstractCommand GetCommand(CommandTipo tipo)
+        public static IMainCommand GetMainCommand(this Type classe)
         {
-            switch (tipo)
-            {
-                case CommandTipo.Fechar:
-                    return new FecharTela();
-                case CommandTipo.Voltar:
-                    return new VoltarTelaAnterior();
-
-                case CommandTipo.Limpar:
-                    return new LimparTela<TModel>();
-
-                case CommandTipo.Listar:
-                    return new ListarTela<TModel>();
-                case CommandTipo.Consultar:
-                    return new ConsultarTela<TModel>();
-
-                case CommandTipo.Incluir:
-                    return new IncluirTela<TModel>();
-                case CommandTipo.Alterar:
-                    return new AlterarTela<TModel>();
-                case CommandTipo.Salvar:
-                    return new SalvarTela<TModel>();
-                case CommandTipo.Excluir:
-                    return new ExcluirTela<TModel>();
-
-                case CommandTipo.Exportar:
-                    return new ExportarTela<TModel>();
-                case CommandTipo.Importar:
-                    return new ImportarTela<TModel>();
-
-                case CommandTipo.Imprimir:
-                    return new ImprimirTela<TModel>();
-
-                case CommandTipo.Retornar:
-                    return new RetornarTela<TModel>();
-                case CommandTipo.Selecionar:
-                    return new SelecionarTela<TModel>();
-
-                case CommandTipo.Confirmar:
-                    return new ConfirmarTela<TModel>();
-                case CommandTipo.Cancelar:
-                    return new CancelarTela<TModel>();
-
-                case CommandTipo.InverterSelecao:
-                    return new InverterSelecaoTela<TModel>();
-                case CommandTipo.SelecionarTodos:
-                    return new SelecionarTodosTela<TModel>();
-            }
-
-            return null;
+            return new MainCommand();
         }
     }
 }

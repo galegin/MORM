@@ -86,8 +86,8 @@ namespace MORM.Apresentacao.Menus.ViewModels
 
         #region comandos
         public ExibirMenuLateral ExibirMenuLateral { get; }
-        public FecharTela FecharTela { get; }
-        public MinimizarTela MinimizarTela { get; }
+        public FecharCommand FecharTela { get; }
+        public MinimizarCommand MinimizarTela { get; }
         #endregion
 
         #region construtores
@@ -95,8 +95,8 @@ namespace MORM.Apresentacao.Menus.ViewModels
         {
             InformacaoSistema = informacaoSistema ?? throw new ArgumentNullException(nameof(informacaoSistema));
             ExibirMenuLateral = new ExibirMenuLateral();
-            FecharTela = new FecharTela();
-            MinimizarTela = new MinimizarTela();
+            FecharTela = new FecharCommand();
+            MinimizarTela = new MinimizarCommand();
             NomeSistema = AppDomain.CurrentDomain.FriendlyName;
             Timer = new AbstractTimer(SetarDataSistema);
         }

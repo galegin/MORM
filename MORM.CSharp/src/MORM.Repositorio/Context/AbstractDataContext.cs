@@ -102,7 +102,7 @@ namespace MORM.Repositorio.Context
             _ambiente.SetarFiltroPadrao(filtro);
 
             var where = filtro is string ? filtro as string : null;
-            var filtroObj = filtro is string ? null : filtro;
+            var filtroObj = filtro is string ? obj : filtro;
 
             var parametros = new List<IParametro>();
 

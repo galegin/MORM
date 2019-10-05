@@ -40,6 +40,5 @@ namespace MORM.Apresentacao.ViewsModel
         where TModel : class
     {
         TModel ObjModel { get; set; }
-        void SetarAtualizacao();
     }
 }

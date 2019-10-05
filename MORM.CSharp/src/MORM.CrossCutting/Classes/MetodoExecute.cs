@@ -14,6 +14,8 @@ namespace MORM.CrossCutting
             int index = 0;
             foreach (var parameter in metodoParameters)
             {
+                if (index >= parametros.Length)
+                    continue;
                 if (parameter.ParameterType.IsInterface)
                     metodoValues.Add(parametros[index]);
                 else

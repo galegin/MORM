@@ -30,7 +30,7 @@ namespace MORM.Apresentacao.Connectors
         {
             if (IsContemServico)
             {
-                return ServiceAssembly.Execute<TEntrada, TRetorno>(this.GetMtd(), instance, this);
+                return ServiceAssembly.Execute<TEntrada, TRetorno>(this.GetMtd(), instance, this, filtro: filtro);
             }
 
             var consumerApi = new AbstractApiConsumer<TEntrada, TRetorno>();

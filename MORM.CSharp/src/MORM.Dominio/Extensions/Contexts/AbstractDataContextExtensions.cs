@@ -93,8 +93,11 @@ namespace MORM.Dominio.Extensions
             {
                 relacao.OwnerObj = obj;
                 var val = relacao.OwnerProp.GetValue(obj);
-                var ret = context.GetRelacao(val.GetType(), relacao, inRelacao, tipoDatabase);
-                relacao.OwnerProp.SetValue(obj, ret);
+                if (val != null)
+                {
+                    var ret = context.GetRelacao(val.GetType(), relacao, inRelacao, tipoDatabase);
+                    relacao.OwnerProp.SetValue(obj, ret);
+                }
             }
         }
 

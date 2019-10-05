@@ -1,11 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace MORM.CrossCutting
 {
-    public static class ExportsExtensions
+    public abstract class Exports
+    {
+        public abstract string GetExport(IList lista, string arquivo);
+        public abstract IList GetListaFromExport(string value, string arquivo);
+    }
+
+    public class Exports<TObject> : Exports where TObject : class
     {
         #region metodos
-        public static string GetExport<TObject>(this IList<TObject> lista, string arquivo)
+        public override string GetExport(IList lista, string arquivo)
         {
             if (string.IsNullOrWhiteSpace(arquivo))
                 return null;
@@ -15,22 +23,22 @@ namespace MORM.CrossCutting
             switch (exporstTipo)
             {
                 case ExportsTipo.Csv:
-                    return lista.GetCsv();
+                    return (lista as IList<TObject>).GetCsv();
                 case ExportsTipo.Edi:
-                    return lista.GetEdi();
+                    return (lista as IList<TObject>).GetEdi();
                 case ExportsTipo.Json:
-                    return lista.GetJsonFromObject(); // GetJson();
+                    return (lista as IList<TObject>).GetJsonFromObject(); // GetJson();
                 case ExportsTipo.Sped:
-                    return lista.GetSped();
+                    return (lista as IList<TObject>).GetSped();
                 case ExportsTipo.Xml:
                     return lista.GetXml();
                 case ExportsTipo.Zip:
-                    return lista.GetExport("arquivo.json")?.GetZip();
+                    return GetExport(lista, "arquivo.json")?.GetZip();
             }
 
             return null;
         }
-        public static IList<TObject> GetListaFromExport<TObject>(this string value, string arquivo)
+        public override IList GetListaFromExport(string value, string arquivo)
         {
             if (string.IsNullOrWhiteSpace(arquivo))
                 return null;
@@ -40,15 +48,15 @@ namespace MORM.CrossCutting
             switch (exporstTipo)
             {
                 case ExportsTipo.Csv:
-                    return value.GetListaFromCsv<TObject>();
+                    return value.GetListaFromCsv<TObject>() as IList;
                 case ExportsTipo.Edi:
-                    return value.GetListaFromEdi<TObject>();
+                    return value.GetListaFromEdi<TObject>() as IList;
                 case ExportsTipo.Json:
-                    return value.GetListaFromJson<TObject>();
+                    return value.GetListaFromJson<TObject>() as IList;
                 case ExportsTipo.Sped:
-                    return value.GetListaFromSped<TObject>();
+                    return value.GetListaFromSped<TObject>() as IList;
                 case ExportsTipo.Xml:
-                    return value.GetObjectFromJson<IList<TObject>>(); // GetListaFromXml<TObject>();
+                    return value.GetObjectFromJson<IList<TObject>>() as IList; // GetListaFromXml<TObject>();
                 case ExportsTipo.Zip:
                     return value.GetStringFromZip()?.GetListaFromJson<TObject>();
             }
@@ -56,5 +64,13 @@ namespace MORM.CrossCutting
             return null;
         }
         #endregion
+    }
+
+    public static class ExportsExtensions
+    {
+        public static Exports GetExports(this Type classe)
+        {
+            return TypeForConvert.GetObjectFor(typeof(Exports<>), classe) as Exports;
+        }
     }
 }

@@ -156,10 +156,6 @@ namespace MORM.Apresentacao.ViewsModel
                     consultar.ExecuteCommand(this);
             }
         }
-        public void SetarAtualizacao()
-        {
-            Model?.SetCampoPadrao();
-        }
         #endregion
         #region metodos privados
         private ICommand GetCommand(string nome)
