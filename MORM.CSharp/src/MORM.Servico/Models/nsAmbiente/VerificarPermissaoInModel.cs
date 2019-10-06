@@ -1,4 +1,4 @@
-﻿namespace MORM.Servico.Models
+﻿namespace MORM.Servico
 {
     public class VerificarPermissaoInModel
     {

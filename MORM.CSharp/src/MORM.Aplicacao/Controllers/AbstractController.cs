@@ -1,6 +1,5 @@
 using MORM.CrossCutting;
-using MORM.Servico.Interfaces;
-using MORM.Servico.Models;
+using MORM.Servico;
 using System;
 using System.Configuration;
 using System.Linq;

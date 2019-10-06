@@ -1,9 +1,7 @@
 ﻿using MORM.CrossCutting;
-using MORM.Servico.Interfaces;
-using MORM.Servico.Models;
 using System.Linq;
 
-namespace MORM.Servico.Services
+namespace MORM.Servico
 {
     public class PermissaoAppService : IPermissaoAppService
     {

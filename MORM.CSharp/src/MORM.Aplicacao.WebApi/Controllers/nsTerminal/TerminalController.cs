@@ -1,6 +1,6 @@
 using System.Web.Http;
 using MORM.CrossCutting;
-using MORM.Servico.Interfaces;
+using MORM.Servico;
 
 namespace MORM.Aplicacao.WebApi
 {

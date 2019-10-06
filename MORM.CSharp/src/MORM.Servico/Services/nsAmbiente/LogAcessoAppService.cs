@@ -1,10 +1,8 @@
 ﻿using MORM.CrossCutting;
-using MORM.Servico.Models;
-using MORM.Servico.Interfaces;
 using System;
 using System.Linq;
 
-namespace MORM.Servico.Services
+namespace MORM.Servico
 {
     public class LogAcessoAppService : ILogAcessoAppService
     {

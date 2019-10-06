@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MORM.Servico.Models
+namespace MORM.Servico
 {
     public class GravarLogAcessoInModel
     {

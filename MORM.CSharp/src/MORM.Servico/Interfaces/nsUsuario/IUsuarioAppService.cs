@@ -1,6 +1,6 @@
 using MORM.CrossCutting;
 
-namespace MORM.Servico.Interfaces
+namespace MORM.Servico
 {
     public interface IUsuarioAppService : IAbstractAppService<Usuario>
     {

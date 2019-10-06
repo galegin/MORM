@@ -1,6 +1,4 @@
 ﻿using MORM.CrossCutting;
-using MORM.Servico.Interfaces;
-using MORM.Servico.Services;
 
 namespace MORM.Servico
 {

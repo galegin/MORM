@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace MORM.Servico.Services
+namespace MORM.Servico
 {
     public class AbstractService : IAbstractService
     {

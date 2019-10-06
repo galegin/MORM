@@ -1,4 +1,4 @@
-﻿namespace MORM.Servico.Interfaces
+﻿namespace MORM.Servico
 {
     public interface IMigracaoAppService
     {

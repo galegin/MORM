@@ -2,7 +2,7 @@
 using System;
 using System.Linq;
 
-namespace MORM.Servico.Services
+namespace MORM.Servico
 {
     public class AbstractAppService : IAbstractAppService
     {

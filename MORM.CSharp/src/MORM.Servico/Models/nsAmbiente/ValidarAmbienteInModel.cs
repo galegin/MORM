@@ -1,7 +1,7 @@
 ﻿using MORM.CrossCutting;
 using System;
 
-namespace MORM.Servico.Models
+namespace MORM.Servico
 {
     [URL("Ambiente/Validar")]
     public class ValidarAmbienteInModel
