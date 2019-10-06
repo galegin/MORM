@@ -1,5 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MORM.Dominio.Extensions;
 using System.Linq;
 
 namespace MORM.Repositorio.Tests

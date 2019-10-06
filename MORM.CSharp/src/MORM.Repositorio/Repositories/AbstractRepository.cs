@@ -1,10 +1,9 @@
-﻿using MORM.Dominio.Extensions;
-using MORM.Dominio.Interfaces;
+﻿using MORM.CrossCutting;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace MORM.Repositorio.Repositories
+namespace MORM.Repositorio
 {
     public class AbstractRepository : IAbstractRepository
     {

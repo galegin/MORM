@@ -1,8 +1,7 @@
-﻿using MORM.Dominio.Interfaces;
-using MORM.Dominio.Types;
+﻿using MORM.CrossCutting;
 using System.Configuration;
 
-namespace MORM.Repositorio.Queries
+namespace MORM.Repositorio
 {
     public class QueryableValue : IQueryableValue
     {

@@ -67,10 +67,6 @@
     <Compile Include="Services\nsUsuario\UsuarioAppService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MORM.Dominio\MORM.Dominio.csproj">
-      <Project>{c22c745b-1538-405f-a9ce-29576c708b9e}</Project>
-      <Name>MORM.Dominio</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MORM.Repositorio\MORM.Repositorio.csproj">
       <Project>{065554c3-207f-47d8-97c1-1ac5202ecb22}</Project>
       <Name>MORM.Repositorio</Name>

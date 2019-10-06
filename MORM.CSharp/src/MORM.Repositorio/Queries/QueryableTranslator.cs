@@ -1,12 +1,11 @@
-﻿using MORM.Dominio.Interfaces;
-using MORM.CrossCutting;
+﻿using MORM.CrossCutting;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
 
-namespace MORM.Repositorio.Queries
+namespace MORM.Repositorio
 {
     public class QueryableTranslator : ExpressionVisitor, IQueryableTranslator
     {

@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace MORM.Aplicacao.Config
+namespace MORM.Aplicacao
 {
     /*
         Global.asax.cs

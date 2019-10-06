@@ -1,7 +1,7 @@
-﻿using MORM.Dominio.Interfaces;
+﻿using MORM.CrossCutting;
 using System;
 
-namespace MORM.Repositorio.Extensions
+namespace MORM.Repositorio
 {
     public static class AmbienteExtensions
     {

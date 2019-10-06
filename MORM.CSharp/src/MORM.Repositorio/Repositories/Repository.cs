@@ -1,7 +1,7 @@
-﻿using MORM.Dominio.Interfaces;
+﻿using MORM.CrossCutting;
 using System.Linq;
 
-namespace MORM.Repositorio.Repositories
+namespace MORM.Repositorio
 {
     public class Repository<TInstance> : IRepository<TInstance>, IRepositoryDataContext where TInstance : class
     {

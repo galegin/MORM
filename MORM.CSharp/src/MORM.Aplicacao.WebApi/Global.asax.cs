@@ -1,8 +1,4 @@
-﻿using MORM.Aplicacao.Config;
-using MORM.CrossCutting;
-using MORM.Dominio;
-using MORM.Repositorio;
-using MORM.Servico;
+﻿using MORM.CrossCutting;
 using System.Web;
 using System.Web.Http;
 

@@ -1,5 +1,4 @@
-using MORM.Dominio.Entidades;
-using MORM.Dominio.Interfaces;
+using MORM.CrossCutting;
 
 namespace MORM.Servico.Interfaces
 {

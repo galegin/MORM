@@ -1,8 +1,4 @@
-﻿using MORM.Dominio.Interfaces;
-using MORM.CrossCutting;
-using MORM.Repositorio.Context;
-using MORM.Repositorio.UnityOfWork;
-using MORM.Repositorio.Repositories;
+﻿using MORM.CrossCutting;
 
 namespace MORM.Repositorio
 {

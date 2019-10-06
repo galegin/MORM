@@ -1,10 +1,10 @@
-﻿using MORM.Dominio.Types;
+﻿using MORM.CrossCutting;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 
-namespace MORM.Repositorio.Context
+namespace MORM.Repositorio
 {
     /// <summary>
     /// classe para geração de clausula para consulta

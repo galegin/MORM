@@ -1,5 +1,4 @@
 ﻿using MORM.CrossCutting;
-using MORM.Dominio;
 using MORM.Repositorio.Mocks;
 
 namespace MORM.Servico.Tests
@@ -9,7 +8,6 @@ namespace MORM.Servico.Tests
         static BaseTests()
         {
             var container = AbstractContainer.Instance;
-            container.AddDominio();
             container.AddCrossCutting();
             container.AddServico();
             container.AddRepositorioMocks();

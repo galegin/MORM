@@ -1,8 +1,8 @@
 using System.Web.Http;
-using MORM.Dominio.Entidades;
+using MORM.CrossCutting;
 using MORM.Servico.Interfaces;
 
-namespace MORM.Aplicacao.Controllers
+namespace MORM.Aplicacao.WebApi
 {
     [RoutePrefix("api/Empresa")]
     public class EmpresaController : AbstractController<Empresa>

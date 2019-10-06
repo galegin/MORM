@@ -1,6 +1,6 @@
-﻿using MORM.Dominio.Interfaces;
+﻿using MORM.CrossCutting;
 
-namespace MORM.Repositorio.Dapper.Context
+namespace MORM.Repositorio.Dapper
 {
     public interface IAbstractDataContextDapper : IAbstractDataContext
     {

@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http;
 
-namespace MORM.Aplicacao.Config
+namespace MORM.Aplicacao
 {
     public class AuthenticationFailureResult : IHttpActionResult
     {

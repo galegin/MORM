@@ -1,6 +1,4 @@
-﻿using MORM.Dominio.Entidades;
-using MORM.Dominio.Extensions;
-using MORM.Dominio.Interfaces;
+﻿using MORM.CrossCutting;
 using MORM.Servico.Models;
 using MORM.Servico.Interfaces;
 using System;

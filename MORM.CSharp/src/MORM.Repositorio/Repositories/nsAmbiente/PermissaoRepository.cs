@@ -1,7 +1,6 @@
-﻿using MORM.Dominio.Entidades;
-using MORM.Dominio.Interfaces;
+﻿using MORM.CrossCutting;
 
-namespace MORM.Repositorio.Repositories
+namespace MORM.Repositorio
 {
     public class PermissaoRepository : Repository<Permissao>, IPermissaoRepository
     {

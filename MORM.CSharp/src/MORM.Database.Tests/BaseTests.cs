@@ -1,5 +1,4 @@
 ﻿using MORM.CrossCutting;
-using MORM.Dominio;
 
 namespace MORM.Database.Tests
 {
@@ -8,7 +7,7 @@ namespace MORM.Database.Tests
         static BaseTests()
         {
             var container = AbstractContainer.Instance;
-            container.AddDominio();
+            container.AddCrossCutting();
         }
     }
 }

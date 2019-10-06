@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MORM.Dominio.Entidades;
+using MORM.CrossCutting;
 using MORM.Servico.Interfaces;
 using System.Collections.Generic;
 using System.Linq;

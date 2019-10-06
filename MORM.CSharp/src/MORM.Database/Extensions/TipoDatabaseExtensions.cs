@@ -1,8 +1,7 @@
-﻿using MORM.Repositorio.Classes;
-using MORM.Dominio.Types;
+﻿using MORM.CrossCutting;
 using System.Linq;
 
-namespace MORM.Repositorio.Extensions
+namespace MORM.Repositorio
 {
     public static class TipoDatabaseExtensions
     {

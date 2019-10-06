@@ -1,11 +1,10 @@
-﻿using MORM.Aplicacao.Controllers;
-using MORM.Dominio.Types;
+﻿using MORM.CrossCutting;
 using MORM.Servico.Interfaces;
 using MORM.Servico.Models;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace MORM.Aplicacao.WebApi.Controllers
+namespace MORM.Aplicacao.WebApi
 {
     [RoutePrefix("api/Ambiente")]
     public class AmbienteController : AbstractController

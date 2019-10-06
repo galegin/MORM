@@ -3,7 +3,7 @@ using MORM.Apresentacao.Commands.Tela;
 using MORM.Apresentacao.Comps;
 using MORM.Apresentacao.Menus.Commands;
 using MORM.Apresentacao.ViewsModel;
-using MORM.Dominio.Interfaces;
+using MORM.CrossCutting;
 using System;
 using System.Windows.Controls;
 

@@ -1,4 +1,4 @@
-﻿using MORM.Dominio.Entidades;
+﻿using MORM.CrossCutting;
 
 namespace MORM.Apresentacao.Models
 {

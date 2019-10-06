@@ -1,11 +1,9 @@
-﻿using MORM.Dominio.Entidades;
-using MORM.Dominio.Interfaces;
-using MORM.CrossCutting;
+﻿using MORM.CrossCutting;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 
-namespace MORM.Aplicacao.Extensions
+namespace MORM.Aplicacao
 {
     public static class HttpRequestMessageExtensions
     {

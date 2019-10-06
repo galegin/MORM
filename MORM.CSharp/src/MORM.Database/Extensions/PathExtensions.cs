@@ -1,7 +1,7 @@
 ﻿using MORM.CrossCutting;
 using System.Linq;
 
-namespace MORM.Repositorio.Extensions
+namespace MORM.Repositorio
 {
     public static class PathExtensions
     {

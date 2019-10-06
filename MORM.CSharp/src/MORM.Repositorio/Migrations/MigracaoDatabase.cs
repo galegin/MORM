@@ -1,11 +1,8 @@
-﻿using MORM.Dominio.Entidades;
-using MORM.Dominio.Extensions;
-using MORM.Dominio.Interfaces;
-using MORM.CrossCutting;
+﻿using MORM.CrossCutting;
 using System;
 using System.Collections.Generic;
 
-namespace MORM.Repositorio.Migrations
+namespace MORM.Repositorio
 {
     public class MigracaoDatabase
     {

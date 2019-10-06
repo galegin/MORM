@@ -61,10 +61,6 @@
       <Project>{346BED24-2DD1-4E58-939A-D72311C257F9}</Project>
       <Name>MORM.CrossCutting</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MORM.Dominio\MORM.Dominio.csproj">
-      <Project>{c22c745b-1538-405f-a9ce-29576c708b9e}</Project>
-      <Name>MORM.Dominio</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MORM.Repositorio.Mocks\MORM.Repositorio.Mocks.csproj">
       <Project>{06f96973-52fc-4135-959a-d17d2a1751cf}</Project>
       <Name>MORM.Repositorio.Mocks</Name>

@@ -1,5 +1,4 @@
 ﻿using MORM.CrossCutting;
-using MORM.Dominio.Interfaces;
 using System;
 using System.Linq;
 

@@ -1,13 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using MORM.Dominio.Atributos;
-using MORM.Dominio.Extensions;
-using MORM.Dominio.Interfaces;
-using MORM.Dominio.Types;
 using MORM.CrossCutting;
 
-namespace MORM.Repositorio.Context
+namespace MORM.Repositorio
 {
     public class Comando : IComando
     {

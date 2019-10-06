@@ -1,7 +1,7 @@
-﻿using MORM.Dominio.Interfaces;
+﻿using MORM.CrossCutting;
 using System;
 
-namespace MORM.Repositorio.UnityOfWork
+namespace MORM.Repositorio
 {
     public class AbstractUnityOfWork : IAbstractUnityOfWork
     {

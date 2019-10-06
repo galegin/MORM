@@ -1,7 +1,5 @@
 ﻿using MORM.CrossCutting;
-using MORM.Dominio.Interfaces;
-using MORM.Repositorio.Context;
-using MORM.Repositorio.Dapper.Context;
+using MORM.Repositorio.Dapper;
 
 namespace MORM.Repositorio.Tests
 {

@@ -1,5 +1,4 @@
-﻿using MORM.Dominio.Atributos;
-using MORM.Dominio.Extensions;
+﻿using MORM.CrossCutting;
 using System;
 using System.Collections.Generic;
 using System.IO;

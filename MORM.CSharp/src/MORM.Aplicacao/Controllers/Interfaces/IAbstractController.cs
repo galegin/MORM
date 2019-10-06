@@ -1,4 +1,4 @@
-namespace MORM.Aplicacao.Controllers
+namespace MORM.Aplicacao
 {
     public interface IAbstractController<TObject> where TObject : class
     {

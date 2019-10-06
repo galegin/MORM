@@ -1,13 +1,10 @@
-using MORM.Dominio.Interfaces;
-using MORM.Dominio.Types;
 using MORM.CrossCutting;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
-using MORM.Repositorio.Extensions;
 
-namespace MORM.Repositorio.Context
+namespace MORM.Repositorio
 {
     public class Conexao : IConexao
     {

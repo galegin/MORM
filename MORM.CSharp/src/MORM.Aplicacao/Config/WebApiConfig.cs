@@ -1,8 +1,7 @@
-﻿using MORM.Aplicacao.Resolver;
-using MORM.CrossCutting;
+﻿using MORM.CrossCutting;
 using System.Web.Http;
 
-namespace MORM.Aplicacao.Config
+namespace MORM.Aplicacao
 {
     public static class WebApiConfig
     {

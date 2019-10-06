@@ -1,5 +1,4 @@
-﻿using MORM.Repositorio.Dapper.Context;
-using MORM.Repositorio.Repositories;
+﻿using MORM.Repositorio.Dapper;
 
 namespace MORM.Repositorio.Tests
 {

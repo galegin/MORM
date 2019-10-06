@@ -2,7 +2,7 @@
 using System.Configuration;
 using System.Data.Common;
 
-namespace MORM.Repositorio.Factories
+namespace MORM.Repositorio
 {
     public static class ProviderFactory
     {

@@ -1,10 +1,9 @@
-﻿using MORM.Repositorio.Classes;
-using MORM.CrossCutting;
+﻿using MORM.CrossCutting;
 using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace MORM.Repositorio.Extensions
+namespace MORM.Repositorio
 {
     public static class ConnectionConfigExtensions
     {

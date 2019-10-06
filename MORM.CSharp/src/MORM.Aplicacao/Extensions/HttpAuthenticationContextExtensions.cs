@@ -1,7 +1,7 @@
-﻿using MORM.Dominio.Entidades;
+﻿using MORM.CrossCutting;
 using System.Web.Http.Filters;
 
-namespace MORM.Aplicacao.Extensions
+namespace MORM.Aplicacao
 {
     public static class HttpAuthenticationContextExtensions
     {

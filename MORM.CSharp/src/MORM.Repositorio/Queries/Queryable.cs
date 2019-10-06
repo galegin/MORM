@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace MORM.Repositorio.Queries
+namespace MORM.Repositorio
 {
     public class Queryable<TInstance> : IQueryable<TInstance>
     {

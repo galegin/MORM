@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using MORM.Dominio.Atributos;
+using MORM.CrossCutting;
 
 namespace MORM.Repositorio.Tests
 {

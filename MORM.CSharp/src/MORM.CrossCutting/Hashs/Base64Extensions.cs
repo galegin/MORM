@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace MORM.CrossCutting.Extensions.Hashs
+namespace MORM.CrossCutting.Hashs
 {
     public static class Base64Extensions
     {

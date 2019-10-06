@@ -1,8 +1,7 @@
 ﻿using System.Linq;
-using MORM.Dominio.Interfaces;
-using MORM.Repositorio.Queries;
+using MORM.CrossCutting;
 
-namespace MORM.Repositorio.Context
+namespace MORM.Repositorio
 {
     public class DbSet<TInstance> : IDbSet<TInstance>
     {

@@ -1,7 +1,7 @@
-﻿using MORM.Dominio.Interfaces;
+﻿using MORM.CrossCutting;
 using System;
 
-namespace MORM.Repositorio.Context
+namespace MORM.Repositorio
 {
     public class Parametro : IParametro
     {

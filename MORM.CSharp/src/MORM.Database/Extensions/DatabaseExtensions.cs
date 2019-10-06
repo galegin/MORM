@@ -1,10 +1,10 @@
-using MORM.Dominio.Interfaces;
+using MORM.CrossCutting;
 using System;
 using System.Data;
 using System.IO;
 using System.Reflection;
 
-namespace MORM.Repositorio.Extensions
+namespace MORM.Repositorio
 {
     public static class DatabaseExtensions
     {

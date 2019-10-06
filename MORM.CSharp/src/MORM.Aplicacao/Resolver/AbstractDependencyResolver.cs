@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http.Dependencies;
 
-namespace MORM.Aplicacao.Resolver
+namespace MORM.Aplicacao
 {
     public class AbstractDependencyResolver : IDependencyResolver
     {

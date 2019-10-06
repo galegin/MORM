@@ -92,10 +92,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MORM.Dominio\MORM.Dominio.csproj">
-      <Project>{C22C745B-1538-405F-A9CE-29576C708B9E}</Project>
-      <Name>MORM.Dominio</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MORM.Repositorio.Mocks\MORM.Repositorio.Mocks.csproj">
       <Project>{06F96973-52FC-4135-959A-D17D2A1751CF}</Project>
       <Name>MORM.Repositorio.Mocks</Name>

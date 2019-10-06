@@ -1,4 +1,3 @@
-using MORM.Apresentacao.WSist.Types;
 using MORM.CrossCutting;
 using System;
 

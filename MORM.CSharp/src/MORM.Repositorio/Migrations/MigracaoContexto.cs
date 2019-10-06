@@ -1,11 +1,9 @@
-﻿using MORM.Dominio.Extensions;
-using MORM.Dominio.Interfaces;
-using MORM.CrossCutting;
+﻿using MORM.CrossCutting;
 using System;
 using System.Configuration;
 using System.Linq;
 
-namespace MORM.Repositorio.Migrations
+namespace MORM.Repositorio
 {
     public class MigracaoContexto
     {

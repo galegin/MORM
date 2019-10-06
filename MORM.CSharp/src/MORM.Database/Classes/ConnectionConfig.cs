@@ -1,7 +1,7 @@
-﻿using MORM.Dominio.Types;
+﻿using MORM.CrossCutting;
 using System;
 
-namespace MORM.Repositorio.Classes
+namespace MORM.Repositorio
 {
     public class ConnectionConfig
     {

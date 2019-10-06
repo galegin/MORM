@@ -1,4 +1,4 @@
-﻿using MORM.Dominio.Interfaces;
+﻿using MORM.CrossCutting;
 using System;
 using System.Collections.Generic;
 

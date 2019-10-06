@@ -1,7 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MORM.Dominio.Interfaces;
-using MORM.Repositorio.Dapper.Context;
-using MORM.Repositorio.Migrations;
+using MORM.Repositorio.Dapper;
 
 namespace MORM.Repositorio.Tests
 {

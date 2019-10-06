@@ -1,7 +1,7 @@
 ﻿using MORM.CrossCutting;
 using System;
 
-namespace MORM.Aplicacao.Controllers
+namespace MORM.Aplicacao
 {
     public class MessageHandler
     {

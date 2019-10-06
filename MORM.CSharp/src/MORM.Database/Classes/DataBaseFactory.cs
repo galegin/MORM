@@ -1,5 +1,4 @@
-﻿using MORM.Repositorio.Extensions;
-using MORM.Dominio.Interfaces;
+﻿using MORM.CrossCutting;
 using System;
 using System.Configuration;
 using System.Reflection;

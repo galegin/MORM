@@ -1,5 +1,4 @@
-﻿using MORM.Dominio.Extensions;
-using MORM.Dominio.Interfaces;
+﻿using MORM.CrossCutting;
 using System;
 
 namespace MORM.Apresentacao.Classes

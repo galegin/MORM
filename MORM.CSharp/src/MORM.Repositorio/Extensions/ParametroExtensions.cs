@@ -1,12 +1,8 @@
-﻿using MORM.Dominio.Atributos;
-using MORM.Dominio.Extensions;
-using MORM.Dominio.Interfaces;
-using MORM.CrossCutting;
-using MORM.Repositorio.Context;
+﻿using MORM.CrossCutting;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MORM.Repositorio.Extensions
+namespace MORM.Repositorio
 {
     public static class ParametroExtensions
     {

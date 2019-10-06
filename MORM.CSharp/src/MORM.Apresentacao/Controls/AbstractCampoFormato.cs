@@ -1,5 +1,4 @@
-﻿using MORM.Dominio.Atributos;
-using MORM.CrossCutting;
+﻿using MORM.CrossCutting;
 using System;
 using System.Reflection;
 

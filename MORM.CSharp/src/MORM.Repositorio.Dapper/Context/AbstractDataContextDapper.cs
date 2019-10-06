@@ -1,17 +1,11 @@
 ﻿using Dapper;
 using MORM.CrossCutting;
-using MORM.Dominio.Extensions;
-using MORM.Dominio.Interfaces;
-using MORM.Dominio.Types;
-using MORM.Repositorio.Context;
-using MORM.Repositorio.Factories;
-using MORM.Repositorio.Migrations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MORM.Repositorio.Dapper.Context
+namespace MORM.Repositorio.Dapper
 {
     public class AbstractDataContextDapper : IAbstractDataContextDapper, IDisposable
     {

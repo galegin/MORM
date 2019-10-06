@@ -1,11 +1,10 @@
-using MORM.Aplicacao.Extensions;
-using MORM.Dominio.Entidades;
+using MORM.CrossCutting;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http.Filters;
 
-namespace MORM.Aplicacao.Config
+namespace MORM.Aplicacao
 {
     public class AuthenticationAttribute : Attribute, IAuthenticationFilter
     {

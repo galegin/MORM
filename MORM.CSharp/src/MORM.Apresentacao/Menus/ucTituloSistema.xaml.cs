@@ -1,6 +1,6 @@
 ﻿using MORM.Apresentacao.Comps;
 using MORM.Apresentacao.Menus.ViewModels;
-using MORM.Dominio.Interfaces;
+using MORM.CrossCutting;
 
 namespace MORM.Apresentacao.Menus
 {

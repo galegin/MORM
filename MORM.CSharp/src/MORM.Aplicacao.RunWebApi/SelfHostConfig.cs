@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNet.SignalR;
-using MORM.Aplicacao.Config;
 using Owin;
 using System.Web.Http;
 

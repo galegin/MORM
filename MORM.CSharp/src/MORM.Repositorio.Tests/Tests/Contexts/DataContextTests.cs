@@ -1,6 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MORM.Dominio.Interfaces;
-using MORM.Repositorio.Migrations;
+using MORM.CrossCutting;
 
 namespace MORM.Repositorio.Tests
 {

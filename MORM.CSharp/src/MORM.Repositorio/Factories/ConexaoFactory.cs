@@ -1,8 +1,7 @@
-﻿using MORM.Dominio.Interfaces;
-using MORM.Repositorio.Context;
+﻿using MORM.CrossCutting;
 using System.Collections.Generic;
 
-namespace MORM.Repositorio.Factories
+namespace MORM.Repositorio
 {
     public enum TipoConexao
     {

@@ -1,14 +1,9 @@
 using MORM.CrossCutting;
-using MORM.Dominio.Extensions;
-using MORM.Dominio.Interfaces;
-using MORM.Dominio.Types;
-using MORM.Repositorio.Factories;
-using MORM.Repositorio.Migrations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace MORM.Repositorio.Context
+namespace MORM.Repositorio
 {
     public class AbstractDataContext : IAbstractDataContext, IDisposable
     {

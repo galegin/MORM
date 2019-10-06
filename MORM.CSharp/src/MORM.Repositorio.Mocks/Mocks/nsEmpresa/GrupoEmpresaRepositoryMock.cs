@@ -1,6 +1,4 @@
-﻿using MORM.Dominio.Entidades;
-using MORM.Dominio.Interfaces;
-using MORM.Repositorio.Mocks;
+﻿using MORM.CrossCutting;
 
 namespace MORM.Repositorio.Mocks
 {

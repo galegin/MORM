@@ -1,9 +1,8 @@
-﻿using MORM.Dominio.Extensions;
-using MORM.Dominio.Interfaces;
+﻿using MORM.CrossCutting;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace MORM.Repositorio.Queries
+namespace MORM.Repositorio
 {
     public class QueryableProvider<TInstance> : IQueryProvider
     {

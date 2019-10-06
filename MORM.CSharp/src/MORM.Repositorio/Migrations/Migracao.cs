@@ -1,13 +1,9 @@
 ﻿using MORM.CrossCutting;
-using MORM.Dominio.Entidades;
-using MORM.Dominio.Extensions;
-using MORM.Dominio.Interfaces;
-using MORM.Dominio.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MORM.Repositorio.Migrations
+namespace MORM.Repositorio
 {
     public class Migracao : IMigracao
     {
