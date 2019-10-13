@@ -48,11 +48,12 @@ namespace MORM.CrossCutting
 
     public static class TokenExtensions
     {
+        private const string _tokenExpirado = "Token expirado";
+
         public static Token IsValid(this Token token)
         {
             var expiracao = (int)DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
-            if (expiracao > token.Expiracao)
-                throw new Exception("Token expirado");
+            Check.That(expiracao > token.Expiracao, nameof(token), _tokenExpirado);
             return token;
         }
     }

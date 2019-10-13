@@ -148,15 +148,15 @@ using System;
 
 namespace MORM.Apresentacao.Consumers
 {
-    public class ApiConsumer<TDto, TRet> where TDto : class where TRet : class
+    public class ApiConsumer<TEnt, TRet> where TEnt : class where TRet : class
     {
-        public TRet Post(TDto dto)
+        public TRet Post(TEnt entrada)
         {
-            Dto = dto ?? throw new ArgumentNullException(nameof(dto));
+            Entrada = ent ?? throw new ArgumentNullException(nameof(dto));
             return Activator.CreateInstance<TRet>();
         }
 
-        public TDto Dto { get; private set; }
+        public TEnt Entrada { get; private set; }
         public TRet Conteudo { get; private set; }
         public string Message { get; private set; }
     }

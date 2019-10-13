@@ -1,5 +1,4 @@
 ﻿using MORM.CrossCutting;
-using System;
 
 namespace MORM.Apresentacao.Reports
 {
@@ -16,15 +15,12 @@ namespace MORM.Apresentacao.Reports
 
         private static void ValidateArquivo(this ReportModel model)
         {
-            if (string.IsNullOrWhiteSpace(model.Arquivo))
-                throw new Exception(ReportsMessages.InformeOArquivo);
+            Check.NotEmpty(model.Arquivo, ReportsMessages.InformeOArquivo);
         }
 
         private static void ValidateEmail(this ReportModel model)
         {
-            if (string.IsNullOrWhiteSpace(model.Email))
-                throw new Exception(ReportsMessages.InformeOEmail);
-
+            Check.NotEmpty(model.Email, ReportsMessages.InformeOEmail);
             model.Email.ValidarEmail();
         }
         #endregion

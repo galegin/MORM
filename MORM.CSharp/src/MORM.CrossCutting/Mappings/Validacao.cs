@@ -201,17 +201,17 @@ namespace MORM.CrossCutting
         // numero
 
         public ValidacaoCampo(string mensagem, decimal[] lista)
-        : this(new ValidacaoType<decimal>(mensagem, lista))
+            : this(new ValidacaoType<decimal>(mensagem, lista))
         {
         }
 
         public ValidacaoCampo(string mensagem, double[] lista)
-        : this(new ValidacaoType<double>(mensagem, lista))
+            : this(new ValidacaoType<double>(mensagem, lista))
         {
         }
 
         public ValidacaoCampo(string mensagem, float[] lista)
-        : this(new ValidacaoType<float>(mensagem, lista))
+            : this(new ValidacaoType<float>(mensagem, lista))
         {
         }
 

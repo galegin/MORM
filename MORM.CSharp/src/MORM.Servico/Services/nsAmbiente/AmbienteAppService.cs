@@ -1,5 +1,4 @@
 ﻿using MORM.CrossCutting;
-using System;
 
 namespace MORM.Servico
 {
@@ -24,19 +23,15 @@ namespace MORM.Servico
 
             var ambienteFiltro = new Ambiente { Codigo = model.Ambiente };
             var ambiente = _ambienteRepository.GetById(ambienteFiltro);
-            if (string.IsNullOrWhiteSpace(ambiente?.Codigo))
-                throw new Exception(_mensagemAmbienteNaoCadastrado);
+            Check.NotEmpty(ambiente?.Codigo, _mensagemAmbienteNaoCadastrado);
 
             var usuarioFiltro = new Usuario { Nm_Login = model.Login };
             var usuario = _usuarioRepository.GetById(usuarioFiltro);
-            if (string.IsNullOrWhiteSpace(usuario?.Nm_Usuario))
-                throw new Exception(_mensagemUsuarioNaoCadastrado);
+            Check.NotEmpty(usuario?.Nm_Usuario, _mensagemUsuarioNaoCadastrado);
 
             var senhaHash = HashExtensions.GetHash(model.Login, model.Senha);
             var senhaMd5 = Md5Extensions.GetMd5(senhaHash);
-
-            if (!Md5Extensions.IsValidMd5(senhaHash, senhaMd5))
-                throw new Exception(_mensagemSenhaNaoCadastrada);
+            Check.That(!Md5Extensions.IsValidMd5(senhaHash, senhaMd5), nameof(senhaHash), _mensagemSenhaNaoCadastrada);
 
             // provisorio
             //var ambiente = new Ambiente(); 

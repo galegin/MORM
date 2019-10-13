@@ -10,16 +10,16 @@ namespace MORM.Apresentacao.Classes
             IUsuario usuario,
             ITerminal terminal)
         {
-            Ambiente = ambiente ?? throw new ArgumentNullException(nameof(ambiente));
+            Ambiente = Check.NotNull(ambiente, nameof(ambiente));
             Ambiente.SetAmbiente();
 
-            Empresa = empresa ?? throw new ArgumentNullException(nameof(empresa));
+            Empresa = Check.NotNull(empresa, nameof(empresa));
             Empresa.SetEmpresa();
 
-            Usuario = usuario ?? throw new ArgumentNullException(nameof(usuario));
+            Usuario = Check.NotNull(usuario, nameof(usuario));
             Usuario.SetUsuario();
 
-            Terminal = terminal ?? throw new ArgumentNullException(nameof(terminal));
+            Terminal = Check.NotNull(terminal, nameof(terminal));
             Terminal.SetTerminal();
         }
 

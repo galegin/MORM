@@ -128,6 +128,7 @@
     <Compile Include="Reports\Types\ReportTipo.cs" />
     <Compile Include="Reports\Validations\ReportModelValidations.cs" />
     <Compile Include="Reports\ViewsModel\AbstractReportViewModel.cs" />
+    <Compile Include="ViewsModel\Extensions\AbstractViewModelExtensions.cs" />
     <Compile Include="Views\AbstractViewItem.cs" />
     <Compile Include="Views\AbstractViewTipo.cs" />
     <Compile Include="Views\Extensions\AbstractViewCampoExtensions.cs" />

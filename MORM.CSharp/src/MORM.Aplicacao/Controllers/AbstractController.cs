@@ -33,31 +33,35 @@ namespace MORM.Aplicacao
 
         #region metodos
         protected virtual void VerificarPermissao(TipoPermissao tipoPermissao)
+        {
+            var contemPermissao = 
+                _listaDePermissao?.Contains(tipoPermissao)
+                ??
+                true;
+
+            Check.That(!contemPermissao, nameof(tipoPermissao), "Sem permissao para acessar o servico / metodo");
+        }
+
+        public HttpResponseMessage Response(TipoPermissao tipo, Func<object> funcao)
+        {
+            try
             {
-                var contemPermissao = 
-                    _listaDePermissao?.Contains(tipoPermissao)
-                    ??
-                    true;
+                VerificarPermissao(tipo);
 
-                if (!contemPermissao)
-                    throw new Exception("Sem permissao para acessar o servico / metodo");
+                var conteudo = funcao.Invoke();
+
+                var statusCode =
+                    conteudo is ErroOutModel ? HttpStatusCode.BadRequest :
+                    conteudo is NotFoundOutModel ? HttpStatusCode.NotFound : HttpStatusCode.OK;
+
+                return Request.CreateResponse(statusCode, MessageHandler.CreateMessage(conteudo: conteudo));
             }
-
-            public HttpResponseMessage Response(TipoPermissao tipo, Func<object> funcao)
+            catch (Exception ex)
             {
-                try
-                {
-                    VerificarPermissao(tipo);
-
-                    return Request.CreateResponse(HttpStatusCode.OK,
-                        MessageHandler.CreateMessage(conteudo: funcao.Invoke()));
-                }
-                catch (Exception ex)
-                {
-                    return Request.CreateResponse(HttpStatusCode.BadRequest, MessageHandler.CreateMessage(ex));
-                }
+                return Request.CreateResponse(HttpStatusCode.BadRequest, MessageHandler.CreateMessage(ex));
             }
-            #endregion
+        }
+        #endregion
     }
 
     //[RoutePrefix("api/AbstractController")]
@@ -139,8 +143,7 @@ namespace MORM.Aplicacao
                 ??
                 true;
 
-            if (!contemPermissao)
-                throw new Exception("Sem permissao para acessar o servico / metodo");
+            Check.That(!contemPermissao, nameof(tipoPermissao), "Sem permissao para acessar o servico / metodo");
         }
 
         [HttpPost]

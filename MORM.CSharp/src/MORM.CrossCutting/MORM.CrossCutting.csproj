@@ -69,6 +69,7 @@
     <Compile Include="Assemblies\MigrationAssembly.cs" />
     <Compile Include="Assemblies\ServiceAssembly.cs" />
     <Compile Include="Assemblies\TypeBuilderAssembly.cs" />
+    <Compile Include="Checks\Check.cs" />
     <Compile Include="Consumers\Consumer.cs" />
     <Compile Include="BaseInstaller.cs" />
     <Compile Include="Entidades\AbstractEntidade.cs" />
@@ -159,6 +160,8 @@
     <Compile Include="Messages\DialogsMessages.cs" />
     <Compile Include="Messages\ExportsMessages.cs" />
     <Compile Include="Messages\ReportsMessages.cs" />
+    <Compile Include="Models\ErroOutModel.cs" />
+    <Compile Include="Models\NotFoundOutModel.cs" />
     <Compile Include="Paths\AppPath.cs" />
     <Compile Include="Paths\ArquivoDiretorio.cs" />
     <Compile Include="Paths\CaminhoPadrao.cs" />

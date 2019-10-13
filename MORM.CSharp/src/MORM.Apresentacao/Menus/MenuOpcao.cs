@@ -112,26 +112,4 @@ namespace MORM.Apresentacao.Menus
 
         public override void Executar() => _resolver.Executar<TObject>();
     }
-
-    // extension
-
-    public static class MenuOpcaoExtension
-    {
-        //    public static string GetComponente(this MenuOpcao opcao)
-        //    {
-        //        return
-        //            opcao.Tipo.ToString().Substring(0, 3) +
-        //            opcao.Classe.Name;
-        //    }
-
-        //    public static string GetImagem(this MenuOpcao opcao)
-        //    {
-        //        return opcao.Tipo.GetImagem();
-        //    }
-
-        //    public static string GetTitulo(this MenuOpcao opcao)
-        //    {
-        //        return opcao.Classe.Name;
-        //    }
-    }
 }

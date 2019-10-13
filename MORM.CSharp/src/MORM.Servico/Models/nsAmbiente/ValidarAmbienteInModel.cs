@@ -1,5 +1,4 @@
 ﻿using MORM.CrossCutting;
-using System;
 
 namespace MORM.Servico
 {
@@ -19,12 +18,9 @@ namespace MORM.Servico
 
         public static void Validate(this ValidarAmbienteInModel model)
         {
-            if (string.IsNullOrWhiteSpace(model.Ambiente))
-                throw new Exception(_mensagemAmbienteDeveSerInformado);
-            if (string.IsNullOrWhiteSpace(model.Login))
-                throw new Exception(_mensagemUsuarioDeveSerInformado);
-            if (string.IsNullOrWhiteSpace(model.Senha))
-                throw new Exception(_mensagemSenhaDeveSerInformada);
+            Check.NotEmpty(model.Ambiente, _mensagemAmbienteDeveSerInformado);
+            Check.NotEmpty(model.Login, _mensagemUsuarioDeveSerInformado);
+            Check.NotEmpty(model.Senha, _mensagemSenhaDeveSerInformada);
         }
     }
 }
