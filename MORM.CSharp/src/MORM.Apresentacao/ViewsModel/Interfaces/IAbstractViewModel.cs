@@ -19,6 +19,8 @@ namespace MORM.Apresentacao.ViewsModel
         object Filtro { get; set; }
         object Model { get; set; }
         object Selecao { get; set; }
+        string Expressao { get; set; }
+        string Clausula { get; set; }
         IList Lista { get; set; }
         ICommand[] Commands { get; set; }
         string GetTitulo();

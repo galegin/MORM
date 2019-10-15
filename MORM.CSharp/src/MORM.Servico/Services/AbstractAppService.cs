@@ -41,22 +41,26 @@ namespace MORM.Servico
 
         //-- listar
 
-        public object Listar(TObject filtro)
+        public object Listar(/*TObject*/ object filtro)
         {
+            var filtroObj = (filtro as FilterObjeto)?.GetObjeto<TObject>() as TObject ?? filtro;
+
             return _repository
                 .GetAll()
-                .SetFiltroQueryable(filtro)
+                .SetFiltroQueryable(filtroObj)
                 .ToList()
                 ;
         }
 
         //-- consultar
 
-        public object Consultar(TObject filtro)
+        public object Consultar(/*TObject*/ object filtro)
         {
+            var filtroObj = (filtro as FilterObjeto)?.GetObjeto<TObject>() as TObject ?? filtro;
+
             return _repository
                 .GetAll()
-                .SetFiltroQueryable(filtro, isKeyOnly: true)
+                .SetFiltroQueryable(filtroObj, isKeyOnly: true)
                 .FirstOrDefault()
                 ;
         }

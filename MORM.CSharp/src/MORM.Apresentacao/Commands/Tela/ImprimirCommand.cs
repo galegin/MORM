@@ -13,13 +13,13 @@ namespace MORM.Apresentacao.Commands.Tela
         public override void Execute(object parameter)
         {
             var vm = parameter as IAbstractViewModel;
-            var connector = new AbstractImprimirConnector<object>();
+            var connector = vm.ElementType.GetImprimirConnector();
 
             var report = AbstractReport.GetReport();
             if (report == null)
                 return;
 
-            var conteudo = connector.Executar(vm.Model, filtro: report) as string;
+            var conteudo = connector.Imprimir(vm.Model, filtro: report) as string;
             if (string.IsNullOrWhiteSpace(conteudo))
                 return;
 

@@ -47,7 +47,7 @@ namespace MORM.Apresentacao.Views
         {
             return new Binding(campo.Prop.Name)
             {
-                StringFormat = "".Coalesce(campo.Formato, null),
+                StringFormat = string.Empty.Coalesce(campo.Formato, null),
             };
         }
         #endregion

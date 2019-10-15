@@ -74,6 +74,12 @@ namespace MORM.Apresentacao.ViewsModel
         #region selecao
         public virtual object Selecao { get; set; }
         #endregion
+        #region expressao
+        public virtual string Expressao { get; set; }
+        #endregion
+        #region clausula
+        public virtual string Clausula { get; set; }
+        #endregion
         #endregion
 
         #region comandos

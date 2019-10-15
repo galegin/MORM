@@ -47,10 +47,10 @@ namespace MORM.CrossCutting
             public string Mensagem { get; set; }
         }
 
-        public string GetSite(string site = null) => 
-            "".Coalesce(site, _site, SiteInterno);
-        public string GetToken(string token = null) => 
-            "".Coalesce(token, _token, TokenInterno);
+        public string GetSite(string site = null) =>
+            string.Empty.Coalesce(site, _site, SiteInterno);
+        public string GetToken(string token = null) =>
+            string.Empty.Coalesce(token, _token, TokenInterno);
 
         private HttpClient GetClient()
         {

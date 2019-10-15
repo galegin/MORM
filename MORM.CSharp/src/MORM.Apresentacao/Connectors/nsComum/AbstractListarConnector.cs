@@ -6,7 +6,7 @@ namespace MORM.Apresentacao.Connectors
 {
     public interface IAbstractListarConnector
     {
-        object ExecutarLista(object model, object filtro = null);
+        object Listar(object model, object filtro = null);
     }
 
     [MTD("Listar")]
@@ -14,7 +14,7 @@ namespace MORM.Apresentacao.Connectors
         IAbstractListarConnector
         where TModel : class
     {
-        public object ExecutarLista(object model, object filtro = null)
+        public object Listar(object model, object filtro = null)
         {
             return Executar(model as TModel, filtro);
         }

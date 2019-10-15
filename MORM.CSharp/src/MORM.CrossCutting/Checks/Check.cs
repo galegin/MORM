@@ -14,10 +14,8 @@ namespace MORM.CrossCutting
         /// <returns></returns>
         public static string NotEmpty(string value, string paramName)
         {
-            return string.IsNullOrWhiteSpace(value)
-                ? throw new ArgumentNullException(paramName)
-                : value
-                ;
+            return !string.IsNullOrWhiteSpace(value) ? value
+                : throw new ArgumentNullException(paramName);
         }
 
         /// <summary>
@@ -29,10 +27,8 @@ namespace MORM.CrossCutting
         /// <returns></returns>
         public static T NotNull<T>(T value, string paramName)
         {
-            return value == null
-                ? throw new ArgumentNullException(paramName)
-                : value
-                ;
+            return value != null ? value
+                : throw new ArgumentNullException(paramName);
         }
 
         /// <summary>
@@ -43,8 +39,8 @@ namespace MORM.CrossCutting
         /// <param name="message"></param>
         public static void That(bool condition, string paramName, string message)
         {
-            if (condition)
-                throw new ArgumentOutOfRangeException(paramName, message);
+            var value = condition ? throw new ArgumentOutOfRangeException(paramName, message) 
+                : string.Empty;
         }
 
         /// <summary>
@@ -55,8 +51,8 @@ namespace MORM.CrossCutting
         /// <param name="message"></param>
         public static void That(Func<bool> predicate, string paramName, string message)
         {
-            if (predicate.Invoke())
-                throw new ArgumentOutOfRangeException(paramName, message);
+            var value  = predicate.Invoke() ? throw new ArgumentOutOfRangeException(paramName, message) 
+                : string.Empty;
         }
         #endregion
     }

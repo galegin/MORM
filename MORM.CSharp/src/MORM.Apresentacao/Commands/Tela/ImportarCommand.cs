@@ -13,7 +13,7 @@ namespace MORM.Apresentacao.Commands.Tela
         public override void Execute(object parameter)
         {
             var vm = parameter as IAbstractViewModel;
-            var connector = new AbstractSalvarConnector<object>();
+            var connector = vm.ElementType.GetSalvarConnector();
 
             var arquivo = DialogUtils.GetOpenFile(
                 fileName: ExportsMessages.FileName,
@@ -35,7 +35,7 @@ namespace MORM.Apresentacao.Commands.Tela
             vm.Lista = lista as IList;
 
             foreach (var item in lista)
-                connector.Executar(item);
+                connector.Salvar(item);
 
             DialogsMessages.ArquivoImportadoComSucesso.GetMensagem();
         }

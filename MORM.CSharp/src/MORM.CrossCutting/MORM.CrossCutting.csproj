@@ -103,6 +103,8 @@
     <Compile Include="Extensions\Entidades\TerminalExtensions.cs" />
     <Compile Include="Extensions\Entidades\UsuarioExtensions.cs" />
     <Compile Include="Extensions\Repositories\EntidadeExtensions.cs" />
+    <Compile Include="Filters\FilterObjeto.cs" />
+    <Compile Include="Filters\FilterTipo.cs" />
     <Compile Include="Interfaces\Contexts\IAbstractDataContext.cs" />
     <Compile Include="Interfaces\Contexts\IComando.cs" />
     <Compile Include="Interfaces\Contexts\IConexao.cs" />

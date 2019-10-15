@@ -112,7 +112,7 @@ namespace MORM.CrossCutting
 
         private void ConteudoImpressao()
         {
-            var conteudo = "".Coalesce(_conteudoResto, _conteudo.Conteudo);
+            var conteudo = string.Empty.Coalesce(_conteudoResto, _conteudo.Conteudo);
             _conteudoImpressao = _conteudoResto = string.Empty;
 
             string[] colunas = conteudo.Replace("\r", "").Split('\n');

@@ -13,6 +13,10 @@ namespace MORM.Aplicacao
     //[RoutePrefix("api/AbstractController")]
     public class AbstractController : ApiController
     {
+        #region constantes
+        protected const string _messageSemPermissao = "Sem permissao para acessar o servico / metodo";
+        #endregion
+
         #region variaveis
         protected TipoPermissao[] _listaDePermissao = {
             TipoPermissao.Consultar,
@@ -39,7 +43,7 @@ namespace MORM.Aplicacao
                 ??
                 true;
 
-            Check.That(!contemPermissao, nameof(tipoPermissao), "Sem permissao para acessar o servico / metodo");
+            Check.That(!contemPermissao, nameof(tipoPermissao), _messageSemPermissao);
         }
 
         public HttpResponseMessage Response(TipoPermissao tipo, Func<object> funcao)
@@ -50,9 +54,10 @@ namespace MORM.Aplicacao
 
                 var conteudo = funcao.Invoke();
 
-                var statusCode =
-                    conteudo is ErroOutModel ? HttpStatusCode.BadRequest :
-                    conteudo is NotFoundOutModel ? HttpStatusCode.NotFound : HttpStatusCode.OK;
+                var statusCode = conteudo is ErroOutModel ? HttpStatusCode.BadRequest 
+                    : conteudo is NotFoundOutModel ? HttpStatusCode.NotFound 
+                    : HttpStatusCode.OK
+                    ;
 
                 return Request.CreateResponse(statusCode, MessageHandler.CreateMessage(conteudo: conteudo));
             }
@@ -143,19 +148,19 @@ namespace MORM.Aplicacao
                 ??
                 true;
 
-            Check.That(!contemPermissao, nameof(tipoPermissao), "Sem permissao para acessar o servico / metodo");
+            Check.That(!contemPermissao, nameof(tipoPermissao), _messageSemPermissao);
         }
 
         [HttpPost]
         [Route("Listar")]
-        public object Listar(TObject filtro)
+        public object Listar(/*TObject*/ FilterObjeto filtro)
         {
             return Response(TipoPermissao.Listar, () => _abstractAppService.Listar(filtro));
         }
 
         [HttpPost]
         [Route("Consultar")]
-        public object Consultar(TObject filtro)
+        public object Consultar(/*TObject*/ FilterObjeto filtro)
         {
             return Response(TipoPermissao.Consultar, () => _abstractAppService.Consultar(filtro));
         }

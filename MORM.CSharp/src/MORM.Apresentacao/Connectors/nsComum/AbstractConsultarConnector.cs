@@ -5,7 +5,7 @@ namespace MORM.Apresentacao.Connectors
 {
     public interface IAbstractConsultarConnector
     {
-        object ExecutarConsulta(object model, object filtro = null);
+        object Consultar(object model, object filtro = null);
     }
 
     [MTD("Consultar")]
@@ -13,7 +13,7 @@ namespace MORM.Apresentacao.Connectors
         IAbstractConsultarConnector
         where TModel : class
     {
-        public object ExecutarConsulta(object model, object filtro = null)
+        public object Consultar(object model, object filtro = null)
         {
             return Executar(model as TModel, filtro);
         }

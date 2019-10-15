@@ -11,8 +11,8 @@
 
     public interface IAbstractAppService<TObject> : IAbstractAppService where TObject : class
     {
-        object Listar(TObject filtro);
-        object Consultar(TObject filtro);
+        object Listar(/*TObject*/ object filtro);
+        object Consultar(/*TObject*/ object filtro);
         object Incluir(TObject objeto);
         object Alterar(TObject objeto);
         object Salvar(TObject objeto);

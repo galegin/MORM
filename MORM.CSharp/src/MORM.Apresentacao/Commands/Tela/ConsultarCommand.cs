@@ -13,7 +13,7 @@ namespace MORM.Apresentacao.Commands.Tela
         {
             var vm = parameter as IAbstractViewModel;
             var connector = vm.ElementType.GetConsultarConnector();
-            var retorno = connector.ExecutarConsulta(vm.Model);
+            var retorno = connector.Consultar(vm.Model);
             if (retorno.IsModelChavePreenchida())
                 vm.Model.CloneInstancePropOrFieldAll(retorno);
         }
