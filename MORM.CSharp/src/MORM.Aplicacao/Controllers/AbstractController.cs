@@ -155,14 +155,16 @@ namespace MORM.Aplicacao
         [Route("Listar")]
         public object Listar(/*TObject*/ FilterObjeto filtro)
         {
-            return Response(TipoPermissao.Listar, () => _abstractAppService.Listar(filtro));
+            var objeto = filtro.GetObjeto<TObject>() as TObject;
+            return Response(TipoPermissao.Listar, () => _abstractAppService.Listar(objeto, filtro));
         }
 
         [HttpPost]
         [Route("Consultar")]
         public object Consultar(/*TObject*/ FilterObjeto filtro)
         {
-            return Response(TipoPermissao.Consultar, () => _abstractAppService.Consultar(filtro));
+            var objeto = filtro.GetObjeto<TObject>() as TObject;
+            return Response(TipoPermissao.Consultar, () => _abstractAppService.Consultar(objeto, filtro));
         }
 
         [HttpPost]

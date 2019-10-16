@@ -41,9 +41,9 @@ namespace MORM.Servico
 
         //-- listar
 
-        public object Listar(/*TObject*/ object filtro)
+        public object Listar(TObject objeto, object filtro = null)
         {
-            var filtroObj = (filtro as FilterObjeto)?.GetObjeto<TObject>() as TObject ?? filtro;
+            var filtroObj = (filtro as FilterObjeto)?.GetObjeto<TObject>() as TObject ?? objeto;
 
             return _repository
                 .GetAll()
@@ -54,9 +54,9 @@ namespace MORM.Servico
 
         //-- consultar
 
-        public object Consultar(/*TObject*/ object filtro)
+        public object Consultar(TObject objeto, object filtro = null)
         {
-            var filtroObj = (filtro as FilterObjeto)?.GetObjeto<TObject>() as TObject ?? filtro;
+            var filtroObj = (filtro as FilterObjeto)?.GetObjeto<TObject>() as TObject ?? objeto;
 
             return _repository
                 .GetAll()

@@ -18,6 +18,8 @@ namespace MORM.CrossCutting
                     metodoValues.Add(null);
                 else if (parameter.ParameterType.IsInterface)
                     metodoValues.Add(parametros[index]);
+                else if (parametros[index] is FilterObjeto)
+                    metodoValues.Add(parametros[index]);
                 else
                     metodoValues.Add(ObjetoMapper.GetObjetoRetorno(parameter.ParameterType, parametros[index]));
                 index++;
