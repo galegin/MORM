@@ -59,6 +59,6 @@ namespace MORM.Servico
 
         //-- sequencia
 
-        public long Sequencia(TObject filtro) => _repository.Sequencia(filtro);
+        public long Sequencia(TObject filtro) => _repository.Sequenciar(filtro);
     }
 }

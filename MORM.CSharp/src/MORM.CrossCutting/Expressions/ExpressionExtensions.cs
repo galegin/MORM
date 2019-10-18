@@ -14,13 +14,14 @@ namespace MORM.CrossCutting
             var campos = isKeyOnly ? metadata.Campos.Where(x => x.IsKey()) : metadata.Campos;
             Expression<Func<TInstance, bool>> expressionWhere = null;
 
+            var filtroObj = filtro?.GetFiltroObjeto();
+
             foreach (var campo in campos)
             {
-                var valueObj = campo.Prop.GetValue(filtro);
+                var valueObj = filtroObj.GetInstancePropOrField(campo.Prop.Name);
                 if (isKeyOnly || (!valueObj.IsValueNull()))
                 {
-                    var value = campo.Prop.GetValue(filtro);
-                    var expression = GetEquality<TInstance>(value, new[] { campo.Prop.Name });
+                    var expression = GetEquality<TInstance>(valueObj, new[] { campo.Prop.Name });
                     expressionWhere = expressionWhere == null 
                         ? expression
                         : expressionWhere.CombineAnd(expression)

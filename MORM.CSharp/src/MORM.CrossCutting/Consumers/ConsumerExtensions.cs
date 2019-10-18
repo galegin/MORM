@@ -28,17 +28,17 @@ namespace MORM.CrossCutting
 
         public static string GetMtd(this object instance, string mtdPadrao = null)
         {
-            return instance.GetType().GetAttribute<MTDAttribute>()?.Path ?? mtdPadrao;
+            return instance.GetTypeObjeto().GetAttribute<MTDAttribute>()?.Path ?? mtdPadrao;
         }
 
         public static string GetSvc(this object instance, string svcPadrao = null)
         {
-            return instance.GetType().GetAttribute<SVCAttribute>()?.Path ?? svcPadrao;
+            return instance.GetTypeObjeto().GetAttribute<SVCAttribute>()?.Path ?? svcPadrao;
         }
 
         public static string GetUrl(this object instance, string urlPadrao = null)
         {
-            return instance.GetType().GetAttribute<URLAttribute>()?.Path ?? urlPadrao;
+            return instance.GetTypeObjeto().GetAttribute<URLAttribute>()?.Path ?? urlPadrao;
         }
     }
 }

@@ -34,7 +34,7 @@ namespace MORM.Repositorio.Mocks
                 DbSet.Remove(instanceExiste);
         }
 
-        public long Sequencia(TInstance instance) => ++_sequencia;
+        public long Sequence(TInstance instance) => ++_sequencia;
         #endregion
     }
 }

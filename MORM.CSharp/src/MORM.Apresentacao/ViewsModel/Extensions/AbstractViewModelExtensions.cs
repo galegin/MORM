@@ -13,13 +13,12 @@ namespace MORM.Apresentacao.ViewsModel
             // objeto campos diferente de nulos
 
             var filterObjeto = !string.IsNullOrWhiteSpace(vm.Expressao) 
-                ? new FilterObjeto(FilterTipo.Expressao, vm.Expressao)
-                : !string.IsNullOrWhiteSpace(vm.Clausula) ? new FilterObjeto(FilterTipo.Clausula, vm.Clausula)
-                : vm.Filtro != null ? new FilterObjeto(FilterTipo.Filtro, vm.Filtro)
-                : new FilterObjeto(FilterTipo.Model, vm.Model)
+                ? new FilterObjeto(FilterTipo.Expressao, vm.ElementType, vm.Expressao)
+                : !string.IsNullOrWhiteSpace(vm.Clausula) ? new FilterObjeto(FilterTipo.Clausula, vm.ElementType, vm.Clausula)
+                : vm.Filtro != null ? new FilterObjeto(FilterTipo.Filtro, vm.ElementType, vm.Filtro)
+                : new FilterObjeto(FilterTipo.Model, vm.ElementType, vm.Model)
                 ;
 
-            //return filterObjeto.GetJsonFromObject();
             return filterObjeto;
         }
         #endregion

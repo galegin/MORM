@@ -5,7 +5,7 @@ namespace MORM.Apresentacao.Connectors
 {
     public interface IAbstractSalvarConnector
     {
-        object Salvar(object model, object filtro = null);
+        object Salvar(object model);
     }
 
     [MTD("Salvar")]
@@ -13,9 +13,9 @@ namespace MORM.Apresentacao.Connectors
         IAbstractSalvarConnector
         where TModel : class
     {
-        public object Salvar(object model, object filtro = null)
+        public object Salvar(object model)
         {
-            return Executar(model as TModel, filtro);
+            return Executar(model as TModel);
         }
     }
 

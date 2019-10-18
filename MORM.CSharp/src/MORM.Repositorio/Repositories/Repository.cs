@@ -3,11 +3,12 @@ using System.Linq;
 
 namespace MORM.Repositorio
 {
-    public class Repository<TInstance> : IRepository<TInstance>, IRepositoryDataContext where TInstance : class
+    public class Repository<TObject> : IRepository<TObject>, IRepositoryDataContext 
+        where TObject : class
     {
         #region variaveis
         protected readonly IAbstractDataContext _dataContext;
-        protected readonly IDbSet<TInstance> _dbSet;
+        protected readonly IDbSet<TObject> _dbSet;
         #endregion
 
         #region propriedades
@@ -18,18 +19,18 @@ namespace MORM.Repositorio
         public Repository(IAbstractDataContext dataContext)
         {
             _dataContext = dataContext;
-            _dbSet = dataContext.Set<TInstance>();
+            _dbSet = dataContext.Set<TObject>();
         }
         #endregion
 
         #region metodos
-        public IQueryable<TInstance> GetAll() => _dbSet.GetAll();
-        public TInstance GetById(TInstance instance) => _dbSet.GetById(instance);
-        public void Add(TInstance instance) => _dbSet.Add(instance);
-        public void AddOrUpdate(TInstance instance) => _dbSet.AddOrUpdate(instance);
-        public void Update(TInstance instance) => _dbSet.Update(instance);
-        public void Delete(TInstance instance) => _dbSet.Delete(instance);
-        public long Sequencia(TInstance instance) => _dbSet.Sequencia(instance);
+        public IQueryable<TObject> GetAll() => _dbSet.GetAll();
+        public TObject GetById(TObject objeto) => _dbSet.GetById(objeto);
+        public void Add(TObject objeto) => _dbSet.Add(objeto);
+        public void AddOrUpdate(TObject objeto) => _dbSet.AddOrUpdate(objeto);
+        public void Update(TObject objeto) => _dbSet.Update(objeto);
+        public void Delete(TObject objeto) => _dbSet.Delete(objeto);
+        public long Sequence(object objeto) => _dbSet.Sequence(objeto);
         #endregion
     }
 }

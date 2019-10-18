@@ -11,12 +11,12 @@
 
     public interface IAbstractAppService<TObject> : IAbstractAppService where TObject : class
     {
-        object Listar(TObject objeto, object filtro = null);
-        object Consultar(TObject objeto, object filtro = null);
+        object Listar(object filtro);
+        object Consultar(object filtro);
         object Incluir(TObject objeto);
         object Alterar(TObject objeto);
         object Salvar(TObject objeto);
         object Excluir(TObject objeto);
-        object Sequencia(TObject filtro);
+        object Sequenciar(object filtro);
     }
 }

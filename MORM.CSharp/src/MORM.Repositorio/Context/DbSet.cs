@@ -3,7 +3,7 @@ using MORM.CrossCutting;
 
 namespace MORM.Repositorio
 {
-    public class DbSet<TInstance> : IDbSet<TInstance>
+    public class DbSet<TObject> : IDbSet<TObject>
     {
         #region variaveis
         private readonly IAbstractDataContext _dataContext;
@@ -17,20 +17,20 @@ namespace MORM.Repositorio
         #endregion
 
         #region metodos
-        public TInstance GetById(TInstance instance) =>
-            (TInstance)_dataContext.GetObjeto(typeof(TInstance), instance);
+        public TObject GetById(TObject objeto) =>
+            (TObject)_dataContext.GetObjeto(typeof(TObject), objeto);
 
-        public IQueryable<TInstance> GetAll()
+        public IQueryable<TObject> GetAll()
         {
-            var provider = new QueryableProvider<TInstance>(_dataContext);
-            return new Queryable<TInstance>(provider, null);
+            var provider = new QueryableProvider<TObject>(_dataContext);
+            return new Queryable<TObject>(provider, null);
         }
 
-        public void Add(object instance) => _dataContext.InsObjeto(instance);
-        public void AddOrUpdate(object instance) => _dataContext.SetObjeto(instance);
-        public void Update(object instance) => _dataContext.UpdObjeto(instance);
-        public void Delete(object instance) => _dataContext.RemObjeto(instance);
-        public long Sequencia(object instance) => _dataContext.IncObjeto<TInstance>(instance);
+        public void Add(object objeto) => _dataContext.InsObjeto(objeto);
+        public void AddOrUpdate(object objeto) => _dataContext.SetObjeto(objeto);
+        public void Update(object objeto) => _dataContext.UpdObjeto(objeto);
+        public void Delete(object objeto) => _dataContext.RemObjeto(objeto);
+        public long Sequence(object objeto) => _dataContext.IncObjeto<TObject>(objeto);
         #endregion
     }
 }

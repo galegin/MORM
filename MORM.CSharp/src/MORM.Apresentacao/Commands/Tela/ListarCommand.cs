@@ -19,7 +19,7 @@ namespace MORM.Apresentacao.Commands.Tela
 
             if (listaRet == null)
             {
-                listaRet = connector.Listar(vm.Model, filtro: vm.GetFiltro()) as IList;
+                listaRet = connector.Listar(vm.GetFiltro()) as IList;
             }
 
             if (selecao?.IsSelecao ?? false)

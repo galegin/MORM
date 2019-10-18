@@ -27,7 +27,7 @@ namespace MORM.CrossCutting
                 case ExportsTipo.Edi:
                     return (lista as IList<TObject>).GetEdi();
                 case ExportsTipo.Json:
-                    return (lista as IList<TObject>).GetJsonFromObject(); // GetJson();
+                    return (lista as IList<TObject>).GetJson(); // GetJson();
                 case ExportsTipo.Sped:
                     return (lista as IList<TObject>).GetSped();
                 case ExportsTipo.Xml:

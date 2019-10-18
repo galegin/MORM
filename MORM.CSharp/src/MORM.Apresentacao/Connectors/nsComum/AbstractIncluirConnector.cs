@@ -5,7 +5,7 @@ namespace MORM.Apresentacao.Connectors
 {
     public interface IAbstractIncluirConnector
     {
-        object Incluir(object model, object filtro = null);
+        object Incluir(object model);
     }
 
     [MTD("Incluir")]
@@ -13,9 +13,9 @@ namespace MORM.Apresentacao.Connectors
         IAbstractIncluirConnector
         where TModel : class
     {
-        public object Incluir(object model, object filtro = null)
+        public object Incluir(object model)
         {
-            return Executar(model as TModel, filtro);
+            return Executar(model as TModel);
         }
     }
 

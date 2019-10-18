@@ -19,7 +19,7 @@ namespace MORM.Apresentacao.Commands.Tela
             if (report == null)
                 return;
 
-            var conteudo = connector.Imprimir(vm.Model, filtro: report) as string;
+            var conteudo = connector.Imprimir(vm.Model/*, filtro: report*/) as string;
             if (string.IsNullOrWhiteSpace(conteudo))
                 return;
 

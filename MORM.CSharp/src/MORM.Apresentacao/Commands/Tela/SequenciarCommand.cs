@@ -6,14 +6,14 @@ using System.ComponentModel;
 
 namespace MORM.Apresentacao.Commands.Tela
 {
-    [Description("Consultar")]
-    public class ConsultarCommand : AbstractCommand
+    [Description("Sequenciar")]
+    public class SequenciarCommand : AbstractCommand
     {
         public override void Execute(object parameter)
         {
             var vm = parameter as IAbstractViewModel;
-            var connector = vm.ElementType.GetConsultarConnector();
-            var retorno = connector.Consultar(vm.GetFiltro());
+            var connector = vm.ElementType.GetSequenciarConnector();
+            var retorno = connector.Sequenciar(vm.GetFiltro());
             if (retorno.IsModelChavePreenchida())
                 vm.Model.CloneInstancePropOrFieldAll(retorno);
         }

@@ -233,7 +233,7 @@ namespace MORM.Repositorio.Dapper
             var sql = _comando
                 .ComTipoObjeto(typeof(TObject))
                 .ComWhere(where)
-                .GetSequencia();
+                .GetSequence();
 
             return _conexao
                 .ExecEscalar(sql);

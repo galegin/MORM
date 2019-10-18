@@ -5,17 +5,17 @@ namespace MORM.Apresentacao.Connectors
 {
     public interface IAbstractConsultarConnector
     {
-        object Consultar(object model, object filtro = null);
+        object Consultar(object filtro);
     }
 
     [MTD("Consultar")]
-    public class AbstractConsultarConnector<TModel> : AbstractConnector<TModel, TModel>, 
+    public class AbstractConsultarConnector<TModel> : AbstractConnector<object, TModel>, 
         IAbstractConsultarConnector
         where TModel : class
     {
-        public object Consultar(object model, object filtro = null)
+        public object Consultar(object filtrro)
         {
-            return Executar(model as TModel, filtro);
+            return Executar(filtrro);
         }
     }
 

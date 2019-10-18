@@ -28,7 +28,8 @@ namespace MORM.Repositorio
 
         public IList<TObject> Listar(object filtro = null, int qtde = -1, int pagina = 0, bool relacao = false)
         {
-            return _dataContext.GetLista(typeof(TObject), filtro: filtro, qtde: qtde, pagina: pagina, relacao: relacao) as IList<TObject>;
+            return _dataContext.GetLista(typeof(TObject), filtro: filtro, qtde: qtde, pagina: pagina, relacao: relacao) 
+                as IList<TObject>;
         }
 
         // consultar
@@ -124,7 +125,7 @@ namespace MORM.Repositorio
 
         // sequencia
         
-        public long Sequencia(object filtro = null)
+        public long Sequenciar(object filtro = null)
         {
             return _dataContext.IncObjeto<TObject>(filtro);
         }

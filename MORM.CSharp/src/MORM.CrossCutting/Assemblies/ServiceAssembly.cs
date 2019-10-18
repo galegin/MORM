@@ -24,20 +24,18 @@ namespace MORM.CrossCutting
                 ;
         }
 
-        public static object Execute(Type typeRetorno, string metodo, object instance, object owner = null,
-            object filtro = null)
+        public static object Execute(Type typeRetorno, string metodo, object instance, object owner = null)
         {
             var serviceNome = GetServiceNome(instance, owner);
             var metodoNome = GetMetodoNome(instance, owner);
             var serviceObjeto = AbstractContainer.Instance.Resolve(serviceNome);
-            var serviveRetorno = ObjetoExecute.Execute(serviceObjeto, metodoNome, new[] { instance, filtro });
+            var serviveRetorno = ObjetoExecute.Execute(serviceObjeto, metodoNome, new[] { instance });
             return ObjetoMapper.GetObjetoRetorno(typeRetorno, serviveRetorno);
         }
 
-        public static TRetorno Execute<TEntrada, TRetorno>(string metodo, TEntrada instance, object owner = null, 
-            object filtro = null)
+        public static TRetorno Execute<TEntrada, TRetorno>(string metodo, TEntrada instance, object owner = null)
         {
-            return (TRetorno)Execute(typeof(TRetorno), metodo, instance, owner, filtro);
+            return (TRetorno)Execute(typeof(TRetorno), metodo, instance, owner);
         }
 
         private static string GetServiceNome(object instance, object owner = null)

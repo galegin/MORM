@@ -2,14 +2,14 @@
 
 namespace MORM.CrossCutting
 {
-    public interface IDbSet<TInstance>
+    public interface IDbSet<TObject>
     {
-        TInstance GetById(TInstance instance);
-        IQueryable<TInstance> GetAll();
-        void Add(object instance);
-        void AddOrUpdate(object instance);
-        void Update(object instance);
-        void Delete(object instance);
-        long Sequencia(object instance);
+        TObject GetById(TObject objeto);
+        IQueryable<TObject> GetAll();
+        void Add(object objeto);
+        void AddOrUpdate(object objeto);
+        void Update(object objeto);
+        void Delete(object objeto);
+        long Sequence(object objeto);
     }
 }

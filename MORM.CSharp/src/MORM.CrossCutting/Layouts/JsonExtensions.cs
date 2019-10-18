@@ -10,9 +10,9 @@ namespace MORM.CrossCutting
     {
         private static Dictionary<Type, object> _listaDeObj = new Dictionary<Type, object>();
 
-        public static List<TObj> GetListaFromJson<TObj>(this string arquivo, string conteudoPadrao = null)
+        public static List<TObject> GetListaFromJson<TObject>(this string arquivo, string conteudoPadrao = null)
         {
-            var lista = _listaDeObj.ContainsKey(typeof(TObj)) ? _listaDeObj[typeof(TObj)] : null;
+            var lista = _listaDeObj.ContainsKey(typeof(TObject)) ? _listaDeObj[typeof(TObject)] : null;
             if (lista == null)
             {
                 var conteudo = string.Empty;
@@ -23,32 +23,37 @@ namespace MORM.CrossCutting
                     conteudo = conteudoPadrao;
 
                 if (!string.IsNullOrWhiteSpace(conteudo))
-                    lista = conteudo.GetObjectFromJson<List<TObj>>();
+                    lista = conteudo.GetObjectFromJson<List<TObject>>();
                 else
-                    lista = new List<TObj>();
+                    lista = new List<TObject>();
             };
 
-            return lista as List<TObj>;
+            return lista as List<TObject>;
         }
         
-        public static void SetListaFromJson<TObj>(this List<TObj> lista, string arquivo)
+        public static void SetListaFromJson<TObject>(this List<TObject> lista, string arquivo)
         {
-            var conteudo = lista.GetJsonFromObject();
+            var conteudo = lista.GetJson();
             File.WriteAllText(arquivo, conteudo);
         }
 
-        public static string GetJsonFromObject<TObj>(this TObj obj, bool isIndented = false)
+        public static string GetJson(this object obj, bool isIndented = false)
         {
             var javaScriptSerializer = new JavaScriptSerializer();
             javaScriptSerializer.RegisterConverters(new JavaScriptConverter[] { new DateTimeJavaScriptConverter() });
             return javaScriptSerializer.Serialize(obj);
         }
 
-        public static TObj GetObjectFromJson<TObj>(this string str)
+        public static object GetObjectFromJson(this string str, Type type)
         {
             var javaScriptSerializer = new JavaScriptSerializer();
             javaScriptSerializer.RegisterConverters(new JavaScriptConverter[] { new DateTimeJavaScriptConverter() });
-            return javaScriptSerializer.Deserialize<TObj>(str);
+            return javaScriptSerializer.Deserialize(str, type);
+        }
+
+        public static TObject GetObjectFromJson<TObject>(this string str) where TObject : class
+        {
+            return str.GetObjectFromJson(typeof(TObject)) as TObject;
         }
     }
 

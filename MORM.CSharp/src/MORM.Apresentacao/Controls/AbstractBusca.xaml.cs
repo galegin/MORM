@@ -1,5 +1,8 @@
 ﻿using MORM.Apresentacao.Comps;
 using MORM.Apresentacao.ViewsModel;
+using MORM.CrossCutting;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace MORM.Apresentacao.Controls
 {
@@ -13,6 +16,16 @@ namespace MORM.Apresentacao.Controls
         public AbstractBusca(IAbstractViewModel vm) : this()
         {
             DataContext = vm;
+        }
+
+        private void TextBox_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                var vm = DataContext as IAbstractViewModel;
+                vm.Expressao = (sender as TextBox)?.Text?.AllTrim();
+                vm.ConsultarLista();
+            }
         }
     }
 }

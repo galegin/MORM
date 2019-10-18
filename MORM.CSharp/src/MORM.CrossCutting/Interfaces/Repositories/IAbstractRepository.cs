@@ -14,6 +14,6 @@ namespace MORM.CrossCutting
         void Alterar(object objeto, bool relacao = true);
         void Salvar(object objeto, bool relacao = true);
         void Excluir(object objeto, bool relacao = true);
-        long Sequencia(object filtro = null);
+        long Sequenciar(object filtro = null);
     }
 }

@@ -155,16 +155,14 @@ namespace MORM.Aplicacao
         [Route("Listar")]
         public object Listar(/*TObject*/ FilterObjeto filtro)
         {
-            var objeto = filtro.GetObjeto<TObject>() as TObject;
-            return Response(TipoPermissao.Listar, () => _abstractAppService.Listar(objeto, filtro));
+            return Response(TipoPermissao.Listar, () => _abstractAppService.Listar(filtro));
         }
 
         [HttpPost]
         [Route("Consultar")]
         public object Consultar(/*TObject*/ FilterObjeto filtro)
         {
-            var objeto = filtro.GetObjeto<TObject>() as TObject;
-            return Response(TipoPermissao.Consultar, () => _abstractAppService.Consultar(objeto, filtro));
+            return Response(TipoPermissao.Consultar, () => _abstractAppService.Consultar(filtro));
         }
 
         [HttpPost]
@@ -199,7 +197,7 @@ namespace MORM.Aplicacao
         [Route("Sequencia")]
         public object Sequencia(TObject filtro)
         {
-            return Response(TipoPermissao.Sequencia, () => _abstractAppService.Sequencia(filtro));
+            return Response(TipoPermissao.Sequencia, () => _abstractAppService.Sequenciar(filtro));
         }
         #endregion
     }

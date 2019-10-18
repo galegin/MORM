@@ -8,11 +8,15 @@ namespace MORM.CrossCutting
     {
         public static object GetObjetoRetorno(Type type, object objeto)
         {
+            if (type.Name.Equals("Object"))
+                return objeto;
+            
             var objetoRetorno = Activator.CreateInstance(type);
             if (objeto is IList)
                 SetListaRetorno(objeto as IList, objetoRetorno as IList);
             else
                 SetObjetoRetorno(objeto, objetoRetorno);
+
             return objetoRetorno;
         }
 

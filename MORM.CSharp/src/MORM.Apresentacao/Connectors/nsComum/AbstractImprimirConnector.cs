@@ -5,7 +5,7 @@ namespace MORM.Apresentacao.Connectors
 {
     public interface IAbstractImprimirConnector
     {
-        object Imprimir(object model, object filtro = null);
+        object Imprimir(object model);
     }
 
     [MTD("Imprimir")]
@@ -13,9 +13,9 @@ namespace MORM.Apresentacao.Connectors
         IAbstractImprimirConnector
         where TModel : class
     {
-        public object Imprimir(object model, object filtro = null)
+        public object Imprimir(object model)
         {
-            return Executar(model as TModel, filtro);
+            return Executar(model as TModel);
         }
     }
 

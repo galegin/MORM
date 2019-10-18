@@ -28,7 +28,7 @@ namespace MORM.CrossCutting
 
         public string GetToken()
         {
-            var serializer = JsonExtensions.GetJsonFromObject(this);
+            var serializer = JsonExtensions.GetJson(this);
             return CriptoExtensions.Encrypt(serializer, _chave);
         }
 

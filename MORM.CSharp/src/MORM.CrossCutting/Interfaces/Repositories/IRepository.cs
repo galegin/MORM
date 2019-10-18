@@ -11,14 +11,14 @@ namespace MORM.CrossCutting
         IAbstractDataContext DataContext { get; }
     }
 
-    public interface IRepository<TInstance> : IRepository where TInstance : class
+    public interface IRepository<TObject> : IRepository where TObject : class
     {
-        IQueryable<TInstance> GetAll();
-        TInstance GetById(TInstance instance);
-        void Add(TInstance instance);
-        void AddOrUpdate(TInstance instance);
-        void Update(TInstance instance);
-        void Delete(TInstance instance);
-        long Sequencia(TInstance instance);
+        IQueryable<TObject> GetAll();
+        TObject GetById(TObject objeto);
+        void Add(TObject objeto);
+        void AddOrUpdate(TObject objeto);
+        void Update(TObject objeto);
+        void Delete(TObject objeto);
+        long Sequence(object filtro);
     }
 }

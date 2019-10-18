@@ -10,7 +10,7 @@
     <Grid>
         <DockPanel>
             <Label Width="100" Content="Expressão" FontSize="16" DockPanel.Dock="Left"/>
-            <TextBox Text="{Binding Expressao}"/>
+            <TextBox Text="{Binding Expressao}" PreviewKeyDown="TextBox_PreviewKeyDown"/>
         </DockPanel>
     </Grid>
 </comps:AbstractUserControl>

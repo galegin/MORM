@@ -12,7 +12,7 @@ namespace MORM.Repositorio
             _tipoDatabase = tipoDatabase;
         }
 
-        //-- tipo database
+        #region tipo database
 
         private TipoDatabase _tipoDatabase;
         private Type _tipoObjeto;
@@ -23,20 +23,18 @@ namespace MORM.Repositorio
         private int _qtde = -1;
         private int _pagina = 0;
 
-        //-- tabela / campos
+        #endregion
+
+        #region tabela / campos
 
         private TabelaAttribute _tabela => _objeto?.GetTabela() ?? _tipoObjeto.GetTabela();
         private IEnumerable<CampoAttribute> _campos => _objeto?.GetCampos() ?? _tipoObjeto.GetCampos();
         private IEnumerable<CampoAttribute> _camposKey => _campos?.Where(x => x.IsKey);
         private IEnumerable<CampoAttribute> _camposReq => _campos?.Where(x => x.IsReq);
 
-        //-- bulider
+        #endregion
 
-        public IComando ComTipoDatabase(TipoDatabase tipoDatabase)
-        {
-            _tipoDatabase = tipoDatabase;
-            return this;
-        }
+        #region bulider
 
         private void ResetarCampos()
         {
@@ -44,6 +42,12 @@ namespace MORM.Repositorio
             _objeto = null;
             _parametros = null;
             _campoTipos = null;
+        }
+
+        public IComando ComTipoDatabase(TipoDatabase tipoDatabase)
+        {
+            _tipoDatabase = tipoDatabase;
+            return this;
         }
 
         public IComando ComTipoObjeto(Type tipoObjeto)
@@ -90,7 +94,9 @@ namespace MORM.Repositorio
             return this;
         }
 
-        //-- value
+        #endregion
+
+        #region value
 
         private string GetValueStr(object value)
         {
@@ -115,7 +121,14 @@ namespace MORM.Repositorio
             return _objeto.GetInstancePropOrField(atributo)?.IsValueNull() ?? true;
         }
 
-        //-- where
+        #endregion
+
+        #region where
+
+        private bool isLike(object value)
+        {
+            return (value as string)?.Contains("%") ?? false;
+        }
 
         private string GetWhereTip(Func<CampoAttribute, bool> filtro, bool isKeyOnly = false)
         {
@@ -126,8 +139,9 @@ namespace MORM.Repositorio
             foreach (var campo in campos)
             {
                 var valueObj = campo.OwnerProp.GetValue(_objeto);
+                var equalObj = isLike(valueObj) ? "like" : "=";
                 if (isKeyOnly || (!valueObj.IsValueNull()))
-                    wheres.Add($"{campo.Atributo} = {GetValueStr(valueObj)}");
+                    wheres.Add($"{campo.Atributo} {equalObj} {GetValueStr(valueObj)}");
             }
 
             return 
@@ -145,7 +159,9 @@ namespace MORM.Repositorio
             return GetWhereTip((f) => _campoTipos.Contains(f.Tipo), isKeyOnly);
         }
 
-        //-- select
+        #endregion
+
+        #region select
 
         public string GetSelect()
         {
@@ -176,7 +192,9 @@ namespace MORM.Repositorio
             return ComWhere(GetWhereKey()).GetSelect();
         }
 
-        //-- insert
+        #endregion
+
+        #region insert
 
         public string GetInsert()
         {
@@ -194,7 +212,9 @@ namespace MORM.Repositorio
                 $" values ({string.Join(", ", values)})";
         }
 
-        //-- update
+        #endregion
+
+        #region update
 
         public string GetUpdate()
         {
@@ -213,7 +233,9 @@ namespace MORM.Repositorio
                 $" where {string.Join(" and ", wheres)}";
         }
 
-        //-- delete
+        #endregion
+
+        #region delete
 
         public string GetDelete()
         {
@@ -227,7 +249,11 @@ namespace MORM.Repositorio
                 $" where {string.Join(" and ", wheres)}";
         }
 
-        public string GetSequencia()
+        #endregion
+
+        #region sequencia
+
+        public string GetSequence()
         {
             var fieldsAtr = new List<string>();
             var fields = new List<string>();
@@ -239,5 +265,7 @@ namespace MORM.Repositorio
             return
                 _tipoDatabase.GetSelectMax(GetSelect(), $"\"{campoSelectMax.Name}\"");
         }
+
+        #endregion
     }
 }

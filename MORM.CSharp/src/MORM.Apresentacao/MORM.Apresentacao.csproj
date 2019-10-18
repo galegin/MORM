@@ -81,6 +81,7 @@
     <Compile Include="Commands\CommandTipo.cs" />
     <Compile Include="Commands\Tela\CancelarCommand.cs" />
     <Compile Include="Commands\Tela\ConfirmarCommand.cs" />
+    <Compile Include="Commands\Tela\SequenciarCommand.cs" />
     <Compile Include="Commands\Tela\InverterSelecaoCommand.cs" />
     <Compile Include="Commands\Tela\ListarCommand.cs" />
     <Compile Include="Commands\Tela\ConsultarCommand.cs" />
@@ -100,6 +101,7 @@
     <Compile Include="Comps\AbstractAppAction.cs" />
     <Compile Include="Comps\AbstractNotifyIcon.cs" />
     <Compile Include="Comps\DialogUtils.cs" />
+    <Compile Include="Connectors\nsComum\AbstractSequenciarConnector.cs" />
     <Compile Include="Controls\AbstractCampoFiltro.cs" />
     <Compile Include="Controls\AbstractCorpo.xaml.cs">
       <DependentUpon>AbstractCorpo.xaml</DependentUpon>

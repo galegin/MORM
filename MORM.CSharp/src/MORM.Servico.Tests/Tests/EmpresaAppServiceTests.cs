@@ -128,7 +128,7 @@ namespace MORM.Servico.Tests
         public void EmpresaAppServiceTests_Sequencia()
         {
             var empresa = new Empresa { Id_Empresa = _idEmpresa };
-            var empresaRet = (long)_empresaAppService.Sequencia(empresa);
+            var empresaRet = (long)_empresaAppService.Sequenciar(empresa);
             Assert.AreNotEqual(0, empresaRet);
         }
     }

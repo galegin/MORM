@@ -5,7 +5,7 @@ namespace MORM.Apresentacao.Connectors
 {
     public interface IAbstractAlterarConnector
     {
-        object Alterar(object model, object filtro = null);
+        object Alterar(object model);
     }
 
     [MTD("Alterar")]
@@ -13,9 +13,9 @@ namespace MORM.Apresentacao.Connectors
         IAbstractAlterarConnector
         where TModel : class
     {
-        public object Alterar(object model, object filtro = null)
+        public object Alterar(object model)
         {
-            return Executar(model as TModel, filtro);
+            return Executar(model as TModel);
         }
     }
 

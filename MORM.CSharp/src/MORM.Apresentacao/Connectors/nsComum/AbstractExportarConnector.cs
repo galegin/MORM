@@ -5,7 +5,7 @@ namespace MORM.Apresentacao.Connectors
 {
     public interface IAbstractExportarConnector
     {
-        object Exportar(object model, object filtro = null);
+        object Exportar(object model);
     }
 
     [MTD("Exportar")]
@@ -13,9 +13,9 @@ namespace MORM.Apresentacao.Connectors
         IAbstractExportarConnector
         where TModel : class
     {
-        public object Exportar(object model, object filtro = null)
+        public object Exportar(object model)
         {
-            return Executar(model as TModel, filtro);
+            return Executar(model as TModel);
         }
     }
 

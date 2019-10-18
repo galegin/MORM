@@ -21,6 +21,6 @@ namespace MORM.CrossCutting
         string GetInsert();
         string GetUpdate();
         string GetDelete();
-        string GetSequencia();
+        string GetSequence();
     }
 }

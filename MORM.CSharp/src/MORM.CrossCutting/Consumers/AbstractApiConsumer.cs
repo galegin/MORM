@@ -81,7 +81,7 @@ namespace MORM.CrossCutting
             {
                 client.Timeout = TimeSpan.FromHours(1);
 
-                var conteudoJson = entity.GetJsonFromObject();
+                var conteudoJson = entity.GetJson();
                 var conteudo = new StringContent(conteudoJson, Encoding.UTF8, "application/json");
                 var response = client.PostAsync(url, conteudo).Result;
 

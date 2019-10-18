@@ -26,11 +26,11 @@ namespace MORM.Apresentacao.Connectors
     {
         protected bool IsContemServico => ServiceAssembly.IsContemServico();
 
-        public virtual TRetorno Executar(TEntrada instance, object filtro = null)
+        public virtual TRetorno Executar(TEntrada instance)
         {
             if (IsContemServico)
             {
-                return ServiceAssembly.Execute<TEntrada, TRetorno>(this.GetMtd(), instance, this, filtro: filtro);
+                return ServiceAssembly.Execute<TEntrada, TRetorno>(this.GetMtd(), instance, this);
             }
 
             var consumerApi = new AbstractApiConsumer<TEntrada, TRetorno>();

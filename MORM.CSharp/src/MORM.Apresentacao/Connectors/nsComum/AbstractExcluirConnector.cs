@@ -5,7 +5,7 @@ namespace MORM.Apresentacao.Connectors
 {
     public interface IAbstractExcluirConnector
     {
-        object Excluir(object model, object filtro = null);
+        object Excluir(object model);
     }
 
     [MTD("Excluir")]
@@ -13,9 +13,9 @@ namespace MORM.Apresentacao.Connectors
         IAbstractExcluirConnector
         where TModel : class
     {
-        public object Excluir(object model, object filtro = null)
+        public object Excluir(object model)
         {
-            return Executar(model as TModel, filtro);
+            return Executar(model as TModel);
         }
     }
 

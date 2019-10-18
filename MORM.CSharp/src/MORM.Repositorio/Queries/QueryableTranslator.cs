@@ -144,6 +144,10 @@ namespace MORM.Repositorio
                     {
                         sb.Append(" IS ");
                     }
+                    else if (IsLikeConstant(b.Right))
+                    {
+                        sb.Append(" LIKE ");
+                    }
                     else
                     {
                         sb.Append(" = ");
@@ -298,7 +302,14 @@ namespace MORM.Repositorio
 
         protected bool IsNullConstant(Expression exp)
         {
-            return (exp.NodeType == ExpressionType.Constant && ((ConstantExpression)exp).Value == null);
+            return (exp.NodeType == ExpressionType.Constant && 
+                ((ConstantExpression)exp).Value == null);
+        }
+
+        protected bool IsLikeConstant(Expression exp)
+        {
+            return (exp.NodeType == ExpressionType.Constant && 
+                ((((ConstantExpression)exp).Value as string)?.Contains("%") ?? false));
         }
 
         private bool ParseOrderByExpression(MethodCallExpression expression, string order)

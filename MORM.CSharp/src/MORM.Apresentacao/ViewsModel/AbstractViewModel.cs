@@ -1,5 +1,6 @@
 ﻿using MORM.Apresentacao.Colors;
 using MORM.Apresentacao.Commands;
+using MORM.Apresentacao.Commands.Tela;
 using MORM.Apresentacao.Comps;
 using MORM.Apresentacao.Views;
 using MORM.CrossCutting;
@@ -115,6 +116,8 @@ namespace MORM.Apresentacao.ViewsModel
         public virtual void ConsultarChave() { }
         public virtual void BuscarDescricao() { }
 
+        public virtual void LimparLista() { }
+        public virtual void ConsultarLista() { }
         public virtual void SelecionarLista() => SelecionarAction?.Invoke();
 
         public virtual void ConfirmarTela() { }
@@ -155,10 +158,19 @@ namespace MORM.Apresentacao.ViewsModel
         {
             if (this.IsModelChavePreenchida())
             {
-                var consultar = GetCommand("Consultar");
-                if (consultar != null)
-                    consultar.ExecuteCommand(this);
+                var command = GetCommand("Consultar");
+                command?.ExecuteCommand(this);
             }
+        }
+        public override void LimparLista()
+        {
+            var command = Commands.FirstOrDefault(x => x is LimparCommand);
+            command?.ExecuteCommand(this);
+        }
+        public override void ConsultarLista()
+        {
+            var command = Commands.FirstOrDefault(x => x is ListarCommand);
+            command?.ExecuteCommand(this);
         }
         #endregion
         #region metodos privados
