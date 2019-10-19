@@ -1,7 +1,6 @@
 ﻿using MaterialDesignThemes.Wpf;
-using MORM.Apresentacao.Views;
 
-namespace MORM.Apresentacao.WSist.Controls
+namespace MORM.Apresentacao.WSist
 {
     public partial class ucAbstractPackIcon : AbstractView
     {

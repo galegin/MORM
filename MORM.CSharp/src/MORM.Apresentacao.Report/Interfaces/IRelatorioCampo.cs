@@ -1,6 +1,4 @@
-﻿using MORM.Apresentacao.Report.Types;
-
-namespace MORM.Apresentacao.Report.Interfaces
+﻿namespace MORM.Apresentacao.Report
 {
     public interface IRelatorioCampo
     {

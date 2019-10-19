@@ -1,9 +1,7 @@
-﻿using MORM.Apresentacao.Report.Interfaces;
-using MORM.Apresentacao.Report.Types;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
-namespace MORM.Apresentacao.Report.Classes
+namespace MORM.Apresentacao.Report
 {
     public partial class Relatorio : IRelatorio
     {

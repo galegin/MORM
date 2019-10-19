@@ -1,9 +1,7 @@
-﻿using MORM.Apresentacao.Comps;
-using MORM.Apresentacao.ViewsModel;
-using MORM.CrossCutting;
+﻿using MORM.CrossCutting;
 using System.ComponentModel;
 
-namespace MORM.Apresentacao.Commands.Tela
+namespace MORM.Apresentacao
 {
     [Description("Exportar")]
     public class ExportarCommand : AbstractCommand

@@ -1,6 +1,4 @@
-﻿using MORM.Apresentacao.ViewsModel;
-
-namespace MORM.Apresentacao.Controls.ViewsModel
+﻿namespace MORM.Apresentacao
 {
     public class AbstractTituloViewModel : AbstractViewModel
     {

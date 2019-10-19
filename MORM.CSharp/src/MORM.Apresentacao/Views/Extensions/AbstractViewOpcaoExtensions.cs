@@ -1,11 +1,8 @@
-﻿using MORM.Apresentacao.Commands;
-using MORM.Apresentacao.Controls;
-using MORM.Apresentacao.ViewsModel;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
 
-namespace MORM.Apresentacao.Views
+namespace MORM.Apresentacao
 {
     public static class AbstractViewOpcaoExtensions
     {

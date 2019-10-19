@@ -1,7 +1,4 @@
-﻿using MORM.Apresentacao.Menus.Commands;
-using MORM.Apresentacao.ViewsModel;
-
-namespace MORM.Apresentacao.Menus.ViewModels
+﻿namespace MORM.Apresentacao
 {
     public class SubMenuOpcaoViewModel : AbstractViewModel
     {

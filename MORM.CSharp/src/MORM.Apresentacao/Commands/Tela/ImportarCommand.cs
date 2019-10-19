@@ -1,11 +1,8 @@
-﻿using MORM.Apresentacao.Comps;
-using MORM.Apresentacao.Connectors;
-using MORM.Apresentacao.ViewsModel;
-using MORM.CrossCutting;
+﻿using MORM.CrossCutting;
 using System.Collections;
 using System.ComponentModel;
 
-namespace MORM.Apresentacao.Commands.Tela
+namespace MORM.Apresentacao
 {
     [Description("Importar")]
     public class ImportarCommand : AbstractCommand

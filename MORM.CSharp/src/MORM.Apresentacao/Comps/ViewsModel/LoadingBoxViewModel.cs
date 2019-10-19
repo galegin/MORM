@@ -1,6 +1,4 @@
-﻿using MORM.Apresentacao.ViewsModel;
-
-namespace MORM.Apresentacao.Comps.ViewsModel
+﻿namespace MORM.Apresentacao
 {
     public class LoadingBoxViewModel : AbstractViewModel
     {

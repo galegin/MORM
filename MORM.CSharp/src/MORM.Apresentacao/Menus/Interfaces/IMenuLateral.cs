@@ -1,4 +1,4 @@
-﻿namespace MORM.Apresentacao.Menus
+﻿namespace MORM.Apresentacao
 {
     public interface IMenuLateral
     {

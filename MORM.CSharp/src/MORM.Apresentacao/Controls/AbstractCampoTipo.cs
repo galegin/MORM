@@ -1,7 +1,7 @@
 ﻿using MORM.CrossCutting;
 using System;
 
-namespace MORM.Apresentacao.Controls
+namespace MORM.Apresentacao
 {
     public class AbstractCampoFlagAttribute : Attribute
     {

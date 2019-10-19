@@ -1,4 +1,4 @@
-﻿namespace MORM.Apresentacao.Report.Comuns
+﻿namespace MORM.Apresentacao.Report
 {
     public enum CampoTipo
     {

@@ -1,7 +1,4 @@
-﻿using MORM.Apresentacao.Comps;
-using MORM.Apresentacao.Controls.ViewsModel;
-
-namespace MORM.Apresentacao.Controls
+﻿namespace MORM.Apresentacao
 {
     public partial class AbstractTitulo : AbstractUserControl
     {

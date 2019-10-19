@@ -1,4 +1,4 @@
-﻿namespace MORM.Apresentacao.Comps
+﻿namespace MORM.Apresentacao
 {
     public interface IAbstractUserControl
     {

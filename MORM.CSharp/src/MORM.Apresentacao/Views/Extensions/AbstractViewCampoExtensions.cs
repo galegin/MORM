@@ -1,9 +1,8 @@
-﻿using MORM.Apresentacao.Controls;
-using MORM.CrossCutting;
+﻿using MORM.CrossCutting;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace MORM.Apresentacao.Views
+namespace MORM.Apresentacao
 {
     public static class AbstractViewCampoExtensions
     {

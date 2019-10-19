@@ -1,11 +1,10 @@
-﻿using MORM.Apresentacao.Models;
-using MORM.CrossCutting;
+﻿using MORM.CrossCutting;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MORM.Apresentacao.Controls
+namespace MORM.Apresentacao
 {
     public class AbstractCampoFiltro : AbstractModel
     {

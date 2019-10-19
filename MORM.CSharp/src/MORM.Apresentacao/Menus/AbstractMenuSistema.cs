@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace MORM.Apresentacao.Menus
+namespace MORM.Apresentacao
 {
     public abstract class AbstractMenuSistema : IMenuSistema
     {

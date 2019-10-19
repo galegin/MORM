@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace MORM.Apresentacao.Views
+namespace MORM.Apresentacao
 {
     public static class AbstractViewPainelExtensions
     {

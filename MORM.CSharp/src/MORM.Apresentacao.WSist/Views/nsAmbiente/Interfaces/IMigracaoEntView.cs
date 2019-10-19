@@ -1,4 +1,4 @@
-namespace MORM.Apresentacao.Views.Interfaces
+namespace MORM.Apresentacao.WSist
 {
     public interface IMigracaoEntView
     {

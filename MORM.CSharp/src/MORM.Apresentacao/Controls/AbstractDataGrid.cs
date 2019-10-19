@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace MORM.Apresentacao.Controls
+namespace MORM.Apresentacao
 {
     public class AbstractDataGrid : DataGrid
     {

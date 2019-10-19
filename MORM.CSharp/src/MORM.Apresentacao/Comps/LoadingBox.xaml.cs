@@ -1,7 +1,6 @@
-﻿using MORM.Apresentacao.Comps.ViewsModel;
-using System.Threading;
+﻿using System.Threading;
 
-namespace MORM.Apresentacao.Comps
+namespace MORM.Apresentacao
 {
     public partial class LoadingBox : AbstractWindow
     {

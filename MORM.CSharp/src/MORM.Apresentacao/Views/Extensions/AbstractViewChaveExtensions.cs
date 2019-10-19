@@ -1,8 +1,7 @@
-﻿using MORM.Apresentacao.ViewsModel;
-using MORM.CrossCutting;
+﻿using MORM.CrossCutting;
 using System.Linq;
 
-namespace MORM.Apresentacao.Views
+namespace MORM.Apresentacao
 {
     public static class AbstractViewChaveExtensions
     {

@@ -1,8 +1,6 @@
-﻿using MORM.Apresentacao.Report.Extensions;
-using MORM.Apresentacao.Report.Types;
-using System.IO;
+﻿using System.IO;
 
-namespace MORM.Apresentacao.Report.Classes
+namespace MORM.Apresentacao.Report
 {
     public partial class Relatorio
     {

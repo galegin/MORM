@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MORM.Apresentacao.Views
+namespace MORM.Apresentacao
 {
     public class AbstractViewItem
     {

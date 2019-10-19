@@ -3,7 +3,7 @@ using System;
 using System.Windows;
 using System.Windows.Input;
 
-namespace MORM.Apresentacao.Comps
+namespace MORM.Apresentacao
 {
     public class AbstractWindow : Window, IAbstractWindow, IDisposable
     {

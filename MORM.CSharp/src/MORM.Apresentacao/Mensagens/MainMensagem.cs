@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace MORM.Apresentacao.Mensagens
+namespace MORM.Apresentacao
 {
     public class MainMensagem : IMainMensagem
     {

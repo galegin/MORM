@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace MORM.Apresentacao.Menus
+namespace MORM.Apresentacao
 {
     public abstract class MenuOpcao : IMenuOpcao
     {

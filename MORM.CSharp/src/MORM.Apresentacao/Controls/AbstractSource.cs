@@ -1,6 +1,6 @@
 ﻿using MORM.CrossCutting;
 
-namespace MORM.Apresentacao.Controls
+namespace MORM.Apresentacao
 {
     public struct AbstractSource
     {

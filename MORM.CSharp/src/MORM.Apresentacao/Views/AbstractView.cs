@@ -1,8 +1,6 @@
-﻿using MORM.Apresentacao.ViewsModel;
-using MORM.Apresentacao.Comps;
-using System.Windows;
+﻿using System.Windows;
 
-namespace MORM.Apresentacao.Views
+namespace MORM.Apresentacao
 {
     public class AbstractView : AbstractUserControl
     {

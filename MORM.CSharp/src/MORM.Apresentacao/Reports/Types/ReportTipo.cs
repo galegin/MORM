@@ -1,7 +1,7 @@
 ﻿using MORM.CrossCutting;
 using System.ComponentModel;
 
-namespace MORM.Apresentacao.Reports
+namespace MORM.Apresentacao
 {
     public enum ReportTipo
     {

@@ -1,7 +1,4 @@
-using MORM.Apresentacao.Views.Interfaces;
-using MORM.Apresentacao.ViewsModel;
-
-namespace MORM.Apresentacao.Views
+namespace MORM.Apresentacao.WSist
 {
     public class AmbienteView : AbstractViewManut<AmbienteViewModel>, IAmbienteView
     {

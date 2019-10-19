@@ -2,7 +2,7 @@
 using System;
 using System.Reflection;
 
-namespace MORM.Apresentacao.Controls
+namespace MORM.Apresentacao
 {
     public enum AbstractCampoFormato
     {

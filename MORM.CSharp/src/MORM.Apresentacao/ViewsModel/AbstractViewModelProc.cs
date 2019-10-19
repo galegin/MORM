@@ -1,4 +1,4 @@
-﻿namespace MORM.Apresentacao.ViewsModel
+﻿namespace MORM.Apresentacao
 {
     public class AbstractViewModelProc<TModel> : AbstractViewModel<TModel>, IAbstractViewModelProc
         where TModel : class

@@ -1,8 +1,7 @@
-﻿using MORM.Apresentacao.Comps;
-using System;
+﻿using System;
 using System.Windows.Controls;
 
-namespace MORM.Apresentacao.Menus
+namespace MORM.Apresentacao
 {
     public class MenuResolver : IMenuResolver
     {

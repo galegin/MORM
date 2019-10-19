@@ -4,37 +4,37 @@ using System.Linq;
 
 namespace MORM.Repositorio.Mocks
 {
-    public class RepositoryMock<TInstance> : IRepository<TInstance>
-        where TInstance : class
+    public class RepositoryMock<TObject> : IRepository<TObject>
+        where TObject : class
     {
         #region variaveis
         protected int _sequencia = 0;
-        protected List<TInstance> DbSet = new List<TInstance>();
+        protected List<TObject> DbSet = new List<TObject>();
         #endregion
 
         #region metodos
-        public IQueryable<TInstance> GetAll() => DbSet.AsQueryable();
+        public IQueryable<TObject> GetAll() => DbSet.AsQueryable();
 
-        public TInstance GetById(TInstance instance) => DbSet.FirstOrDefault(x => x.Equals(instance));
+        public TObject GetById(TObject objeto) => DbSet.FirstOrDefault(x => x.Equals(objeto));
 
-        public void Add(TInstance instance) => DbSet.Add(instance);
+        public void Add(TObject objeto) => DbSet.Add(objeto);
 
-        public void AddOrUpdate(TInstance instance)
+        public void AddOrUpdate(TObject objeto)
         {
-            Delete(instance);
-            Add(instance);
+            Delete(objeto);
+            Add(objeto);
         }
 
-        public void Update(TInstance instance) => AddOrUpdate(instance);
+        public void Update(TObject objeto) => AddOrUpdate(objeto);
 
-        public void Delete(TInstance instance)
+        public void Delete(TObject objeto)
         {
-            var instanceExiste = GetById(instance);
-            if (instanceExiste != null)
-                DbSet.Remove(instanceExiste);
+            var objetoExiste = GetById(objeto);
+            if (objetoExiste != null)
+                DbSet.Remove(objetoExiste);
         }
 
-        public long Sequence(TInstance instance) => ++_sequencia;
+        public long Sequence(object filtro) => ++_sequencia;
         #endregion
     }
 }

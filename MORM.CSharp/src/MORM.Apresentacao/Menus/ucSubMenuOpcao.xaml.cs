@@ -1,7 +1,4 @@
-﻿using MORM.Apresentacao.Comps;
-using MORM.Apresentacao.Menus.ViewModels;
-
-namespace MORM.Apresentacao.Menus
+﻿namespace MORM.Apresentacao
 {
     public partial class ucSubMenuOpcao : AbstractUserControl
     {

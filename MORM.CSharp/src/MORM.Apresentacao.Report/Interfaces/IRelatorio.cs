@@ -1,7 +1,6 @@
-﻿using MORM.Apresentacao.Report.Types;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace MORM.Apresentacao.Report.Interfaces
+namespace MORM.Apresentacao.Report
 { 
     public interface IRelatorio
     {

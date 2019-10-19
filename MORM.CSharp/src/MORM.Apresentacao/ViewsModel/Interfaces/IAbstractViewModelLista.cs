@@ -1,4 +1,4 @@
-﻿namespace MORM.Apresentacao.ViewsModel
+﻿namespace MORM.Apresentacao
 {
     public interface IAbstractViewModelLista : IAbstractViewModel
     {

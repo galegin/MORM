@@ -1,10 +1,8 @@
-﻿using MORM.Apresentacao.Comps;
-using MORM.Apresentacao.Views;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Controls;
 
-namespace MORM.Apresentacao.Controls
+namespace MORM.Apresentacao
 {
     public partial class AbstractCorpo : AbstractUserControl
     {

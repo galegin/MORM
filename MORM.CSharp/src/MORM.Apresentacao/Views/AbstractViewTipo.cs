@@ -2,7 +2,7 @@
 using System;
 using System.Configuration;
 
-namespace MORM.Apresentacao.Views
+namespace MORM.Apresentacao
 {
     public class AbstractViewTipoAttribute : Attribute
     {

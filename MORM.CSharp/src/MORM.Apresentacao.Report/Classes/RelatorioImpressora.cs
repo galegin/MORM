@@ -1,10 +1,9 @@
-﻿using MORM.Apresentacao.Report.Interfaces;
-using System;
+﻿using System;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Windows.Forms;
 
-namespace MORM.Apresentacao.Report.Classes
+namespace MORM.Apresentacao.Report
 {
     public class RelatorioImpressora : IRelatorioImpressora
     {

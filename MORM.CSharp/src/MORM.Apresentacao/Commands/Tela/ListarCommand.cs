@@ -1,10 +1,7 @@
-﻿using MORM.Apresentacao.Connectors;
-using MORM.Apresentacao.Controls;
-using MORM.Apresentacao.ViewsModel;
-using System.Collections;
+﻿using System.Collections;
 using System.ComponentModel;
 
-namespace MORM.Apresentacao.Commands.Tela
+namespace MORM.Apresentacao
 {
     [Description("Listar")]
     public class ListarCommand : AbstractCommand

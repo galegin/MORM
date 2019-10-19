@@ -1,9 +1,8 @@
-﻿using MORM.Apresentacao.ViewsModel;
-using MORM.CrossCutting;
+﻿using MORM.CrossCutting;
 using System;
 using System.Collections.Generic;
 
-namespace MORM.Apresentacao.Reports
+namespace MORM.Apresentacao
 {
     public class AbstractReportViewModel : AbstractViewModel
     {

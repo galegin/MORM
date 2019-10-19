@@ -1,7 +1,7 @@
 using MORM.CrossCutting;
 using System;
 
-namespace MORM.Apresentacao.Models
+namespace MORM.Apresentacao.WSist
 {
     [SVC("LogAcesso")]
     public class LogAcessoModel : AbstractModel

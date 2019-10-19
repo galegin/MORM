@@ -1,11 +1,10 @@
-﻿using MORM.Apresentacao.Comps.Interfaces;
-using MORM.CrossCutting;
+﻿using MORM.CrossCutting;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace MORM.Apresentacao.Comps
+namespace MORM.Apresentacao
 {
     public class TelaUtils : ITelaUtils
     {

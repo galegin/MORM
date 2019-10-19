@@ -1,6 +1,4 @@
-﻿using MORM.Apresentacao.Report.Interfaces;
-
-namespace MORM.Apresentacao.Report.Classes
+﻿namespace MORM.Apresentacao.Report
 {
     public class RelatorioDelimitador : IRelatorioDelimitador
     {

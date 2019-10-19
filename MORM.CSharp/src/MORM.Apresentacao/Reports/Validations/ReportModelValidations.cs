@@ -1,6 +1,6 @@
 ﻿using MORM.CrossCutting;
 
-namespace MORM.Apresentacao.Reports
+namespace MORM.Apresentacao
 {
     public static class ReportModelValidations
     {

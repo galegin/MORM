@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 
-namespace MORM.Apresentacao.Comps
+namespace MORM.Apresentacao
 {
     public abstract class BaseNotifyPropertyChanged : INotifyPropertyChanged
     {

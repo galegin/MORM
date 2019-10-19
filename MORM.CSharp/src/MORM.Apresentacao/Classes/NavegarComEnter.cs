@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Input;
 
-namespace MORM.Apresentacao.Classes
+namespace MORM.Apresentacao
 {
     public static class NavegacaoComEnter
     {

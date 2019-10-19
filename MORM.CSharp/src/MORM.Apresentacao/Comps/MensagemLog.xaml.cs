@@ -1,7 +1,6 @@
-﻿using MORM.Apresentacao.Comps.ViewsModel;
-using MORM.CrossCutting;
+﻿using MORM.CrossCutting;
 
-namespace MORM.Apresentacao.Comps
+namespace MORM.Apresentacao
 {
     public partial class MensagemLog : AbstractWindow
     {

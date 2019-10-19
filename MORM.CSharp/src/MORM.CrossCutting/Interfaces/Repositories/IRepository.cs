@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace MORM.CrossCutting
 {
@@ -20,5 +21,10 @@ namespace MORM.CrossCutting
         void Update(TObject objeto);
         void Delete(TObject objeto);
         long Sequence(object filtro);
+    }
+
+    public interface IRepositorySql<TObject> : IRepository where TObject : class
+    {
+        IList<TObject> GetConsulta(string sql);
     }
 }

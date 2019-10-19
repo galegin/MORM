@@ -1,7 +1,6 @@
-﻿using MORM.Apresentacao.Comps;
-using MORM.CrossCutting;
+﻿using MORM.CrossCutting;
 
-namespace MORM.Apresentacao.Connectors
+namespace MORM.Apresentacao
 {
     public abstract class AbstractConnector
     {

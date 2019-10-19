@@ -6,7 +6,7 @@ using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Threading;
 
-namespace MORM.Apresentacao.Comps
+namespace MORM.Apresentacao
 {
     public partial class AbstractApplication : Application
     {

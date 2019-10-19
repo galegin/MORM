@@ -13,7 +13,7 @@ namespace MORM.Aplicacao.Doc
         protected override string GerarCampo(Type type)
         {
             var objeto = Activator.CreateInstance(type);
-            var objetoStr = objeto.GetJsonFromObject(isIndented: true);
+            var objetoStr = objeto.GetJson(isIndented: true);
             return objetoStr;
         }
     }

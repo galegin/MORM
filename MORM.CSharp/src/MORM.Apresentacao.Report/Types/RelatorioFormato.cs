@@ -1,9 +1,7 @@
-﻿using MORM.Apresentacao.Report.Classes;
-using MORM.Apresentacao.Report.Interfaces;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace MORM.Apresentacao.Report.Types
+namespace MORM.Apresentacao.Report
 {
     public enum RelatorioFormato
     {

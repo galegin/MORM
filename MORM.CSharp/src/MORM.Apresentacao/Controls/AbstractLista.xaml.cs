@@ -1,10 +1,7 @@
-﻿using MORM.Apresentacao.Comps;
-using MORM.Apresentacao.Views;
-using MORM.Apresentacao.ViewsModel;
-using MORM.CrossCutting;
+﻿using MORM.CrossCutting;
 using System.Windows.Controls;
 
-namespace MORM.Apresentacao.Controls
+namespace MORM.Apresentacao
 {
     public partial class AbstractLista : AbstractUserControl
     {

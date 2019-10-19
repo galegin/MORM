@@ -1,7 +1,6 @@
-﻿using MORM.Apresentacao.Menus;
-using System;
+﻿using System;
 
-namespace MORM.Apresentacao.ViewsModel
+namespace MORM.Apresentacao
 {
     public class MainWindowViewModel : AbstractViewModel
     {

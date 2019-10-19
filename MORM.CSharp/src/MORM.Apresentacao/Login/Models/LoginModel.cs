@@ -1,6 +1,4 @@
-﻿using MORM.Apresentacao.Models;
-
-namespace MORM.Apresentacao.Login.Models
+﻿namespace MORM.Apresentacao
 {
     public class LoginModel : AbstractModel
     {

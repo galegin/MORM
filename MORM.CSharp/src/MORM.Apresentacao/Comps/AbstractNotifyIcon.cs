@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using MORM.Apresentacao.Properties;
 using MORM.CrossCutting;
 
-namespace MORM.Apresentacao.Comps
+namespace MORM.Apresentacao
 {
     public class AbstractNotifyIcon
     {

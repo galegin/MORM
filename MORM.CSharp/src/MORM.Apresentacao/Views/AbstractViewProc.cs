@@ -1,6 +1,4 @@
-﻿using MORM.Apresentacao.ViewsModel;
-
-namespace MORM.Apresentacao.Views
+﻿namespace MORM.Apresentacao
 {
     public class AbstractViewProc : AbstractView
     {

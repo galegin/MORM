@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MORM.Apresentacao.Colors
+namespace MORM.Apresentacao
 {
     public class EsquemaCor
     {

@@ -1,8 +1,6 @@
-﻿using MORM.Apresentacao.Comps;
-using MORM.Apresentacao.Menus.ViewModels;
-using MORM.CrossCutting;
+﻿using MORM.CrossCutting;
 
-namespace MORM.Apresentacao.Menus
+namespace MORM.Apresentacao
 {
     public partial class ucTituloSistema : AbstractUserControl, ITituloSistema
     {

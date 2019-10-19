@@ -1,7 +1,6 @@
-﻿using MORM.Apresentacao.Comps;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 
-namespace MORM.Apresentacao.Commands.Tela
+namespace MORM.Apresentacao
 {
     [Description("Voltar")]
     public class VoltarTelaAnteriorCommand : AbstractCommand

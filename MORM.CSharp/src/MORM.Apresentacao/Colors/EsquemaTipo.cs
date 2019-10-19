@@ -1,4 +1,4 @@
-﻿namespace MORM.Apresentacao.Colors
+﻿namespace MORM.Apresentacao
 {
     public enum EsquemaTipo
     {

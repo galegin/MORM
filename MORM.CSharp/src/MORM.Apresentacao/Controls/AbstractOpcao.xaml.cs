@@ -1,11 +1,8 @@
-﻿using MORM.Apresentacao.Commands;
-using MORM.Apresentacao.Comps;
-using MORM.Apresentacao.ViewsModel;
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Input;
 
-namespace MORM.Apresentacao.Controls
+namespace MORM.Apresentacao
 {
     public partial class AbstractOpcao : AbstractUserControl
     {

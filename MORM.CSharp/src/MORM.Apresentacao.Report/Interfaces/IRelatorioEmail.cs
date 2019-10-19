@@ -1,4 +1,4 @@
-﻿namespace MORM.Apresentacao.Report.Interfaces
+﻿namespace MORM.Apresentacao.Report
 {
     public interface IRelatorioEmail
     {

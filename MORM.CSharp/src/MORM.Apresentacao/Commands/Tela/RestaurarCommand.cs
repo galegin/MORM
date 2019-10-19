@@ -1,6 +1,4 @@
-﻿using MORM.Apresentacao.Comps;
-
-namespace MORM.Apresentacao.Commands.Tela
+﻿namespace MORM.Apresentacao
 {
     public class RestaurarCommand : AbstractCommand
     {

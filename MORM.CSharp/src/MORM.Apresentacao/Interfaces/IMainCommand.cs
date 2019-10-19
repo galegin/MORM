@@ -1,5 +1,4 @@
-﻿using MORM.Apresentacao.Commands;
-using MORM.CrossCutting;
+﻿using MORM.CrossCutting;
 using System;
 
 namespace MORM.Apresentacao

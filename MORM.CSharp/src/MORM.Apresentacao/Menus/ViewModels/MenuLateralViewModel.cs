@@ -1,6 +1,4 @@
-﻿using MORM.Apresentacao.ViewsModel;
-
-namespace MORM.Apresentacao.Menus.ViewModels
+﻿namespace MORM.Apresentacao
 {
     public class MenuLateralViewModel : AbstractViewModel
     {

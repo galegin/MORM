@@ -1,6 +1,6 @@
 using MORM.CrossCutting;
 
-namespace MORM.Apresentacao.Models
+namespace MORM.Apresentacao.WSist
 {
     [SVC("Ambiente")]
     public class AmbienteModel : AbstractModel

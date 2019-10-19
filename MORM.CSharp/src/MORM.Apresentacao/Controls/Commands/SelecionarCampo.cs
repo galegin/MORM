@@ -1,7 +1,4 @@
-﻿using MORM.Apresentacao.Commands;
-using MORM.Apresentacao.Controls.ViewsModel;
-
-namespace MORM.Apresentacao.Controls.Commands
+﻿namespace MORM.Apresentacao
 {
     public class SelecionarCampo : AbstractCommand
     {

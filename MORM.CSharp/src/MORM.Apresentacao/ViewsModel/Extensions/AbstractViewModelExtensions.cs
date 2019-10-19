@@ -1,6 +1,6 @@
 ﻿using MORM.CrossCutting;
 
-namespace MORM.Apresentacao.ViewsModel
+namespace MORM.Apresentacao
 {
     public static class AbstractViewModelExtensions
     {

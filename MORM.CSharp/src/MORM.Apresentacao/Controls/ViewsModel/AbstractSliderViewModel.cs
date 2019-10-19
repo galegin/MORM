@@ -1,10 +1,9 @@
-﻿using MORM.Apresentacao.ViewsModel;
-using MORM.CrossCutting;
+﻿using MORM.CrossCutting;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace MORM.Apresentacao.Controls.ViewsModel
+namespace MORM.Apresentacao
 {
     public class AbstractSliderViewModel : AbstractViewModel
     {

@@ -1,6 +1,4 @@
-﻿using MORM.Apresentacao.Comps;
-
-namespace MORM.Apresentacao.Reports
+﻿namespace MORM.Apresentacao
 {
     public partial class AbstractReport : AbstractUserControl
     {

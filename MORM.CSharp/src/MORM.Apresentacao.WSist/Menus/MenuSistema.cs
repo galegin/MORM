@@ -1,9 +1,7 @@
-using MORM.Apresentacao.Menus;
-using MORM.Apresentacao.Views.Interfaces;
 using System;
 using System.Collections.Generic;
 
-namespace MORM.Apresentacao.WSist.Menus
+namespace MORM.Apresentacao.WSist
 {
     public class MenuSistema : AbstractMenuSistema
     {

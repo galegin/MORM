@@ -1,7 +1,4 @@
-﻿using MORM.Apresentacao.Comps;
-using MORM.Apresentacao.Login.Models;
-using MORM.Apresentacao.Login.ViewsModel;
-using MORM.CrossCutting;
+﻿using MORM.CrossCutting;
 using System.Windows;
 using System.Windows.Controls;
 

@@ -1,10 +1,7 @@
-﻿using MORM.Apresentacao.Comps;
-using MORM.Apresentacao.Controls;
-using MORM.Apresentacao.ViewsModel;
-using MORM.CrossCutting;
+﻿using MORM.CrossCutting;
 using System;
 
-namespace MORM.Apresentacao.Views
+namespace MORM.Apresentacao
 {
     public static class AbstractViewListaExtensions
     {

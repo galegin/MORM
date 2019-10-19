@@ -1,8 +1,4 @@
-﻿using MORM.Apresentacao.Classes;
-using MORM.Apresentacao.Menus;
-using MORM.Apresentacao.Commands;
-using MORM.Apresentacao.Mensagens;
-using MORM.CrossCutting;
+﻿using MORM.CrossCutting;
 
 namespace MORM.Apresentacao
 {

@@ -1,6 +1,4 @@
-﻿using MORM.Apresentacao.Commands;
-
-namespace MORM.Apresentacao.Reports
+﻿namespace MORM.Apresentacao
 {
     public class CancelarReportCommand : AbstractCommand
     {

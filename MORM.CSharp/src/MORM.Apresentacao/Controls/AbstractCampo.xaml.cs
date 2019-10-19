@@ -1,8 +1,4 @@
-﻿using MORM.Apresentacao.Comps;
-using MORM.Apresentacao.Controls.ViewsModel;
-using MORM.Apresentacao.Views;
-using MORM.Apresentacao.ViewsModel;
-using MORM.CrossCutting;
+﻿using MORM.CrossCutting;
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -10,7 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace MORM.Apresentacao.Controls
+namespace MORM.Apresentacao
 {
     public partial class AbstractCampo : AbstractUserControl
     {

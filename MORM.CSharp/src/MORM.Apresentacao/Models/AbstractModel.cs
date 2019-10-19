@@ -1,6 +1,4 @@
-﻿using MORM.Apresentacao.Comps;
-
-namespace MORM.Apresentacao.Models
+﻿namespace MORM.Apresentacao
 {
     public abstract class AbstractModel : BaseNotifyPropertyChanged
     {

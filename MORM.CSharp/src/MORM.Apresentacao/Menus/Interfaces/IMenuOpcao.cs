@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MORM.Apresentacao.Menus
+namespace MORM.Apresentacao
 {
     public enum MenuOpcaoTipo
     {

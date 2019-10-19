@@ -1,13 +1,11 @@
-﻿using MORM.Apresentacao.Controls;
-using MORM.Apresentacao.ViewsModel;
-using MORM.CrossCutting;
+﻿using MORM.CrossCutting;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 
-namespace MORM.Apresentacao.Views
+namespace MORM.Apresentacao
 {
     public static class BindingExtensions
     {

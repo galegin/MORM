@@ -1,8 +1,6 @@
-﻿using MORM.Apresentacao.Commands;
-using MORM.Apresentacao.Comps;
-using MORM.CrossCutting;
+﻿using MORM.CrossCutting;
 
-namespace MORM.Apresentacao.Reports
+namespace MORM.Apresentacao
 {
     public class ArquivoReportCommand : AbstractCommand
     {

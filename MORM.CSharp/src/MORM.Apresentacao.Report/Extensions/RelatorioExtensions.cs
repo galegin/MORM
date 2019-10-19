@@ -1,10 +1,9 @@
-﻿using MORM.Apresentacao.Report.Interfaces;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using MORM.Apresentacao.Report.Types;
+using MORM.Apresentacao.Report;
 using MORM.CrossCutting;
 
-namespace MORM.Apresentacao.Report.Extensions
+namespace MORM.Apresentacao.Report
 {
     public static class RelatorioExtensions
     {  

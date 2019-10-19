@@ -1,9 +1,7 @@
-﻿using MORM.Apresentacao.Comps;
-using MORM.Apresentacao.Menus.ViewModels;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace MORM.Apresentacao.Menus
+namespace MORM.Apresentacao
 {
     public partial class ucMenuLateral : AbstractUserControl, IMenuLateral
     {

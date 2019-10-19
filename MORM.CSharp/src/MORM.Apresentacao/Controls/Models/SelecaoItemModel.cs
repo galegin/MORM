@@ -1,9 +1,8 @@
-﻿using MORM.Apresentacao.Models;
-using MORM.CrossCutting;
+﻿using MORM.CrossCutting;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace MORM.Apresentacao.Controls
+namespace MORM.Apresentacao
 {
     public class SelecaoItemModel : AbstractModel
     {

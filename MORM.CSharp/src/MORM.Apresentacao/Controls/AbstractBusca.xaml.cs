@@ -1,10 +1,8 @@
-﻿using MORM.Apresentacao.Comps;
-using MORM.Apresentacao.ViewsModel;
-using MORM.CrossCutting;
+﻿using MORM.CrossCutting;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace MORM.Apresentacao.Controls
+namespace MORM.Apresentacao
 {
     public partial class AbstractBusca : AbstractUserControl
     {

@@ -1,11 +1,8 @@
-﻿using MORM.Apresentacao.Commands;
-using MORM.Apresentacao.Controls;
-using MORM.Apresentacao.ViewsModel;
-using System;
+﻿using System;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace MORM.Apresentacao.Views
+namespace MORM.Apresentacao
 {
     public abstract class AbstractViewLista : AbstractView
     {

@@ -1,4 +1,4 @@
-﻿namespace MORM.Apresentacao.Commands
+﻿namespace MORM.Apresentacao
 {
     public enum CommandTipo
     {

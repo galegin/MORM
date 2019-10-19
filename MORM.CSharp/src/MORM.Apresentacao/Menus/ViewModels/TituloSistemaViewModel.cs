@@ -1,13 +1,9 @@
 ﻿using MaterialDesignThemes.Wpf;
-using MORM.Apresentacao.Commands.Tela;
-using MORM.Apresentacao.Comps;
-using MORM.Apresentacao.Menus.Commands;
-using MORM.Apresentacao.ViewsModel;
 using MORM.CrossCutting;
 using System;
 using System.Windows.Controls;
 
-namespace MORM.Apresentacao.Menus.ViewModels
+namespace MORM.Apresentacao
 {
     public class TituloSistemaViewModel : AbstractViewModel
     {

@@ -1,10 +1,7 @@
-﻿using MORM.Apresentacao.Connectors;
-using MORM.Apresentacao.Views;
-using MORM.Apresentacao.ViewsModel;
-using MORM.CrossCutting;
+﻿using MORM.CrossCutting;
 using System.ComponentModel;
 
-namespace MORM.Apresentacao.Commands.Tela
+namespace MORM.Apresentacao
 {
     [Description("Sequenciar")]
     public class SequenciarCommand : AbstractCommand

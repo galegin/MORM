@@ -1,9 +1,6 @@
-﻿using MORM.Apresentacao.Comps;
-using MORM.Apresentacao.Views;
-using MORM.Apresentacao.ViewsModel;
-using MORM.CrossCutting;
+﻿using MORM.CrossCutting;
 
-namespace MORM.Apresentacao.Controls
+namespace MORM.Apresentacao
 {
     public partial class AbstractFiltro : AbstractUserControl
     {

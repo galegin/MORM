@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Timers;
 
-namespace MORM.Apresentacao.Comps
+namespace MORM.Apresentacao
 {
     public delegate void OnTimerExecute(object sender);
 

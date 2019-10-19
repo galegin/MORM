@@ -1,7 +1,4 @@
-﻿using MORM.Apresentacao.Commands;
-using MORM.Apresentacao.Comps;
-
-namespace MORM.Apresentacao.Login.Commands
+﻿namespace MORM.Apresentacao
 {
     public class FecharLogin : AbstractCommand
     {

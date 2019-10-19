@@ -1,6 +1,6 @@
 ﻿using MORM.CrossCutting;
 
-namespace MORM.Apresentacao.Classes
+namespace MORM.Apresentacao
 {
     public class InformacaoSistema : IInformacaoSistema
     {

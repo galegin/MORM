@@ -1,7 +1,6 @@
-﻿using MORM.Apresentacao.Report.Interfaces;
-using System;
+﻿using System;
 
-namespace MORM.Apresentacao.Report.Classes
+namespace MORM.Apresentacao.Report
 {
     public class RelatorioEmail : IRelatorioEmail
     {

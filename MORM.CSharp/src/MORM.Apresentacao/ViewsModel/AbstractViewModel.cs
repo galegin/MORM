@@ -1,16 +1,11 @@
-﻿using MORM.Apresentacao.Colors;
-using MORM.Apresentacao.Commands;
-using MORM.Apresentacao.Commands.Tela;
-using MORM.Apresentacao.Comps;
-using MORM.Apresentacao.Views;
-using MORM.CrossCutting;
+﻿using MORM.CrossCutting;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
 
-namespace MORM.Apresentacao.ViewsModel
+namespace MORM.Apresentacao
 {
     public class AbstractViewModel : BaseNotifyPropertyChanged, IAbstractViewModel
     {

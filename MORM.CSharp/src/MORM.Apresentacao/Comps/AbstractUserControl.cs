@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace MORM.Apresentacao.Comps
+namespace MORM.Apresentacao
 {
     public class AbstractUserControl : UserControl, IAbstractUserControl, IDisposable
     {

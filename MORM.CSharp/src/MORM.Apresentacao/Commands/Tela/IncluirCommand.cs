@@ -1,8 +1,6 @@
-﻿using MORM.Apresentacao.Connectors;
-using MORM.Apresentacao.ViewsModel;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 
-namespace MORM.Apresentacao.Commands.Tela
+namespace MORM.Apresentacao
 {
     [Description("Incluir")]
     public class IncluirCommand : AbstractCommand

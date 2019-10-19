@@ -1,11 +1,8 @@
-﻿using MORM.Apresentacao.Connectors;
-using MORM.Apresentacao.Views;
-using MORM.Apresentacao.ViewsModel;
-using MORM.CrossCutting;
+﻿using MORM.CrossCutting;
 using System;
 using System.Collections;
 
-namespace MORM.Apresentacao.Controls.ViewsModel
+namespace MORM.Apresentacao
 {
     public class AbstractCampoViewModel : AbstractViewModel
     {

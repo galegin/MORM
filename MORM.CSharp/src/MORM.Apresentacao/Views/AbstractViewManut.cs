@@ -1,11 +1,9 @@
-﻿using MORM.Apresentacao.Controls;
-using MORM.Apresentacao.ViewsModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Controls;
 
-namespace MORM.Apresentacao.Views
+namespace MORM.Apresentacao
 {
     public class AbstractViewManut : AbstractView
     {

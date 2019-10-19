@@ -3,7 +3,7 @@ using System;
 using System.ComponentModel;
 using System.Windows.Input;
 
-namespace MORM.Apresentacao.Commands
+namespace MORM.Apresentacao
 {
     public abstract class AbstractCommand : ICommand
     {

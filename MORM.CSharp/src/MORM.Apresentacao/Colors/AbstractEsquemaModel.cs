@@ -1,6 +1,4 @@
-﻿using MORM.Apresentacao.Models;
-
-namespace MORM.Apresentacao.Colors
+﻿namespace MORM.Apresentacao
 {
     public class AbstractEsquemaModel : AbstractModel
     {

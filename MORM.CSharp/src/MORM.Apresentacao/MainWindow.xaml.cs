@@ -1,8 +1,4 @@
-﻿using MORM.Apresentacao.Comps;
-using MORM.Apresentacao.Controls;
-using MORM.Apresentacao.Menus;
-using MORM.Apresentacao.ViewsModel;
-using MORM.CrossCutting;
+﻿using MORM.CrossCutting;
 using System.Configuration;
 using System.Windows;
 using System.Windows.Controls;

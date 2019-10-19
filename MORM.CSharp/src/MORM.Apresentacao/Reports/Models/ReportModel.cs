@@ -1,6 +1,4 @@
-﻿using MORM.Apresentacao.Models;
-
-namespace MORM.Apresentacao.Reports
+﻿namespace MORM.Apresentacao
 {
     public class ReportModel : AbstractModel
     {

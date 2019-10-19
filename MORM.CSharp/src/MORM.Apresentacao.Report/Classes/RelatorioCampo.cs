@@ -1,8 +1,6 @@
-﻿using MORM.Apresentacao.Report.Interfaces;
-using MORM.Apresentacao.Report.Types;
-using System;
+﻿using System;
 
-namespace MORM.Apresentacao.Report.Classes
+namespace MORM.Apresentacao.Report
 {
     public class RelatorioCampo : IRelatorioCampo
     {

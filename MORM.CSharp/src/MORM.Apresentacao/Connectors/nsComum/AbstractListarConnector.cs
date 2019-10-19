@@ -2,7 +2,7 @@ using MORM.CrossCutting;
 using System;
 using System.Collections.Generic;
 
-namespace MORM.Apresentacao.Connectors
+namespace MORM.Apresentacao
 {
     public interface IAbstractListarConnector
     {

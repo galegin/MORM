@@ -1,6 +1,4 @@
-﻿using MORM.Apresentacao.Comps;
-
-namespace MORM.Apresentacao
+﻿namespace MORM.Apresentacao
 {
     public interface IMainWindow : IAbstractWindow
     {

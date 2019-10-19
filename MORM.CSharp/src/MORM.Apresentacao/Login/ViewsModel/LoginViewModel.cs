@@ -1,9 +1,4 @@
-﻿using MORM.Apresentacao.Commands;
-using MORM.Apresentacao.Login.Commands;
-using MORM.Apresentacao.Login.Models;
-using MORM.Apresentacao.ViewsModel;
-
-namespace MORM.Apresentacao.Login.ViewsModel
+﻿namespace MORM.Apresentacao
 {
     public class LoginViewModel : AbstractViewModel<LoginModel>
     {

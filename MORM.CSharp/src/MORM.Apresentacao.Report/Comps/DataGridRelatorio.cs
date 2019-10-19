@@ -1,8 +1,5 @@
 ﻿//using MIGR.WSist.Comps.Reports;
 //using MORM.Dominio.Extensions;
-//using MORM.Apresentacao.Report.Classes;
-//using MORM.Apresentacao.Report.Interfaces;
-//using MORM.Apresentacao.Report.Types;
 //using System;
 //using System.Collections;
 //using System.Collections.Generic;
@@ -11,7 +8,7 @@
 //using System.Windows.Data;
 //using System.Windows.Forms;
 
-//namespace MORM.Apresentacao.Report.Comps
+//namespace MORM.Apresentacao.Report
 //{
 //    public static class DataGridRelatorio
 //    {

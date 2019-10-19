@@ -1,6 +1,4 @@
-using MORM.Apresentacao.Models;
-
-namespace MORM.Apresentacao.ViewsModel
+namespace MORM.Apresentacao.WSist
 {
     public class PermissaoViewModel : AbstractViewModel<PermissaoModel>
     {

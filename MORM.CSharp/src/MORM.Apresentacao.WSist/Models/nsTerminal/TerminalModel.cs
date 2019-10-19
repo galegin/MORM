@@ -1,7 +1,7 @@
 using MORM.CrossCutting;
 using System;
 
-namespace MORM.Apresentacao.Models
+namespace MORM.Apresentacao.WSist
 {
     [SVC("Terminal")]
     public class TerminalModel : AbstractModel

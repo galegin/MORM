@@ -1,7 +1,6 @@
 ﻿using MaterialDesignThemes.Wpf;
-using MORM.Apresentacao.ViewsModel;
 
-namespace MORM.Apresentacao.WSist.Controls
+namespace MORM.Apresentacao.WSist
 {
     public class AbstractPackIconViewModel : AbstractViewModel
     {

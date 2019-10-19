@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Windows.Input;
 
-namespace MORM.Apresentacao.ViewsModel
+namespace MORM.Apresentacao
 {
     public interface IAbstractViewModelConf
     {

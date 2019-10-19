@@ -1,8 +1,7 @@
-﻿using MORM.Apresentacao.Commands.Tela;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
-namespace MORM.Apresentacao.Commands
+namespace MORM.Apresentacao
 {
     public class MainCommand : IMainCommand
     {

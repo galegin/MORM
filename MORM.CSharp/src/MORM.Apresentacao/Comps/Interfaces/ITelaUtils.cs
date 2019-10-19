@@ -1,7 +1,7 @@
 ﻿using MORM.CrossCutting;
 using System.Windows.Controls;
 
-namespace MORM.Apresentacao.Comps.Interfaces
+namespace MORM.Apresentacao
 {
     public interface ITelaUtils
     {

@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Windows;
 
-namespace MORM.Apresentacao.Comps
+namespace MORM.Apresentacao
 {
     public static class AbstractAppAction
     {

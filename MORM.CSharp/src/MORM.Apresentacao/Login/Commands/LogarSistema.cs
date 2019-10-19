@@ -1,11 +1,6 @@
-﻿using MORM.Apresentacao.Commands;
-using MORM.Apresentacao.Connectors;
-using MORM.Apresentacao.Login.Models;
-using MORM.Apresentacao.Login.ViewsModel;
-using MORM.Apresentacao.Models;
-using MORM.CrossCutting;
+﻿using MORM.CrossCutting;
 
-namespace MORM.Apresentacao.Login.Commands
+namespace MORM.Apresentacao
 {
     public class LogarSistema : AbstractCommand
     {

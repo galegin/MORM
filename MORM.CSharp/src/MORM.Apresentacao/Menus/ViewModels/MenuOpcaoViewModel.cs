@@ -1,9 +1,7 @@
 ﻿using MaterialDesignThemes.Wpf;
-using MORM.Apresentacao.Menus.Commands;
-using MORM.Apresentacao.ViewsModel;
 using System.Linq;
 
-namespace MORM.Apresentacao.Menus.ViewModels
+namespace MORM.Apresentacao
 {
     public class MenuOpcaoViewModel : AbstractViewModel
     {

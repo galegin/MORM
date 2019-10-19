@@ -1,7 +1,7 @@
 using MORM.CrossCutting;
 using System;
 
-namespace MORM.Apresentacao.Connectors
+namespace MORM.Apresentacao
 {
     public interface IAbstractConsultarConnector
     {

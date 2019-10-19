@@ -1,4 +1,4 @@
-﻿namespace MORM.Apresentacao.Report.Types
+﻿namespace MORM.Apresentacao.Report
 {
     public enum RelatorioParteTipo
     {

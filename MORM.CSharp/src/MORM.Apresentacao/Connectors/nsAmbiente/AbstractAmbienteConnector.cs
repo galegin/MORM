@@ -1,8 +1,7 @@
-﻿using MORM.Apresentacao.Models;
-using MORM.CrossCutting;
+﻿using MORM.CrossCutting;
 using System.Configuration;
 
-namespace MORM.Apresentacao.Connectors
+namespace MORM.Apresentacao
 {
     public class AbstractAmbienteConnector : AbstractConnector<ValidarAmbienteInModel, ValidarAmbienteOutModel>
     {
