@@ -19,7 +19,7 @@ namespace MORM.Apresentacao
             if (string.IsNullOrWhiteSpace(conteudo))
                 return;
 
-            DialogsMessages.RelatorioGeradoComSucesso.GetMensagem();
+            DialogsMessages.ImpressaoEfetuadaComSucesso.GetMensagem();
         }
     }
 }

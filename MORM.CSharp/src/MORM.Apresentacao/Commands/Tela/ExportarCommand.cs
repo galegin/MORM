@@ -24,7 +24,7 @@ namespace MORM.Apresentacao
 
             ArquivoDiretorio.GravarArquivo(arquivo, conteudo);
 
-            DialogsMessages.ArquivoExportadoComSucesso.GetMensagem();
+            DialogsMessages.ExportacaoEfetuadaComSucesso.GetMensagem();
         }
     }
 }

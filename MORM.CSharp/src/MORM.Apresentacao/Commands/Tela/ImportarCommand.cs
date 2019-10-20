@@ -34,7 +34,7 @@ namespace MORM.Apresentacao
             foreach (var item in lista)
                 connector.Salvar(item);
 
-            DialogsMessages.ArquivoImportadoComSucesso.GetMensagem();
+            DialogsMessages.ImportacaoEfetuadaComSucesso.GetMensagem();
         }
     }
 }
