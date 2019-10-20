@@ -186,8 +186,10 @@ namespace MORM.Apresentacao
                 return;
 
             EditIni.AcceptsReturn = true;
+            EditIni.HorizontalScrollBarVisibility = ScrollBarVisibility.Auto;
             EditIni.Tag = NavegacaoComEnter.IgnorarNavegacao;
             EditIni.TextWrapping = TextWrapping.Wrap;
+            EditIni.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
 
             if (campoMemo.Altura > 0)
                 EditIni.Height = campoMemo.Altura * _alturaCampo;
