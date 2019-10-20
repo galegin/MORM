@@ -2,7 +2,7 @@
 
 namespace MORM.CrossCutting
 {
-    public static class ConsumerExtensions
+    public static class APIExtensions
     {
         public static string GetApi(this object instance,
             string urlPadrao = null,
@@ -24,21 +24,6 @@ namespace MORM.CrossCutting
                 retorno.Add(mtd);
 
             return string.Join("/", retorno);
-        }
-
-        public static string GetMtd(this object instance, string mtdPadrao = null)
-        {
-            return instance.GetTypeObjeto().GetAttribute<MTDAttribute>()?.Path ?? mtdPadrao;
-        }
-
-        public static string GetSvc(this object instance, string svcPadrao = null)
-        {
-            return instance.GetTypeObjeto().GetAttribute<SVCAttribute>()?.Path ?? svcPadrao;
-        }
-
-        public static string GetUrl(this object instance, string urlPadrao = null)
-        {
-            return instance.GetTypeObjeto().GetAttribute<URLAttribute>()?.Path ?? urlPadrao;
         }
     }
 }

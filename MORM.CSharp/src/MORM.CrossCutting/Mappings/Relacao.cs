@@ -1,63 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 namespace MORM.CrossCutting
 {
-    //-- tabela
-    
-    public class TabelaAttribute : Attribute
-    {
-        public TabelaAttribute(string nome)
-        {
-            Nome = nome;
-        }
-        
-        public string Nome { get; private set; }
-    }
-
-    //-- campo
-
-    public enum CampoTipo
-    {
-        Key,
-        Req,
-        Nul,
-        Pwd
-    }
-
-    public class CampoAttribute : Attribute
-    {
-        public CampoAttribute(string nome, CampoTipo tipo = CampoTipo.Nul, 
-            int tamanho = 0, int precisao = 0, Type ownerType = null, object ownerProp = null)
-        {
-            Nome = nome;
-            Tipo = tipo;
-            Tamanho = tamanho;
-            Precisao = precisao;
-            OwnerProp = ownerProp as PropertyInfo;
-            OwnerType = ownerType;
-        }
-        
-        public string Nome { get; private set; }
-        public CampoTipo Tipo { get; private set; }
-        public int Tamanho { get; private set; }
-        public int Precisao { get; private set; }
-        public Type OwnerType { get; private set; }
-        public PropertyInfo OwnerProp { get; private set; }
-
-        public string Atributo => OwnerProp.Name ?? Nome;
-        public Type DataType => OwnerProp.PropertyType;
-
-        public bool IsKey => (Tipo == CampoTipo.Key);
-        public bool IsReq => (Tipo == CampoTipo.Key || Tipo == CampoTipo.Req);
-        public bool IsPwd => (Tipo == CampoTipo.Pwd);
-    }
-    
-    public class Campos : List<CampoAttribute> {}
-
-    //-- relacao
-
     public enum RelacaoTipo
     {
         Update,
@@ -89,6 +36,48 @@ namespace MORM.CrossCutting
         public Type OwnerType { get; set; }
         public PropertyInfo OwnerProp { get; set; }
         public object OwnerObj { get; set; }
+    }
+
+    public static class RelacaoExtensions
+    {
+        private static RelacaoAttribute GetClone(this RelacaoAttribute relacao,
+            Type ownerType = null, PropertyInfo ownerProp = null, object ownerObj = null)
+        {
+            return new RelacaoAttribute(relacao.Campos, relacao.Tipo, ownerType, ownerProp, ownerObj);
+        }
+
+        public static Relacoes GetRelacoes(this Type type, RelacaoTipo[] tipo, object ownerObj = null)
+        {
+            var relacoes = new Relacoes();
+
+            type?
+                .GetProperties()
+                .ToList()
+                .ForEach(prop =>
+                {
+                    var relacao = prop.GetAttribute<RelacaoAttribute>()?.GetClone(type, prop, ownerObj);
+                    if (relacao != null)
+                        relacoes.Add(relacao);
+                });
+
+            return relacoes;
+        }
+
+        private static RelacaoTipo[] _listaDeRelacaoTipoGet =
+            { RelacaoTipo.Update, RelacaoTipo.NoUpdate };
+
+        public static Relacoes GetRelacoesGet(this Type type, object ownerObj = null)
+        {
+            return GetRelacoes(type, _listaDeRelacaoTipoGet, ownerObj);
+        }
+
+        private static RelacaoTipo[] _listaDeRelacaoTipoSet =
+            { RelacaoTipo.Update };
+
+        public static Relacoes GetRelacoesSet(this Type type, object ownerObj = null)
+        {
+            return GetRelacoes(type, _listaDeRelacaoTipoSet, ownerObj);
+        }
     }
 
     public class Relacoes : List<RelacaoAttribute> { }
@@ -124,11 +113,5 @@ namespace MORM.CrossCutting
             
             return relacaoCampos;
         }
-    }
-
-    //-- select max
-
-    public class SelectMaxAttribute : Attribute
-    {
     }
 }

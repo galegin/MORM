@@ -17,7 +17,6 @@ namespace MORM.Repositorio
             container.Register<IPermissaoRepository, PermissaoRepository>();
 
             container.Register<IAbstractDataContext, AbstractDataContext>();
-            container.Register<IAbstractUnityOfWork, AbstractUnityOfWork>();
         }
     }
 }

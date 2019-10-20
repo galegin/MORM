@@ -19,7 +19,7 @@ namespace MORM.Aplicacao.WebApi
         [Route("Validar")]
         public HttpResponseMessage Validar(ValidarAmbienteInModel dto)
         {
-            return Response(TipoPermissao.Validar, () => _ambienteService.Validar(dto));
+            return Response(PermissaoTipo.Validar, () => _ambienteService.Validar(dto));
         }
     }
 }

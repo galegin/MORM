@@ -10,6 +10,11 @@ namespace MORM.Apresentacao
 {
     public partial class AbstractCampo : AbstractUserControl
     {
+        #region variaveis
+        private const double _alturaCampo = 30;
+        private const double _larguraCampo = 10;
+        #endregion
+
         #region propriedades
         private AbstractCampoViewModel _vm => DataContext as AbstractCampoViewModel;
         private AbstractCampoFormato Formato
@@ -37,6 +42,7 @@ namespace MORM.Apresentacao
             Formato = campo.Prop.GetCampoFormato();
             HabilitaCampo();
             SetarTamanho();
+            SetarTamanhoMemo(campo);
             SetarFonte();
             SetBindingCampo();
         }
@@ -168,10 +174,25 @@ namespace MORM.Apresentacao
         private void SetarTamanho()
         {
             LabelBtn.Width = 150;
-            EditIni.Width = _vm.Tipo.IsInter() ? 150 : _vm.Campo.Tamanho * 10;
-            EditFin.Width = _vm.Tipo.IsInter() ? 150 : _vm.Campo.Tamanho * 10;
+            EditIni.Width = _vm.Tipo.IsInter() ? 150 : _vm.Campo.Tamanho * _larguraCampo;
+            EditFin.Width = _vm.Tipo.IsInter() ? 150 : _vm.Campo.Tamanho * _larguraCampo;
             EditDes.Width = _vm.Tipo.IsInter() ? 300 : 150;
             ComboTip.Width = _vm.Tipo.IsInter() ? 300 : 150;
+        }
+        private void SetarTamanhoMemo(MetadataCampo campo)
+        {
+            var campoMemo = campo.Prop.GetCampoMemo();
+            if (campoMemo == null)
+                return;
+
+            EditIni.AcceptsReturn = true;
+            EditIni.Tag = NavegacaoComEnter.IgnorarNavegacao;
+            EditIni.TextWrapping = TextWrapping.Wrap;
+
+            if (campoMemo.Altura > 0)
+                EditIni.Height = campoMemo.Altura * _alturaCampo;
+            if (campoMemo.Largura > 0)
+                EditIni.Width = campoMemo.Largura * _larguraCampo;
         }
         #endregion
 

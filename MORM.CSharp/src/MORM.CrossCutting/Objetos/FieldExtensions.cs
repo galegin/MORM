@@ -8,17 +8,16 @@ namespace MORM.CrossCutting
         // flags
 
         private static BindingFlags _bindFlags = 
-            BindingFlags.Instance | 
-            BindingFlags.Public | 
-            BindingFlags.NonPublic |
-            BindingFlags.Static;
+            BindingFlags.Instance | BindingFlags.Public | 
+            BindingFlags.NonPublic | BindingFlags.Static;
 
         // get
 
         public static object GetInstanceField(this Type type, object instance, string fieldName)
         {
             FieldInfo field = type.GetField(fieldName, _bindFlags);
-            return field?.GetValue(instance);
+            return field?.FieldType?.IsEnum ?? false ? (int)field?.GetValue(instance) 
+                : field?.GetValue(instance);
         }
 
         public static object GetInstanceField(this object instance, string fieldName)

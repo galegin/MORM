@@ -9,17 +9,16 @@ namespace MORM.CrossCutting
         // flags
 
         private static BindingFlags _bindFlags = 
-            BindingFlags.Instance | 
-            BindingFlags.Public | 
-            BindingFlags.NonPublic | 
-            BindingFlags.Static;
+            BindingFlags.Instance | BindingFlags.Public | 
+            BindingFlags.NonPublic | BindingFlags.Static;
 
         // get
 
         public static object GetInstanceProp(this Type type, object instance, string propName)
         {
             PropertyInfo prop = type.GetProperty(propName, _bindFlags);
-            return prop?.GetValue(instance);
+            return prop?.PropertyType?.IsEnum ?? false ? (int)prop?.GetValue(instance) 
+                : prop?.GetValue(instance);
         }
 
         public static object GetInstanceProp(this object instance, string propName)

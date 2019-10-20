@@ -237,17 +237,17 @@ namespace MORM.CrossCutting
         {
             switch (valorPadrao.Tipo)
             {
-                case TipoValorPadrao.EmpresaLogada:
+                case ValorPadraoTipo.EmpresaLogada:
                     return ambiente.CodigoEmpresa;
-                case TipoValorPadrao.UsuarioLogado:
+                case ValorPadraoTipo.UsuarioLogado:
                     return ambiente.CodigoUsuario;
-                case TipoValorPadrao.TerminalLogado:
+                case ValorPadraoTipo.TerminalLogado:
                     return ambiente.CodigoTerminal;
-                case TipoValorPadrao.DataSistema:
+                case ValorPadraoTipo.DataSistema:
                     return DateTime.Today;
-                case TipoValorPadrao.HoraSistema:
+                case ValorPadraoTipo.HoraSistema:
                     return DateTime.Now;
-                case TipoValorPadrao.ValorPadrao:
+                case ValorPadraoTipo.ValorPadrao:
                     return valorPadrao.Valor;
             }
 

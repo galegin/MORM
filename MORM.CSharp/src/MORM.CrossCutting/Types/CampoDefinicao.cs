@@ -19,7 +19,7 @@ namespace MORM.CrossCutting
         public int Precisao { get; set; }
     }
 
-    public static class CampoExtensions
+    public static class CampoDefinicaoExtensions
     {
         private static CampoDefinicao[] _listaCampoDefinicao =
         {

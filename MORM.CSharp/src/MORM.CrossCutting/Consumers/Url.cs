@@ -1,10 +1,26 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace MORM.CrossCutting
 {
-    public static class UrlExtension
+    public class URLAttribute : Attribute
     {
+        public URLAttribute(string path)
+        {
+            Path = path;
+        }
+
+        public string Path { get; }
+    }
+
+    public static class URLExtensions
+    {
+        public static string GetUrl(this object instance, string urlPadrao = null)
+        {
+            return instance.GetTypeObjeto().GetAttribute<URLAttribute>()?.Path ?? urlPadrao;
+        }
+
         public static string GetUrlAbsolute(this string url)
         {
             var urlRetorno = url

@@ -18,10 +18,10 @@ namespace MORM.Aplicacao
         #endregion
 
         #region variaveis
-        protected TipoPermissao[] _listaDePermissao = {
-            TipoPermissao.Consultar,
-            TipoPermissao.Incluir,
-            TipoPermissao.Validar };
+        protected PermissaoTipo[] _listaDePermissao = {
+            PermissaoTipo.Consultar,
+            PermissaoTipo.Incluir,
+            PermissaoTipo.Validar };
         #endregion
 
         #region propriedades
@@ -36,7 +36,7 @@ namespace MORM.Aplicacao
         #endregion
 
         #region metodos
-        protected virtual void VerificarPermissao(TipoPermissao tipoPermissao)
+        protected virtual void VerificarPermissao(PermissaoTipo tipoPermissao)
         {
             var contemPermissao = 
                 _listaDePermissao?.Contains(tipoPermissao)
@@ -46,7 +46,7 @@ namespace MORM.Aplicacao
             Check.That(!contemPermissao, nameof(tipoPermissao), _messageSemPermissao);
         }
 
-        public HttpResponseMessage Response(TipoPermissao tipo, Func<object> funcao)
+        public HttpResponseMessage Response(PermissaoTipo tipo, Func<object> funcao)
         {
             try
             {
@@ -117,7 +117,7 @@ namespace MORM.Aplicacao
                 _logAcessoService = Resolver.Resolve<ILogAcessoAppService>();
         }
 
-        protected void GravarLogAcesso(TipoPermissao tipoPermissao)
+        protected void GravarLogAcesso(PermissaoTipo tipoPermissao)
         {
             var model = new GravarLogAcessoInModel
             {
@@ -130,7 +130,7 @@ namespace MORM.Aplicacao
             _logAcessoService?.GravarLog(model);
         }
 
-        protected override void VerificarPermissao(TipoPermissao tipoPermissao)
+        protected override void VerificarPermissao(PermissaoTipo tipoPermissao)
         {
             GravarLogAcesso(tipoPermissao);
 
@@ -155,49 +155,49 @@ namespace MORM.Aplicacao
         [Route("Listar")]
         public object Listar(/*TObject*/ FilterObjeto filtro)
         {
-            return Response(TipoPermissao.Listar, () => _abstractAppService.Listar(filtro));
+            return Response(PermissaoTipo.Listar, () => _abstractAppService.Listar(filtro));
         }
 
         [HttpPost]
         [Route("Consultar")]
         public object Consultar(/*TObject*/ FilterObjeto filtro)
         {
-            return Response(TipoPermissao.Consultar, () => _abstractAppService.Consultar(filtro));
+            return Response(PermissaoTipo.Consultar, () => _abstractAppService.Consultar(filtro));
         }
 
         [HttpPost]
         [Route("Incluir")]
         public object Incluir(TObject objeto)
         {
-            return Response(TipoPermissao.Incluir, () => _abstractAppService.Incluir(objeto));
+            return Response(PermissaoTipo.Incluir, () => _abstractAppService.Incluir(objeto));
         }
 
         [HttpPost]
         [Route("Alterar")]
         public object Alterar(TObject objeto)
         {
-            return Response(TipoPermissao.Alterar, () => _abstractAppService.Alterar(objeto));
+            return Response(PermissaoTipo.Alterar, () => _abstractAppService.Alterar(objeto));
         }
 
         [HttpPost]
         [Route("Salvar")]
         public object Salvar(TObject objeto)
         {
-            return Response(TipoPermissao.Salvar, () => _abstractAppService.Salvar(objeto));
+            return Response(PermissaoTipo.Salvar, () => _abstractAppService.Salvar(objeto));
         }
 
         [HttpPost]
         [Route("Excluir")]
         public object Excluir(TObject objeto)
         {
-            return Response(TipoPermissao.Excluir, () => _abstractAppService.Excluir(objeto));
+            return Response(PermissaoTipo.Excluir, () => _abstractAppService.Excluir(objeto));
         }
 
         [HttpPost]
         [Route("Sequencia")]
         public object Sequencia(TObject filtro)
         {
-            return Response(TipoPermissao.Sequencia, () => _abstractAppService.Sequenciar(filtro));
+            return Response(PermissaoTipo.Sequenciar, () => _abstractAppService.Sequenciar(filtro));
         }
         #endregion
     }
