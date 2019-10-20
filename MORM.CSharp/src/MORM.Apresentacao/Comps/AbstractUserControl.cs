@@ -7,6 +7,17 @@ namespace MORM.Apresentacao
 {
     public class AbstractUserControl : UserControl, IAbstractUserControl, IDisposable
     {
+        #region variaveis
+        protected object _params;
+        protected object _values;
+        #endregion
+
+        #region propriedades
+        public bool InConfirmado { get; protected set; }
+        public object Params { get => GetParams(); set => SetParams(value); }
+        public object Values { get => GetValues(); set => SetValues(value); }
+        #endregion
+
         #region construtores
         public AbstractUserControl()
         {
@@ -16,6 +27,13 @@ namespace MORM.Apresentacao
         #endregion
 
         #region metodos
+
+        #region params / values
+        protected virtual object GetParams() => _params;
+        protected virtual void SetParams(object value) => _params = value;
+        protected virtual object GetValues() => _values;
+        protected virtual void SetValues(object value) => _values = value;
+        #endregion
 
         #region key
         private void DefaultUserControl_KeyDown(object sender, KeyEventArgs e)
@@ -55,8 +73,6 @@ namespace MORM.Apresentacao
                     break;
             }
         }
-
-        public bool InConfirmado { get; protected set; }
         #endregion
 
         #region opcao
@@ -64,7 +80,6 @@ namespace MORM.Apresentacao
         {
             Window.GetWindow(this).Close();
         }
-
         protected virtual void btnLimpar_Click(object sender, RoutedEventArgs e) { }
         protected virtual void btnConsultar_Click(object sender, RoutedEventArgs e) { }
         protected virtual void btnSalvar_Click(object sender, RoutedEventArgs e) { }

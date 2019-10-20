@@ -142,6 +142,8 @@
     <Compile Include="Layouts\ZipExtensions.cs" />
     <Compile Include="HttpContexts\IHttpControllerContext.cs" />
     <Compile Include="Mappings\Campo.cs" />
+    <Compile Include="Mappings\CampoComp.cs" />
+    <Compile Include="Mappings\CampoGrade.cs" />
     <Compile Include="Mappings\CampoMemo.cs" />
     <Compile Include="Mappings\Formato.cs" />
     <Compile Include="Mappings\Relacao.cs" />

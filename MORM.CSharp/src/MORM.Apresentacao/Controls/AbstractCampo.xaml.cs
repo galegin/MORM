@@ -42,7 +42,9 @@ namespace MORM.Apresentacao
             Formato = campo.Prop.GetCampoFormato();
             HabilitaCampo();
             SetarTamanho();
-            SetarTamanhoMemo(campo);
+            SetarCampoMemo();
+            SetarCampoComp();
+            SetarCampoGrade();
             SetarFonte();
             SetBindingCampo();
         }
@@ -179,9 +181,15 @@ namespace MORM.Apresentacao
             EditDes.Width = _vm.Tipo.IsInter() ? 300 : 150;
             ComboTip.Width = _vm.Tipo.IsInter() ? 300 : 150;
         }
-        private void SetarTamanhoMemo(MetadataCampo campo)
+        #endregion
+
+        #region setarCampoMemo
+        private void SetarCampoMemo()
         {
-            var campoMemo = campo.Prop.GetCampoMemo();
+            if (_vm.Tipo.IsInter())
+                return;
+
+            var campoMemo = _vm.Campo.Prop.GetCampoMemo();
             if (campoMemo == null)
                 return;
 
@@ -195,6 +203,70 @@ namespace MORM.Apresentacao
                 EditIni.Height = campoMemo.Altura * _alturaCampo;
             if (campoMemo.Largura > 0)
                 EditIni.Width = campoMemo.Largura * _larguraCampo;
+        }
+        #endregion
+
+        #region setarCampoMemo
+        private void SetarCampoComp()
+        {
+            if (_vm.Tipo.IsInter())
+                return;
+
+            var campoComp = _vm.Campo.Prop.GetCampoComp();
+            if (campoComp == null)
+                return;
+
+            EditIni.IsReadOnly = true;
+            EditIni.MouseDoubleClick += CampoComp_MouseDoubleClick;
+        }
+        private void CampoComp_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var campoComp = _vm.Campo.Prop.GetCampoComp();
+            if (campoComp == null)
+                return;
+
+            var userControl = AbstractContainer.Instance.Resolve(campoComp.ElementType) as AbstractUserControl;
+            if (userControl == null)
+                return;
+
+            userControl.Values = _vm.Model.GetInstancePropOrField(_vm.Campo.Prop.Name);
+
+            if ((TelaUtils.Instance.AbrirDialog(userControl) ?? false) && userControl.InConfirmado)
+            {
+                _vm.Model.SetInstancePropOrField(_vm.Campo.Prop.Name, userControl.Values);
+            }
+        }
+        #endregion
+
+        #region setarCampoGrade
+        private void SetarCampoGrade()
+        {
+            if (_vm.Tipo.IsInter())
+                return;
+
+            var campoGrade = _vm.Campo.Prop.GetCampoGrade();
+            if (campoGrade == null)
+                return;
+
+            EditIni.IsReadOnly = true;
+            EditIni.MouseDoubleClick += CampoGrade_MouseDoubleClick;
+        }
+        private void CampoGrade_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var campoGrade = _vm.Campo.Prop.GetCampoGrade();
+            if (campoGrade == null)
+                return;
+
+            var userControl = AbstractContainer.Instance.Resolve(campoGrade.ElementType) as AbstractUserControl;
+            if (userControl == null)
+                return;
+
+            userControl.Values = _vm.Model.GetInstancePropOrField(_vm.Campo.Prop.Name);
+
+            if ((TelaUtils.Instance.AbrirDialog(userControl) ?? false) && userControl.InConfirmado)
+            {
+                _vm.Model.SetInstancePropOrField(_vm.Campo.Prop.Name, userControl.Values);
+            }
         }
         #endregion
 

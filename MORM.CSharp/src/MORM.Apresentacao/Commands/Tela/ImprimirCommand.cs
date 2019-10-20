@@ -11,11 +11,11 @@ namespace MORM.Apresentacao
             var vm = parameter as IAbstractViewModel;
             var connector = vm.ElementType.GetImprimirConnector();
 
-            var report = AbstractReport.GetReport();
+            var report = AbstractReport.GetReport(/*vm.Lista*/);
             if (report == null)
                 return;
 
-            var conteudo = connector.Imprimir(vm.Model/*, filtro: report*/) as string;
+            var conteudo = connector.Imprimir(report) as string;
             if (string.IsNullOrWhiteSpace(conteudo))
                 return;
 
