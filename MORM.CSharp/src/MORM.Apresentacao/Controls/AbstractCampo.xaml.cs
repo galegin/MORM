@@ -229,11 +229,11 @@ namespace MORM.Apresentacao
             if (userControl == null)
                 return;
 
-            userControl.Values = _vm.Model.GetInstancePropOrField(_vm.Campo.Prop.Name);
+            userControl.Values = _vm.Source.Model.GetInstancePropOrField(_vm.Campo.Prop.Name);
 
             if ((TelaUtils.Instance.AbrirDialog(userControl) ?? false) && userControl.InConfirmado)
             {
-                _vm.Model.SetInstancePropOrField(_vm.Campo.Prop.Name, userControl.Values);
+                _vm.Source.Model.SetInstancePropOrField(_vm.Campo.Prop.Name, userControl.Values);
             }
         }
         #endregion
@@ -261,11 +261,11 @@ namespace MORM.Apresentacao
             if (userControl == null)
                 return;
 
-            userControl.Values = _vm.Model.GetInstancePropOrField(_vm.Campo.Prop.Name);
+            userControl.Values = _vm.Source.Model.GetInstancePropOrField(_vm.Campo.Prop.Name);
 
             if ((TelaUtils.Instance.AbrirDialog(userControl) ?? false) && userControl.InConfirmado)
             {
-                _vm.Model.SetInstancePropOrField(_vm.Campo.Prop.Name, userControl.Values);
+                _vm.Source.Model.SetInstancePropOrField(_vm.Campo.Prop.Name, userControl.Values);
             }
         }
         #endregion

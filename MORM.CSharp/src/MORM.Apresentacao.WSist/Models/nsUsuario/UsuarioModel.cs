@@ -56,6 +56,7 @@ namespace MORM.Apresentacao.WSist
             get => _cd_Senha;
             set => SetField(ref _cd_Senha, value);
         }
+        [CampoComp(typeof(IUsuarioView))]
         public string Cd_Papel
         {
             get => _cd_Papel;
