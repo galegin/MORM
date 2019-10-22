@@ -73,6 +73,7 @@
     <Compile Include="Consumers\Svc.cs" />
     <Compile Include="BaseInstaller.cs" />
     <Compile Include="Consumers\Mtd.cs" />
+    <Compile Include="Datas\Feriado.cs" />
     <Compile Include="Entidades\AbstractEntidade.cs" />
     <Compile Include="Entidades\nsAcesso\Token.cs" />
     <Compile Include="Entidades\nsAmbiente\Ambiente.cs" />
