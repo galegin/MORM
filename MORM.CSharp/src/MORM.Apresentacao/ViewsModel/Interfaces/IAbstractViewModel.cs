@@ -26,7 +26,7 @@ namespace MORM.Apresentacao
         string GetTitulo();
         void ClearAll();
         void SetOpcoes(string[] opcoes);
-        Action CloseAction { get; set; }
+        Action FecharAction { get; set; }
         Action SelecionarAction { get; set; }
         Action ConfirmarAction { get; set; }
         Action CancelarAction { get; set; }
@@ -38,6 +38,7 @@ namespace MORM.Apresentacao
         void BuscarDescricao();
         void ConfirmarTela();
         void CancelarTela();
+        void FecharTela();
     }
 
     public interface IAbstractViewModel<TModel> : IAbstractViewModel

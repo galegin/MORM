@@ -5,7 +5,7 @@
         #region metodos
         public override void Execute(object parameter)
         {
-            "".MinimizarApp();
+            string.Empty.MinimizarApp();
         }
         #endregion
     }

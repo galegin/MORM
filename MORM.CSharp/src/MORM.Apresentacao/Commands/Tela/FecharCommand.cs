@@ -8,9 +8,9 @@ namespace MORM.Apresentacao
         public override void Execute(object parameter)
         {
             var vm = parameter as IAbstractViewModel;
-            var closeAction = vm?.CloseAction;
-            if (closeAction != null)
-                closeAction.Invoke();
+            var fecharAction = vm?.FecharAction;
+            if (fecharAction != null)
+                fecharAction.Invoke();
             else
                 TelaUtils.Instance.MainWindow.FecharTela();
         }

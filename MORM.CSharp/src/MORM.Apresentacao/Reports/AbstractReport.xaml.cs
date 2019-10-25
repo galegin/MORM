@@ -7,7 +7,7 @@
             InitializeComponent();
             var vm = new AbstractReportViewModel();
             vm.ConfirmarAction = OnConfirmar;
-            vm.CloseAction = OnCancelar;
+            vm.CancelarAction = OnCancelar;
             DataContext = vm;
         }
 

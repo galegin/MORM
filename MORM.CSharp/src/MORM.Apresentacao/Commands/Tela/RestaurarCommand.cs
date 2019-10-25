@@ -5,7 +5,7 @@
         #region metodos
         public override void Execute(object parameter)
         {
-            "".RestaurarApp();
+            string.Empty.RestaurarApp();
         }
         #endregion
     }

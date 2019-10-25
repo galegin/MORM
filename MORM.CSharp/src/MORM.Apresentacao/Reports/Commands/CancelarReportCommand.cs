@@ -6,7 +6,7 @@
         public override void Execute(object parameter)
         {
             var vm = parameter as AbstractReportViewModel;
-            vm.CloseAction.Invoke();
+            vm.FecharTela();
         }
         #endregion
     }

@@ -48,7 +48,7 @@ namespace MORM.Apresentacao
         }
         #endregion
         #region action
-        public Action CloseAction { get; set; }
+        public Action FecharAction { get; set; }
         public Action SelecionarAction { get; set; }
         public Action ConfirmarAction { get; set; }
         public Action CancelarAction { get; set; }
@@ -105,7 +105,7 @@ namespace MORM.Apresentacao
         public virtual void RetornarModel()
         {
             IsConfirmado = true;
-            CloseAction?.Invoke();
+            FecharAction?.Invoke();
         }
 
         public virtual void ConsultarChave() { }
@@ -115,8 +115,10 @@ namespace MORM.Apresentacao
         public virtual void ConsultarLista() { }
         public virtual void SelecionarLista() => SelecionarAction?.Invoke();
 
-        public virtual void ConfirmarTela() { }
-        public virtual void CancelarTela() { }
+        public virtual void ConfirmarTela() => ConfirmarAction?.Invoke();
+        public virtual void CancelarTela() => ConfirmarAction?.Invoke();
+
+        public virtual void FecharTela() => FecharAction?.Invoke();
         #endregion
     }
 

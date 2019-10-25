@@ -16,9 +16,9 @@ namespace MORM.Apresentacao
         {
             DataContext = vm;
             if (vm != null)
-                vm.CloseAction += OnCloseAction;
+                vm.FecharAction += OnFecharAction;
         }
-        private void OnCloseAction()
+        private void OnFecharAction()
         {
             Window.GetWindow(this)?.Close();
         }
