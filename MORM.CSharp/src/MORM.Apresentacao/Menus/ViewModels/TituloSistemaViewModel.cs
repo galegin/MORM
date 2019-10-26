@@ -82,7 +82,7 @@ namespace MORM.Apresentacao
 
         #region comandos
         public ExibirMenuLateral ExibirMenuLateral { get; }
-        public FecharCommand FecharTela { get; }
+        public FecharCommand FecharTelaPrincipal { get; }
         public MinimizarCommand MinimizarTela { get; }
         #endregion
 
@@ -91,7 +91,7 @@ namespace MORM.Apresentacao
         {
             InformacaoSistema = informacaoSistema ?? throw new ArgumentNullException(nameof(informacaoSistema));
             ExibirMenuLateral = new ExibirMenuLateral();
-            FecharTela = new FecharCommand();
+            FecharTelaPrincipal = new FecharCommand();
             MinimizarTela = new MinimizarCommand();
             NomeSistema = AppDomain.CurrentDomain.FriendlyName;
             Timer = new AbstractTimer(SetarDataSistema);

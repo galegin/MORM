@@ -14,7 +14,7 @@ namespace MORM.Apresentacao
         void VoltarTela(bool isAnterior = false);
         void VoltarTelaAnterior();
         void VoltarTelaInicio();
-        bool? AbrirDialog(UserControl userControl, bool isFullScreen = false);
+        bool? AbrirDialog(UserControl userControl, bool isFullScreen = false, bool isNoBorder = false);
         void SetarIsExibirMenuLateral(bool? flag = null);
     }
 }

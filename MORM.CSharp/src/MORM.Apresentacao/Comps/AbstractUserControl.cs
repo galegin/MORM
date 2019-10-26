@@ -13,7 +13,7 @@ namespace MORM.Apresentacao
         #endregion
 
         #region propriedades
-        public bool InConfirmado { get; protected set; }
+        public bool? InConfirmado { get; protected set; }
         public object Params { get => GetParams(); set => SetParams(value); }
         public object Values { get => GetValues(); set => SetValues(value); }
         #endregion
@@ -79,6 +79,16 @@ namespace MORM.Apresentacao
         protected virtual void btnFechar_Click(object sender, RoutedEventArgs e)
         {
             Window.GetWindow(this).Close();
+        }
+        protected virtual void btnConfirmar_Click(object sender, RoutedEventArgs e)
+        {
+            InConfirmado = true;
+            btnFechar_Click(null, null);
+        }
+        protected virtual void btnCancelar_Click(object sender, RoutedEventArgs e)
+        {
+            InConfirmado = false;
+            btnFechar_Click(null, null);
         }
         protected virtual void btnLimpar_Click(object sender, RoutedEventArgs e) { }
         protected virtual void btnConsultar_Click(object sender, RoutedEventArgs e) { }

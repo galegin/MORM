@@ -56,7 +56,7 @@ namespace MORM.Apresentacao
         public void VoltarTelaAnterior() => VoltarTela(isAnterior: true);
         public void VoltarTelaInicio() => VoltarTela(isAnterior: false);
 
-        public bool? AbrirDialog(UserControl userControl, bool isFullScreen = false)
+        public bool? AbrirDialog(UserControl userControl, bool isFullScreen = false, bool isNoBorder = false)
         {
             var defaultWindow = new AbstractWindow();
             defaultWindow.Content = userControl;
@@ -70,7 +70,19 @@ namespace MORM.Apresentacao
                 defaultWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             }
 
-            return defaultWindow.ShowDialog();
+            if (isNoBorder)
+            {
+                defaultWindow.BorderThickness = new Thickness(0);
+                defaultWindow.WindowStyle = WindowStyle.None;
+                defaultWindow.ResizeMode = ResizeMode.NoResize;
+            }
+
+            var confirma = defaultWindow.ShowDialog();
+
+            return userControl is AbstractUserControl 
+                ? (userControl as AbstractUserControl).InConfirmado
+                : confirma
+                ;
         }
 
         public void SetarIsExibirMenuLateral(bool? flag = null)

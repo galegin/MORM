@@ -16,11 +16,11 @@ namespace MORM.Apresentacao
         {
             DataContext = vm;
             if (vm != null)
-                vm.FecharAction += OnFecharAction;
-        }
-        private void OnFecharAction()
-        {
-            Window.GetWindow(this)?.Close();
+            {
+                vm.FecharAction += () => btnFechar_Click(null, null);
+                vm.ConfirmarAction += () => btnConfirmar_Click(null, null);
+                vm.CancelarAction += () => btnCancelar_Click(null, null);
+            }
         }
         #endregion
     }

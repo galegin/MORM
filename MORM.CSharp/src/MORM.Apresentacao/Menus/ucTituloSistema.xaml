@@ -31,7 +31,7 @@
 
             <StackPanel DockPanel.Dock="Right">
                 <Button Width="50" Height="50"
-                        Command="{Binding FecharTela}"
+                        Command="{Binding FecharTelaPrincipal}"
                         CommandParameter="{Binding}"
                         Background="Transparent"
                         >

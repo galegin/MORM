@@ -231,7 +231,7 @@ namespace MORM.Apresentacao
 
             userControl.Values = _vm.Source.Model.GetInstancePropOrField(_vm.Campo.Prop.Name);
 
-            if ((TelaUtils.Instance.AbrirDialog(userControl) ?? false) && userControl.InConfirmado)
+            if (TelaUtils.Instance.AbrirDialog(userControl) ?? false)
             {
                 _vm.Source.Model.SetInstancePropOrField(_vm.Campo.Prop.Name, userControl.Values);
             }
@@ -263,7 +263,7 @@ namespace MORM.Apresentacao
 
             userControl.Values = _vm.Source.Model.GetInstancePropOrField(_vm.Campo.Prop.Name);
 
-            if ((TelaUtils.Instance.AbrirDialog(userControl) ?? false) && userControl.InConfirmado)
+            if (TelaUtils.Instance.AbrirDialog(userControl) ?? false)
             {
                 _vm.Source.Model.SetInstancePropOrField(_vm.Campo.Prop.Name, userControl.Values);
             }

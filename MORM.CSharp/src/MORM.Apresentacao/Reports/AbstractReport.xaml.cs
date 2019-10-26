@@ -28,7 +28,7 @@
             var userControl = new AbstractReport();
             var vm = userControl.DataContext as AbstractReportViewModel;
             vm.SetReportInModel(model);
-            if (TelaUtils.Instance.AbrirDialog(userControl) ?? true && userControl.InConfirmado)
+            if (TelaUtils.Instance.AbrirDialog(userControl) ?? true)
                 return vm.GetReportModel();
             return null;
         }

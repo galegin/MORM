@@ -24,7 +24,9 @@ namespace MORM.Apresentacao.Report
                     var tamanhoDisp = relatorioCampo.Tamanho - value.Length;
                     var tamanhoLeft = tamanhoDisp / 2;
                     var tamanhoRight = tamanhoDisp - tamanhoLeft;
-                    return "".PadLeft(tamanhoLeft, ' ') + value + "".PadRight(tamanhoRight, ' ');
+                    return 
+                        string.Empty.PadLeft(tamanhoLeft, ' ') + value + 
+                        string.Empty.PadRight(tamanhoRight, ' ');
                 default:
                 case RelatorioAlinhamento.Esquerda:
                     return conteudo.PadRight(relatorioCampo.Tamanho, ' ');
