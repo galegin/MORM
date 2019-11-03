@@ -84,6 +84,7 @@
     <Compile Include="Entidades\nsEmpresa\GrupoEmpresa.cs" />
     <Compile Include="Entidades\nsTerminal\Terminal.cs" />
     <Compile Include="Entidades\nsUsuario\Usuario.cs" />
+    <Compile Include="Exceptions\ExceptionFatal.cs" />
     <Compile Include="Expressions\ExpressionExtensions.cs" />
     <Compile Include="Extensions\Atributos\DynamicExtensions.cs" />
     <Compile Include="Extensions\Atributos\FormExtensions.cs" />

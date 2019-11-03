@@ -1,5 +1,6 @@
 ﻿using MORM.CrossCutting;
 using System;
+using System.Diagnostics;
 using System.Globalization;
 using System.Threading;
 using System.Windows;
@@ -37,6 +38,9 @@ namespace MORM.Apresentacao
 
             MessageBox.Show(e.Exception.Message, messageBoxDescription, MessageBoxButton.OK, messageBoxImage);
 
+            if (e.Exception is ExceptionFatal)
+                Current.Shutdown();
+
             e.Handled = true;
         }
 
@@ -56,6 +60,16 @@ namespace MORM.Apresentacao
 
     public static class AbstractApplicationExtensions
     {
+        public static void ApenasUmaCopia()
+        {
+            string processo = Process.GetCurrentProcess().ProcessName;
+            if (Process.GetProcessesByName(processo).Length > 1)
+            {
+                MessageBox.Show("O programa já esta aberto", "Programa Aberto", MessageBoxButton.OK, MessageBoxImage.Error);
+                Application.Current.Shutdown();
+            }
+        }
+
         public static void SetApplication(this Application application)
         {
             //application.AddTheme();

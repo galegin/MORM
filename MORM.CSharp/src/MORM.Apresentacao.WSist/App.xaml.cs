@@ -7,6 +7,7 @@ namespace MORM.Apresentacao.WSist
     {
         static App()
         {
+            AbstractApplicationExtensions.ApenasUmaCopia();
             var container = AbstractContainer.Instance;
             container.AddInstaller();
         }

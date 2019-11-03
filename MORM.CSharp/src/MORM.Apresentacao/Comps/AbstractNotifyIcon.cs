@@ -9,6 +9,7 @@ namespace MORM.Apresentacao
     {
         #region Variaveis
         private NotifyIcon _trayIcon;
+        private Action _actionFinalizar;
         #endregion
 
         #region Propriedades
@@ -20,8 +21,10 @@ namespace MORM.Apresentacao
         #endregion
 
         #region Construtores
-        public AbstractNotifyIcon(EventHandler onRestaurar = null)
+        public AbstractNotifyIcon(EventHandler onRestaurar = null, Action actionFinalizar = null)
         {
+            _actionFinalizar = actionFinalizar != null ? actionFinalizar  : () => Application.Exit();
+
             _trayIcon = new NotifyIcon()
             {
                 Icon = Resources.AppIcon,
@@ -66,7 +69,7 @@ namespace MORM.Apresentacao
 
             _trayIcon.Visible = false;
 
-            Application.Exit();
+            _actionFinalizar?.Invoke();
         }
         #endregion
     }

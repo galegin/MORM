@@ -46,14 +46,12 @@ namespace MORM.Repositorio
 
         internal object ExecuteInstance(string where)
         {
-            var instance = _dataContext.GetObjeto(typeof(TInstance), where);
-            return instance.IsChavePreenchida() ? instance : default(TInstance);
+            return _dataContext.GetObjeto(typeof(TInstance), where);
         }
 
         internal object ExecuteList(string where)
         {
-            var lista = _dataContext.GetLista(typeof(TInstance), where);
-            return lista.Count > 0 ? lista : null;
+            return _dataContext.GetLista(typeof(TInstance), where);
         }
     }
 }

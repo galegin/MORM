@@ -138,7 +138,11 @@ namespace MORM.Apresentacao
         public void SetarNotifyIcon(EventHandler onRestaurar = null)
         {
             if (NotifyIcon == null)
-                NotifyIcon = new AbstractNotifyIcon(onRestaurar ?? OnRestaurar);
+                NotifyIcon = new AbstractNotifyIcon(onRestaurar ?? OnRestaurar, () => OnFinalizar(null, null));
+        }
+        protected void OnFinalizar(object sender, EventArgs e)
+        {
+            this.FinalizarApp();
         }
         protected void OnMinimizar(object sender, EventArgs e)
         {
