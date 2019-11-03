@@ -26,7 +26,7 @@ namespace MORM.CrossCutting
         #endregion
 
         #region metodos
-        public static void Enviar(string emailPara, string assunto, string conteudo)
+        public static void Enviar(string emailPara, string assunto, string conteudo, string[] anexos = null)
         {
             var client = new SmtpClient(_servidorEmail);
 
@@ -43,6 +43,7 @@ namespace MORM.CrossCutting
                 var mail = new MailMessage(_usuarioEmail.Trim(), emailPara.Trim());
                 mail.Subject = assunto;
                 mail.Body = conteudo;
+                mail.SetAnexos(anexos);
                 client.Send(mail);
             }
             catch (Exception ex)
@@ -50,7 +51,13 @@ namespace MORM.CrossCutting
                 Console.WriteLine(ex.Message);
                 throw ex;
             }
-        }        
+        }
+        private static void SetAnexos(this MailMessage mail, string[] anexos = null)
+        {
+            if (anexos != null)
+                foreach (var anexo in anexos)
+                    mail.Attachments.Add(new Attachment(fileName: anexo));
+        }
         #endregion
     }
 }

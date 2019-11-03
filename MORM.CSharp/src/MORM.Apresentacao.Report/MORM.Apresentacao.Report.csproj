@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\RelatorioEnviar.cs" />
+    <Compile Include="Saidas\RelatorioEnviar.cs" />
     <Compile Include="Comps\DataGridRelatorio.cs" />
     <Compile Include="Comuns\CampoLista.cs" />
     <Compile Include="Comuns\ICampoLista.cs" />
@@ -58,16 +58,16 @@
     <Compile Include="Interfaces\IRelatorioImpressora.cs" />
     <Compile Include="Interfaces\IRelatorioParte.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Classes\Relatorio.cs" />
+    <Compile Include="Saidas\Relatorio.cs" />
     <Compile Include="Classes\RelatorioCampo.cs" />
     <Compile Include="Classes\RelatorioDelimitador.cs" />
     <Compile Include="Classes\RelatorioEmail.cs" />
     <Compile Include="Classes\RelatorioEmailServidor.cs" />
-    <Compile Include="Classes\RelatorioExportacao.cs" />
-    <Compile Include="Classes\RelatorioImpressao.cs" />
+    <Compile Include="Saidas\RelatorioExportar.cs" />
+    <Compile Include="Saidas\RelatorioImprimir.cs" />
     <Compile Include="Classes\RelatorioImpressora.cs" />
     <Compile Include="Classes\RelatorioParte.cs" />
-    <Compile Include="Classes\RelatorioVisualizacao.cs" />
+    <Compile Include="Saidas\RelatorioVisualizar.cs" />
     <Compile Include="Types\RelatorioAlinhamento.cs" />
     <Compile Include="Types\RelatorioFormato.cs" />
     <Compile Include="Types\RelatorioParteTipo.cs" />
