@@ -6,6 +6,7 @@
         private ReportTipo _tipo;
         private string _arquivo;
         private string _email;
+        private string _impressora;
         #endregion
 
         #region propriedades
@@ -23,6 +24,11 @@
         {
             get => _email;
             set => SetField(ref _email, value);
+        }
+        public string Impressora
+        {
+            get => _impressora;
+            set => SetField(ref _impressora, value);
         }
         #endregion
     }

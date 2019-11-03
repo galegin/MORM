@@ -1,5 +1,5 @@
 ﻿//using MIGR.WSist.Comps.Reports;
-//using MORM.Dominio.Extensions;
+//using MORM.CrossCutting;
 //using System;
 //using System.Collections;
 //using System.Collections.Generic;
@@ -34,7 +34,7 @@
 //                //dataGrid.GetRodape(rodape),
 //            };
 
-//            var listaDeObjeto = dataGrid.GetListaDeObjeto();           
+//            var listaDeObjeto = dataGrid.GetListaDeObjeto();
 //            if (quebras?.Any() == true)
 //            {
 //                var partesQuebra = dataGrid.GetQuebras(quebras, listaDeObjeto);
@@ -113,7 +113,7 @@
 
 //        //-- quebras
 
-//        private static IList<IRelatorioParte> GetQuebras(this DataGrid dataGrid, IList<IRelatorioCampo> quebras, 
+//        private static IList<IRelatorioParte> GetQuebras(this DataGrid dataGrid, IList<IRelatorioCampo> quebras,
 //            IList<object> listaDeObjetoPar)
 //        {
 //            IList<IRelatorioParte> relatorioPartes = new List<IRelatorioParte>();

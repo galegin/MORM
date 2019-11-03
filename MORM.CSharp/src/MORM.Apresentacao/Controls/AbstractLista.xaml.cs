@@ -33,6 +33,8 @@ namespace MORM.Apresentacao
             dataGrid.SetBindingDataGridModel(vm);
             this.AddPainel(dataGrid);
 
+            vm.Grade = dataGrid; // para uso de report
+
             //var style = FindResource("DataGridCellStyle") as Style;
 
             GetMetadata(vm, selecao)

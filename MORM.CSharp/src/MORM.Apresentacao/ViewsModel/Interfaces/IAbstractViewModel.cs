@@ -19,6 +19,7 @@ namespace MORM.Apresentacao
         object Filtro { get; set; }
         object Model { get; set; }
         object Selecao { get; set; }
+        object Grade { get; set; } // para uso do report
         string Expressao { get; set; }
         string Clausula { get; set; }
         IList Lista { get; set; }

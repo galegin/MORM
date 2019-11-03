@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\RelatorioEnviar.cs" />
     <Compile Include="Comps\DataGridRelatorio.cs" />
     <Compile Include="Comuns\CampoLista.cs" />
     <Compile Include="Comuns\ICampoLista.cs" />

@@ -70,6 +70,9 @@ namespace MORM.Apresentacao
         #region selecao
         public virtual object Selecao { get; set; }
         #endregion
+        #region grade
+        public virtual object Grade { get; set; }
+        #endregion
         #region expressao
         public virtual string Expressao { get; set; }
         #endregion
